@@ -44,7 +44,17 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "#",
+        text: "List a teaching job"
+      }
+    ]
   }) }}
 {% endblock %}
 
@@ -64,7 +74,58 @@
             text: "Clear data"
           }
         ]
-      }
+      },
+
+      navigation: [
+              {
+                title: "For job seekers",
+                columns: 1,
+                items: [
+                  {
+                    href: "#1",
+                    text: "Search teaching vacancies"
+                  }
+                ]
+              },
+              {
+                title: "For schools",
+                columns: 1,
+                items: [
+                  {
+                    href: "#1",
+                    text: "List a teaching job"
+                  }
+                ]
+              },
+              {
+                title: "Service support",
+                columns: 1,
+                items: [
+                  {
+                    href: "#1",
+                    text: "Report problems via email"
+                  },
+                  {
+                    href: "#2",
+                    text: "Feedback about the service"
+                  },
+                  {
+                    href: "#3",
+                    text: "Cookies"
+                  },
+                  {
+                    href: "#4",
+                    text: "Privacy"
+                  },
+                  {
+                    href: "#5",
+                    text: "Terms and conditions"
+                  }
+                ]
+              }
+          ]
+
+
     }) }}
   {% endblock %}
 {% endif %}

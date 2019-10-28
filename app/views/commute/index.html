@@ -1,15 +1,112 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Find a job in Teaching
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+    }) }}
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-xl test-class">It works!</h1>
-      </div>
-  </div>
 
+<div class="govuk-grid-row">
+
+    <!-- Search start -->
+    <div class="govuk-grid-column-full">
+
+        <form class="start-search">
+            <fieldset class="govuk-fieldset">
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">Find a job in teaching</h1>
+                </legend>
+
+                <!-- <div class="govuk-form-group"> <label class="govuk-label label-blue" for="keyword">Keyword</label> <input class="govuk-input" id="keyword" name="keyword" type="text" placeholder="e.g. Job title or any other keyword"> </div> -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label label-blue" for="location">Where to search</label>
+                    <input class="govuk-input" id="location" name="location" type="text" placeholder="e.g. City, town or postcode">
+                    <p>or <a href="#">use current location</a></p>
+                </div>
+
+                <!-- START More filters-->
+                <div class="start-show-more">
+                    <a href="javascript:void(0);" id="toggle">+ Show more search options</a>
+                </div>
+
+                <div class="" id="expand"></div>
+                <!-- END More filters-->
+
+                <button type="submit" class="govuk-button" formaction="search-results-1.html">Search</button>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Regions + Listing action -->
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Explore teaching jobs by region</h3>
+        <ul>
+            <li>
+                <a href="">Region 1</a>
+            </li>
+            <li>
+                <a href="">Region 2</a>
+            </li>
+            <li>
+                <a href="">Region 3</a>
+            </li>
+            <li>
+                <a href="">Region 4</a>
+            </li>
+            <li>
+                <a href="">Region 5</a>
+            </li>
+            <li>
+                <a href="">Region 6</a>
+            </li>
+            <li>
+                <a href="">Region 7</a>
+            </li>
+            <li>
+                <a href="">Region 8</a>
+            </li>
+            <li>
+                <a href="">Region 9</a>
+            </li>
+            <li>
+                <a href="">Region 10</a>
+            </li>
+            <li>
+                <a href="">Region 11</a>
+            </li>
+            <li>
+                <a href="">Region 12</a>
+            </li>
+            <li>
+                <a href="">Region 13</a>
+            </li>
+            <li>
+                <a href="">Region 14</a>
+            </li>
+            <li>
+                <a href="">Region 15</a>
+            </li>
+        </ul>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m" id="subsection-title">List a teaching job</h2>
+        <p>To list a job for your school, you must have an account to sign into this service.</p>
+        <button type="submit" class="govuk-button">Sign in</button>
+        <p>or find out how to <a href="#">register your school</a>.</p>
+    </div>
+
+</div>
 {% endblock %}
