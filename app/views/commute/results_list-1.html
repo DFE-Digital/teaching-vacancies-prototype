@@ -483,7 +483,7 @@
     <!-- Start Results -->
     <div class="govuk-grid-column-two-thirds">
 
-        <h4 class="govuk-heading-m inline-block results-amount"><span>7</span> teaching jobs found</h4>
+        <h4 class="govuk-heading-m inline-block results-amount"><span>23</span> jobs match your search</h4>
 
         <!-- START selected tags -->
         <!--
@@ -504,31 +504,52 @@
         -->
         <!-- END selected tags -->
 
+        <!-- Save alert START -->
+        <p class="govuk-body">
+            <!--
+            <span class="job-seeker-alert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
+            </span>
+            -->
+            <a class="govuk-link" href="/subscriptions/new?search_criteria%5Bphases%5D%5B%5D=nursery&amp;search_criteria%5Bphases%5D%5B%5D=primary&amp;search_criteria%5Bradius%5D=25">Save this search as a job alert</a>
+        </p>
+        <!-- Save alert END -->
+
         <!-- Mobile Filter button -->
         <form>
             <button type="submit" class="govuk-button govuk-button--secondary mobile-filter-button mobile-show" formaction="filters.html">Filter results</button>
         </form>
 
-        <!-- Save alert START -->
-        <p class="govuk-body">
-            <span class="job-seeker-alert-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
-            </span>
-            <a class="govuk-link" href="/subscriptions/new?search_criteria%5Bphases%5D%5B%5D=nursery&amp;search_criteria%5Bphases%5D%5B%5D=primary&amp;search_criteria%5Bradius%5D=25">Save this search as a job alert</a>
-        </p>
-        <!-- Save alert END -->
+        <!--  -->
+
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+    <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+            <h4 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    Filter your search
+                </span>
+            </h4>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+            <p class='govuk-body'>This is the content for Writing well for the web.</p>
+        </div>
+    </div>
+</div>
+
+        <!--  -->
 
         <!-- Tabs START -->
-        <div class="">
+        <div class="map-tabs">
             <ul class="govuk-tabs__list">
                 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                     <a class="govuk-tabs__tab" href="#past-day">
-                        List
+                        View as list
                     </a>
                 </li>
                 <li class="govuk-tabs__list-item">
                     <a class="govuk-tabs__tab" href="#past-week">
-                        View Map
+                        View on map
                     </a>
                 </li>
             </ul>
@@ -538,7 +559,7 @@
 
         <!-- Sort START -->
         <div class="results-top">
-            <p class="page-amount"><span>Page 1</span> of 3</p>
+            <!-- <p class="page-amount"><span>Page 1</span> of 3</p> -->
             <div class="govuk-form-group">
                 <label class="govuk-label sort-label" for="sort">
                     Sort by

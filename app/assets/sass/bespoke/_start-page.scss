@@ -78,3 +78,14 @@ div#expand {
         }
     }
 }
+
+@media (max-width: 40.0625em) {
+    .regions-list {
+        -moz-column-count: 1;
+        -moz-column-gap: 30px;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 30px;
+        column-count: 1;
+        column-gap: 30px;
+    }
+}

@@ -11,7 +11,8 @@
     }
 }
 h4.results-amount {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    font-weight: normal;
 
     span {
         font-weight: bold;
@@ -39,7 +40,7 @@ p.page-amount {
 
 div.results-top div.govuk-form-group {
     float: right;
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .sort-label {
@@ -47,6 +48,38 @@ div.results-top div.govuk-form-group {
     padding-right: 5px;
     display: inline-block;
     margin-bottom: 15px;
+}
+
+/*
+---------- Mobile filter accordion ------------------------------
+*/
+
+
+div.govuk-accordion {
+    padding: 0px 20px 0px 20px;
+    background-color: #dee0e2;
+
+    &.js-enabled {
+        border-bottom: 0px;
+    }
+
+    div.govuk-accordion__controls {
+        display: none;
+    }
+    div.govuk-accordion__section {
+
+        .govuk-accordion__section-header {
+                border-top: 0px solid #b1b4b6;
+
+            &:hover {
+                box-shadow: none;
+            }
+        }
+        .govuk-accordion__section-content {
+            background-color: white;
+            margin-bottom: 20px;
+        }
+    }
 }
 
 /*
@@ -110,6 +143,10 @@ div.results-top div.govuk-form-group {
 /*
 ---------- Map/list Tabs ------------------------------
 */
+
+.map-tabs {
+    margin-bottom: 20px;
+}
 
 /*
 ---------- Vacancy results list ------------------------------
