@@ -1,0 +1,55 @@
+/*
+---------- MISC ------------------------------
+*/
+
+.test-class {
+    padding: 10px;
+    background-color: $govuk-focus-colour;
+    margin-bottom: 20px;
+
+    a#toggle {
+        margin-bottom: 10px;
+        display: block;
+    }
+    p#expand {
+        background-color: red;
+        display: none;
+    }
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*
+---------- Hide for mobile hacks ------------------------------
+*/
+
+/*
+Job advert - contents list
+*/
+
+.visually-hidden {
+    position: absolute;
+    left: -9999em;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.mobile-hide { display: none; }
+.mobile-show { display: none;}
+
+@media (max-width: 40.0625em) {
+    .mobile-show { display: block;}
+
+}
+@media (min-width: 40.0625em) {
+    .mobile-hide { display: block; }
+}
+
+/* (max-width: 600px) = change when window is 600px wide or less (Mobile) */
+/* (min-width: 600px) = change when window is 600px wide or more (Desktop) */
