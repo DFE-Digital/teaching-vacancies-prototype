@@ -25,7 +25,7 @@
 
         <div class="filters-form mobile-hide">
 
-            <h2 class="govuk-heading-m">Filter search results</h2>
+            <h2 class="govuk-heading-m">Search and filter</h2>
 
             <!-- START Location -->
             <div class="govuk-form-group">
@@ -483,7 +483,7 @@
     <!-- Start Results -->
     <div class="govuk-grid-column-two-thirds">
 
-        <h4 class="govuk-heading-m inline-block results-amount"><span>23</span> jobs match your search</h4>
+        <h4 class="govuk-heading-m inline-block results-amount"><span>23</span> jobs match '{{ data['location'] }}'</h4>
 
         <!-- START selected tags -->
         <!--
@@ -520,24 +520,22 @@
             <button type="submit" class="govuk-button govuk-button--secondary mobile-filter-button mobile-show" formaction="filters.html">Filter results</button>
         </form>
 
-        <!--  -->
-
-<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-    <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header">
-            <h4 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                    Filter your search
-                </span>
-            </h4>
+        <!-- Filters accordion START -->
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h4 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                            Search and filter
+                        </span>
+                    </h4>
+                </div>
+                <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                    <p class='govuk-body'>This is the content for Writing well for the web.</p>
+                </div>
+            </div>
         </div>
-        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-            <p class='govuk-body'>This is the content for Writing well for the web.</p>
-        </div>
-    </div>
-</div>
-
-        <!--  -->
+        <!-- Filters accordion END  -->
 
         <!-- Tabs START -->
         <div class="map-tabs">
