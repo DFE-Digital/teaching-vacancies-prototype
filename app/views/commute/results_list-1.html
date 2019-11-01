@@ -62,76 +62,6 @@
             </div>
             <!-- END Location -->
 
-            <!-- START location radius -->
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                    <div class="filter-radius app-c-option-select js-closed" >
-                        <button class="filter-radius-button app-c-option-select__title app-c-option-select__button js-closed" type="button" id="option-select-title-stage">
-                            Location radius
-                            <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up">
-                                <path
-                                    d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z">
-                                </path>
-                            </svg>
-                            <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down">
-                                <path
-                                    d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z">
-                                </path>
-                            </svg>
-                        </button>
-                        <!-- <div class="govuk-!-font-size-14 app-c-option-select__selected-counter">1 selected</div>-->
-                        <div role="group" class="filter-radius-container app-c-option-select__container js-closed" id="stage" tabindex="-1" style="height: 200px;">
-                            <div class="app-c-option-select__container-inner js-auto-height-inner">
-                                <div id="radios-38cfacc6" class="gem-c-radios govuk-form-group">
-                                    <fieldset class="govuk-fieldset">
-                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-radios__legend--hidden">Location radius</legend>
-                                        <ul class="govuk-radios gem-c-radios__list govuk-radios--small">
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-1" value="radius-1" class="govuk-radios__input">
-                                                <label for="radius-1" class="govuk-label govuk-radios__label">Within 1 mile</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-5" value="radius-5" class="govuk-radios__input" checked>
-                                                <label for="radius-5" class="govuk-label govuk-radios__label">Within 5 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-10" value="radius-10" class="govuk-radios__input">
-                                                <label for="radius-10" class="govuk-label govuk-radios__label">Within 10 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-15" value="radius-15" class="govuk-radios__input">
-                                                <label for="radius-15" class="govuk-label govuk-radios__label">Within 15 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-20" value="radius-20" class="govuk-radios__input">
-                                                <label for="radius-20" class="govuk-label govuk-radios__label">Within 20 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-25" value="radius-25" class="govuk-radios__input">
-                                                <label for="radius-25" class="govuk-label govuk-radios__label">Within 25 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-30" value="radius-30" class="govuk-radios__input">
-                                                <label for="radius-30" class="govuk-label govuk-radios__label">Within 30 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-35" value="radius-35" class="govuk-radios__input">
-                                                <label for="radius-35" class="govuk-label govuk-radios__label">Within 35 miles</label>
-                                            </li>
-                                            <li class="govuk-radios__item">
-                                                <input type="radio" name="location-radius" id="radius-40" value="radius-40" class="govuk-radios__input">
-                                                <label for="radius-40" class="govuk-label govuk-radios__label">Within 40 miles</label>
-                                            </li>
-                                        </ul>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-            <!-- END Location radius -->
-
             <!-- START Subject -->
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
@@ -483,43 +413,6 @@
     <!-- Start Results -->
     <div class="govuk-grid-column-two-thirds">
 
-        <h4 class="govuk-heading-m inline-block results-amount"><span>23</span> jobs match '{{ data['location'] }}'</h4>
-
-        <!-- START selected tags -->
-        <!--
-        <div class="facet-tags__wrapper">
-            <div class="facet-tag">
-                <p class="facet-tag__text">{{ data['keyword'] }}</p>
-                <button type="button" class="facet-tag__remove">✕</button>
-            </div>
-            <div class="facet-tag">
-                <p class="facet-tag__text">{{ data['location'] }}</p>
-                <button type="button" class="facet-tag__remove">✕</button>
-            </div>
-            <div class="facet-tag">
-                <p class="facet-tag__text">{{ data['phase'] }}</p>
-                <button type="button" class="facet-tag__remove">✕</button>
-            </div>
-        </div>
-        -->
-        <!-- END selected tags -->
-
-        <!-- Save alert START -->
-        <p class="govuk-body">
-            <!--
-            <span class="job-seeker-alert-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
-            </span>
-            -->
-            <a class="govuk-link" href="/subscriptions/new?search_criteria%5Bphases%5D%5B%5D=nursery&amp;search_criteria%5Bphases%5D%5B%5D=primary&amp;search_criteria%5Bradius%5D=25">Save this search as a job alert</a>
-        </p>
-        <!-- Save alert END -->
-
-        <!-- Mobile Filter button -->
-        <form>
-            <button type="submit" class="govuk-button govuk-button--secondary mobile-filter-button mobile-show" formaction="filters.html">Filter results</button>
-        </form>
-
         <!-- Filters accordion START -->
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
             <div class="govuk-accordion__section ">
@@ -531,29 +424,366 @@
                     </h4>
                 </div>
                 <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                    <p class='govuk-body'>This is the content for Writing well for the web.</p>
+
+                    <!-- Filters START -->
+                    <!-- START Location -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-form-group commute-input">
+                                <label class="govuk-label" for="location">Enter your location</label>
+                                <input class="govuk-input" id="location" name="location" type="text" placeholder="Postcode, city, town or region">
+                                <p>or <a href="#">use current location</a></p>
+                            </div>
+                            <div class="govuk-inset-text commute-inset">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="mode-commute">
+                                        How will you travel?
+                                    </label>
+                                    <select class="govuk-select" id="mode-commute" name="mode-commute">
+                                        <option value="">By bus/train</option>
+                                        <option value="" selected="selected">By car</option>
+                                        <option value="">By bicycle</option>
+                                        <option value="">Walking</option>
+                                    </select>
+                                </div>
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="time-commute">
+                                        What is your maximum commute?
+                                    </label>
+                                    <select class="govuk-select" id="time-commute" name="time-commute">
+                                        <option value="">15 minutes</option>
+                                        <option value="" selected="selected">30 minutes</option>
+                                        <option value="">45 minutes</option>
+                                        <option value="">1 hour</option>
+                                        <option value="">1 hour 15 minutes</option>
+                                        <option value="">1 hour 30 minutes</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END Location -->
+
+                    <!-- START Subject -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <label class="mobile-label">Subject</label>
+                            <div class="filter-subject app-c-option-select" >
+                                <!-- Search box -->
+                                <!--
+                                <div class="app-c-option-select__filter">
+                                    <label for="input-140af661" class="govuk-label govuk-visually-hidden">Filter teaching subjects</label>
+                                    <input name="option-select-filter" id="input-140af661" class="app-c-option-select__filter-input govuk-input" type="text">
+                                </div>
+                                -->
+                                <!-- Filter group -->
+                                <div role="group" class="filter-subject-container app-c-option-select__container" id="subject" tabindex="-1" style="height: 200px;">
+                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
+                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group" data-module="checkboxes">
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Subject</legend>
+                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-1" value="subject-1" class="govuk-checkboxes__input">
+                                                        <label for="subject-1" class="govuk-label govuk-checkboxes__label">Art and Design</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-2" value="subject-2" class="govuk-checkboxes__input">
+                                                        <label for="subject-2" class="govuk-label govuk-checkboxes__label">Biology</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-3" value="subject-3" class="govuk-checkboxes__input">
+                                                        <label for="subject-3" class="govuk-label govuk-checkboxes__label">Business Studies</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-4" value="subject-4" class="govuk-checkboxes__input">
+                                                        <label for="subject-4" class="govuk-label govuk-checkboxes__label">Chemistry</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-5" value="subject-5" class="govuk-checkboxes__input">
+                                                        <label for="subject-5" class="govuk-label govuk-checkboxes__label">English</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-6" value="subject-6" class="govuk-checkboxes__input">
+                                                        <label for="subject-6" class="govuk-label govuk-checkboxes__label">Geography</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-10" value="subject-10" class="govuk-checkboxes__input">
+                                                        <label for="subject-10" class="govuk-label govuk-checkboxes__label">History</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-7" value="subject-7" class="govuk-checkboxes__input">
+                                                        <label for="subject-7" class="govuk-label govuk-checkboxes__label">Humanities</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-8" value="subject-8" class="govuk-checkboxes__input">
+                                                        <label for="subject-8" class="govuk-label govuk-checkboxes__label">Information Technology</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-9" value="subject-9" class="govuk-checkboxes__input">
+                                                        <label for="subject-9" class="govuk-label govuk-checkboxes__label">Maths</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-11" value="subject-11" class="govuk-checkboxes__input">
+                                                        <label for="subject-11" class="govuk-label govuk-checkboxes__label">Modern Languages</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-12" value="subject-12" class="govuk-checkboxes__input">
+                                                        <label for="subject-12" class="govuk-label govuk-checkboxes__label">Music</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-13" value="subject-13" class="govuk-checkboxes__input">
+                                                        <label for="subject-13" class="govuk-label govuk-checkboxes__label">Other subjects</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-14" value="subject-14" class="govuk-checkboxes__input">
+                                                        <label for="subject-14" class="govuk-label govuk-checkboxes__label">Physical Education</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-15" value="subject-15" class="govuk-checkboxes__input">
+                                                        <label for="subject-15" class="govuk-label govuk-checkboxes__label">Physics</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="subject" id="subject-16" value="subject-16" class="govuk-checkboxes__input">
+                                                        <label for="subject-16" class="govuk-label govuk-checkboxes__label">Science</label>
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END Subject -->
+
+                    <!-- START Job title -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <label class="mobile-label">Job title</label>
+                            <div class="filter-jobtitle app-c-option-select" >
+                                <div role="group" class="filter-jobtitle-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
+                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
+                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group" data-module="checkboxes">
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Job Title</legend>
+                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="jobtitle" id="job-1" value="job-1" class="govuk-checkboxes__input" data-track-category="filterClicked" data-uncheck-track-category="filterRemoved" data-track-action="job-1" data-track-label="job-1" data-controls="js-search-results-info" aria-controls="js-search-results-info">
+                                                        <label for="job-1" class="govuk-label govuk-checkboxes__label">Leadership</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="jobtitle" id="job-2" value="job-2" class="govuk-checkboxes__input" data-track-category="filterClicked" data-uncheck-track-category="filterRemoved" data-track-action="job-2" data-track-label="job-2" data-controls="js-search-results-info" aria-controls="js-search-results-info">
+                                                        <label for="job-2" class="govuk-label govuk-checkboxes__label">Teaching</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="jobtitle" id="job-3" value="job-3" class="govuk-checkboxes__input" data-track-category="filterClicked" data-uncheck-track-category="filterRemoved" data-track-action="job-2" data-track-label="job-2" data-controls="js-search-results-info" aria-controls="js-search-results-info">
+                                                        <label for="job-3" class="govuk-label govuk-checkboxes__label">Non-Teaching and Support</label>
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END Job title -->
+
+                    <!-- START Working pattern -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <label for="" class="mobile-label">Working pattern</label>
+                            <div class="filter-pattern app-c-option-select">
+                                <div role="group" class="filter-pattern-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
+                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
+                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group">
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Working pattern</legend>
+                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="workpattern" id="pattern-1" value="pattern-1" class="govuk-checkboxes__input">
+                                                        <label for="pattern-1" class="govuk-label govuk-checkboxes__label">Full-time</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="workpattern" id="pattern-2" value="pattern-2" class="govuk-checkboxes__input">
+                                                        <label for="pattern-2" class="govuk-label govuk-checkboxes__label">Part-time</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="workpattern" id="pattern-3" value="pattern-3" class="govuk-checkboxes__input">
+                                                        <label for="pattern-3" class="govuk-label govuk-checkboxes__label">Job share</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="workpattern" id="pattern-4" value="pattern-4" class="govuk-checkboxes__input">
+                                                        <label for="pattern-4" class="govuk-label govuk-checkboxes__label">Compressed hours</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="workpattern" id="pattern-5" value="pattern-5" class="govuk-checkboxes__input">
+                                                        <label for="pattern-5" class="govuk-label govuk-checkboxes__label">Staggered hours</label>
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END Working pattern -->
+
+                    <!-- START Education phase -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <label for="" class="mobile-label">Education phase</label>
+                            <div class="filter-phase app-c-option-select">
+                                <div role="group" class="filter-phase-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
+                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
+                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group">
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Working pattern</legend>
+                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-1" value="phase-1" class="govuk-checkboxes__input">
+                                                        <label for="phase-1" class="govuk-label govuk-checkboxes__label">Not applicable</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-2" value="phase-2" class="govuk-checkboxes__input">
+                                                        <label for="phase-2" class="govuk-label govuk-checkboxes__label">Nursery</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-3" value="phase-3" class="govuk-checkboxes__input">
+                                                        <label for="phase-3" class="govuk-label govuk-checkboxes__label">Primary</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-4" value="phase-4" class="govuk-checkboxes__input">
+                                                        <label for="phase-4" class="govuk-label govuk-checkboxes__label">Middle deemed primary</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-5" value="phase-5" class="govuk-checkboxes__input">
+                                                        <label for="phase-5" class="govuk-label govuk-checkboxes__label">Secondary</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-6" value="phase-6" class="govuk-checkboxes__input">
+                                                        <label for="phase-6" class="govuk-label govuk-checkboxes__label">Middle deemed secondary</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-7" value="phase-7" class="govuk-checkboxes__input">
+                                                        <label for="phase-7" class="govuk-label govuk-checkboxes__label">Sixteen plus</label>
+                                                    </li>
+                                                    <li class="govuk-checkboxes__item">
+                                                        <input type="checkbox" name="phase" id="phase-8" value="phase-8" class="govuk-checkboxes__input">
+                                                        <label for="phase-8" class="govuk-label govuk-checkboxes__label">All through</label>
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END Education phase -->
+
+                    <!-- START Min salary -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <label for="" class="mobile-label">Minimum salary</label>
+                            <div class="filter-salary app-c-option-select">
+                                <div role="group" class="filter-salary-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
+                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
+                                        <div id="radios-38cfacc6" class="gem-c-radios govuk-form-group">
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-radios__legend--hidden">Working pattern</legend>
+                                                <ul class="govuk-radios gem-c-radios__list govuk-radios--small">
+                                                    <li class="govuk-radios__item">
+                                                        <input type="radio" name="salary" id="salary-1" value="salary-1" class="govuk-radios__input">
+                                                        <label for="salary-1" class="govuk-label govuk-radios__label">£20,000</label>
+                                                    </li>
+                                                    <li class="govuk-radios__item">
+                                                        <input type="radio" name="salary" id="salary-2" value="salary-2" class="govuk-radios__input">
+                                                        <label for="salary-2" class="govuk-label govuk-radios__label">£30,000</label>
+                                                    </li>
+                                                    <li class="govuk-radios__item">
+                                                        <input type="radio" name="salary" id="salary-3" value="salary-3" class="govuk-radios__input">
+                                                        <label for="salary-3" class="govuk-label govuk-radios__label">£40,000</label>
+                                                    </li>
+                                                    <li class="govuk-radios__item">
+                                                        <input type="radio" name="salary" id="salary-4" value="salary-4" class="govuk-radios__input">
+                                                        <label for="salary-4" class="govuk-label govuk-radios__label">£50,000</label>
+                                                    </li>
+                                                    <li class="govuk-radios__item">
+                                                        <input type="radio" name="salary" id="salary-5" value="salary-5" class="govuk-radios__input">
+                                                        <label for="salary-5" class="govuk-label govuk-radios__label">£60,000</label>
+                                                    </li>
+                                                    <li class="govuk-radios__item">
+                                                        <input type="radio" name="salary" id="salary-6" value="salary-6" class="govuk-radios__input">
+                                                        <label for="salary-6" class="govuk-label govuk-radios__label">£70,000</label>
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END Min salary -->
+
+                    <!-- START NQTs -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="nqt-1" name="nqt" type="checkbox" value="yes" aria-describedby="nqt-item-hint">
+                                    <label class="govuk-label govuk-checkboxes__label" for="nqt-1">
+                                        Suitable for NQT's
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END NQTs -->
+
+                    <button type="submit" class="govuk-button">Apply search</button>
+                    <!-- Filters END -->
+
                 </div>
             </div>
         </div>
         <!-- Filters accordion END  -->
 
-        <!-- Tabs START -->
-        <div class="map-tabs">
-            <ul class="govuk-tabs__list">
-                <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                    <a class="govuk-tabs__tab" href="#past-day">
-                        View as list
+        <!-- search title START -->
+        <div class="search-title">
+            <h4 class="govuk-heading-l inline-block results-amount"><span>23</span> jobs match '{{ data['location'] }}'</h4>
+            <!-- Save alert START -->
+            <p class="govuk-body">
+                <!--
+                <span class="job-seeker-alert-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
+                </span>
+                -->
+                <a class="govuk-link" href="/subscriptions/new?search_criteria%5Bphases%5D%5B%5D=nursery&amp;search_criteria%5Bphases%5D%5B%5D=primary&amp;search_criteria%5Bradius%5D=25">Save this search as a job alert</a>
+            </p>
+            <!-- Save alert END -->
+        </div>
+        <!-- search title END -->
+
+        <!-- bespoke tabs START-->
+        <div class="bespoke-tabs clearfix">
+            <ul class="bespoke-tabs__list clearfix">
+                <li class="bespoke-tabs__list-item bespoke-tabs__list-item--selected">
+                    <a class="bespoke-tabs__tab" href="listing_job-1.html">
+                        View list
                     </a>
                 </li>
-                <li class="govuk-tabs__list-item">
-                    <a class="govuk-tabs__tab" href="#past-week">
-                        View on map
+                <li class="bespoke-tabs__list-item">
+                    <a class="bespoke-tabs__tab" href="listing_school-1.html">
+                        View map
                     </a>
                 </li>
             </ul>
         </div>
-        <!-- Tabs END -->
-
+        <!-- bespoke tabs END-->
 
         <!-- Sort START -->
         <div class="results-top">
@@ -563,9 +793,10 @@
                     Sort by
                 </label>
                 <select class="govuk-select" id="sort" name="sort">
-                    <option value="published" selected>Latest posted</option>
-                    <option value="updated">Post closing soonest</option>
-                    <option value="views">Post starting soonest</option>
+                    <option value="published" selected>Shortest commute</option>
+                    <option value="updated">Newest job listing</option>
+                    <option value="updated">Least time to apply</option>
+                    <option value="views">Most time to apply</option>
                 </select>
             </div>
         </div>
@@ -582,18 +813,17 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double">£29,663 to £48,244 per year (full-time equivalent)</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">23 July 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">30 August 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
-                        <dd class="double">No date given</dd>
+                        <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Will consider full-time, part-time.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
-                        <div class="update-tag option-save option-save-couple">
+                        <div class="update-tag option-save">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" class="gem-c-subscription-links__icon" focusable="false" ><path fill-rule="evenodd" clip-rule="evenodd" d="M13.05 0C11.475 0 9.99009 0.724413 9 1.90155C8.00987 0.724413 6.525 0 4.95 0C2.15991 0 0 2.17302 0 4.98007C0 8.42067 3.05991 11.1826 7.69483 15.438L9 16.6154L10.3052 15.438C14.94 11.1826 18 8.42063 18 4.98007C18 2.17302 15.8401 0 13.05 0V0ZM9.5554 14.2467L9.37285 14.4142L9 14.7506L8.62719 14.4143L8.44485 14.2469C6.26331 12.2443 4.37923 10.5147 3.13373 8.96829C1.92405 7.46629 1.38461 6.23628 1.38461 4.98004C1.38461 3.99069 1.74903 3.07918 2.41074 2.41348C3.07025 1.74999 3.97203 1.38458 4.95 1.38458C6.0808 1.38458 7.1987 1.91104 7.94033 2.79278L9 4.05261L10.0596 2.79278C10.8013 1.91104 11.9192 1.38458 13.05 1.38458C14.028 1.38458 14.9297 1.74999 15.5893 2.41344C16.251 3.07918 16.6154 3.99065 16.6154 4.98004C16.6154 6.23628 16.0759 7.46625 14.8664 8.96821C13.6209 10.5147 11.7369 12.2441 9.5554 14.2467V14.2467Z"/></svg>
                             <a href="javascript:void(0);">Save job</a>
                         </div>
@@ -608,18 +838,17 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double"> £29,663 to £48,244 per year (full-time equivalent)</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">19 July 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">30 August 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
-                        <dd class="double">3 September 2019</dd>
+                        <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Full-time only.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
-                        <div class="update-tag option-save option-save-couple">
+                        <div class="update-tag option-save">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" class="gem-c-subscription-links__icon" focusable="false" ><path fill-rule="evenodd" clip-rule="evenodd" d="M13.05 0C11.475 0 9.99009 0.724413 9 1.90155C8.00987 0.724413 6.525 0 4.95 0C2.15991 0 0 2.17302 0 4.98007C0 8.42067 3.05991 11.1826 7.69483 15.438L9 16.6154L10.3052 15.438C14.94 11.1826 18 8.42063 18 4.98007C18 2.17302 15.8401 0 13.05 0V0ZM9.5554 14.2467L9.37285 14.4142L9 14.7506L8.62719 14.4143L8.44485 14.2469C6.26331 12.2443 4.37923 10.5147 3.13373 8.96829C1.92405 7.46629 1.38461 6.23628 1.38461 4.98004C1.38461 3.99069 1.74903 3.07918 2.41074 2.41348C3.07025 1.74999 3.97203 1.38458 4.95 1.38458C6.0808 1.38458 7.1987 1.91104 7.94033 2.79278L9 4.05261L10.0596 2.79278C10.8013 1.91104 11.9192 1.38458 13.05 1.38458C14.028 1.38458 14.9297 1.74999 15.5893 2.41344C16.251 3.07918 16.6154 3.99065 16.6154 4.98004C16.6154 6.23628 16.0759 7.46625 14.8664 8.96821C13.6209 10.5147 11.7369 12.2441 9.5554 14.2467V14.2467Z"/></svg>
                             <a href="javascript:void(0);">Save job</a>
                         </div>
@@ -634,15 +863,14 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double"> £28,653 to £48,244 per year (full-time equivalent)</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">17 July 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">30 August 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
                         <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Full-time only.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
                         <div class="update-tag option-save">
@@ -660,15 +888,14 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double">£23,720 to £39,406 per year</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">20 June 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">30 August 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
                         <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Full-time only.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
                         <div class="update-tag option-save">
@@ -686,18 +913,17 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double">£26,596 to £43,348 per year (full-time equivalent)</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">17 July 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">12 September 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
                         <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Full-time only.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
-                        <div class="update-tag option-save option-save-couple">
+                        <div class="update-tag option-save">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" class="gem-c-subscription-links__icon" focusable="false" ><path fill-rule="evenodd" clip-rule="evenodd" d="M13.05 0C11.475 0 9.99009 0.724413 9 1.90155C8.00987 0.724413 6.525 0 4.95 0C2.15991 0 0 2.17302 0 4.98007C0 8.42067 3.05991 11.1826 7.69483 15.438L9 16.6154L10.3052 15.438C14.94 11.1826 18 8.42063 18 4.98007C18 2.17302 15.8401 0 13.05 0V0ZM9.5554 14.2467L9.37285 14.4142L9 14.7506L8.62719 14.4143L8.44485 14.2469C6.26331 12.2443 4.37923 10.5147 3.13373 8.96829C1.92405 7.46629 1.38461 6.23628 1.38461 4.98004C1.38461 3.99069 1.74903 3.07918 2.41074 2.41348C3.07025 1.74999 3.97203 1.38458 4.95 1.38458C6.0808 1.38458 7.1987 1.91104 7.94033 2.79278L9 4.05261L10.0596 2.79278C10.8013 1.91104 11.9192 1.38458 13.05 1.38458C14.028 1.38458 14.9297 1.74999 15.5893 2.41344C16.251 3.07918 16.6154 3.99065 16.6154 4.98004C16.6154 6.23628 16.0759 7.46625 14.8664 8.96821C13.6209 10.5147 11.7369 12.2441 9.5554 14.2467V14.2467Z"/></svg>
                             <a href="javascript:void(0);">Save job</a>
                         </div>
@@ -712,18 +938,17 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double">£26,596 to £43,348 per year (full-time equivalent)</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">17 July 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">12 September 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
                         <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Full-time only.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
-                        <div class="update-tag option-save option-save-couple">
+                        <div class="update-tag option-save">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" class="gem-c-subscription-links__icon" focusable="false" ><path fill-rule="evenodd" clip-rule="evenodd" d="M13.05 0C11.475 0 9.99009 0.724413 9 1.90155C8.00987 0.724413 6.525 0 4.95 0C2.15991 0 0 2.17302 0 4.98007C0 8.42067 3.05991 11.1826 7.69483 15.438L9 16.6154L10.3052 15.438C14.94 11.1826 18 8.42063 18 4.98007C18 2.17302 15.8401 0 13.05 0V0ZM9.5554 14.2467L9.37285 14.4142L9 14.7506L8.62719 14.4143L8.44485 14.2469C6.26331 12.2443 4.37923 10.5147 3.13373 8.96829C1.92405 7.46629 1.38461 6.23628 1.38461 4.98004C1.38461 3.99069 1.74903 3.07918 2.41074 2.41348C3.07025 1.74999 3.97203 1.38458 4.95 1.38458C6.0808 1.38458 7.1987 1.91104 7.94033 2.79278L9 4.05261L10.0596 2.79278C10.8013 1.91104 11.9192 1.38458 13.05 1.38458C14.028 1.38458 14.9297 1.74999 15.5893 2.41344C16.251 3.07918 16.6154 3.99065 16.6154 4.98004C16.6154 6.23628 16.0759 7.46625 14.8664 8.96821C13.6209 10.5147 11.7369 12.2441 9.5554 14.2467V14.2467Z"/></svg>
                             <a href="javascript:void(0);">Save job</a>
                         </div>
@@ -738,15 +963,14 @@
                     <dl>
                         <dt>Salary</dt>
                         <dd class="double">£26,596 to £43,348 per year (full-time equivalent)</dd>
-                        <dt>Date posted</dt>
-                        <dd class="double">25 June 2019</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">20 September 2019</dd>
+                        <dt>Application dedline</dt>
+                        <dd class="double">17 July 2019 at 5:00 pm</dd>
                         <dt>Expected start date</dt>
                         <dd class="double">1 January 2020</dd>
                         <dt>Working pattern</dt>
-                        <dd class="double">Full-time only.
-                        </dd>
+                        <dd class="double">Full-time only.</dd>
+                        <dt>Commute</dt>
+                        <dd class="double">42 mins by Bus/Train</dd>
                     </dl>
                     <div class="actions">
                         <div class="update-tag option-save">
