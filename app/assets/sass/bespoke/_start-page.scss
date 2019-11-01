@@ -24,10 +24,13 @@ form.start-search {
 
         .commute-inset {
             margin-bottom: 20px;
+            display: none;
         }
+
     }
 
 }
+
 
 div#expand {
     display: none;
@@ -98,5 +101,44 @@ div#expand {
         -webkit-column-gap: 30px;
         column-count: 1;
         column-gap: 30px;
+    }
+}
+
+/*
+---------- Autocomplete ------------------------------
+*/
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+
+    .autocomplete-items {
+        display: none;
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        a {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+            color: #005ea5;
+            display: block;
+
+            &:hover {
+                color: white;
+                background-color: #b1b4b6;
+            }
+        }
     }
 }

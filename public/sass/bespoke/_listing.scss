@@ -215,10 +215,14 @@ img {
 */
 .commute-form {
     .govuk-label {
-        font-weight: 700;
+        // font-weight: 700;
     }
     .govuk-form-group:last-of-type {
         margin-bottom: 10px;
+    }
+
+    .govuk-button {
+        margin-bottom: 0;
     }
 
     .commute-time-group {
@@ -239,11 +243,30 @@ img {
     padding: 10px;
     margin-bottom: 20px;
 
+    p {
+        span {
+            font-weight: 700;
+        }
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
     h4 {
         margin-top: 0;
     }
     table {
         margin-bottom: 1.33em;
+
+        tr {
+            /* border-bottom: 3px solid #dee0e2; */
+            padding: 5px 0 5px 0;
+        }
+
+        thead {
+            border-bottom: 3px solid #6F777B;
+        }
     }
 }
 

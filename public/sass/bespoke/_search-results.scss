@@ -156,6 +156,123 @@ div.govuk-accordion {
     outline-offset: 0;
 }
 
+/*
+---------- Map ------------------------------
+*/
+
+.map-title {
+    span {
+        font-weight: 700;
+    }
+}
+
+.commute-map {
+    width: 100%;
+    background-color: yellow;
+    height: 600px;
+    position: relative;
+
+    .pin-popup {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+
+        .popup-content {
+            background: white;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+            width: 232px;
+            padding: 15px;
+
+            h4 {
+                margin: 0 0 5px 0;
+            }
+            p.school-name {
+                margin-bottom: 10px;
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            p.details {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            p.commute {
+                font-size: 14px;
+
+                span {
+                    font-weight: 700;
+                }
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+        .popup-tip-container {
+
+            margin: 0 auto;
+            width: 40px;
+            height: 20px;
+            position: relative;
+            overflow: hidden;
+
+            .popup-tip {
+                background: white;
+                box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+                width: 17px;
+                height: 17px;
+                padding: 1px;
+                margin: -10px auto 0;
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+
+            }
+        }
+        .popup-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 4px 4px 0 0;
+            text-align: center;
+            width: 18px;
+            height: 14px;
+            font: 16px/14px Tahoma, Verdana, sans-serif;
+            color: #005ea5;
+            text-decoration: none;
+            font-weight: bold;
+            background: transparent;
+        }
+    }
+
+    .pin {
+        position: absolute;
+        left:125px;
+        top: 235px;
+    }
+
+    .increase-time {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 75%;
+        background-color: white;
+        padding: 10px;
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin: 0;
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+}
 
 /*
 ---------- Map/list Tabs ------------------------------
@@ -164,6 +281,40 @@ div.govuk-accordion {
 .map-tabs {
     margin-bottom: 20px;
 }
+
+
+/*
+---------- Map loading ------------------------------
+*/
+
+.loader-container {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+
+    .loader {
+      border: 8px solid #f3f3f3; /* Light grey */
+      border-top: 8px solid #005ea5; /* Blue */
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h4 {
+        margin: 0;
+    }
+}
+
+
 
 /*
 ---------- Vacancy results list ------------------------------

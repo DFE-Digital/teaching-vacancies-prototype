@@ -168,7 +168,7 @@ div.govuk-accordion {
 
 .commute-map {
     width: 100%;
-    background-color: red;
+    background-color: yellow;
     height: 600px;
     position: relative;
 
@@ -246,6 +246,12 @@ div.govuk-accordion {
             font-weight: bold;
             background: transparent;
         }
+    }
+
+    .pin {
+        position: absolute;
+        left:125px;
+        top: 235px;
     }
 
     .increase-time {

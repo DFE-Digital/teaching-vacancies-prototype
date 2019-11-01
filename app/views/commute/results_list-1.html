@@ -431,10 +431,16 @@
                         <fieldset class="govuk-fieldset">
                             <div class="govuk-form-group commute-input">
                                 <label class="govuk-label" for="location">Enter your location</label>
-                                <input class="govuk-input" id="location" name="location" type="text" placeholder="Postcode, city, town or region">
+                                <div class="autocomplete">
+                                    <input class="govuk-input location" id="location" name="location" type="text" placeholder="e.g. City, town or postcode">
+                                    <div class="autocomplete-items tool-tip">
+                                        <a href="#" id="postcode">Postcode</a>
+                                        <a href="#" id="city">City, town, borough or region</a>
+                                    </div>
+                                </div>
                                 <p>or <a href="#">use current location</a></p>
                             </div>
-                            <div class="govuk-inset-text commute-inset">
+                            <div class="govuk-inset-text commute-inset" id="commute-inset">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label" for="mode-commute">
                                         How will you travel?
