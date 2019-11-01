@@ -1,3 +1,13 @@
+
+/*
+---------- Search title ------------------------------
+*/
+
+.search-title {
+    margin-bottom: 30px;
+}
+
+
 /*
 ---------- Results top ------------------------------
 */
@@ -39,7 +49,7 @@ p.page-amount {
 }
 
 div.results-top div.govuk-form-group {
-    float: right;
+    float: left;
     margin-bottom: 10px;
 }
 
@@ -56,8 +66,8 @@ div.results-top div.govuk-form-group {
 
 
 div.govuk-accordion {
-    padding: 0px 20px 0px 20px;
-    background-color: #dee0e2;
+    padding: 0px 10px 0px 10px;
+    background-color: #f3f2f1;
 
     &.js-enabled {
         border-bottom: 0px;
@@ -70,14 +80,21 @@ div.govuk-accordion {
 
         .govuk-accordion__section-header {
                 border-top: 0px solid #b1b4b6;
+                padding: 10px 0 10px 0;
 
             &:hover {
                 box-shadow: none;
             }
         }
         .govuk-accordion__section-content {
-            background-color: white;
-            margin-bottom: 20px;
+            /* background-color: white;
+            padding: 10px; */
+            margin-bottom: 10px;
+
+        }
+
+        .govuk-accordion__icon {
+            right: 0;
         }
     }
 }
@@ -169,7 +186,6 @@ ul.vacancies {
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
-            font-family: "nta", Arial, sans-serif;
             text-align: center;
 
             .option-days {
@@ -242,7 +258,6 @@ ul.vacancies {
             margin-bottom:15px;
         }
         dl {
-            font-family: "nta", Arial, sans-serif;
             font-size: 16px;
             line-height: 1.25;
             font-weight: 400;
@@ -279,7 +294,6 @@ ul.vacancies {
         padding: 0;
 
         .gem-c-pagination__item {
-            font-family: "nta", Arial, sans-serif;
             font-weight: 400;
             list-style: none;
 

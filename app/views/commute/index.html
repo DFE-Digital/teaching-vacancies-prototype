@@ -1,16 +1,7 @@
-{% extends "layout.html" %}
+{% extends "layout_gds-basic.html" %}
 
 {% block pageTitle %}
-  Find a job in Teaching
-{% endblock %}
-
-{% block beforeContent %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "beta"
-      },
-      html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
-    }) }}
+  Prototype start
 {% endblock %}
 
 {% block content %}
@@ -19,312 +10,37 @@
 
     <div class="govuk-grid-column-two-thirds">
 
-        <form class="start-search">
+        <h1 class="govuk-heading-l">Commute prototype</h1>
+        <h5 class="govuk-heading-s">Usability test - November 2019</h5>
+        <p>description lorem</p>
 
-            <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">Find a teaching job</h1>
-                </legend>
-                <!--
-                <p>This is a search in England for all teaching jobs. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
-                -->
-                <!--
-                <div class="govuk-form-group">
-                    <label class="govuk-label label-blue" for="keyword">Keyword</label>
-                    <input class="govuk-input" id="keyword" name="keyword" type="text" placeholder="e.g. Job title or any other keyword">
-                </div>
-                -->
 
-                <div class="govuk-form-group commute-input">
-                    <label class="govuk-label label-blue" for="location">Enter your location</label>
-                    <input class="govuk-input" id="location" name="location" type="text" placeholder="e.g. City, town or postcode">
-                    <p>or <a href="#">use current location</a></p>
-                </div>
-                <div class="govuk-inset-text commute-inset">
-                    <div class="govuk-form-group">
-                        <label class="govuk-label label-blue" for="mode-commute">
-                            How will you travel?
-                        </label>
-                        <select class="govuk-select" id="mode-commute" name="mode-commute">
-                            <option value="">By bus/train</option>
-                            <option value="" selected="selected">By car</option>
-                            <option value="">By bicycle</option>
-                            <option value="">Walking</option>
-                        </select>
-                    </div>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label label-blue" for="time-commute">
-                            What is your maximum commute?
-                        </label>
-                        <select class="govuk-select" id="time-commute" name="time-commute">
-                            <option value="">15 minutes</option>
-                            <option value="" selected="selected">30 minutes</option>
-                            <option value="">45 minutes</option>
-                            <option value="">1 hour</option>
-                            <option value="">1 hour 15 minutes</option>
-                            <option value="">1 hour 30 minutes</option>
-                        </select>
-                    </div>
-                </div>
+        <a href="start.html" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+            Start prototype
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" role="presentation" focusable="false">
+                <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+            </svg>
+        </a>
 
-                <!-- START More filters-->
-                <div class="start-show-more">
-                    <a href="javascript:void(0);" id="toggle">+ Show more search options</a>
-                </div>
-                <div class="" id="expand">
-
-                    <!-- START Subject -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <label class="mobile-label label-blue">Subject</label>
-                            <div class="filter-subject app-c-option-select" >
-                                <!-- Search box -->
-                                <!--
-                                <div class="app-c-option-select__filter">
-                                    <label for="input-140af661" class="govuk-label govuk-visually-hidden">Filter teaching subjects</label>
-                                    <input name="option-select-filter" id="input-140af661" class="app-c-option-select__filter-input govuk-input" type="text">
-                                </div>
-                                -->
-                                <!-- Filter group -->
-                                <div role="group" class="filter-subject-container app-c-option-select__container" id="subject" tabindex="-1" style="height: 200px;">
-                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
-                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group" data-module="checkboxes">
-                                            <fieldset class="govuk-fieldset">
-                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Subject</legend>
-                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-1" value="subject-1" class="govuk-checkboxes__input">
-                                                        <label for="subject-1" class="govuk-label govuk-checkboxes__label">Art and Design</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-2" value="subject-2" class="govuk-checkboxes__input">
-                                                        <label for="subject-2" class="govuk-label govuk-checkboxes__label">Biology</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-3" value="subject-3" class="govuk-checkboxes__input">
-                                                        <label for="subject-3" class="govuk-label govuk-checkboxes__label">Business Studies</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-4" value="subject-4" class="govuk-checkboxes__input">
-                                                        <label for="subject-4" class="govuk-label govuk-checkboxes__label">Chemistry</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-5" value="subject-5" class="govuk-checkboxes__input">
-                                                        <label for="subject-5" class="govuk-label govuk-checkboxes__label">English</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-6" value="subject-6" class="govuk-checkboxes__input">
-                                                        <label for="subject-6" class="govuk-label govuk-checkboxes__label">Geography</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-10" value="subject-10" class="govuk-checkboxes__input">
-                                                        <label for="subject-10" class="govuk-label govuk-checkboxes__label">History</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-7" value="subject-7" class="govuk-checkboxes__input">
-                                                        <label for="subject-7" class="govuk-label govuk-checkboxes__label">Humanities</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-8" value="subject-8" class="govuk-checkboxes__input">
-                                                        <label for="subject-8" class="govuk-label govuk-checkboxes__label">Information Technology</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-9" value="subject-9" class="govuk-checkboxes__input">
-                                                        <label for="subject-9" class="govuk-label govuk-checkboxes__label">Maths</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-11" value="subject-11" class="govuk-checkboxes__input">
-                                                        <label for="subject-11" class="govuk-label govuk-checkboxes__label">Modern Languages</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-12" value="subject-12" class="govuk-checkboxes__input">
-                                                        <label for="subject-12" class="govuk-label govuk-checkboxes__label">Music</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-13" value="subject-13" class="govuk-checkboxes__input">
-                                                        <label for="subject-13" class="govuk-label govuk-checkboxes__label">Other subjects</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-14" value="subject-14" class="govuk-checkboxes__input">
-                                                        <label for="subject-14" class="govuk-label govuk-checkboxes__label">Physical Education</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-15" value="subject-15" class="govuk-checkboxes__input">
-                                                        <label for="subject-15" class="govuk-label govuk-checkboxes__label">Physics</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-16" value="subject-16" class="govuk-checkboxes__input">
-                                                        <label for="subject-16" class="govuk-label govuk-checkboxes__label">Science</label>
-                                                    </li>
-                                                </ul>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <!-- END Subject -->
-
-                    <!-- START Job title -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <label class="mobile-label label-blue">Job title</label>
-                            <div class="filter-jobtitle app-c-option-select" >
-                                <div role="group" class="filter-jobtitle-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
-                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
-                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group" data-module="checkboxes">
-                                            <fieldset class="govuk-fieldset">
-                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Job Title</legend>
-                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="jobtitle" id="job-1" value="job-1" class="govuk-checkboxes__input" data-track-category="filterClicked" data-uncheck-track-category="filterRemoved" data-track-action="job-1" data-track-label="job-1" data-controls="js-search-results-info" aria-controls="js-search-results-info">
-                                                        <label for="job-1" class="govuk-label govuk-checkboxes__label">Leadership</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="jobtitle" id="job-2" value="job-2" class="govuk-checkboxes__input" data-track-category="filterClicked" data-uncheck-track-category="filterRemoved" data-track-action="job-2" data-track-label="job-2" data-controls="js-search-results-info" aria-controls="js-search-results-info">
-                                                        <label for="job-2" class="govuk-label govuk-checkboxes__label">Teaching</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="jobtitle" id="job-3" value="job-3" class="govuk-checkboxes__input" data-track-category="filterClicked" data-uncheck-track-category="filterRemoved" data-track-action="job-2" data-track-label="job-2" data-controls="js-search-results-info" aria-controls="js-search-results-info">
-                                                        <label for="job-3" class="govuk-label govuk-checkboxes__label">Non-Teaching and Support</label>
-                                                    </li>
-                                                </ul>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <!-- END Job title -->
-
-                    <!-- START Education phase -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <label for="" class="mobile-label label-blue">Education phase</label>
-                            <div class="filter-phase app-c-option-select">
-                                <div role="group" class="filter-phase-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
-                                    <div class="app-c-option-select__container-inner js-auto-height-inner">
-                                        <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group">
-                                            <fieldset class="govuk-fieldset">
-                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Working pattern</legend>
-                                                <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-1" value="phase-1" class="govuk-checkboxes__input">
-                                                        <label for="phase-1" class="govuk-label govuk-checkboxes__label">Not applicable</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-2" value="phase-2" class="govuk-checkboxes__input">
-                                                        <label for="phase-2" class="govuk-label govuk-checkboxes__label">Nursery</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-3" value="phase-3" class="govuk-checkboxes__input">
-                                                        <label for="phase-3" class="govuk-label govuk-checkboxes__label">Primary</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-4" value="phase-4" class="govuk-checkboxes__input">
-                                                        <label for="phase-4" class="govuk-label govuk-checkboxes__label">Middle deemed primary</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-5" value="phase-5" class="govuk-checkboxes__input">
-                                                        <label for="phase-5" class="govuk-label govuk-checkboxes__label">Secondary</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-6" value="phase-6" class="govuk-checkboxes__input">
-                                                        <label for="phase-6" class="govuk-label govuk-checkboxes__label">Middle deemed secondary</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-7" value="phase-7" class="govuk-checkboxes__input">
-                                                        <label for="phase-7" class="govuk-label govuk-checkboxes__label">Sixteen plus</label>
-                                                    </li>
-                                                    <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="phase" id="phase-8" value="phase-8" class="govuk-checkboxes__input">
-                                                        <label for="phase-8" class="govuk-label govuk-checkboxes__label">All through</label>
-                                                    </li>
-                                                </ul>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <!-- END Education phase -->
-
-                </div>
-                <!-- END More filters-->
-
-                <button type="submit" class="govuk-button" formaction="search-results-1.html">Search</button>
-
-            </fieldset>
-        </form>
-
-        <!-- Regions list START -->
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <h2 class="govuk-heading-m">Explore teaching jobs by region</h3>
-                <ul class="regions-list">
-                    <li>
-                        <a href="">This is a region name 1</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 2</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 3</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 4</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 5</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 6</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 7</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 8</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 9</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 10</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 11</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 12</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 13</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 14</a>
-                    </li>
-                    <li>
-                        <a href="">This is a region name 15</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- Regions list END -->
+        <h4 class="govuk-heading-m">All pages</h4>
+        <ul>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Page</a></li>
+        </ul>
 
     </div>
 
     <div class="govuk-grid-column-one-third">
 
-        <aside class="app-related-items" role="complementary">
-            <h2 class="govuk-heading-m" id="subsection-title">List a teaching job</h2>
-            <p>To list a job for your school, you must have an account to sign into this service.</p>
-            <button type="submit" class="govuk-button">Sign in</button>
-            <p>or find out how to <a href="#">register your school</a>.</p>
-        </aside>
 
     </div>
 

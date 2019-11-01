@@ -4,9 +4,26 @@
 ---------- Location/Commute ------------------------------
 */
 
-.commute-inset {
-    margin-bottom: 0;
+.govuk-fieldset {
+
+    .commute-input {
+        margin-bottom: 10px;
+    }
+
+    .commute-inset {
+        margin-bottom: 0;
+        margin-top: 0;
+
+        .govuk-form-group {
+
+            select {
+                width:100%;
+            }
+        }
+    }
+
 }
+
 
 /*
 ---------- Filter top/button ------------------------------
@@ -94,6 +111,14 @@
         line-height: 1.3157894737;
     }
 }
+
+// * For when removing collapse and using standard label */
+
+.mobile-label {
+    margin-bottom: 5px;
+    display: block;
+}
+
 /*
 ---------- Filters ------------------------------
 */
@@ -127,7 +152,7 @@
 }
 .js-enabled .app-c-option-select__container {
     border: 5px solid #dee0e2;
-    border-top: 0;
+    /* border-top: 0; */
 }
 
 .app-c-option-select__filter-input {
