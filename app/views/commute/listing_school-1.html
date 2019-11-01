@@ -106,12 +106,12 @@
         <!-- bespoke tabs START-->
         <div class="bespoke-tabs clearfix">
             <ul class="bespoke-tabs__list clearfix">
-                <li class="bespoke-tabs__list-item bespoke-tabs__list-item--selected">
+                <li class="bespoke-tabs__list-item">
                     <a class="bespoke-tabs__tab" href="listing_job-1.html">
                         Job listing
                     </a>
                 </li>
-                <li class="bespoke-tabs__list-item">
+                <li class="bespoke-tabs__list-item bespoke-tabs__list-item--selected">
                     <a class="bespoke-tabs__tab" href="listing_school-1.html">
                         School information
                     </a>
@@ -121,52 +121,96 @@
         <!-- bespoke tabs END-->
 
         <!-- content START -->
-        <div class="key-information mobile-show">
-            <h2 class="govuk-heading-m">Key information</h2>
-            <dl class="mobile-show">
-                <dt>Working pattern</dt>
-                <dd>Full-time only</dd>
-                <dt>Pay scale range</dt>
-                <dd>TBD</dd>
-                <dt>Salary</dt>
-                <dd>
-                    £28,653 to £48,244 per year (full-time equivalent)
-                </dd>
-                <dt>Education phase</dt>
-                <dd>Secondary</dd>
-                <dt>Subject</dt>
-                <dd>TBD</dd>
-                <dt class="mobile-hide">Date posted</dt>
-                <dd class="mobile-hide">17 July 2019</dd>
-                <dt class="mobile-hide">Closing date</dt>
-                <dd class="mobile-hide">30 August 2019</dd>
-                <dt class="mobile-hide">Expected start date</dt>
-                <dd class="mobile-hide">1 January 2020</dd>
-                <dt>Commute to school</dt>
-                <dd>TBD <a href="#">Link to section</a></dd>
-                <!--
-                <dt>Job contact email</dt>
-                <dd class="wordwrap"><a class="govuk-link" href="#">careers@avanti.org.uk</a></dd>
-                 -->
-            </dl>
+
+        <h2 class="govuk-heading-l">About Featherstone High School</h2>
+        <dl class="school--details ">
+            <dt>Address</dt>
+            <dd>Carlton Drive, {{ data['location'] }}, IG6 1LZ</dd>
+            <dt>Phase</dt>
+            <dd>Secondary</dd>
+            <dt>Type</dt>
+            <dd>Academy</dd>
+        </dl>
+        <div class="job-linez">
+            <img src="/public/images/map.png" alt="">
         </div>
 
-        <h2 class="govuk-heading-m" id="job-description">Job description</h2>
-        <p>We wish to appoint from September 2019 to this 11-19 multi-cultural school specialising in the Sciences and Sport, a highly motivated, ambitious and dynamic teacher to teach Science up to KS4. The candidate applying for the post should be a hardworking professional, committed to thorough lesson planning, enthusiastic delivery and careful assessment.</p>
-        <p>Featherstone High is a friendly school that thrives on teamwork and high achievement in all areas of our work with young people. We value our teachers and actively support their professional development through high quality on-going professional development.</p>
-        <p>Join us and you can expect an exceptional programme of professional studies during your first year as an NQT with the support of a dedicated mentor and an experienced Professional Tutor. We are one of very few schools to achieve the Platinum Award for CPD – a reflection of the importance we attach to supporting the professional development of colleagues.</p>
-        <p>We can also offer you, competitive pay and an excellent pension scheme, family friendly working and a collaborative culture where ideas take flight together. We offer Cycle to Work scheme, free counselling and occupational health service, discounted gym membership and contribution towards eye tests and VDU glasses. If you are looking to extend your experience and would be interested in joining our team, we would be delighted to hear from you.</p>
-        <p>All applicants are welcome to visit the school, application forms and further details are available from the School’s website https://featherstonehigh.careers.eteach.com/#/ . </p>
-        <p>CVs are accepted and approved applicants will be required to fill out an application form on appointment. Please email your completed form or CV to info@featherstonehigh.ealing.sch.uk.</p>
-        <p>Featherstone High School is committed to safeguarding and promoting the welfare of Children and Young People and expects all staff and volunteers to share this commitment. The successful applicants will be required to apply for an Enhanced Disclosure from the Disclosure and Barring Service (DBS) References will need to be seen before any offer of employment is made.</p>
-        <p>The closing date is Friday 30th August 2019, 4pm, however we reserve the right to close the advert early if we appoint sooner.</p>
-
-        <h2 class="govuk-heading-m">Essential educational requirements</h2>
-        <p>Graduate qualification in Science or equivalent</p>
-        <h2 class="govuk-heading-m">Essential qualification</h2>
-        <p>Qualified Teacher Status</p>
-        <h2 class="govuk-heading-m">Essential skills and experience</h2>
-        <p>Have a practical understanding of National Curriculum requirements in terms of content, classroom practice, differentiation, summative and formative assessment and reporting to parents  Experience of teaching Science to G.C.S.E level  Demonstrable experience of improving successful student outcomes in the last three years.</p>
+        <h2 class="govuk-heading-l">See your commute options</h2>
+        <form class="govuk-form-group" action="" method="post">
+            <fieldset class="govuk-fieldset commute-form">
+                <!-- location  -->
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="location">Your location</label>
+                    <input class="govuk-input" id="location" name="location" type="text" placeholder="e.g. City, town or postcode">
+                    <p>or <a href="#">use current location</a></p>
+                </div>
+                <!-- time  -->
+                <div class="govuk-form-group commute-time-group">
+                    <label class="govuk-label" for="location">Time of commute</label>
+                    <div class="govuk-date-input__item add-colon-positioned-next-to-element">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="">Hour</label>
+                            <input class="govuk-input govuk-input govuk-date-input__input govuk-input--width-2 " type="number" step="1" name="" id="">
+                            <span >:</span>
+                        </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="">Minute</label>
+                            <input class="govuk-input govuk-input govuk-date-input__input govuk-input--width-2 " type="number" step="1" name="" id="">
+                        </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                            <span class="govuk-label">
+                                <label for="">am or pm</label>
+                            </span>
+                            <select class="govuk-select select optional " name="" id="">
+                                <option value="">- -</option>
+                                <option value="am">am</option>
+                                <option value="pm">pm</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Show button -->
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Show commute times
+                </button>
+            </fieldset>
+        </form>
+        <!-- commute results START -->
+        <div class="commute-results">
+            <h4>0.23 miles to [school name]</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Mode of transport</td>
+                        <td>Time to school (Average)</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Car</td>
+                        <td>23 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Car</td>
+                        <td>23 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Car</td>
+                        <td>23 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Car</td>
+                        <td>23 minutes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#">View more details about this journey</a>
+        </div>
+        <!-- commute results END -->
         <!-- content END -->
 
         <!-- SOCIAL start -->

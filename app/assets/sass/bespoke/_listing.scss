@@ -1,13 +1,72 @@
 /*
----------- Main content ------------------------------
+---------- Listing tabs ------------------------------
 */
 
-.listing-content {
-    .govuk-tabs {
-        margin-bottom: 0px;
+.bespoke-tabs {
+    margin-bottom: 30px;
+    margin-top: 5px;
+
+    ul.bespoke-tabs__list {
+        border-bottom: 1px solid #b1b4b6;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li.bespoke-tabs__list-item {
+            position: relative;
+            margin-right: 5px;
+            margin-bottom: 0;
+            margin-left: 0;
+            padding: 10px 20px;
+            float: left;
+            background-color: #f3f2f1;
+            text-align: center;
+            line-height: 1.31579;
+            font-size:19px;
+
+            a.bespoke-tabs__tab {
+
+            }
+        }
+        li.bespoke-tabs__list-item--selected {
+            position: relative;
+            margin-top: -5px;
+            margin-bottom: -1px;
+            padding-top: 14px;
+            padding-right: 19px;
+            padding-bottom: 16px;
+            padding-left: 19px;
+            border: 1px solid #b1b4b6;
+            border-bottom: 0;
+            background-color: #ffffff;
+            line-height: 1.31579;
+            font-size:19px;
+
+            a.bespoke-tabs__tab {
+                text-decoration: none;
+            }
+        }
     }
-    .govuk-tabs__panel {
-        margin-bottom: 30px;
+}
+@media (max-width: 40.0625em) {
+
+    .bespoke-tabs {
+
+
+        ul.bespoke-tabs__list {
+
+            li.bespoke-tabs__list-item {
+                width: 42%;
+                padding: 10px 10px 10px 10px;
+                font-size:16px;
+            }
+            li.bespoke-tabs__list-item--selected {
+                width: 42%;
+                padding: 14px 10px 16px 10px;
+                font-size:16px;
+            }
+
+        }
     }
 }
 
@@ -74,11 +133,19 @@ aside.vacancy--metadata {
             dt {
                 font-weight: 700;
                 display: block;
+
+                &.mobile-hide {
+                    display: none;
+                }
             }
             dd {
                 display: block;
                 margin-left: 0;
                 margin-bottom: 15px;
+
+                &.mobile-hide {
+                    display: none;
+                }
             }
         }
     }
@@ -105,7 +172,8 @@ aside.vacancy--metadata {
     }
 @media (max-width: 40.0625em) {
     .listing-save {
-        float: left;
+        float: right;
+        margin-top: 15px;
 
         a {
             font-size: 16px;
@@ -117,23 +185,60 @@ aside.vacancy--metadata {
 ---------- School details ------------------------------
 */
 
+
 dl.school--details {
     font-weight: 400;
 
     dt {
-        width: 20%;
-        color: #6f777b;
-        float: left;
-        display: inline-block;
+        font-weight: 700;
+        display: block;
     }
     dd {
-        width: 65%;
-        display: inline-block;
+        display: block;
+        margin-left: 0;
+        margin-bottom: 15px;
     }
 }
 
 img {
     width: 100%;
+}
+
+/*
+---------- Commute ------------------------------
+*/
+.commute-form {
+    .govuk-label {
+        font-weight: 700;
+    }
+    .govuk-form-group:last-of-type {
+        margin-bottom: 10px;
+    }
+
+    .commute-time-group {
+
+        .add-colon-positioned-next-to-element {
+            margin-right: 5px;
+            span {
+                margin-left: 5px;
+                font-weight: 700;
+            }
+        }
+
+    }
+}
+
+.commute-results {
+    border: 5px solid #dee0e2;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    h4 {
+        margin-top: 0;
+    }
+    table {
+        margin-bottom: 1.33em;
+    }
 }
 
 /*
