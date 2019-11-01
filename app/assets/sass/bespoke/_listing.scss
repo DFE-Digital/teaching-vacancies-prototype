@@ -13,23 +13,29 @@
         list-style: none;
 
         li.bespoke-tabs__list-item {
-            position: relative;
+            display: flex;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            justify-content: center;
             margin-right: 5px;
             margin-bottom: 0;
             margin-left: 0;
             padding: 10px 20px;
             float: left;
             background-color: #f3f2f1;
-            text-align: center;
             line-height: 1.31579;
             font-size:19px;
+
+            svg {
+                margin-right: 8px;
+            }
 
             a.bespoke-tabs__tab {
 
             }
         }
         li.bespoke-tabs__list-item--selected {
-            position: relative;
             margin-top: -5px;
             margin-bottom: -1px;
             padding-top: 14px;

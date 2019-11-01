@@ -16,6 +16,17 @@ form.start-search {
     a { color: #FFF; }
     p { color: #FFF; }
 
+    .govuk-fieldset {
+
+        .commute-input {
+            margin-bottom: 10px;
+        }
+
+        .commute-inset {
+            margin-bottom: 20px;
+        }
+    }
+
 }
 
 div#expand {
