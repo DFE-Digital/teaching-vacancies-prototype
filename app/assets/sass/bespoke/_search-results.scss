@@ -156,6 +156,55 @@ div.govuk-accordion {
     outline-offset: 0;
 }
 
+/*
+---------- Map ------------------------------
+*/
+
+.map-title {
+    span {
+        font-weight: 700;
+    }
+}
+
+.commute-map {
+    width: 100%;
+    background-color: red;
+    height: 600px;
+    position: relative;
+
+    .increase-time {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 75%;
+        background-color: white;
+        padding: 10px;
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin: 0;
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+
+    .map-nav {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 20px;
+
+        a {
+            display: block;
+            text-align: center;
+            padding: 5px;
+        }
+    }
+
+}
 
 /*
 ---------- Map/list Tabs ------------------------------
@@ -164,6 +213,8 @@ div.govuk-accordion {
 .map-tabs {
     margin-bottom: 20px;
 }
+
+
 
 /*
 ---------- Vacancy results list ------------------------------
