@@ -18,19 +18,19 @@ form.start-search {
 
     .govuk-fieldset {
 
+        .commute-input {
+            margin-bottom: 10px;
+        }
+
+        .commute-inset {
+            margin-bottom: 20px;
+            display: none;
+        }
 
     }
 
 }
 
-.commute-input {
-    margin-bottom: 10px;
-}
-
-.commute-inset {
-    margin-bottom: 20px;
-    display: none;
-}
 
 div#expand {
     display: none;

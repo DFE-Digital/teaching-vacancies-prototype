@@ -22,6 +22,14 @@ $(document).ready(function(){
         $(this).text($(this).text() == '- Hide search options' ? '+ Show more search options' : '- Hide search options');
     });
 
+    // MAP RESULTS -  Pin toggle
+    $("a#pinToggle").click(function(){
+        $("div.pin-popup").toggle();
+    });
 
+    // LISTING - show commute
+    $("a#showCommute").click(function(){
+        $("div.commute-results").show();
+    });
 
 });

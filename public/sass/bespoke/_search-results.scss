@@ -168,14 +168,19 @@ div.govuk-accordion {
 
 .commute-map {
     width: 100%;
-    background-color: yellow;
-    height: 600px;
+    background-color: #dee0e2;
     position: relative;
+
+    img {
+        display: block;
+        z-index: 1;
+    }
 
     .pin-popup {
         position: absolute;
         left: 10px;
         top: 10px;
+        display: none;
 
         .popup-content {
             background: white;
@@ -252,6 +257,17 @@ div.govuk-accordion {
         position: absolute;
         left:125px;
         top: 235px;
+
+        a:focus {
+            box-shadow: none;
+            background-color: inherit;
+        }
+    }
+
+    .cluster {
+        position: absolute;
+        left:150px;
+        top: 300px;
     }
 
     .increase-time {

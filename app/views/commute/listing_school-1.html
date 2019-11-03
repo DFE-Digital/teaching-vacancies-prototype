@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="search-results-2.html">Back to results</a>
+  <a class="govuk-back-link" href="results_p_list-1.html">Back to results</a>
   <div class="listing-save mobile-show">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" class="gem-c-subscription-links__icon" focusable="false" ><path fill-rule="evenodd" clip-rule="evenodd" d="M13.05 0C11.475 0 9.99009 0.724413 9 1.90155C8.00987 0.724413 6.525 0 4.95 0C2.15991 0 0 2.17302 0 4.98007C0 8.42067 3.05991 11.1826 7.69483 15.438L9 16.6154L10.3052 15.438C14.94 11.1826 18 8.42063 18 4.98007C18 2.17302 15.8401 0 13.05 0V0ZM9.5554 14.2467L9.37285 14.4142L9 14.7506L8.62719 14.4143L8.44485 14.2469C6.26331 12.2443 4.37923 10.5147 3.13373 8.96829C1.92405 7.46629 1.38461 6.23628 1.38461 4.98004C1.38461 3.99069 1.74903 3.07918 2.41074 2.41348C3.07025 1.74999 3.97203 1.38458 4.95 1.38458C6.0808 1.38458 7.1987 1.91104 7.94033 2.79278L9 4.05261L10.0596 2.79278C10.8013 1.91104 11.9192 1.38458 13.05 1.38458C14.028 1.38458 14.9297 1.74999 15.5893 2.41344C16.251 3.07918 16.6154 3.99065 16.6154 4.98004C16.6154 6.23628 16.0759 7.46625 14.8664 8.96821C13.6209 10.5147 11.7369 12.2441 9.5554 14.2467V14.2467Z"/></svg>
       <a href="javascript:void(0);">Save job</a>
@@ -58,11 +58,11 @@
                 <ol class="hmcts-progress-bar__list">
                     <li class="hmcts-progress-bar__list-item">
                         <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--complete"></span>
-                        <span class="hmcts-progress-bar__label">Date posted<br>17 July 2019</span>
+                        <span class="hmcts-progress-bar__label">Date posted<br>17 October 2019</span>
                     </li>
                     <li class="hmcts-progress-bar__list-item">
                         <span class="hmcts-progress-bar__icon"></span>
-                        <span class="hmcts-progress-bar__label">Closing date<br>30 August 2019<br>at 17:00pm</span>
+                        <span class="hmcts-progress-bar__label">Closing date<br>30 November 2019<br>at 5:00pm</span>
                     </li>
                     <li class="hmcts-progress-bar__list-item">
                         <span class="hmcts-progress-bar__icon"></span>
@@ -178,15 +178,13 @@
                     </div>
                 </div>
                 <!-- Show button -->
-                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                    Show commute times
-                </button>
+                <a href="javascript:void(0)" class="govuk-button govuk-button--secondary" id="showCommute">Show commute times</a>
             </fieldset>
         </form>
 
         <!-- commute results START -->
         <div class="commute-results">
-            <p><span>0.23 miles</span> to [school name]</p>
+            <p><span>0.23 miles</span> to Featherstone High School</p>
             <table class="govuk-table">
                 <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
@@ -233,7 +231,7 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="#">View more details about this journey</a>
+            <a href="javascript:void(0)">View more details about this journey</a>
         </div>
         <!-- commute results END -->
         <!-- content END -->
