@@ -795,7 +795,7 @@
 
         <!-- map START -->
         <div class="">
-            <p class="map-title" id="mapScroll">Jobs within <span>[time]</span> commute by <span>[mode]</span> from <span>[location]</span></p>
+            <p class="map-title" id="mapScroll">Jobs within <span>[time]</span> commute by <span>[mode]</span> from <span>{{ data['location'] }}</span></p>
             <div class="commute-map">
 
                 <img src="/public/images/commute/map2.png" alt="">
@@ -811,7 +811,7 @@
                             Working pattern: full time only
                         </p>
                         <p class="commute">
-                            0.5 miles from N8 8AL<br>
+                            0.5 miles from {{ data['location'] }}<br>
                             23 minutes by car<br>
                             42 minutes by bus/train
                         </p>
