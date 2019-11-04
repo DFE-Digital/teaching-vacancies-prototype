@@ -27,9 +27,11 @@ $(document).ready(function(){
     // MAP RESULTS -  Pin toggle
     $("a#pinToggle").click(function(){
         $("div.pin-popup").toggle();
+        $('body').scrollTo('div#mapScroll')
     });
     $("a.popup-close").click(function(){
         $("div.pin-popup").toggle();
+        $('body').scrollTo('div#mapScroll')
     });
 
     // LISTING - show commute
