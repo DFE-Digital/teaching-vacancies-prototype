@@ -40,8 +40,8 @@
                     <div class="autocomplete">
                         <input class="govuk-input location" id="location" name="location" type="text" placeholder="e.g. City, town or postcode">
                         <div class="autocomplete-items tool-tip">
-                            <a href="#" id="postcode">Postcode</a>
-                            <a href="#" id="city">City, town, borough or region</a>
+                            <a href="#" value="" id="postcode">Postcode</a>
+                            <a href="#" value="" id="city">City, town, borough or region</a>
                         </div>
                     </div>
                     <p>or <a href="#">use current location</a></p>
@@ -52,10 +52,10 @@
                             How will you travel?
                         </label>
                         <select class="govuk-select" id="mode-commute" name="mode-commute">
-                            <option value="">By bus/train</option>
-                            <option value="" selected="selected">By car</option>
-                            <option value="">By bicycle</option>
-                            <option value="">Walking</option>
+                            <option value="by bus/train">By bus/train</option>
+                            <option value="by car" selected="selected">By car</option>
+                            <option value="by bicycle">By bicycle</option>
+                            <option value="walking">Walking</option>
                         </select>
                     </div>
                     <div class="govuk-form-group">
@@ -63,12 +63,12 @@
                             What is your maximum commute?
                         </label>
                         <select class="govuk-select" id="time-commute" name="time-commute">
-                            <option value="">15 minutes</option>
-                            <option value="" selected="selected">30 minutes</option>
-                            <option value="">45 minutes</option>
-                            <option value="">1 hour</option>
-                            <option value="">1 hour 15 minutes</option>
-                            <option value="">1 hour 30 minutes</option>
+                            <option value="15 minutes">15 minutes</option>
+                            <option value="30 minutes" selected="selected">30 minutes</option>
+                            <option value="45 minutes">45 minutes</option>
+                            <option value="1 hour">1 hour</option>
+                            <option value="1 hour 15 minutes">1 hour 15 minutes</option>
+                            <option value="1 hour 30 minutes">1 hour 30 minutes</option>
                         </select>
                     </div>
                 </div>
@@ -99,67 +99,67 @@
                                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Subject</legend>
                                                 <ul class="govuk-checkboxes gem-c-checkboxes__list govuk-checkboxes--small">
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-1" value="subject-1" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="Art and Design" value="Art and Design" class="govuk-checkboxes__input">
                                                         <label for="subject-1" class="govuk-label govuk-checkboxes__label">Art and Design</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-2" value="subject-2" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="Biology" value="Biology" class="govuk-checkboxes__input">
                                                         <label for="subject-2" class="govuk-label govuk-checkboxes__label">Biology</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-3" value="subject-3" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="Business Studies" value="Business Studies" class="govuk-checkboxes__input">
                                                         <label for="subject-3" class="govuk-label govuk-checkboxes__label">Business Studies</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-4" value="subject-4" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="Chemistry" value="Chemistry" class="govuk-checkboxes__input">
                                                         <label for="subject-4" class="govuk-label govuk-checkboxes__label">Chemistry</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-5" value="subject-5" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-5" value="English" class="govuk-checkboxes__input">
                                                         <label for="subject-5" class="govuk-label govuk-checkboxes__label">English</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-6" value="subject-6" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-6" value="Geography" class="govuk-checkboxes__input">
                                                         <label for="subject-6" class="govuk-label govuk-checkboxes__label">Geography</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-10" value="subject-10" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-10" value="History" class="govuk-checkboxes__input">
                                                         <label for="subject-10" class="govuk-label govuk-checkboxes__label">History</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-7" value="subject-7" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-7" value="Humanities" class="govuk-checkboxes__input">
                                                         <label for="subject-7" class="govuk-label govuk-checkboxes__label">Humanities</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-8" value="subject-8" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-8" value="Information Technology" class="govuk-checkboxes__input">
                                                         <label for="subject-8" class="govuk-label govuk-checkboxes__label">Information Technology</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-9" value="subject-9" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-9" value="Maths" class="govuk-checkboxes__input">
                                                         <label for="subject-9" class="govuk-label govuk-checkboxes__label">Maths</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-11" value="subject-11" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-11" value="Modern Languages" class="govuk-checkboxes__input">
                                                         <label for="subject-11" class="govuk-label govuk-checkboxes__label">Modern Languages</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-12" value="subject-12" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-12" value="Music" class="govuk-checkboxes__input">
                                                         <label for="subject-12" class="govuk-label govuk-checkboxes__label">Music</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-13" value="subject-13" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-13" value="Other subjects" class="govuk-checkboxes__input">
                                                         <label for="subject-13" class="govuk-label govuk-checkboxes__label">Other subjects</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-14" value="subject-14" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-14" value="Physical Education" class="govuk-checkboxes__input">
                                                         <label for="subject-14" class="govuk-label govuk-checkboxes__label">Physical Education</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-15" value="subject-15" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-15" value="Physics" class="govuk-checkboxes__input">
                                                         <label for="subject-15" class="govuk-label govuk-checkboxes__label">Physics</label>
                                                     </li>
                                                     <li class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="subject" id="subject-16" value="subject-16" class="govuk-checkboxes__input">
+                                                        <input type="checkbox" name="subject" id="subject-16" value="Science" class="govuk-checkboxes__input">
                                                         <label for="subject-16" class="govuk-label govuk-checkboxes__label">Science</label>
                                                     </li>
                                                 </ul>
@@ -177,7 +177,7 @@
                         <fieldset class="govuk-fieldset">
                             <label class="mobile-label label-blue">Job title</label>
                             <div class="filter-jobtitle app-c-option-select" >
-                                <div role="group" class="filter-jobtitle-container app-c-option-select__container" id="jobtitle" tabindex="-1" style="height: 200px;">
+                                <div role="group" class="filter-jobtitle-container app-c-option-select__container" id="v-jobTitle" tabindex="-1" style="height: 200px;">
                                     <div class="app-c-option-select__container-inner js-auto-height-inner">
                                         <div id="checkboxes-38cfacc6" class="gem-c-checkboxes govuk-form-group" data-module="checkboxes">
                                             <fieldset class="govuk-fieldset">
@@ -261,7 +261,8 @@
                 </div>
                 <!-- END More filters-->
 
-                <button type="submit" class="govuk-button" formaction="results_p_list-1.html">Search</button>
+                <button type="submit" class="govuk-button start-search" formaction="#">Search</button>
+                <!-- <a href="#" class="govuk-button">Search</a> -->
 
             </fieldset>
         </form>

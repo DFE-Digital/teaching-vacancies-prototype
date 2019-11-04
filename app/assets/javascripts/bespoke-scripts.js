@@ -6,14 +6,16 @@ $(document).ready(function(){
         $(".tool-tip").show();
     });
 
-    // SERVICE START - Autocomplete options
+    // SERVICE START - Autocomplete options + Journey setting
     $("a#postcode").click(function(){
         $("div#commute-inset").show();
         $(".tool-tip").hide();
+        $("button.start-search").attr("formaction", "results_p_list-1.html")
     });
     $("a#city").click(function(){
         $(".tool-tip").hide();
         $("div#commute-inset").hide();
+        $("button.start-search").attr("formaction", "results_g_list-1.html")
     });
 
     // SERVICE START - filter expand link

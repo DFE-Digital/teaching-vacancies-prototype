@@ -73,7 +73,7 @@
 
             <dl class="mobile-hide">
                 <dt>Working pattern</dt>
-                <dd>Full-time only</dd>
+                <dd>{{ data['workpattern'] }}</dd>
                 <dt>Pay scale range</dt>
                 <dd>TBD</dd>
                 <dt>Salary</dt>
@@ -81,9 +81,9 @@
                     £28,653 to £48,244 per year (full-time equivalent)
                 </dd>
                 <dt>Education phase</dt>
-                <dd>Secondary</dd>
+                <dd>{{ data['phase'] }}</dd>
                 <dt>Subject</dt>
-                <dd>TBD</dd>
+                <dd>{{ data['subject'] }}</dd>
                 <dt class="date-hide-mobile">Date posted</dt>
                 <dd class="date-hide-mobile">17 July 2019</dd>
                 <dt class="date-hide-mobile">Closing date</dt>
@@ -91,7 +91,7 @@
                 <dt class="date-hide-mobile">Expected start date</dt>
                 <dd class="date-hide-mobile">1 January 2020</dd>
                 <dt>Commute to school</dt>
-                <dd>TBD</dd>
+                <dd>{{ data['time-commute'] }} {{ data['mode-commute'] }}</dd>
                 <!--
                 <dt>Job contact email</dt>
                 <dd class="wordwrap"><a class="govuk-link" href="#">careers@avanti.org.uk</a></dd>
@@ -125,7 +125,7 @@
             <h2 class="govuk-heading-m">Key information</h2>
             <dl class="mobile-show">
                 <dt>Working pattern</dt>
-                <dd>Full-time only</dd>
+                <dd>{{ data['workpattern'] }}</dd>
                 <dt>Pay scale range</dt>
                 <dd>TBD</dd>
                 <dt>Salary</dt>
@@ -133,9 +133,9 @@
                     £28,653 to £48,244 per year (full-time equivalent)
                 </dd>
                 <dt>Education phase</dt>
-                <dd>Secondary</dd>
+                <dd>{{ data['phase'] }}</dd>
                 <dt>Subject</dt>
-                <dd>TBD</dd>
+                <dd>{{ data['subject'] }}</dd>
                 <dt class="mobile-hide">Date posted</dt>
                 <dd class="mobile-hide">17 July 2019</dd>
                 <dt class="mobile-hide">Closing date</dt>
@@ -143,7 +143,10 @@
                 <dt class="mobile-hide">Expected start date</dt>
                 <dd class="mobile-hide">1 January 2020</dd>
                 <dt>Commute to school</dt>
-                <dd>TBD <a href="#">Link to section</a></dd>
+                <dd>
+                    {{ data['time-commute'] }} {{ data['mode-commute'] }} from {{ data['location'] }}<br>
+                    <a href="listing_school-1.html#commute-heading">See more commute options</a>
+                </dd>
                 <!--
                 <dt>Job contact email</dt>
                 <dd class="wordwrap"><a class="govuk-link" href="#">careers@avanti.org.uk</a></dd>

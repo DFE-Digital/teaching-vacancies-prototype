@@ -21,4 +21,12 @@ module.exports = {
 
   // Insert values here
 
+  "location": "N8 8AL",
+  "mode-commute": "by car",
+  "time-commute": "30 minutes",
+  "subject": "Science",
+  "jobtitle": "Teaching",
+  "phase": "Secondary",
+  "workpattern": "Full-time"
+
 }
