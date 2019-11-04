@@ -181,6 +181,7 @@ div.govuk-accordion {
         left: 10px;
         top: 10px;
         display: none;
+        z-index: 100;
 
         &.popup-g {
             top: 60px;
@@ -257,10 +258,50 @@ div.govuk-accordion {
         }
     }
 
-    .pin {
+    .pin1 {
         position: absolute;
         left:125px;
         top: 235px;
+
+        a:focus {
+            box-shadow: none;
+            background-color: inherit;
+        }
+    }
+    .pin2 {
+        position: absolute;
+        left:200px;
+        top: 400px;
+
+        a:focus {
+            box-shadow: none;
+            background-color: inherit;
+        }
+    }
+    .pin3 {
+        position: absolute;
+        left:120px;
+        top: 100px;
+
+        a:focus {
+            box-shadow: none;
+            background-color: inherit;
+        }
+    }
+    .pin4 {
+        position: absolute;
+        left:250px;
+        top: 235px;
+
+        a:focus {
+            box-shadow: none;
+            background-color: inherit;
+        }
+    }
+    .pin5 {
+        position: absolute;
+        left:50px;
+        top: 400px;
 
         a:focus {
             box-shadow: none;

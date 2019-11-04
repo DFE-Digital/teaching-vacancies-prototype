@@ -28,6 +28,9 @@ $(document).ready(function(){
     $("a#pinToggle").click(function(){
         $("div.pin-popup").toggle();
     });
+    $("a.popup-close").click(function(){
+        $("div.pin-popup").toggle();
+    });
 
     // LISTING - show commute
     $("a#showCommute").click(function(){
