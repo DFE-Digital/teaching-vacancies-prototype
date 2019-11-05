@@ -10,12 +10,12 @@ $(document).ready(function(){
     $("a#postcode").click(function(){
         $("div#commute-inset").show();
         $(".tool-tip").hide();
-        $("button.start-search").attr("formaction", "results_p_list-1.html")
+        $("button.start-search").attr("formaction", "results_p_list-1")
     });
     $("a#city").click(function(){
         $(".tool-tip").hide();
         $("div#commute-inset").hide();
-        $("button.start-search").attr("formaction", "results_g_list-1.html")
+        $("button.start-search").attr("formaction", "results_g_list-1")
     });
 
     // SERVICE START - filter expand link
