@@ -4,6 +4,27 @@
   Find a job in Teaching
 {% endblock %}
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "start",
+    serviceName: serviceName,
+    serviceUrl: "start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "#",
+        text: "List a teaching job"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block beforeContent %}
   <a class="govuk-back-link" href="results_g_list-1">Back to results</a>
   <div class="listing-save mobile-show">
