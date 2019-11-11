@@ -23,7 +23,7 @@ module.exports = {
 
   "location": "N8 8AL",
   "mode-commute": "by car",
-  "time-commute": "30 minutes",
+  "time-commute": "20 minutes",
   "subject": "Science",
   "jobtitle": "Teaching",
   "phase": "Secondary",
