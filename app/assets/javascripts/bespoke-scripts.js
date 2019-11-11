@@ -39,4 +39,13 @@ $(document).ready(function(){
         $("div.commute-results").show();
     });
 
+    $("a.goBack").click(function(){
+        window.history.back();
+    });
+
+    $("a.goForward").click(function(){
+        window.history.forward();
+    });
+
+
 });
