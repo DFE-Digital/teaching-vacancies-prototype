@@ -78,6 +78,7 @@ div#expand {
     list-style-type: none;
     padding: 0;
 
+
     li {
         font-size: 19px;
         font-weight: 700;
@@ -89,6 +90,20 @@ div#expand {
         a {
             text-decoration: none;
             text-transform: none;
+        }
+    }
+}
+
+ul.boroughs-list {
+    list-style-type: none;
+    padding: 0;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        &:first-of-type {
+            margin-bottom: 15px;
         }
     }
 }
