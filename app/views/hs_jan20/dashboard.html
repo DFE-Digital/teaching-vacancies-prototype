@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "start",
+    serviceName: serviceName,
+    serviceUrl: "start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Link 1"
+      },
+      {
+        href: "#",
+        text: "Link 2"
+      },
+      {
+        href: "#",
+        text: "Link 3"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1>Title</h1>
+
+{% endblock %}
