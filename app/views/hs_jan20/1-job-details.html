@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "start",
+    serviceName: serviceName,
+    serviceUrl: "start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="create-title">
+        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
+        <h5 class="govuk-heading-m">Step 1 of 5</h5>
+        <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Job details</h2>
+
+                <form class="" action="2-pay-package" method="post">
+                    <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                    <p><a href="#">Save and return later</a></p>
+                </form>
+
+            </div>
+            <!-- Main content END -->
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+                <p>Steps timeline</p>
+            </div>
+            <!-- Sidebar END -->
+
+        </main>
+    </div>
+
+
+
+
+{% endblock %}

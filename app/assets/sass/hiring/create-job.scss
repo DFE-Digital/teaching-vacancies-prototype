@@ -1,0 +1,187 @@
+
+/*
+-----------------------------------------------
+GENERAL
+-----------------------------------------------
+*/
+
+.create-title {
+    h1 {
+        margin-bottom: 0;
+    }
+    h5 {
+        font-weight: 500;
+    }
+    .govuk-back-link {
+        margin-bottom: 0;
+    }
+}
+
+.text-red {
+    color: #d4351c;
+}
+
+/*
+-----------------------------------------------
+OVERVIEW
+-----------------------------------------------
+*/
+
+div.govuk-accordion {
+    background-color: #FFFFFF;
+    border-bottom:0;
+    padding: 0;
+
+    .govuk-accordion__section {
+        border-bottom: 1px solid #b1b4b6;
+    }
+}
+
+/*
+-----------------------------------------------
+1 - JOB DETAILS
+-----------------------------------------------
+*/
+
+/*
+-----------------------------------------------
+2 - PAY PACKAGE
+-----------------------------------------------
+*/
+
+/*
+-----------------------------------------------
+1 - UPLOAD DOCUMENTS
+-----------------------------------------------
+*/
+
+div.upload-group {
+
+    .govuk-button {
+        margin-bottom: 0;
+    }
+}
+p.file-error-title {
+    margin-bottom: 0;
+}
+
+.banner {
+    border: 5px solid #1d70b8;
+    color: #1d70b8;
+
+    margin-bottom: 30px;
+    padding: 10px;
+
+    &.banner--success {
+        border-color: #00703c;
+        color: #00703c;
+    }
+    svg.banner__icon {
+        fill: currentColor;
+        float: left;
+        margin-right: 10px;
+    }
+    div.banner__message {
+        color: #0b0c0c;
+        display: block;
+        overflow: hidden;
+        font-weight: 400;
+        line-height: 1.31579;
+        font-size: 19px;
+
+        .banner__assistive {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+            clip: rect(0 0 0 0) !important;
+            -webkit-clip-path: inset(50%) !important;
+            clip-path: inset(50%) !important;
+            border: 0 !important;
+            white-space: nowrap !important;
+        }
+    }
+}
+
+/* remove modal */
+
+.gem-c-modal-dialogue {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    outline:0;
+
+    .gem-c-modal-dialogue__overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .8;
+        background: #0b0c0c;
+        pointer-events: none;
+        touch-action: none;
+    }
+    .gem-c-modal-dialogue__box {
+        display: block;
+        background: #ffffff;
+        padding: 0;
+        overflow-y: auto;
+        color: #0b0c0c;
+
+        position: relative;
+        top: inherit;
+        right: inherit;
+        bottom: inherit;
+        left: inherit;
+        width: auto;
+        max-width: 640px;
+        height: auto;
+        margin: 50px auto;
+        border: 2px solid #0b0c0c;
+
+        .gem-c-modal-dialogue__header {
+            padding: 9px 15px 10px;
+            color: #ffffff;
+            background: #0b0c0c;
+        }
+        .gem-c-modal-dialogue__content {
+            padding: 20px;
+            background: #ffffff;
+
+            .cancel-link {
+                display: inline-block;
+                padding: 8px;
+                margin-bottom: 0;
+            }
+
+            button {
+                margin-bottom: 0;
+            }
+        }
+        .gem-c-modal-dialogue__close-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            color: #000000;
+            background: none;
+
+            font-size: 2.25rem;
+            line-height: 1.3;
+        }
+    }
+
+}

@@ -15,31 +15,23 @@
     navigation: [
       {
         href: "#",
-        text: "Link 1"
+        text: "Manage jobs"
       },
       {
         href: "#",
-        text: "Link 2"
+        text: "View public jobs"
       },
       {
         href: "#",
-        text: "Link 3"
+        text: "Sign out"
       }
     ]
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "beta"
-      },
-      html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
-    }) }}
-{% endblock %}
-
 {% block content %}
 
-<h1>Title</h1>
+<h1>Jobs at Bexley Heath Academy</h1>
+<button href="overview" class="govuk-button" data-module="govuk-button">Create a job listing</button>
 
 {% endblock %}

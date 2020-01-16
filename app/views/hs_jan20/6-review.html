@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "start",
+    serviceName: serviceName,
+    serviceUrl: "start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="create-title">
+        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
+        <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Review the job</h2>
+
+                <form class="" action="5-description-1" method="post">
+
+                    <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                    <p><a href="#">Save and return later</a></p>
+
+                </form>
+
+            </div>
+            <!-- Main content END -->
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+                <p>Steps timeline</p>
+            </div>
+            <!-- Sidebar END -->
+
+        </main>
+    </div>
+
+
+
+
+{% endblock %}
