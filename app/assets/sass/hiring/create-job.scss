@@ -31,6 +31,25 @@ div.add-colon-positioned-next-to-element:after {
 .govuk-button--secondary {
     margin-left: 10px;
 }
+
+ol.app-step-nav__steps {
+
+    .app-step-nav__step--active {
+
+        .app-step-nav__circle {
+            background-color: #0b0c0c;
+
+            .app-step-nav__circle-background {
+                text-shadow: none;
+                color: white;
+            }
+        }
+
+    }
+
+}
+
+
 /*
 -----------------------------------------------
 DASHBOARD
