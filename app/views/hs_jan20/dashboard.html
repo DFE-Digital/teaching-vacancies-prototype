@@ -31,7 +31,211 @@
 
 {% block content %}
 
-<h1>Jobs at Bexley Heath Academy</h1>
-<button href="overview" class="govuk-button" data-module="govuk-button">Create a job listing</button>
+
+<!-- LISTINGS START -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h1 class="dash-title">Jobs at Bexley Heath School</h1>
+        <a href="0-overview"class="govuk-button">Create a job listing</a>
+
+        <div class="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+                <span class="translation_missing" title="translation missing: en.aria_labels.content">Content</span>
+            </h2>
+            <!-- TABS START -->
+            <ul class="govuk-!-margin-top-6 govuk-tabs__list tab-list">
+                <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                    <a class="govuk-tabs__tab" href="/school/jobs">Published jobs</a>
+                </li>
+                <li class="govuk-tabs__list-item ">
+                    <a class="govuk-tabs__tab" href="/school/jobs/pending">Scheduled jobs</a>
+                </li>
+                <li class="govuk-tabs__list-item ">
+                    <a class="govuk-tabs__tab" href="/school/jobs/draft">Draft jobs</a>
+                </li>
+                <li class="govuk-tabs__list-item ">
+                    <a class="govuk-tabs__tab" href="/school/jobs/expired">Expired jobs</a>
+                </li>
+                <li class="govuk-tabs__list-item ">
+                    <a class="govuk-tabs__tab" href="/school/jobs/awaiting_feedback">Jobs awaiting feedback
+                        <!-- <span class="notification" data-test="expired-vacancies-with-feedback-outstanding">8</span> -->
+                    </a>
+                </li>
+            </ul>
+            <!-- Sections START -->
+            <section class="govuk-tabs__panel">
+                <h2 class="govuk-heading-m">Published jobs</h2>
+                <table class="vacancies govuk-table govuk-!-margin-top-4">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th class="govuk-table__header">
+                                <a class="govuk-link sortable-link sortby--asc" aria-label="Sort jobs by Job title in ascending order" href="/school/jobs?sort_column=job_title&amp;sort_order=asc">Job title</a>
+                            </th>
+                            <th class="govuk-table__header">
+                                <a class="govuk-link sortable-link sortby--asc" aria-label="Sort jobs by Date posted in ascending order" href="/school/jobs?sort_column=publish_on&amp;sort_order=asc">Date posted</a>
+                            </th>
+                            <th class="govuk-table__header">
+                                <a class="govuk-link sortable-link sortby--desc active" aria-label="Sort jobs by Closing date in descending order" href="/school/jobs?sort_column=expires_on&amp;sort_order=desc">Closing date</a>
+                            </th>
+                            <th class="govuk-table__header">
+                                <a class="govuk-link sortable-link sortby--asc" aria-label="Sort jobs by Total views in ascending order" href="/school/jobs?sort_column=total_pageviews&amp;sort_order=asc">Total views</a>
+                            </th>
+                            <th class="govuk-table__header" colspan="3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_71227388-0429-436a-837d-c29bd71fa828">
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link view-vacancy-link" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828">Christmas entertainer</a>
+                            </td>
+                            <td class="govuk-table__cell">1 January 2020</td>
+                            <td class="govuk-table__cell">2 February 2020</td>
+                            <td class="govuk-table__cell">0</td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828/edit">Edit</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-method="get" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828/copy/new">Copy</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-confirm="Are you sure you want to delete the 'Christmas entertainer' job?" rel="nofollow" data-method="delete" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828">Delete</a>
+                            </td>
+                        </tr>
+
+                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_5a173a50-fb63-4c07-9220-59907eccc5c2">
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link view-vacancy-link" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2">222adsdfdfadsfsdf</a>
+                            </td>
+                            <td class="govuk-table__cell">1 January 2020</td>
+                            <td class="govuk-table__cell">12 February 2020</td>
+                            <td class="govuk-table__cell">0</td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2/edit">Edit</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-method="get" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2/copy/new">Copy</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-confirm="Are you sure you want to delete the '222adsdfdfadsfsdf' job?" rel="nofollow" data-method="delete" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2">Delete</a>
+                            </td>
+                        </tr>
+
+                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_ae5fc0d0-0015-4d28-9860-ef893d3b4f65">
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link view-vacancy-link" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65">rehdfgksskhfkhjsdgdlrkjgf</a>
+                            </td>
+                            <td class="govuk-table__cell">1 January 2020</td>
+                            <td class="govuk-table__cell">1 August 2020</td>
+                            <td class="govuk-table__cell">0</td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65/edit">Edit</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-method="get" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65/copy/new">Copy</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-confirm="Are you sure you want to delete the 'rehdfgksskhfkhjsdgdlrkjgf' job?" rel="nofollow" data-method="delete" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65">Delete</a>
+                            </td>
+                        </tr>
+
+                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_ef8d3d4a-396f-493d-8aab-25876a6ee61b">
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link view-vacancy-link" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b">rehdfgksskhfkhjsdgdlrkjgf</a>
+                            </td>
+                            <td class="govuk-table__cell">1 January 2020</td>
+                            <td class="govuk-table__cell">1 August 2020</td>
+                            <td class="govuk-table__cell">0</td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b/edit">Edit</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-method="get" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b/copy/new">Copy</a>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" data-confirm="Are you sure you want to delete the 'rehdfgksskhfkhjsdgdlrkjgf' job?" rel="nofollow" data-method="delete" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b">Delete</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+    </div>
+</div>
+<!-- LISTINGS END -->
+
+<!-- SCHOOL INFO START -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <table class="check-your-answers govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" colspan="2">
+                        <h2 class="govuk-heading-m">
+                            About Bexley Heath School
+                        </h2>
+                    </th>
+                    <th class="govuk-table__header"></th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        <strong class="strong">Description</strong>
+                    </td>
+                    <td class="govuk-table__cell">
+                        This is a description for the school
+                    </td>
+                    <td class="govuk-table__cell change-answer">
+                        <a class="govuk-link" href="#">Change
+                            <span class="govuk-visually-hidden">
+                                description
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        <strong class="strong">Address</strong>
+                    </td>
+                    <td class="govuk-table__cell">
+                        Woolwich Road, Bexleyheath, Barnsley, S14 7DA
+                    </td>
+                    <td class="govuk-table__cell"></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        <strong class="strong">School age</strong>
+                    </td>
+                    <td class="govuk-table__cell">
+                        11 to 18
+                    </td>
+                    <td class="govuk-table__cell"></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        <strong class="strong">Type</strong>
+                    </td>
+                    <td class="govuk-table__cell">
+                        Academies
+                    </td>
+                    <td class="govuk-table__cell"></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        <strong class="strong">Website</strong>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <a class="govuk-link wordwrap" target="_blank" href="#">Bexley Heath website (opens in a new window)</a>
+                    </td>
+                    <td class="govuk-table__cell"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- SCHOOL INFO END -->
 
 {% endblock %}
