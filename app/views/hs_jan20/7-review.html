@@ -1,0 +1,216 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "start",
+    serviceName: serviceName,
+    serviceUrl: "start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="create-title">
+        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
+        <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Review the job</h2>
+                <p>Review the job details and make any necessary changes before submitting it for publication below.</p>
+
+                <ol class="app-task-list">
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">1.
+                            </span>
+                            Job details
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="eligibility-completed">
+                                        Check eligibility
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                            </li>
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="read-declaration-completed">
+                                        Read declaration
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">2.
+                            </span>
+                            Pay package
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="eligibility-completed">
+                                        Check eligibility
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                            </li>
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="read-declaration-completed">
+                                        Read declaration
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3.
+                            </span>
+                            Applying for the job
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="eligibility-completed">
+                                        Check eligibility
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                            </li>
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="read-declaration-completed">
+                                        Read declaration
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">4.
+                            </span>
+                            Important dates and deadlines
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="eligibility-completed">
+                                        Check eligibility
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                            </li>
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="read-declaration-completed">
+                                        Read declaration
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">5.
+                            </span>
+                            Supporting documents
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="company-information-completed">
+                                        Company information
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="company-information-completed">Completed</strong>
+                            </li>
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#" aria-describedby="contact-details-completed">
+                                        Your contact details
+                                    </a>
+                                </span>
+                                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">6.
+                            </span>
+                            Summary
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <span class="app-task-list__task-name">
+                                    <a href="#">
+                                        Submit and pay
+                                    </a>
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Submit this listing for publication on [date]</h3>
+                <p>By publishing this job you agree to our terms and conditions for schools and confirm that the details you have provided are, to the best of your knowledge, correct.</p>
+
+                <a class="govuk-button" href="">Confirm and submit job</a>
+                <a href="#" class="govuk-button govuk-button--secondary">Preview job listing</a>
+                <p><a href="#">Save and return later</a></p>
+
+            </div>
+            <!-- Main content END -->
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+
+            </div>
+            <!-- Sidebar END -->
+
+        </main>
+    </div>
+
+
+
+
+{% endblock %}

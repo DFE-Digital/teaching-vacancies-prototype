@@ -1,3 +1,4 @@
+
 {% extends "layout.html" %}
 
 {% block pageTitle %}
@@ -35,7 +36,7 @@
 
     <div class="create-title">
         <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
-        <h5 class="govuk-heading-m">Step 4 of 6</h5>
+        <h5 class="govuk-heading-m">Step 5 of 6</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 
@@ -45,167 +46,35 @@
 
             <!-- Main content START -->
             <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-l">Important dates and deadlines</h2>
+                <h2 class="govuk-heading-l">Supporting documents</h2>
 
-                <form class="" action="5-description-1" method="post">
-
-                    <!-- Listed -->
+                <form class="" action="6-review" method="post">
                     <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="listed-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Date role will be listed (<span class="text-red">required</span>)
+                        <fieldset class="govuk-fieldset" aria-describedby="upload-supporting-documents">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                Would you like to attach documents that help a jobseeker learn more about the role or apply? (<span class="text-red">required</span>)
                             </legend>
-                            <span id="listed-hint" class="govuk-hint">
-                                For example, 31 03 2020
+                            <span class="govuk-hint">
+                                These could include, for example, a full job description, a person specification or an application pack.
                             </span>
-                            <div class="govuk-date-input" id="listed">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="listed-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="listed-day" name="listed-day" type="number" pattern="[0-9]*">
-                                    </div>
+                            <div class="govuk-radios govuk-radios--inline">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="add-docs-yes" name="add-docs" type="radio" value="yes">
+                                    <label class="govuk-label govuk-radios__label" for="add-docs-yes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="listed-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="listed-month" name="listed-month" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="listed-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="listed-year" name="listed-year" type="number" pattern="[0-9]*">
-                                    </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="add-docs-no" name="add-docs" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="add-docs-no">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
-
-                    <!-- Due -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="due-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Date application is due (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="listed-hint" class="govuk-hint">
-                                For example, 31 03 2020
-                            </span>
-                            <div class="govuk-date-input" id="due">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="due-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="due-day" name="due-day" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="due-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="due-month" name="due-month" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="due-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="due-year" name="due-year" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Time -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="starts-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Time application due (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="time-hint" class="govuk-hint">
-                                For example, 31 03 2020
-                            </span>
-                            <!-- <govuk-date-input> -->
-                            <div class="govuk-date-input" id="time">
-                                <div class="govuk-date-input__item add-colon-positioned-next-to-element">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label" for="time-hour">Hour</label>
-                                        <input class="govuk-input numeric integer optional govuk-input govuk-date-input__input govuk-input--width-2 " type="number" step="1" name="time-hour" id="time-hour">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label" for="time-minute">Minute</label>
-                                        <input class="govuk-input numeric integer optional govuk-input govuk-date-input__input govuk-input--width-2 " type="number" step="1" name="time-minute" id="time-minute">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <span class="govuk-label">
-                                            <label for="time-ampm">am or pm</label>
-                                        </span>
-                                        <select as="select" class="govuk-select select optional " name="time-ampm" id="time-ampm">
-                                            <option selected="selected" value="">- -</option>
-                                            <option value="am">am</option>
-                                            <option value="pm">pm</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- </govuk-date-input> -->
-                        </fieldset>
-                    </div>
-
-                    <!-- Start -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="starts-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Date the role starts (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="listed-hint" class="govuk-hint">
-                                For example, 31 03 2020
-                            </span>
-                            <div class="govuk-date-input" id="starts">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="starts-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starts-day" name="starts-day" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="starts-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starts-month" name="starts-month" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="starts-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="starts-year" name="starts-year" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
                     <button class="govuk-button" data-module="govuk-button">Save and continue</button>
                     <p><a href="#">Save and return later</a></p>
-
                 </form>
 
             </div>
@@ -292,7 +161,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -316,7 +185,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
