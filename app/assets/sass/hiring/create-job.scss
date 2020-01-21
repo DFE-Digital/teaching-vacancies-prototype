@@ -59,6 +59,85 @@ div.govuk-accordion {
 
 /*
 -----------------------------------------------
+REVIEW
+-----------------------------------------------
+*/
+.app-check-your-answers__contents {
+    display: table-row;
+
+    .app-check-your-answers__question {
+        width: 180px;
+        display: table-cell;
+        margin-right: 10px;
+
+        h4 {
+            margin:0 20px 0 0;
+        }
+    }
+    .app-check-your-answers__answer {
+        display: table-cell;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+}
+
+/*
+-----------------------------------------------
+8 - SUCCESS
+-----------------------------------------------
+*/
+
+.govuk-panel__body {
+
+    p {
+        color: #FFFFFF;
+
+        a {
+            color: #FFFFFF;
+        }
+    }
+}
+.govuk-panel--confirmation {
+    .hod-checkmark {
+        font-size: 35px;
+        color: #FFF;
+        display: block;
+        margin: 15px auto;
+        position: relative;
+        background: rgba(255, 255, 255, 0.1);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        + .govuk-heading-l {
+          margin-top: 0;
+        }
+      }
+}
+
+
+
+
+/*
+-----------------------------------------------
 1 - JOB DETAILS
 -----------------------------------------------
 */
