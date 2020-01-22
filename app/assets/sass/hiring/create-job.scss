@@ -161,6 +161,79 @@ REVIEW
 -----------------------------------------------
 */
 
+span.subject-bold {
+    font-weight: 900;
+    color: #0b0c0c;
+}
+span.subject-hint {
+    color: #6f777b;
+}
+
+.options-container {
+    border: 5px solid #dee0e2;
+    border-top: 10px;
+    position: relative;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 400px;
+
+    fieldset {
+        margin:0;
+        width: 100%;
+        border: 0;
+        padding:0;
+
+        font-family: "nta",Arial,sans-serif;
+        font-weight: 400;
+        text-transform: none;
+        font-size: 19px;
+        line-height: 1.3157894737;
+
+        div.multiple-choice {
+            display: block;
+            float: none;
+            clear: left;
+            position: relative;
+            padding: 0 0 0 38px;
+            margin-bottom: 10px;
+
+
+
+            .multiple-choice input {
+                position: absolute;
+                cursor: pointer;
+                left: 0;
+                top: 0;
+                width: 38px;
+                height: 38px;
+                z-index: 1;
+                margin: 0;
+                zoom: 1;
+                filter: alpha(opacity=0);
+                opacity: 0;
+            }
+        }
+
+        div.multiple-choice--list {
+            float: none;
+            padding-left: 0;
+
+            label {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 9px 9px 7px 36px;
+                border-bottom: 1px solid #bfc1c3;
+                font-size: 16px;
+                float: left;
+
+
+            }
+
+        }
+    }
+}
+
 /*
 -----------------------------------------------
 2 - PAY PACKAGE
