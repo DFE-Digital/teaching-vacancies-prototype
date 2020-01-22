@@ -42,7 +42,7 @@
                 <path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg>
             <div class="banner__message">
                 <span class="banner__assistive">Success</span>
-                Draft saved for job listing
+                Draft saved for {{ data['job-title'] }}
             </div>
         </div>
         <!-- alert banner END -->
@@ -78,95 +78,35 @@
             </ul>
             <!-- Sections START -->
             <section class="govuk-tabs__panel">
-                <h2 class="govuk-heading-m">Published jobs</h2>
+                <h2 class="govuk-heading-m">Draft jobs</h2>
                 <table class="vacancies govuk-table govuk-!-margin-top-4">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
                             <th class="govuk-table__header">
-                                <a class="govuk-link sortable-link sortby--asc" aria-label="Sort jobs by Job title in ascending order" href="/school/jobs?sort_column=job_title&amp;sort_order=asc">Job title</a>
+                                <a class="govuk-link sortable-link sortby--asc" aria-label="" href="#">Job title</a>
                             </th>
                             <th class="govuk-table__header">
-                                <a class="govuk-link sortable-link sortby--asc" aria-label="Sort jobs by Date posted in ascending order" href="/school/jobs?sort_column=publish_on&amp;sort_order=asc">Date posted</a>
+                                <a class="govuk-link sortable-link sortby--asc" aria-label="" href="#">Date drafted</a>
                             </th>
                             <th class="govuk-table__header">
-                                <a class="govuk-link sortable-link sortby--desc active" aria-label="Sort jobs by Closing date in descending order" href="/school/jobs?sort_column=expires_on&amp;sort_order=desc">Closing date</a>
-                            </th>
-                            <th class="govuk-table__header">
-                                <a class="govuk-link sortable-link sortby--asc" aria-label="Sort jobs by Total views in ascending order" href="/school/jobs?sort_column=total_pageviews&amp;sort_order=asc">Total views</a>
+                                <a class="govuk-link sortable-link sortby--desc active" aria-label="" href="#">Date last updated</a>
                             </th>
                             <th class="govuk-table__header" colspan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_71227388-0429-436a-837d-c29bd71fa828">
+
+                        <tr class="govuk-table__row school_vacancy_presenter vacancy">
                             <td class="govuk-table__cell">
-                                <a class="govuk-link view-vacancy-link" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828">Christmas entertainer</a>
+                                <a class="govuk-link view-vacancy-link" href="#">{{ data['job-title'] }}</a>
                             </td>
                             <td class="govuk-table__cell">1 January 2020</td>
                             <td class="govuk-table__cell">2 February 2020</td>
-                            <td class="govuk-table__cell">0</td>
                             <td class="govuk-table__cell">
-                                <a class="govuk-link" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828/edit">Edit</a>
+                                <a class="govuk-link" href="#">Edit</a>
                             </td>
                             <td class="govuk-table__cell">
-                                <a class="govuk-link" data-method="get" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828/copy/new">Copy</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-confirm="Are you sure you want to delete the 'Christmas entertainer' job?" rel="nofollow" data-method="delete" href="/school/jobs/71227388-0429-436a-837d-c29bd71fa828">Delete</a>
-                            </td>
-                        </tr>
-
-                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_5a173a50-fb63-4c07-9220-59907eccc5c2">
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link view-vacancy-link" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2">222adsdfdfadsfsdf</a>
-                            </td>
-                            <td class="govuk-table__cell">1 January 2020</td>
-                            <td class="govuk-table__cell">12 February 2020</td>
-                            <td class="govuk-table__cell">0</td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2/edit">Edit</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-method="get" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2/copy/new">Copy</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-confirm="Are you sure you want to delete the '222adsdfdfadsfsdf' job?" rel="nofollow" data-method="delete" href="/school/jobs/5a173a50-fb63-4c07-9220-59907eccc5c2">Delete</a>
-                            </td>
-                        </tr>
-
-                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_ae5fc0d0-0015-4d28-9860-ef893d3b4f65">
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link view-vacancy-link" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65">rehdfgksskhfkhjsdgdlrkjgf</a>
-                            </td>
-                            <td class="govuk-table__cell">1 January 2020</td>
-                            <td class="govuk-table__cell">1 August 2020</td>
-                            <td class="govuk-table__cell">0</td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65/edit">Edit</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-method="get" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65/copy/new">Copy</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-confirm="Are you sure you want to delete the 'rehdfgksskhfkhjsdgdlrkjgf' job?" rel="nofollow" data-method="delete" href="/school/jobs/ae5fc0d0-0015-4d28-9860-ef893d3b4f65">Delete</a>
-                            </td>
-                        </tr>
-
-                        <tr class="govuk-table__row school_vacancy_presenter vacancy" id="school_vacancy_presenter_ef8d3d4a-396f-493d-8aab-25876a6ee61b">
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link view-vacancy-link" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b">rehdfgksskhfkhjsdgdlrkjgf</a>
-                            </td>
-                            <td class="govuk-table__cell">1 January 2020</td>
-                            <td class="govuk-table__cell">1 August 2020</td>
-                            <td class="govuk-table__cell">0</td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b/edit">Edit</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-method="get" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b/copy/new">Copy</a>
-                            </td>
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" data-confirm="Are you sure you want to delete the 'rehdfgksskhfkhjsdgdlrkjgf' job?" rel="nofollow" data-method="delete" href="/school/jobs/ef8d3d4a-396f-493d-8aab-25876a6ee61b">Delete</a>
+                                <a class="govuk-link" href="#">Delete</a>
                             </td>
                         </tr>
 
