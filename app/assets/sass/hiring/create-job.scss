@@ -168,6 +168,14 @@ span.subject-bold {
 span.subject-hint {
     color: #6f777b;
 }
+div.checkboxes-container {
+    border: 5px solid #dee0e2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 300px;
+    padding: 15px;
+
+}
 
 .options-container {
     border: 5px solid #dee0e2;
