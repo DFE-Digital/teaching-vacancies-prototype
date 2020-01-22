@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "dashboard",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Lorem"
+      },
+      {
+        href: "#",
+        text: "Lorem"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <a class="govuk-back-link with-referrer" href="#">Back</a>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <div class="listing-title">
+                <h1 class="govuk-heading-l">Job name baby!</h1>
+                <h4 class="govuk-caption-l">School info yeah?</h4>
+            </div>
+        </div>
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+
+                <aside class="dates">
+
+                    <h2>22 days remaining to apply</h2>
+                    <ul class="test-timeline">
+                        <li class="test-timeline__item">
+                            <h3 class="test-timeline__title">
+                                Date listed
+                            </h3>
+                            <p class="test-timeline__by">01 September 2020</p>
+                        </li>
+                        <li class="test-timeline__item">
+                            <h3 class="test-timeline__title">
+                                Application deadline
+                            </h3>
+                            <p class="test-timeline__by">02 September 2020 at 09:00 am</p>
+                        </li>
+                        <li class="test-timeline__item">
+                            <h3 class="test-timeline__title">
+                                Expected start date
+                            </h3>
+                            <p class="test-timeline__by">02 September 2020</p>
+                        </li>
+                    </ul>
+
+                </aside>
+            </div>
+            <!-- Sidebar END -->
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+
+                <div class="govuk-tabs tvs-tabs" data-module="govuk-tabs">
+                    <h2 class="govuk-tabs__title">
+                        Contents
+                    </h2>
+                    <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="#past-day">
+                                Job details
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="#past-week">
+                                School overview
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- JOB SECTION END -->
+                    <section class="govuk-tabs__panel" id="past-day">
+                        <table class="govuk-table">
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Role</td>
+                                    <td class="govuk-table__cell">Teacher</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Subject</td>
+                                    <td class="govuk-table__cell">Science</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Education phase</td>
+                                    <td class="govuk-table__cell">Secondary</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Working pattern</td>
+                                    <td class="govuk-table__cell">Full-time</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Salary</td>
+                                    <td class="govuk-table__cell">£20,500 to £35,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="govuk-heading-m">Job summary</h3>
+                        <p class="govuk-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <h3 class="govuk-heading-m">Financial benefits</h3>
+                        <p class="govuk-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <h3 class="govuk-heading-m">Applying for the role</h3>
+                        <p class="govuk-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <h3 class="govuk-heading-m">Supporting documents</h3>
+                        <div class="supporting-docs">
+                            <ul>
+                                <li><a href="#" class="document-link">application-pack.doc</a> 3mb</li>
+                                <li><a href="#" class="document-link">job-specification.pdf</a> 3mb</li>
+                            </ul>
+                        </div>
+
+
+                    </section>
+                    <!-- JOB SECTION END -->
+                    <!-- SCHOOL SECTION START -->
+                    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+                        <table class="govuk-table">
+
+                            <!--
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th scope="col" class="govuk-table__header">Case manager</th>
+                                    <th scope="col" class="govuk-table__header">Cases opened</th>
+                                    <th scope="col" class="govuk-table__header">Cases closed</th>
+                                </tr>
+                            </thead>
+                            -->
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Role</td>
+                                    <td class="govuk-table__cell">Teacher</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Subject</td>
+                                    <td class="govuk-table__cell">Science</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Education phase</td>
+                                    <td class="govuk-table__cell">Secondary</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Working pattern</td>
+                                    <td class="govuk-table__cell">Full-time</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td scope="row" class="govuk-table__header govuk-!-width-one-third">Salary</td>
+                                    <td class="govuk-table__cell">£20,500 to £35,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </section>
+                    <!-- SCHOOL SECTION END -->
+                </div>
+
+
+
+            </div>
+            <!-- Main content END -->
+
+        </main>
+    </div>
+
+
+
+
+{% endblock %}
