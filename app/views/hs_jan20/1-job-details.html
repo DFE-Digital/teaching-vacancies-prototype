@@ -8,10 +8,10 @@
 
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "start",
-    serviceName: serviceName,
-    serviceUrl: "start",
-    containerClasses: "govuk-width-container",
+      homepageUrl: "dashboard",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
     navigation: [
       {
         href: "#",
@@ -56,38 +56,38 @@
                         <span id="job-title-hint" class="govuk-hint">
                             For secondary school roles include subject and, if relevant, level of seniority ('Subject leader for science', for example)
                         </span>
-                        <input class="govuk-input govuk-!-width-full" id="job-title" name="job-title" type="text" aria-describedby="passport-number-hint">
+                        <input class="govuk-input govuk-!-width-full" id="job-title" name="job-title" type="text" aria-describedby="job-title">
                     </div>
 
                     <!-- ROLE START -->
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="job-title">
+                        <label class="govuk-label govuk-label--m" for="job-role">
                             Job role (<span class="text-red">required</span>)
                         </label>
-                        <span id="job-title-hint" class="govuk-hint">
+                        <span id="job-role-hint" class="govuk-hint">
                             Select all that describe the role
                         </span>
                         <div class="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="teacher" name="teacher" type="checkbox" value="carcasses">
+                                <input class="govuk-checkboxes__input" id="teacher" name="job-role" type="checkbox" value="Teacher" {{ checked("job-role", "Teacher") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="teacher">
                                     Teacher
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="leadership" name="leadership" type="checkbox" value="mines">
+                                <input class="govuk-checkboxes__input" id="leadership" name="job-role" type="checkbox" value="Leadership" {{ checked("job-role", "Leadership") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="leadership">
                                     Leadership
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="sen" name="sen" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="sen" name="job-role" type="checkbox" value="SEN specialist" {{ checked("job-role", "SEN specialist") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sen">
                                     SEN specialist
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="nqt" name="nqt" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="nqt" name="job-role" type="checkbox" value="Suitable for NQT’s" {{ checked("job-role", "Suitable for NQT’s") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="nqt">
                                     Suitable for NQT’s
                                 </label>
@@ -98,33 +98,33 @@
 
                     <!-- SUBJECT START -->
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="job-title">
+                        <label class="govuk-label govuk-label--m" for="subject">
                             Subject
                         </label>
-                        <span id="job-title-hint" class="govuk-hint">
+                        <span id="subject-hint" class="govuk-hint">
                             What subject will the teacher focus on?
                         </span>
                         <div class="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="teacher" name="teacher" type="checkbox" value="carcasses">
+                                <input class="govuk-checkboxes__input" id="subject1" name="subject" type="checkbox" value="carcasses" {{ checked("subject", "subject 1") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="teacher">
                                     Lorem
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="leadership" name="leadership" type="checkbox" value="mines">
+                                <input class="govuk-checkboxes__input" id="subject2" name="subject" type="checkbox" value="mines" {{ checked("subject", "subject 2") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="leadership">
                                     Lorem
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="sen" name="sen" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="subject3" name="subject" type="checkbox" value="farm" {{ checked("subject", "subject 3") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sen">
                                     Lorem
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="nqt" name="nqt" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="subject4" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="nqt">
                                     Lorem
                                 </label>
@@ -135,39 +135,39 @@
 
                     <!-- SUBJECT START -->
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="job-title">
+                        <label class="govuk-label govuk-label--m" for="pattern">
                             Working pattern (<span class="text-red">required</span>)
                         </label>
-                        <span id="job-title-hint" class="govuk-hint">
+                        <span id="pattern-hint" class="govuk-hint">
                             Select all working patterns you will consider for the role. Flexible working options may attract more candidates.
                         </span>
                         <div class="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="full-time" name="full-time" type="checkbox" value="carcasses">
+                                <input class="govuk-checkboxes__input" id="full-time" name="pattern" type="checkbox" value="Full-time" {{ checked("pattern", "Full-time") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="full-time">
                                     Full-time
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="part-time" name="part-time" type="checkbox" value="mines">
+                                <input class="govuk-checkboxes__input" id="part-time" name="pattern" type="checkbox" value="Part-time" {{ checked("pattern", "Part-time") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="part-time">
                                     Part-time
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="share" name="share" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="share" name="pattern" type="checkbox" value="Job share" {{ checked("pattern", "Job share") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="share">
                                     Job share
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="compressed" name="compressed" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="compressed" name="pattern" type="checkbox" value="Compressed hours" {{ checked("pattern", "Compressed hours") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="compressed">
                                     Compressed hours
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="staggered" name="staggered" type="checkbox" value="farm">
+                                <input class="govuk-checkboxes__input" id="staggered" name="pattern" type="checkbox" value="Staggered hours" {{ checked("pattern", "Staggered hours") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="staggered">
                                     Staggered hours
                                 </label>

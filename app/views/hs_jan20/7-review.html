@@ -8,10 +8,10 @@
 
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "start",
-    serviceName: serviceName,
-    serviceUrl: "start",
-    containerClasses: "govuk-width-container",
+      homepageUrl: "dashboard",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
     navigation: [
       {
         href: "#",
@@ -71,7 +71,7 @@
                                         <h4>Job title</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['job-title'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -81,7 +81,7 @@
                                         <h4>Job role</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit</p>
+                                        <p>{{ data['job-role'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -91,7 +91,7 @@
                                         <h4>Subject</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit</p>
+                                        <p>{{ data['subject'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -101,7 +101,7 @@
                                         <h4>Working pattern</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit</p>
+                                        <p>{{ data['pattern'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -120,7 +120,7 @@
                                         <h4>Salary</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['salary'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -130,7 +130,7 @@
                                         <h4>Employee benefits</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['benefits'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -149,7 +149,7 @@
                                         <h4>Job contact email</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['email'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -159,7 +159,7 @@
                                         <h4>School visits</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['visits'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -169,7 +169,7 @@
                                         <h4>How to apply</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['apply'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -179,7 +179,7 @@
                                         <h4>Link to online application</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['link'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -198,7 +198,7 @@
                                         <h4>Date role will be listed</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>2 February 2020</p>
                                     </dd>
                                 </div>
                             </li>
@@ -208,7 +208,7 @@
                                         <h4>Application deadline</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>10 March 2020 at 11:10 am</p>
                                     </dd>
                                 </div>
                             </li>
@@ -218,7 +218,7 @@
                                         <h4>Date the role starts</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>1 September 2020</p>
                                     </dd>
                                 </div>
                             </li>
@@ -237,7 +237,7 @@
                                         <h4>Document 1</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>document.pdf</p>
+                                        <p>application-pack.doc</p>
                                     </dd>
                                 </div>
                             </li>
@@ -247,7 +247,7 @@
                                         <h4>Document 2</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>document.pdf</p>
+                                        <p>job-specification.pdf</p>
                                     </dd>
                                 </div>
                             </li>
@@ -266,7 +266,7 @@
                                         <h4>Job summary</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sita amet orem ipsum dolor sita amet orem ipsum</p>
+                                        <p>{{ data['summary'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -274,7 +274,7 @@
                     </li>
                 </ol>
 
-                <h3>Submit this listing for publication on [date]</h3>
+                <h3>Submit this listing for publication on 2 February 2020</h3>
                 <p>By publishing this job you agree to our <a href="#">terms and conditions</a> for schools and confirm that the details you have provided are, to the best of your knowledge, correct.</p>
 
                 <a class="govuk-button" href="8-success">Confirm and submit job</a>

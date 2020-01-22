@@ -8,10 +8,10 @@
 
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "start",
-    serviceName: serviceName,
-    serviceUrl: "start",
-    containerClasses: "govuk-width-container",
+      homepageUrl: "dashboard",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
     navigation: [
       {
         href: "#",
@@ -36,8 +36,21 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+        <!-- alert banner START -->
+        <div class="banner banner--success">
+            <svg class="banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 25 25" height="25" width="25">
+                <path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg>
+            <div class="banner__message">
+                <span class="banner__assistive">Success</span>
+                Draft saved for job listing
+            </div>
+        </div>
+        <!-- alert banner END -->
+
         <h1 class="dash-title">Jobs at Bexley Heath School</h1>
         <a href="0-overview"class="govuk-button">Create a job listing</a>
+
+
 
         <div class="govuk-tabs">
             <h2 class="govuk-tabs__title">
