@@ -75,6 +75,25 @@ div.govuk-accordion {
         border-bottom: 1px solid #b1b4b6;
     }
 }
+
+li.app-step-nav__step {
+
+    div.app-step-nav__header {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    p.app-step-nav__paragraph {
+        padding-bottom: 15px;
+    }
+
+    .app-step-nav__circle {
+        top: 16px;
+    }
+
+}
+
+
 /*
 -----------------------------------------------
 6 - SUMMARY

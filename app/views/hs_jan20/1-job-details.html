@@ -54,7 +54,7 @@
                             Job title (<span class="text-red">required</span>)
                         </label>
                         <span id="job-title-hint" class="govuk-hint">
-                            For secondary school roles include subject and, if relevant, level of seniority ('Subject leader for science', for example)
+                            Enter a short title, including subject and leadership roles where relevant ('Subject leader for science', for example)
                         </span>
                         <input class="govuk-input govuk-!-width-full" id="job-title" name="job-title" type="text" aria-describedby="job-title">
                     </div>
@@ -102,7 +102,7 @@
                             Subject
                         </label>
                         <span id="subject-hint" class="govuk-hint">
-                            What subject will the teacher focus on?
+                            What subject(s) will the teacher focus on?
                         </span>
                         <div class="app-c-option-select__filter">
                             <label for="input-ee7cd429" class="govuk-label govuk-visually-hidden">
@@ -113,6 +113,13 @@
                         <div class="checkboxes-container">
 
                             <div class="govuk-checkboxes govuk-checkboxes--small ">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="subject17" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
+                                    <label class="govuk-label govuk-checkboxes__label" for="subject17">
+                                        <span class="subject-bold">All or Not applicable</span><br>
+                                        <span class="subject-hint">applies to examples such as primary school roles.</span>
+                                    </label>
+                                </div>
                                 <div class="govuk-checkboxes__item">
                                     <input class="govuk-checkboxes__input" id="subject1" name="subject" type="checkbox" value="carcasses" {{ checked("subject", "subject 1") }}>
                                     <label class="govuk-label govuk-checkboxes__label" for="subject1">
@@ -225,13 +232,7 @@
                                         <span class="subject-hint">includes Physics, Chemistry, Biology, Botany, Zoology, Ecology, Environmental Science, and Combined/General Science.</span>
                                     </label>
                                 </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject17" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject17">
-                                        <span class="subject-bold">All or Not applicable</span><br>
-                                        <span class="subject-hint">applies to examples such as primary school roles.</span>
-                                    </label>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -432,7 +433,7 @@
                         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                         <strong class="govuk-warning-text__text">
                             <span class="govuk-warning-text__assistive">Warning</span>
-                            If you select flexible working patterns (anything other than 'full-time') candidates will be asked to email you for details.
+                            If you select flexible working patterns (anything other than 'full-time') candidates will be asked to email you for details
                         </strong>
                     </div>
 
