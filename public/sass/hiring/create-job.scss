@@ -76,11 +76,50 @@ div.govuk-accordion {
     }
 }
 
+
 li.app-step-nav__step {
 
     div.app-step-nav__header {
         padding-top: 15px;
         padding-bottom: 5px;
+        cursor: default;
+
+        &:hover {
+
+            .app-step-nav__circle {
+                color: #0b0c0c;
+                cursor:default;
+            }
+            .js-step-title {
+
+                .app-step-nav__button {
+                    color: #0b0c0c;
+                    cursor:default;
+                }
+            }
+        }
+
+        .app-step-nav__title {
+
+            .app-step-nav__circle {
+
+                .app-step-nav__circle-inner {
+
+                    .app-step-nav__circle-background {
+
+                    }
+                }
+            }
+            .js-step-title {
+
+                .app-step-nav__button {
+
+                    .js-step-title-text {
+
+                    }
+                }
+            }
+        }
     }
 
     p.app-step-nav__paragraph {
