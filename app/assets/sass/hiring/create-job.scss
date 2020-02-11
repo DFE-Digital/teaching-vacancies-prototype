@@ -425,13 +425,30 @@ div.tvs-tabs {
         margin-bottom: 20px;
     }
 
-    a.govuk-tabs__tab:link {
+    a.tab-override {
+
+    }
+
+    .govuk-tabs__list-item--selected {
+
+        a.govuk-tabs__tab:link,
+        .govuk-tabs__tab:visited,
+        a.js-enabled .govuk-tabs__tab:link,
+        a.js-enabled .govuk-tabs__tab:visited {
+        color: #0b0c0c;
+    }
+    }
+
+    a.govuk-tabs__tab:link,
+    .govuk-tabs__tab:visited,
+    a.js-enabled .govuk-tabs__tab:link,
+    a.js-enabled .govuk-tabs__tab:visited {
         color: rgb(29, 112, 184);
     }
 
     @media (min-width: 40.0625em) {
         a.govuk-tabs__tab {
-            font-size: 24px;
+            font-size: 20px;
         }
     }
 
