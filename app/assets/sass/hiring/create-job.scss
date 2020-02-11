@@ -417,12 +417,27 @@ div.listing-title {
     }
 }
 
+table.govuk-table-bespoke {
+
+    @media (min-width: 40.0625em) {
+        td.govuk-table__header {
+
+            width: 33%;
+        }
+    }
+
+}
+
 div.tvs-tabs {
 
     section.govuk-tabs__panel {
         padding: 20px 0 0 0;
         border: 0;
         margin-bottom: 20px;
+    }
+
+    h2.govuk-tabs__title {
+        margin-top: 30px;
     }
 
     a.tab-override {
