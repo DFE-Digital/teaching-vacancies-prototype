@@ -435,8 +435,8 @@ div.tvs-tabs {
         .govuk-tabs__tab:visited,
         a.js-enabled .govuk-tabs__tab:link,
         a.js-enabled .govuk-tabs__tab:visited {
-        color: #0b0c0c;
-    }
+            color: #0b0c0c;
+        }
     }
 
     a.govuk-tabs__tab:link,
@@ -532,7 +532,6 @@ ul.test-timeline {
             width: 15px;
         }
         .test-timeline__title {
-            font-size: 1.1875rem;
             line-height: 1.31579;
             display: inline;
         }
