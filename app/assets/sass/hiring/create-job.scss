@@ -295,6 +295,8 @@ p.file-error-title {
         float: left;
         margin-right: 10px;
     }
+
+
     div.banner__message {
         color: #0b0c0c;
         display: block;
@@ -302,6 +304,11 @@ p.file-error-title {
         font-weight: 400;
         line-height: 1.31579;
         font-size: 19px;
+
+        a {
+            float: right;
+        }
+
 
         .banner__assistive {
             position: absolute !important;
