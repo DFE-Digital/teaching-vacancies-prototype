@@ -295,6 +295,8 @@ p.file-error-title {
         float: left;
         margin-right: 10px;
     }
+
+
     div.banner__message {
         color: #0b0c0c;
         display: block;
@@ -302,6 +304,11 @@ p.file-error-title {
         font-weight: 400;
         line-height: 1.31579;
         font-size: 19px;
+
+        a {
+            float: right;
+        }
+
 
         .banner__assistive {
             position: absolute !important;
@@ -417,12 +424,54 @@ div.listing-title {
     }
 }
 
+table.govuk-table-bespoke {
+
+    @media (min-width: 40.0625em) {
+        td.govuk-table__header {
+
+            width: 33%;
+        }
+    }
+
+}
+
 div.tvs-tabs {
 
     section.govuk-tabs__panel {
         padding: 20px 0 0 0;
         border: 0;
         margin-bottom: 20px;
+    }
+
+    h2.govuk-tabs__title {
+        margin-top: 30px;
+    }
+
+    a.tab-override {
+
+    }
+
+    .govuk-tabs__list-item--selected {
+
+        a.govuk-tabs__tab:link,
+        .govuk-tabs__tab:visited,
+        a.js-enabled .govuk-tabs__tab:link,
+        a.js-enabled .govuk-tabs__tab:visited {
+            color: #0b0c0c;
+        }
+    }
+
+    a.govuk-tabs__tab:link,
+    .govuk-tabs__tab:visited,
+    a.js-enabled .govuk-tabs__tab:link,
+    a.js-enabled .govuk-tabs__tab:visited {
+        color: rgb(29, 112, 184);
+    }
+
+    @media (min-width: 40.0625em) {
+        a.govuk-tabs__tab {
+            font-size: 20px;
+        }
     }
 
 }
@@ -461,6 +510,11 @@ aside.dates {
     padding: 15px;
     margin-bottom: 0;
 
+    .govuk-button {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
     h2 {
         margin-top: 0;
     }
@@ -469,7 +523,7 @@ aside.dates {
 /* ----- Dates timeline ----- */
 
 ul.test-timeline {
-    margin: 0;
+    margin: 0 0 15px 0;
     overflow: hidden;
     position: relative;
     padding-left: 0;
@@ -500,7 +554,6 @@ ul.test-timeline {
             width: 15px;
         }
         .test-timeline__title {
-            font-size: 1.1875rem;
             line-height: 1.31579;
             display: inline;
         }
