@@ -1,0 +1,210 @@
+/*
+---------- Start ------------------------------
+*/
+
+.four-column-list {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    column-gap: 30px;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+        font-size: 19px;
+        font-weight: 700;
+        padding-bottom: .263em;
+        margin-top: .263em;
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+
+
+/*
+---------- Results heading ------------------------------
+*/
+
+.heading-results {
+
+    h1.govuk-heading-l {
+        margin-bottom: 10px;
+
+        span {
+            font-weight: normal;
+        }
+    }
+    p.govuk-body {
+        margin-bottom: 30px;
+    }
+
+}
+
+/*
+---------- Sidebar filters ------------------------------
+*/
+
+@media (min-width: 40.0625em) {
+    .sp-form {
+        border: 5px solid #dee0e2;
+        padding: 15px;
+    }
+}
+
+.sp-form {
+
+    .govuk-form-group {
+        margin-bottom: 15px;
+    }
+    .govuk-accordion__section-header {
+
+        .govuk-accordion__section-heading {
+
+        }
+        .sp-link {
+
+            .govuk-accordion__section-button {
+                font-size: 1.2rem;
+            }
+        }
+    }
+    .govuk-button {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+
+}
+.big-container {
+    /* Delete as appropriate */
+    /* replace with this class app-c-option-select__container */
+    border: 5px solid #dee0e2;
+    background-color: #ffffff;
+    position: relative;
+}
+
+
+
+.distance-inset {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 15px 0 15px 15px;
+
+    .govuk-form-group {
+
+        select {
+            width:100%;
+        }
+    }
+}
+.distance-start {
+    margin-bottom: 20px;
+    margin-top: 0;
+    padding: 15px 0 15px 15px;
+
+    .govuk-form-group {
+
+        label {
+            color: white;
+        }
+
+        select {
+            width:100%;
+        }
+    }
+}
+
+/*
+---------- Pagination ------------------------------
+*/
+
+/* https://home-office-digital-patterns.herokuapp.com/components/pagination */
+
+.pagination .pagination_list-items {
+
+  li {
+    display: inline-block;
+
+    a {
+      color: #005EA5;
+      display: inline-block;
+      padding: 15px 5px 10px 5px;
+      margin-right: 15px;
+      text-decoration: none;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+    &.active a,
+    &.active a:hover {
+      color: #005EA5;
+      -webkit-box-shadow: inset 0px -5px 0px 0px #005EA5;
+      -moz-box-shadow: inset 0px -5px 0px 0px #005EA5;
+      box-shadow: inset 0px -5px 0px 0px #005EA5;
+    }
+  }
+}
+
+.padding {
+  padding-left: 15px;
+}
+
+.pagination {
+  padding: 0;
+}
+.pagination__item {
+  display: inline-block;
+  list-style: none;
+}
+.pagination__link {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    background: #F8F8F8;
+    outline: 3px solid #FFBF47;
+  }
+
+  &.current {
+    color: #0B0C0C;
+    font-weight: 700;
+    border: none;
+    pointer-events: none;
+    cursor: default;
+
+    &:hover, &:focus {
+      color: #0B0C0C;
+      background: none;
+    }
+  }
+}
+
+.pagination__summary {
+  -webkit-font-smoothing: antialiased;
+  padding: 8px 0  ;
+
+  @media (min-width: 642px) {
+    float: right;
+  }
+}
+
+/*
+---------- Sorting ------------------------------
+*/
+
+div.results-top {
+    p {
+        float: right;
+        padding: 8px 0  ;
+    }
+}
+/*
+---------- Title ------------------------------
+*/
+
+/*
+---------- Title ------------------------------
+*/
