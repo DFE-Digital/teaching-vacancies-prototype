@@ -47,6 +47,19 @@ ol.app-step-nav__steps {
 
     }
 
+    .app-step-nav__step--visited {
+
+        .app-step-nav__circle {
+            background-color: #1d70b8;
+
+            .app-step-nav__circle-background {
+                text-shadow: none;
+                color: white;
+            }
+        }
+
+    }
+
 }
 
 
@@ -146,6 +159,15 @@ textarea.summary-textarea {
 REVIEW
 -----------------------------------------------
 */
+
+.app-task-list__section {
+    a {
+        margin-left: 20px;
+            font-size: 19px;
+    }
+
+}
+
 .app-check-your-answers__contents {
     display: table-row;
 
