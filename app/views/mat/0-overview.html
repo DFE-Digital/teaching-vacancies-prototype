@@ -1,0 +1,273 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "dashboard",
+    serviceName: serviceName,
+    serviceUrl: "dashboard",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="create-title">
+        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
+        <!-- <h5 class="govuk-heading-m">Step x of x</h5> -->
+        <!-- <a href="#" class="govuk-back-link">Back</a> -->
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Overview</h2>
+                <p class="govuk-body">To create and publish a job listing on Teaching Vacancies you’ll need to complete an online form in 6 short sections: </p>
+
+                <!-- Steps start -->
+                <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
+                    <!--
+                    <div class="app-step-nav__controls">
+                        <button aria-expanded="false" class="app-step-nav__button app-step-nav__button--controls js-step-controls-button" aria-controls="step-panel-check-youre-allowed-to-drive-1">Show all</button>
+                    </div>
+                    -->
+                    <ol class="app-step-nav__steps">
+                        <li class="app-step-nav__step js-step" id="check-youre-allowed-to-drive">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">Step</span>
+                                                1
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <div class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-check-youre-allowed-to-drive-1">
+                                            <span class="js-step-title-text">
+                                                Job details
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">Show</span> -->
+                                        </div>
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel" id="step-panel-check-youre-allowed-to-drive-1">
+                                <p class="app-step-nav__paragraph">Enter job title, job role, subject(s) and working pattern</p>
+                            </div>
+                        </li>
+
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">Step</span>
+                                                2
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
+                                            <span class="js-step-title-text">
+                                                Pay package
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">Show</span> -->
+                                        </button>
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
+                                <p class="app-step-nav__paragraph">Enter salary and/or pay scale range and any financial benefits</p>
+                            </div>
+
+                        </li>
+
+                        <li class="app-step-nav__step js-step step-is-shown" id="book-and-manage-your-theory-test">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="5">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">Step</span>
+                                                3
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="true" aria-controls="step-panel-book-and-manage-your-theory-test-5">
+                                            <span class="js-step-title-text">
+                                                Important dates and deadlines
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">Hide</span> -->
+                                        </button>
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
+                                <p class="app-step-nav__paragraph">State when the job will be listed, when the application is due and when the job starts</p>
+                            </div>
+                        </li>
+
+                        <li class="app-step-nav__step js-step step-is-shown" id="book-and-manage-your-theory-test">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="5">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">Step</span>
+                                                4
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="true" aria-controls="step-panel-book-and-manage-your-theory-test-5">
+                                            <span class="js-step-title-text">
+                                                Supporting documents
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">Hide</span> -->
+                                        </button>
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
+                                <p class="app-step-nav__paragraph">Upload any documents that might help a jobseeker learn more or apply</p>
+                            </div>
+                        </li>
+
+                        <li class="app-step-nav__step js-step" id="driving-lessons-and-practice">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="3">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">Step</span>
+                                                5
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-driving-lessons-and-practice-3">
+                                            <span class="js-step-title-text">
+                                                Applying for the job
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">Show</span> -->
+                                        </button>
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel" id="step-panel-driving-lessons-and-practice-3">
+                                <p class="app-step-nav__paragraph">Enter contact email, school visit details, how to apply, and link to online application, if relevant</p>
+                                <!-- <ol class="app-step-nav__list " data-length="4">
+                                    <li class="app-step-nav__list-item js-list-item ">
+                                        <a data-position="3.1" class="app-step-nav__link js-link" href="#">The Highway Code
+                                        </a>
+                                    </li>
+                                    <li class="app-step-nav__list-item js-list-item ">
+                                        <a data-position="3.2" class="app-step-nav__link js-link" href="#">Taking driving lessons
+                                        </a>
+                                    </li>
+                                    <li class="app-step-nav__list-item js-list-item ">
+                                        <a data-position="3.3" class="app-step-nav__link js-link" href="#">Find driving schools, lessons and instructors
+                                        </a>
+                                    </li>
+                                    <li class="app-step-nav__list-item js-list-item ">
+                                        <a data-position="3.4" class="app-step-nav__link js-link" href="#">Practise vehicle safety questions
+                                        </a>
+                                    </li>
+                                </ol> -->
+                            </div>
+                        </li>
+
+                        <li class="app-step-nav__step js-step step-is-shown" id="book-and-manage-your-theory-test">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="5">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">Step</span>
+                                                6
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="true" aria-controls="step-panel-book-and-manage-your-theory-test-5">
+                                            <span class="js-step-title-text">
+                                                Summary
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">Hide</span> -->
+                                        </button>
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
+                                <p class="app-step-nav__paragraph">Give a brief summary of the job that jobseekers can quickly scan</p>
+                            </div>
+                        </li>
+
+                    </ol>
+                </div>
+                <!-- Steps end -->
+
+                <p class="govuk-body">Before you begin, try to gather together all the information and documents relevant to these sections. You can save your progress at any time and return later.</p>
+                <a href="1-job-details" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                  Start now
+                  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
+                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                  </svg>
+                </a>
+                <p class="govuk-body">If you have any problems using the service, please email <a href="#">teaching.vacancies@education.gov.uk</a></p>
+            </div>
+            <!-- Main content END -->
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+
+            </div>
+            <!-- Sidebar END -->
+
+        </main>
+    </div>
+
+
+
+
+{% endblock %}
