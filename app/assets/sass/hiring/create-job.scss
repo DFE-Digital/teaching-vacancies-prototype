@@ -184,8 +184,17 @@ REVIEW
     .app-check-your-answers__answer {
         display: table-cell;
 
+        p {
+            display: inline-block;
+            float: left;
+        }
+
         p:last-child {
             margin-bottom: 0;
+        }
+
+        strong {
+            
         }
 
     }
