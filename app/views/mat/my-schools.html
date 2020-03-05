@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "/",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "dashboard",
+        text: "Manage jobs"
+      },
+      {
+        href: "my-schools",
+        text: "My schools"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1>Test</h1>
+
+{% endblock %}

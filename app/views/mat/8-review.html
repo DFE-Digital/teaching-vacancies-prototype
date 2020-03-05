@@ -39,7 +39,7 @@
 
     <div class="create-title">
         <h1 class="govuk-heading-m">Create a job listing for [Trust]</h1>
-        <h5 class="govuk-heading-m">Step 4 of 8</h5>
+        <h5 class="govuk-heading-m">Step 8 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 
@@ -49,168 +49,261 @@
 
             <!-- Main content START -->
             <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-l">Important dates and deadlines</h2>
+                <h2 class="govuk-heading-l">Review the job listing</h2>
+                <p>Review the job details and make any necessary changes before submitting it for publication below</p>
 
-                <form class="" action="5-supporting-1" method="post">
-
-                    <!-- Listed -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="listed-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Date job will be listed (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="listed-hint" class="govuk-hint">
-                                For example, 31 03 2020
+                <ol class="app-task-list">
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">1.
                             </span>
-                            <div class="govuk-date-input" id="listed">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="listed-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="listed-day" name="listed-day" type="number" pattern="[0-9]*">
-                                    </div>
+                            Trust role location
+                            <a href="1-mat-a">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Location</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['salary'] }}</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="listed-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="listed-month" name="listed-month" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="listed-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="listed-year" name="listed-year" type="number" pattern="[0-9]*">
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Due -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="due-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Date application is due (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="listed-hint" class="govuk-hint">
-                                For example, 31 03 2020
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">2.
                             </span>
-                            <div class="govuk-date-input" id="due">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="due-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="due-day" name="due-day" type="number" pattern="[0-9]*">
-                                    </div>
+                            Job details
+                            <a href="2-job-details">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Job title</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['job-title'] }}</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="due-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="due-month" name="due-month" type="number" pattern="[0-9]*">
-                                    </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Job role</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['job-role'] }}</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="due-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="due-year" name="due-year" type="number" pattern="[0-9]*">
-                                    </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Subject</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['subject'] }}</p>
+                                    </dd>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Time -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="starts-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Time application is due (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="time-hint" class="govuk-hint">
-                                For example, 9:30 am or 11:59 pm (for midnight)
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Working pattern</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['pattern'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">3.
                             </span>
-                            <!-- <govuk-date-input> -->
-                            <div class="govuk-date-input" id="time">
-                                <div class="govuk-date-input__item add-colon-positioned-next-to-element">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label" for="time-hour">Hour</label>
-                                        <input class="govuk-input numeric integer optional govuk-input govuk-date-input__input govuk-input--width-2 " type="number" step="1" name="time-hour" id="time-hour">
-                                    </div>
+                            Pay package
+                            <a href="3-pay-package">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Salary</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['salary'] }}</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label" for="time-minute">Minute</label>
-                                        <input class="govuk-input numeric integer optional govuk-input govuk-date-input__input govuk-input--width-2 " type="number" step="1" name="time-minute" id="time-minute">
-                                    </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Employee benefits</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['benefits'] }}</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <span class="govuk-label">
-                                            <label for="time-ampm">am or pm</label>
-                                        </span>
-                                        <select as="select" class="govuk-select select optional " name="time-ampm" id="time-ampm">
-                                            <option selected="selected" value="">- -</option>
-                                            <option value="am">am</option>
-                                            <option value="pm">pm</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- </govuk-date-input> -->
-                        </fieldset>
-                    </div>
+                            </li>
+                        </ul>
+                    </li>
 
-                    <!-- Start -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="starts-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                Date job starts (<span class="text-red">required</span>)
-                            </legend>
-                            <span id="listed-hint" class="govuk-hint">
-                                For example, 31 03 2020
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">4.
                             </span>
-                            <div class="govuk-date-input" id="starts">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="starts-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starts-day" name="starts-day" type="number" pattern="[0-9]*">
-                                    </div>
+                            Important dates and deadlines
+                            <a href="4-important">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Date job will be listed</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>13 March 2020</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="starts-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starts-month" name="starts-month" type="number" pattern="[0-9]*">
-                                    </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Application deadline</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>30 May 2020 at 9:00 am</p>
+                                    </dd>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="starts-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="starts-year" name="starts-year" type="number" pattern="[0-9]*">
-                                    </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Date job starts</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>2 September 2020</p>
+                                    </dd>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">5.
+                            </span>
+                            Supporting documents
+                            <a href="5-supporting-3">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Document 1</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>application-pack.doc</p>
+                                    </dd>
+                                </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Document 2</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>job-specification.pdf</p>
+                                    </dd>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
 
-                    <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="dashboard-drafts">Save and return later</a></p>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">6.
+                            </span>
+                            Applying for the job
+                            <a href="6-applying">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Job contact email</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['email'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>School visits</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['visits'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>How to apply</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['apply'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Link to online application</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['link'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="app-task-list__section">
+                            <span class="app-task-list__section-number">7.
+                            </span>
+                            Summary
+                            <a href="7-summary">Change</a>
+                        </h2>
+                        <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Job summary</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['summary'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
 
-                </form>
+                <h3>Preview this job listing</h3>
+                <p>See how this job listing will appear to jobseekers on Teaching Vacancies</p>
+                <a class="govuk-button" href="#">Preview job listing</a>
+                <h3>Submit this listing for publication on 13 March 2020</h3>
+                <p>By publishing this job you agree to our <a href="#">terms and conditions</a> for schools and confirm that the details you have provided are, to the best of your knowledge, correct</p>
+                <a href="9-success" class="govuk-button govuk-button--secondary">Confirm and submit job</a>
+                <p><a href="#">Save and return later</a></p>
 
             </div>
             <!-- Main content END -->
@@ -220,7 +313,7 @@
                 <!-- STEP HEADER START -->
                 <div class="app-step-nav-related app-step-nav-related--singular">
                     <h2 class="app-step-nav-related__heading">
-                        <span class="app-step-nav-related__pretitle">Create a job listing steps</span>
+                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
                         <!--
                         <a href="#">
                             Learn to drive a car: step by step
@@ -309,7 +402,7 @@
                             </div>
                         </li>
 
-                        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -333,7 +426,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -357,8 +450,7 @@
                                 </h3>
                             </div>
                         </li>
-
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -382,7 +474,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -398,7 +490,7 @@
                                     <span class="js-step-title">
                                         <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
                                             <span class="js-step-title-text">
-                                                Summary
+                                                Job summary
                                             </span>
                                             <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
                                         </button>
@@ -406,7 +498,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -422,7 +514,7 @@
                                     <span class="js-step-title">
                                         <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
                                             <span class="js-step-title-text">
-                                                Review job listing
+                                                Review the job listing
                                             </span>
                                             <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
                                         </button>

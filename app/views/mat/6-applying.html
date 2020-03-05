@@ -8,14 +8,18 @@
 
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-      homepageUrl: "dashboard",
+      homepageUrl: "/",
       serviceName: serviceName,
       serviceUrl: "dashboard",
       containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "#",
+        href: "dashboard",
         text: "Manage jobs"
+      },
+      {
+        href: "my-schools",
+        text: "My schools"
       },
       {
         href: "#",
@@ -34,8 +38,8 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
-        <h5 class="govuk-heading-m">Step 5 of 6</h5>
+        <h1 class="govuk-heading-m">Create a job listing for [Trust]</h1>
+        <h5 class="govuk-heading-m">Step 6 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 
@@ -47,7 +51,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-l">Applying for the job</h2>
 
-                <form class="" action="6-summary" method="post">
+                <form class="" action="7-summary" method="post">
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="email">
@@ -89,7 +93,7 @@
                         <input class="govuk-input govuk-!-width-full" id="link" name="link" type="text" aria-describedby="link">
                     </div>
 
-                    <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                    <button class="govuk-button" data-module="govuk-button">Continue</button>
                     <p><a href="dashboard-drafts">Save and return later</a></p>
                 </form>
 
@@ -101,7 +105,7 @@
                 <!-- STEP HEADER START -->
                 <div class="app-step-nav-related app-step-nav-related--singular">
                     <h2 class="app-step-nav-related__heading">
-                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                        <span class="app-step-nav-related__pretitle">Create a job listing steps</span>
                         <!--
                         <a href="#">
                             Learn to drive a car: step by step
@@ -117,7 +121,7 @@
                     </div>
                     -->
                     <ol class="app-step-nav__steps">
-                        <li class="app-step-nav__step js-step" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
                             <div class="app-step-nav__header js-toggle-panel" data-position="1">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -125,6 +129,30 @@
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
                                                 1
+                                                <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-check-youre-allowed-to-drive-1">
+                                            <span class="js-step-title-text">
+                                                Trust role location
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
+                                        </button>
+                                    </span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                                <h3 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                                2
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -141,14 +169,14 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                2
+                                                3
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -166,14 +194,14 @@
                             </div>
                         </li>
 
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                3
+                                                4
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -190,14 +218,14 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                4
+                                                5
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -222,7 +250,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                5
+                                                6
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -246,7 +274,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                6
+                                                7
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -256,6 +284,30 @@
                                         <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
                                             <span class="js-step-title-text">
                                                 Summary
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
+                                        </button>
+                                    </span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                                <h3 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                                8
+                                                <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
+                                            <span class="js-step-title-text">
+                                                Review job listing
                                             </span>
                                             <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
                                         </button>

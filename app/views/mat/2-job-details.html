@@ -8,14 +8,18 @@
 
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-      homepageUrl: "dashboard",
+      homepageUrl: "/",
       serviceName: serviceName,
       serviceUrl: "dashboard",
       containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "#",
+        href: "dashboard",
         text: "Manage jobs"
+      },
+      {
+        href: "my-schools",
+        text: "My schools"
       },
       {
         href: "#",
@@ -34,8 +38,8 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
-        <h5 class="govuk-heading-m">Step 1 of 6</h5>
+        <h1 class="govuk-heading-m">Create a job listing for [Trust]</h1>
+        <h5 class="govuk-heading-m">Step 2 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 
@@ -47,7 +51,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-l">Job details</h2>
 
-                <form class="" action="2-pay-package" method="post">
+                <form class="" action="3-pay-package" method="post">
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="job-title">
@@ -238,154 +242,6 @@
                     </div>
                     <!-- Subject END -->
 
-                    <!-- SUBJECT 2 START -->
-                    <!--
-                    <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="subject">
-                            Subject B
-                        </label>
-                        <span id="subject-hint" class="govuk-hint">
-                            What subject will the teacher focus on?
-                        </span>
-<details class="govuk-details" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-            View breakdown of full subject list
-        </span>
-    </summary>
-    <div class="govuk-details__text">
-        <ul>
-            <li><span class="subject-bold">Art & Design</span> - includes Applied Art & Design, and Art.</li>
-            <li><span class="subject-bold">Business Studies</span>- includes Accountancy, Applied Business Studies, Commercial & Business Studies, Economics, Industrial Studies, other Business and Commercial subjects.</li>
-            <li><span class="subject-bold">Classics</span> - includes Ancient Languages such as Ancient Greek, Ancient Hebrew, and Latin.</li>
-            <li><span class="subject-bold">Computing</span>- includes Applied ICT, Computer Science, and Information & Communication Technology.</li>
-            <li><span class="subject-bold">Design & Technology</span>- includes Construction and Building, Craft and D & T, Electronics, Engineering, Graphics, Resistant Materials, Manufacturing, Food, Systems & Control, and Textiles.</li>
-            <li><span class="subject-bold">Drama</span> - includes Performing Arts.</li>
-            <li><span class="subject-bold">English</span> - includes English Language and Literature.</li>
-            <li><span class="subject-bold">Geography</span> - includes Geology.</li>
-            <li><span class="subject-bold">History</span></li>
-            <li><span class="subject-bold">Mathematics</span> - includes Statistics.</li>
-            <li><span class="subject-bold">Modern Foreign Languages </span> - includes French, German, Spanish, Arabic, Bengali, Chinese, Welsh, Modern Greek, Italian, and any other Modern Languages.</li>
-            <li><span class="subject-bold">Music</span></li>
-            <li><span class="subject-bold">Others</span>- includes Child Development, Citizenship, Law, Media Studies, Other Social Studies, Other Technology, Politics, Psychology, Sociology, Health and Social Care and Social Sciences.</li>
-            <li><span class="subject-bold">Physical Education</span> - includes Dance, Physical Education and Sports.</li>
-            <li><span class="subject-bold">Religious Education</span> - includes Philosophy.</li>
-            <li><span class="subject-bold">Science</span> - includes Physics, Chemistry, Biology, Botany, Zoology, Ecology, Environmental Science, and Combined/General Science.</li>
-            <li><span class="subject-bold">All or Not applicable</span> - applies to examples such as primary school roles.</li>
-        </ul>
-    </div>
-</details>
-                        <div class="checkboxes-container subject-b">
-
-                            <div class="govuk-checkboxes govuk-checkboxes--small ">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject1" name="subject" type="checkbox" value="carcasses" {{ checked("subject", "subject 1") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject1">
-                                        <span class="subject-bold">Art &amp; Design</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject2" name="subject" type="checkbox" value="carcasses" {{ checked("subject", "subject 1") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject2">
-                                        <span class="subject-bold">Business studies</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject3" name="subject" type="checkbox" value="farm" {{ checked("subject", "subject 3") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject3">
-                                        <span class="subject-bold">Classics</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject4" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject4">
-                                        <span class="subject-bold">Computing</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject5" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject5">
-                                        <span class="subject-bold">Design &amp; Technology</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject6" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject6">
-                                        <span class="subject-bold">Drama</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject7" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject7">
-                                        <span class="subject-bold">English</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject8" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject8">
-                                        <span class="subject-bold">Geography</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject9" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject9">
-                                        <span class="subject-bold">History</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject10" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject10">
-                                        <span class="subject-bold">Mathematics</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject11" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject11">
-                                        <span class="subject-bold">Modern Foreign languages</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject12" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject12">
-                                        <span class="subject-bold">Music</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject13" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject13">
-                                        <span class="subject-bold">Others</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject14" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject14">
-                                        <span class="subject-bold">Physical Education</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject15" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject15">
-                                        <span class="subject-bold">Religious Education</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject16" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject16">
-                                        <span class="subject-bold">Science</span><br>
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="subject17" name="subject" type="checkbox" value="farm"{{ checked("subject", "subject 4") }}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="subject17">
-                                        <span class="subject-bold">All or Not applicable</span><br>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    <!-- Subject 2 END -->
-
                     <!-- SUBJECT START -->
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="pattern">
@@ -413,31 +269,10 @@
                                     Job share
                                 </label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="compressed" name="pattern" type="checkbox" value="Compressed hours" {{ checked("pattern", "Compressed hours") }}>
-                                <label class="govuk-label govuk-checkboxes__label" for="compressed">
-                                    Compressed hours
-                                </label>
-                            </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="staggered" name="pattern" type="checkbox" value="Staggered hours" {{ checked("pattern", "Staggered hours") }}>
-                                <label class="govuk-label govuk-checkboxes__label" for="staggered">
-                                    Staggered hours
-                                </label>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Subject END -->
-                    <div class="govuk-warning-text">
-                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                        <strong class="govuk-warning-text__text">
-                            <span class="govuk-warning-text__assistive">Warning</span>
-                            If you select flexible working patterns (anything other than 'full-time') candidates will be asked to email you for details
-                        </strong>
-                    </div>
-
-                    <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                    <button class="govuk-button" data-module="govuk-button">Continue</button>
                     <p><a href="dashboard-drafts">Save and return later</a></p>
                 </form>
 
@@ -449,7 +284,7 @@
                 <!-- STEP HEADER START -->
                 <div class="app-step-nav-related app-step-nav-related--singular">
                     <h2 class="app-step-nav-related__heading">
-                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                        <span class="app-step-nav-related__pretitle">Create a job listing steps</span>
                         <!--
                         <a href="#">
                             Learn to drive a car: step by step
@@ -465,7 +300,7 @@
                     </div>
                     -->
                     <ol class="app-step-nav__steps">
-                        <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
+                        <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
                             <div class="app-step-nav__header js-toggle-panel" data-position="1">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -473,6 +308,30 @@
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
                                                 1
+                                                <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-check-youre-allowed-to-drive-1">
+                                            <span class="js-step-title-text">
+                                                Trust role location
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
+                                        </button>
+                                    </span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                                <h3 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                                2
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -496,7 +355,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                2
+                                                3
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -521,7 +380,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                3
+                                                4
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -545,7 +404,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                4
+                                                5
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -570,7 +429,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                5
+                                                6
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -594,7 +453,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                6
+                                                7
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -604,6 +463,30 @@
                                         <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
                                             <span class="js-step-title-text">
                                                 Summary
+                                            </span>
+                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
+                                        </button>
+                                    </span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                                <h3 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                                8
+                                                <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
+                                            <span class="js-step-title-text">
+                                                Review job listing
                                             </span>
                                             <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
                                         </button>
