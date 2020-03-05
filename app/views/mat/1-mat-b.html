@@ -38,8 +38,8 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing for [Trust]</h1>
-        <h5 class="govuk-heading-m">Step 7 of 8</h5>
+        <h1 class="govuk-heading-m">Create a job listing</h1>
+        <h5 class="govuk-heading-m">Step 1 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 
@@ -49,32 +49,74 @@
 
             <!-- Main content START -->
             <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-l">Summary</h2>
+                <h2 class="govuk-heading-l">Trust role location</h2>
 
-                <form class="" action="8-review" method="post">
+                <form action="2-job-details" method="post">
 
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="summary">
-                            Job summary (<span class="text-red">required</span>)
-                        </label>
-                        <span id="more-detail-hint" class="govuk-hint">
-                            Give a brief summary of the job that jobseekers can quickly scan. This will be the first thing they see on the listing or in search engine results.
-                        </span>
-                        <textarea class="govuk-textarea summary-textarea" id="summary" name="summary" rows="8" aria-describedby="summary"></textarea>
-                    </div>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="trust-summary">
-                            About [Trust] or/and [School name] (<span class="text-red">required</span>)
-                        </label>
-                        <span id="more-detail-hint" class="govuk-hint">
-                            This will appear next to the job details under 'School overview'. Feel free to adapt this text
-                        </span>
-                        <textarea class="govuk-textarea summary-textarea" id="trust-summary" name="trust-summary" rows="8" aria-describedby="trust-summary" ></textarea>
+                        <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                            <label class="govuk-label govuk-label--m" for="job-title">
+                                In which schools might the role be based? (<span class="text-red">required</span>)
+                            </label>
+                            <span id="waste-hint" class="govuk-hint">
+                                Select all that apply.
+                            </span>
+                            <div class="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="school-1" name="school" type="checkbox" value="School name 1">
+                                    <label class="govuk-label govuk-checkboxes__label" for="school-1">
+                                        School 1
+                                        <br>
+                                        [Address]
+                                    </label>
+
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="school-2" name="school" type="checkbox" value="School name 2">
+                                    <label class="govuk-label govuk-checkboxes__label" for="school-2">
+                                        School 2
+                                        <br>
+                                        [Address]
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="school-3" name="school" type="checkbox" value="School name 3">
+                                    <label class="govuk-label govuk-checkboxes__label" for="school-3">
+                                        School 3
+                                        <br>
+                                        [Address]
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="school-4" name="school" type="checkbox" value="School name 4">
+                                    <label class="govuk-label govuk-checkboxes__label" for="school-4">
+                                        School 4
+                                        <br>
+                                        [Address]
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="school-5" name="school" type="checkbox" value="School name 5">
+                                    <label class="govuk-label govuk-checkboxes__label" for="school-5">
+                                        School 5
+                                        <br>
+                                        [Address]
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="school-6" name="school" type="checkbox" value="School name 6">
+                                    <label class="govuk-label govuk-checkboxes__label" for="school-6">
+                                        School 6
+                                        <br>
+                                        [Address]
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
 
                     <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="dashboard-drafts">Save and return later</a></p>
-
+                    <!-- <p><a href="dashboard-drafts">Save and return later</a></p> -->
                 </form>
 
             </div>
@@ -101,7 +143,7 @@
                     </div>
                     -->
                     <ol class="app-step-nav__steps">
-                        <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
+                        <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
                             <div class="app-step-nav__header js-toggle-panel" data-position="1">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -125,7 +167,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
+                        <li class="app-step-nav__step js-step" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
                             <div class="app-step-nav__header js-toggle-panel" data-position="1">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -149,7 +191,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -174,7 +216,7 @@
                             </div>
                         </li>
 
-                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -198,7 +240,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -223,7 +265,7 @@
                             </div>
                         </li>
 
-                        <li class="app-step-nav__step js-step app-step-nav__step--visited" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -247,7 +289,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">

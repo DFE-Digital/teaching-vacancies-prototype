@@ -67,7 +67,8 @@
                                         <h4>Location</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>{{ data['salary'] }}</p>
+                                        <p id="schoolz">{{ data['trust-location'] }}<br>
+                                        {{ data['school'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -293,13 +294,24 @@
                                     </dd>
                                 </div>
                             </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>About [Trust]</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['trust-summary'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ol>
 
                 <h3>Preview this job listing</h3>
                 <p>See how this job listing will appear to jobseekers on Teaching Vacancies</p>
-                <a class="govuk-button" href="preview-trust">Preview job listing</a>
+                <a class="govuk-button" href="preview-trust" id="p-trust">Preview job listing</a>
+                <a class="govuk-button" href="preview-multiple" id="p-multiple">Preview job listing</a>
                 <h3>Submit this listing for publication on 13 March 2020</h3>
                 <p>By publishing this job you agree to our <a href="#">terms and conditions</a> for schools and confirm that the details you have provided are, to the best of your knowledge, correct</p>
                 <a href="9-success" class="govuk-button govuk-button--secondary">Confirm and submit job</a>

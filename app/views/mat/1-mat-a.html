@@ -51,7 +51,8 @@
             <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-l">Trust role location</h2>
 
-                <form class="" action="2-job-details" method="post">
+
+                <form action="/examples/branching/over-18-answer" method="post" class="form">
 
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset">
@@ -60,19 +61,19 @@
                             </label>
                             <div class="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="one-school" name="trust-location" type="radio" value="one school">
+                                    <input class="govuk-radios__input" id="one-school" name="trust-location" type="radio" value="Single school" {{ checked("trust-location", "Single school") }}>
                                     <label class="govuk-label govuk-radios__label" for="one-school">
                                         at one school in the trust
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="multiple-schools" name="trust-location" type="radio" value="multiple schools">
+                                    <input class="govuk-radios__input" id="multiple-schools" name="trust-location" type="radio" value="multiple-schools" {{ checked("trust-location", "Multiple schools") }}>
                                     <label class="govuk-label govuk-radios__label" for="multiple-schools">
                                         moving between 2 or more schools in the trust
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="trust-level" name="trust-location" type="radio" value="trust">
+                                    <input class="govuk-radios__input" id="trust-level" name="trust-location" type="radio" value="Trust level role" {{ checked("trust-location", "Trust level role") }}>
                                     <label class="govuk-label govuk-radios__label" for="trust-level">
                                         at the trust's central office
                                     </label>

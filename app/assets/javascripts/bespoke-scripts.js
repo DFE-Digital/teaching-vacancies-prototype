@@ -47,5 +47,23 @@ $(document).ready(function(){
         window.history.forward();
     });
 
+    // March 2020 - MAT
+
+    $('#schoolz').change(function() {
+        var str = $('#schoolz').text();
+        if (str == "multiple-schools") {
+            $('a#p-multiple').show();
+        } else {
+            $('a#p-trust').hide();
+        }
+    });
+
+    descriptionString = 'null';
+    if (descriptionString != null) {
+        document.getElementById('image-description').style.display = 'block';
+    } else {
+        document.getElementById('image-description').style.display = 'none';
+    }
+
 
 });
