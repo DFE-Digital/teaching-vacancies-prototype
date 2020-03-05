@@ -1,9 +1,37 @@
+/*
+---------- Structure overrides ------------------------------
+*/
+
+.bespoke-width {
+    .govuk-width-container {
+        max-width: 1200px;
+    }
+}
+/*
+---------- Dashboard ------------------------------
+*/
+
 @media (min-width: 40.0625em) {
     table.vacancies {
         font-size: 16px;
     }
 }
 
-.test-class {
-    min-width: 1200px;
+.mat-select {
+    margin-bottom: 20px;
+
+    label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    select {
+
+    }
+}
+
+td.action-links {
+    width: 140px;
+    a {
+        margin-right: 5px;
+    }
 }

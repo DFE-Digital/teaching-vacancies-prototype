@@ -35,6 +35,77 @@
 
 {% block content %}
 
-<h1>Test</h1>
+<a href="javascript:history.back()" class="govuk-back-link">Back to home</a>
+
+<div class="govuk-grid-row">
+
+    <!-- Main content START -->
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">My schools</h1>
+        <p>You are associated with the following trust and its schools. You can view and create teaching jobs for any that you have been given access to</p>
+
+        <h2 class="mySchools-title govuk-heading-m">Trusts (1)</h2>
+        <ul class="mySchools">
+            <li class="mySchools-item ">
+                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>UID:</strong> 102121</li>
+                    <li><strong>Trust address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 class="mySchools-title govuk-heading-m">Schools (28)</h2>
+        <ul class="mySchools">
+            <li class="mySchools-item ">
+                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>URN:</strong> 102121</li>
+                    <li><strong>School address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+            <li class="mySchools-item">
+                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed not-authorised" id="">Not-authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>URN:</strong> 102121</li>
+                    <li><strong>School address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+            <li class="mySchools-item ">
+                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>URN:</strong> 102121</li>
+                    <li><strong>School address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <!-- Main content END -->
+
+    <!-- Sidebar START -->
+    <div class="govuk-grid-column-one-third">
+
+        <aside class="app-related-items" role="complementary">
+            <h2 class="govuk-heading-m" id="subsection-title">
+                Need access to a school?
+            </h2>
+            <p>If you need to manage job listings for a school you will need to email your approver for access. You can <a href="#">find their email</a> on the first page of DfE Sign-in.</p>
+            <p>If you have any problems <a href="#">contact our support team</a>.</p>
+        </aside>
+
+    </div>
+    <!-- Sidebar END -->
+
+</div>
 
 {% endblock %}
