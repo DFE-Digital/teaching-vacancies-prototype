@@ -68,10 +68,36 @@ ul.mySchools {
             list-style-type: none;
             padding: 0;
 
-
             li {
-
+                margin-bottom:2px;
             }
         }
     }
+}
+
+/*
+---------- Preview ------------------------------
+*/
+
+.govuk-info-summary {
+    color: #0b0c0c;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 5px solid #005EA5;
+
+    .govuk-info-summary__title {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .govuk-info-summary__body {
+
+        a {
+            margin-bottom: 0;
+            margin-right: 5px;
+        }
+
+    }
+
+
 }
