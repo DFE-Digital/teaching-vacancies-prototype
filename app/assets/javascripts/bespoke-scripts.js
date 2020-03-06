@@ -48,6 +48,26 @@ $(document).ready(function(){
     });
 
     // March 2020 - MAT
+    // If review screen (Trust location) string includes "multiple" show preview button for multiple, else show preview button for trust role
+    if (document.getElementById("schoolz").textContent.includes('multiple')) {
+        $("a#p-trust").hide();
+        $("a#p-multiple").show();
+    } else {
+        $("a#p-trust").show();
+        $("a#p-multiple").hide();
+    }
 
+
+/*
+    var local = document.getElementById("schoolz").value;
+    if (local == "multiple") {
+        $("a#p-trust").hide();
+        $("a#p-multiple").show();
+    }
+    else {
+        $("a#p-trust").show();
+        $("a#p-multiple").hide();
+    }
+*/
 
 });
