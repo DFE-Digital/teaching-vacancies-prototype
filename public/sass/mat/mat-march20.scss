@@ -105,6 +105,17 @@ dt.app-check-your-answers__question {
         }
 
     }
+}
 
-
+div.accordion-schools {
+    .govuk-accordion__section {
+        .govuk-accordion__section-header {
+            h2.govuk-accordion__section-heading {
+                font-size: 19px;
+                .govuk-accordion__section-button {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
 }
