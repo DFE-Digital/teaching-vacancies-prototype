@@ -38,7 +38,7 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing for [Trust]</h1>
+        <h1 class="govuk-heading-m">Create a job listing for {{ data['mat-name'] }}</h1>
         <h5 class="govuk-heading-m">Step 8 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
@@ -67,8 +67,11 @@
                                         <h4>Location</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p id="schoolz">{{ data['trust-location'] }}<br>
-                                        {{ data['school'] }}</p>
+                                        <p id="schoolz">
+                                            {{ data['trust-location'] }}
+                                            <br>
+                                            {{ data['school'] }}
+                                        </p>
                                     </dd>
                                 </div>
                             </li>
@@ -297,7 +300,7 @@
                             <li class="app-task-list__item">
                                 <div class="app-check-your-answers__contents">
                                     <dt class="app-check-your-answers__question">
-                                        <h4>About [Trust]</h4>
+                                        <h4>About {{ data['mat-name'] }} and/or specific school</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
                                         <p>{{ data['trust-summary'] }}</p>

@@ -31,7 +31,7 @@
 
     <div class="govuk-info-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
         <h2 class="govuk-info-summary__title" id="error-summary-title">
-            Preview of [job title]
+            Preview of {{ data['job-title'] }}
         </h2>
         <div class="govuk-info-summary__body">
             <p>This is how your job listing will appear to jobseekers visiting Teaching Vacancies. You can make changes or, if you are happy with it and agree to our <a href="#">terms and conditions</a>, you can submit it for publication on 20 March 2020</p>
@@ -43,7 +43,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
             <div class="listing-title">
-                <h1 class="govuk-heading-l">[Job title]</h1>
+                <h1 class="govuk-heading-l">{{ data['job-title'] }}</h1>
                 <h4 class="govuk-caption-l">Multiple school locations</h4>
             </div>
         </div>
@@ -109,19 +109,19 @@
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
                                     <td scope="row" class="govuk-table__header govuk-!-width-one-third">Role</td>
-                                    <td class="govuk-table__cell">[Job role]</td>
+                                    <td class="govuk-table__cell">{{ data['job-role'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <td scope="row" class="govuk-table__header">Subject</td>
-                                    <td class="govuk-table__cell">[Main Subject], [Supporting Subject]</td>
+                                    <td class="govuk-table__cell">{{ data['subject'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <td scope="row" class="govuk-table__header">Working pattern</td>
-                                    <td class="govuk-table__cell">[Pattern],[Pattern]</td>
+                                    <td class="govuk-table__cell">{{ data['pattern'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <td scope="row" class="govuk-table__header">Salary</td>
-                                    <td class="govuk-table__cell">[Salary]</td>
+                                    <td class="govuk-table__cell">{{ data['salary'] }}</td>
                                 </tr>
                                 <!--
                                 <tr class="govuk-table__row">
@@ -142,15 +142,15 @@
 
                         <h4 class="govuk-heading-s">Job summary</h4>
                         <p class="govuk-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {{ data['summary'] }}
                         </p>
                         <h4 class="govuk-heading-s">Financial benefits</h4>
                         <p class="govuk-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            {{ data['benefits'] }}
                         </p>
                         <h4 class="govuk-heading-s">Applying for the role</h4>
                         <p class="govuk-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {{ data['apply'] }}
                         </p>
                         <a href="#" class="govuk-button">Get more information</a>
                         <h4 class="govuk-heading-s">Supporting documents</h4>
@@ -209,25 +209,26 @@
 
                                 <tr class="govuk-table__row">
                                     <td scope="row" class="govuk-table__header">Trust website</td>
-                                    <td class="govuk-table__cell"><a href="#">[Trust] website link  (opens in a new window)</a></td>
+                                    <td class="govuk-table__cell"><a href="#">{{ data['link'] }}</a>  (opens in a new window)</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <td scope="row" class="govuk-table__header">Contact email</td>
-                                    <td class="govuk-table__cell"><a href="#">email@email.com</a></td>
+                                    <td class="govuk-table__cell"><a href="#">{{ data['email'] }}</a></td>
                                 </tr>
                             </tbody>
                         </table>
 
-                        <h4 class="govuk-heading-s">About [Trust]</h4>
+                        <h4 class="govuk-heading-s">About {{ data['mat-name'] }}</h4>
                         <p class="govuk-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        <h4 class="govuk-heading-s">Arranging a visit to [Trust]</h4>
+                            {{ data['trust-summary'] }}
+                        </p>
+                        <h4 class="govuk-heading-s">Arranging a visit to {{ data['mat-name'] }}</h4>
                         <p class="govuk-body">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                         <h4 class="govuk-heading-s">Trust location</h4>
                         <p class="govuk-body">
-                            [Location], [Location], [Location], S35 9WD
+                            {{ data['mat-address'] }}
                         </p>
                         <!-- <p><a href="#">Plan your commute (opens in a new window)</a></p> -->
                         <div class="">

@@ -41,7 +41,7 @@
     <div class="govuk-grid-column-full">
 
 
-        <h1 class="dash-title">Jobs at [Trust]</h1>
+        <h1 class="dash-title">Jobs at {{ data['mat-name'] }}</h1>
         <a href="1-mat-a" class="govuk-button">Create a job listing</a>
 
         <div class="govuk-tabs">
@@ -77,11 +77,15 @@
                         Show
                     </label>
                     <select class="govuk-select" id="sort" name="sort">
-                        <option value="All schools" selected="selected">All schools</option>
+                        <option value="All schools" selected="selected">All schools and trust</option>
                         <option value="">----------------</option>
-                        <option value="Trust HQ">Trust HQ</option>
-                        <option value="School 1">School 1</option>
-                        <option value="School 2">School 2</option>
+                        <option value="Trust HQ">{{ data['mat-name'] }}</option>
+                        <option value="School 2">{{ data['mat-name2'] }}</option>
+                        <option value="School 3">{{ data['mat-name3'] }}</option>
+                        <option value="School 4">{{ data['mat-name4'] }}</option>
+                        <option value="School 5">{{ data['mat-name5'] }}</option>
+                        <option value="School 6">{{ data['mat-name6'] }}</option>
+                        <option value="School 7">{{ data['mat-name7'] }}</option>
                     </select>
                 </div>
                 <!-- dropdown -->
@@ -114,7 +118,7 @@
                             <td class="govuk-table__cell">
                                 <a class="govuk-link view-vacancy-link" href="job-listing">This is a job title 1</a>
                             </td>
-                            <td class="govuk-table__cell">Graceland Academy</td>
+                            <td class="govuk-table__cell">{{ data['mat-name2'] }}</td>
                             <td class="govuk-table__cell">Elvis Aaron Presley</td>
                             <td class="govuk-table__cell">1 January 2020</td>
                             <td class="govuk-table__cell">2 February 2020</td>
@@ -142,7 +146,7 @@
                 <tr class="govuk-table__row">
                     <th class="govuk-table__header" colspan="2">
                         <h2 class="govuk-heading-m">
-                            About [Trust]
+                            About {{ data['mat-name'] }}
                         </h2>
                     </th>
                     <th class="govuk-table__header"></th>
@@ -169,7 +173,7 @@
                         <strong class="strong">Trust address</strong>
                     </td>
                     <td class="govuk-table__cell">
-                        [Trust address]
+                        {{ data['mat-address'] }}
                     </td>
                     <td class="govuk-table__cell"></td>
                 </tr>

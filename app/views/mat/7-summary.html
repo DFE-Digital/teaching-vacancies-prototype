@@ -38,7 +38,7 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing for [Trust]</h1>
+        <h1 class="govuk-heading-m">Create a job listing for {{ data['mat-name'] }}</h1>
         <h5 class="govuk-heading-m">Step 7 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
@@ -64,10 +64,10 @@
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="trust-summary">
-                            About [Trust] or/and [School name] (<span class="text-red">required</span>)
+                            About {{ data['mat-name'] }} and/or a specific school (<span class="text-red">required</span>)
                         </label>
                         <span id="more-detail-hint" class="govuk-hint">
-                            This will appear next to the job details under 'School overview'. Feel free to adapt this text
+                            This will appear next to the job details under 'Trust overview'. Feel free to adapt this text
                         </span>
                         <textarea class="govuk-textarea summary-textarea" id="trust-summary" name="trust-summary" rows="8" aria-describedby="trust-summary" ></textarea>
                     </div>
