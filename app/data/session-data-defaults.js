@@ -30,7 +30,6 @@ module.exports = {
   "workpattern": "Full-time",
 
   // March MAT Usablity Test
-
   "mat-name": "Sweet Valley Trust",
   "mat-address": "45-49 Chapeltown Road, Ecclesfield, Sheffield, S35 9WD",
   "mat-name2": "Heartbreak High",
@@ -39,6 +38,12 @@ module.exports = {
   "mat-name5": "Rydell High",
   "mat-name6": "Shermer High School",
   "mat-name7": "North Shore High School",
+  "mat-name2-address": "Lorem 2",
+  "mat-name3-address": "Lorem 3",
+  "mat-name4-address": "Lorem 4",
+  "mat-name5-address": "Lorem 5",
+  "mat-name6-address": "Lorem 6",
+  "mat-name7-address": "Lorem 7",
   "trust-location": "",
   "school": "",
   "job-title": "Science Teacher",

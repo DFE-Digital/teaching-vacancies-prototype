@@ -48,10 +48,10 @@
         <h2 class="mySchools-title govuk-heading-m">Trusts (1)</h2>
         <ul class="mySchools">
             <li class="mySchools-item ">
-                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <h3 class="govuk-heading-s">{{ data['mat-name'] }} <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
                 <ul class="mySchools-meta">
                     <li><strong>UID:</strong> 102121</li>
-                    <li><strong>Trust address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>Trust address:</strong> {{ data['mat-address'] }}</li>
                     <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
                     <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
                 </ul>
@@ -61,28 +61,55 @@
         <h2 class="mySchools-title govuk-heading-m">Schools (28)</h2>
         <ul class="mySchools">
             <li class="mySchools-item ">
-                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <h3 class="govuk-heading-s">{{ data['mat-name2'] }} <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
                 <ul class="mySchools-meta">
-                    <li><strong>URN:</strong> 102121</li>
-                    <li><strong>School address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>URN:</strong> 282727</li>
+                    <li><strong>School address:</strong> {{ data['mat-name2-address'] }}</li>
                     <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
                     <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
                 </ul>
             </li>
             <li class="mySchools-item">
-                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed not-authorised" id="">Not-authorised</strong></h3>
+                <h3 class="govuk-heading-s">{{ data['mat-name3'] }} <strong class="govuk-tag app-task-list__task-completed not-authorised" id="">Not-authorised</strong></h3>
                 <ul class="mySchools-meta">
-                    <li><strong>URN:</strong> 102121</li>
-                    <li><strong>School address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>URN:</strong> 355456</li>
+                    <li><strong>School address:</strong> {{ data['mat-name3-address'] }} </li>
                     <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
                     <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
                 </ul>
             </li>
             <li class="mySchools-item ">
-                <h3 class="govuk-heading-s">Lorem ipsum <strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <h3 class="govuk-heading-s">{{ data['mat-name4'] }}<strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
                 <ul class="mySchools-meta">
-                    <li><strong>URN:</strong> 102121</li>
-                    <li><strong>School address:</strong> Crouch End Hill, Hornsey, London, N8 8DN </li>
+                    <li><strong>URN:</strong> 653345</li>
+                    <li><strong>School address:</strong> {{ data['mat-name4-address'] }}</li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+            <li class="mySchools-item ">
+                <h3 class="govuk-heading-s">{{ data['mat-name5'] }}<strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>URN:</strong> 595867</li>
+                    <li><strong>School address:</strong> {{ data['mat-name5-address'] }}</li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+            <li class="mySchools-item ">
+                <h3 class="govuk-heading-s">{{ data['mat-name6'] }}<strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>URN:</strong> 395865</li>
+                    <li><strong>School address:</strong> {{ data['mat-name6-address'] }}</li>
+                    <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
+                    <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
+                </ul>
+            </li>
+            <li class="mySchools-item ">
+                <h3 class="govuk-heading-s">{{ data['mat-name7'] }}<strong class="govuk-tag app-task-list__task-completed authorised" id="">Authorised</strong></h3>
+                <ul class="mySchools-meta">
+                    <li><strong>URN:</strong> 356479</li>
+                    <li><strong>School address:</strong> {{ data['mat-name7-address'] }}</li>
                     <li><strong>Approver:</strong> dave.david@email.com, anne.anna@email.com</li>
                     <li><strong>Your role:</strong> end user - You can view and create teaching jobs</li>
                 </ul>
