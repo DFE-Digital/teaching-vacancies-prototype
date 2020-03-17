@@ -4,6 +4,8 @@
   Find a job in Teaching
 {% endblock %}
 
+{% set bodyClasses = "bespoke-width" %}
+
 {% block header %}
 
   {# Set serviceName in config.js. #}
@@ -39,7 +41,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
         <div class="heading-results">
-            <h1 class="govuk-heading-l">246 <span>jobs match</span> '[keywords]' <span>in</span> '[location]'</h1>
+            <h1 class="govuk-heading-l">246 <span>jobs match</span> '[keywords blah de blah de blah]' <span>in</span> '[location]'</h1>
             <p class="govuk-body">
                 <span class="job-seeker-alert-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
@@ -210,6 +212,27 @@
             <ul class="vacancies">
 
                 <!-- START VACANCY 1 -->
+                <li class="vacancy">
+                    <h2 class="govuk-heading-m mb0"><a class="govuk-link view-vacancy-link" href="#">[Job title]</a></h2>
+                    <p class="govuk-body">[School location]</p>
+                    <dl>
+                        <dt>School type</dt>
+                        <dd class="double">Academy</dd>
+                        <dt>Salary</dt>
+                        <dd class="double">£29,663 to £48,244 per year (full-time equivalent)</dd>
+                        <dt>Working pattern</dt>
+                        <dd class="double">Full-time</dd>
+                        <dt>Closing date</dt>
+                        <dd class="double">17 November 2019 at 5:00 pm</dd>
+                        <!-- 
+                        <dt>Expected start date</dt> 
+                        <dd class="double">17 November 2019</dd>
+                        -->
+                    </dl>
+                </li>
+                <li>
+                    <p>Cant see what you want? <a href="">Get a job alert</a> matching this search</p>
+                </li>
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0"><a class="govuk-link view-vacancy-link" href="#">[Job title]</a></h2>
                     <p class="govuk-body">[School location]</p>
