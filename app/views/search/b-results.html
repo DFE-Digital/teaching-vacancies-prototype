@@ -41,7 +41,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
         <div class="heading-results">
-            <h1 class="govuk-heading-l">246 <span>jobs match</span> '[keywords blah de blah de blah]' <span>in</span> '[location]'</h1>
+            <h1 class="govuk-heading-xl">246 <span>jobs match</span> '[Lots and lots and lots and lots of keywords]' <span>near</span> '[really really long location]'</h1>
             <p class="govuk-body">
                 <span class="job-seeker-alert-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
@@ -62,7 +62,7 @@
 
             <!-- START Keyword -->
             <div class="govuk-form-group">
-                <label class="govuk-label" for="keyword">Keywords</label>
+                <label class="govuk-label" for="keyword">Keyword</label>
                 <input class="govuk-input" id="keyword" name="keyword" type="text" placeholder="Job title, subject or education phase, for example">
             </div>
             <!-- END Keyword -->
@@ -93,6 +93,7 @@
             </div>
             <!-- END Location -->
 
+            <!--  More filters
             <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
                 <div class="govuk-accordion__section ">
                     <div class="govuk-accordion__section-header">
@@ -103,8 +104,7 @@
                         </h4>
                     </div>
                     <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                        <!-- Filter content START -->
-                        <!-- START Working pattern -->
+
                         <div class="govuk-form-group">
                             <fieldset class="govuk-fieldset">
                                 <label for="" class="govuk-label">Working pattern</label>
@@ -135,8 +135,6 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <!-- END Working pattern -->
-                        <!-- START Education phase -->
                         <div class="govuk-form-group">
                             <fieldset class="govuk-fieldset">
                                 <label for="" class="govuk-label">Education phase</label>
@@ -175,13 +173,12 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <!-- END Education phase -->
-                        <!-- FIlter content END -->
                     </div>
                 </div>
             </div>
+             -->
 
-            <button type="submit" class="govuk-button" href="results_p_list-1">Search</button>
+            <button type="submit" class="govuk-button" href="#">Search</button>
 
         </form>
 
@@ -201,6 +198,7 @@
                     <option value="published" selected>most relevant first</option>
                     <option value="updated">most time to apply</option>
                     <option value="updated">least time to apply</option>
+                    <option value="updated">newest job listing</option>
                 </select>
             </div>
             <p>Showing 101 - 150 of 246 results</p>
@@ -230,7 +228,7 @@
                         -->
                     </dl>
                 </li>
-                <li>
+                <li class="interuption-msg">
                     <p>Cant see what you want? <a href="">Get a job alert</a> matching this search</p>
                 </li>
                 <li class="vacancy">

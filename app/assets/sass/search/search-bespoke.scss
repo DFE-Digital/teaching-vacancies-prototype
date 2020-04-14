@@ -20,6 +20,10 @@
     }
 }
 
+/*
+---------- Title ------------------------------
+*/
+
 
 
 /*
@@ -28,7 +32,7 @@
 
 .heading-results {
 
-    h1.govuk-heading-l {
+    h1.govuk-heading-xl {
         margin-bottom: 10px;
 
         span {
@@ -36,10 +40,23 @@
         }
     }
     p.govuk-body {
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 
+
 }
+
+/*
+---------- Results ------------------------------
+*/
+ul.vacancies {
+  li.interuption-msg {
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
 
 /*
 ---------- Sidebar filters ------------------------------
@@ -201,10 +218,4 @@ div.results-top {
         padding: 8px 0  ;
     }
 }
-/*
----------- Title ------------------------------
-*/
 
-/*
----------- Title ------------------------------
-*/
