@@ -1,0 +1,55 @@
+/*
+---------- Start page ------------------------------
+*/
+
+/* Hide lust teaching job section on mobile */
+@media (max-width: 40.0625em) {
+    aside.app-related-items {
+        display: none;
+    }
+
+}
+
+/*
+---------- Results ------------------------------
+*/
+
+.heading-results  {
+
+    h1 {
+        span {
+            font-weight: 300;
+        }
+    }
+}
+
+@media (max-width: 40.0625em) {
+
+    .heading-results  {
+
+        p.govuk-body {
+            margin-bottom: 20px;
+        }
+        
+    }
+
+    .sp-form {
+        border: 5px solid #dee0e2;
+        padding: 15px;
+        margin-bottom: 20px;
+
+        div.distance-inset {
+            margin-bottom: 0;
+        }
+    }
+
+    div.results-top {
+
+        p {
+            float: left;
+            margin-bottom: 0;
+        }
+
+    }
+
+}
