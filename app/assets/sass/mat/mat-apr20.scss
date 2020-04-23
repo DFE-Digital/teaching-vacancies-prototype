@@ -23,6 +23,26 @@
     }
 }
 
+.alert-badge {
+    font-family: "GDS Transport", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 12px;
+    font-size: 0.9rem;
+    line-height: 1.25;
+    padding: 0 5px;
+    display: inline-block;
+    border: 2px solid #00703c;
+    color: #00703c;
+    text-transform: uppercase;
+    vertical-align: middle;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    margin-right: 5px;
+}
+
+
 @media (max-width: 40.0625em) {
 
     .heading-results  {
@@ -50,6 +70,26 @@
             margin-bottom: 0;
         }
 
+    }
+
+    ul.vacancies {
+        li {
+            padding-bottom: 0;
+
+            &.interuption-msg {
+                padding-bottom: 15px;
+            }
+
+            dl {
+                dt {
+                    width: 34%;
+                }
+                dd.double {
+                    width: 55%;
+                    margin-inline-start: 20px;
+                }
+            }
+        }
     }
 
 }
