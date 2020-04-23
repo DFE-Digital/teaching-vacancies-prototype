@@ -8,6 +8,15 @@
         display: none;
     }
 
+    .four-column-list {
+        column-count: 2;
+
+        li {
+            font-size: 16px;
+        }
+        
+    }
+
 }
 
 /*
