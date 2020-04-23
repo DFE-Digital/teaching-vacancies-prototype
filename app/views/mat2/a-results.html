@@ -16,7 +16,7 @@
     containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "b-start",
+        href: "a-start",
         text: "Find a teaching job"
       },
       {
@@ -41,7 +41,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
         <div class="heading-results">
-            <h1 class="govuk-heading-l">24 <span>jobs match</span> '[keywords]' <span>near</span> '[location]'</h1>
+            <h1 class="govuk-heading-l">24 <span>jobs match</span> '{{ data['keywords'] }}' <span>near</span> '{{ data['location'] }}'</h1>
             <p class="govuk-body job-alert">
                 <span class="alert-badge">Job Alert</span> 
                 Subscribe to <a class="govuk-link" href="#">receive a job alert</a> whenever a job matching this search is published
@@ -55,14 +55,14 @@
     <!-- START Filters -->
     <div class="govuk-grid-column-one-third">
 
-        <form class="sp-form" action="#" method="post">
+        <form class="sp-form" autocomplete="off" >
 
             <h2 class="govuk-heading-m">Search job listings</h2>
 
             <!-- START Keyword -->
             <div class="govuk-form-group">
-                <label class="govuk-label" for="keyword">Keywords</label>
-                <input class="govuk-input" id="keyword" name="keyword" type="text" placeholder="Job title or subject, for example">
+                <label class="govuk-label" for="keywords">Keywords</label>
+                <input class="govuk-input" id="keywords" name="keywords" type="text" placeholder="Job title or subject, for example">
             </div>
             <!-- END Keyword -->
 
@@ -92,7 +92,7 @@
             </div>
             <!-- END Location -->
 
-            <button type="submit" class="govuk-button" href="#">Search</button>
+            <button type="submit" class="govuk-button" href="a-results">Search</button>
 
         </form>
 
