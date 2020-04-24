@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "/",
+      serviceName: serviceName,
+      serviceUrl: "index",
+      containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "Schools in my trust"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- LISTINGS START -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <!-- <a href="a-results" class="govuk-back-link">Back</a> -->
+        <h1 class="govuk-heading-l">Updates</h1>
+
+    </div>
+</div>
+<!-- LISTINGS END -->
+
+<!-- SCHOOL INFO START -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h2>Description on what "updates" actually are?</h2>
+        <ul class="test-timeline">
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    April 2020
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="release-notes2">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    March 2020
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="#">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    February 2020
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="#">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    January 2020
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="#">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    December 2019
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="#">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    November 2019
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="#">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+            <li class="test-timeline__item">
+                <h3 class="test-timeline__title govuk-heading-s">
+                    October 2019
+                </h3>
+                <p class="test-timeline__by">
+                    <a href="#">This is a summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet lectus eu porta viverra.</a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        
+    </div>
+</div>
+<!-- SCHOOL INFO END -->
+
+{% endblock %}

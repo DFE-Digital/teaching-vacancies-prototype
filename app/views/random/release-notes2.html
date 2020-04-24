@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "/",
+      serviceName: serviceName,
+      serviceUrl: "index",
+      containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "Schools in my trust"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- LISTINGS START -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <a href="release-notes" class="govuk-back-link">Back</a>
+        <h3 class="govuk-heading-s">Updates</h3>
+        <h1 class="govuk-heading-l">April 2020</h1>
+
+    </div>
+</div>
+<!-- LISTINGS END -->
+
+<!-- SCHOOL INFO START -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h3>Heading</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum interdum molestie. Etiam ornare mi vel laoreet pellentesque. Vestibulum blandit dignissim porttitor. Etiam sagittis augue non tempor commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum posuere in nisi ut accumsan. Etiam a nibh ipsum. Curabitur sed dolor in ex posuere mattis ac sed mi. Sed erat turpis, elementum vel risus vitae, lobortis tristique elit. Vestibulum a condimentum sapien. Donec velit quam, interdum ac suscipit sed, faucibus et leo. Cras id lectus ante. Cras nec justo mollis, pharetra arcu in, accumsan velit. Nam ac ex at purus euismod consectetur.
+        </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        
+    </div>
+</div>
+<!-- SCHOOL INFO END -->
+
+{% endblock %}
