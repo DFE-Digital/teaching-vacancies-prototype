@@ -47,6 +47,14 @@ $(document).ready(function(){
         window.history.forward();
     });
 
+    // July 2020 MAT
+    // DASHBOARD filter panel toggle
+    $("button#toggle-filter").click(function(){
+        $("div#filterID").toggle();
+        $(this).text($(this).text() == 'Show filters' ? 'Hide filters' : 'Show filters');
+        $("div.moj-scrollable-pane").toggleClass("moj-scrollable-pane-shadow");
+    });
+
     // March 2020 - MAT
     // If review screen (Trust location) string includes "multiple" show preview button for multiple, else show preview button for trust role
     if (document.getElementById("schoolz").textContent.includes('multiple')) {
@@ -55,8 +63,9 @@ $(document).ready(function(){
     } else {
         $("a#p-trust").show();
         $("a#p-multiple").hide();
-    }
+    };
 
+    
 
 /*
     var local = document.getElementById("schoolz").value;
