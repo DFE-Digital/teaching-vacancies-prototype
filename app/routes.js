@@ -12,9 +12,9 @@ router.post('/examples/branching/over-18-answer', function (req, res) {
   let over18 = req.session.data['trust-location']
 
   if (over18 === 'Across multiple schools') {
-    res.redirect('/mat/1-mat-b')
+    res.redirect('/mat3/1-location-b')
   } else {
-    res.redirect('/mat/2-job-details')
+    res.redirect('/mat3/2-job-details')
   }
 })
 
