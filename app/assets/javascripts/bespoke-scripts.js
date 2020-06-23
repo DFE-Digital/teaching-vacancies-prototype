@@ -51,7 +51,7 @@ $(document).ready(function(){
     // DASHBOARD filter panel toggle
     $("button#toggle-filter").click(function(){
         $("div#filterID").toggle();
-        $(this).text($(this).text() == 'Show filters' ? 'Hide filters' : 'Show filters');
+        $(this).text($(this).text() == 'Hide filters' ? 'Show filters' : 'Hide filters');
         $("div.moj-scrollable-pane").toggleClass("moj-scrollable-pane-shadow");
     });
 

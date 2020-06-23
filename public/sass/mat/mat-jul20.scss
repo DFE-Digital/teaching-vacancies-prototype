@@ -30,17 +30,6 @@ DASHBOARD FILTERS
     overflow: hidden; // Hides the shadow
     clear: both; // Fixes render bug
     // width: 100% // Fixes render bug
-
-    // &:after {
-    //     position: absolute;
-    //     top: 0;
-    //     left: 100%;
-    //     width: 50px;
-    //     height: 100%;
-    //     border-radius: 10px 0 0 10px / 50% 0 0 50%;
-    //     box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
-    //     content: "";
-    // }
 }
 
 .moj-scrollable-pane-shadow {
@@ -231,4 +220,67 @@ FILTER options block
     div:last-of-type {
         margin-bottom: 0; // IE9 +
     }
+}
+
+/*
+FILTER search block for checkboxes
+*/
+.moj-filter__options {
+
+    .dashFilter-container {
+      max-height: 175px;
+    }
+
+}
+
+
+/*
+------------------------------------------------------------
+JOB LISTING
+------------------------------------------------------------
+*/
+
+div.alert-js-info {
+  background: rgba(0, 94, 165, 0.1);
+  border: 5px solid #005EA5;
+  box-sizing: border-box;
+  padding: govuk-spacing(2);
+  margin-bottom: govuk-spacing(4);
+
+  svg.moj-banner__icon {
+    float: left;
+    margin-right: 10px;
+  }
+
+  p {
+    margin:0;
+    padding-left: 35px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+/*
+------------------------------------------------------------
+SCHOOLS IN YOUR TRUST
+------------------------------------------------------------
+*/
+
+li.school-trust {
+  border:#DEE0E2 solid 10px;
+  padding: govuk-spacing(2);
+  margin-bottom: govuk-spacing(4);
+
+  table {
+    margin-bottom: 0;
+  }
+
+}
+
+h2.mySchools-title {
+  border-color: #F47738;
+  border-width: 6px;;
+  padding-bottom: 5px;
 }

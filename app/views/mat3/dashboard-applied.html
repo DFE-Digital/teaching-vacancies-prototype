@@ -46,7 +46,7 @@
         <div class="moj-filter-layout">
 
             <!-- START Filter panel -->
-            <div class="moj-filter-layout__filter" id="filterID" style="display: none;">
+            <div class="moj-filter-layout__filter" id="filterID">
                 <div class="moj-filter" tabindex="-1">
 
                     <div class="moj-filter__header">
@@ -57,14 +57,13 @@
         
                     <div class="moj-filter__content">
                         <!-- START Selected block -->
-                        <!--  
                         <div class="moj-filter__selected">
                             <div class="moj-filter__selected-heading">
                                 <div class="moj-filter__heading-title">
                                     <h2 class="govuk-heading-s">Selected filters</h2>
                                 </div>
                                 <div class="moj-filter__heading-action">
-                                    <p><a class="govuk-link govuk-link--no-visited-state" href="">Clear filters</a></p>
+                                    <p><a class="govuk-link govuk-link--no-visited-state" href="dashboard">Clear filters</a></p>
                                 </div>
                             </div>
                             <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Locations</h3>
@@ -74,11 +73,10 @@
                                 <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>{{ data['mat-name6'] }}</a></li>
                             </ul>
                         </div>
-                        -->
                         <!-- END Selected block -->
         
                         <div class="moj-filter__options">
-                            <a href="dashboard-applied" class="govuk-button">Apply filters</a>
+                            <button type="submit" class="govuk-button" data-module="govuk-button">Apply filters</button>
 
                             <!-- START Form group -->
                             <!--  
@@ -122,7 +120,7 @@
                                     <!-- LOCATION checkstart -->
                                     <div class="govuk-checkboxes govuk-checkboxes--small ">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="location2" name="locations" type="checkbox" value="Location 2">
+                                            <input class="govuk-checkboxes__input" id="location2" name="locations" type="checkbox" value="Location 2" checked>
                                             <label class="govuk-label govuk-checkboxes__label" for="location2">
                                                 {{ data['mat-name2'] }} (2)<br>
                                                 <!-- <span class="subject-hint">applies to examples such as primary school roles.</span> -->
@@ -155,7 +153,7 @@
                                     <!-- LOCATION checkstart -->
                                     <div class="govuk-checkboxes govuk-checkboxes--small ">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="location5" name="locations" type="checkbox" value="Location 5">
+                                            <input class="govuk-checkboxes__input" id="location5" name="locations" type="checkbox" value="Location 5" checked>
                                             <label class="govuk-label govuk-checkboxes__label" for="location5">
                                                 {{ data['mat-name5'] }} (1)<br>
                                                 <!-- <span class="subject-hint">applies to examples such as primary school roles.</span> -->
@@ -166,7 +164,7 @@
                                     <!-- LOCATION checkstart -->
                                     <div class="govuk-checkboxes govuk-checkboxes--small ">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="location6" name="locations" type="checkbox" value="Location 6">
+                                            <input class="govuk-checkboxes__input" id="location6" name="locations" type="checkbox" value="Location 6" checked>
                                             <label class="govuk-label govuk-checkboxes__label" for="location6">
                                                 {{ data['mat-name6'] }} (3)<br>
                                                 <!-- <span class="subject-hint">applies to examples such as primary school roles.</span> -->
@@ -203,9 +201,9 @@
                 <div class="moj-action-bar">
                     <div class="moj-action-bar__filter">
                         <button class="govuk-button govuk-button--secondary" id="toggle-filter">
-                            Show filters
+                            Hide filters
                         </button>
-                        <span>Showing all jobs</span>
+                        <span>3 filters applied</span>
                         <a href="1-location-a" class="govuk-button" id="btn-create">Create a job listing</a>
                     </div>
                 </div>

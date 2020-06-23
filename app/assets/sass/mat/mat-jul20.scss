@@ -223,6 +223,18 @@ FILTER options block
 }
 
 /*
+FILTER search block for checkboxes
+*/
+.moj-filter__options {
+
+    .dashFilter-container {
+      max-height: 175px;
+    }
+
+}
+
+
+/*
 ------------------------------------------------------------
 JOB LISTING
 ------------------------------------------------------------
@@ -248,4 +260,27 @@ div.alert-js-info {
       font-weight: bold;
     }
   }
+}
+
+/*
+------------------------------------------------------------
+SCHOOLS IN YOUR TRUST
+------------------------------------------------------------
+*/
+
+li.school-trust {
+  border:#DEE0E2 solid 10px;
+  padding: govuk-spacing(2);
+  margin-bottom: govuk-spacing(4);
+
+  table {
+    margin-bottom: 0;
+  }
+
+}
+
+h2.mySchools-title {
+  border-color: #F47738;
+  border-width: 6px;;
+  padding-bottom: 5px;
 }
