@@ -46,7 +46,7 @@
         <div class="moj-filter-layout">
 
             <!-- START Filter panel -->
-            <div class="moj-filter-layout__filter" id="filterID">
+            <div class="moj-filter-layout__filter" id="filterID" style="display:none;">
                 <div class="moj-filter" tabindex="-1">
 
                     <div class="moj-filter__header">
@@ -112,7 +112,7 @@
                                         <div class="govuk-checkboxes__item">
                                             <input class="govuk-checkboxes__input" id="location1" name="locations" type="checkbox" value="Location 1" checked>
                                             <label class="govuk-label govuk-checkboxes__label" for="location1">
-                                                {{ data['mat-name'] }} (Trust head office) (0)<br>
+                                                {{ data['mat-name'] }} (Trust head office) (1)<br>
                                                 <!-- <span class="subject-hint">applies to examples such as primary school roles.</span> -->
                                             </label>
                                         </div>
@@ -202,7 +202,7 @@
                 <div class="moj-action-bar">
                     <div class="moj-action-bar__filter">
                         <button class="govuk-button govuk-button--secondary" id="toggle-filter">
-                            Hide filters
+                            Show filters
                         </button>
                         <span>4 filters applied</span>
                         <a href="1-location-a" class="govuk-button" id="btn-create">Create a job listing</a>
@@ -211,7 +211,7 @@
                 <!-- END moj-action-bar -->
                 
                 <!-- START moj-scrollable-pane -->
-                <div class="moj-scrollable-pane moj-scrollable-pane-shadow">
+                <div class="moj-scrollable-pane">
                     <div class="moj-scrollable-pane__wrapper">
 
                         <div class="test-divvy">
@@ -240,7 +240,7 @@
                                 </ul>
                                 <section class="govuk-tabs__panel">
 
-                                    <h2 class="govuk-heading-m">6 Published jobs</h2>
+                                    <h2 class="govuk-heading-m">7 Published jobs</h2>
 
                                     <!-- TABLE start -->
                                     <table class="vacancies govuk-table govuk-!-margin-top-4">
@@ -268,6 +268,21 @@
                                             </tr>
                                         </thead>
                                         <tbody class="govuk-table__body">
+                                            <tr class="govuk-table__row school_vacancy_presenter vacancy">
+                                                <td class="govuk-table__cell">
+                                                    <a class="govuk-link view-vacancy-link" href="job-listing">{{ data['job-title'] }}</a>
+                                                </td>
+                                                <td class="govuk-table__cell">{{ data['mat-name'] }}</td>
+                                                <td class="govuk-table__cell">Rebecca Stevenson</td>
+                                                <td class="govuk-table__cell">13 July 2020</td>
+                                                <td class="govuk-table__cell">30 July 2020</td>
+                                                <td class="govuk-table__cell">0</td>
+                                                <td class="govuk-table__cell action-links">
+                                                    <a class="govuk-link" href="#">Edit</a>
+                                                    <a class="govuk-link" href="#">Copy</a>
+                                                    <a class="govuk-link" href="#">Delete</a>
+                                                </td>
+                                            </tr>
                                             
                                             <tr class="govuk-table__row school_vacancy_presenter vacancy">
                                                 <td class="govuk-table__cell">
