@@ -35,6 +35,18 @@
 
 {% block content %}
 
+<!-- <script type="text/javascript">
+
+
+function myFunction()
+    {
+        alert("Hello! I am an alert box!!");
+    }
+    myFunction();
+</script> -->
+
+
+
 <div class="govuk-width-container">
 
     <div class="create-title">
@@ -63,12 +75,49 @@
                         <textarea class="govuk-textarea summary-textarea" id="summary" name="summary" rows="8" aria-describedby="summary"></textarea>
                     </div>
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="trust-summary">
-                            About {{ data['mat-name'] }} and/or a specific school (<span class="text-red">required</span>)
-                        </label>
-                        <span id="more-detail-hint" class="govuk-hint">
-                            This will appear next to the job details under 'Trust overview'. Feel free to adapt this text
-                        </span>
+
+                        <!-- DISPLAY HACK start -->
+                        <span id="aboutTrigger" style="display: none;">{{ data['trust-location'] }}</span>
+                        <script>
+                            window.onload = function aboutHack() 
+                            {
+                                var x = document.getElementById("aboutTrigger");
+                                var multiple = document.getElementById("aboutMultiple");
+                                var trust = document.getElementById("aboutTrust");
+
+                                if (x.textContent == "At more than one school in the trust") {
+                                    multiple.style.display = "block";
+                                } else {
+                                    multiple.style.display = "none";
+                                }
+
+                                if (x.textContent == "Trust Head Office") {
+                                    trust.style.display = "block";
+                                } else {
+                                    trust.style.display = "none";
+                                }
+                            }
+                        </script>
+                        <!-- DISPLAY HACK End -->
+
+                        <div id="aboutTrust" style="display: none;">
+                            <label class="govuk-label govuk-label--m" for="trust-summary">
+                                About the trust (<span class="text-red">required</span>)
+                            </label>
+                            <span id="more-detail-hint" class="govuk-hint">
+                                This will appear next to the job details under 'Trust overview'. Feel free to adapt this text.
+                            </span>
+                        </div>
+
+                        <div id="aboutMultiple" style="display: none;">
+                            <label class="govuk-label govuk-label--m" for="trust-summary">
+                                About the schools (<span class="text-red">required</span>)
+                            </label>
+                            <span id="more-detail-hint" class="govuk-hint">
+                                Give a brief summary of the schools where the jobseeker would be teaching and any relevant information about the trust. 
+                            </span>
+                        </div>
+                        
                         <textarea class="govuk-textarea summary-textarea" id="trust-summary" name="trust-summary" rows="8" aria-describedby="trust-summary" ></textarea>
                     </div>
 

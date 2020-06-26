@@ -55,18 +55,19 @@ $(document).ready(function(){
         $("div.moj-scrollable-pane").toggleClass("moj-scrollable-pane-shadow");
     });
 
-    // March 2020 - MAT
-    // If review screen (Trust location) string includes "multiple" show preview button for multiple, else show preview button for trust role
-    if (document.getElementById("schoolz").textContent.includes('multiple')) {
+    // function reviewHack() {
+    if (document.getElementById("location-trigger").textContent.includes('more')) {
         $("a#p-trust").hide();
         $("a#p-multiple").show();
+        $("p#trustz").hide();
+        $("p#schoolz").show();
     } else {
         $("a#p-trust").show();
         $("a#p-multiple").hide();
-    };
-
-    
-
+        $("p#trustz").show();
+        $("p#schoolz").hide();
+    }
+   
 /*
     var local = document.getElementById("schoolz").value;
     if (local == "multiple") {

@@ -52,6 +52,8 @@
                 <h2 class="govuk-heading-l">Review the job listing</h2>
                 <p>Review the job details and make any necessary changes before submitting it for publication below</p>
 
+                
+
                 <ol class="app-task-list">
                     <li>
                         <h2 class="app-task-list__section">
@@ -64,9 +66,12 @@
                             <li class="app-task-list__item">
                                 <div class="app-check-your-answers__contents">
                                     <dt class="app-check-your-answers__question">
-                                        <h4>{{ data['trust-location'] }}</h4>
+                                        <h4 id="location-trigger">{{ data['trust-location'] }}</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
+                                        <p id="trustz"> 
+                                            {{ data['mat-name'] }}<br>{{ data['mat-address'] }}
+                                        </p>
                                         <p id="schoolz">
                                             {{ data['school'] }}
                                         </p>

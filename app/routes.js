@@ -11,11 +11,22 @@ router.post('/examples/branching/over-18-answer', function (req, res) {
 
   let over18 = req.session.data['trust-location']
 
-  if (over18 === 'Across multiple schools') {
-    res.redirect('/mat3/1-location-b')
+  if (over18 === 'At more than one school in the trust') {
+    res.redirect('/mat3/1-location-bm')
+  } else if (over18 === 'Single school') {
+    res.redirect('/mat3/1-location-bs')
   } else {
     res.redirect('/mat3/2-job-details')
   }
+
+  // let aboutS = req.session.data['trust-location']
+
+  // if (aboutS === 'At more than one school in the trust') {
+  //   $("div#aboutTrust").hide();
+  // } else {
+  //   $("div#aboutTrust").show();
+  // }
+
 })
 
 module.exports = router

@@ -44,7 +44,7 @@
         <div class="govuk-grid-column-full">
             <div class="listing-title">
                 <h1 class="govuk-heading-l">{{ data['job-title'] }}</h1>
-                <h4 class="govuk-caption-l">{{ data['mat-name'] }}, [Location]</h4>
+                <h4 class="govuk-caption-l">{{ data['mat-name'] }}, {{ data['mat-address'] }}</h4>
             </div>
         </div>
     </div>
@@ -191,7 +191,7 @@
                         <p class="govuk-body">Please contact Mrs Clare Skelland on the email address above or by calling (0117) 928 2590</p>
                         <h4 class="govuk-heading-s">Trust location</h4>
                         <p class="govuk-body">
-                            [Location], [Location], [Location]
+                            {{ data['mat-address'] }}
                         </p>
                         <!-- <p><a href="#">Plan your commute (opens in a new window)</a></p> -->
                         <div class="">

@@ -54,6 +54,10 @@
 
                 <form action="/examples/branching/over-18-answer" method="post" class="form">
 
+                    <!--   
+                        Form logic for branching is in routes.js
+                     -->
+
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset">
                             <label class="govuk-label govuk-label--m" for="job-title">
@@ -67,13 +71,13 @@
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="multiple-schools" name="trust-location" type="radio" value="Across multiple schools" {{ checked("trust-location", "At more than one school in the trust") }}>
+                                    <input class="govuk-radios__input" id="multiple-schools" name="trust-location" type="radio" value="At more than one school in the trust" {{ checked("trust-location", "At more than one school in the trust") }}>
                                     <label class="govuk-label govuk-radios__label" for="multiple-schools">
                                         At more than one school in the trust
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="trust-level" name="trust-location" type="radio" value="Sweet Valley Trust (Trust Head Office)" {{ checked("trust-location", "Sweet Valley Trust (Trust Head Office)") }}>
+                                    <input class="govuk-radios__input" id="trust-level" name="trust-location" type="radio" value="Trust Head Office" {{ checked("trust-location", "Trust Head Office") }}>
                                     <label class="govuk-label govuk-radios__label" for="trust-level">
                                         At the trust's central office
                                     </label>
