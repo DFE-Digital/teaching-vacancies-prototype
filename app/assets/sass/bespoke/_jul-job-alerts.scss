@@ -126,8 +126,6 @@ p.nearby-link {
     a {
         padding-left: 10px;
     }
-    
-
     svg {
         float: left;
     }
@@ -145,3 +143,24 @@ p.nearby-link {
     }
 }
 
+/*
+------------------------------------------------------------
+CREATE AN ALERT
+------------------------------------------------------------
+*/
+
+section.criteria-highlight {
+
+    border: 5px solid #bfc1c3;
+    box-sizing: border-box;
+
+    ul {
+        list-style: none;
+
+        li {
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
