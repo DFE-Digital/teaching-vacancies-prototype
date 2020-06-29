@@ -1,0 +1,147 @@
+/*
+------------------------------------------------------------
+SEARCH RESULTS
+------------------------------------------------------------
+*/
+
+
+.side-search {
+    background-color:#DEE0E2;
+    padding: 15px;
+
+    button.govuk-button {
+        margin-bottom: 0;
+        width: 100%;
+    }
+}
+
+div.search-alert {
+
+    background-color: #005EA5;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    bottom: 0;
+    box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.2);
+
+    svg { 
+        float:left;
+    }
+
+    p {
+        color: white;
+        padding-left: 30px !important;
+    }
+
+    a {
+        color: white;
+
+        &:active {
+            color: black;
+        }
+        &:focus {
+            color: black;
+        }
+    }
+}
+
+/* Responsive mobile */
+@media (max-width: 40.0625em) {
+
+    div.search-alert {
+
+        p {
+            padding-left: 30px !important;
+            font-size: 19px;
+        }
+    
+    }
+    
+}
+
+/*
+------------------------------------------------------------
+JOB LISTING
+------------------------------------------------------------
+*/
+
+ul.listing-actions {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+
+    li {
+        font-size: 19px;
+        list-style: none;
+        border-bottom: 3px solid #F47738;
+        padding-bottom: 10px !important;
+        font-weight: bold;
+
+        &.item {
+            grid-column: 1 / 2;
+        }
+
+        svg {
+            float: left;
+        }
+
+        a {
+            padding-left: 10px !important;
+            text-decoration: none;
+        }
+    }
+}
+
+ul.similar-nearby {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 19px;
+
+    li {
+        list-style: none;
+        border-left: 6px solid #F47738;
+        padding: 10px 0 10px 10px;
+
+        a {
+            display: block;
+            margin-bottom: 5px !important;
+            
+        }
+        span.sjn-name {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+
+        }
+        span.sjn-address {
+            display: block;
+            font-size: 16px;
+
+        }
+    }
+}
+
+p.nearby-link {
+
+    a {
+        padding-left: 10px;
+    }
+    
+
+    svg {
+        float: left;
+    }
+}
+
+@media (max-width: 40.0625em) {
+
+    ul.listing-actions {
+    grid-template-columns: repeat(1, 1fr);
+    }
+
+    ul.similar-nearby {
+
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
