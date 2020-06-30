@@ -1,0 +1,72 @@
+{% extends "layout_gds-basic.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% set bodyClasses = "email-width" %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "index",
+      serviceName: serviceName,
+      serviceUrl: "index"
+  }) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-l">2 new jobs matching your criteria were listed</h1>
+
+        <section class="email-section govuk-!-margin-bottom-6 govuk-!-padding-top-6">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="#">Teacher of Maths</a></h3>
+            <p>Shooters Hill Sixth Form College, London</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Salary: M1 to UPS3 – £30,480.00 – £49,571.00</li>
+                <li>Working pattern: Full-time only</li>
+                <li>Closing date: 23 June 2020</li>
+            </ul>
+        </section>
+
+        <section class="email-section govuk-!-margin-bottom-6">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="#">Teacher of Maths</a></h3>
+            <p>Shooters Hill Sixth Form College, London</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Salary: M1 to UPS3 – £30,480.00 – £49,571.00</li>
+                <li>Working pattern: Full-time only</li>
+                <li>Closing date: 23 June 2020</li>
+            </ul>
+        </section>
+
+        <section class="email-section govuk-!-margin-bottom-6">
+            <h2 class="govuk-heading-m">This job alert</h2>
+            <p class="govuk-body">We’ll email you details of any new jobs that match the following criteria:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Keyword: Maths</li>
+                <li>Location: In London</li>
+                <li>Filter 1: [selection], [selection]</li>
+            </ul>
+            <p>You have set to receive this job alert as soon as a job matching your criteria is listed. You can <a href="manage-1"> change when you receive alerts</a> here.  </p>
+        </section>
+
+        <section class="email-section govuk-!-margin-bottom-6">
+            <h2 class="govuk-heading-m">Are these job listings not relevent?</h2>
+            <p class="govuk-body"><a href="#"> Let us know</a> if these listings do not match your criteria. This helps us improve our service.</p>
+        </section>
+
+        <section class="email-section">
+            <p class="govuk-body"><a href="#">Visit Teaching Vacancies</a> – the free service for schools in England to list teaching roles and for jobseekers to find them.</p>
+            <p class="govuk-body">Don’t want to receive these email alerts? <a href="#"> Unsubscribe here</a></p>
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -87,6 +87,10 @@ ul.listing-actions {
         a {
             padding-left: 10px !important;
             text-decoration: none;
+
+            &:visited {
+                color: #005EA5;
+            }
         }
     }
 }
@@ -162,5 +166,30 @@ section.criteria-highlight {
                 font-weight: bold;
             }
         }
+    }
+}
+
+/*
+------------------------------------------------------------
+EMAILs
+------------------------------------------------------------
+*/
+
+.email-width {
+    .govuk-width-container {
+        max-width: 600px;
+    }
+}
+
+.email-section {
+
+    border-bottom: 1px #6F777B solid;
+
+    &:first-of-type {
+        border-top: 1px #6F777B solid;
+    }
+
+    &:last-of-type {
+        border-bottom: none;
     }
 }
