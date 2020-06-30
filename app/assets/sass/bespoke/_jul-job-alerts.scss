@@ -1,3 +1,7 @@
+
+.govuk-header__container {
+    border-color: #F47738;
+}
 /*
 ------------------------------------------------------------
 SEARCH RESULTS
@@ -64,6 +68,31 @@ JOB LISTING
 ------------------------------------------------------------
 */
 
+
+/*
+
+@media (min-width: 1020px)
+.govuk-width-container {
+    margin: 0 auto;
+}
+
+.govuk-width-container {
+    max-width: 960px;
+    margin: 0 15px;
+}
+
+@media (min-width: 40.0625em)
+.govuk-main-wrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.govuk-main-wrapper {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+*/
 ul.listing-actions {
     display: grid;
     grid-gap: 20px;
@@ -75,10 +104,6 @@ ul.listing-actions {
         border-bottom: 3px solid #F47738;
         padding-bottom: 10px !important;
         font-weight: bold;
-
-        &.item {
-            grid-column: 1 / 2;
-        }
 
         svg {
             float: left;
