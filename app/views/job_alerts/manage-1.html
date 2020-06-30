@@ -51,9 +51,7 @@
         <section class="criteria-highlight govuk-!-margin-bottom-6 govuk-!-padding-3">
             <ul class="govuk-!-margin-0 govuk-!-padding-0">
                 <li class="govuk-!-font-size-19"><span>Keywords:</span> Maths teacher</li>
-                <li class="govuk-!-font-size-19"><span>Location:</span> within 20 miles of N8 8AP</li>
-                <li class="govuk-!-font-size-19"><span>Filter 1:</span> [Selection], [Selection]</li>
-                <li class="govuk-!-font-size-19"><span>Filter 2:</span> [Selection], [Selection]</li>
+                <li class="govuk-!-font-size-19"><span>Location:</span> London</li>
             </ul>
         </section>
 
@@ -112,19 +110,19 @@
                 </label>
                 <div class="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="alert-delivery1" name="alert-delivery" type="radio" value="daily" checked="checked">
+                        <input class="govuk-radios__input" id="alert-delivery1" name="alert-delivery" type="radio" value="daily" checked="checked" {{ checked("alert-delivery", "daily") }}>
                         <label class="govuk-label govuk-radios__label" for="alert-delivery1">
                             Daily, at the end of the day (at approx 9pm)
                         </label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="alert-delivery2" name="alert-delivery" type="radio" value="weekly">
+                        <input class="govuk-radios__input" id="alert-delivery2" name="alert-delivery" type="radio" value="weekly" {{ checked("alert-delivery", "weekly") }}>
                         <label class="govuk-label govuk-radios__label" for="alert-delivery2">
                             Weekly (Monday morning at approx 9 am)
                         </label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="alert-delivery3" name="alert-delivery" type="radio" value="asap">
+                        <input class="govuk-radios__input" id="alert-delivery3" name="alert-delivery" type="radio" value="asap" {{ checked("alert-delivery", "asap") }}>
                         <label class="govuk-label govuk-radios__label" for="alert-delivery3">
                             As soon as they are listed on Teacher Vacancies
                         </label>
