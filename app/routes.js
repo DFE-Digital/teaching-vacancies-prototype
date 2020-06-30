@@ -18,6 +18,7 @@ router.post('/examples/branching/over-18-answer', function (req, res) {
   } else {
     res.redirect('/mat3/2-job-details')
   }
+  
 
   // let aboutS = req.session.data['trust-location']
 
@@ -26,6 +27,27 @@ router.post('/examples/branching/over-18-answer', function (req, res) {
   // } else {
   //   $("div#aboutTrust").show();
   // }
+
+})
+
+
+// JOB ALERTS - JULY 20
+router.post('/assets/views/job_alerts/create-1', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  // MY NOTE - put the '/assets/views etc' string above into the action="" on the form tag
+
+  let alertMethod = req.session.data['how-contacted']
+
+  if (alertMethod === 'email') {
+    res.redirect('/job_alerts/create-success-email')
+  } else if (alertMethod === 'text') {
+    res.redirect('/job_alerts/create-success-sms')
+  } else {
+    res.redirect('/job_alerts/create-success-email')
+  }
 
 })
 
