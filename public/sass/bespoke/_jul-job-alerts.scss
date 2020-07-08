@@ -67,6 +67,69 @@ div.search-alert {
 }
 
 /*
+Filters
+*/
+
+div.filter-desktop {
+
+    h3.filter-heading {
+
+        svg {
+            float: left;
+            padding-top: 1px;
+        }
+    }
+
+    div.govuk-accordion {
+
+        .govuk-accordion__section {
+
+            .govuk-accordion__section-header {
+
+                h4.govuk-accordion__section-heading {
+        
+                    button.govuk-accordion__section-button {
+                        font-size: 19px;
+                    }
+                }
+            }
+
+            .govuk-accordion__section-content {
+
+            }
+        }
+        .first-section {
+            border-top: 1px solid #b1b4b6;
+        }
+    }
+
+    .options-container-noSearch {
+        border: 5px solid #dee0e2;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 300px;
+        padding: 5px 15px 5px 15px;
+        border-left: 5px solid #dee0e2;
+        border-right: 5px solid #dee0e2;
+        border-bottom: 5px solid #dee0e2;
+    }
+
+    .accordion-default-content-1 {
+        padding: 0;
+    }
+    
+}
+
+/* Responsive mobile */
+@media (max-width: 40.0625em) {
+
+    div.filter-desktop {
+        display: none;
+    }
+
+}
+
+/*
 ------------------------------------------------------------
 JOB LISTING
 ------------------------------------------------------------
