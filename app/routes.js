@@ -32,7 +32,7 @@ router.post('/examples/branching/over-18-answer', function (req, res) {
 
 
 // JOB ALERTS - JULY 20
-router.post('/assets/views/job_alerts/create-1', function (req, res) {
+router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
@@ -42,11 +42,11 @@ router.post('/assets/views/job_alerts/create-1', function (req, res) {
   let alertMethod = req.session.data['how-contacted']
 
   if (alertMethod === 'email') {
-    res.redirect('/job_alerts/create-success-email')
+    res.redirect('/job_alerts2/create-success-email')
   } else if (alertMethod === 'text') {
-    res.redirect('/job_alerts/create-success-sms')
+    res.redirect('/job_alerts2/create-success-sms')
   } else {
-    res.redirect('/job_alerts/create-success-email')
+    res.redirect('/job_alerts2/create-success-email')
   }
 
 })

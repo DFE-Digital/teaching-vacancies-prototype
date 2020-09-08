@@ -1,0 +1,72 @@
+{% extends "layout_gds-basic.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% set bodyClasses = "email-width" %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "index",
+      serviceName: serviceName,
+      serviceUrl: "index"
+  }) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-l">2 new jobs matching your criteria were listed</h1>
+
+        <section class="email-section govuk-!-margin-bottom-6 govuk-!-padding-top-6">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="#">Primary Teacher KS2</a></h3>
+            <p>Hillbot Jones Academy, Stratford, London</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Salary: M1 to UPS3 – £30,480.00 – £49,571.00</li>
+                <li>Working pattern: Full-time only</li>
+                <li>Closing date: 23 September 2020</li>
+            </ul>
+        </section>
+
+        <section class="email-section govuk-!-margin-bottom-6">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="#">Teacher KS1 & KS2</a></h3>
+            <p>Abbey Lane School, Stratford, London</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Salary: M1 to UPS3 – £30,480.00 – £49,571.00</li>
+                <li>Working pattern: Full-time only</li>
+                <li>Closing date: 22 October 2020</li>
+            </ul>
+        </section>
+
+        <section class="email-section govuk-!-margin-bottom-6">
+            <h2 class="govuk-heading-m">This job alert</h2>
+            <p class="govuk-body">We’ll email you details of any new jobs that match the following criteria:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Keyword: Primary teacher</li>
+                <li>Location: In Stratford, London</li>
+                <!-- <li>Filter 1: [selection], [selection]</li> -->
+            </ul>
+            <p>You have set to receive this job alert as soon as a job matching your criteria is listed. You can <a href="manage-1"> manage your alert</a> here.  </p>
+        </section>
+
+        <section class="email-section govuk-!-margin-bottom-6">
+            <h2 class="govuk-heading-m">Are these job listings not relevent?</h2>
+            <p class="govuk-body"><a href="#"> Let us know</a> if these listings do not match your criteria. This helps us improve our service.</p>
+        </section>
+
+        <section class="email-section">
+            <p class="govuk-body"><a href="#">Teaching Vacancies</a> is a free job-listing service from the Department for Education. It helps schools to save money on recruitment and you to take the next step in your career.</p>
+            <p class="govuk-body">Don’t want to receive these email alerts? <a href="#"> Unsubscribe here</a></p>
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

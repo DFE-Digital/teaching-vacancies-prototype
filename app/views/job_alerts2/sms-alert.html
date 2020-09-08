@@ -1,0 +1,162 @@
+{% extends "layout_unbranded.html" %} {% block head %}
+<style>
+    @import "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700";
+
+    .govuk-skip-link {
+        display: none;
+    }
+    .sms-body {
+        font-family: "Open Sans";
+        background: none repeat scroll 0 0 #fff;
+        color: #ffffff;
+        line-height: 26px;
+        max-width: 400px;
+        margin: 0 auto;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .left {
+        position: absolute;
+        top: 0;
+        left: 35px;
+        font-size: 16px;
+    }
+
+    .left:after {
+        border: 3px solid #2095fe;
+        border-right: 3px solid transparent;
+        border-top: 3px solid transparent;
+        content: " ";
+        height: 14px;
+        left: -20px;
+        position: absolute;
+        top: 20px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+        width: 14px;
+    }
+
+    .right {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        font-size: 16px;
+    }
+    header {
+        color: #2095fe;
+        background: #eee;
+        border: 1px solid #ccc;
+        border-bottom: 1px solid #bbb;
+        box-shadow: 0 1px 2px rgba(1, 1, 1, 0.2);
+        height: 60px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 58px;
+        white-space: nowrap;
+    }
+    header h2 {
+        font-weight: bold;
+        color: #111111;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+    }
+    .messages-wrapper {
+        padding-top: 10px;
+        position: relative;
+        border: 1px solid #ddd;
+        border-top: 0 none;
+    }
+    .message {
+        border-radius: 20px 20px 20px 20px;
+        margin: 0 15px 10px;
+        padding: 15px 20px;
+        position: relative;
+    }
+    .message.to {
+        background-color: #2095fe;
+        color: #fff;
+        margin-left: 80px;
+    }
+    .message.from {
+        background-color: #e5e4e9;
+        color: #363636;
+        margin-right: 80px;
+    }
+    .message.to + .message.to,
+    .message.from + .message.from {
+        margin-top: -7px;
+    }
+    .message:before {
+        border-color: #2095fe;
+        border-radius: 50% 50% 50% 50%;
+        border-style: solid;
+        border-width: 0 20px;
+        bottom: 0;
+        clip: rect(20px, 35px, 42px, 0px);
+        content: " ";
+        height: 40px;
+        position: absolute;
+        right: -50px;
+        width: 30px;
+        z-index: -1;
+    }
+    .message.from:before {
+        border-color: #e5e4e9;
+        left: -50px;
+        transform: rotateY(180deg);
+    }
+
+    .control-links {
+      font-family: "GDS Transport", Arial, sans-serif;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .time-date {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 40.0625em) {
+      body {
+        margin: 0;
+      }
+    }
+</style>
+
+{% endblock %} {% block content %}
+
+<div class="sms-body">
+    <header>
+        <span class="left">Messages</span>
+        <h2>Teaching Vacancies</h2>
+        <span class="right">Contact</span>
+    </header>
+    <div class="messages-wrapper">
+        <div class="message from">
+            <span class="time-date">Today - 12:13 PM</span>
+            Teaching vacancies:<br>
+            2 new jobs matching your criteria were posted.
+            <br><br>
+            <a href="#">Primary Teacher KS2</a> <br>
+            Shooters Hill Sixth Form College, Stratford, London <br>
+            Closing date: 23 September 2020
+            <br><br>
+            <a href="#">Math Teacher</a> <br>
+            Sweet Valley High, Stratford, London <br>
+            Closing date: 11 October 2020
+            <br><br>
+            Text back ‘STOP’ at any time to stop receiving this job alert, or <a href="manage-1"> click here to manage your alert</a>.
+        </div>
+        <!-- <div class="message to">
+            <span class="time-date">Today - 12:13 PM</span>
+            STOP
+        </div> -->
+    </div>
+</div>
+<a href="sms-confirmation" class="control-links">Back</a>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout_gds-basic.html" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% set bodyClasses = "email-width" %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+      homepageUrl: "index",
+      serviceName: serviceName,
+      serviceUrl: "index"
+  }) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">You have subscribed to a job alert from teaching vacancies </h1>
+        <p class="govuk-body">We’ll email you details of any new jobs that match the following criteria:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Keyword: Maths teacher</li>
+            <li>Location: London</li>
+            <!-- <li>Filter 1: [selection], [selection]</li> -->
+        </ul>
+        <p>You'll receive a job alert {{ data['alert-delivery'] }} if more than one job matching your criteria is listed.</p>
+        <p>You can unsubscribe by following the link at the bottom of these emails.</p>
+
+        <br><br>
+        <p class="govuk-body"><a href="email-alert">Some time later...</a></p>
+    </div>
+</div>
+
+{% endblock %}
