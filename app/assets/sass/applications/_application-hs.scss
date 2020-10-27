@@ -1,0 +1,162 @@
+/*
+------------------------------------------------------------
+GLOBAL
+------------------------------------------------------------
+*/
+
+/*
+Overwrite global page width in layout-js.html
+bodyClasses macro
+*/
+@media (min-width: 1020px) {
+    .govuk-width-container-hs { 
+
+        /* Header row */
+        .govuk-header {
+            .govuk-width-container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Content row with full BG strip */
+        .full-BGstrip {
+            .govuk-width-container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Content row */
+        .govuk-width-container {
+            max-width: 1200px;
+        }
+
+        /*Footer */
+        .govuk-footer {
+            .govuk-width-container {
+                max-width: 1200px;
+            }
+        }
+    }
+}
+
+/*
+Overwrite header navigation for jobseeker
+header macro
+*/
+
+/*
+------------------------------------------------------------
+HiRiNG STAFF APPLICATION MAST
+------------------------------------------------------------
+*/
+
+section.data-block {
+    background-color: saddlebrown;
+    color: white;
+    display: block;
+    padding: 1em;
+
+    span {
+        color: white;
+    }
+    h4 {
+        font-weight: 400;
+    }
+
+    &.bg-shortlist {
+        background-color:#28a197;
+    }
+    &.bg-reject {
+        background-color: #0b0c0c;
+    }
+    &.bg-review {
+        background-color:#f47738;
+    }
+}
+
+span.acc-tag {
+    text-transform: uppercase;
+    font-weight:700;
+    background-color: red;
+    font-size: 16px;
+    display:inline-block;
+    padding: 3px 6px 3px 6px;
+    letter-spacing: 1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &.acc-tag__nodecision {
+        color: white;
+        background-color: #505a5f;
+    }
+    &.acc-tag__filled {
+        color: white;
+        background-color: #00703c;
+    }
+    &.acc-tag__shortlisted {
+        color: white;
+        background-color: #28a197;
+    }
+    &.acc-tag__review {
+        color: white;
+        background-color: #f47738;
+    }
+    &.acc-tag__reject {
+        color: white;
+        background-color: #0b0c0c;
+    }
+    &.acc-tag__withdrawn {
+        color: white;
+        background-color: #b1b4b6;
+    }
+    &.acc-tag__draft {
+        color: white;
+        background-color: #505a5f;
+    }
+}
+
+.mast-buttons {
+    button {
+        float: right;
+    }
+}
+@media (min-width: 40.0625em) {
+    .mast-buttons {
+        button {
+            &:last-of-type {
+                margin-right: 10px !important;
+            }
+        }
+    }
+}
+
+.mast-subData {
+    span {
+        &.deadline {
+            color: #d4351c;
+            font-weight: 700;
+        }
+    }
+}
+
+/*
+------------------------------------------------------------
+SECTION NAME
+------------------------------------------------------------
+*/
+
+ul.table-actions-list {
+    list-style-type: none;
+}
+
+/*
+------------------------------------------------------------
+SECTION NAME
+------------------------------------------------------------
+*/
+
+/*
+------------------------------------------------------------
+SECTION NAME
+------------------------------------------------------------
+*/

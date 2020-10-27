@@ -42,3 +42,8 @@ $govuk-assets-path: '/govuk/assets/';
 
 // MAT Prototype - July 2020
 @import "bespoke/jul-job-alerts";
+
+// Application Prototype - October 2020
+@import "applications/account-creation";
+@import "applications/application-hs";
+@import "applications/application-js";
