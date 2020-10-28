@@ -55,7 +55,85 @@ PAGE TYPOGRAPHY
     font-weight: 400;
 }
 
+/*
+------------------------------------------------------------
+SERVICE START
+------------------------------------------------------------
+*/
 
+.start-search {
+ 
+    h1, p {
+        color:#FFFFFF;
+    }
+
+    .ss-current {
+        color:#FFFFFF !important;
+    
+        a {
+            color:#FFFFFF !important;
+        }
+    }
+
+    .ss-input {
+        label {
+            color:#FFFFFF !important;
+        } 
+    }
+
+    .add-filters {
+
+        .govuk-details__summary {
+
+            color:#FFFFFF !important;
+    
+            span.govuk-details__summary-text {
+                &:hover, &:active {
+                    color: #0b0c0c;
+                }
+            }
+        }
+
+        legend {
+
+            h3 {
+                color:#FFFFFF !important;
+            }
+            
+        }
+
+        .checkbox-group__container {
+
+            .tv-checkbox__group {
+                background-color: #fff;
+                padding-bottom: 0;
+                padding-top: 0;
+                border: 5px solid #f3f2f1;
+                padding: 10px 10px 10px 10px;
+
+                .govuk-form-group {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+    }
+    
+}
+
+.ss-signin {
+    padding: 25px;
+    background-color: rgba(11,12,12,.5);
+
+    h2, p, a {
+        color:#FFFFFF !important;
+    }
+}
+
+.two-column-list {
+    -moz-column-count: 2;
+    column-count: 2;
+}
 
 /*
 ------------------------------------------------------------
@@ -168,9 +246,29 @@ ul.acc-navigation__list {
 
 /*
 ------------------------------------------------------------
-SECTION NAME
+ACCOUNT SECTIONS
 ------------------------------------------------------------
 */
+
+.acc-applications__table {
+
+    font-size: 16px;
+
+    th.govuk-table__header {
+
+        span.name-listing {
+            font-weight: 400;
+        }
+        span.accepting {
+            font-weight: 400;
+            color: #00703c;
+        }
+        span.passed {
+            font-weight: 400;
+            color: #d4351c;
+        }
+    }
+}
 
 /*
 ------------------------------------------------------------
