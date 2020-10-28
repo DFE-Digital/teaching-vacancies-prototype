@@ -18,6 +18,7 @@ $govuk-assets-path: '/govuk/assets/';
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "bespoke/general";
 @import "bespoke/release-notes";
+@import "bespoke/alerts";
 
 // Commute - October 2019
 @import "bespoke/start-page";
