@@ -37,6 +37,8 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
+{% set bodyClasses = "govuk-width-container-js" %}
+
 {% block header %}
 
   {# Set serviceName in config.js. #}
@@ -52,7 +54,13 @@
       },
       {
         href: "#",
-        text: "List a teaching job"
+        text: "Sign in"
+      }
+      ,
+      {
+        href: "#",
+        class: "test-class",
+        text: "For schools"
       }
     ]
   }) }}

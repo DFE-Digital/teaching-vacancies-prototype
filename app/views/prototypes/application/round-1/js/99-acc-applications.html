@@ -1,7 +1,7 @@
 {% extends "layout-js.html" %}
 
 {% block pageTitle %}
-  Find a job in Teaching
+    T / JS / My applications
 {% endblock %}
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
@@ -15,6 +15,15 @@
         <main class="govuk-main-wrapper govuk-!-padding-0">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
+
+                    <!-- START ALERT SUCCESS -->
+                    <div class="tvs-alert alert-js-success govuk-!-margin-bottom-0 govuk-!-margin-top-4">
+                        <svg class="alert-icon"  width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9375 0L9.75 12L4.0625 6.4L0 10.4L9.75 20L26 4L21.9375 0Z" fill="#006435"/></svg>
+                        <!-- <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Alert title</h4> -->
+                        <p class="govuk-body">Thank you for your feedback on applying through Teaching Vacancies</p>
+                    </div>
+                    <!-- END ALERT SUCCESS -->
+
                     {% include "includes/applications/acc-applications.html" %}
                 </div>
             </div>

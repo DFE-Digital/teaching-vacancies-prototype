@@ -1,0 +1,134 @@
+/*
+------------------------------------------------------------
+GLOBAL
+------------------------------------------------------------
+*/
+
+body {
+    font-family: "GDS Transport", "nta", Arial, sans-serif;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.govuk-header__container {
+    border-color: #F47738;
+}
+
+/*
+------------------------------------------------------------
+HIRING STAFF WIDTH OVERRIDES
+------------------------------------------------------------
+*/
+
+/*
+Overwrite global page width in layout-js.html
+bodyClasses macro
+*/
+@media (min-width: 1020px) {
+    .govuk-width-container-hs { 
+
+        /* Header row */
+        .govuk-header {
+            .govuk-width-container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Content row with full BG strip */
+        .full-BGstrip {
+            .govuk-width-container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Content row */
+        .govuk-width-container {
+            max-width: 1200px;
+        }
+
+        /*Footer */
+        .govuk-footer {
+            .govuk-width-container {
+                max-width: 1200px;
+            }
+        }
+    }
+}
+
+/*
+------------------------------------------------------------
+JOBSEEKER WIDTH OVERRIDES
+------------------------------------------------------------
+*/
+
+/*
+Overwrite global page width in layout-js.html
+bodyClasses macro
+*/
+@media (min-width: 1020px) {
+    .govuk-width-container-js { 
+
+        /* Header row */
+        .govuk-header {
+            .govuk-width-container {
+                max-width: 1020px;
+            }
+        }
+
+        /* Content row with full BG strip */
+        .full-BGstrip {
+            .govuk-width-container {
+                max-width: 1020px;
+            }
+        }
+
+        /* Content row */
+        .govuk-width-container {
+            max-width: 1020px;
+        }
+
+        /*Footer */
+        .govuk-footer {
+            .govuk-width-container {
+                max-width: 1020px;
+            }
+        }
+    }
+}
+
+/*
+------------------------------------------------------------
+HIDE FOR MOBILE HACKS
+------------------------------------------------------------
+*/
+
+/*
+Job advert - contents list
+*/
+
+.visually-hidden {
+    position: absolute;
+    left: -9999em;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.mobile-hide { display: none; }
+.mobile-show { display: none;}
+
+@media (max-width: 40.0625em) {
+    .mobile-show { display: block;}
+
+}
+@media (min-width: 40.0625em) {
+    .mobile-hide { display: block; }
+}
+
+/* (max-width: 600px) = change when window is 600px wide or less (Mobile) */
+/* (min-width: 600px) = change when window is 600px wide or more (Desktop) */

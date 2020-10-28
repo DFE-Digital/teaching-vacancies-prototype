@@ -1,0 +1,121 @@
+
+/*
+------------------------------------------------------------
+PAGE TYPOGRAPHY
+------------------------------------------------------------
+*/
+
+.mast-subHeading {
+    color: #505a5f;
+    font-weight: 400;
+}
+
+
+/*
+------------------------------------------------------------
+ACCOUNT SUB-NAVIGATION
+------------------------------------------------------------
+*/
+
+ul.acc-navigation__list {
+
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li.acc-navigation__list-item {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        height: 50px;
+        padding: 0 15px;
+        float: left;
+        line-height: 50px;
+
+        a {
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1875rem;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+
+    li.app-navigation__list-item--current {
+        border-bottom: 4px solid #1d70b8;
+
+        a {
+            color: #0b0c0c;
+        }
+    }
+
+}
+
+@media (max-width: 40.0625em) {
+
+    ul.acc-navigation__list {
+
+        li.acc-navigation__list-item {
+            float: none;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        li.app-navigation__list-item--current {
+
+            border-bottom: 0;
+            border-left: 4px solid #1d70b8;
+
+        }
+
+    }
+
+}
+
+.acc-username {
+
+    span {
+        font-weight: normal;
+    } 
+}
+
+/*
+------------------------------------------------------------
+ACCOUNT SECTIONS
+------------------------------------------------------------
+*/
+
+.acc-applications__table {
+
+    font-size: 16px;
+
+    th.govuk-table__header {
+
+        span.name-listing {
+            font-weight: 400;
+        }
+        span.accepting {
+            font-weight: 400;
+            color: #00703c;
+        }
+        span.passed {
+            font-weight: 400;
+            color: #d4351c;
+        }
+    }
+}
+
+/*
+------------------------------------------------------------
+SECTION NAME
+------------------------------------------------------------
+*/

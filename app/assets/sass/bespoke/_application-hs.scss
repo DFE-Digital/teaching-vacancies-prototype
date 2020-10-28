@@ -1,51 +1,5 @@
 /*
 ------------------------------------------------------------
-GLOBAL
-------------------------------------------------------------
-*/
-
-/*
-Overwrite global page width in layout-js.html
-bodyClasses macro
-*/
-@media (min-width: 1020px) {
-    .govuk-width-container-hs { 
-
-        /* Header row */
-        .govuk-header {
-            .govuk-width-container {
-                max-width: 1200px;
-            }
-        }
-
-        /* Content row with full BG strip */
-        .full-BGstrip {
-            .govuk-width-container {
-                max-width: 1200px;
-            }
-        }
-
-        /* Content row */
-        .govuk-width-container {
-            max-width: 1200px;
-        }
-
-        /*Footer */
-        .govuk-footer {
-            .govuk-width-container {
-                max-width: 1200px;
-            }
-        }
-    }
-}
-
-/*
-Overwrite header navigation for jobseeker
-header macro
-*/
-
-/*
-------------------------------------------------------------
 HiRiNG STAFF APPLICATION MAST
 ------------------------------------------------------------
 */
@@ -93,7 +47,7 @@ span.acc-tag {
         color: white;
         background-color: #00703c;
     }
-    &.acc-tag__shortlisted {
+    &.acc-tag__shortlist {
         color: white;
         background-color: #28a197;
     }
@@ -141,12 +95,18 @@ span.acc-tag {
 
 /*
 ------------------------------------------------------------
-SECTION NAME
+ACCOUNT VIEWS
 ------------------------------------------------------------
 */
 
 ul.table-actions-list {
     list-style-type: none;
+}
+
+h2.table-title-number {
+    span {
+        font-weight: 400 !important;
+    }
 }
 
 /*

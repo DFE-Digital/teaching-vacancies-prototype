@@ -1,5 +1,100 @@
 
 /*
+------------------------------------------------------------
+SEARCH BLOCK
+------------------------------------------------------------
+*/
+
+.start-search {
+ 
+    h1, p {
+        color:#FFFFFF;
+    }
+
+    .ss-current {
+        color:#FFFFFF !important;
+    
+        a {
+            color:#FFFFFF !important;
+        }
+    }
+
+    .ss-input {
+        label {
+            color:#FFFFFF !important;
+        } 
+    }
+
+    .add-filters {
+
+        .govuk-details__summary {
+
+            color:#FFFFFF !important;
+    
+            span.govuk-details__summary-text {
+                &:hover, &:active {
+                    color: #0b0c0c;
+                }
+            }
+        }
+
+        legend {
+
+            h3 {
+                color:#FFFFFF !important;
+            }
+            
+        }
+
+        .checkbox-group__container {
+
+            .tv-checkbox__group {
+                background-color: #fff;
+                padding-bottom: 0;
+                padding-top: 0;
+                border: 5px solid #f3f2f1;
+                padding: 10px 10px 10px 10px;
+
+                .govuk-form-group {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+    }
+    
+}
+
+.ss-signin {
+    padding: 25px;
+    background-color: rgba(11,12,12,.5);
+
+    h2, p, a {
+        color:#FFFFFF !important;
+    }
+}
+
+/*
+------------------------------------------------------------
+LOCATIONS LIST
+------------------------------------------------------------
+*/
+
+.two-column-list {
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+TO SORT BELOW / DONT DELETE MAY EFFECT OLD PROTOYPES
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+*/
+
+/*
 ---------- Search form ------------------------------
 */
 
