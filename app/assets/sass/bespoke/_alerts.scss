@@ -56,6 +56,16 @@ div.alert-js-callout {
     }
 }
 
+div.alert-js-empty {
+    background :#F8F8F8;
+    border: 5px dashed #b1b4b6;
+    padding: 25px !important;
+
+    p {
+        padding:0 !important;
+    }
+}
+
 div.alert-js-callout2 {
     background :#ffffff;
     border: 5px solid #005EA5;

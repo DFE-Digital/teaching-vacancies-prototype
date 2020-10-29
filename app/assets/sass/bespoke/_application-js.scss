@@ -85,19 +85,16 @@ ACCOUNT SECTIONS
 
     font-size: 16px;
 
-    th.govuk-table__header {
-
-        span.name-listing {
-            font-weight: 400;
-        }
-        span.accepting {
-            font-weight: 400;
-            color: #00703c;
-        }
-        span.passed {
-            font-weight: 400;
-            color: #d4351c;
-        }
+    span.name-listing {
+        font-weight: 400;
+    }
+    span.accepting {
+        font-weight: 700;
+        color: #00703c;
+    }
+    span.passed {
+        font-weight: 700;
+        color: #d4351c;
     }
 }
 
