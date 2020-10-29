@@ -56,6 +56,7 @@ $(document).ready(function(){
     });
 
     // function reviewHack() {
+    /*
     if (document.getElementById("location-trigger").textContent.includes('more')) {
         $("a#p-trust").hide();
         $("a#p-multiple").show();
@@ -67,6 +68,7 @@ $(document).ready(function(){
         $("p#trustz").show();
         $("p#schoolz").hide();
     }
+    */
    
 /*
     var local = document.getElementById("schoolz").value;

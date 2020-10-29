@@ -1,0 +1,254 @@
+
+/*
+------------------------------------------------------------
+SEARCH BLOCK
+------------------------------------------------------------
+*/
+
+.start-search {
+ 
+    h1, p {
+        color:#FFFFFF;
+    }
+
+    .ss-current {
+        color:#FFFFFF !important;
+    
+        a {
+            color:#FFFFFF !important;
+        }
+    }
+
+    .ss-input {
+        label {
+            color:#FFFFFF !important;
+        } 
+    }
+
+    .add-filters {
+
+        .govuk-details__summary {
+
+            color:#FFFFFF !important;
+    
+            span.govuk-details__summary-text {
+                &:hover, &:active {
+                    color: #0b0c0c;
+                }
+            }
+        }
+
+        legend {
+
+            h3 {
+                color:#FFFFFF !important;
+            }
+            
+        }
+
+        .checkbox-group__container {
+
+            .tv-checkbox__group {
+                background-color: #fff;
+                padding-bottom: 0;
+                padding-top: 0;
+                border: 5px solid #f3f2f1;
+                padding: 10px 10px 10px 10px;
+
+                .govuk-form-group {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+    }
+    
+}
+
+.ss-signin {
+    padding: 25px;
+    background-color: rgba(11,12,12,.5);
+
+    h2, p, a {
+        color:#FFFFFF !important;
+    }
+}
+
+/*
+------------------------------------------------------------
+LOCATIONS LIST
+------------------------------------------------------------
+*/
+
+.two-column-list {
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+TO SORT BELOW / DONT DELETE MAY EFFECT OLD PROTOYPES
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+*/
+
+/*
+---------- Search form ------------------------------
+*/
+
+form.start-search {
+    background-color: $govuk-link-colour;
+    padding: 20px 20px 0px 20px;
+    margin-bottom: 30px;
+
+    h1 { color: #FFF; }
+    .label-blue { color: #FFF; font-weight: bold; }
+    div.start-show-more {margin-bottom: 20px;}
+    a#toggle { color: #FFF; margin-bottom: 20px;}
+    a#toggle:focus { color: #000; }
+    a { color: #FFF; }
+    p { color: #FFF; }
+
+    .govuk-fieldset {
+
+        .commute-input {
+            margin-bottom: 10px;
+        }
+
+        .commute-inset {
+            margin-bottom: 20px;
+            display: none;
+        }
+
+    }
+
+}
+
+
+div#expand {
+    display: none;
+}
+
+/*
+.input-location {
+    width: 66.66% !important;
+}
+
+.input-radius {
+    margin-right: 0;
+    width: 29% !important;
+
+    select#radius {
+        height: 40px;
+        border: none;
+        font-size: 19px;
+        width: 100%;
+    }
+}
+*/
+
+@media (max-width: 40.0625em) {
+    /*
+    .input-location {
+        width: 65% !important;
+        margin-right:5px;
+    }
+    .input-radius {
+        width: 32% !important;
+        font-size: 16px;
+    }
+    */
+}
+
+
+.regions-list {
+    -moz-column-count: 2;
+    -moz-column-gap: 30px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 30px;
+    column-count: 2;
+    column-gap: 30px;
+    list-style-type: none;
+    padding: 0;
+
+
+    li {
+        font-size: 19px;
+        font-weight: 700;
+        padding-bottom: .263em;
+        margin-top: .263em;
+        display: inline-block;
+        width: 100%;
+
+        a {
+            text-decoration: none;
+            text-transform: none;
+        }
+    }
+}
+
+ul.boroughs-list {
+    list-style-type: none;
+    padding: 0;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        &:first-of-type {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media (max-width: 40.0625em) {
+    .regions-list {
+        -moz-column-count: 1;
+        -moz-column-gap: 30px;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 30px;
+        column-count: 1;
+        column-gap: 30px;
+    }
+}
+
+/*
+---------- Autocomplete ------------------------------
+*/
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+
+    .autocomplete-items {
+        display: none;
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        a {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+            color: #005ea5;
+            display: block;
+
+            &:hover {
+                color: white;
+                background-color: #b1b4b6;
+            }
+        }
+    }
+}

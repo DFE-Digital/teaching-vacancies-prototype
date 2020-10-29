@@ -1,102 +1,371 @@
-
 /*
----------- Search title ------------------------------
+------------------------------------------------------------
+STICKY JOB ALERT
+------------------------------------------------------------
 */
 
-.search-title {
-    margin-bottom: 30px;
+div.search-alert {
+  background-color: #005ea5;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom: 0;
+  box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.2);
+
+  svg {
+    float: left;
+  }
+
+  p {
+    color: white;
+    padding-left: 30px !important;
+  }
+
+  a {
+    color: white;
+
+    &:active {
+      color: black;
+    }
+    &:focus {
+      color: black;
+    }
+  }
+}
+
+/*
+------------------------------------------------------------
+SIDE SEARCH
+------------------------------------------------------------
+*/
+
+.side-search {
+  background-color: #dee0e2;
+  padding: 15px;
+
+  button.govuk-button {
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
+
+/*
+------------------------------------------------------------
+FILTER RESULTS
+------------------------------------------------------------
+*/
+
+div.filter-desktop {
+  h3.filter-heading {
+    svg {
+      float: left;
+      padding-top: 1px;
+    }
+  }
+
+  div.govuk-accordion {
+    .govuk-accordion__section {
+      .govuk-accordion__section-header {
+        h4.govuk-accordion__section-heading {
+          button.govuk-accordion__section-button {
+            font-size: 19px;
+          }
+        }
+      }
+
+      .govuk-accordion__section-content {
+      }
+    }
+    .first-section {
+      border-top: 1px solid #b1b4b6;
+    }
+  }
+
+  .options-container-noSearch {
+    border: 5px solid #dee0e2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 300px;
+    padding: 5px 15px 5px 15px;
+    border-left: 5px solid #dee0e2;
+    border-right: 5px solid #dee0e2;
+    border-bottom: 5px solid #dee0e2;
+  }
+
+  .accordion-default-content-1 {
+    padding: 0;
+  }
+}
+
+/* Responsive mobile */
+@media (max-width: 40.0625em) {
+
+    div.filter-desktop {
+        display: none;
+    }
+
+}
+
+/*
+------------------------------------------------------------
+SEARCH RESULT 
+------------------------------------------------------------
+*/
+
+ul.vacancies {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    border-bottom: 1px solid #dee0e2;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+
+    div.actions {
+      display: flex;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      text-align: center;
+
+      .option-days {
+        border: 2px solid #28a197;
+        background-color: rgba(40, 161, 151, 0.1);
+        margin-right: 10px;
+      }
+
+      .option-close {
+        border: 2px solid #df3034;
+        background-color: rgba(223, 48, 52, 0.1);
+        margin-right: 10px;
+      }
+
+      .option-save {
+        border: none;
+        display: flex;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+
+        svg {
+          margin-right: 5px;
+        }
+
+        a {
+          font-size: 19px;
+        }
+      }
+
+      .update-tag {
+        padding: 5px;
+      }
+    }
+    @media (max-width: 40.0625em) {
+      div.actions {
+        .option-days {
+          margin-right: 0;
+        }
+
+        .option-close {
+          margin-right: 0;
+        }
+
+        .option-save {
+          justify-content: left;
+        }
+
+        .option-save-couple {
+          justify-content: center;
+        }
+
+        .update-tag {
+          width: 46%;
+
+          padding: 5px;
+        }
+      }
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    dl {
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 400;
+
+      dt {
+        width: 24%;
+        display: inline-block;
+        vertical-align: top;
+        padding-bottom: 5px;
+        color: #6f777b;
+      }
+
+      dd.double {
+        width: 60%;
+        display: inline-block;
+        vertical-align: top;
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+/*
+------------------------------------------------------------
+PAGINATION
+------------------------------------------------------------
+*/
+
+/* https://home-office-digital-patterns.herokuapp.com/components/pagination */
+
+.pagination .pagination_list-items {
+  li {
+    display: inline-block;
+
+    a {
+      color: #005ea5;
+      display: inline-block;
+      padding: 15px 5px 10px 5px;
+      margin-right: 15px;
+      text-decoration: none;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+    &.active a,
+    &.active a:hover {
+      color: #005ea5;
+      -webkit-box-shadow: inset 0px -5px 0px 0px #005ea5;
+      -moz-box-shadow: inset 0px -5px 0px 0px #005ea5;
+      box-shadow: inset 0px -5px 0px 0px #005ea5;
+    }
+  }
+}
+
+.padding {
+  padding-left: 15px;
+}
+
+.pagination {
+  padding: 0;
+}
+.pagination__item {
+  display: inline-block;
+  list-style: none;
+}
+.pagination__link {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background: #f8f8f8;
+    outline: 3px solid #ffbf47;
+  }
+
+  &.current {
+    color: #0b0c0c;
+    font-weight: 700;
+    border: none;
+    pointer-events: none;
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      color: #0b0c0c;
+      background: none;
+    }
+  }
+}
+
+.pagination__summary {
+  -webkit-font-smoothing: antialiased;
+  padding: 8px 0;
+
+  @media (min-width: 642px) {
+    float: right;
+  }
 }
 
 
 /*
----------- Results top ------------------------------
+------------------------------------------------------------
+SORTING
+------------------------------------------------------------
 */
 
-.results-top {
+div.results-top {
     overflow: auto;
 
-    hr {
-        border: solid #000 3px;
-        margin-bottom: 20px;
+    p {
+        float: right;
+        padding: 8px 0  ;
     }
-}
-h4.results-amount {
-    margin-bottom: 5px;
-    font-weight: normal;
 
-    span {
-        font-weight: bold;
-    }
-}
+    div.govuk-form-group {
+        float: left;
+        margin-bottom: 10px;
 
-p.page-amount {
-    float: left;
-    font-size: 24px;
-    margin-top: 5px;
-
-    span {
-        font-weight: bold;
-    }
-}
-@media (max-width: 40.0625em) {
-    p.page-amount {
-        font-size: 19px;
-        margin-top: 10px;
-    }
-    .results-top {
-        margin-bottom: 20px;
+        .sort-label {
+            padding-right: 5px;
+            display: inline-block;
+            margin-bottom: 15px;
+          }
     }
 }
 
-div.results-top div.govuk-form-group {
-    float: left;
-    margin-bottom: 10px;
-}
+/*
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+TO SORT BELOW / DONT DELETE MAY EFFECT OLD
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+*/
 
-.sort-label {
-
-    padding-right: 5px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
 
 /*
 ---------- Mobile filter accordion ------------------------------
 */
 
-
 div.govuk-accordion {
-    padding: 0px 10px 0px 10px;
-    background-color: #f3f2f1;
+  padding: 0px 10px 0px 10px;
+  background-color: #f3f2f1;
 
-    &.js-enabled {
-        border-bottom: 0px;
+  &.js-enabled {
+    border-bottom: 0px;
+  }
+
+  div.govuk-accordion__controls {
+    display: none;
+  }
+  div.govuk-accordion__section {
+    .govuk-accordion__section-header {
+      border-top: 0px solid #b1b4b6;
+      padding: 10px 0 10px 0;
+
+      &:hover {
+        box-shadow: none;
+      }
     }
-
-    div.govuk-accordion__controls {
-        display: none;
-    }
-    div.govuk-accordion__section {
-
-        .govuk-accordion__section-header {
-                border-top: 0px solid #b1b4b6;
-                padding: 10px 0 10px 0;
-
-            &:hover {
-                box-shadow: none;
-            }
-        }
-        .govuk-accordion__section-content {
-            /* background-color: white;
+    .govuk-accordion__section-content {
+      /* background-color: white;
             padding: 10px; */
-            margin-bottom: 10px;
-
-        }
-
-        .govuk-accordion__icon {
-            right: 0;
-        }
+      margin-bottom: 10px;
     }
+
+    .govuk-accordion__icon {
+      right: 0;
+    }
+  }
 }
 
 /*
@@ -104,56 +373,56 @@ div.govuk-accordion {
 */
 
 .facet-tags__wrapper {
-    vertical-align: middle;
-    margin: 0 0 0 0;
+  vertical-align: middle;
+  margin: 0 0 0 0;
 
-    p {
-        display: inline-block;
-    }
+  p {
+    display: inline-block;
+  }
 }
 
 .facet-tag {
-    display: inline-block;
-    position: relative;
-    padding: 8px 7px 7px 23px;
-    border: 2px solid #6f777b;
-    border-radius: 5px;
-    // background-color: #f8f8f8;
-    margin-right: 5px;
+  display: inline-block;
+  position: relative;
+  padding: 8px 7px 7px 23px;
+  border: 2px solid #6f777b;
+  border-radius: 5px;
+  // background-color: #f8f8f8;
+  margin-right: 5px;
 }
 
 .facet-tag__text {
-    display: inline-block;
-    margin: 0 0 0 5px;
-    font-size: 16px;
+  display: inline-block;
+  margin: 0 0 0 5px;
+  font-size: 16px;
 }
 
 .facet-tag__remove {
-    color: #005ea5;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-family: "nta", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.1428571429;
-    text-align: left;
-    cursor: pointer;
-    text-decoration: none;
-    background: none;
-    border: 0;
+  color: #005ea5;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "nta", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  border: 0;
 }
 .facet-tag__remove:focus {
-    outline: 3px solid #ffbf47;
-    outline-offset: 0;
+  outline: 3px solid #ffbf47;
+  outline-offset: 0;
 }
 
 /*
@@ -161,178 +430,176 @@ div.govuk-accordion {
 */
 
 .map-title {
-    span {
-        font-weight: 700;
-    }
+  span {
+    font-weight: 700;
+  }
 }
 
 .commute-map {
-    width: 100%;
-    background-color: #dee0e2;
-    position: relative;
+  width: 100%;
+  background-color: #dee0e2;
+  position: relative;
 
-    img {
-        display: block;
-        z-index: 1;
+  img {
+    display: block;
+    z-index: 1;
+  }
+
+  .pin-popup {
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    display: none;
+    z-index: 100;
+
+    &.popup-g {
+      top: 60px;
     }
 
-    .pin-popup {
-        position: absolute;
-        left: 10px;
-        top: 30px;
-        display: none;
-        z-index: 100;
+    .popup-content {
+      background: white;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+      width: 232px;
+      padding: 15px;
 
-        &.popup-g {
-            top: 60px;
+      h4 {
+        margin: 0 0 5px 0;
+      }
+      p.school-name {
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      p.details {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      p.commute {
+        font-size: 14px;
+
+        span {
+          font-weight: 700;
         }
+      }
 
-        .popup-content {
-            background: white;
-            box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-            width: 232px;
-            padding: 15px;
+      p {
+        margin: 0;
+      }
+    }
+    .popup-tip-container {
+      margin: 0 auto;
+      width: 40px;
+      height: 20px;
+      position: relative;
+      overflow: hidden;
 
-            h4 {
-                margin: 0 0 5px 0;
-            }
-            p.school-name {
-                margin-bottom: 10px;
-                font-weight: 700;
-                font-size: 14px;
-            }
+      .popup-tip {
+        background: white;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+        width: 17px;
+        height: 17px;
+        padding: 1px;
+        margin: -10px auto 0;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+    .popup-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 4px 4px 0 0;
+      text-align: center;
+      width: 18px;
+      height: 14px;
+      font: 16px/14px Tahoma, Verdana, sans-serif;
+      color: #005ea5;
+      text-decoration: none;
+      font-weight: bold;
+      background: transparent;
+    }
+  }
 
-            p.details {
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
+  .pin1 {
+    position: absolute;
+    left: 125px;
+    top: 235px;
 
-            p.commute {
-                font-size: 14px;
+    a:focus {
+      box-shadow: none;
+      background-color: inherit;
+    }
+  }
+  .pin2 {
+    position: absolute;
+    left: 20px;
+    top: 430px;
 
-                span {
-                    font-weight: 700;
-                }
-            }
+    a:focus {
+      box-shadow: none;
+      background-color: inherit;
+    }
+  }
+  .pin3 {
+    position: absolute;
+    left: 270px;
+    top: 40px;
 
-            p {
-                margin: 0;
-            }
-        }
-        .popup-tip-container {
+    a:focus {
+      box-shadow: none;
+      background-color: inherit;
+    }
+  }
+  .pin4 {
+    position: absolute;
+    left: 310px;
+    top: 255px;
 
-            margin: 0 auto;
-            width: 40px;
-            height: 20px;
-            position: relative;
-            overflow: hidden;
+    a:focus {
+      box-shadow: none;
+      background-color: inherit;
+    }
+  }
+  .pin5 {
+    position: absolute;
+    left: 50px;
+    top: 400px;
 
-            .popup-tip {
-                background: white;
-                box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-                width: 17px;
-                height: 17px;
-                padding: 1px;
-                margin: -10px auto 0;
-                -webkit-transform: rotate(45deg);
-                -moz-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                -o-transform: rotate(45deg);
-                transform: rotate(45deg);
+    a:focus {
+      box-shadow: none;
+      background-color: inherit;
+    }
+  }
 
-            }
-        }
-        .popup-close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 4px 4px 0 0;
-            text-align: center;
-            width: 18px;
-            height: 14px;
-            font: 16px/14px Tahoma, Verdana, sans-serif;
-            color: #005ea5;
-            text-decoration: none;
-            font-weight: bold;
-            background: transparent;
-        }
+  .cluster {
+    position: absolute;
+    left: 210px;
+    top: 340px;
+  }
+
+  .increase-time {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 75%;
+    background-color: white;
+    padding: 10px;
+
+    p {
+      margin-bottom: 10px;
     }
 
-    .pin1 {
-        position: absolute;
-        left:125px;
-        top: 235px;
-
-        a:focus {
-            box-shadow: none;
-            background-color: inherit;
-        }
+    ul {
+      margin: 0;
+      list-style-type: none;
+      padding: 0;
     }
-    .pin2 {
-        position: absolute;
-        left:20px;
-        top: 430px;
-
-        a:focus {
-            box-shadow: none;
-            background-color: inherit;
-        }
-    }
-    .pin3 {
-        position: absolute;
-        left:270px;
-        top: 40px;
-
-        a:focus {
-            box-shadow: none;
-            background-color: inherit;
-        }
-    }
-    .pin4 {
-        position: absolute;
-        left:310px;
-        top: 255px;
-
-        a:focus {
-            box-shadow: none;
-            background-color: inherit;
-        }
-    }
-    .pin5 {
-        position: absolute;
-        left:50px;
-        top: 400px;
-
-        a:focus {
-            box-shadow: none;
-            background-color: inherit;
-        }
-    }
-
-    .cluster {
-        position: absolute;
-        left:210px;
-        top:340px;
-    }
-
-    .increase-time {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        width: 75%;
-        background-color: white;
-        padding: 10px;
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        ul {
-            margin: 0;
-            list-style-type: none;
-            padding: 0;
-        }
-    }
+  }
 }
 
 /*
@@ -340,228 +607,116 @@ div.govuk-accordion {
 */
 
 .map-tabs {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
 
 /*
 ---------- Map loading ------------------------------
 */
 
 .loader-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 30px;
+  .loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #005ea5; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+  }
 
-    .loader {
-      border: 8px solid #f3f3f3; /* Light grey */
-      border-top: 8px solid #005ea5; /* Blue */
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-      margin-right: 10px;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    100% {
+      transform: rotate(360deg);
     }
+  }
 
-    h4 {
-        margin: 0;
-    }
+  h4 {
+    margin: 0;
+  }
 }
-
-
 
 /*
 ---------- Vacancy results list ------------------------------
 */
-
-ul.vacancies {
-
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-        border-bottom: 1px solid #dee0e2;
-        padding-bottom: 15px;
-        margin-bottom: 15px;
-
-
-        div.actions {
-            display: flex;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            text-align: center;
-
-            .option-days {
-                border: 2px solid #28A197;
-                background-color: rgba(40, 161, 151, 0.1);
-                margin-right: 10px;
-            }
-
-            .option-close {
-                border: 2px solid #DF3034;
-                background-color: rgba(223, 48, 52, 0.1);
-                margin-right: 10px;
-            }
-
-            .option-save {
-                border: none;
-                display: flex;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-
-                svg {
-                    margin-right: 5px;
-                }
-
-                a {
-                    font-size: 19px;
-                }
-            }
-
-
-
-            .update-tag {
-                padding: 5px;
-            }
-        }
-        @media (max-width: 40.0625em) {
-            div.actions {
-
-                .option-days {
-                    margin-right: 0;
-                }
-
-                .option-close {
-                    margin-right: 0;
-                }
-
-                .option-save {
-                    justify-content: left;
-                }
-
-                .option-save-couple {
-                    justify-content: center;
-                }
-
-                .update-tag {
-                    width: 46%;
-
-                    padding: 5px;
-                }
-            }
-        }
-
-        h2 {
-            font-weight: 700;
-            font-size: 22px;
-            margin-bottom: 5px;
-        }
-        p {
-            margin-bottom:15px;
-        }
-        dl {
-            font-size: 16px;
-            line-height: 1.25;
-            font-weight: 400;
-
-            dt {
-                width: 24%;
-                display: inline-block;
-                vertical-align: top;
-                padding-bottom: 5px;
-                color: #6f777b;
-            }
-
-            dd.double {
-                width: 60%;
-                display: inline-block;
-                vertical-align: top;
-                padding-bottom: 5px;
-            }
-
-        }
-    }
-}
 
 /*
 ---------- Results list pagination ------------------------------
 */
 
 .gem-c-pagination {
-    display: block;
-    margin: 15px -15px 30px -15px;
+  display: block;
+  margin: 15px -15px 30px -15px;
 
-    .gem-c-pagination__list {
-        margin: 0;
-        padding: 0;
+  .gem-c-pagination__list {
+    margin: 0;
+    padding: 0;
 
-        .gem-c-pagination__item {
-            font-weight: 400;
-            list-style: none;
+    .gem-c-pagination__item {
+      font-weight: 400;
+      list-style: none;
 
-            .gem-c-pagination__link {
-                display: block;
-                padding: 15px;
-                text-decoration: none;
+      .gem-c-pagination__link {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
 
-                &:hover {
-                    color: #005ea5;
-                }
-                &:active {
-                    color: #005ea5;
-                }
-                &:visited {
-                    color: #005ea5;
-                }
-                &:focus {
-                    color: #005ea5;
-                }
-
-                .gem-c-pagination__link-title {
-                    display: block;
-
-                    .gem-c-pagination__link-icon {
-                        display: inline-block;
-                        margin-bottom: 1px;
-                        height: .482em;
-                        width: .63em;
-                        font-weight: 400;
-                    }
-                    .gem-c-pagination__link-text {
-                        margin-left: 10px;
-                        font-weight: 700;
-                    }
-                    .gem-c-pagination__link-divider {
-                        position: absolute !important;
-                        width: 1px !important;
-                        height: 1px !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        overflow: hidden !important;
-                        clip: rect(0 0 0 0) !important;
-                        -webkit-clip-path: inset(50%) !important;
-                        clip-path: inset(50%) !important;
-                        border: 0 !important;
-                        white-space: nowrap !important;
-                    }
-                    .gem-c-pagination__link-label {
-                        display: inline-block;
-                        margin-top: .1em;
-                        text-decoration: underline;
-                        margin-left: 25px;
-                    }
-                }
-            }
+        &:hover {
+          color: #005ea5;
         }
+        &:active {
+          color: #005ea5;
+        }
+        &:visited {
+          color: #005ea5;
+        }
+        &:focus {
+          color: #005ea5;
+        }
+
+        .gem-c-pagination__link-title {
+          display: block;
+
+          .gem-c-pagination__link-icon {
+            display: inline-block;
+            margin-bottom: 1px;
+            height: 0.482em;
+            width: 0.63em;
+            font-weight: 400;
+          }
+          .gem-c-pagination__link-text {
+            margin-left: 10px;
+            font-weight: 700;
+          }
+          .gem-c-pagination__link-divider {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+            clip: rect(0 0 0 0) !important;
+            -webkit-clip-path: inset(50%) !important;
+            clip-path: inset(50%) !important;
+            border: 0 !important;
+            white-space: nowrap !important;
+          }
+          .gem-c-pagination__link-label {
+            display: inline-block;
+            margin-top: 0.1em;
+            text-decoration: underline;
+            margin-left: 25px;
+          }
+        }
+      }
     }
+  }
 }

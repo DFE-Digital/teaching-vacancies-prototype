@@ -11,39 +11,44 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-navigation";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "patterns/cookie-banner";
 
-// Components that aren't in Frontend
-@import "components/cookie-banner";
+// ----------------------------------------------------------  
+// TVS Components and Templates
+// ----------------------------------------------------------
 
-// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-@import "bespoke/general";
-@import "bespoke/release-notes";
+@import "bespoke/global";
+@import "bespoke/alerts";
+@import "bespoke/account-creation";
+@import "bespoke/application-hs";
+@import "bespoke/application-js";
+@import "bespoke/job-listing";
+@import "bespoke/search-results";
+@import "bespoke/service-start";
+
+// ----------------------------------------------------------  
+// Prototype specific (to sort)
+// ----------------------------------------------------------  
 
 // Commute - October 2019
-@import "bespoke/start-page";
-@import "bespoke/filters";
-@import "bespoke/search-results";
-@import "bespoke/listing";
+@import "legacy/filters";
 
 // Hiring Staff - January 2020
-@import "hiring/create-job";
+@import "legacy/create-job";
 
 // Search Prototype - February 2020
-@import "search/search-bespoke";
+@import "legacy/search-bespoke";
 
 // MAT Prototype - March 2020
-@import "mat/mat-march20";
+@import "legacy/mat-march20";
 
 // MAT Prototype - April 2020
-@import "mat/mat-apr20";
+@import "legacy/mat-apr20";
 
 // MAT Prototype - July 2020
-@import "mat/mat-jul20";
+@import "legacy/mat-jul20";
 
 // MAT Prototype - July 2020
-@import "bespoke/jul-job-alerts";
+@import "legacy/jul-job-alerts";
 
 // Application Prototype - October 2020
-@import "applications/account-creation";
-@import "applications/application-hs";
-@import "applications/application-js";
