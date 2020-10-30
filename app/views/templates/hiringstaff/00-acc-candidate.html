@@ -15,13 +15,17 @@ T / JS / Application
         <main class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-4">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full govuk-!-padding-top-2">
+
                     <div class="govuk-breadcrumbs govuk-!-margin-bottom-6 govuk-!-margin-top-1">
                         <ol class="govuk-breadcrumbs__list">
                             <li class="govuk-breadcrumbs__list-item">
-                                <a class="govuk-breadcrumbs__link" href="#">My applications</a>
+                                <a class="govuk-breadcrumbs__link" href="#">Active jobs</a>
                             </li>
                             <li class="govuk-breadcrumbs__list-item">
-                                This is a long Job listing name
+                                <a class="govuk-breadcrumbs__link" href="#">This is a long teaching job name</a>
+                            </li>
+                            <li class="govuk-breadcrumbs__list-item">
+                                Joanna Bloggs
                             </li>
                         </ol>
                     </div>
@@ -29,18 +33,19 @@ T / JS / Application
             </div>
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    <span class="govuk-caption-l">Application</span>
-                    <h2 class="govuk-heading-l govuk-!-margin-bottom-4">This is a job listing name</h2>
+                    <span class="govuk-caption-l">This is the job listing name</span>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Joanna Bloggs</h2>
                 </div>
                 
             </div>
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                     <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-right-1 govuk-!-display-inline-block">Application status</p> 
-                    <span class="acc-tag acc-tag__nodecision">No decision</span>
+                    <span class="acc-tag acc-tag__review">Review</span>
                 </div>
+
                 <div class="govuk-grid-column-one-half mast-buttons">
-                    <!-- <button class="govuk-button govuk-button--warning govuk-!-margin-bottom-0" data-module="govuk-button">Withdraw</button> -->
+                    <!-- <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">Download PDF</button> -->
                 </div>
             </div>
         </main>
@@ -57,56 +62,39 @@ T / JS / Application
             <!-- START Main content -->
             <div class="govuk-grid-column-two-thirds">
 
-                <!-- <a class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Shortlist</a> -->
-                <a class="govuk-button govuk-button--warning" data-module="govuk-button">Withdraw application</a>
+                <a class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Shortlist</a>
+                <a class="govuk-button govuk-button--warning govuk-!-margin-right-1" data-module="govuk-button">Reject</a>
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">PDF version</button>
 
-                
                 <!-- START ALERT CALLOUT -->
-                <div class="tvs-alert alert-js-callout govuk-!-margin-bottom-9">
-                    <h2 class="govuk-heading-m">School details</h2>
-                    <dl class="govuk-summary-list govuk-!-margin-bottom-0">
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">
-                                School name
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                                Bexley Heath Academy
-                            </dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">
-                                School type
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                                LA Maintained
-                            </dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">
-                                Website
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                                <a href="">school-website.co.uk</a>
-                            </dd>
-                        </div>
-                        <div class="govuk-summary-list__row govuk-!-margin-bottom-0">
-                            <dt class="govuk-summary-list__key">
-                                Telephone number
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                                020 637 3673
-                            </dd>
-                        </div>
-                        <div class="govuk-summary-list__row govuk-!-margin-bottom-0">
-                            <dt class="govuk-summary-list__key">
-                                Contact person
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                                Elaine Benning
-                            </dd>
-                        </div>
-                    </dl>
+                <div class="tvs-alert alert-js-callout2 govuk-!-margin-bottom-9">
+                    <h2 class="govuk-heading-m">Personal statement</h2>
+                    <ul class="personal-statement">
+                        <li><a href="#" class="document-link">personal-statement-file.doc</a> 3mb</li>
+                    </ul>
                 </div>
+                <!-- END ALERT CALLOUT -->
+
+                <h2 class="govuk-heading-m">Contact details</h2>
+                <!-- START ALERT CALLOUT -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            candidate-name@email-address.com
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Phone
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            020 675 2454
+                        </dd>
+                    </div>
+                </dl>
                 <!-- END ALERT CALLOUT -->
 
                 <!-- START Table section 1 -->
