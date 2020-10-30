@@ -93,7 +93,99 @@ T / Common layout
 </div>
 <!-- END BESPOKE MAST 2 -->
 
-<!-- START CONTENT -->
+
+<!-- START CREATE LISTING LAYOUT -->
+<div class="govuk-width-container">
+    
+    <!-- START Breadcrumbs + Back -->
+
+    
+    
+    <!-- 
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
+            </li>
+        </ol>
+    </div> 
+    -->
+    <!-- END Breadcrumbs + Back -->
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <!-- START PAGE HEADER -->
+            <div class="govuk-grid-column-full">
+                <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Tim Vickery</h1> 
+                <span class="govuk-caption-m govuk-!-margin-bottom-4">This is the job listing name</span>
+                <h1 class="govuk-heading-xl">Task step title</h1> 
+            </div>
+            <!-- END PAGE HEADER -->
+        </div>
+
+        <div class="govuk-grid-row">
+            <!-- START PAGE HEADER -->
+            <div class="govuk-grid-column-full">
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Create job listing</h1> 
+                <span class="govuk-caption-m govuk-!-margin-bottom-4">Step 1 of 10</span>
+                <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+                <h1 class="govuk-heading-xl">Step title</h1> 
+            </div>
+            <!-- END PAGE HEADER -->
+        </div>
+
+        <div class="govuk-grid-row">
+
+            <!-- START Main content -->
+            <div class="govuk-grid-column-two-thirds">
+
+                <h3 class="govuk-heading-m">Sub heading</h3>
+                <p class="govuk-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam eligendi harum tempore rerum ad, distinctio vero illo, aperiam odio animi est provident sequi itaque fuga labore perspiciatis ipsam, veritatis accusamus!</p>
+
+                <!-- START FORM 2 -->
+                <form class="form" action="/url/of/next/page" method="post">
+                    <div class="govuk-form-group">
+                        <h1 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="event-name">
+                                Standard form group input (<span class="form-required">required</span>)
+                            </label>
+                        </h1>
+                        <div id="event-name-hint" class="govuk-hint">
+                            The name you’ll use on promotional material.
+                        </div>
+                        <input class="govuk-input" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint">
+                    </div>
+
+                    <button class="govuk-button" data-module="govuk-button">
+                        Save and continue
+                    </button>
+
+                </form>
+                <!-- END FORM 2 -->
+            </div>
+            <!-- END Main content -->
+
+            <!-- START Sidebar -->
+            <div class="govuk-grid-column-one-third">
+                <aside class="app-related-items">
+                    <h2 class="govuk-heading-m" id="subsection-title">Sidebar</h2>
+                    <p class="govuk-body"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto ullam dolore, ipsum tenetur esse ut doloribus facilis aut dolorum expedita adipisci rem quidem harum sint maiores est tempora! Amet, iure.</p>
+                </aside>
+            </div>
+            <!-- Sidebar END -->
+
+        </div>
+    </main>
+</div>
+<!-- END CREATE LISTING LAYOUT -->
+
+
+<!-- START STANDARD LAYOUT -->
 <div class="govuk-width-container">
     
     <!-- START Breadcrumbs + Back -->
@@ -181,6 +273,10 @@ T / Common layout
                             <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
                         </div>
                     </fieldset>
+
+                    <button class="govuk-button" data-module="govuk-button">
+                        Save and continue
+                    </button>
                 </form>
                 <!-- END FORM 1 -->
 
@@ -268,6 +364,11 @@ T / Common layout
                     
                         </fieldset>
                     </div>
+
+                    <button class="govuk-button" data-module="govuk-button">
+                        Save and continue
+                    </button>
+                    <a href="#" class="govuk-link govuk-!-display-block">Cancel</a>
                 </form>
                 <!-- END FORM 2 -->
             </div>
@@ -304,7 +405,7 @@ T / Common layout
         </div>
     </main>
 </div>
-<!-- END CONTENT -->
+<!-- END STANDARD LAYOUT -->
 
 {% endblock %}
 
