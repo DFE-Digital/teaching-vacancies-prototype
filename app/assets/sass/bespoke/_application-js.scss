@@ -100,6 +100,51 @@ ACCOUNT SECTIONS
 
 /*
 ------------------------------------------------------------
-SECTION NAME
+EDUCATION + QUALIFICATIONS
 ------------------------------------------------------------
 */
+
+.qualification {
+
+    box-sizing: border-box;
+    background :#ffffff;
+    border: 5px solid #f3f2f1;
+
+    .qualification-title {
+        h4 {
+            background-color: #f3f2f1;
+            padding: 5px 15px 10px 15px  !important;
+        }  
+    }
+    .qualification-content {
+        padding: 15px !important;
+    }
+
+      
+}
+
+/*
+------------------------------------------------------------
+PERSONAL STATEMENT
+------------------------------------------------------------
+*/
+
+.supp-docs {
+
+    box-sizing: border-box;
+    background :#ffffff;
+    border: 5px solid #005EA5;
+
+    .supp-docs-title {
+        h4 {
+            background-color: #005EA5;
+            color: white;
+            padding: 5px 15px 10px 15px !important;
+        }  
+    }
+    .supp-docs-content {
+        padding: 15px !important;
+    }
+
+      
+}
