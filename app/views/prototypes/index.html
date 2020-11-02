@@ -26,22 +26,23 @@
         <div class="govuk-grid-row">
 
             <aside class="govuk-grid-column-one-quarter">
-                <nav>
-                    <ul>
-                        <li><a href="">Current research</a></li>
-                        <li><a href="">Archive</a></li>
+                <nav class="app-subnav">
+                    <ul class="app-subnav__section">
+                        <li class="app-subnav__section-item app-subnav__section-item--current"><a href="/prototypes/" class="app-subnav__link govuk-link--no-visited-state">Current research</a></li>
+                        <li class="app-subnav__section-item"><a href="/prototypes/archive" class="app-subnav__link govuk-link--no-visited-state">Archive</a></li>
                     </ul>
                 </nav>
             </aside>
 
             <div class="govuk-grid-column-three-quarters">
 
-                <h1 class="govuk-heading-xl">Prototypes</h1>
-
-                <!-- -->
+                <span class="govuk-caption-xl">
+                    Prototypes
+                </span>
+                <h1 class="govuk-heading-xl">Current research</h1>
 
                 <table class="govuk-table">
-                    <caption class="govuk-table__caption">Prototype list</caption>
+                    <!-- <caption class="govuk-table__caption">Prototype list</caption> -->
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
                             <th scope="col" class="govuk-table__header">Date</th>
@@ -53,62 +54,8 @@
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Nov 20</th>
-                            <td class="govuk-table__cell"><a href="/prototypes/application/round-1/">Applications &amp; Account creation</a></td>
-                            <td class="govuk-table__cell">TBD</td>
-                            <td class="govuk-table__cell">Round 1 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Sep 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/job_alerts2/">Job alerts</a></td>
-                            <td class="govuk-table__cell">Jobseeker</td>
-                            <td class="govuk-table__cell">Round 2 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Jul 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/job_alerts/">Job alerts</a></td>
-                            <td class="govuk-table__cell">Jobseeker</td>
-                            <td class="govuk-table__cell">Round 1 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Jul 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/mat3/">Multi-Academy Trust</a></td>
-                            <td class="govuk-table__cell">Hiring staff</td>
-                            <td class="govuk-table__cell">Round 3 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Apr 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/mat2/">Multi-Academy Trust</a></td>
-                            <td class="govuk-table__cell">Jobseeker</td>
-                            <td class="govuk-table__cell">Round 2 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Mar 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/mat/">Multi-Academy Trust</a></td>
-                            <td class="govuk-table__cell">Hiring staff</td>
-                            <td class="govuk-table__cell">Round 1 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Feb 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/hs_2/">Create a job listing</a></td>
-                            <td class="govuk-table__cell">Hiring staff</td>
-                            <td class="govuk-table__cell">Round 1 iteration</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Feb 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/search/">Search prototype</a></td>
-                            <td class="govuk-table__cell">Jobseeker</td>
-                            <td class="govuk-table__cell">Experiment design</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Jan 20</th>
-                            <td class="govuk-table__cell"><a href="prototypes/hs_jan20/">Create a job listing</a></td>
-                            <td class="govuk-table__cell">Hiring staff</td>
-                            <td class="govuk-table__cell">Round 1 usability test</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Nov 19</th>
-                            <td class="govuk-table__cell"><a href="prototypes/commute/">Commute</a></td>
-                            <td class="govuk-table__cell">Jobseeker</td>
+                            <td class="govuk-table__cell"><a href="/prototypes/application/round-1/">Applications &amp; Account creation</a> <br>Round 1</td>
+                            <td class="govuk-table__cell">Jobseeker &amp; Hiring Staff</td>
                             <td class="govuk-table__cell">Usability test</td>
                         </tr>
                     </tbody>
@@ -116,13 +63,16 @@
 
                 <!-- -->
 
-                <h2 class="govuk-heading-m">About this page</h2>
-                <p>We recommend you add links to your prototype to this page, rather than delete it. You'll find this page in the kit at '/app/views/index.html'.</p>
-                <p>You can change the service name by editing the file '/app/config.js'.</p>
+                <h2 class="govuk-heading-m">Connected research</h2>
+                <p class="govuk-body">Please <a href="mailto:chris.taylor@digital.education.gov.uk">contact the UX team</a> for more details on research objectives and plans.</p>
 
+                <h2 class="govuk-heading-m">Prototype kit</h2>
+                <p class="govuk-body">
+                    All protoypes built for Teaching Vacancies are built off the foundation of the <a href="https://design-system.service.gov.uk/get-started/prototyping/"> GOV.UK prototyping kit</a>. All code contained within prototypes are not production ready and are only used for design research purposes in order to identify or validate user needs.
+                </p>
                 <!--  -->
 
-                <h2 class="govuk-heading-m">Examples and documentation</h2>
+                <!-- <h2 class="govuk-heading-m">Examples and documentation</h2>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
                         <a href="/docs/tutorials-and-examples">Example pages and documentation</a>
@@ -132,7 +82,7 @@
                             GOV.UK Design System
                         </a>
                     </li>
-                </ul>
+                </ul> -->
 
             </div>
 

@@ -1,0 +1,121 @@
+{% extends "layout_tvs.html" %}
+
+{% block pageTitle %}
+    Teaching Vacancies Prototype Kit - Templates
+{% endblock %}
+
+{% block main %}
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper govuk-!-padding-0">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    {% include "includes/misc/tvs-nav-patterns.html" %}
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</div>
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+
+            <aside class="govuk-grid-column-one-quarter">
+                <nav class="app-subnav">
+                    <ul class="app-subnav__section">
+                        <li class="app-subnav__section-item"><a href="/templates/global" class="app-subnav__link govuk-link--no-visited-state">Global</a></li>
+                        <li class="app-subnav__section-item app-subnav__section-item--current"><a href="/templates/jobseeker" class="app-subnav__link govuk-link--no-visited-state">Jobseeker (Teacher)</a></li>
+                        <li class="app-subnav__section-item"><a href="/templates/hiring-staff" class="app-subnav__link govuk-link--no-visited-state">Hiring staff (School)</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="govuk-grid-column-three-quarters">
+
+                <span class="govuk-caption-xl">
+                    Templates
+                </span>
+                <h1 class="govuk-heading-xl">Jobseeker</h1>
+
+                <!-- START jobseeker -->
+                <h2 class="govuk-heading-m">Registered user accounts</h2>
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Name</th>
+                            <th scope="col" class="govuk-table__header">Version</th>
+                            <th scope="col" class="govuk-table__header">Last update</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-acc-my-applications">My applications</a></th>
+                            <td class="govuk-table__cell">1.0</td>
+                            <td class="govuk-table__cell">October 2020</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-acc-saved-jobs">Saved jobs</a></th>
+                            <td class="govuk-table__cell">1.0</td>
+                            <td class="govuk-table__cell">October 2020</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- END jobseeker -->
+
+                <!-- START -->
+                <h2 class="govuk-heading-m">Applications</h2>
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Name</th>
+                            <th scope="col" class="govuk-table__header">Version</th>
+                            <th scope="col" class="govuk-table__header">Last update</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-acc-application">Application view</a></th>
+                            <td class="govuk-table__cell">1.0</td>
+                            <td class="govuk-table__cell">October 2020</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-application-start">Before you start</a></th>
+                            <td class="govuk-table__cell">1.0</td>
+                            <td class="govuk-table__cell">October 2020</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-application-step">Application step layout</a></th>
+                            <td class="govuk-table__cell">1.0</td>
+                            <td class="govuk-table__cell">October 2020</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-application-review">Review</a></th>
+                            <td class="govuk-table__cell">1.0</td>
+                            <td class="govuk-table__cell">October 2020</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- END -->
+
+            </div>
+
+            <aside class="govuk-grid-column-one-quarter">
+
+            </aside>
+
+        </div>
+    </main>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+{% endblock %}

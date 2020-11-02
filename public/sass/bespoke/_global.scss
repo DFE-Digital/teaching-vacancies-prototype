@@ -160,3 +160,59 @@ Job advert - contents list
 
 /* (max-width: 600px) = change when window is 600px wide or less (Mobile) */
 /* (min-width: 600px) = change when window is 600px wide or more (Desktop) */
+
+/*
+------------------------------------------------------------
+DESIGN SYSTEM
+------------------------------------------------------------
+*/
+
+nav.app-navigation {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #f8f8f8;
+
+    .app-navigation__list {
+        position: relative;
+        left: -15px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .app-navigation__list-item {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: block;
+            position: relative;
+            height: 50px;
+            padding: 0 15px;
+            float: left;
+            line-height: 50px;
+
+            .app-navigation__link {
+                font-weight: 700;
+                text-decoration: none;
+            }
+        }
+
+        .app-navigation__list-item--current {
+            border-bottom: 4px solid #1d70b8;
+        }
+    }
+}
+
+// @media (min-width: 40.0625em) {
+// .app-navigation {
+//     font-size: 19px;
+//     font-size: 1.1875rem;
+//     line-height: 1.31579;
+// }
+// }

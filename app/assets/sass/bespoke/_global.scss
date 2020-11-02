@@ -44,6 +44,12 @@ COMMON PAGE ELEMENTS
     span, h2, a.govuk-back-link, div.govuk-breadcrumbs {
         color: white !important;
     }
+
+    a.govuk-back-link:focus {
+        color: black !important;
+    }
+
+
 }
 
 /*
@@ -214,5 +220,52 @@ nav.app-navigation {
 //     font-size: 19px;
 //     font-size: 1.1875rem;
 //     line-height: 1.31579;
+// }
+// }
+
+nav.app-subnav {
+    // margin-bottom: 100px;
+    padding: 0 15px 0 0;
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: 400;
+
+    ul.app-subnav__section {
+        margin: 0 0 20px;
+        padding: 0;
+        list-style-type: none;
+
+        li.app-subnav__section-item {
+            margin-bottom: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 14px;
+
+            &.app-subnav__section-item--current {
+                // margin-left: -14px;
+                padding-left: 10px !important;
+                border-left: 4px solid #1d70b8;
+                background-color: #fff;
+
+                a.app-subnav__link {
+                    font-weight: bold;
+                }
+            }
+
+            a {
+                padding: 2px 0;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// @media (min-width: 40.0625em) {}
+// .app-subnav {
+//     font-size: 16px;
+//     font-size: 1rem;
+//     line-height: 1.25;
 // }
 // }

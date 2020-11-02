@@ -85,24 +85,66 @@ ACCOUNT SECTIONS
 
     font-size: 16px;
 
-    th.govuk-table__header {
-
-        span.name-listing {
-            font-weight: 400;
-        }
-        span.accepting {
-            font-weight: 400;
-            color: #00703c;
-        }
-        span.passed {
-            font-weight: 400;
-            color: #d4351c;
-        }
+    span.name-listing {
+        font-weight: 400;
+    }
+    span.accepting {
+        font-weight: 700;
+        color: #00703c;
+    }
+    span.passed {
+        font-weight: 700;
+        color: #d4351c;
     }
 }
 
 /*
 ------------------------------------------------------------
-SECTION NAME
+EDUCATION + QUALIFICATIONS
 ------------------------------------------------------------
 */
+
+.qualification {
+
+    box-sizing: border-box;
+    background :#ffffff;
+    border: 5px solid #f3f2f1;
+
+    .qualification-title {
+        h4 {
+            background-color: #f3f2f1;
+            padding: 5px 15px 10px 15px  !important;
+        }  
+    }
+    .qualification-content {
+        padding: 15px !important;
+    }
+
+      
+}
+
+/*
+------------------------------------------------------------
+PERSONAL STATEMENT
+------------------------------------------------------------
+*/
+
+.supp-docs {
+
+    box-sizing: border-box;
+    background :#ffffff;
+    border: 5px solid #005EA5;
+
+    .supp-docs-title {
+        h4 {
+            background-color: #005EA5;
+            color: white;
+            padding: 5px 15px 10px 15px !important;
+        }  
+    }
+    .supp-docs-content {
+        padding: 15px !important;
+    }
+
+      
+}

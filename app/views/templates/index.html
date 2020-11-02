@@ -1,7 +1,7 @@
 {% extends "layout_tvs.html" %}
 
 {% block pageTitle %}
-    Teaching Vacancies Prototype Kit - Patterns
+    Teaching Vacancies Prototype Kit - Templates
 {% endblock %}
 
 {% block main %}
@@ -24,220 +24,50 @@
         <div class="govuk-grid-row">
 
             <aside class="govuk-grid-column-one-quarter">
-                <nav>
-                    <ul>
-                        <li><a href="">Common or Global</a></li>
-                        <li><a href="">Public</a></li>
-                        <li><a href="">Jobseeker (Teacher)</a></li>
-                        <li><a href="">Hiring staff (School)</a></li>
+                <nav class="app-subnav">
+                    <ul class="app-subnav__section">
+                        <li class="app-subnav__section-item"><a href="/templates/global" class="app-subnav__link govuk-link--no-visited-state">Global</a></li>
+                        <li class="app-subnav__section-item"><a href="/templates/jobseeker" class="app-subnav__link govuk-link--no-visited-state">Jobseeker (Teacher)</a></li>
+                        <li class="app-subnav__section-item"><a href="/templates/hiring-staff" class="app-subnav__link govuk-link--no-visited-state">Hiring staff (School)</a></li>
                     </ul>
                 </nav>
             </aside>
 
             <div class="govuk-grid-column-three-quarters">
 
-                <h1 class="govuk-heading-xl">Patterns</h1>
+                <h1 class="govuk-heading-xl">Templates</h1>
 
-                <!-- START common -->
-                <h2 class="govuk-heading-m">Common layouts</h2>
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Name</th>
-                            <th scope="col" class="govuk-table__header">Version</th>
-                            <th scope="col" class="govuk-table__header">Last update</th>
-                        </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-common-layout">Common page layout items</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-task-success">Task success</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="govuk-body-l">Introduction to section lorem ipsum dolor sit amet</p>
 
-                <!-- END common -->
+                <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
 
-                <!-- START public -->
-                <h2 class="govuk-heading-m">Public (signed out)</h2>
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Name</th>
-                            <th scope="col" class="govuk-table__header">Version</th>
-                            <th scope="col" class="govuk-table__header">Last update</th>
-                        </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-service-start">Service start page</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-search-results">Search results</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-listing-1">Job listing</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-js-signin">Sign in (Jobseeker)</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/public/00-js-create-account">Create account (Jobseeker)</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- END public -->
-
-                <!-- START jobseeker -->
-                <h2 class="govuk-heading-m">Jobseeker</h2>
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Name</th>
-                            <th scope="col" class="govuk-table__header">Version</th>
-                            <th scope="col" class="govuk-table__header">Last update</th>
-                        </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-acc-my-applications">Account view - My applications</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-acc-saved-jobs">Account view - Saved jobs</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-acc-application">Application view</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-application-start">Application - Before you start</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-application-step">Application - Step layout</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/jobseeker/00-application-review">Application - Review</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- END jobseeker -->
-
-                <!-- START hiring staff -->
-                <h2 class="govuk-heading-m">Hiring staff (Single school)</h2>
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Name</th>
-                            <th scope="col" class="govuk-table__header">Version</th>
-                            <th scope="col" class="govuk-table__header">Last update</th>
-                        </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-acc-active">Dashboard - Active jobs</a> (aka Published)</th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-acc-deadline">Dashboard - Deadline passed</a> (aka Expired)</th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-acc-drafts">Dashboard - Drafts</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-acc-scheduled">Dashboard - Scheduled</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-acc-applicants">Applications - Applicant list</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-acc-candidate">Applications - Applicant application</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step">Create a job listing - Step layout</a> (Template)</th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-jobLocation">Create a job listing - Job location</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-jobDetails">Create a job listing - Job details</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-payPackage">Create a job listing - Pay package</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-dates">Create a job listing - Important dates and deadlines</a></th>
-                            <td class="govuk-table__cell">2.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-dates">Create a job listing - Supporting documents</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-applying">Create a job listing - Applying for the job</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-step-summary">Create a job listing - Job summary</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header"><a href="/templates/hiringstaff/00-create-review">Create a job listing - Review</a></th>
-                            <td class="govuk-table__cell">1.0</td>
-                            <td class="govuk-table__cell">October 2020</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- END hiring staff -->
+                <h3 class="govuk-heading-m">User groups and context</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/templates/global">Global templates for everyone</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/templates/jobseeker">Jobseekers - Teachers looking for teaching jobs</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/templates/hiring-staff">Hiring staff - Recruiment within schools</a>
+                    </li>
+                    <li>
+                        <span class="form-required">TBD</span> <a class="govuk-link" href="#"></a>MAT Hiring staff
+                    </li>
+                    <li>
+                        <span class="form-required">TBD</span> <a class="govuk-link" href="#"></a>DfE Sign-in (External account management for schools suing DfE services)
+                    </li>
+                    
+                </ul>
+                
+                <h3 class="govuk-heading-m">Figma interaction design</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptate est quod laboriosam mollitia sequi accusamus at aliquam unde! Ipsum rem ipsa quis maxime praesentium aspernatur suscipit, possimus ex omnis!</p>
+                
+                <h3 class="govuk-heading-m">For prototyping purposes</h3>
+                <p class="govuk-body">
+                    All protoypes built for Teaching Vacancies are built off the foundation of the <a href="https://design-system.service.gov.uk/get-started/prototyping/"> GOV.UK prototyping kit</a>. All code contained within prototypes are not production ready and are only used for design research purposes in order to identify or validate user needs.
+                </p>
 
             </div>
 
