@@ -12,7 +12,7 @@
   {{ govukHeader({
       homepageUrl: "index",
       serviceName: serviceName,
-      serviceUrl: "index"
+      serviceUrl: "/prototypes/application/round-1/"
   }) }}
 
 {% endblock %}
@@ -23,47 +23,61 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-        <h1 class="govuk-heading-l">2 new jobs matching your criteria were listed</h1>
+        <h1 class="govuk-heading-l">You have received an application</h1>
+
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Primary Teacher KS2</h2>
+        <span class="govuk-caption-m govuk-!-margin-bottom-6">Hillbot Jones Academy, Stratford, London</span>
 
         <section class="email-section govuk-!-margin-bottom-6 govuk-!-padding-top-6">
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="#">Primary Teacher KS2</a></h3>
-            <p>Hillbot Jones Academy, Stratford, London</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>Salary: M1 to UPS3 – £30,480.00 – £49,571.00</li>
-                <li>Working pattern: Full-time only</li>
-                <li>Closing date: 23 September 2020</li>
-            </ul>
+            
+            <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-0">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        Tim Vickery - <a href="/prototypes/application/round-1/hs/00-acc-candidate" class="govuk-link">View application</a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        TRN
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        3227836863536383
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Application submitted
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        23 September 2020 at 09:38 am
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Contact details
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">07700 900457</p>
+                        <p class="govuk-body">tim.vickery@example.com</p>
+                    </dd>
+                </div>
+            </dl>
+            <p></p>
+
         </section>
 
-        <section class="email-section govuk-!-margin-bottom-6">
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="#">Teacher KS1 & KS2</a></h3>
-            <p>Abbey Lane School, Stratford, London</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>Salary: M1 to UPS3 – £30,480.00 – £49,571.00</li>
-                <li>Working pattern: Full-time only</li>
-                <li>Closing date: 22 October 2020</li>
-            </ul>
-        </section>
 
         <section class="email-section govuk-!-margin-bottom-6">
-            <h2 class="govuk-heading-m">This job alert</h2>
-            <p class="govuk-body">We’ll email you details of any new jobs that match the following criteria:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>Keyword: Primary teacher</li>
-                <li>Location: within 10 miles of E11 4ET</li>
-                <!-- <li>Filter 1: [selection], [selection]</li> -->
-            </ul>
-            <p>You have set to receive this job alert as soon as a job matching your criteria is listed. You can <a href="manage-1"> manage your alert</a> here.  </p>
-        </section>
-
-        <section class="email-section govuk-!-margin-bottom-6">
-            <h2 class="govuk-heading-m">Are these job listings not relevent?</h2>
-            <p class="govuk-body"><a href="#"> Let us know</a> if these listings do not match your criteria. This helps us improve our service.</p>
+            <h2 class="govuk-heading-m">What to do now</h2>
+            <p class="govuk-body"><a href="/prototypes/application/round-1/hs/00-acc-applicants"> Sign in to your account</a> to review and make a decision on the applicant.</p>
+            <p class="govuk-body">Informing applicants about their progression (or not0 is very importnat Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eaque quidem nisi excepturi fuga cum iste architecto accusantium? Deleniti rerum voluptatibus libero ab voluptates. Fuga eligendi officia vitae unde similique.</p>
         </section>
 
         <section class="email-section">
             <p class="govuk-body"><a href="#">Teaching Vacancies</a> is a free job-listing service from the Department for Education. It helps schools to save money on recruitment and you to take the next step in your career.</p>
-            <p class="govuk-body">Don’t want to receive these email alerts? <a href="#"> Unsubscribe here</a></p>
         </section>
 
     </div>
