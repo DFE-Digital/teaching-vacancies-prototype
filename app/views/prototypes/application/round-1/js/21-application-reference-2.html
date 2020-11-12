@@ -1,7 +1,7 @@
 {% extends "layout-js.html" %}
 
 {% block pageTitle %}
-Application - Current role and employment history
+Application - References
 {% endblock %}
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
@@ -49,21 +49,96 @@ Application - Current role and employment history
             <!-- START Main content -->
             <div class="govuk-grid-column-three-quarters">
 
-                <span class="govuk-caption-m">Step 4 of 10</span>
-                <h1 class="govuk-heading-l">Current role and employment history</h1>
-                <p class="govuk-body">This could be a teaching role or any other paid work you have done that is relevant to your application</p>
+                <span class="govuk-caption-m">Step 6 of 10</span>
+                <h1 class="govuk-heading-l">References</h1>
+                <p class="govuk-body"><span class="form-required" style="font-weight: 700;">Two referees are required</span> for this application. It may speed up your application if you are able to contact them in advance. </p>
 
-                <!-- START ALERT EMPTY STATE -->
-                <div class="tvs-alert alert-js-empty">
-                    <h4 class="govuk-heading-m govuk-!-margin-bottom-4">No employment specified</h4>
-                    <a href="/prototypes/application/round-1/js/00-application-employment-add" class="govuk-button govuk-!-margin-bottom-0">Add a role</a>
+                <!-- START reference -->
+                <div class="qualification govuk-!-margin-bottom-6">
+                    <div class="qualification-title">
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Reference 1</h4>
+                    </div>
+                    <div class="qualification-content">
+                        <table class="govuk-table govuk-!-margin-bottom-4">
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
+                                    <td class="govuk-table__cell">Jaqui Oatley</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Organisation</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Relationship to applicant</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Phone number</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Email address</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
+                        <a href="#" class="govuk-link">Edit</a>
+                    </div>
                 </div>
-                <!-- END ALERT EMPTY STATE -->
+                <!-- END reference -->
+
+                <!-- START reference -->
+                <div class="qualification govuk-!-margin-bottom-6">
+                    <div class="qualification-title">
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Reference 2</h4>
+                    </div>
+                    <div class="qualification-content">
+                        <table class="govuk-table govuk-!-margin-bottom-4">
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
+                                    <td class="govuk-table__cell">Rory Smith</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Organisation</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Relationship to applicant</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Phone number</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Email address</th>
+                                    <td class="govuk-table__cell">Lorem</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
+                        <a href="#" class="govuk-link">Edit</a>
+                    </div>
+                </div>
+                <!-- END reference -->
+
+                <!-- <a href="#" class="govuk-button govuk-button--secondary">Add another reference</a> -->
 
                 <!-- START FORM 1 -->
-                <form class="form" action="" method="post">
+                <form class="form" action="/prototypes/application/round-1/js/22-application-equality" method="post">
 
-                    <!-- <button class="govuk-button govuk-!-margin-right-1 govuk-button--disabled" data-module="govuk-button">Continue</button> -->
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
                 </form>
                 <!-- END FORM 1 -->
@@ -160,7 +235,7 @@ Application - Current role and employment history
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="4">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -184,7 +259,7 @@ Application - Current role and employment history
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="5">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -208,7 +283,7 @@ Application - Current role and employment history
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="6">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">

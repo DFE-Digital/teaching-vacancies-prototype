@@ -30,7 +30,7 @@ Application - Start
         <!-- START ALERT SUCCESS -->
         <div class="tvs-alert alert-js-success">
             <svg class="alert-icon"  width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9375 0L9.75 12L4.0625 6.4L0 10.4L9.75 20L26 4L21.9375 0Z" fill="#006435"/></svg>
-            <h4 class="govuk-heading-s govuk-!-margin-bottom-0">You have succesfully signed in as email@email-address.com</h4>
+            <h4 class="govuk-heading-s govuk-!-margin-bottom-0">You have succesfully registered as email@email-address.com</h4>
         </div>
         <!-- END ALERT SUCCESS -->
 
@@ -61,10 +61,10 @@ Application - Start
                 <h1 class="govuk-heading-l">Before you start</h1>
                 <p class="govuk-body govuk-!-margin-bottom-0">You can use this form to apply for [job] through Teaching Vacancies. Your application will be sent to [name]. </p>
                 
-                {% include "includes/applications/application-start-steps.html" %}
+                {% include "prototypes/application/round-1/includes/application-start-steps.html" %}
 
                 <!-- START FORM 1 -->
-                <form class="form" action="/prototypes/application/round-1/js/00-application-personalDetails" method="post">
+                <form class="form" action="/prototypes/application/round-1/js/07-application-personalDetails" method="post">
                     <button class="govuk-button govuk-button govuk-button--start govuk-!-margin-right-1" data-module="govuk-button">Start application</button>
                     <a href="" class="govuk-link govuk-link--no-visited-state" style="display: block;">Cancel</a>
                 </form>

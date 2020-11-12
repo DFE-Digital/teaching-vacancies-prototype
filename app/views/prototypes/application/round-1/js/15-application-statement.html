@@ -1,7 +1,7 @@
 {% extends "layout-js.html" %}
 
 {% block pageTitle %}
-Application - Education and qualifications
+    Application - Personal statement
 {% endblock %}
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
@@ -49,21 +49,45 @@ Application - Education and qualifications
             <!-- START Main content -->
             <div class="govuk-grid-column-three-quarters">
 
-                <span class="govuk-caption-m">Step 2 of 10</span>
-                <h1 class="govuk-heading-l">Education and qualifications</h1>
-                <p class="govuk-body">Enter your qualifications as completely as you can, including all GCSE, A levels (or equivalants), undergraduate and postgraduate degrees. Please speccify any other qualifications where you showed skills that miight help you in this role.</p>
+                <span class="govuk-caption-m">Step 5 of 8</span>
+                <h1 class="govuk-heading-l">Personal statement</h1>
+                <p class="govuk-body">Please explain why you are suitable for this role. You may find it useful to refer specifically to the job description and any other information that has been provided.</p>
+                <h3 class="govuk-heading-m">Specific instructions</h3>
+                <p class="govuk-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima iure illo sit aliquid commodi ullam fugit dolorem, aspernatur ab culpa eligendi. Ea pariatur earum distinctio sunt quo ducimus. Nam, accusamus?</p>
                 
-                <!-- START ALERT EMPTY STATE -->
-                <div class="tvs-alert alert-js-empty">
-                    <h4 class="govuk-heading-m govuk-!-margin-bottom-4">No qualifications specified</h4>
-                    <a href="/prototypes/application/round-1/js/00-application-education-add" class="govuk-button govuk-!-margin-bottom-0">Add a qualification</a>
+                <!-- START docs -->
+                <div class="supp-docs govuk-!-margin-bottom-6">
+                    <div class="supp-docs-title">
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Supporting documents</h4>
+                    </div>
+                    <div class="supp-docs-content">
+                        <p class="govuk-body govuk-!-margin-bottom-2">Documents supplied with the job listing that may be of some help with your personal statement.</p>
+                        <ul class="personal-statement">
+                            <li><a href="#" class="document-link">supporting-file-1.doc</a> 3mb</li>
+                            <li><a href="#" class="document-link">supporting-file-2.doc</a> 3mb</li>
+                            <li><a href="#" class="document-link">supporting-file-3.doc</a> 3mb</li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- END ALERT EMPTY STATE -->
+                <!-- END docs -->
 
                 <!-- START FORM 1 -->
-                <form class="form" action="/url/of/next/page" method="post">
+                <form class="form" action="/prototypes/application/round-1/js/16-acc-my-applications" method="post">
 
-                    <!-- <button class="govuk-button govuk-!-margin-right-1 govuk-button--disabled" data-module="govuk-button">Continue</button> -->
+                    <!-- START statement -->
+                    <div class="govuk-form-group">
+                        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="statement">
+                            Your personal statement
+                            </label>
+                        </h1>
+                        <!-- <div id="statement-hint" class="govuk-hint">
+                            Tell us more about any professional teaching organisations you are a member of, including your level and dates of membership.
+                        </div> -->
+                        <textarea class="govuk-textarea" id="statement" name="statement" rows="10" aria-describedby="statement-hint"></textarea>
+                    </div>
+                    <!-- END statement -->
+
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
                 </form>
                 <!-- END FORM 1 -->
@@ -112,7 +136,7 @@ Application - Education and qualifications
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show="" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -136,7 +160,7 @@ Application - Education and qualifications
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="3">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -160,7 +184,7 @@ Application - Education and qualifications
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="4">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -184,7 +208,7 @@ Application - Education and qualifications
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="5">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">

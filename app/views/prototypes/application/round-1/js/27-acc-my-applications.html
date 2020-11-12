@@ -1,7 +1,7 @@
 {% extends "layout-js.html" %}
 
 {% block pageTitle %}
-    T / JS / Saved jobs
+    My Applications
 {% endblock %}
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
@@ -18,7 +18,7 @@
                     <!-- START notification -->
 
                     <!-- END notification -->
-                    {% include "prototypes/application/round-1/includes/acc-saved-jobs.html" %}
+                    {% include "prototypes/application/round-1/includes/acc-applications.html" %}
                 </div>
             </div>
         </main>
@@ -33,72 +33,83 @@
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <h2 class="govuk-heading-l">Saved jobs</h2>
+                <h2 class="govuk-heading-l">My applications</h2>
                 <!-- <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-6" data-module="govuk-button">Show filters</button> -->
             </div>
         </div>
 
-        <!-- START ALERT EMPTY STATE -->
-        <!-- <div class="tvs-alert alert-js-empty">
-            <h4 class="govuk-heading-m govuk-!-margin-bottom-1">You have no saved teaching jobs</h4>
-            <p class="govuk-body"><a href="#"> Find a teaching job</a> and start saving jobs to review and apply for later.</p>
-        </div> -->
-        <!-- END ALERT EMPTY STATE -->
-
-        <!-- START JOB LISTINGS TABLE -->
+        <!-- START APPLICANTS TABLE -->
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <!-- <h4 class="govuk-heading-s">Draft applications</h4> -->
+                <h4 class="govuk-heading-s">Submitted applications</h4>
                 <table class="govuk-table acc-applications__table">
                     <!-- <caption class="govuk-table__caption">Dates and amounts</caption> -->
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Job listing</th>
-                            <th scope="col" class="govuk-table__header"><a href="#" class="govuk-link govuk-link--no-visited-state">Application deadline</a></th>
-                            <th scope="col" class="govuk-table__header"><a href="#" class="govuk-link govuk-link--no-visited-state"> Saved</a></th>
+                            <th scope="col" class="govuk-table__header">Name</th>
+                            <th scope="col" class="govuk-table__header">Application status</th>
+                            <th scope="col" class="govuk-table__header"><a href="#" class="govuk-link govuk-link--no-visited-state"> Submitted on</a></th>
                             <th scope="col" class="govuk-table__header">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">
-                                <a href="#" class="govuk-link"> This is a job listing Name</a><br>
+                                This is a job listing Name<br>
                                 <span class="name-listing">Bexley Heath Academy</span> <br>
+                                <span class="accepting">Still accepting applications</span>
                             </th>
                             <td class="govuk-table__cell">
-                                <span class="accepting govuk-!-display-block">Still accepting applications</span>
-                                03 February 2021 at 09:00am
+                                <span class="acc-tag acc-tag__reject">Unsuccessful</span>
                             </td>
-                            <td class="govuk-table__cell">03 February 2021 at 09:00am</td>
+                            <td class="govuk-table__cell">03 November 2020 at 11:00am</td>
                             <td class="govuk-table__cell">
                                 <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                                    <li><a href="#">Apply</a></li>
-                                    <li><a href="#">Delete</a></li>
+                                    <!-- <li><a href="#">Withdraw</a></li> -->
+                                    <li><a href="/prototypes/application/round-1/js/28-acc-application">View application</a></li>
                                 </ul> 
                             </td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">
                                 This is a job listing Name<br>
-                                <span class="name-listing ">Bexley Heath Academy</span> <br>
+                                <span class="name-listing">Bexley Heath Academy</span> <br>
+                                <span class="accepting">Still accepting applications</span>
                             </th>
                             <td class="govuk-table__cell">
-                                <span class="passed govuk-!-display-block">Deadline passed</span>
-                                03 February 2021 at 09:00am
+                                <span class="acc-tag acc-tag__review">In Review</span>
                             </td>
-                            <td class="govuk-table__cell">03 February 2021 at 09:00am</td>
+                            <td class="govuk-table__cell">03 November 2020 at 11:00am</td>
                             <td class="govuk-table__cell">
                                 <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                                    <!-- <li><a href="#">Apply</a></li> -->
-                                    <li><a href="#">Delete</a></li>
+                                    <li><a href="#">Withdraw</a></li>
+                                    <li><a href="#">View application</a></li>
+                                </ul> 
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">
+                                This is a job listing Name<br>
+                                <span class="name-listing">Bexley Heath Academy</span> <br>
+                                <span class="passed">Deadline passed</span>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <span class="acc-tag acc-tag__review">in Review</span>
+                            </td>
+                            <td class="govuk-table__cell">14 August 2020 at 09:00am</td>
+                            <td class="govuk-table__cell">
+                                <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
+                                    <li><a href="#">Withdraw</a></li>
+                                    <li><a href="#">View application</a></li>
                                 </ul>  
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
             </div>    
         </div>
-        <!-- END JOB LISTINGS TABLE -->
+        <!-- END APPLICANTS TABLE -->
         
     </main>
 </div>
