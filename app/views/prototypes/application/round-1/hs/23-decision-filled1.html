@@ -69,23 +69,86 @@ Job listing - Mark as filled
                                 </div>
                                 <!-- START Conditional 1 -->
                                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="filled-tvs">
+
+                                    <!-- START Subject -->
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label" for="select-applicant">
+                                        <label class="govuk-label govuk-label--s govuk-!-margin-bottom-3" for="subject">
                                             Which candidate was successful? 
                                         </label>
-                                        <select class="govuk-select" id="sort" name="sort">
-                                            <option value="" selected>Select a candidate</option>
-                                            <option value="">------------------</option>
-                                            <option value="">Elize Webster</option>
-                                            <option value="">Thalia Bannister</option>
-                                            <option value="">Luciana Hollis</option>
-                                            <option value="">Aleksander Butt</option>
-                                            <option value="">Katlyn Rodgers</option>
-                                            <option value="">Hafsa Marin</option>
-                                            <option value="">Dru Pennington</option>
-                                            <option value="">Ammar Snyder</option>
-                                        </select>
+                                        <!-- <span id="subject-hint" class="govuk-hint">
+                                            What subject(s) will the teacher focus on?
+                                        </span> -->
+                                        <div class="app-c-option-select__filter">
+                                            <label for="input-ee7cd429" class="govuk-label govuk-visually-hidden">
+                                                Filter Show only
+                                            </label>
+                                            <input name="option-select-filter" id="input-ee7cd429" class="app-c-option-select__filter-input govuk-input" type="text" aria-describedby="checkboxes-604a86d4-count" aria-controls="checkboxes-604a86d4">
+                                        </div>
+                                        <div class="checkboxes-container">
+
+                                            <div class="govuk-radios govuk-radios--small ">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-1" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-1">
+                                                        <span class="subject-bold">Elize Webster</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-2" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-2">
+                                                        <span class="subject-bold">Thalia Bannister</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-3" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-3">
+                                                        <span class="subject-bold">Luciana Hollis</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-4" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-4">
+                                                        <span class="subject-bold">Aleksander Butt</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-5" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-5">
+                                                        <span class="subject-bold">Katlyn Rodgers</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-6" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-6">
+                                                        <span class="subject-bold">Hafsa Marin</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-7" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-7">
+                                                        <span class="subject-bold">Dru Pennington</span><br>
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="cand-8" name="candidates" type="radio" value="cand-1">
+                                                    <label class="govuk-label govuk-radios__label" for="cand-8">
+                                                        <span class="subject-bold">Ammar Snyder</span><br>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <!-- END Subject -->
+                                    <!-- START ALERT WARNING -->
+                                    <div class="tvs-alert alert-js-warning">
+                                        <svg class="alert-icon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M25 12C25 18.6249 19.401 24 12.5 24C5.59904 24 0 18.6249 0 12C0 5.37507 5.59904 0 12.5 0C19.401 0 25 5.37507 25 12ZM10.8141 4.1049L11.1152 14.2725H13.905L14.195 4.1049H10.8141ZM10.546 18.4296C10.4346 18.1794 10.3784 17.9116 10.3784 17.6261C10.3784 17.3477 10.4346 17.0843 10.546 16.8386C10.6574 16.5928 10.8121 16.3763 11.0092 16.1906C11.2062 16.005 11.4345 15.8583 11.6951 15.7513C11.9557 15.6444 12.2347 15.5905 12.5321 15.5905C12.8221 15.5905 13.0965 15.6444 13.3524 15.7513C13.6084 15.8583 13.834 16.005 14.0273 16.1906C14.2207 16.3763 14.3735 16.5919 14.485 16.8386C14.5964 17.0852 14.6525 17.3477 14.6525 17.6261C14.6525 17.9116 14.5964 18.1803 14.485 18.4296C14.3735 18.6789 14.2207 18.8972 14.0273 19.0828C13.834 19.2684 13.6093 19.4152 13.3524 19.5221C13.0956 19.6291 12.8221 19.683 12.5321 19.683C12.2347 19.683 11.9548 19.6291 11.6951 19.5221C11.4355 19.4152 11.2062 19.2684 11.0092 19.0828C10.8121 18.8972 10.6574 18.6797 10.546 18.4296Z" fill="black"/>
+                                        </svg> 
+                                        <p class="govuk-body">The candidates who were not successful will be sent an email explaining that the position has been filled. </p>
+                                    </div>
+                                    <!-- END ALERT WARNING -->
                                 </div>
                                 <!-- END Conditional 1 -->
                                 <div class="govuk-radios__item">
