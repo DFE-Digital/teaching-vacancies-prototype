@@ -50,68 +50,313 @@
             <div class="govuk-grid-column-three-quarters">
 
                 <span class="govuk-caption-m">Step 7 of 10</span>
-                <h1 class="govuk-heading-l">Equality</h1>
-                
+                <h1 class="govuk-heading-l">Diversity monitoring</h1>
+                <p class="govuk-body">We believe that students receive a better education when our staff better reflects the full range of backgrounds and experiences in society. To help achieve this we are asking you to provide us with some basic information about your identity.</p>
+                <p class="govuk-body">This will not be used as part of your application. It will only be used anonymously to monitor the inclusivity of the shortlisting process. </p>
+                <p class="govuk-body">You can select ‘prefer not to say’ if you would rather not answer any question. </p>
                 <!-- START FORM 1 -->
                 <form class="form" action="/prototypes/application/round-1/js/23-application-declarations" method="post">
 
-                    <!-- START family-->
+                    <!-- START disability -->
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="family-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Question 1? (<span class="form-required">required</span>)
+                                    Do you consider yourself to have a disability as defined by the Equality Act 2010? (<span class="form-required">required</span>)
                                 </h3>
                             </legend>
                             <!-- <div id="family--hint" class="govuk-hint">
                                 This includes changing your last name or spelling your name differently.
                             </div> -->
-                            <div class="govuk-radios govuk-radios--inline">
+                            <div class="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="family-yes" name="family-yes" type="radio" value="yes">
-                                    <label class="govuk-label govuk-radios__label" for="family-yes">
+                                    <input class="govuk-radios__input" id="disability-yes" name="disability" type="radio" value="yes">
+                                    <label class="govuk-label govuk-radios__label" for="disability-yes">
                                         Yes
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="family-no" name="family-no" type="radio" value="no">
-                                    <label class="govuk-label govuk-radios__label" for="family-no">
+                                    <input class="govuk-radios__input" id="disability-no" name="disability" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="disability-no">
                                         No
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="disability-not" name="disability" type="radio" value="Prefer not to say">
+                                    <label class="govuk-label govuk-radios__label" for="disability-not">
+                                        Prefer not to say
                                     </label>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
-                    <!-- END family- -->
-                    <!-- START citizen -->
+                    <!-- END disability -->
+
+                    <!-- START gender -->
                     <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" aria-describedby="citizen-hint">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Question 2? (<span class="form-required">required</span>)
+                                    How would you describe your gender? (<span class="form-required">required</span>)
                                 </h3>
                             </legend>
-                            <!-- <div id="citizen-hint" class="govuk-hint">
-                                This includes changing your last name or spelling your name differently.
-                            </div> -->
-                            <div class="govuk-radios govuk-radios--inline">
+                            <div id="family--hint" class="govuk-hint">
+                                If the binary options do not reflect how you identify, please use your own words.
+                            </div>
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="citizen-yes" name="citizen-yes" type="radio" value="yes">
-                                    <label class="govuk-label govuk-radios__label" for="citizen-yes">
-                                        Yes
+                                    <input class="govuk-radios__input" id="gender-m" name="gender" type="radio" value="Man">
+                                    <label class="govuk-label govuk-radios__label" for="gender-m">
+                                        Man
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="citizen-no" name="citizen-no" type="radio" value="no">
-                                    <label class="govuk-label govuk-radios__label" for="citizen-no">
-                                        No
+                                    <input class="govuk-radios__input" id="gender-f" name="gender" type="radio" value="Woman">
+                                    <label class="govuk-label govuk-radios__label" for="gender-f">
+                                        Woman
+                                    </label>
+                                </div>
+
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gender-describe" name="gender" type="radio" value="Describe" data-aria-controls="conditional-gender">
+                                    <label class="govuk-label govuk-radios__label" for="gender-describe">
+                                        Other gender identity
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-gender">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            Describe your gender identity
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gender-not" name="gender" type="radio" value="Prefer not to say">
+                                    <label class="govuk-label govuk-radios__label" for="gender-not">
+                                        Prefer not to say
                                     </label>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
-                    <!-- END citizen -->
+                    <!-- END gender -->
 
+                    <!-- START sexuality -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    How would you describe your sexual orientation? (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <div id="family--hint" class="govuk-hint">
+                                If the binary options do not reflect how you identify, please use your own words.
+                            </div>
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="sexuality-straight" name="sexuality" type="radio" value="Heterosexual">
+                                    <label class="govuk-label govuk-radios__label" for="sexuality-straight">
+                                        Heterosexual/ straight
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="sexuality-gay" name="sexuality" type="radio" value="gay">
+                                    <label class="govuk-label govuk-radios__label" for="sexuality-gay">
+                                        Gay or lesbian
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="sexuality-bi" name="sexuality" type="radio" value="Bisexual">
+                                    <label class="govuk-label govuk-radios__label" for="sexuality-bi">
+                                        Bisexual
+                                    </label>
+                                </div>
+
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="sexuality-describe" name="sexuality" type="radio" value="Describe" data-aria-controls="conditional-sexuality">
+                                    <label class="govuk-label govuk-radios__label" for="sexuality-describe">
+                                        Other sexual orientation
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sexuality">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            Describe your sexual orientation
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="sexuality-not" name="sexuality" type="radio" value="Prefer not to say">
+                                    <label class="govuk-label govuk-radios__label" for="sexuality-not">
+                                        Prefer not to say
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END sexuality -->
+
+                    <!-- START ethnic -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    What is your ethnic group? (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <div id="family--hint" class="govuk-hint">
+                                Choose the option that you feel best describes your ethnic group or background. If you don’t feel any of these options reflect your identity you can tell us in your own words, whether that is within one of the given ethnic groups or not.
+                            </div>
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnic-white" name="ethnic" type="radio" value="White">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-white">
+                                        White
+                                    </label>
+                                    <div class="govuk-hint govuk-radios__hint">
+                                        Includes English, Welsh, Scottish, Northern Irish, British, IrishGypsy or Irish Traveller
+                                    </div>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnic-mixed" name="ethnic" type="radio" value="Mixed or multiple ethnic group ">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-mixed">
+                                        Mixed or multiple ethnic group 
+                                    </label>
+                                    <div class="govuk-hint govuk-radios__hint">
+                                        Includes White and Black Caribbean, White and Black African or White and Asian
+                                    </div>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnic-asian" name="ethnic" type="radio" value="Asian">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-asian">
+                                        Asian or Asian British
+                                    </label>
+                                    <div class="govuk-hint govuk-radios__hint">
+                                        Includes Indian, Pakistani, Bangladeshi or Chinese
+                                    </div>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnic-black" name="ethnic" type="radio" value="Black">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-black">
+                                        Black African, Caribbean or Black British
+                                    </label>
+                                </div>
+                                
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnic-describe" name="ethnic" type="radio" value="Describe" data-aria-controls="conditional-ethnic">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-describe">
+                                        Other ethnic group
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ethnic">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="r-describe-input">
+                                            Describe your ethnic group
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="e-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnic-not" name="ethnic" type="radio" value="Prefer not to say">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-not">
+                                        Prefer not to say
+                                    </label>
+                                </div>
+
+
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END ethnic -->
+
+                    <!-- START religion -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    What is your religion or belief? (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <div class="govuk-hint">
+                                Tell us about your religion or faith. You can use the text option if your beliefs are not represented by one of the given faiths.                           
+                            </div>
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-Christian" name="religion" type="radio" value="Christian">
+                                    <label class="govuk-label govuk-radios__label" for="religion-Christian">
+                                        Christian
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-Buddhist" name="religion" type="radio" value="Buddhist">
+                                    <label class="govuk-label govuk-radios__label" for="religion-Buddhist">
+                                        Buddhist
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-Hindu" name="religion" type="radio" value="Asian">
+                                    <label class="govuk-label govuk-radios__label" for="religion-Hindu">
+                                        Hindu
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-Jewish" name="religion" type="radio" value="Jewish">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-Jewish">
+                                        Jewish
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-Muslim" name="religion" type="radio" value="Muslim">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-Muslim">
+                                        Muslim
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-Sikh" name="religion" type="radio" value="Sikh">
+                                    <label class="govuk-label govuk-radios__label" for="ethnic-Sikh">
+                                        Sikh
+                                    </label>
+                                </div>
+                                
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-describe" name="religion" type="radio" value="Describe" data-aria-controls="conditional-religion">
+                                    <label class="govuk-label govuk-radios__label" for="religion-describe">
+                                        Other religion or belief
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-religion">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="r-describe-input">
+                                            Describe your religion or belief
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="r-describe-input" name="contact-by-phone" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="religion-not" name="religion" type="radio" value="Prefer not to say">
+                                    <label class="govuk-label govuk-radios__label" for="religion-not">
+                                        Prefer not to say
+                                    </label>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END religion -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
