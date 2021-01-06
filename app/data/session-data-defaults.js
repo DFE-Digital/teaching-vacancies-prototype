@@ -63,7 +63,38 @@ module.exports = {
   "trust-summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 
   // Applications - Round 2 - January 2021
-  // "user-email": "",
+  "user-email": "example-email@email.com",
   "app2-jobListingName": "Primary Teacher",
-  "app2-schoolName": "Bronson Alcott Academy"
+  "app2-schoolName": "Bronson Alcott Academy",
+
+  "emp1-organisation": "Lorem ipsum dolor sit amet",
+  "emp1-jobTitle": "Lorem ipsum dolor sit amet",
+  "emp1-salary": "Lorem ipsum dolor sit amet",
+  "emp1-subjects": "Lorem ipsum dolor sit amet",
+  "emp1-mainDuties": "Lorem ipsum dolor sit amet",
+  "emp1-reason": "Lorem ipsum dolor sit amet",
+
+  "emp2-organisation": "Lorem ipsum dolor sit amet",
+  "emp2-jobTitle": "Lorem ipsum dolor sit amet",
+  "emp2-salary": "Lorem ipsum dolor sit amet",
+  "emp2-subjects": "Lorem ipsum dolor sit amet",
+  "emp2-mainDuties": "Lorem ipsum dolor sit amet",
+  "emp2-reason": "Lorem ipsum dolor sit amet",
+
+  // "app2-personalStatement": "Lorem ipsum dolor sit amet",
+
+  "ref1-name": "Lorem ipsum dolor sit amet",
+  "ref1-jobTitle": "Lorem ipsum dolor sit amet",
+  "ref1-organisation": "Lorem ipsum dolor sit amet",
+  "ref1-relationship": "Lorem ipsum dolor sit amet",
+  "ref1-email": "Lorem ipsum dolor sit amet",
+  "ref1-phone": "Lorem ipsum dolor sit amet",
+
+  "ref2-name": "Lorem ipsum dolor sit amet",
+  "ref2-jobTitle": "Lorem ipsum dolor sit amet",
+  "ref2-organisation": "Lorem ipsum dolor sit amet",
+  "ref2-relationship": "Lorem ipsum dolor sit amet",
+  "ref2-email": "Lorem ipsum dolor sit amet",
+  "ref2-phone": "Lorem ipsum dolor sit amet"
+
 }
