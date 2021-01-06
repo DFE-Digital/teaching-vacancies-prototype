@@ -46,7 +46,7 @@ Create a job listing - Applying for the job
                         <div class="govuk-inset-text">
                             <p> Please explain why you are suitable for this role. You may find it useful to refer specifically to the job description and any other information that has been provided.</p>
                         </div>
-                        <textarea class="govuk-textarea" rows="10" id="statement" name="statement" type="text" aria-describedby="statement-hint"></textarea>
+                        <textarea class="govuk-textarea" rows="10" id="statement" name="hs-app-statement" type="text" aria-describedby="statement-hint"></textarea>
                     </div>
                     <div class="govuk-form-group">
                         <h1 class="govuk-label-wrapper">
@@ -57,8 +57,54 @@ Create a job listing - Applying for the job
                         <div id="contact-name-hint" class="govuk-hint">
                             This email address will be shown publicly as a point of contact
                         </div>
-                        <input class="govuk-input govuk-!-width-three-quarters" id="contact-name" name="contact-name" type="text" aria-describedby="contact-name-hint">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="contact-name" name="hs-app-contactName" type="text" aria-describedby="contact-name-hint">
                     </div>
+                    <!-- START Subject -->
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="subject">
+                            Who should receive a notification when an application is made? (<span class="form-required">required</span>)
+                        </label>
+                        <span id="subject-hint" class="govuk-hint">
+                            Select the people with Teaching Vacancies acccess who will receive an email when a teacher applies for this role.
+                        </span>
+                        <div class="app-c-option-select__filter">
+                            <label for="input-ee7cd429" class="govuk-label govuk-visually-hidden">
+                                Filter Show only
+                            </label>
+                            <input name="option-select-filter" id="input-ee7cd429" class="app-c-option-select__filter-input govuk-input" type="text" aria-describedby="checkboxes-604a86d4-count" aria-controls="checkboxes-604a86d4">
+                        </div>
+                        <div class="checkboxes-container">
+
+                            <div class="govuk-checkboxes govuk-checkboxes--small ">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="subject17" name="hs-app-notification" type="checkbox" value="Hiring staff person 1">
+                                    <label class="govuk-label govuk-checkboxes__label" for="subject17">
+                                        <span class="subject-bold">Hiring staff person 1</span><br>
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="subject1" name="hs-app-notification"" type="checkbox" value="Hiring staff person 2">
+                                    <label class="govuk-label govuk-checkboxes__label" for="subject1">
+                                        <span class="subject-bold">Hiring staff person 2</span><br>
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="subject2" name="hs-app-notification"" type="checkbox" value="Hiring staff person 3">
+                                    <label class="govuk-label govuk-checkboxes__label" for="subject2">
+                                        <span class="subject-bold">Hiring staff person 3</span><br>
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="subject3" name="hs-app-notification"" type="checkbox" value="Hiring staff person 4">
+                                    <label class="govuk-label govuk-checkboxes__label" for="subject3">
+                                        <span class="subject-bold">Hiring staff person 4</span><br>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- END Subject -->
                     <div class="govuk-form-group">
                         <h1 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="visits">
@@ -68,7 +114,7 @@ Create a job listing - Applying for the job
                         <div id="visits-hint" class="govuk-hint">
                             Explain how a candidate can arrange to visit the school (give a phone number if possible)
                         </div>
-                        <textarea class="govuk-textarea" rows="5" id="visits" name="visits" type="text" aria-describedby="visits-hint"></textarea>
+                        <textarea class="govuk-textarea" rows="5" id="visits" name="hs-app-visits" type="text" aria-describedby="visits-hint"></textarea>
                     </div>
                     <!-- END STEP 2 -->
 

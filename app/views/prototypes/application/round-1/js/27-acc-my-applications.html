@@ -42,70 +42,72 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <h4 class="govuk-heading-s">Submitted applications</h4>
-                <table class="govuk-table acc-applications__table">
-                    <!-- <caption class="govuk-table__caption">Dates and amounts</caption> -->
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Name</th>
-                            <th scope="col" class="govuk-table__header">Application status</th>
-                            <th scope="col" class="govuk-table__header"><a href="#" class="govuk-link govuk-link--no-visited-state"> Submitted on</a></th>
-                            <th scope="col" class="govuk-table__header">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">
-                                This is a job listing Name<br>
-                                <span class="name-listing">Bexley Heath Academy</span> <br>
-                                <span class="accepting">Still accepting applications</span>
-                            </th>
-                            <td class="govuk-table__cell">
-                                <span class="acc-tag acc-tag__reject">Unsuccessful</span>
-                            </td>
-                            <td class="govuk-table__cell">03 November 2020 at 11:00am</td>
-                            <td class="govuk-table__cell">
-                                <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                                    <!-- <li><a href="#">Withdraw</a></li> -->
-                                    <li><a href="/prototypes/application/round-1/js/28-acc-application">View application</a></li>
-                                </ul> 
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">
-                                This is a job listing Name<br>
-                                <span class="name-listing">Bexley Heath Academy</span> <br>
-                                <span class="accepting">Still accepting applications</span>
-                            </th>
-                            <td class="govuk-table__cell">
-                                <span class="acc-tag acc-tag__review">In Review</span>
-                            </td>
-                            <td class="govuk-table__cell">03 November 2020 at 11:00am</td>
-                            <td class="govuk-table__cell">
-                                <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                                    <li><a href="#">Withdraw</a></li>
-                                    <li><a href="#">View application</a></li>
-                                </ul> 
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">
-                                This is a job listing Name<br>
-                                <span class="name-listing">Bexley Heath Academy</span> <br>
-                                <span class="passed">Deadline passed</span>
-                            </th>
-                            <td class="govuk-table__cell">
-                                <span class="acc-tag acc-tag__review">in Review</span>
-                            </td>
-                            <td class="govuk-table__cell">14 August 2020 at 09:00am</td>
-                            <td class="govuk-table__cell">
-                                <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                                    <li><a href="#">Withdraw</a></li>
-                                    <li><a href="#">View application</a></li>
-                                </ul>  
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <div class="govuk-form-group">
+                    <label for="jobs-sort-field" class="govuk-label-inline govuk-!-margin-right-2" id="jobs_sort_label">Sort by</label>
+                    <select class="govuk-select govuk-select govuk-body govuk-!-font-size-16" id="jobs-sort-field" name="jobs_sort">
+                        <option value="">Date submitted (most recent)</option>
+                    </select>
+                </div>
+
+                <!-- START Card row 1 -->
+                <div class="flex-grid">
+                    <div class="col">
+                        <span class="govuk-!-font-weight-bold">{{ data['app2-jobListingName'] }}</span><br>
+                        <span class="name-listing">{{ data['app2-schoolName'] }}</span> <br>
+                        <span class="accepting">Still accepting applications</span>
+                    </div>
+                    <div class="col">
+                        <span class="acc-tag acc-tag__reject govuk-!-margin-bottom-1">Unsuccessful</span>
+                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Submitted:</span> 12 January 2021 at 09:14am</p>
+                    </div>
+                    <div class="col">
+                        <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
+                            <li><a href="/prototypes/application/round-1/js/28-acc-application">View application</a></li>
+                        </ul>  
+                    </div>
+                </div>
+                <!-- END Card row 1 -->
+
+                <!-- START Card row 2 -->
+                <div class="flex-grid">
+                    <div class="col">
+                        <span class="govuk-!-font-weight-bold">Primary Teacher KS1 &amp; KS2</span><br>
+                        <span class="name-listing">Bexley Heath Academy</span> <br>
+                        <span class="accepting">Still accepting applications</span>
+                    </div>
+                    <div class="col">
+                        <span class="acc-tag acc-tag__review govuk-!-margin-bottom-1">In Review</span>
+                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Submitted:</span> 03 November 2020 at 11:00am</p>
+                    </div>
+                    <div class="col">
+                        <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
+                            <li><a href="#">Withdraw</a></li>
+                            <li><a href="#">View application</a></li>
+                        </ul>  
+                    </div>
+                </div>
+                <!-- END Card row 2 -->
+
+                <!-- START Card row 3 -->
+                <div class="flex-grid">
+                    <div class="col">
+                        <span class="govuk-!-font-weight-bold">Primary Teacher</span><br>
+                        <span class="name-listing">Bexley Heath Academy</span> <br>
+                        <span class="passed">Deadline passed</span>
+                    </div>
+                    <div class="col">
+                        <span class="acc-tag acc-tag__review govuk-!-margin-bottom-1">In Review</span>
+                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Submitted:</span> 14 August 2020 at 09:00am</p>
+                    </div>
+                    <div class="col">
+                        <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
+                            <li><a href="#">Withdraw</a></li>
+                            <li><a href="#">View application</a></li>
+                        </ul>   
+                    </div>
+                </div>
+                <!-- END Card row 3 -->
 
             </div>    
         </div>

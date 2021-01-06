@@ -43,18 +43,18 @@ Create a job listing - Job summary
                         <div id="statement-hint" class="govuk-hint">
                                 Give a brief summary of the job that jobseekers can quickly scan. This will be the first thing they see on the listing or in search engine results
                         </div>
-                        <textarea class="govuk-textarea" rows="10" id="statement" name="statement" type="text" aria-describedby="statement-hint"></textarea>
+                        <textarea class="govuk-textarea" rows="10" id="statement" name="hs-app-summary" type="text" aria-describedby="statement-hint"></textarea>
                     </div>
                     <div class="govuk-form-group">
                         <h1 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="visits">
-                                About [School name]
+                                About {{ data['app2-schoolName'] }}
                             </label>
                         </h1>
                         <div id="visits-hint" class="govuk-hint">
                             This will appear next to the job details under 'School overview'. Feel free to adapt this text
                         </div>
-                        <textarea class="govuk-textarea" rows="10" id="visits" name="visits" type="text" aria-describedby="visits-hint"></textarea>
+                        <textarea class="govuk-textarea" rows="10" id="visits" name="hs-app-aboutSchool" type="text" aria-describedby="visits-hint"></textarea>
                     </div>
                     <!-- END STEP 2 -->
 

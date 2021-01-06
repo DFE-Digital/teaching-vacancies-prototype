@@ -41,7 +41,7 @@ Create a job listing - Job details
                         <div id="event-name-hint" class="govuk-hint">
                             Enter a short title, including subject and leadership roles where relevant ('Subject leader for science', for example)
                         </div>
-                        <input class="govuk-input govuk-!-width-three-quarters" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="event-name" name="hs-app-jobTitle" type="text" aria-describedby="event-name-hint">
                     </div>
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
@@ -55,25 +55,25 @@ Create a job listing - Job details
                             </div>
                             <div class="govuk-checkboxes">
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="role-1" name="role" type="checkbox" value="Teacher">
+                                    <input class="govuk-checkboxes__input" id="role-1" name="hs-app-role" type="checkbox" value="Teacher">
                                     <label class="govuk-label govuk-checkboxes__label" for="role-1">
                                         Teacher
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="role-2" name="role" type="checkbox" value="Leadership">
+                                    <input class="govuk-checkboxes__input" id="role-2" name="hs-app-role" type="checkbox" value="Leadership">
                                     <label class="govuk-label govuk-checkboxes__label" for="role-2">
                                         Leadership
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="role-3" name="role" type="checkbox" value="farm">
+                                    <input class="govuk-checkboxes__input" id="role-3" name="hs-app-role" type="checkbox" value="SEN specialist">
                                     <label class="govuk-label govuk-checkboxes__label" for="role-3">
                                         SEN specialist
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="role-4" name="role" type="checkbox" value="farm">
+                                    <input class="govuk-checkboxes__input" id="role-4" name="hs-app-role" type="checkbox" value="Suitable for NQT's">
                                     <label class="govuk-label govuk-checkboxes__label" for="role-4">
                                         Suitable for NQT's
                                     </label>
@@ -225,6 +225,7 @@ Create a job listing - Job details
 
                     <!-- END Subject -->
                     
+                    <!-- START Working pattern -->
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="pattern-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -237,19 +238,19 @@ Create a job listing - Job details
                             </div>
                             <div class="govuk-checkboxes">
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="pattern-1" name="pattern" type="checkbox" value="Full-time">
+                                    <input class="govuk-checkboxes__input" id="pattern-1" name="hs-app-pattern" type="checkbox" value="Full-time">
                                     <label class="govuk-label govuk-checkboxes__label" for="pattern-1">
                                         Full-time
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="pattern-2" name="pattern" type="checkbox" value="Part-time">
+                                    <input class="govuk-checkboxes__input" id="pattern-2" name="hs-app-pattern" type="checkbox" value="Part-time">
                                     <label class="govuk-label govuk-checkboxes__label" for="pattern-2">
                                         Part-time
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="pattern-3" name="pattern" type="checkbox" value="Job share">
+                                    <input class="govuk-checkboxes__input" id="pattern-3" name="hs-app-pattern" type="checkbox" value="Job share">
                                     <label class="govuk-label govuk-checkboxes__label" for="pattern-3">
                                         Job share
                                     </label>
@@ -257,6 +258,50 @@ Create a job listing - Job details
                             </div>
                         </fieldset>
                     </div>
+                    <!-- END Working pattern -->
+
+                    <!-- START gender -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Contract type
+                                </h3>
+                            </legend>
+                            <!-- <div id="family--hint" class="govuk-hint">
+                                If the binary options do not reflect how you identify, please use your own words
+                            </div> -->
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gender-f" name="hs-app-contract" type="radio" value="Permanent">
+                                    <label class="govuk-label govuk-radios__label" for="gender-f">
+                                        Permanent
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gender-describe" name="hs-app-contract" type="radio" value="Fixed" data-aria-controls="conditional-contract">
+                                    <label class="govuk-label govuk-radios__label" for="gender-describe">
+                                        Fixed term
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contract">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            Duration of the fixed term contract
+                                        </label>
+                                        <div id="family--hint" class="govuk-hint">
+                                            Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies.
+                                        </div>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END gender -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <p class="govuk-body govuk-!-display-block"><a href="#" class="govuk-link">Save and return later</a></p>

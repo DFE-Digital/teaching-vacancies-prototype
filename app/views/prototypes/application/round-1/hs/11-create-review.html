@@ -46,7 +46,7 @@ Create a job listing - Review
                                         <h4>Job title</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Science Teacher</p>
+                                        <p>{{ data['hs-app-jobTitle'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -56,7 +56,7 @@ Create a job listing - Review
                                         <h4>Job role</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Teacher</p>
+                                        <p>{{ data['hs-app-role'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -66,7 +66,7 @@ Create a job listing - Review
                                         <h4>Subject</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Science</p>
+                                        <p>{{ data['subject'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -76,7 +76,17 @@ Create a job listing - Review
                                         <h4>Working pattern</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Full time</p>
+                                        <p>{{ data['hs-app-pattern'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Contract type</h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['hs-app-contract'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -96,7 +106,7 @@ Create a job listing - Review
                                         <h4>Salary</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>££ Lorem</p>
+                                        <p>{{ data['hs-app-salary'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -106,7 +116,7 @@ Create a job listing - Review
                                         <h4>Employee benefits</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p>{{ data['hs-app-benefits'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -127,7 +137,7 @@ Create a job listing - Review
                                         <h4>Date job will be listed</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>13 July 2020</p>
+                                        <p>13 January 2021</p>
                                     </dd>
                                 </div>
                             </li>
@@ -137,7 +147,7 @@ Create a job listing - Review
                                         <h4>Application deadline</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>30 July 2020 at 9:00 am</p>
+                                        <p>30 June 2021 at 9:00 am</p>
                                     </dd>
                                 </div>
                             </li>
@@ -147,7 +157,7 @@ Create a job listing - Review
                                         <h4>Date job starts</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>2 September 2020</p>
+                                        <p>2 September 2021</p>
                                     </dd>
                                 </div>
                             </li>
@@ -198,7 +208,7 @@ Create a job listing - Review
                                         <h4>Application through TVS?</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Yes, applications can be sent via Teaching Vacancies</p>
+                                        <p>{{ data['hs-app-applySource'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -208,7 +218,7 @@ Create a job listing - Review
                                         <h4>Personal statement instructions</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, perspiciatis consequatur totam omnis maiores aliquid? Nobis eaque quia quisquam illo alias commodi quidem sit quis? Mollitia debitis voluptate fugiat sed!</p>
+                                        <p>{{ data['hs-app-statement'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -218,7 +228,17 @@ Create a job listing - Review
                                         <h4>Contact email</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>ann.green@svtrust.com</p>
+                                        <p>{{ data['hs-app-contactName'] }}</p>
+                                    </dd>
+                                </div>
+                            </li>
+                            <li class="app-task-list__item">
+                                <div class="app-check-your-answers__contents">
+                                    <dt class="app-check-your-answers__question">
+                                        <h4>Who should receive a notification when an application is made? </h4>
+                                    </dt>
+                                    <dd class="app-check-your-answers__answer">
+                                        <p>{{ data['hs-app-notification'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -228,11 +248,11 @@ Create a job listing - Review
                                         <h4>School visit instructions</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p>{{ data['hs-app-visits'] }}</p>
                                     </dd>
                                 </div>
                             </li>
-                            <li class="app-task-list__item">
+                            <!-- <li class="app-task-list__item">
                                 <div class="app-check-your-answers__contents">
                                     <dt class="app-check-your-answers__question">
                                         <h4>Application instructions</h4>
@@ -251,7 +271,7 @@ Create a job listing - Review
                                         <p>http://test-website.com/apply</p>
                                     </dd>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     <li>
@@ -268,7 +288,7 @@ Create a job listing - Review
                                         <h4>Job summary</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p>{{ data['hs-app-summary'] }}</p>
                                     </dd>
                                 </div>
                             </li>
@@ -278,7 +298,7 @@ Create a job listing - Review
                                         <h4>About the school</h4>
                                     </dt>
                                     <dd class="app-check-your-answers__answer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p>{{ data['hs-app-aboutSchool'] }}</p>
                                     </dd>
                                 </div>
                             </li>

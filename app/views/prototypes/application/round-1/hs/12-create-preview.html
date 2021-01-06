@@ -19,7 +19,7 @@ Preview job lisiting
 
                     <!-- START ALERT CALLOUT -->
                     <div class="tvs-alert alert-js-callout2">
-                        <h4 class="govuk-heading-m govuk-!-margin-bottom-1">Preview of ‘[job title]’</h4>
+                        <h4 class="govuk-heading-m govuk-!-margin-bottom-1">Preview of ‘{{ data['hs-app-jobTitle'] }}’</h4>
                         <p class="govuk-body govuk-!-margin-bottom-3">
                             This is how your job listing will appear to jobseekers visiting Teaching Vacancies. You can make changes or, if you are happy with it and agree to our terms and conditions, you can submit it for publication on [date]
                         </p>
@@ -33,7 +33,7 @@ Preview job lisiting
                     <!-- END ALERT CALLOUT -->
 
                     <div class="govuk-!-margin-bottom-6">
-                        <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Primary Teacher</h1>
+                        <h1 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data['hs-app-jobTitle'] }}</h1>
                         <h4 class="govuk-caption-l govuk-!-margin-top-0">Bronson Alcott Academy, Stratford, Greater London</h4>
                     </div>
 
@@ -77,25 +77,25 @@ Preview job lisiting
 
                 <aside class="dates">
 
-                    <h2 class="govuk-heading-s">12 days remaining to apply</h2>
+                    <h2 class="govuk-heading-s">132 days remaining to apply</h2>
                     <ul class="test-timeline">
                         <li class="test-timeline__item">
                             <h3 class="test-timeline__title govuk-heading-s">
                                 Expected start date
                             </h3>
-                            <p class="test-timeline__by">02 September 2020</p>
+                            <p class="test-timeline__by">02 September 2021</p>
                         </li>
                         <li class="test-timeline__item">
                             <h3 class="test-timeline__title govuk-heading-s">
                                 Application deadline
                             </h3>
-                            <p class="test-timeline__by">30 July 2020 at 09:00 am</p>
+                            <p class="test-timeline__by">30 June 2021 at 09:00 am</p>
                         </li>
                         <li class="test-timeline__item">
                             <h3 class="test-timeline__title govuk-heading-s">
                                 Date listed
                             </h3>
-                            <p class="test-timeline__by">02 March 2020</p>
+                            <p class="test-timeline__by">14 January 2021</p>
                         </li>
                     </ul>
 
@@ -132,31 +132,30 @@ Preview job lisiting
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <td scope="row" class="govuk-table__header govuk-!-width-one-third">Role</td>
-                            <td class="govuk-table__cell">Teacher</td>
+                            <td class="govuk-table__cell">{{ data['hs-app-role'] }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <td scope="row" class="govuk-table__header">Subject</td>
-                            <td class="govuk-table__cell">Primary</td>
+                            <td class="govuk-table__cell">{{ data['subject'] }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <td scope="row" class="govuk-table__header">Working pattern</td>
-                            <td class="govuk-table__cell">Full time</td>
+                            <td class="govuk-table__cell">{{ data['hs-app-pattern'] }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td scope="row" class="govuk-table__header">Contract type</td>
+                            <td class="govuk-table__cell">{{ data['hs-app-contract'] }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <td scope="row" class="govuk-table__header">Salary</td>
-                            <td class="govuk-table__cell">£28,355-£44,541</td>
+                            <td class="govuk-table__cell">{{ data['hs-app-salary'] }}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h4 class="govuk-heading-s">Job summary</h4>
                 <p class="govuk-body">
-                    We need an outstanding, inspiring NQT, who will work with us to nurture the aspiration and dreams of our people. You will need a passion for teaching, ambition, compassion, and a genuine commitment to valuing diversity in our world class city.
-                </p>
-
-                <h4 class="govuk-heading-s">School visits</h4>
-                <p class="govuk-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem rerum id rem, voluptate harum perspiciatis doloremque sit tempora animi provident! Vel, tenetur fuga aliquid autem id libero distinctio magni placeat.
+                    {{ data['hs-app-summary'] }}
                 </p>
 
                 <h4 class="govuk-heading-s">Applying for the role</h4>
