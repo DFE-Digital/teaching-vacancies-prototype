@@ -1,7 +1,7 @@
 {% extends "layout-js.html" %}
 
 {% block pageTitle %}
-Application - References
+    Application - Declarations
 {% endblock %}
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
@@ -49,94 +49,58 @@ Application - References
             <!-- START Main content -->
             <div class="govuk-grid-column-three-quarters">
 
-                <span class="govuk-caption-m">Step 6 of 10</span>
-                <h1 class="govuk-heading-l">References</h1>
-                <p class="govuk-body"><span class="form-required" style="font-weight: 700;">Two referees are required</span> for this application. It may speed up your application if you are able to contact them in advance. </p>
-
-                <!-- START reference -->
-                <div class="qualification govuk-!-margin-bottom-6">
-                    <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Reference 1</h4>
-                    </div>
-                    <div class="qualification-content">
-                        <table class="govuk-table govuk-!-margin-bottom-4">
-                            <tbody class="govuk-table__body">
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
-                                    <td class="govuk-table__cell">Jaqui Oatley</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Organisation</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Relationship to applicant</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Phone number</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Email address</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
-                        <a href="#" class="govuk-link">Edit</a>
-                    </div>
-                </div>
-                <!-- END reference -->
-
-                <!-- START reference -->
-                <div class="qualification govuk-!-margin-bottom-6">
-                    <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Reference 2</h4>
-                    </div>
-                    <div class="qualification-content">
-                        <table class="govuk-table govuk-!-margin-bottom-4">
-                            <tbody class="govuk-table__body">
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
-                                    <td class="govuk-table__cell">Rory Smith</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Organisation</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Relationship to applicant</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Phone number</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Email address</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
-                        <a href="#" class="govuk-link">Edit</a>
-                    </div>
-                </div>
-                <!-- END reference -->
-
-                <!-- <a href="#" class="govuk-button govuk-button--secondary">Add another reference</a> -->
+                <span class="govuk-caption-m">Step 8 of 10</span>
+                <h1 class="govuk-heading-l">Ask for support if you have a disability or other needs</h1>
+                <p class="govuk-body">When you are attending an interview, you might benefit from extra support if you’re disabled, have a mental health condition or educational needs. You can ask for the support that you need now. The school can then make adjustments so you can attend an interview. </p>
+                <p class="govuk-body">This could be:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>organising equipment, like an adapted keyboard or a hearing loop</li>
+                    <li>putting you in touch with support staff before the day of your interview</li>
+                    <li>making sure classrooms are wheelchair accessible</li>
+                </ul>
+                <p class="govuk-body">It’s against the law to discriminate against you if you are disabled. You should not be asked questions about your health or disability if they are not relevant to your teaching ability or practice. They should not reject your application because you are disabled.</p>
 
                 <!-- START FORM 1 -->
-                <form class="form" action="/prototypes/application/round-1/js/22-application-equality" method="post">
+                <form class="form" action="/prototypes/application/round-1/js/24-application-declarations" method="post">
+
+                    <!-- START support -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="banned-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Do you want to ask for support so that you can attend an interview? (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <!-- <div id="banned-hint" class="govuk-hint">
+                                It is an offence to apply for the role if you are barred from engaging in regulated activity with children.
+                            </div> -->
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="disability-yes" name="disability-support" type="radio" value="yes" data-aria-controls="conditional-support">
+                                    <label class="govuk-label govuk-radios__label" for="disability-yes">
+                                        Yes, I would like to share some information about the support that I need
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-support">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="support-describe-input">
+                                            Tell us any information you think is relevant
+                                        </label>
+                                        <textarea class="govuk-textarea" id="support-more-detail" name="support-more-detail" rows="5" aria-describedby="support-describe-input"></textarea>
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="disability-no" name="disability-support" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="disability-no">
+                                        No, I do not need support
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END support -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
@@ -283,7 +247,7 @@ Application - References
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="6">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -307,7 +271,7 @@ Application - References
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="7">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -331,7 +295,7 @@ Application - References
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="7">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">

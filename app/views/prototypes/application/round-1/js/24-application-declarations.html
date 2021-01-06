@@ -49,11 +49,11 @@
             <!-- START Main content -->
             <div class="govuk-grid-column-three-quarters">
 
-                <span class="govuk-caption-m">Step 7 of 10</span>
+                <span class="govuk-caption-m">Step 9 of 10</span>
                 <h1 class="govuk-heading-l">Declarations</h1>
                 
                 <!-- START FORM 1 -->
-                <form class="form" action="/prototypes/application/round-1/js/24-application-review" method="post">
+                <form class="form" action="/prototypes/application/round-1/js/25-application-review" method="post">
 
                     <!-- START banned -->
                     <div class="govuk-form-group">
@@ -63,18 +63,18 @@
                                     Are you banned or disqualified from working with children or subject to any sanctions or conditions on your employment, imposed by the Independent Safeguarding Authority (ISA), Secretary of State or other regulatory body (e.g. the GTCE)? (<span class="form-required">required</span>)
                                 </h3>
                             </legend>
-                            <!-- <div id="banned-hint" class="govuk-hint">
-                                This includes changing your last name or spelling your name differently.
-                            </div> -->
+                            <div id="banned-hint" class="govuk-hint">
+                                It is an offence to apply for the role if you are barred from engaging in regulated activity with children.
+                            </div>
                             <div class="govuk-radios govuk-radios--inline">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="banned-yes" name="banned-yes" type="radio" value="yes">
+                                    <input class="govuk-radios__input" id="banned-yes" name="dec-banned" type="radio" value="yes">
                                     <label class="govuk-label govuk-radios__label" for="banned-yes">
                                         Yes
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="banned-no" name="banned-no" type="radio" value="no">
+                                    <input class="govuk-radios__input" id="banned-no" name="dec-banned" type="radio" value="no">
                                     <label class="govuk-label govuk-radios__label" for="banned-no">
                                         No
                                     </label>
@@ -82,27 +82,37 @@
                             </div>
                         </fieldset>
                     </div>
-                    <!-- END qts -->
+                    <!-- END banned -->
                     <!-- START family-->
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="family-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Do you have any family or close relationship with people within [school name]? (<span class="form-required">required</span>)
+                                    Do you have any family or close relationship with people within {{ data['app2-schoolName'] }}? (<span class="form-required">required</span>)
                                 </h3>
                             </legend>
                             <!-- <div id="family--hint" class="govuk-hint">
                                 This includes changing your last name or spelling your name differently.
                             </div> -->
-                            <div class="govuk-radios govuk-radios--inline">
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="family-yes" name="family-yes" type="radio" value="yes">
+                                    <input class="govuk-radios__input" id="family-yes" name="dec-family" type="radio" value="yes" data-aria-controls="conditional-family">
                                     <label class="govuk-label govuk-radios__label" for="family-yes">
                                         Yes
                                     </label>
                                 </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-family">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            Describe who, and what is the relationship
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-full" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="family-no" name="family-no" type="radio" value="no">
+                                    <input class="govuk-radios__input" id="family-no" name="dec-family" type="radio" value="no">
                                     <label class="govuk-label govuk-radios__label" for="family-no">
                                         No
                                     </label>
@@ -116,21 +126,21 @@
                         <fieldset class="govuk-fieldset" aria-describedby="citizen-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Are you a UK or EU/EEA citizen? (<span class="form-required">required</span>)
+                                    Do you have the right to work in the UK? (<span class="form-required">required</span>)
                                 </h3>
                             </legend>
-                            <!-- <div id="citizen-hint" class="govuk-hint">
-                                This includes changing your last name or spelling your name differently.
-                            </div> -->
+                            <div id="citizen-hint" class="govuk-hint">
+                                You can find out whether you have the right to work in the UK on the <a href="#">GOV.UK website</a>. You can apply for this role even if you do not have the right to work in the UK.
+                            </div>
                             <div class="govuk-radios govuk-radios--inline">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="citizen-yes" name="citizen-yes" type="radio" value="yes">
+                                    <input class="govuk-radios__input" id="citizen-yes" name="dec-work" type="radio" value="yes">
                                     <label class="govuk-label govuk-radios__label" for="citizen-yes">
                                         Yes
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="citizen-no" name="citizen-no" type="radio" value="no">
+                                    <input class="govuk-radios__input" id="citizen-no" name="dec-work" type="radio" value="no">
                                     <label class="govuk-label govuk-radios__label" for="citizen-no">
                                         No
                                     </label>
@@ -310,7 +320,7 @@
                                     </h3>
                                 </div>
                             </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
                                 <div class="app-step-nav__header js-toggle-panel" data-position="7">
                                     <h3 class="app-step-nav__title">
                                         <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -318,6 +328,54 @@
                                                 <span class="app-step-nav__circle-background">
                                                     <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
                                                     7
+                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                                                </span>
+                                            </span>
+                                        </span>
+    
+                                        <span class="js-step-title">
+                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
+                                                <span class="js-step-title-text">
+                                                    Equal opportunities and recruitment monitoring
+                                                </span>
+                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
+                                            </button>
+                                        </span>
+                                    </h3>
+                                </div>
+                            </li>
+                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
+                                <div class="app-step-nav__header js-toggle-panel" data-position="7">
+                                    <h3 class="app-step-nav__title">
+                                        <span class="app-step-nav__circle app-step-nav__circle--number">
+                                            <span class="app-step-nav__circle-inner">
+                                                <span class="app-step-nav__circle-background">
+                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                                    8
+                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                                                </span>
+                                            </span>
+                                        </span>
+    
+                                        <span class="js-step-title">
+                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
+                                                <span class="js-step-title-text">
+                                                    Ask for support if you have a disability or other needs
+                                                </span>
+                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
+                                            </button>
+                                        </span>
+                                    </h3>
+                                </div>
+                            </li>
+                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
+                                <div class="app-step-nav__header js-toggle-panel" data-position="7">
+                                    <h3 class="app-step-nav__title">
+                                        <span class="app-step-nav__circle app-step-nav__circle--number">
+                                            <span class="app-step-nav__circle-inner">
+                                                <span class="app-step-nav__circle-background">
+                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                                    9
                                                     <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                                 </span>
                                             </span>
@@ -341,7 +399,7 @@
                                             <span class="app-step-nav__circle-inner">
                                                 <span class="app-step-nav__circle-background">
                                                     <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    8
+                                                    10
                                                     <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                                 </span>
                                             </span>
