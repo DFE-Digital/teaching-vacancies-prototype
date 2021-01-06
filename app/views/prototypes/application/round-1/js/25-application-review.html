@@ -49,11 +49,11 @@
             <!-- START Main content -->
             <div class="govuk-grid-column-three-quarters">
 
-                <span class="govuk-caption-m">Step 8 of 8</span>
+                <span class="govuk-caption-m">Step 10 of 10</span>
                 <h1 class="govuk-heading-l">Review your application</h1>
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">1. Personal details</h2>
-                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <p class="govuk-!-display-inline-block"><a href="#">Change</a></p>
 
                 <!-- START Personal details -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -62,23 +62,18 @@
                             Name
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Sarah Philips
+                            {{ data['app2-firstName'] }} {{ data['app2-lastName'] }}
                         </dd>
-                        <!-- <dd class="govuk-summary-list__actions">
-                            <a href="#">
-                                Change
-                                <span class="govuk-visually-hidden"> name</span>
-                            </a>
-                        </dd> -->
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Your address
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            72 Guild Street
-                            <br>London
-                            <br>SE23 6FH
+                            {{ data['app2-addressStreet'] }}
+                            <br>{{ data['app2-addressTown'] }}
+                            <br>{{ data['app2-addressCounty'] }}
+                            <br>{{ data['app2-addressPostcode'] }}
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -86,7 +81,7 @@
                             Phone number
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            <p>07700 900457</p>
+                            <p>{{ data['app2-phoneNumber'] }}</p>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -94,7 +89,7 @@
                             Email address
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            <p>sarah.phillips@example.com</p>
+                            <p>{{ data['user-email'] }}</p>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -102,7 +97,7 @@
                             Teacher reference number (TRN)
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            <p>3227836863536383</p>
+                            <p>{{ data['app2-trn'] }}</p>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -110,7 +105,7 @@
                             National insurance number (TRN)
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            <p>3227836863536383</p>
+                            <p>{{ data['app2-ni'] }}</p>
                         </dd>
                     </div>
                 </dl>
@@ -125,7 +120,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Qualification 1 - [Qualification type]
+                                    Qualification 1 - GCSE's
                                 </span>
                             </h2>
                         </div>
@@ -138,20 +133,30 @@
                                         <td class="govuk-table__cell">Lorem</td>
                                     </tr>
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Subject</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <th scope="row" class="govuk-table__header">Subject(s)</th>
+                                        <td class="govuk-table__cell">
+                                            Subject 1 - Grade x<br>
+                                            Subject 2 - Grade x<br>
+                                            Subject 3 - Grade x<br>
+                                            Subject 4 - Grade x<br>
+                                            Subject 5 - Grade x<br>
+                                            Subject 6 - Grade x<br>
+                                            Subject 7 - Grade x<br>
+                                            Subject 8 - Grade x<br>
+                                            Subject 9 - Grade x<br>
+                                        </td>
                                     </tr>
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Grade</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">School or college attended</th>
+                                        <th scope="row" class="govuk-table__header">School, college or organisation</th>
                                         <td class="govuk-table__cell">Sweet Valley High</td>
                                     </tr>
                                     <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Awarding body</th>
+                                        <td class="govuk-table__cell">Lorem</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
-                                        <td class="govuk-table__cell">2010</td>
+                                        <td class="govuk-table__cell">Lorem</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -162,7 +167,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                                    Qualification 2 - [Qualification type]
+                                    Qualification 2 - Bachelor Degree
                                 </span>
                             </h2>
                         </div>
@@ -187,8 +192,12 @@
                                         <td class="govuk-table__cell">Sweet Valley High</td>
                                     </tr>
                                     <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Awarding body</th>
+                                        <td class="govuk-table__cell">Lorem</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
-                                        <td class="govuk-table__cell">2010</td>
+                                        <td class="govuk-table__cell">Lorem</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -219,14 +228,6 @@
                             Yes
                         </dd>
                     </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Relevant organisation membership
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur optio amet, ratione perspiciatis itaque adipisci repellat tenetur ipsa eligendi aperiam. Doloremque illo consectetur possimus velit blanditiis dicta eaque nam aspernatur.</p>
-                        </dd>
-                    </div>
                 </dl>
                 <!-- END Professional status -->
 
@@ -239,7 +240,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Role 1 - [Organisation name]
+                                    Role 1 - {{ data['emp1-organisation'] }}
                                 </span>
                             </h2>
                         </div>
@@ -249,43 +250,35 @@
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp1-organisation'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Start date</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">End date</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Number on roll</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Age range</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Type of school</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp1-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Salary scale or level</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp1-salary'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp1-subjects'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Start date</th>
+                                        <td class="govuk-table__cell">31st March 2016</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">End date</th>
+                                        <td class="govuk-table__cell">This is my current role</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Main duties</th>
-                                        <td class="govuk-table__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero quam ratione vel, fugit maxime necessitatibus omnis quos, vitae, inventore unde aspernatur placeat atque modi. Facilis quasi similique sapiente repellat?</td>
+                                        <td class="govuk-table__cell">{{ data['emp1-mainDuties'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Reason for leaving</th>
+                                        <td class="govuk-table__cell">{{ data['emp1-reason'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -295,54 +288,46 @@
                     <div class="govuk-accordion__section ">
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
-                                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                                    Role 2 - [Organisation name]
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Role 2 - {{ data['emp1-organisation'] }}
                                 </span>
                             </h2>
                         </div>
-                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
                             <!-- START Role content -->
                             <table class="govuk-table govuk-!-margin-bottom-0">
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Start date</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">End date</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Number on roll</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Age range</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Type of school</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp2-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Salary scale or level</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp2-salary'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['emp2-subjects'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Start date</th>
+                                        <td class="govuk-table__cell">31st January 2012</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">End date</th>
+                                        <td class="govuk-table__cell">30th March 2016</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Main duties</th>
-                                        <td class="govuk-table__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero quam ratione vel, fugit maxime necessitatibus omnis quos, vitae, inventore unde aspernatur placeat atque modi. Facilis quasi similique sapiente repellat?</td>
+                                        <td class="govuk-table__cell">{{ data['emp2-mainDuties'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Reason for leaving</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-reason'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -355,22 +340,8 @@
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">5. Personal statement</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
                 <!-- START Statement -->
-                <p class="govuk-body"> 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quod praesentium sunt et, provident minima nobis eligendi illo at enim unde eaque? Voluptates autem vero nostrum est officia facilis voluptate.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam corporis ex sed perspiciatis numquam! Enim suscipit, saepe libero ducimus quas expedita in esse nostrum qui quisquam autem quo dicta obcaecati.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis repellat incidunt est? Dignissimos tempore, ab unde reprehenderit nulla voluptates harum nobis debitis ex dolores architecto doloremque ipsum, labore, quia corporis.
-                </p>
-                <p class="govuk-body"> 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quod praesentium sunt et, provident minima nobis eligendi illo at enim unde eaque? Voluptates autem vero nostrum est officia facilis voluptate.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam corporis ex sed perspiciatis numquam! Enim suscipit, saepe libero ducimus quas expedita in esse nostrum qui quisquam autem quo dicta obcaecati.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis repellat incidunt est? Dignissimos tempore, ab unde reprehenderit nulla voluptates harum nobis debitis ex dolores architecto doloremque ipsum, labore, quia corporis.
-                </p> 
-                <p class="govuk-body govuk-!-margin-bottom-9"> 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quod praesentium sunt et, provident minima nobis eligendi illo at enim unde eaque? Voluptates autem vero nostrum est officia facilis voluptate.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam corporis ex sed perspiciatis numquam! Enim suscipit, saepe libero ducimus quas expedita in esse nostrum qui quisquam autem quo dicta obcaecati.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis repellat incidunt est? Dignissimos tempore, ab unde reprehenderit nulla voluptates harum nobis debitis ex dolores architecto doloremque ipsum, labore, quia corporis.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos ab repudiandae modi blanditiis. Ab quae eveniet reiciendis deserunt, magnam iure autem, similique eos esse saepe est fugit exercitationem aliquid minima.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non dolor numquam perspiciatis consectetur quaerat repudiandae. Adipisci nesciunt minus aut temporibus sunt, tenetur perferendis enim? Pariatur aperiam quas quo eos voluptatem?
+                <p class="govuk-body">
+                    {{ data['app2-personalStatement'] }}
                 </p>
                 <!-- END Statement -->
 
@@ -382,7 +353,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Reference 1 - [Reference name]
+                                    Reference 1 - {{ data['ref1-name'] }}
                                 </span>
                             </h2>
                         </div>
@@ -392,27 +363,27 @@
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
-                                        <td class="govuk-table__cell">Rory Smith</td>
+                                        <td class="govuk-table__cell">{{ data['ref1-name'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref1-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Organisation</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref1-organisation'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Relationship to applicant</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref1-relationship'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Phone number</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref1-phone'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Email address</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref1-email'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -422,38 +393,38 @@
                     <div class="govuk-accordion__section ">
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
-                                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                                    Reference 2 - [Reference name]
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Reference 2 - {{ data['ref2-name'] }}
                                 </span>
                             </h2>
                         </div>
-                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
                             <!-- START content -->
                             <table class="govuk-table govuk-!-margin-bottom-4">
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
-                                        <td class="govuk-table__cell">Rory Smith</td>
+                                        <td class="govuk-table__cell">{{ data['ref2-name'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref2-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Organisation</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref2-organisation'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Relationship to applicant</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref2-relationship'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Phone number</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref2-phone'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Email address</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['ref2-email'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -463,30 +434,69 @@
                 </div>
                 <!-- END References -->
 
-                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">7. Equality TBD</h2>
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">7. Equal opportunities and recruitment monitoring</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
                 <!-- START Equality -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Question 1?
+                            Do you consider yourself to have a disability as defined by the Equality Act 2010?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['disability'] }}   
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Question 2?
+                            How would you describe your gender?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes                        
+                            {{ data['gender'] }}                     
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How would you describe your sexual orientation?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['sexuality'] }}                    
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What is your ethnic group?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['ethnic'] }}                       
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What is your religion or belief?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['religion'] }}                        
                         </dd>
                     </div>
                 </dl>
                 <!-- END Equality -->
 
-                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">7. Declarations</h2>
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">8. Ask for support if you have a disability or other needs</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <!-- START Equality -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you want to ask for support so that you can attend an interview?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['disability-support'] }}  
+                        </dd>
+                    </div>
+                </dl>
+                <!-- END Equality -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">9. Declarations</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
                 <!-- START Declarations -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -495,23 +505,23 @@
                             Are you banned or disqualified from working with children or subject to any sanctions or conditions on your employment, imposed by the Independent Safeguarding Authority (ISA), Secretary of State or other regulatory body (e.g. the GTCE)?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['dec-banned'] }} 
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Do you have any family or close relationship with people within [school name]?
+                            Do you have any family or close relationship with people within {{ data['app2-schoolName'] }}?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['dec-family'] }} 
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Are you a UK or EU/EEA citizen?
+                            Do you have the right to work in the UK? 
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes                        
+                            {{ data['dec-work'] }}                        
                         </dd>
                     </div>
                 </dl>
