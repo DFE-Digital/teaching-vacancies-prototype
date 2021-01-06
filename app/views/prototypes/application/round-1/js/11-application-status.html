@@ -31,7 +31,7 @@
         <main class="govuk-main-wrapper">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    <span class="govuk-caption-l">[Job listing name] at [School name]</span>
+                    <span class="govuk-caption-l">{{ data['app2-jobListingName'] }} at {{ data['app2-schoolName'] }}</span>
                     <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Application</h2>
                 </div>
             </div>
@@ -66,17 +66,23 @@
                             <!-- <div id="qts-hint" class="govuk-hint">
                                 This includes changing your last name or spelling your name differently.
                             </div> -->
-                            <div class="govuk-radios govuk-radios--inline">
+                            <div class="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="qts-yes" name="qts-yesy" type="radio" value="yes">
+                                    <input class="govuk-radios__input" id="qts-yes" name="qts" type="radio" value="Yes">
                                     <label class="govuk-label govuk-radios__label" for="qts-yes">
                                         Yes
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="qts-no" name="qts-no" type="radio" value="no">
+                                    <input class="govuk-radios__input" id="qts-no" name="qts" type="radio" value="No">
                                     <label class="govuk-label govuk-radios__label" for="qts-no">
                                         No
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="qts-notyet" name="qts" type="radio" value="I'm on track to receive my QTS">
+                                    <label class="govuk-label govuk-radios__label" for="qts-notyet">
+                                        I'm on track to receive my QTS
                                     </label>
                                 </div>
                             </div>
@@ -96,13 +102,13 @@
                             </div> -->
                             <div class="govuk-radios govuk-radios--inline">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="statutory-yes" name="statutory-yesy" type="radio" value="yes">
+                                    <input class="govuk-radios__input" id="statutory-yes" name="statutory" type="radio" value="yes">
                                     <label class="govuk-label govuk-radios__label" for="statutory-yes">
                                         Yes
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="statutory-no" name="statutory-no" type="radio" value="no">
+                                    <input class="govuk-radios__input" id="statutory-no" name="statutory" type="radio" value="no">
                                     <label class="govuk-label govuk-radios__label" for="statutory-no">
                                         No
                                     </label>
@@ -111,18 +117,6 @@
                         </fieldset>
                     </div>
                     <!-- END statutory -->
-                    <!-- START membership -->
-                    <div class="govuk-form-group">
-                        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="membership">
-                            Relevant organisation membership
-                            </label>
-                        </h1>
-                        <div id="membership-hint" class="govuk-hint">
-                            Tell us more about any professional teaching organisations you are a member of, including your level and dates of membership.
-                        </div>
-                        <textarea class="govuk-textarea" id="membership" name="membership" rows="5" aria-describedby="membership-hint"></textarea>
-                    </div>
-                    <!-- END membership -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>

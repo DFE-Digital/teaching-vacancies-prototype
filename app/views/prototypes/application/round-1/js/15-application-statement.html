@@ -31,7 +31,7 @@
         <main class="govuk-main-wrapper">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    <span class="govuk-caption-l">[Job listing name] at [School name]</span>
+                    <span class="govuk-caption-l">{{ data['app2-jobListingName'] }} at {{ data['app2-schoolName'] }}</span>
                     <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Application</h2>
                 </div>
             </div>
@@ -51,10 +51,10 @@
 
                 <span class="govuk-caption-m">Step 5 of 8</span>
                 <h1 class="govuk-heading-l">Personal statement</h1>
-                <p class="govuk-body">Please explain why you are suitable for this role. You may find it useful to refer specifically to the job description and any other information that has been provided.</p>
-                <h3 class="govuk-heading-m">Specific instructions</h3>
+                <p class="govuk-body">Please explain why you are suitable for this role. You should refer to the person specification in the job description, and include any relevant personal qualities and experience.</p>
+                <!-- <h3 class="govuk-heading-m">Specific instructions</h3>
                 <p class="govuk-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima iure illo sit aliquid commodi ullam fugit dolorem, aspernatur ab culpa eligendi. Ea pariatur earum distinctio sunt quo ducimus. Nam, accusamus?</p>
-                
+                 -->
                 <!-- START docs -->
                 <div class="supp-docs govuk-!-margin-bottom-6">
                     <div class="supp-docs-title">
@@ -63,9 +63,8 @@
                     <div class="supp-docs-content">
                         <p class="govuk-body govuk-!-margin-bottom-2">Documents supplied with the job listing that may be of some help with your personal statement.</p>
                         <ul class="personal-statement">
-                            <li><a href="#" class="document-link">supporting-file-1.doc</a> 3mb</li>
-                            <li><a href="#" class="document-link">supporting-file-2.doc</a> 3mb</li>
-                            <li><a href="#" class="document-link">supporting-file-3.doc</a> 3mb</li>
+                            <li><a href="#" class="document-link">job-specification.doc</a> 3mb</li>
+                            <li><a href="#" class="document-link">school-welcome-pack.pdf</a> 3mb</li>
                         </ul>
                     </div>
                 </div>
@@ -76,14 +75,14 @@
 
                     <!-- START statement -->
                     <div class="govuk-form-group">
-                        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="statement">
+                        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="app2-personalStatement">
                             Your personal statement
                             </label>
                         </h1>
                         <!-- <div id="statement-hint" class="govuk-hint">
                             Tell us more about any professional teaching organisations you are a member of, including your level and dates of membership.
                         </div> -->
-                        <textarea class="govuk-textarea" id="statement" name="statement" rows="10" aria-describedby="statement-hint"></textarea>
+                        <textarea class="govuk-textarea" id="app2-personalStatement" name="app2-personalStatement" rows="10" aria-describedby="statement-hint"></textarea>
                     </div>
                     <!-- END statement -->
 

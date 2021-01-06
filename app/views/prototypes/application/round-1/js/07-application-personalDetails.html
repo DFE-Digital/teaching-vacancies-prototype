@@ -31,7 +31,7 @@ Application - Personal details
         <main class="govuk-main-wrapper">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    <span class="govuk-caption-l">[Job listing name] at [School name]</span>
+                    <span class="govuk-caption-l">{{ data['app2-jobListingName'] }} at {{ data['app2-schoolName'] }}</span>
                     <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Application</h2>
                 </div>
             </div>
@@ -66,7 +66,7 @@ Application - Personal details
                         <!-- <div id="first-name-hint" class="govuk-hint">
                             The name you’ll use on promotional material.
                         </div> -->
-                        <input class="govuk-input govuk-!-width-one-half" id="first-name" name="first-name" type="text" aria-describedby="first-name-hint">
+                        <input class="govuk-input govuk-!-width-one-half" id="first-name" name="app2-firstName" type="text" aria-describedby="first-name-hint">
                     </div>
                     <!-- END first name -->
 
@@ -77,12 +77,24 @@ Application - Personal details
                                 Last name (<span class="form-required">required</span>)
                             </label>
                         </h3>
-                        <!-- <div id="last-name-hint" class="govuk-hint">
-                            The name you’ll use on promotional material.
-                        </div> -->
-                        <input class="govuk-input govuk-!-width-one-half" id="last-name" name="last-name" type="text" aria-describedby="last-name-hint">
+                        
+                        <input class="govuk-input govuk-!-width-one-half" id="last-name" name="app2-lastName" type="text" aria-describedby="last-name-hint">
                     </div>
                     <!-- END last name -->
+
+                    <!-- START first name -->
+                    <div class="govuk-form-group">
+                        <h3 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="previous-name">
+                                Previous names
+                            </label>
+                        </h3>
+                        <div id="previous-name-hint" class="govuk-hint">
+                            For example, maiden name or name at birth, if different from the name you have.
+                        </div>
+                        <input class="govuk-input govuk-!-width-one-half" id="previous-name" name="app2-previousName" type="text">
+                    </div>
+                    <!-- END first name -->
 
                     <!-- START address -->
                     <fieldset class="govuk-fieldset">
@@ -95,25 +107,25 @@ Application - Personal details
                             <label class="govuk-label" for="address-line-1">
                                 Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
                             </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="address-line-1" name="address-line-1" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-line-1" name="app2-addressStreet" type="text">
                         </div>
                         <div class="govuk-form-group">
                             <label class="govuk-label" for="address-town">
                                 Town or city
                             </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="app2-addressTown" type="text">
                         </div>
                         <div class="govuk-form-group">
                             <label class="govuk-label" for="address-county">
                                 County
                             </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="app2-addressCounty" type="text">
                         </div>
                         <div class="govuk-form-group">
                             <label class="govuk-label" for="address-postcode">
                                 Postcode
                             </label>
-                            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+                            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="app2-addressPostcode" type="text">
                         </div>
                     </fieldset>
                     <!-- END address -->
@@ -128,7 +140,7 @@ Application - Personal details
                         <div id="phone-hint" class="govuk-hint">
                             Please only give phone numbers that you are happy to be contacted on.
                         </div>
-                        <input class="govuk-input govuk-!-width-one-half" id="phone" name="phone" type="text" aria-describedby="phone-hint">
+                        <input class="govuk-input govuk-!-width-one-half" id="phone" name="app2-phoneNumber" type="text" aria-describedby="phone-hint">
                     </div>
                     <!-- END phone -->
 
@@ -142,7 +154,7 @@ Application - Personal details
                         <!-- <div id="email-hint" class="govuk-hint">
                             Please only give phone numbers that you are happy to be contacted on.
                         </div> -->
-                        <input class="govuk-input govuk-!-width-one-half" id="email" name="email" type="text" aria-describedby="email-hint">
+                        <input class="govuk-input govuk-!-width-one-half" id="email" name="email" type="text" aria-describedby="email-hint" value="{{ data['user-email'] }}">
                     </div>
                     <!-- END email -->
 
@@ -156,7 +168,7 @@ Application - Personal details
                         <div id="trn-hint" class="govuk-hint">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam blanditiis sunt modi molestias fuga? Quaerat ratione pariatur odit, obcaecati eos doloribus quos aliquid provident atque consequatur expedita et facere quisquam!
                         </div>
-                        <input class="govuk-input govuk-!-width-one-half" id="trn" name="trn" type="text" aria-describedby="trn-hint">
+                        <input class="govuk-input govuk-!-width-one-half" id="trn" name="app2-trn" type="text" aria-describedby="trn-hint">
                     </div>
                     <!-- END trn -->
 
@@ -170,7 +182,7 @@ Application - Personal details
                         <!-- <div id="nin-hint" class="govuk-hint">
                             Please only give phone numbers that you are happy to be contacted on.
                         </div> -->
-                        <input class="govuk-input govuk-!-width-one-half" id="nin" name="nin" type="text" aria-describedby="nin-hint">
+                        <input class="govuk-input govuk-!-width-one-half" id="nin" name="app2-ni" type="text" aria-describedby="nin-hint">
                     </div>
                     <!-- END nin -->
 
