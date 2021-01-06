@@ -93,6 +93,57 @@
                     </div>
                     <!-- END disability -->
 
+                    <!-- START interview support -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="support-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Do you want to ask for support so that you can attend an interview? (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <div id="support--hint" class="govuk-hint">
+                                When you are attending an interview, you might benefit from extra support if you’re disabled, have a mental health condition or educational needs. You can ask for the support that you need now. The school can then make adjustments so you can attend an interview. <br>
+                                
+                            </div>
+
+                            <div class="govuk-inset-text">
+                                <p> This support could be:</p>
+                                <ul>
+                                    <li>organising equipment, like an adapted keyboard or a hearing loop</li>
+                                    <li>putting you in touch with support staff before the day of your interview</li>
+                                    <li>making sure classrooms are wheelchair accessible</li>
+                                </ul>
+                                <p>It’s against the law to discriminate against you if you are disabled. You should not be asked questions about your health or disability if they are not relevant to your teaching ability or practice. They should not reject your application because you are disabled.</p>
+                            </div>
+
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="disability-yes" name="disability" type="radio" value="yes" data-aria-controls="conditional-support">
+                                    <label class="govuk-label govuk-radios__label" for="disability-yes">
+                                        Yes, I need support
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-support">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="support-describe-input">
+                                            Tell us any information you think is relevant
+                                        </label>
+                                        <textarea class="govuk-textarea" id="support-more-detail" name="support-more-detail" rows="5" aria-describedby="support-describe-input"></textarea>
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="disability-no" name="disability" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="disability-no">
+                                        No, I do not need support
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END interview support -->
+
                     <!-- START gender -->
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="family-hint">
