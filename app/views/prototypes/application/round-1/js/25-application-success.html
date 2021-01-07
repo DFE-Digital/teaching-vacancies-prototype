@@ -26,17 +26,22 @@
                         Your application has been submitted
                     </h1>
                     <div class="govuk-panel__body">
-                        <p>We sent an email confirmation to [user email address]</p>
+                        <p>We sent an email confirmation to {{ data['user-email'] }}</p>
                     </div>
                 </div>
                 <!-- START TASK SUCCESS -->
 
                 <h3 class="govuk-heading-l">What happens next</h3>
-                <p class="govuk-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ut, et debitis non quia suscipit sapiente fuga minima. Dolores magni expedita officia neque quis laudantium laboriosam voluptatem blanditiis assumenda. Cumque.</p>
+                <p class="govuk-body">
+                    {{ data['app2-schoolName'] }} will get in touch with you after [application deadline]. They will let you know whether you have been shortlisted for an interview, or whether you have been unsuccessful.
+                </p>
+                <p class="govuk-body">
+                    If you have been shortlisted, your referees will be contacted before your interview.
+                </p>
                 <p class="govuk-body"><a href="/prototypes/application/round-1/js/00-acc-my-applications">View all your applications</a></p>
                 <!-- START FORM 1 -->
                 <h3 class="govuk-heading-l">What do you think of Teaching Vacancies?</h3>
-                <p class="govuk-body">Your feedback can help us improve the service to meet your needs aswell as schools around England.</p>
+                <p class="govuk-body">Your feedback can help us improve the service to better support you as well as schools around England.</p>
 
                 <form class="form" action="/url/of/next/page" method="post">
 
@@ -66,7 +71,7 @@
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="neutral" name="where-do-you-live" type="radio" value="neutral">
                                     <label class="govuk-label govuk-radios__label" for="neutral">
-                                        Neither satisfied or dissatisfied
+                                        Neither satisfied nor dissatisfied
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
