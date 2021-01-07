@@ -60,19 +60,29 @@
                         <fieldset class="govuk-fieldset" aria-describedby="qts-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Do you hold QTS? (<span class="form-required">required</span>)
+                                    Do you hold Qualified Teacher Status (QTS)? (<span class="form-required">required</span>)
                                 </h3>
                             </legend>
                             <!-- <div id="qts-hint" class="govuk-hint">
                                 This includes changing your last name or spelling your name differently.
                             </div> -->
-                            <div class="govuk-radios">
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="qts-yes" name="qts" type="radio" value="Yes">
+                                    <input class="govuk-radios__input" id="qts-yes" name="qts" type="radio" value="Yes" data-aria-controls="conditional-qts">
                                     <label class="govuk-label govuk-radios__label" for="qts-yes">
                                         Yes
                                     </label>
                                 </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-qts">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            What year was it awarded?
+                                        </label>
+                                        <input class="govuk-input govuk-input--width-4" maxlength="4" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="qts-no" name="qts" type="radio" value="No">
                                     <label class="govuk-label govuk-radios__label" for="qts-no">
