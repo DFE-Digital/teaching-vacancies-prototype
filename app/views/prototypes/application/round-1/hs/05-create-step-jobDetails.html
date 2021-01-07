@@ -32,6 +32,7 @@ Create a job listing - Job details
                 <!-- START FORM 1 -->
                 <form class="form" action="/prototypes/application/round-1/hs/06-create-step-payPackage" method="post">
 
+                    <!-- START Title -->
                     <div class="govuk-form-group">
                         <h3 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="event-name">
@@ -43,6 +44,9 @@ Create a job listing - Job details
                         </div>
                         <input class="govuk-input govuk-!-width-three-quarters" id="event-name" name="hs-app-jobTitle" type="text" aria-describedby="event-name-hint">
                     </div>
+                    <!-- END Title -->
+
+                    <!-- START Role -->
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -72,15 +76,53 @@ Create a job listing - Job details
                                         SEN specialist
                                     </label>
                                 </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="role-4" name="hs-app-role" type="checkbox" value="Suitable for NQT's">
-                                    <label class="govuk-label govuk-checkboxes__label" for="role-4">
-                                        Suitable for NQT's
-                                    </label>
-                                </div>
                             </div>
                         </fieldset>
                     </div>
+                    <!-- END Role -->
+
+                    <!-- START NQT -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Is this job suitable for NQTs? (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <!-- <div id="family--hint" class="govuk-hint">
+                                If the binary options do not reflect how you identify, please use your own words
+                            </div> -->
+                            <div class="govuk-radios" data-module="govuk-radios">
+
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gender-f" name="hs-app-nqt" type="radio" value="Yes">
+                                    <label class="govuk-label govuk-radios__label" for="gender-f">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gender-describe" name="hs-app-nqt" type="radio" value="No">
+                                    <label class="govuk-label govuk-radios__label" for="gender-describe">
+                                        No
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contract">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            Duration of the fixed term contract
+                                        </label>
+                                        <div id="family--hint" class="govuk-hint">
+                                            Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies.
+                                        </div>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END NQT -->
 
                     <!-- START Subject -->
                     <div class="govuk-form-group">
@@ -260,7 +302,7 @@ Create a job listing - Job details
                     </div>
                     <!-- END Working pattern -->
 
-                    <!-- START gender -->
+                    <!-- START contract -->
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="family-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -301,7 +343,7 @@ Create a job listing - Job details
                             </div>
                         </fieldset>
                     </div>
-                    <!-- END gender -->
+                    <!-- END contract -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <p class="govuk-body govuk-!-display-block"><a href="#" class="govuk-link">Save and return later</a></p>
