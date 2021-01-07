@@ -113,6 +113,21 @@ h2.table-title-number {
     }
 }
 
+/* Used to create left and right positioning of sort and action buttons */
+div.action-bar {
+    display: flex;
+
+    .left-action {
+
+    }
+    .centre-action {
+        flex-grow: 1;
+    }
+    .right-action {
+        
+    }
+}
+
 /*
 ------------------------------------------------------------
 PERSONAL STATEMENT
