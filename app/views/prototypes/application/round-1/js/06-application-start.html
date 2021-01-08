@@ -60,7 +60,7 @@ Application - Start
 
                 <h1 class="govuk-heading-l">Before you start</h1>
 
-                <p class="govuk-body">You can use this form to apply for {{ data['app2-jobListingName'] }} through Teaching Vacancies. Your application will be sent to {{ data['app2-schoolName'] }}.</p>
+                <p class="govuk-body">You can use this form to apply for the job of {{ data['app2-jobListingName'] }} through Teaching Vacancies. Your application will be sent to {{ data['app2-schoolName'] }}.</p>
                 <p class="govuk-body">You will need to provide:</p>
                 <ul class="govuk-list govuk-list--bullet"">
                     <li>your full employment history</li>
@@ -68,11 +68,16 @@ Application - Start
                     <li>a personal statement</li>
                     <li>two references</li>
                 </ul>
-                <p class="govuk-body">To apply for this role you must:</p>
-                <ul class="govuk-list govuk-list--bullet"">
+                <p class="govuk-body">
+                    You should read the job description and application pack before beginning your application.
+                </p>
+                <p class="govuk-body">
+                    You can save your application at any point and return to it later.
+                </p>
+                <!-- <ul class="govuk-list govuk-list--bullet"">
                     <li>have qualified teacher status (QTS) or be on track to receive it</li>
                     <li>be legally allowed to work with children</li>
-                </ul>
+                </ul> -->
 
                 <!-- START FORM 1 -->
                 <form class="form" action="/prototypes/application/round-1/js/07-application-personalDetails" method="post">
