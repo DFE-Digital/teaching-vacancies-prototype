@@ -113,8 +113,14 @@
                 <div class="tvs-alert alert-js-callout govuk-!-margin-bottom-9">
                     <h2 class="govuk-heading-m">Feedback on your application</h2>
                     <p class="govuk-body govuk-!-margin-top-0">
-                        Content TBD
+                        Dear Ms. Lowe,
+                    </p> 
+                    <p class="govuk-body"><br>
+                        Thank you for your recent application for the role of Primary Teacher at Bronson Alcott Academy, and for all of the time you have put into the application process. Unfortunately, on this occasion, your application has not been successful.
                     </p>
+                    <p class="govuk-body"><br>
+                        We wish you every success with future applications.
+                    </p>  
                 </div>
                 <!-- END feedback -->
 
@@ -562,7 +568,7 @@
                             Are you banned or disqualified from working with children or subject to any sanctions or conditions on your employment, imposed by the Independent Safeguarding Authority (ISA), Secretary of State or other regulatory body (e.g. the GTCE)?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['dec-banned'] }}
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -570,7 +576,7 @@
                             Do you have any family or close relationship with people within [school name]?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['dec-family'] }}
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -578,7 +584,7 @@
                             Are you a UK or EU/EEA citizen?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes                        
+                            {{ data['dec-work'] }}                       
                         </dd>
                     </div>
                 </dl>
