@@ -53,45 +53,45 @@ Application - Current role and employment history
                 <h1 class="govuk-heading-l">Current role and employment history</h1>
                 <p class="govuk-body">This could be a teaching role or any other paid work you have done that is relevant to your application</p>
 
-                <!-- START role -->
+                <!-- START role 1 -->
                 <div class="qualification govuk-!-margin-bottom-6">
                     <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Role 1</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Role - {{ data['emp2-jobTitle'] }}</h4>
                     </div>
                     <div class="qualification-content">
                         <table class="govuk-table govuk-!-margin-bottom-4">
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
-                                    <td class="govuk-table__cell">Lorem</td>
+                                    <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                    <td class="govuk-table__cell">Lorem</td>
+                                    <td class="govuk-table__cell">{{ data['emp2-jobTitle'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Start date</th>
-                                    <td class="govuk-table__cell">Lorem</td>
+                                    <td class="govuk-table__cell">1st January 2014</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">End date</th>
-                                    <td class="govuk-table__cell">Lorem</td>
+                                    <td class="govuk-table__cell">1st January 2016</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Salary scale or level</th>
-                                    <td class="govuk-table__cell">Lorem</td>
+                                    <td class="govuk-table__cell">{{ data['emp2-salary'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
-                                    <td class="govuk-table__cell">Lorem</td>
+                                    <td class="govuk-table__cell">{{ data['emp2-subjects'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Main duties</th>
-                                    <td class="govuk-table__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero quam ratione vel, fugit maxime necessitatibus omnis quos, vitae, inventore unde aspernatur placeat atque modi. Facilis quasi similique sapiente repellat?</td>
+                                    <td class="govuk-table__cell">{{ data['emp2-mainDuties'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Reason for leaving</th>
-                                    <td class="govuk-table__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero quam ratione vel, fugit maxime necessitatibus omnis quos, vitae, inventore unde aspernatur placeat atque modi. Facilis quasi similique sapiente repellat?</td>
+                                    <td class="govuk-table__cell">{{ data['emp2-reason'] }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -99,57 +99,9 @@ Application - Current role and employment history
                         <a href="#" class="govuk-link">Edit</a>
                     </div>
                 </div>
-                <!-- END role -->
+                <!-- END role 1 -->
 
-                <!-- START role -->
-                <div class="qualification govuk-!-margin-bottom-6">
-                    <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Role 2</h4>
-                    </div>
-                    <div class="qualification-content">
-                        <table class="govuk-table govuk-!-margin-bottom-4">
-                            <tbody class="govuk-table__body">
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Start date</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">End date</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Salary scale or level</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
-                                    <td class="govuk-table__cell">Lorem</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Main duties</th>
-                                    <td class="govuk-table__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero quam ratione vel, fugit maxime necessitatibus omnis quos, vitae, inventore unde aspernatur placeat atque modi. Facilis quasi similique sapiente repellat?</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Reason for leaving</th>
-                                    <td class="govuk-table__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero quam ratione vel, fugit maxime necessitatibus omnis quos, vitae, inventore unde aspernatur placeat atque modi. Facilis quasi similique sapiente repellat?</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
-                        <a href="#" class="govuk-link">Edit</a>
-                    </div>
-                </div>
-                <!-- END role -->
-
-                <a href="#" class="govuk-button govuk-button--secondary">Add another role</a>
+                <a href="/prototypes/application/round-1/js/13-application-employment-add3" class="govuk-button govuk-button--secondary">Add another role</a>
 
                 <!-- START 3 month gaps -->
                 <div class="govuk-form-group">
