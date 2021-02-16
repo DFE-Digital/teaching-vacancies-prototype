@@ -6,6 +6,32 @@
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block main %}
 
 <!-- START SUB-NAVIGATION -->
@@ -18,7 +44,7 @@
                     <!-- START notification -->
 
                     <!-- END notification -->
-                    {% include "prototypes/application/round-1/includes/acc-applications.html" %}
+                    {% include "prototypes/application/round-3/includes/acc-applications.html" %}
                 </div>
             </div>
         </main>
@@ -65,7 +91,7 @@
                     <div class="col">
                         <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
                             <li><a href="#">Withdraw</a></li>
-                            <li><a href="/prototypes/application/round-1/js/00-acc-application">View application</a></li>
+                            <li><a href="/prototypes/application/round-3/js/00-acc-application">View application</a></li>
                         </ul>  
                     </div>
                 </div>
@@ -113,7 +139,7 @@
                 </div>
                 <!-- END Card row 3 -->
 
-                <p class="govuk-body"><a href="/prototypes/application/round-1/js/26-js-email-unsuccessful" class="govuk-link">Some time later...</a></p>
+                <p class="govuk-body"><a href="/prototypes/application/round-3/js/26-js-email-unsuccessful" class="govuk-link">Some time later...</a></p>
 
             </div>    
         </div>

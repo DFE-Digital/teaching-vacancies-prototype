@@ -6,6 +6,32 @@ Application - Education and qualifications
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block main %}
 
 <!-- START BESPOKE MAST 1-->
@@ -13,7 +39,7 @@ Application - Education and qualifications
     <div class="govuk-width-container">
 
         <!-- START Breadcrumbs + Back -->
-        <a class="govuk-back-link govuk-!-margin-top-3" href="/url/of/previous/page">Back</a>
+        <a class="govuk-back-link govuk-!-margin-top-3" href="#">Back</a>
         <!-- 
         <div class="govuk-breadcrumbs">
             <ol class="govuk-breadcrumbs__list">
@@ -89,11 +115,11 @@ Application - Education and qualifications
                 </div>
                 <!-- END Qualification 1 -->
 
-                <a href="/prototypes/application/round-1/js/09-application-education-add3" class="govuk-button govuk-button--secondary">Add another qualification</a>
+                <a href="/prototypes/application/round-3/js/09-application-education-add-b1" class="govuk-button govuk-button--secondary">Add another qualification</a>
                 
 
                 <!-- START FORM 1 -->
-                <form class="form" action="/prototypes/application/round-1/js/11-application-status" method="post">
+                <form class="form" action="/prototypes/application/round-3/js/11-application-status" method="post">
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
                     <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>

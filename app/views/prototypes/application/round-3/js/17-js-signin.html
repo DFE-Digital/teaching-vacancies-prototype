@@ -6,6 +6,32 @@
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block main %}
 
 
@@ -50,7 +76,7 @@
                 <p class="govuk-body-l">Use your Teaching Vacancies account details to sign in.</p>
 
                 <!-- START FORM 2 -->
-                <form class="form" action="/prototypes/application/round-1/js/16-acc-my-applications" method="post">
+                <form class="form" action="/prototypes/application/round-3/js/16-acc-my-applications" method="post">
                     <div class="govuk-form-group">
                         <h1 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="email">
@@ -83,7 +109,7 @@
                 <!-- END FORM 2 -->
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                 <h3 class="govuk-heading-m govuk-!-margin-top-6">Don't have an account yet?</h3>
-                <p>If you <a href="/prototypes/application/round-1/js/03-js-create-account">create an account</a> you can save and apply for jobs you are interested in.</p>
+                <p>If you <a href="/prototypes/application/round-3/js/03-js-create-account">create an account</a> you can save and apply for jobs you are interested in.</p>
             </div>
             <!-- END Main content -->
 

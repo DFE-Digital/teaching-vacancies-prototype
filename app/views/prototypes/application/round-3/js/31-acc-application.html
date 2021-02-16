@@ -20,7 +20,7 @@
         text: "Find a teaching job"
       },
       {
-        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        href: "/prototypes/application/round-3/js/30-acc-my-applications",
         text: "Your account"
       }
       ,
@@ -44,7 +44,7 @@
                     <div class="govuk-breadcrumbs govuk-!-margin-bottom-6 govuk-!-margin-top-1">
                         <ol class="govuk-breadcrumbs__list">
                             <li class="govuk-breadcrumbs__list-item">
-                                <a class="govuk-breadcrumbs__link" href="/prototypes/application/round-3/js/00-acc-my-applications">My applications</a>
+                                <a class="govuk-breadcrumbs__link" href="/prototypes/application/round-3/js/30-acc-my-applications">My applications</a>
                             </li>
                             <li class="govuk-breadcrumbs__list-item">
                                 {{ data['app2-jobListingName'] }}
@@ -63,7 +63,7 @@
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                     <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-right-1 govuk-!-display-inline-block">Application status</p> 
-                    <span class="acc-tag acc-tag__review">In review</span>
+                    <span class="acc-tag acc-tag__reject">Unsuccessful</span>
                 </div>
                 <div class="govuk-grid-column-one-half mast-buttons">
                     <!-- <button class="govuk-button govuk-button--warning govuk-!-margin-bottom-0" data-module="govuk-button">Withdraw</button> -->
@@ -84,11 +84,11 @@
             <div class="govuk-grid-column-two-thirds">
 
                 <!-- <a class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Shortlist</a> -->
-                <a class="govuk-button govuk-button--warning" data-module="govuk-button">Withdraw application</a>
+                <!-- <a class="govuk-button govuk-button--warning" data-module="govuk-button">Withdraw application</a> -->
 
                 
                 <!-- START ALERT CALLOUT -->
-                <div class="tvs-alert alert-js-callout govuk-!-margin-bottom-9">
+                <div class="tvs-alert alert-js-callout govuk-!-margin-bottom-3">
                     <h2 class="govuk-heading-m">School details</h2>
                     <dl class="govuk-summary-list govuk-!-margin-bottom-0">
                         <div class="govuk-summary-list__row">
@@ -112,7 +112,7 @@
                                 Website
                             </dt>
                             <dd class="govuk-summary-list__value">
-                                <a href="">bronson-alcott.co.uk</a>
+                                <a href="">school-website.co.uk</a>
                             </dd>
                         </div>
                         <div class="govuk-summary-list__row govuk-!-margin-bottom-0">
@@ -134,6 +134,21 @@
                     </dl>
                 </div>
                 <!-- END ALERT CALLOUT -->
+
+                <!-- START feedback -->
+                <div class="tvs-alert alert-js-callout govuk-!-margin-bottom-9">
+                    <h2 class="govuk-heading-m">Feedback on your application</h2>
+                    <p class="govuk-body govuk-!-margin-top-0">
+                        Dear Ms. Lowe,
+                    </p> 
+                    <p class="govuk-body"><br>
+                        Thank you for your recent application for the role of Primary Teacher at Bronson Alcott Academy, and for all of the time you have put into the application process. Unfortunately, on this occasion, your application has not been successful.
+                    </p>
+                    <p class="govuk-body"><br>
+                        We wish you every success with future applications.
+                    </p>  
+                </div>
+                <!-- END feedback -->
 
                 <h2 class="govuk-heading-m">1. Personal details</h2>
 
@@ -201,7 +216,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Qualification 1 - GCSE's
+                                    Qualification - {{ data['edu2-qual'] }}
                                 </span>
                             </h2>
                         </div>
@@ -211,33 +226,25 @@
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Type of qualification</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['edu2-qual'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Subject(s)</th>
                                         <td class="govuk-table__cell">
-                                            Subject 1 - Grade x<br>
-                                            Subject 2 - Grade x<br>
-                                            Subject 3 - Grade x<br>
-                                            Subject 4 - Grade x<br>
-                                            Subject 5 - Grade x<br>
-                                            Subject 6 - Grade x<br>
-                                            Subject 7 - Grade x<br>
-                                            Subject 8 - Grade x<br>
-                                            Subject 9 - Grade x<br>
+                                            {{ data['edu2-subject'] }}
                                         </td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">School, college or organisation</th>
-                                        <td class="govuk-table__cell">Sweet Valley High</td>
+                                        <td class="govuk-table__cell">{{ data['edu2-grade'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Awarding body</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['edu2-org'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['edu2-date'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -248,7 +255,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                                    Qualification 2 - Bachelor Degree
+                                    Qualification - {{ data['edu3-qual'] }}
                                 </span>
                             </h2>
                         </div>
@@ -258,27 +265,25 @@
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Type of qualification</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['edu3-qual'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Subject</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <th scope="row" class="govuk-table__header">Subject(s)</th>
+                                        <td class="govuk-table__cell">
+                                            {{ data['edu3-subject'] }}
+                                        </td>
                                     </tr>
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Grade</th>
-                                        <td class="govuk-table__cell">Lorem</td>
-                                    </tr>
-                                    <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">School or college attended</th>
-                                        <td class="govuk-table__cell">Sweet Valley High</td>
+                                        <th scope="row" class="govuk-table__header">School, college or organisation</th>
+                                        <td class="govuk-table__cell">{{ data['edu3-grade'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Awarding body</th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['edu3-org'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
-                                        <td class="govuk-table__cell">Lorem</td>
+                                        <td class="govuk-table__cell">{{ data['edu3-date'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -319,7 +324,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Role 1 - {{ data['emp1-organisation'] }}
+                                    Role - {{ data['emp3-jobTitle'] }}
                                 </span>
                             </h2>
                         </div>
@@ -329,23 +334,23 @@
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
-                                        <td class="govuk-table__cell">{{ data['emp1-organisation'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['emp3-organisation'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                        <td class="govuk-table__cell">{{ data['emp1-jobTitle'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['emp3-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Salary scale or level</th>
-                                        <td class="govuk-table__cell">{{ data['emp1-salary'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['emp3-salary'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
-                                        <td class="govuk-table__cell">{{ data['emp1-subjects'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['emp3-subjects'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Start date</th>
-                                        <td class="govuk-table__cell">31st March 2016</td>
+                                        <td class="govuk-table__cell">2nd January 2016</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">End date</th>
@@ -353,11 +358,11 @@
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Main duties</th>
-                                        <td class="govuk-table__cell">{{ data['emp1-mainDuties'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['emp3-mainDuties'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Reason for leaving</th>
-                                        <td class="govuk-table__cell">{{ data['emp1-reason'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['emp3-reason'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -368,7 +373,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Role 2 - {{ data['emp1-organisation'] }}
+                                    Role - {{ data['emp2-organisation'] }}
                                 </span>
                             </h2>
                         </div>
@@ -394,11 +399,11 @@
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Start date</th>
-                                        <td class="govuk-table__cell">31st January 2012</td>
+                                        <td class="govuk-table__cell">1st January 2014</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">End date</th>
-                                        <td class="govuk-table__cell">30th March 2016</td>
+                                        <td class="govuk-table__cell">1st January 2016</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Main duties</th>
@@ -417,6 +422,7 @@
                 <!-- END Employment -->
 
                 <h2 class="govuk-heading-m">5. Personal statement</h2>
+
                 <!-- START Statement -->
                 <p class="govuk-body">
                     {{ data['app2-personalStatement'] }}
@@ -430,7 +436,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Reference 1 - {{ data['ref1-name'] }}
+                                    Reference 1 - {{ data['ref3-name'] }}
                                 </span>
                             </h2>
                         </div>
@@ -440,27 +446,27 @@
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
-                                        <td class="govuk-table__cell">{{ data['ref1-name'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['ref3-name'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                        <td class="govuk-table__cell">{{ data['ref1-jobTitle'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['ref3-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Organisation</th>
-                                        <td class="govuk-table__cell">{{ data['ref1-organisation'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['ref3-organisation'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Relationship to applicant</th>
-                                        <td class="govuk-table__cell">{{ data['ref1-relationship'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['ref3-relationship'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Phone number</th>
-                                        <td class="govuk-table__cell">{{ data['ref1-phone'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['ref3-phone'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Email address</th>
-                                        <td class="govuk-table__cell">{{ data['ref1-email'] }}</td>
+                                        <td class="govuk-table__cell">{{ data['ref3-email'] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -579,23 +585,23 @@
                             Are you banned or disqualified from working with children or subject to any sanctions or conditions on your employment, imposed by the Independent Safeguarding Authority (ISA), Secretary of State or other regulatory body (e.g. the GTCE)?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['dec-banned'] }} 
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Do you have any family or close relationship with people within [school name]?
+                            Do you have any family or close relationship with people within {{ data['app2-schoolName'] }}?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes
+                            {{ data['dec-family'] }} 
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Are you a UK or EU/EEA citizen?
+                            Do you have the right to work in the UK? 
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            Yes                        
+                            {{ data['dec-work'] }}                        
                         </dd>
                     </div>
                 </dl>
@@ -611,17 +617,17 @@
                 </aside>
                 <aside class="dates">
                     <ul class="test-timeline govuk-!-margin-bottom-0">
-                        <!-- <li class="test-timeline__item">
+                        <li class="test-timeline__item">
                             <h3 class="test-timeline__title govuk-heading-s">
-                                Status change
+                                Unsuccessful
                             </h3>
-                            <p class="test-timeline__by">30 July 2020</p>
-                        </li> -->
+                            <p class="test-timeline__by">14 January 2021</p>
+                        </li>
                         <li class="test-timeline__item">
                             <h3 class="test-timeline__title govuk-heading-s">
                                 Application submitted
                             </h3>
-                            <p class="test-timeline__by">14 January 2021 at 09:12 am</p>
+                            <p class="test-timeline__by">12 January 2021 at 09:12 am </p>
                         </li>
                     </ul>
                 </aside>

@@ -6,6 +6,32 @@
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/27-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block main %}
 
 <!-- START BESPOKE MAST 1-->
@@ -18,7 +44,7 @@
                     <div class="govuk-breadcrumbs govuk-!-margin-bottom-6 govuk-!-margin-top-1">
                         <ol class="govuk-breadcrumbs__list">
                             <li class="govuk-breadcrumbs__list-item">
-                                <a class="govuk-breadcrumbs__link" href="/prototypes/application/round-1/js/27-acc-my-applications">My applications</a>
+                                <a class="govuk-breadcrumbs__link" href="/prototypes/application/round-3/js/27-acc-my-applications">My applications</a>
                             </li>
                             <li class="govuk-breadcrumbs__list-item">
                                 {{ data['app2-jobListingName'] }}

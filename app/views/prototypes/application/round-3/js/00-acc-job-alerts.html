@@ -6,6 +6,32 @@
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block main %}
 
 <!-- START SUB-NAVIGATION -->
@@ -18,7 +44,7 @@
                     <!-- START notification -->
 
                     <!-- END notification -->
-                    {% include "prototypes/application/round-1/includes/acc-job-alerts.html" %}
+                    {% include "prototypes/application/round-3/includes/acc-job-alerts.html" %}
                 </div>
             </div>
         </main>

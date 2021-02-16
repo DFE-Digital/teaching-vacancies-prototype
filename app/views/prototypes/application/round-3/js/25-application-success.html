@@ -6,6 +6,32 @@
 
 <!-- {% set bodyClasses = "bespoke-width" %} -->
 
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block main %}
 
 <!-- START CONTENT -->
@@ -38,7 +64,7 @@
                 <p class="govuk-body">
                     If you have been shortlisted, your referees will be contacted before your interview.
                 </p>
-                <p class="govuk-body"><a href="/prototypes/application/round-1/js/00-acc-my-applications">View all your applications</a></p>
+                <p class="govuk-body"><a href="/prototypes/application/round-3/js/00-acc-my-applications">View all your applications</a></p>
                 <!-- START FORM 1 -->
                 <h3 class="govuk-heading-l">What do you think of Teaching Vacancies?</h3>
                 <p class="govuk-body">Your feedback can help us improve the service to better support you as well as schools around England.</p>
