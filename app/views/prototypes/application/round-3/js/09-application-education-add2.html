@@ -1,0 +1,192 @@
+{% extends "layout-js.html" %}
+
+{% block pageTitle %}
+Application - Education and qualifications
+{% endblock %}
+
+<!-- {% set bodyClasses = "bespoke-width" %} -->
+
+{% block main %}
+<!-- START STANDARD LAYOUT -->
+<div class="govuk-width-container">
+    
+    <!-- START Breadcrumbs + Back -->
+
+    <a class="govuk-back-link govuk-!-margin-top-3" href="/url/of/previous/page">Back</a>
+    
+    <!-- 
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
+            </li>
+        </ol>
+    </div> 
+    -->
+    <!-- END Breadcrumbs + Back -->
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- START PAGE HEADER -->
+            <div class="govuk-grid-column-full">
+                <span class="govuk-caption-l">Education and qualifications</span>
+                <h1 class="govuk-heading-xl">Add a qualification</h1> 
+            </div>
+            <!-- END PAGE HEADER -->
+
+        </div>
+
+        <div class="govuk-grid-row">
+
+            <!-- START Main content -->
+            <div class="govuk-grid-column-two-thirds">
+
+                <!-- START FORM 2 -->
+                <form class="form" action="/prototypes/application/round-1/js/10-application-education-2" method="post">
+
+                    <!-- START qualification -->
+                    <div class="govuk-form-group">
+                        <h3 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="edu-qual-1">
+                                Type of qualification (<span class="form-required">required</span>)
+                            </label>
+                        </h3>
+                        <!-- <div id="edu-qual-1-hint" class="govuk-hint">
+                            The name you’ll use on promotional material.
+                        </div> -->
+                        <input class="govuk-input govuk-!-width-full" id="edu-qual-1" name="edu2-qual" type="text" aria-describedby="edu-qual-1-hint">
+                    </div>
+                    <!-- END qualification -->
+
+                    <!-- START edu-subject -->
+                    <div class="govuk-form-group">
+                        <h3 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="edu-subject-1">
+                                Subject
+                            </label>
+                        </h3>
+                        <!-- <div id="edu-subject-1-hint" class="govuk-hint">
+                            The name you’ll use on promotional material.
+                        </div> -->
+                        <input class="govuk-input" id="edu-subject-1" name="edu2-subject" type="text" aria-describedby="edu-subject-1-hint">
+                    </div>
+                    <!-- END edu-subject -->
+
+                    <!-- START edu-grade -->
+                    <div class="govuk-form-group">
+                        <h3 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="edu-grade-1">
+                                Grade
+                            </label>
+                        </h3>
+                        <!-- <div id="edu-grade-1-hint" class="govuk-hint">
+                            The name you’ll use on promotional material.
+                        </div> -->
+                        <input class="govuk-input govuk-!-width-three-quarters" id="edu-grade-1" name="edu2-grade" type="text" aria-describedby="edu-grade-1-hint">
+                    </div>
+                    <!-- END edu-grade -->
+
+                    <!-- START edu-school -->
+                    <div class="govuk-form-group">
+                        <h3 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="edu-school-1">
+                                School, college, university or other organisation (<span class="form-required">required</span>)
+                            </label>
+                        </h3>
+                        <div id="edu-school-1-hint" class="govuk-hint">
+                            Tell us where you gained the qualification.
+                        </div>
+                        <input class="govuk-input" id="edu-school-1" name="edu2-org" type="text" aria-describedby="edu-school-hint">
+                    </div>
+                    <!-- END edu-school -->
+
+                    <!-- START edu-school -->
+                    <div class="govuk-form-group">
+                        <h3 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="edu-school-1">
+                                Awarding body (<span class="form-required">required</span>)
+                            </label>
+                        </h3>
+                        <div id="awarding-body-hint" class="govuk-hint">
+                            For example, exam board or university
+                        </div>
+                        <input class="govuk-input" id="awarding-body-1" name="edu2-award" type="text" aria-describedby="awarding-body-hint">
+                    </div>
+                    <!-- END edu-school -->
+
+                    <!-- START end date -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" role="group" aria-describedby="edu-date-1-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Year qualification was awarded (<span class="form-required">required</span>)
+                                </h3>
+                            </legend>
+                            <!-- <div id="edu-date-1-hint" class="govuk-hint">
+                                For example, 2009
+                            </div> -->
+                            <div class="govuk-date-input" id="start-end-1">
+
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-date-input__label" for="edu-date-1-year">
+                                            Year
+                                        </label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="edu-date-1-year" name="edu2-date" type="text"></div>
+                                </div>
+                                <div class="govuk-date-input__item">
+                                    <p>Or</p>
+                                </div>
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                        <div class="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="current-work" name="current-work" type="checkbox" value="I currently work here">
+                                                <label class="govuk-label govuk-checkboxes__label" for="current-work">
+                                                    I am currently studying here
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END end date -->
+
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                        Save qualification
+                    </button>
+                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                        Add another qualification
+                    </button>
+                    <a href="#" class="govuk-link govuk-!-display-block">Cancel</a>
+                </form>
+                <!-- END FORM 2 -->
+
+            </div>
+            <!-- END Main content -->
+
+            <!-- START Sidebar -->
+            <div class="govuk-grid-column-one-third">
+
+            </div>
+            <!-- Sidebar END -->
+
+        </div>
+    </main>
+</div>
+<!-- END STANDARD LAYOUT -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %}
