@@ -38,7 +38,7 @@
     
     <!-- START Breadcrumbs + Back -->
 
-    <a class="govuk-back-link govuk-!-margin-top-3" href="#">Back</a>
+    <!-- <a class="govuk-back-link govuk-!-margin-top-3" href="#">Back</a> -->
     
     <!-- 
     <div class="govuk-breadcrumbs">
@@ -79,7 +79,7 @@
                     <div class="govuk-form-group">
                         <h3 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="role-organisation-1">
-                                School or other organisation (<span class="form-required">required</span>)
+                                School or other organisation 
                             </label>
                         </h3>
                         <!-- <div id="role-organisation-1-hint" class="govuk-hint">
@@ -93,7 +93,7 @@
                     <div class="govuk-form-group">
                         <h3 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="role-title-1">
-                                Job title(s) (<span class="form-required">required</span>)
+                                Job title
                             </label>
                         </h3>
                         <!-- <div id="role-title-1-hint" class="govuk-hint">
@@ -107,7 +107,7 @@
                     <div class="govuk-form-group">
                         <h3 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="salary-1">
-                                Salary scale or level
+                                Salary scale or level (optional)
                             </label>
                         </h3>
                         <!-- <div id="salary-1-hint" class="govuk-hint">
@@ -121,7 +121,7 @@
                     <div class="govuk-form-group">
                         <h3 class="govuk-label-wrapper">
                             <label class="govuk-label govuk-label--m" for="subject-ks-1">
-                                Subjects and key stages taught
+                                Subjects and key stages taught (optional)
                             </label>
                         </h3>
                         <!-- <div id="subject-ks-1-hint" class="govuk-hint">
@@ -136,7 +136,7 @@
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="start-date-1-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Start date (<span class="form-required">required</span>)
+                                    Start date 
                                 </h3>
                             </legend>
                             <div id="start-date-1-hint" class="govuk-hint">
@@ -169,82 +169,101 @@
                     </div>
                     <!-- END start date -->
 
-                    <!-- START end date -->
+                    <!-- START is this your current role -->
                     <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="end-date-1-hint">
+
+                        <fieldset class="govuk-fieldset" aria-describedby="gaps-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    End date (<span class="form-required">required</span>)
+                                    Is this your current role?
                                 </h3>
                             </legend>
-                            <div id="start-date-1-hint" class="govuk-hint">
-                                For example, 31 3 1980
-                            </div>
-                            <div class="govuk-date-input" id="start-end-1">
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="end-date-1-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-date-1-day" name="end-date-1-day" type="text" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric"></div>
+                            <!-- <div id="gaps-hint" class="govuk-hint">
+                                Select yes if you have had any gaps in employment of 3 months or longer, since you left full-time education
+                            </div> -->
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gaps-yes" name="gaps" type="radio" value="Yes" >
+                                    <label class="govuk-label govuk-radios__label" for="gaps-yes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="enddate-1-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-date-1-month" name="end-date-1-month" type="text" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric"></div>
+                                
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="gaps-no" name="gaps" type="radio" value="No" data-aria-controls="gaps-yeh">
+                                    <label class="govuk-label govuk-radios__label" for="gaps-no">
+                                        No
+                                    </label>
                                 </div>
-                                <div class="govuk-date-input__item">
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="gaps-yeh">
+                                    
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="end-date-1-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-date-1-year" name="end-date-1-year" type="text" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric"></div>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <p>Or</p>
-                                </div>
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <div class="govuk-checkboxes">
-                                            <div class="govuk-checkboxes__item">
-                                                <input class="govuk-checkboxes__input" id="current-work" name="current-work" type="checkbox" value="I currently work here">
-                                                <label class="govuk-label govuk-checkboxes__label" for="current-work">
-                                                    This is my current role
-                                                </label>
+                                        <fieldset class="govuk-fieldset" role="group" aria-describedby="end-date-1-hint">
+                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                                <h3 class="govuk-fieldset__heading">
+                                                    End date 
+                                                </h3>
+                                            </legend>
+                                            <div id="start-date-1-hint" class="govuk-hint">
+                                                For example, 31 3 1980
                                             </div>
-                                        </div>
+                                            <div class="govuk-date-input" id="start-end-1">
+                                                <div class="govuk-date-input__item">
+                                                    <div class="govuk-form-group">
+                                                        <label class="govuk-label govuk-date-input__label" for="end-date-1-day">
+                                                            Day
+                                                        </label>
+                                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-date-1-day" name="end-date-1-day" type="text" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric"></div>
+                                                </div>
+                                                <div class="govuk-date-input__item">
+                                                    <div class="govuk-form-group">
+                                                        <label class="govuk-label govuk-date-input__label" for="enddate-1-month">
+                                                            Month
+                                                        </label>
+                                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-date-1-month" name="end-date-1-month" type="text" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric"></div>
+                                                </div>
+                                                <div class="govuk-date-input__item">
+                                                    <div class="govuk-form-group">
+                                                        <label class="govuk-label govuk-date-input__label" for="end-date-1-year">
+                                                            Year
+                                                        </label>
+                                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-date-1-year" name="end-date-1-year" type="text" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric"></div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
+
+                                    <div class="govuk-form-group">
+                                        <h3 class="govuk-label-wrapper">
+                                            <label class="govuk-label govuk-label--s" for="emp2-reason">
+                                                Reason for leaving
+                                            </label>
+                                        </h3>
+                                        <!-- <div id="salary-1-hint" class="govuk-hint">
+                                            The name you’ll use on promotional material.
+                                        </div> -->
+                                        <textarea class="govuk-textarea" id="emp2-reason" name="emp2-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
+                                    </div>
+
                                 </div>
+                                <!-- END Conditional -->
                             </div>
                         </fieldset>
+
                     </div>
-                    <!-- END end date -->
+                    <!-- END is this your scurrent role -->
 
                     <!-- START duties-->
                     <div class="govuk-form-group">
                         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="duties-1">
-                            Main duties (<span class="form-required">required</span>)
+                            Main duties 
                             </label>
                         </h1>
                         <div id="duties-1-hint" class="govuk-hint">
                             A very brief summary
                         </div> 
                         <textarea class="govuk-textarea" id="duties-1" name="emp2-mainDuties" rows="5" aria-describedby="duties-1-hint"></textarea>
-                    </div>
-                    <!-- END duties -->
-
-                    <!-- START duties-->
-                    <div class="govuk-form-group">
-                        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="reason-1">
-                            Reason for leaving (<span class="form-required">required</span>)
-                            </label>
-                        </h1>
-                        <!-- <div id="reason-1-hint" class="govuk-hint">
-                            A very brief summary
-                        </div>  -->
-                        <textarea class="govuk-textarea" id="reason-1" name="emp2-reason" rows="5" aria-describedby="reason-1-hint"></textarea>
                     </div>
                     <!-- END duties -->
 
@@ -255,6 +274,7 @@
                         Add another role
                     </button>
                     <a href="#" class="govuk-link govuk-!-display-block">Cancel</a>
+                    
                 </form>
                 <!-- END FORM 2 -->
             </div>

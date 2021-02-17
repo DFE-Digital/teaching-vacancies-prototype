@@ -84,26 +84,14 @@ Application - Current role and employment history
                 <!-- START role 2 -->
                 <div class="qualification govuk-!-margin-bottom-6">
                     <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Role - {{ data['emp3-jobTitle'] }}</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{ data['emp3-jobTitle'] }}</h4>
                     </div>
                     <div class="qualification-content">
                         <table class="govuk-table govuk-!-margin-bottom-4">
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
                                     <td class="govuk-table__cell">{{ data['emp3-organisation'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                    <td class="govuk-table__cell">{{ data['emp3-jobTitle'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Start date</th>
-                                    <td class="govuk-table__cell">2nd January 2016</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">End date</th>
-                                    <td class="govuk-table__cell">I currently work here</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Salary scale or level</th>
@@ -114,13 +102,21 @@ Application - Current role and employment history
                                     <td class="govuk-table__cell">{{ data['emp3-subjects'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Start date</th>
+                                    <td class="govuk-table__cell">1st January 2016</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">End date</th>
+                                    <td class="govuk-table__cell">This is my current role</td>
+                                </tr>
+                                <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Main duties</th>
                                     <td class="govuk-table__cell">{{ data['emp3-mainDuties'] }}</td>
                                 </tr>
-                                <tr class="govuk-table__row">
+                                <!-- <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Reason for leaving</th>
                                     <td class="govuk-table__cell">{{ data['emp3-reason'] }}</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                         <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
@@ -132,26 +128,14 @@ Application - Current role and employment history
                 <!-- START role 1 -->
                 <div class="qualification govuk-!-margin-bottom-6">
                     <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Role - {{ data['emp2-jobTitle'] }}</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{ data['emp2-jobTitle'] }}</h4>
                     </div>
                     <div class="qualification-content">
                         <table class="govuk-table govuk-!-margin-bottom-4">
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
                                     <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
-                                    <td class="govuk-table__cell">{{ data['emp2-jobTitle'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Start date</th>
-                                    <td class="govuk-table__cell">1st January 2014</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">End date</th>
-                                    <td class="govuk-table__cell">1st January 2016</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Salary scale or level</th>
@@ -160,6 +144,14 @@ Application - Current role and employment history
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
                                     <td class="govuk-table__cell">{{ data['emp2-subjects'] }}</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Start date</th>
+                                    <td class="govuk-table__cell">1st January 2014</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">End date</th>
+                                    <td class="govuk-table__cell">1st January 2016</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Main duties</th>
@@ -179,25 +171,52 @@ Application - Current role and employment history
 
                 <a href="#" class="govuk-button govuk-button--secondary">Add another role</a>
 
-                <!-- START 3 month gaps -->
+                <!-- START gaps in employment -->
                 <div class="govuk-form-group">
-                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="statement">
-                        Gaps in your employment
-                        </label>
-                    </h1>
-                    <div id="statement-hint" class="govuk-hint">
-                        If you have had any gaps in employment of 3 months or longer, please provide further details. We need this information for safeguarding.
-                    </div>
-                    <textarea class="govuk-textarea" id="statement" name="app2-3month" rows="5" aria-describedby="statement-hint"></textarea>
+                    <fieldset class="govuk-fieldset" aria-describedby="gaps-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h3 class="govuk-fieldset__heading">
+                                Have you had any gaps in employment?
+                            </h3>
+                        </legend>
+                        <div id="gaps-hint" class="govuk-hint">
+                            Select yes if you have had any gaps in employment of 3 months or longer, since you left full-time education
+                        </div>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="gaps-yes" name="gaps" type="radio" value="Yes" data-aria-controls="gaps-yeh">
+                                <label class="govuk-label govuk-radios__label" for="gaps-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <!-- START Conditional -->
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="gaps-yeh">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="gaps-yes-input">
+                                        Please provide details. For example, raising children, unemployment or illness.
+                                    </label>
+                                    <textarea class="govuk-textarea" id="gaps-yes-input" name="gaps-yes-input" rows="5" aria-describedby="more-detail-hint"></textarea>
+                                </div>
+                            </div>
+                            <!-- END Conditional -->
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="gaps-no" name="gaps" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="gaps-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
-                <!-- END 3 month gaps -->
+                <!-- End gaps in employment -->
                 
 
                 <!-- START FORM 1 -->
                 <form class="form" action="/prototypes/application/round-3/js/15-application-statement" method="post">
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
+
                 </form>
                 <!-- END FORM 1 -->
 

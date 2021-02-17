@@ -51,23 +51,23 @@ Application - References
 
                 <span class="govuk-caption-m">Step 6 of 10</span>
                 <h1 class="govuk-heading-l">References</h1>
-                <p class="govuk-body"><span class="form-required" style="font-weight: 700;">Two referees are required</span> for this application. One of these must be your current or most recent employer. If you are shortlisted, we will contact your referee before your interview.</p>
-                <p class="govuk-body">If you do not currently work with children, you must include a referee from the last time you did so.</p>
+                <p class="govuk-body">
+                    <span class="form-required" style="font-weight: 700;">Two referees are required</span> for this application. One of these must be your current or most recent employer. If you are shortlisted, the school will contact your referees before your interview.
+                </p>
+                <p class="govuk-body">
+                    If you do not currently work with children, but have done so in the past, you must include a referee from the last time you did so.
+                </p>
 
                 <!-- START reference -->
                 <div class="qualification govuk-!-margin-bottom-6">
                     <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Reference 1</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{ data['ref2-name'] }}</h4>
                     </div>
                     <div class="qualification-content">
                         <table class="govuk-table govuk-!-margin-bottom-4">
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
-                                    <td class="govuk-table__cell">{{ data['ref2-name'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Job title(s)</th>
                                     <td class="govuk-table__cell">{{ data['ref2-jobTitle'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
@@ -95,13 +95,13 @@ Application - References
                 <!-- END reference -->
 
 
-                <a href="/prototypes/application/round-1/js/20-application-reference-add3" class="govuk-button govuk-button--secondary">Add another referee</a>
+                <a href="/prototypes/application/round-3/js/20-application-reference-b1" class="govuk-button govuk-button--secondary">Add another referee</a>
 
                 <!-- START FORM 1 -->
-                <form class="form" action="/prototypes/application/round-1/js/22-application-equality" method="post">
+                <form class="form" action="" method="post">
 
-                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
+                    <!-- <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button> -->
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
                 </form>
                 <!-- END FORM 1 -->
 

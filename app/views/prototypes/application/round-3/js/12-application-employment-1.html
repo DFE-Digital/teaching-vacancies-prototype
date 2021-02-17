@@ -77,33 +77,64 @@ Application - Current role and employment history
 
                 <span class="govuk-caption-m">Step 4 of 10</span>
                 <h1 class="govuk-heading-l">Current role and employment history</h1>
-                <p class="govuk-body">Tell us about all teaching roles, as well as any other paid or voluntary work you have done that is relevant to your application.</p>
+                <p class="govuk-body">
+                    Tell us about all jobs you have had since you left full-time education. This should include all teaching roles, as well as any other paid or voluntary work you have done that is relevant to your application.
+                </p>
+                <p class="govuk-body">
+                    Schools need a complete picture of your work history, including time out of the workplace, in order to safeguard children.
+                </p>
 
                 <!-- START ALERT EMPTY STATE -->
                 <div class="tvs-alert alert-js-empty">
                     <h4 class="govuk-heading-m govuk-!-margin-bottom-4">No employment specified</h4>
-                    <a href="/prototypes/application/round-3/js/13-application-employment-a1" class="govuk-button govuk-!-margin-bottom-0">Add a role</a>
+                    <a href="/prototypes/application/round-3/js/13-application-employment-a1" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0">Add a role</a>
                 </div>
                 <!-- END ALERT EMPTY STATE -->
 
-                <!-- START 3 month gaps -->
+                <!-- START gaps in employment -->
                 <div class="govuk-form-group">
-                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="statement">
-                        Gaps in your employment
-                        </label>
-                    </h1>
-                    <div id="statement-hint" class="govuk-hint">
-                        If you have had any gaps in employment of 3 months or longer, please provide further details. We need this information for safeguarding.
-                    </div>
-                    <textarea class="govuk-textarea" id="statement" name="app2-3month" rows="5" aria-describedby="statement-hint"></textarea>
+                    <fieldset class="govuk-fieldset" aria-describedby="gaps-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h3 class="govuk-fieldset__heading">
+                                Have you had any gaps in employment?
+                            </h3>
+                        </legend>
+                        <div id="gaps-hint" class="govuk-hint">
+                            Select yes if you have had any gaps in employment of 3 months or longer, since you left full-time education
+                        </div>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="gaps-yes" name="gaps" type="radio" value="Yes" data-aria-controls="gaps-yeh">
+                                <label class="govuk-label govuk-radios__label" for="gaps-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <!-- START Conditional -->
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="gaps-yeh">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="gaps-yes-input">
+                                        Please provide details. For example, raising children, unemployment or illness.
+                                    </label>
+                                    <textarea class="govuk-textarea" id="gaps-yes-input" name="gaps-yes-input" rows="5" aria-describedby="more-detail-hint"></textarea>
+                                </div>
+                            </div>
+                            <!-- END Conditional -->
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="gaps-no" name="gaps" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="gaps-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
-                <!-- END 3 month gaps -->
+                <!-- End gaps in employment -->
 
                 <!-- START FORM 1 -->
-                <form class="form" action="" method="post">
+                <form class="form" action="/prototypes/application/round-3/js/15-application-statement" method="post">
 
-                    <!-- <button class="govuk-button govuk-!-margin-right-1 govuk-button--disabled" data-module="govuk-button">Continue</button> -->
-                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
                 </form>
                 <!-- END FORM 1 -->
 

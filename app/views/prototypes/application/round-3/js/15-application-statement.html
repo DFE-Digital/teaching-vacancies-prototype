@@ -84,10 +84,10 @@
                 <!-- START docs -->
                 <div class="supp-docs govuk-!-margin-bottom-6">
                     <div class="supp-docs-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Supporting documents</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Job listing and supporting documents</h4>
                     </div>
                     <div class="supp-docs-content">
-                        <p class="govuk-body govuk-!-margin-bottom-2">Documents supplied with the job listing that may be of some help with your personal statement.</p>
+                        <p class="govuk-body govuk-!-margin-bottom-2">Documents supplied with '<a href="#">{{ data['app2-jobListingName'] }}</a>' (opens in new tab) listing that may be of some help with your personal statement.</p>
                         <ul class="personal-statement">
                             <li><a href="#" class="document-link">job-specification.doc</a> 3mb</li>
                             <li><a href="#" class="document-link">school-welcome-pack.pdf</a> 3mb</li>
@@ -95,6 +95,13 @@
                     </div>
                 </div>
                 <!-- END docs -->
+
+                <!-- START additional instructions -->
+                <h3 class="govuk-heading-m">Specific instructions from the school hiring staff</h3>
+                <div class="govuk-inset-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quam veritatis corporis, placeat quidem exercitationem et corrupti aperiam fugit ad incidunt, provident iure in alias, ipsam odio asperiores! Tempora, ea?
+                </div>
+                <!-- END additional instructions -->
 
                 <!-- START FORM 1 -->
                 <form class="form" action="/prototypes/application/round-3/js/16-acc-my-applications" method="post">
@@ -113,7 +120,7 @@
                     <!-- END statement -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
+                    <a href="/prototypes/application/round-3/js/16-acc-my-applications" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
                 </form>
                 <!-- END FORM 1 -->
 
