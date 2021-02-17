@@ -265,13 +265,13 @@
                             <table class="govuk-table govuk-!-margin-bottom-0">
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
                                         <td class="govuk-table__cell">{{ data['emp3-organisation'] }}</td>
                                     </tr>
-                                    <tr class="govuk-table__row">
+                                    <!-- <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
                                         <td class="govuk-table__cell">{{ data['emp3-jobTitle'] }}</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Salary scale or level</th>
                                         <td class="govuk-table__cell">{{ data['emp3-salary'] }}</td>
@@ -292,10 +292,10 @@
                                         <th scope="row" class="govuk-table__header">Main duties</th>
                                         <td class="govuk-table__cell">{{ data['emp3-mainDuties'] }}</td>
                                     </tr>
-                                    <tr class="govuk-table__row">
+                                    <!-- <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Reason for leaving</th>
                                         <td class="govuk-table__cell">{{ data['emp3-reason'] }}</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                             <!-- END Role content -->
@@ -305,7 +305,7 @@
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                    Role - {{ data['emp2-organisation'] }}
+                                    Role - {{ data['emp2-jobTitle'] }}
                                 </span>
                             </h2>
                         </div>
@@ -314,13 +314,13 @@
                             <table class="govuk-table govuk-!-margin-bottom-0">
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Organisation</th>
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
                                         <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
                                     </tr>
-                                    <tr class="govuk-table__row">
+                                    <!-- <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Job title(s)</th>
                                         <td class="govuk-table__cell">{{ data['emp2-jobTitle'] }}</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="govuk-table__row">
                                         <th scope="row" class="govuk-table__header">Salary scale or level</th>
                                         <td class="govuk-table__cell">{{ data['emp2-salary'] }}</td>
@@ -382,7 +382,7 @@
                                         <td class="govuk-table__cell">{{ data['ref3-name'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                        <th scope="row" class="govuk-table__header">Job title</th>
                                         <td class="govuk-table__cell">{{ data['ref3-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
@@ -423,7 +423,7 @@
                                         <td class="govuk-table__cell">{{ data['ref2-name'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
-                                        <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                        <th scope="row" class="govuk-table__header">Job title</th>
                                         <td class="govuk-table__cell">{{ data['ref2-jobTitle'] }}</td>
                                     </tr>
                                     <tr class="govuk-table__row">
@@ -575,7 +575,8 @@
                     </div>
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Submit application</button>
-                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save as draft</button>
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
+
                 </form>
                 <!-- END FORM 1 -->
 
