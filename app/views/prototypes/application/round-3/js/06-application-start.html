@@ -56,7 +56,7 @@ Application - Start
         <!-- START ALERT SUCCESS -->
         <div class="tvs-alert alert-js-success">
             <svg class="alert-icon"  width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9375 0L9.75 12L4.0625 6.4L0 10.4L9.75 20L26 4L21.9375 0Z" fill="#006435"/></svg>
-            <h4 class="govuk-heading-s govuk-!-margin-bottom-0">You have succesfully registered as {{ data['user-email'] }}</h4>
+            <h4 class="govuk-heading-s govuk-!-margin-bottom-0">You account has been created and you can now start your application</h4>
         </div>
         <!-- END ALERT SUCCESS -->
 
@@ -86,7 +86,9 @@ Application - Start
 
                 <h1 class="govuk-heading-l">Before you start</h1>
 
-                <p class="govuk-body">You can use this form to apply for the job of {{ data['app2-jobListingName'] }} through Teaching Vacancies. Your application will be sent to {{ data['app2-schoolName'] }}.</p>
+                <p class="govuk-body">
+                    You can use this form to apply for the job of <a href="#"> {{ data['app2-jobListingName'] }}</a> through Teaching Vacancies. Your application will be sent to {{ data['app2-schoolName'] }}.
+                </p>
                 <p class="govuk-body">You will need to provide:</p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>your full employment history</li>
@@ -104,6 +106,13 @@ Application - Start
                     <li>have qualified teacher status (QTS) or be on track to receive it</li>
                     <li>be legally allowed to work with children</li>
                 </ul> -->
+
+                <!-- START ALERT INFO -->
+                <div class="tvs-alert alert-js-info">
+                    <svg class="alert-icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path fill-rule="evenodd" clip-rule="evenodd" d="M25 12.5C25 19.4009 19.4009 25 12.5 25C5.59911 25 0 19.4009 0 12.5C0 5.59911 5.59911 0 12.5 0C19.4009 0 25 5.59911 25 12.5ZM13.9403 7.39912V4.4643H10.7144V7.39912H13.9403ZM10.7144 21.0152V8.84999H13.9403V21.0152H10.7144Z"></path></svg>
+                    <p class="govuk-body">We will store your information so you can use it to quickly apply for other jobs on Teaching Vacancies.</p>
+                </div>
+                <!-- END ALERT INFO -->
 
                 <!-- START FORM 1 -->
                 <form class="form" action="/prototypes/application/round-3/js/07-application-personalDetails" method="post">

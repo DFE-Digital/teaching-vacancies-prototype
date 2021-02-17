@@ -86,7 +86,7 @@
                         <fieldset class="govuk-fieldset" aria-describedby="qts-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Do you have qualified teacher status (QTS)? (<span class="form-required">required</span>)
+                                    Do you have qualified teacher status (QTS)?
                                 </h3>
                             </legend>
                             <!-- <div id="qts-hint" class="govuk-hint">
@@ -94,13 +94,13 @@
                             </div> -->
                             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="qts-yes" name="qts" type="radio" value="Yes" data-aria-controls="conditional-qts">
+                                    <input class="govuk-radios__input" id="qts-yes" name="qts" type="radio" value="Yes" data-aria-controls="conditional-qts-yes">
                                     <label class="govuk-label govuk-radios__label" for="qts-yes">
                                         Yes
                                     </label>
                                 </div>
                                 <!-- START Conditional -->
-                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-qts">
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-qts-yes">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="g-describe-input">
                                             Year QTS was awarded
@@ -110,11 +110,21 @@
                                 </div>
                                 <!-- END Conditional -->
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="qts-no" name="qts" type="radio" value="No">
+                                    <input class="govuk-radios__input" id="qts-no" name="qts" type="radio" value="No" data-aria-controls="conditional-qts-no">
                                     <label class="govuk-label govuk-radios__label" for="qts-no">
                                         No
                                     </label>
                                 </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-qts-no">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-no-input">
+                                            Please explain why you do not have QTS
+                                        </label>
+                                        <textarea class="govuk-textarea" id="g-no-input" name="qts-no-description" rows="5" aria-describedby="more-detail-hint"></textarea>
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="qts-notyet" name="qts" type="radio" value="I'm on track to receive my QTS">
                                     <label class="govuk-label govuk-radios__label" for="qts-notyet">
@@ -130,7 +140,7 @@
                         <fieldset class="govuk-fieldset" aria-describedby="statutory-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h3 class="govuk-fieldset__heading">
-                                    Have you completed your statutory induction year? (<span class="form-required">required</span>)
+                                    Have you completed your statutory induction year?
                                 </h3>
                             </legend>
                             <!-- <div id="statutory-hint" class="govuk-hint">
