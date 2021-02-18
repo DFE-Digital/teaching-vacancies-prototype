@@ -66,6 +66,7 @@ module.exports = {
   "user-email": "example-email@email.com",
   "app2-jobListingName": "Primary Teacher",
   "app2-schoolName": "Bronson Alcott Academy",
+  "app3-schoolName": "John Jones Academy",
 
   "emp1-organisation": "Lorem ipsum dolor sit amet",
   "emp1-jobTitle": "Lorem ipsum dolor sit amet",
