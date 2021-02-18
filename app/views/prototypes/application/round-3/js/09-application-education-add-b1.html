@@ -35,10 +35,6 @@ Application - Education and qualifications
 {% block main %}
 <!-- START STANDARD LAYOUT -->
 <div class="govuk-width-container">
-    
-    <!-- START Breadcrumbs + Back -->
-
-    <a class="govuk-back-link govuk-!-margin-top-3" href="/prototypes/application/round-3/js/09-application-education-add-a1">Back</a>
 
     <main class="govuk-main-wrapper">
 
@@ -47,7 +43,7 @@ Application - Education and qualifications
             <!-- START PAGE HEADER -->
             <div class="govuk-grid-column-full">
                 <span class="govuk-caption-l">Education and qualifications</span>
-                <h1 class="govuk-heading-xl">GCSE</h1> 
+                <h1 class="govuk-heading-xl">Add a qualification</h1> 
             </div>
             <!-- END PAGE HEADER -->
 
@@ -59,90 +55,80 @@ Application - Education and qualifications
             <div class="govuk-grid-column-two-thirds">
 
                 <!-- START FORM 2 -->
-                <form class="form" action="/prototypes/application/round-3/js/10-application-education-3" method="post">
+                <form class="form" action="/prototypes/application/round-3/js/09-application-education-add-b2" method="post">
 
-
-                    <!-- START subject-->
-                    <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            <h3 class="govuk-fieldset__heading">
-                                Subject 
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <h3 class="govuk-label-wrapper">
+                                <label class="govuk-label govuk-label--m" for="edu-qual-type">
+                                    What qualification would you like to add? 
+                                </label>
                             </h3>
-                        </legend>
-
-                        <div class="govuk-date-input govuk-!-margin-bottom-0" id="multiple-subject-1">
-                            <div class="govuk-date-input__item govuk-!-width-one-half">
-                                <div class="govuk-form-group govuk-!-margin-bottom-2">
-                                    <label class="govuk-label govuk-date-input__label" for="multiple-subject-name-1">
-                                        Subject name
+                            <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-1" name="edu-qual-type"" type="radio"
+                                        value="GCSE">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-1">
+                                        GCSE
                                     </label>
-                                    <input class="govuk-input govuk-date-input__input" id="multiple-subject-name-1" name="multiple-subject-name-1" type="text">
                                 </div>
-                            </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group govuk-!-margin-bottom-2">
-                                    <label class="govuk-label govuk-date-input__label" for="multiple-subject-grade-1">
-                                        Grade
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-2" name="edu-qual-type"" type="radio"
+                                        value="AS level">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-2">
+                                        AS level
                                     </label>
-                                    <input class="govuk-input govuk-date-input__input" id="multiple-subject-grade-1" name="multiple-subject-grade-1" type="text">
                                 </div>
-                            </div>
-                        </div>
-                        <p><a href="#">+ add another subject</a></p> 
-                        
-                    </fieldset>
-                    <!-- END subject -->
-
-                    <!-- START edu-school -->
-                    <div class="govuk-form-group">
-                        <h3 class="govuk-label-wrapper">
-                            <label class="govuk-label govuk-label--m" for="edu-school-1">
-                                School, college, university or other organisation
-                            </label>
-                        </h3>
-                        <!-- <div id="edu-school-1-hint" class="govuk-hint">
-                            Tell us where you gained the qualification.
-                        </div> -->
-                        <input class="govuk-input" id="edu-school-1" name="edu-school-1" type="text" aria-describedby="edu-school-hint">
-                    </div>
-                    <!-- END edu-school -->
-
-                    <!-- START year awarded -->
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" role="group" aria-describedby="edu-date-1-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h3 class="govuk-fieldset__heading">
-                                    Year qualification was awarded
-                                </h3>
-                            </legend>
-                            <!-- <div id="edu-date-1-hint" class="govuk-hint">
-                                For example, 2009
-                            </div> -->
-                            <div class="govuk-date-input" id="start-end-1">
-
-                                <div class="govuk-date-input__item">
-                                    <div class="govuk-form-group">
-                                        <!-- <label class="govuk-label govuk-date-input__label" for="edu-date-1-year">
-                                            Year
-                                        </label> -->
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="edu-date-1-year" name="edu-date-1-year type="text" pattern="[0-9]*" inputmode="numeric">
-                                    </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-3" name="edu-qual-type"" type="radio"
+                                        value="A level">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-3">
+                                        A level
+                                    </label>
                                 </div>
-
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-4" name="edu-qual-type"" type="radio"
+                                        value="Other UK secondary qualification">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-4">
+                                        Other UK secondary qualification
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-5" name="edu-qual-type"" type="radio"
+                                        value="Undergraduate degree">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-5">
+                                        Undergraduate degree
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-6" name="edu-qual-type"" type="radio"
+                                        value="Postgraduate degree">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-6">
+                                        Postgraduate degree
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="edu-qual-type-7" name="edu-qual-type"" type="radio"
+                                        value="Other qualification or course">
+                                    <label class="govuk-label govuk-radios__label" for="edu-qual-type-7">
+                                        Other qualification or course
+                                    </label>
+                                </div>
                             </div>
                         </fieldset>
                     </div>
-                    <!-- END year awarded -->
 
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-                        Save qualification
+                        Continue
                     </button>
-                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    <!-- <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
                         Add another qualification
-                    </button>
+                    </button> -->
                     <a href="#" class="govuk-link govuk-!-display-block">Cancel</a>
+
                 </form>
                 <!-- END FORM 2 -->
+
             </div>
             <!-- END Main content -->
 

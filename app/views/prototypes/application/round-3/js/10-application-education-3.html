@@ -82,23 +82,24 @@ Application - Education and qualifications
                 <!-- START Qualification 1 -->
                 <div class="qualification govuk-!-margin-bottom-6">
                     <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Qualification 1</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">GCSE</h4>
                     </div>
                     <div class="qualification-content">
                         <table class="govuk-table govuk-!-margin-bottom-4">
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Type of qualification</th>
-                                    <td class="govuk-table__cell">{{ data['edu2-qual'] }}</td>
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Subject</th>
+                                    <td class="govuk-table__cell">
+                                        Maths - B<br>
+                                        Science - B<br>
+                                        English - B<br>
+                                        French - B<br>
+                                    </td>
                                 </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Subject</th>
-                                    <td class="govuk-table__cell">{{ data['edu2-subject'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
+                                <!-- <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Grade</th>
                                     <td class="govuk-table__cell">{{ data['edu2-grade'] }}</td>
-                                </tr>
+                                </tr> -->
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">School or college attended</th>
                                     <td class="govuk-table__cell">{{ data['edu2-org'] }}</td>
@@ -118,30 +119,27 @@ Application - Education and qualifications
                 <!-- START Qualification 2 -->
                 <div class="qualification govuk-!-margin-bottom-6">
                     <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Qualification 2</h4>
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Undergraduate degree</h4>
                     </div>
                     <div class="qualification-content">
                         <table class="govuk-table govuk-!-margin-bottom-4">
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Type of qualification</th>
-                                    <td class="govuk-table__cell">{{ data['edu3-qual'] }}</td>
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Subject</th>
+                                    <td class="govuk-table__cell">{{ data['degree-subject-1'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Subject</th>
-                                    <td class="govuk-table__cell">{{ data['edu3-subject'] }}</td>
+                                    <th scope="row" class="govuk-table__header">Awarding body</th>
+                                    <td class="govuk-table__cell">{{ data['awarding-body-1'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Grade</th>
-                                    <td class="govuk-table__cell">{{ data['edu3-grade'] }}</td>
+                                    <td class="govuk-table__cell">{{ data['degree-grade'] }}</td>
                                 </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">School or college attended</th>
-                                    <td class="govuk-table__cell">{{ data['edu3-org'] }}</td>
-                                </tr>
+                                
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
-                                    <td class="govuk-table__cell">{{ data['edu3-date'] }}</td>
+                                    <td class="govuk-table__cell">{{ data['degree-year'] }}</td>
                                 </tr>
                             </tbody>
                         </table>
