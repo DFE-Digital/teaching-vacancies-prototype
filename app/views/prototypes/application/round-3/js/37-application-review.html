@@ -38,22 +38,6 @@
 <div class="full-BGstrip" style="background-color:#f3f2f1;">
     <div class="govuk-width-container">
 
-        <!-- START Breadcrumbs + Back -->
-        <a class="govuk-back-link govuk-!-margin-top-3" href="#">Back</a>
-        <!-- 
-        <div class="govuk-breadcrumbs">
-            <ol class="govuk-breadcrumbs__list">
-                <li class="govuk-breadcrumbs__list-item">
-                    <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
-                </li>
-                <li class="govuk-breadcrumbs__list-item">
-                    <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
-                </li>
-            </ol>
-        </div> 
-        -->
-        <!-- END Breadcrumbs + Back -->
-
         <main class="govuk-main-wrapper">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
@@ -75,11 +59,12 @@
             <!-- START Main content -->
             <div class="govuk-grid-column-three-quarters">
 
-                <span class="govuk-caption-m">Step 10 of 10</span>
+                <!-- <span class="govuk-caption-m">Step 10 of 10</span> -->
                 <h1 class="govuk-heading-l">Review your application</h1>
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">1. Personal details</h2>
                 <p class="govuk-!-display-inline-block"><a href="#">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
 
                 <!-- START Personal details -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -139,6 +124,7 @@
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">2. Education and qualifications</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
 
                 <!-- START Qualification -->
                 <div class="govuk-accordion govuk-!-margin-bottom-9" data-module="govuk-accordion" id="accordion-default">
@@ -212,6 +198,7 @@
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">3. Professional status</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
 
                 <!-- START Professional status -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -236,6 +223,7 @@
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">4. Current role and employment history</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
 
                 <!-- START Employment -->
                 <div class="govuk-accordion govuk-!-margin-bottom-9" data-module="govuk-accordion" id="accordion-default">
@@ -340,16 +328,21 @@
                 </div>
                 <!-- END Employment -->
 
-                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">5. Personal statement</h2>
-                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-margin-bottom-9">5. Personal statement</h2>
+                <p class="govuk-!-display-inline-block"><a href="/prototypes/application/round-3/js/36-application-statement" ">Complete section</a></p>
+                <strong class="govuk-tag govuk-tag--red" style="float: right; color: #942514;
+                background-color: #F6D7D2;">NOT STARTED</strong>
+
                 <!-- START Statement -->
                 <p class="govuk-body">
-                    {{ data['app2-personalStatement'] }}
+                    <!-- {{ data['app2-personalStatement'] }} -->
                 </p>
                 <!-- END Statement -->
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">6. References</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
                 <!-- START References -->
                 <div class="govuk-accordion govuk-!-margin-bottom-9" data-module="govuk-accordion" id="accordion-default">
                     <div class="govuk-accordion__section ">
@@ -439,6 +432,8 @@
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">7. Equal opportunities and recruitment monitoring</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
                 <!-- START Equality -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                     <div class="govuk-summary-list__row">
@@ -484,8 +479,10 @@
                 </dl>
                 <!-- END Equality -->
 
-                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">8. Ask for support if you have a disability or other needs</h2>
-                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-width-two-thirds" style="float: left;">8. Ask for support if you have a disability or other needs</h2>
+                <p class="govuk-!-display-inline-block" style="float: left;"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
                 <!-- START Equality -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                     <div class="govuk-summary-list__row">
@@ -501,6 +498,8 @@
 
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">9. Declarations</h2>
                 <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
                 <!-- START Declarations -->
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                     <div class="govuk-summary-list__row">
@@ -531,7 +530,7 @@
                 <!-- END Declarations -->
 
                 <!-- START FORM 1 -->
-                <form class="form" action="/prototypes/application/round-3/js/25-application-success" method="post">
+                <form class="form" action="#" method="post">
 
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
@@ -570,269 +569,6 @@
             </div>
             <!-- END Main content -->
 
-            <!-- START Sidebar -->
-            <div class="govuk-grid-column-one-quarter">
-                <aside class="app-related-items">
-                    <h2 class="govuk-heading-m" id="subsection-title">Application steps</h2>
-                    
-                    <div id="application-steps" class="app-step-nav app-step-nav--active">
-                        <!--
-                        <div class="app-step-nav__controls">
-                            <button aria-expanded="false" class="app-step-nav__button app-step-nav__button--controls js-step-controls-button" aria-controls="step-panel-check-youre-allowed-to-drive-1">Show all</button>
-                        </div>
-                        -->
-                        <!-- 
-                            Cirlce states on li.app-step-nav__step:
-                            app-step-nav__step--active
-                            app-step-nav__step--visited
-                         -->
-                        <ol class="app-step-nav__steps">
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="1">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    1
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Personal details
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" aria-current="step" data-show="" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="2">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    2
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Education and qualifications
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="3">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    3
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Professional status
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="4">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    4
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Current role and employment history
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="5">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    5
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Personal statement
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="6">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    6
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    References
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="7">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    7
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Equal opportunities and recruitment monitoring
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="7">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    8
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Ask for support if you have a disability or other needs
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--visited" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="7">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    9
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Declarations
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                            <li class="app-step-nav__step js-step app-step-nav__step--active" id="">
-                                <div class="app-step-nav__header js-toggle-panel" data-position="8">
-                                    <h3 class="app-step-nav__title">
-                                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                                            <span class="app-step-nav__circle-inner">
-                                                <span class="app-step-nav__circle-background">
-                                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                    10
-                                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                                </span>
-                                            </span>
-                                        </span>
-    
-                                        <span class="js-step-title">
-                                            <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="">
-                                                <span class="js-step-title-text">
-                                                    Review your application
-                                                </span>
-                                                <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                            </button>
-                                        </span>
-                                    </h3>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-
-                </aside>
-            </div>
-            <!-- Sidebar END -->
 
         </div>
     </main>

@@ -20,7 +20,7 @@
         text: "Find a teaching job"
       },
       {
-        href: "/prototypes/application/round-3/js/30-acc-my-applications",
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
         text: "Your account"
       }
       ,
@@ -72,31 +72,30 @@
                 <div class="govuk-form-group">
                     <label for="jobs-sort-field" class="govuk-label-inline govuk-!-margin-right-2" id="jobs_sort_label">Sort by</label>
                     <select class="govuk-select govuk-select govuk-body govuk-!-font-size-16" id="jobs-sort-field" name="jobs_sort">
-                        <option value="">Date submitted (most recent)</option>
+                        <option value="">date submitted (most recent)</option>
                     </select>
                 </div>
 
-                
-
-                <!-- START Card row 2 -->
+                <!-- START Card row 1 -->
                 <div class="flex-grid">
                     <div class="col">
                         <a href="#"><span class="govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Primary Teacher</span></a><br>
                         <span class="name-listing">{{ data['app3-schoolName'] }}</span> <br>
+
                     </div>
                     <div class="col">
-                        <span class="acc-tag acc-tag__shortlist govuk-!-margin-bottom-1">Shortlisted</span>
-                        <p class="govuk-!-font-size-16 govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Submitted:</span> 14 February 2020 at 09:00am</p>
-                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Closing date:</span> 1 January 2021 at 09:14am</p>
+                        <span class="acc-tag acc-tag__review govuk-!-margin-bottom-1">In Review</span>
+                        <p class="govuk-!-font-size-16 govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Submitted:</span> 03 November 2020 at 11:00am</p>
+                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Closing date:</span> 14 February 2021 at 09:14am</p>
                     </div>
                     <div class="col">
                         <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                            <!-- <li><a href="#">Withdraw</a></li> -->
-                            <li><a href="/prototypes/application/round-3/js/31-acc-application">View application</a></li>
-                        </ul>   
+                            <li><a href="#">Withdraw</a></li>
+                            <li><a href="#">View application</a></li>
+                        </ul>  
                     </div>
                 </div>
-                <!-- END Card row 2 -->
+                <!-- END Card row 1 -->
 
                 <!-- START Card row 1 -->
                 <div class="flex-grid">
@@ -105,18 +104,20 @@
                         <span class="name-listing">{{ data['app2-schoolName'] }}</span> <br>
                     </div>
                     <div class="col">
-                        <span class="acc-tag acc-tag__reject govuk-!-margin-bottom-1">Unsuccessful</span>
-                        <p class="govuk-!-font-size-16 govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Submitted:</span> 10 February2021 at 09:14am</p>
+                        <span class="acc-tag acc-tag__review govuk-!-margin-bottom-1">In Review</span>
+                        <p class="govuk-!-font-size-16 govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Submitted:</span> 10 February 2021 at 09:14am</p>
                         <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Closing date:</span> 06 June 2021 at 09:00am</p>
                     </div>
                     <div class="col">
                         <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
-                            <!-- <li><a href="#">Withdraw</a></li> -->
-                            <li><a href="#">View application</a></li>
+                            <li><a href="#">Withdraw</a></li>
+                            <li><a href="/prototypes/application/round-3/js/00-acc-application">View application</a></li>
                         </ul>  
                     </div>
                 </div>
                 <!-- END Card row 1 -->
+
+                <p class="govuk-body govuk-!-margin-top-9"><a href="/prototypes/application/round-3/js/26-js-email-unsuccessful" class="govuk-link">Some time later you receive an email...</a></p>
 
             </div>    
         </div>

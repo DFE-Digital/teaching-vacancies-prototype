@@ -79,7 +79,49 @@ Application - Current role and employment history
                 <h1 class="govuk-heading-l">Current role and employment history</h1>
                 <p class="govuk-body">This could be a teaching role or any other paid work you have done that is relevant to your application</p>
 
-                
+                <!-- START role 1 -->
+                <div class="qualification govuk-!-margin-bottom-6">
+                    <div class="qualification-title">
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{ data['emp2-jobTitle'] }}</h4>
+                    </div>
+                    <div class="qualification-content">
+                        <table class="govuk-table govuk-!-margin-bottom-4">
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
+                                    <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Salary scale or level</th>
+                                    <td class="govuk-table__cell">{{ data['emp2-salary'] }}</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
+                                    <td class="govuk-table__cell">{{ data['emp2-subjects'] }}</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Start date</th>
+                                    <td class="govuk-table__cell">1st January 2016</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">End date</th>
+                                    <td class="govuk-table__cell">This is my current role</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Main duties</th>
+                                    <td class="govuk-table__cell">{{ data['emp2-mainDuties'] }}</td>
+                                </tr>
+                                <!-- <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Reason for leaving</th>
+                                    <td class="govuk-table__cell">{{ data['emp2-reason'] }}</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
+                        <a href="#" class="govuk-link">Edit</a>
+                    </div>
+                </div>
+                <!-- END role 1 -->
 
                 <!-- START role 2 -->
                 <div class="qualification govuk-!-margin-bottom-6">
@@ -103,50 +145,6 @@ Application - Current role and employment history
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Start date</th>
-                                    <td class="govuk-table__cell">1st January 2016</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">End date</th>
-                                    <td class="govuk-table__cell">This is my current role</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Main duties</th>
-                                    <td class="govuk-table__cell">{{ data['emp3-mainDuties'] }}</td>
-                                </tr>
-                                <!-- <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Reason for leaving</th>
-                                    <td class="govuk-table__cell">{{ data['emp3-reason'] }}</td>
-                                </tr> -->
-                            </tbody>
-                        </table>
-                        <a href="#" class="govuk-link govuk-!-margin-right-2">Delete</a>
-                        <a href="#" class="govuk-link">Edit</a>
-                    </div>
-                </div>
-                <!-- END role 2 -->
-
-                <!-- START role 1 -->
-                <div class="qualification govuk-!-margin-bottom-6">
-                    <div class="qualification-title">
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{ data['emp2-jobTitle'] }}</h4>
-                    </div>
-                    <div class="qualification-content">
-                        <table class="govuk-table govuk-!-margin-bottom-4">
-                            <tbody class="govuk-table__body">
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
-                                    <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Salary scale or level</th>
-                                    <td class="govuk-table__cell">{{ data['emp2-salary'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
-                                    <td class="govuk-table__cell">{{ data['emp2-subjects'] }}</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <th scope="row" class="govuk-table__header">Start date</th>
                                     <td class="govuk-table__cell">1st January 2014</td>
                                 </tr>
                                 <tr class="govuk-table__row">
@@ -155,11 +153,11 @@ Application - Current role and employment history
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Main duties</th>
-                                    <td class="govuk-table__cell">{{ data['emp2-mainDuties'] }}</td>
+                                    <td class="govuk-table__cell">{{ data['emp3-mainDuties'] }}</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <th scope="row" class="govuk-table__header">Reason for leaving</th>
-                                    <td class="govuk-table__cell">{{ data['emp2-reason'] }}</td>
+                                    <td class="govuk-table__cell">{{ data['emp3-reason'] }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -167,7 +165,9 @@ Application - Current role and employment history
                         <a href="#" class="govuk-link">Edit</a>
                     </div>
                 </div>
-                <!-- END role 1 -->
+                <!-- END role 2 -->
+
+                
 
                 <a href="#" class="govuk-button govuk-button--secondary">Add another role</a>
 

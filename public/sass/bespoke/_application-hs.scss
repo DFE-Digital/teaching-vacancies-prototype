@@ -5,26 +5,38 @@ HiRiNG STAFF APPLICATION MAST
 */
 
 section.data-block {
-    background-color: saddlebrown;
-    color: white;
+
     display: block;
     padding: 1em;
 
     span {
-        color: white;
+        // color: white;
     }
     h4 {
         font-weight: 400;
     }
 
     &.bg-shortlist {
-        background-color:#28a197;
+        color: #005A30;
+        background-color: #CCE2D8;
+
+        span {
+            color: #005A30;
+        }
     }
     &.bg-reject {
-        background-color: #0b0c0c;
+        color: #942514;
+        background-color: #F6D7D2;
+        span {
+            color: #942514;
+        }
     }
     &.bg-review {
-        background-color:#f47738;
+        color: #144E81;
+        background-color: #D2E2F1;
+        span {
+            color: #144E81;
+        }
     }
 }
 
@@ -40,32 +52,32 @@ span.acc-tag {
     -moz-osx-font-smoothing: grayscale;
 
     &.acc-tag__nodecision {
-        color: white;
-        background-color: #505a5f;
+        color: #383F43;
+        background-color: #EEEFEF;
     }
     &.acc-tag__filled {
         color: white;
         background-color: #00703c;
     }
     &.acc-tag__shortlist {
-        color: white;
-        background-color: #28a197;
+        color: #005A30;
+        background-color: #CCE2D8;
     }
     &.acc-tag__review {
-        color: white;
-        background-color: #f47738;
+        color: #144E81;
+        background-color: #D2E2F1;
     }
     &.acc-tag__reject {
-        color: white;
-        background-color: #0b0c0c;
+        color: #942514;
+        background-color: #F6D7D2;
     }
     &.acc-tag__withdrawn {
-        color: white;
-        background-color: #b1b4b6;
+        color: #383F43;
+        background-color: #EEEFEF;
     }
     &.acc-tag__draft {
-        color: white;
-        background-color: #505a5f;
+        color: #80224D;
+        background-color: #F7D7E6;
     }
 }
 
