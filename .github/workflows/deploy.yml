@@ -1,0 +1,27 @@
+name: Deploy to GOV.UK PaaS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to GOV.UK PaaS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install cf7-cli
+        run: |
+          wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+          echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+          sudo apt update
+          sudo apt install cf7-cli
+      - name: Authenticate and target prototype space
+        run: |
+          cf auth
+          cf target -o dfe -s teaching-vacancies-prototype
+      - name: Set GOV.UK Prototype Kit basic auth credentials
+        run: echo "TODO - still need to implement this"
+      - name: Push application
+        run: cf push
