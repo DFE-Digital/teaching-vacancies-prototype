@@ -11,20 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install cf7-cli
-        run: |
-          wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-          echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-          sudo apt update
-          sudo apt install cf7-cli
-      - name: Authenticate and target prototype space
-        env:
+      - uses: DFE-Digital/github-actions/setup-cf-cli@master
+        with:
           CF_USERNAME: ${{ secrets.CF_USERNAME }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
-        run: |
-          cf api https://api.london.cloud.service.gov.uk
-          cf auth
-          cf target -o dfe -s teaching-vacancies-prototype
+          CF_SPACE_NAME: teaching-vacancies-prototype
       - name: Set GOV.UK Prototype Kit basic auth credentials
         env:
           PROTOTYPE_USERNAME: ${{ secrets.PROTOTYPE_USERNAME }}
