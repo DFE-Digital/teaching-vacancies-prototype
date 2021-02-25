@@ -18,6 +18,9 @@ jobs:
           sudo apt update
           sudo apt install cf7-cli
       - name: Authenticate and target prototype space
+        env:
+          CF_USERNAME: ${{ secrets.CF_USERNAME }}
+          CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
         run: |
           cf api https://api.london.cloud.service.gov.uk
           cf auth
