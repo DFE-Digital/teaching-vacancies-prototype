@@ -6,8 +6,21 @@ on:
       - master
 
 jobs:
+  turnstyle:
+    name: Wait for previous deploys to finish
+    runs-on: ubuntu-20.04
+    timeout-minutes: 20
+    steps:
+      - uses: softprops/turnstyle@v1
+        name: Check workflow concurrency
+        with:
+          poll-interval-seconds: 20
+          same-branch-only: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   deploy:
     name: Deploy to GOV.UK PaaS
+    needs: turnstyle
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,8 +34,6 @@ jobs:
           PROTOTYPE_USERNAME: ${{ secrets.PROTOTYPE_USERNAME }}
           PROTOTYPE_PASSWORD: ${{ secrets.PROTOTYPE_PASSWORD }}
         run: |
-          echo "::add-mask::$PROTOTYPE_USERNAME"
-          echo "::add-mask::$PROTOTYPE_PASSWORD"
           cf set-env teaching-vacancies-prototype USERNAME $PROTOTYPE_USERNAME
           cf set-env teaching-vacancies-prototype PASSWORD $PROTOTYPE_PASSWORD
       - name: Push application
