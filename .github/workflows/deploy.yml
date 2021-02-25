@@ -19,6 +19,7 @@ jobs:
           sudo apt install cf7-cli
       - name: Authenticate and target prototype space
         run: |
+          cf api https://api.london.cloud.service.gov.uk
           cf auth
           cf target -o dfe -s teaching-vacancies-prototype
       - name: Set GOV.UK Prototype Kit basic auth credentials
