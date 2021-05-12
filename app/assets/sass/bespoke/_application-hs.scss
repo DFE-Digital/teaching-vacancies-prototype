@@ -72,9 +72,14 @@ span.acc-tag {
         background-color: #F6D7D2;
     }
     &.acc-tag__withdrawn {
-        color: #383F43;
-        background-color: #EEEFEF;
+        color: #594D00;
+        background-color: #FFF7BF;
     }
+  }
+  &.acc-tag__reviewed {
+    color: #383F43;
+    background-color: #EEEFEF;
+  }
     &.acc-tag__draft {
         color: #80224D;
         background-color: #F7D7E6;
