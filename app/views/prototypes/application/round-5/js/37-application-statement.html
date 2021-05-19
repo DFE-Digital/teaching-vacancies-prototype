@@ -1,0 +1,142 @@
+{% extends "layout-js.html" %}
+
+{% block pageTitle %}
+    Application - Personal statement
+{% endblock %}
+
+<!-- {% set bodyClasses = "bespoke-width" %} -->
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+<!-- START BESPOKE MAST 1-->
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <!-- START Breadcrumbs + Back -->
+        <!-- <a class="govuk-back-link govuk-!-margin-top-3" href="#">Back</a> -->
+        <!-- 
+        <div class="govuk-breadcrumbs">
+            <ol class="govuk-breadcrumbs__list">
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
+                </li>
+            </ol>
+        </div> 
+        -->
+        <!-- END Breadcrumbs + Back -->
+
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <span class="govuk-caption-l">{{ data['app2-jobListingName'] }} at {{ data['app3-schoolName'] }}</span>
+                    <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Application</h2>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</div>
+<!-- END BESPOKE MAST 1 -->
+
+<!-- START CONTENT -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+
+            <!-- START Main content -->
+            <div class="govuk-grid-column-three-quarters">
+
+                <!-- <span class="govuk-caption-m">Step 5 of 8</span> -->
+                <h1 class="govuk-heading-l">Personal statement</h1>
+                <p class="govuk-body">Please explain why you are suitable for this role. You should refer to the person specification in the job description, and include any relevant personal qualities and experience.</p>
+                <!-- <h3 class="govuk-heading-m">Specific instructions</h3>
+                <p class="govuk-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima iure illo sit aliquid commodi ullam fugit dolorem, aspernatur ab culpa eligendi. Ea pariatur earum distinctio sunt quo ducimus. Nam, accusamus?</p>
+                 -->
+                <!-- START docs -->
+                <div class="supp-docs govuk-!-margin-bottom-6">
+                    <div class="supp-docs-title">
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Job listing and supporting documents</h4>
+                    </div>
+                    <div class="supp-docs-content">
+                        <p class="govuk-body govuk-!-margin-bottom-2">Documents supplied with '<a href="#">{{ data['app2-jobListingName'] }}</a>' (opens in new tab) listing that may be of some help with your personal statement.</p>
+                        <ul class="personal-statement">
+                            <li><a href="#" class="document-link">job-specification.doc</a> 3mb</li>
+                            <li><a href="#" class="document-link">school-welcome-pack.pdf</a> 3mb</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END docs -->
+
+                <!-- START additional instructions -->
+                <!-- <h3 class="govuk-heading-m">Specific instructions from the school hiring staff</h3>
+                <div class="govuk-inset-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quam veritatis corporis, placeat quidem exercitationem et corrupti aperiam fugit ad incidunt, provident iure in alias, ipsam odio asperiores! Tempora, ea?
+                </div> -->
+                <!-- END additional instructions -->
+
+                <!-- START FORM 1 -->
+                <form class="form" action="#" method="post">
+
+                    <!-- START statement -->
+                    <div class="govuk-form-group">
+                        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="app2-personalStatement">
+                            Your personal statement
+                            </label>
+                        </h1>
+                        <!-- <div id="statement-hint" class="govuk-hint">
+                            Tell us more about any professional teaching organisations you are a member of, including your level and dates of membership.
+                        </div> -->
+                        <textarea class="govuk-textarea" id="app2-personalStatement" name="app2-personalStatement" rows="10" aria-describedby="statement-hint"></textarea>
+                    </div>
+                    <!-- END statement -->
+
+                    <a href="/prototypes/application/round-3/js/38-application-review" class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Save changes</a>
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
+                </form>
+                <!-- END FORM 1 -->
+
+            </div>
+            <!-- END Main content -->
+
+
+        </div>
+    </main>
+</div>
+<!-- END CONTENT -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %}
