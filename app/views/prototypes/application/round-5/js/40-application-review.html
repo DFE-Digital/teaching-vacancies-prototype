@@ -1,0 +1,610 @@
+{% extends "layout-js.html" %}
+
+{% block pageTitle %}
+    Application - Review
+{% endblock %}
+
+<!-- {% set bodyClasses = "bespoke-width" %} -->
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+<!-- START BESPOKE MAST 1-->
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <span class="govuk-caption-l">{{ data['app2-jobListingName'] }} at {{ data['app3-schoolName'] }}</span>
+                    <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Application</h2>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</div>
+<!-- END BESPOKE MAST 1 -->
+
+<!-- START CONTENT -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+
+            <!-- START Main content -->
+            <div class="govuk-grid-column-three-quarters">
+
+                <!-- <span class="govuk-caption-m">Step 10 of 10</span> -->
+                <h1 class="govuk-heading-l">Review your application</h1>
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">1. Personal details</h2>
+                <p class="govuk-!-display-inline-block"><a href="#">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Personal details -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['app2-firstName'] }} {{ data['app2-lastName'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Your address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['app2-addressStreet'] }}
+                            <br>{{ data['app2-addressTown'] }}
+                            <br>{{ data['app2-addressCounty'] }}
+                            <br>{{ data['app2-addressPostcode'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Phone number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p>{{ data['app2-phoneNumber'] }}</p>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p>{{ data['user-email'] }}</p>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Teacher reference number (TRN)
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p>{{ data['app2-trn'] }}</p>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            National insurance number (TRN)
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p>{{ data['app2-ni'] }}</p>
+                        </dd>
+                    </div>
+                </dl>
+                <!-- END Personal details -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">2. Education and qualifications</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Qualification -->
+                <div class="govuk-accordion govuk-!-margin-bottom-9" data-module="govuk-accordion" id="accordion-default">
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Qualification - GCSE
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <!-- START content -->
+                            <table class="govuk-table govuk-!-margin-bottom-0">
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Subject(s)</th>
+                                        <td class="govuk-table__cell">
+                                            Maths - B<br>
+                                            Science - B<br>
+                                            English - B<br>
+                                            French - B<br>
+                                        </td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">School, college or organisation</th>
+                                        <td class="govuk-table__cell">{{ data['edu-school-1'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
+                                        <td class="govuk-table__cell">{{ data['edu-date-1-year'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- END content -->
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                                    Qualification - Undergraduate degree
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                            <!-- START content -->
+                            <table class="govuk-table govuk-!-margin-bottom-0">
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Subject(s)</th>
+                                        <td class="govuk-table__cell">
+                                            {{ data['degree-subject-1'] }}
+                                        </td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Awarding body</th>
+                                        <td class="govuk-table__cell">{{ data['awarding-body-1'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Year qualification was awarded </th>
+                                        <td class="govuk-table__cell">{{ data['degree-year'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- END content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END Qualification -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">3. Professional status</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Professional status -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you hold QTS?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p>{{ data['qts'] }}</p>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Have you completed your statutory induction year?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p>{{ data['statutory'] }}</p>
+                        </dd>
+                    </div>
+                </dl>
+                <!-- END Professional status -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">4. Current role and employment history</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Employment -->
+                <div class="govuk-accordion govuk-!-margin-bottom-9" data-module="govuk-accordion" id="accordion-default">
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Role - {{ data['emp3-jobTitle'] }}
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <!-- START Role content -->
+                            <table class="govuk-table govuk-!-margin-bottom-0">
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
+                                        <td class="govuk-table__cell">{{ data['emp3-organisation'] }}</td>
+                                    </tr>
+                                    <!-- <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                        <td class="govuk-table__cell">{{ data['emp3-jobTitle'] }}</td>
+                                    </tr> -->
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Salary scale or level</th>
+                                        <td class="govuk-table__cell">{{ data['emp3-salary'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
+                                        <td class="govuk-table__cell">{{ data['emp3-subjects'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Start date</th>
+                                        <td class="govuk-table__cell">2nd January 2016</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">End date</th>
+                                        <td class="govuk-table__cell">This is my current role</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Main duties</th>
+                                        <td class="govuk-table__cell">{{ data['emp3-mainDuties'] }}</td>
+                                    </tr>
+                                    <!-- <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Reason for leaving</th>
+                                        <td class="govuk-table__cell">{{ data['emp3-reason'] }}</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                            <!-- END Role content -->
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Role - {{ data['emp2-jobTitle'] }}
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <!-- START Role content -->
+                            <table class="govuk-table govuk-!-margin-bottom-0">
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">School or other organisation</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-organisation'] }}</td>
+                                    </tr>
+                                    <!-- <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Job title(s)</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-jobTitle'] }}</td>
+                                    </tr> -->
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Salary scale or level</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-salary'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Subjects and key stages taught</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-subjects'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Start date</th>
+                                        <td class="govuk-table__cell">1st January 2014</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">End date</th>
+                                        <td class="govuk-table__cell">1st January 2016</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Main duties</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-mainDuties'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Reason for leaving</th>
+                                        <td class="govuk-table__cell">{{ data['emp2-reason'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- END Role content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END Employment -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">5. Personal statement</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Statement -->
+                <div class="supp-docs-content govuk-!-margin-bottom-9">
+                    <!-- <ul class="personal-statement govuk-!-margin-bottom-3">
+                        <li><a href="#" class="document-link">personal-statement.doc</a> 3mb</li>
+                    </ul> -->
+                    <p class="govuk-body"> 
+                        I am a passionate, confident ITT trainee who aims to inspire and nurture the students at Bronson Alcott Academy as a newly qualified teacher. As someone who grew up in Newham and is local to the school, I understand the school and the community it serves. The school’s ethos and commitment to celebrating diversity is important to me and is something I embed in everything I do, including teaching.
+                    </p>
+                    <p class="govuk-body"> 
+                        I first became interested in primary teaching through volunteering with the charity Literacy Pirates, which runs a reading and writing after-school programme for children at risk of falling behind in literacy. It is through this experience and talking to the session leaders who were all former primary school teachers that I realised I enjoyed working with this age range. I further explored what a career in teaching might be like through getting schools experience at my local primary school and speaking to primary school teachers. Completing my Initial Teacher Training at the Institute of Education at UCL has furthered my passion for teaching and prepared me to effectively teach and be accountable for a class of students.
+                    </p>
+                    <p class="govuk-body"> 
+                        Throughout my Initial Teacher Training, I am confident covering all National Curriculum subjects. I have completed a placement in Key Stage (Years 1-2) and I am currently on placement in Key Stage 2 (Years 5 and 6). I prefer the latter education phase, and this is also the age group I worked with at Literacy Pirates. Both placements have been at inner-city schools in Hackney and Newham, where the classes are incredibly diverse and thus make for an enriching, interesting teaching experience.
+                    </p>
+                    <p class="govuk-body"> 
+                        I value diversity and strive to promote it in everything I do, especially in teaching. My time in school has developed my philosophy of valuing each child as an individual, with ideas and potential, as well as part of a community. I attended the Masterclass on Diversity in Schools which encouraged me to put diversity and inclusion at the heart of my teaching. I strive to ensure that all children, regardless of ability, learning needs, language, ethnic origin, disabilities or any other factor are engaged and included in lessons. I have learnt how to identify and find ways to effectively aid the learning and meet their needs in ways which appeal to and best help them develop, gain a beneficial experience from their education and achieve their full potential. I have incorporated some of my learning in my final practice, as there was an autistic child in the class. I ensured that his learning needs were planned for and his TA was fully aware of what was expected.
+                    </p>
+                    <p class="govuk-body"> 
+                        Through my placements in school, I believe that sharing learning objectives and success criteria with children is one of the most effective ways to get the best out of them. Knowing exactly what is expected and how they can achieve allows children to focus more clearly on tasks. This also facilitates effective self and peer assessments, as there are clear criteria and objectives to assess against, encouraging children to take more responsibility for their own learning.
+                    </p>
+                    <p class="govuk-body"> 
+                        My approach is to give children as many learning opportunities and experiences as possible in order to engage, motivate and prepare them for future life in a diverse city, and indeed, world. An appropriate, balanced, challenging and creative curriculum is essential in developing children’s skills, knowledge and understanding. These all underpin personalised learning. As a teacher, I​ ​feel I can best meet children’s learning needs if I am aware of the learning style suited to them. When I prepare lessons, I make a conscious effort to ensure I am not just catering for visual learners like myself, but try to ensure I am thinking about learners.
+                    </p>
+                    <p class="govuk-body"> 
+                        Ultimately, I always strive to make learning interesting and creative. Sometimes I use drama to engage children and enable them to explore and understand situations, and express their views and feelings. For example, I hosted a debate with Year 5 when they were learning about migration to the West of the USA, around reasons for and against going and people affected. The students put themselves in the shoes of different people and families who were making the decision to go, as well as the people affected, in this case, native americans. Alongside enjoying the task and having fun with it, they not only gained knowledge, but developed empathy for those involved.
+                    </p> 
+                    <p class="govuk-body govuk-!-margin-bottom-0"> 
+                        Completing my Initial Teacher Training, particularly my school placements, has confirmed my belief that teaching is one of the most challenging, demanding, exhausting but varied and exciting careers there are. I really look forward to working in a job that is so important, being privileged to be such a vital part of so many young lives and making a real difference at Bronson Alcott Academy.
+                    </p>
+                </div>
+                <!-- END Statement -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">6. References</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START References -->
+                <div class="govuk-accordion govuk-!-margin-bottom-9" data-module="govuk-accordion" id="accordion-default">
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Reference 1 - {{ data['ref3-name'] }}
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <!-- START content -->
+                            <table class="govuk-table govuk-!-margin-bottom-4">
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
+                                        <td class="govuk-table__cell">{{ data['ref3-name'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Job title</th>
+                                        <td class="govuk-table__cell">{{ data['ref3-jobTitle'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Organisation</th>
+                                        <td class="govuk-table__cell">{{ data['ref3-organisation'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Relationship to applicant</th>
+                                        <td class="govuk-table__cell">{{ data['ref3-relationship'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Phone number</th>
+                                        <td class="govuk-table__cell">{{ data['ref3-phone'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Email address</th>
+                                        <td class="govuk-table__cell">{{ data['ref3-email'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- END content -->
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                    Reference 2 - {{ data['ref2-name'] }}
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <!-- START content -->
+                            <table class="govuk-table govuk-!-margin-bottom-4">
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Name</th>
+                                        <td class="govuk-table__cell">{{ data['ref2-name'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Job title</th>
+                                        <td class="govuk-table__cell">{{ data['ref2-jobTitle'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Organisation</th>
+                                        <td class="govuk-table__cell">{{ data['ref2-organisation'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Relationship to applicant</th>
+                                        <td class="govuk-table__cell">{{ data['ref2-relationship'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Phone number</th>
+                                        <td class="govuk-table__cell">{{ data['ref2-phone'] }}</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">Email address</th>
+                                        <td class="govuk-table__cell">{{ data['ref2-email'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- END content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END References -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">7. Equal opportunities and recruitment monitoring</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Equality -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you consider yourself to have a disability as defined by the Equality Act 2010?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['disability'] }}   
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How would you describe your gender?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['gender'] }}                     
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How would you describe your sexual orientation?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['sexuality'] }}                    
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What is your ethnic group?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['ethnic'] }}                       
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What is your religion or belief?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['religion'] }}                        
+                        </dd>
+                    </div>
+                </dl>
+                <!-- END Equality -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-width-two-thirds" style="float: left;">8. Ask for support if you have a disability or other needs</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Equality -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you want to ask for support so that you can attend an interview?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['disability-support'] }}  
+                        </dd>
+                    </div>
+                </dl>
+                <!-- END Equality -->
+
+                <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">9. Declarations</h2>
+                <p class="govuk-!-display-inline-block"><a href="#" ">Change</a></p>
+                <strong class="govuk-tag app-task-list__tag" style="float: right;">COMPLETE</strong>
+
+                <!-- START Declarations -->
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key govuk-!-width-three-quarters">
+                            Are you banned or disqualified from working with children or subject to any sanctions or conditions on your employment, imposed by the Independent Safeguarding Authority (ISA), Secretary of State or other regulatory body (e.g. the GTCE)?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                           {{ data['dec-banned'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you have any family or close relationship with people within {{ data['app2-schoolName'] }}?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['dec-family'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you have the right to work in the UK? 
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['dec-work'] }}
+                        </dd>
+                    </div>
+                </dl>
+                <!-- END Declarations -->
+
+                <!-- START FORM 1 -->
+                <form class="form" action="/prototypes/application/round-3/js/41-application-success" method="post">
+
+
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-fieldset__heading">
+                                    Confirmation
+                                </h1>
+                            </legend>
+                            <!-- <div id="contact-hint" class="govuk-hint">
+                                Select all options that are relevant to you.
+                            </div> -->
+                            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="confirmation" name="confirmation" type="checkbox" value="confirmation" data-aria-controls="conditional-contact">
+                                    <label class="govuk-label govuk-checkboxes__label" for="confirmation">
+                                        I confirm that the above information is accurate and complete
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="cconfirmation">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="confirmation-email">
+                                            Confirmation
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-one-third" id="confirmation-email" name="confirmation-email" type="email" spellcheck="false">
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </div>
+
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Submit application</button>
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
+
+                </form>
+                <!-- END FORM 1 -->
+
+            </div>
+            <!-- END Main content -->
+
+
+        </div>
+    </main>
+</div>
+<!-- END CONTENT -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %}

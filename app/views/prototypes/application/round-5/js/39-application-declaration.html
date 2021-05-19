@@ -1,0 +1,200 @@
+{% extends "layout-js.html" %}
+
+{% block pageTitle %}
+    Application - Personal statement
+{% endblock %}
+
+<!-- {% set bodyClasses = "bespoke-width" %} -->
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+<!-- START BESPOKE MAST 1-->
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <!-- START Breadcrumbs + Back -->
+        <!-- <a class="govuk-back-link govuk-!-margin-top-3" href="#">Back</a> -->
+        <!-- 
+        <div class="govuk-breadcrumbs">
+            <ol class="govuk-breadcrumbs__list">
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
+                </li>
+            </ol>
+        </div> 
+        -->
+        <!-- END Breadcrumbs + Back -->
+
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <span class="govuk-caption-l">{{ data['app2-jobListingName'] }} at {{ data['app3-schoolName'] }}</span>
+                    <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Application</h2>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</div>
+<!-- END BESPOKE MAST 1 -->
+
+<!-- START CONTENT -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+
+            <!-- START Main content -->
+            <div class="govuk-grid-column-three-quarters">
+
+                <h1 class="govuk-heading-l">Declaration</h1>
+                
+                <!-- START FORM 1 -->
+                <form class="form" action="/prototypes/application/round-3/js/40-application-review" method="post">
+
+                    <!-- START banned -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="banned-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Are you banned or disqualified from working with children or subject to any sanctions or conditions on your employment, imposed by the Independent Safeguarding Authority (ISA), Secretary of State or other regulatory body (for example, the GTCE)?                                
+                                </h3>
+                            </legend>
+                            <div id="banned-hint" class="govuk-hint">
+                                It is an offence to apply for the role if you are barred from engaging in regulated activity with children.
+                            </div>
+                            <div class="govuk-radios govuk-radios--inline">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="banned-yes" name="dec-banned" type="radio" value="yes">
+                                    <label class="govuk-label govuk-radios__label" for="banned-yes">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="banned-no" name="dec-banned" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="banned-no">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END banned -->
+                    <!-- START family-->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="family-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Do you have any family or close relationship with people within {{ data['app2-schoolName'] }}?
+                                </h3>
+                            </legend>
+                            <!-- <div id="family--hint" class="govuk-hint">
+                                This includes changing your last name or spelling your name differently.
+                            </div> -->
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="family-yes" name="dec-family" type="radio" value="yes" data-aria-controls="conditional-family">
+                                    <label class="govuk-label govuk-radios__label" for="family-yes">
+                                        Yes
+                                    </label>
+                                </div>
+                                <!-- START Conditional -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-family">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="g-describe-input">
+                                            Please give details
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-full" id="g-describe-input" type="text">
+                                    </div>
+                                </div>
+                                <!-- END Conditional -->
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="family-no" name="dec-family" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="family-no">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END family- -->
+                    <!-- START citizen -->
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="citizen-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Do you have the right to work in the UK?
+                                </h3>
+                            </legend>
+                            <div id="citizen-hint" class="govuk-hint">
+                                You can find out whether you have the right to work in the UK on the <a href="#">GOV.UK website</a>. You can apply for this role even if you do not have the right to work in the UK.
+                            </div>
+                            <div class="govuk-radios govuk-radios--inline">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="citizen-yes" name="dec-work" type="radio" value="yes">
+                                    <label class="govuk-label govuk-radios__label" for="citizen-yes">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="citizen-no" name="dec-work" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="citizen-no">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- END citizen -->
+
+
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Save changes</button>
+                    <a href="#" class="govuk-link govuk-link--no-visited-state" style="display: block;">Save as draft</a>
+                    
+                </form>
+                <!-- END FORM 1 -->
+
+            </div>
+            <!-- END Main content -->
+
+
+        </div>
+    </main>
+</div>
+<!-- END CONTENT -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %}
