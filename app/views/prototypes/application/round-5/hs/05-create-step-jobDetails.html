@@ -316,26 +316,49 @@ Create a job listing - Job details
                             <div id="pattern-hint" class="govuk-hint">
                                 Select all working patterns you will consider for the role. Flexible working options may attract more candidates.
                             </div>
-                            <div class="govuk-checkboxes">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="pattern-1" name="hs-app-pattern" type="checkbox" value="Full-time">
-                                    <label class="govuk-label govuk-checkboxes__label" for="pattern-1">
-                                        Full-time
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="pattern-2" name="hs-app-pattern" type="checkbox" value="Part-time">
-                                    <label class="govuk-label govuk-checkboxes__label" for="pattern-2">
-                                        Part-time
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="pattern-3" name="hs-app-pattern" type="checkbox" value="Job share">
-                                    <label class="govuk-label govuk-checkboxes__label" for="pattern-3">
-                                        Job share
-                                    </label>
-                                </div>
-                            </div>
+                            <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+          <label class="govuk-label govuk-checkboxes__label" for="contact">
+            Full-time
+          </label>
+        </div>
+        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2">
+          <label class="govuk-label govuk-checkboxes__label" for="contact-2">
+            Part-time
+          </label>
+        </div>
+        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-2">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="contact-by-phone">
+              Please give details (optional)
+
+            </label>
+            <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel"></div>
+
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
+          <label class="govuk-label govuk-checkboxes__label" for="contact-3">
+            Job share
+          </label>
+        </div>
+        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
+          <div class="govuk-form-group">
+        
+            <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel"></div>
+
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
                         </fieldset>
                     </div>
                     <!-- END Working pattern -->
