@@ -29,6 +29,10 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
+{# Custom components #}
+{% from "govuk/components/header/macro.njk"           import govukHeader %}
+
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -37,24 +41,53 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
-{% set bodyClasses = "govuk-width-container-js" %}
+{% set bodyClasses = "govuk-width-container-ls" %}
 
 {% block header %}
 
-  {# Set serviceName in config.js. #}
+{# Set serviceName in config.js. #}
+{% if data.settings.useAltHeader %}
+  {{ govukHeader({
+    "classes": "app-alt-header",
+    "containerClasses": "app-alt-header-container govuk-width-container",
+    "navigationClasses": "govuk-header__navigation--end",
+    "productName": serviceName,
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job",
+        active: true if (navActive == "start")
+      },
+      {
+        href: "#",
+        text: "Sign in",
+        active: true if (navActive == "sign-in")
+      }
+      ,
+      {
+        _href: "#",
+        _class: "test-class",
+        _text: "For schools"
+      }
+    ]
+  }) }}
+{% else %}
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
+    "classes": "app-default-header",
     containerClasses: "govuk-width-container",
     navigation: [
       {
         href: "#",
-        text: "Find a teaching job"
+        text: "Find a teaching job",
+        active: true if (navActive == "start")
       },
       {
         href: "#",
-        text: "Sign in"
+        text: "Sign in",
+        active: true if (navActive == "sign-in")
       }
       ,
       {
@@ -64,6 +97,21 @@
       }
     ]
   }) }}
+{% endif %}
+
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    classes: 'govuk-!-margin-top-1',
+    html: 'This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.'
+  }) }}
+{# {% block pageNavigation %}
+{% endblock %}
+{% block pageBanner %} #}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
@@ -78,6 +126,10 @@
             text: "GOV.UK Prototype Kit " + releaseVersion
           },
           {
+            href: "/admin",
+            text: "Admin settings"
+          },
+          {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
           }
@@ -85,55 +137,53 @@
       },
 
       navigation: [
+          {
+            title: "For job seekers",
+            columns: 1,
+            items: [
               {
-                title: "For job seekers",
-                columns: 1,
-                items: [
-                  {
-                    href: "#1",
-                    text: "Search teaching vacancies"
-                  }
-                ]
-              },
-              {
-                title: "For schools",
-                columns: 1,
-                items: [
-                  {
-                    href: "#1",
-                    text: "List a teaching job"
-                  }
-                ]
-              },
-              {
-                title: "Service support",
-                columns: 1,
-                items: [
-                  {
-                    href: "#1",
-                    text: "Report problems via email"
-                  },
-                  {
-                    href: "#2",
-                    text: "Feedback about the service"
-                  },
-                  {
-                    href: "#3",
-                    text: "Cookies"
-                  },
-                  {
-                    href: "#4",
-                    text: "Privacy"
-                  },
-                  {
-                    href: "#5",
-                    text: "Terms and conditions"
-                  }
-                ]
+                href: "#1",
+                text: "Search teaching vacancies"
               }
-          ]
-
-
+            ]
+          },
+          {
+            title: "For schools",
+            columns: 1,
+            items: [
+              {
+                href: "#1",
+                text: "List a teaching job"
+              }
+            ]
+          },
+          {
+            title: "Service support",
+            columns: 1,
+            items: [
+              {
+                href: "#1",
+                text: "Report problems via email"
+              },
+              {
+                href: "#2",
+                text: "Feedback about the service"
+              },
+              {
+                href: "#3",
+                text: "Cookies"
+              },
+              {
+                href: "#4",
+                text: "Privacy"
+              },
+              {
+                href: "#5",
+                text: "Terms and conditions"
+              }
+            ]
+          }
+      ]
     }) }}
   {% endblock %}
 {% endif %}

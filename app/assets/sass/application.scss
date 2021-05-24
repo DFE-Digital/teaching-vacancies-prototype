@@ -14,6 +14,13 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/cookie-banner";
 
 // ----------------------------------------------------------  
+// Overrides
+// ----------------------------------------------------------
+
+@import "overrides/header";
+@import "overrides/body";
+
+// ----------------------------------------------------------  
 // TVS Components and Templates
 // ----------------------------------------------------------
 

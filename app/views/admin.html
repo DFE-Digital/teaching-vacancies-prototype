@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% set pageHeading = 'Prototype settings' %}
+
+{% block content %}
+{{super()}}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+    <form action="" method="get">
+
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
+            text: "Use alternative header"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.useAltHeader")) }}
+
+      {{ govukButton({
+        "text": "Update"
+      }) }}
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}
