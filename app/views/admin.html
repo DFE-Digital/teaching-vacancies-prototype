@@ -20,6 +20,15 @@
           }
         ]
       } | decorateAttributes(data, "data.settings.useAltHeader")) }}
+      
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
+            text: "Show primary navigation"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.showPrimaryNav")) }}
 
       {{ govukButton({
         "text": "Update"

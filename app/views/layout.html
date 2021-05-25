@@ -43,10 +43,12 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
-{% if data.settings.useAltHeader %}
-  {% set bodyClasses = "govuk-width-container-ls app-alt-header" %}
-{% else %}
-  {% set bodyClasses = "govuk-width-container-ls" %}
+{% if data.settings.useAltHeader and not data.settings.showPrimaryNav  %}
+  {% set bodyClasses = "govuk-width-container-ls app-alt-header__on" %}
+{% elseif data.settings.showPrimaryNav and not data.settings.useAltHeader %}
+  {% set bodyClasses = "govuk-width-container-ls app-primary-nav__on" %}
+{% elseif data.settings.useAltHeader and data.settings.showPrimaryNav %}
+  {% set bodyClasses = "govuk-width-container-ls app-alt-header__on app-primary-nav__on" %}
 {% endif %}
 
 {% block header %}
@@ -64,7 +66,7 @@
         href: "#",
         text: "Find a teaching job",
         active: true if (navActive == "start")
-      },
+      } if not data.settings.showPrimaryNav,
       {
         href: "#",
         text: "Sign in",
@@ -136,8 +138,8 @@
   }
 ] %}
 
-{# Show primary nav if alt banner is enabled #}
-{% if data.settings.useAltHeader %}
+{# Show primary nav if enabled #}
+{% if data.settings.showPrimaryNav %}
   {{ mojPrimaryNavigation({
     label: 'Primary navigation',
     items: navItems    
