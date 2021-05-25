@@ -17,8 +17,9 @@ $govuk-assets-path: '/govuk/assets/';
 // Overrides
 // ----------------------------------------------------------
 
-@import "overrides/header";
 @import "overrides/body";
+@import "overrides/moj-header";
+@import "overrides/header";
 
 // ----------------------------------------------------------  
 // TVS Components and Templates

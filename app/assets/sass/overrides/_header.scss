@@ -17,6 +17,14 @@
 
 .app-alt-header {
   border-bottom: 10px solid #f47738;
+
+  .govuk-phase-banner {
+    border: 0;
+  }
+
+  .moj-primary-navigation__link[aria-current]:before {
+    background: #f47738;
+  }
 }
 
 .app-alt-header-container {
