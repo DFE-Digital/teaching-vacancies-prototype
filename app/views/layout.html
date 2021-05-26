@@ -63,7 +63,7 @@
     "productName": serviceName,
     navigation: [
       {
-        href: "#",
+        href: "templates/public/01-service-start",
         text: "Find a teaching job",
         active: true if (navActive == "start")
       } if not data.settings.showPrimaryNav,
@@ -101,7 +101,7 @@
     containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "#",
+        href: "templates/public/01-service-start",
         text: "Find a teaching job",
         active: true if navActive == "start"
       },
@@ -155,7 +155,6 @@
       tag: {
         text: "prototype"
       },
-      classes: 'govuk-!-margin-top-1',
       html: 'This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.'
     }) }}
 
