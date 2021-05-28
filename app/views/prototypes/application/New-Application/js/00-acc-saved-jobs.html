@@ -1,0 +1,146 @@
+{% extends "layout-js.html" %}
+
+{% block pageTitle %}
+    Saved jobs
+{% endblock %}
+
+<!-- {% set bodyClasses = "bespoke-width" %} -->
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-3/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "/prototypes/application/round-3/js/00-acc-my-applications",
+        text: "Your account"
+      }
+      ,
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+<!-- START SUB-NAVIGATION -->
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper govuk-!-padding-0">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <!-- START notification -->
+
+                    <!-- END notification -->
+                    {% include "prototypes/application/round-3/includes/acc-saved-jobs.html" %}
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</div>
+<!-- END SUB-NAVIGATION -->
+
+<!-- START TABLE -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h2 class="govuk-heading-l">Saved jobs</h2>
+                <!-- <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-6" data-module="govuk-button">Show filters</button> -->
+
+                <div class="govuk-form-group">
+                    <label for="jobs-sort-field" class="govuk-label-inline govuk-!-margin-right-2" id="jobs_sort_label">Sort by</label>
+                    <select class="govuk-select govuk-select govuk-body govuk-!-font-size-16" id="jobs-sort-field" name="jobs_sort">
+                        <option value="">Date added (most recent)</option>
+                        <option value="">Application deadline (soonest)</option>
+                        <option value="">Job title (A to Z)</option>
+                        <option value="">Location (A to Z)</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- START ALERT EMPTY STATE -->
+        <!-- <div class="tvs-alert alert-js-empty">
+            <h4 class="govuk-heading-m govuk-!-margin-bottom-1">You have no saved teaching jobs</h4>
+            <p class="govuk-body"><a href="#"> Find a teaching job</a> and start saving jobs to review and apply for later.</p>
+        </div> -->
+        <!-- END ALERT EMPTY STATE -->
+
+
+
+        <!-- START JOB LISTINGS TABLE -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <!-- <h4 class="govuk-heading-s">Draft applications</h4> -->
+
+                <!-- START Card row 1 -->
+                <div class="flex-grid">
+                    <div class="col">
+                        <a href="#"><span class="govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Primary Teacher</span></a><br>
+                        <span class="name-listing">Bronson Academy</span> <br>
+                    </div>
+                    <div class="col">
+                        <span class="accepting">Still accepting applications</span>
+                        <p class="govuk-!-font-size-16 govuk-!-margin-0 "><span class="govuk-!-font-weight-bold">Saved:</span> 12 January 2021 at 09:14am</p>
+                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Application deadline:</span> 12 May 2021 at 09:14am</p>
+                    </div>
+                    <div class="col">
+                        <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
+                            <li><a href="#">Apply</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>  
+                    </div>
+                </div>
+                <!-- END Card row 1 -->
+
+                <!-- START Card row 2 -->
+                <div class="flex-grid">
+                    <div class="col">
+                        <a href="#"><span class="govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Primary Teacher</span></a><br>
+                        <span class="name-listing">John Jones Academy</span> <br>
+                    </div>
+                    <div class="col">
+                        <span class="accepting">Still accepting applications</span>
+                        <p class="govuk-!-font-size-16 govuk-!-margin-0 "><span class="govuk-!-font-weight-bold">Saved:</span> 12 January 2021 at 09:14am</p>
+                        <p class="govuk-!-font-size-16"><span class="govuk-!-font-weight-bold">Application deadline:</span> 12 May 2021 at 09:14am</p>
+                    </div>
+                    <div class="col">
+                        <ul class="table-actions-list govuk-!-margin-0 govuk-!-padding-0">
+                            <li><a href="/prototypes/application/round-3/js/35-application-start">Apply</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>  
+                    </div>
+                </div>
+                <!-- END Card row 2 -->
+
+            </div>    
+        </div>
+        <!-- END JOB LISTINGS TABLE -->
+        
+    </main>
+</div>
+<!-- END TABLE -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %}

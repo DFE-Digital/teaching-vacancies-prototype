@@ -1,0 +1,161 @@
+{% extends "layout_gds-basic.html" %}
+
+{% block pageTitle %}
+Department for Education Sign-in
+{% endblock %}
+
+{% set bodyClasses = "govuk-width-container-js" %}
+
+{% block header %}
+
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-5/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "/prototypes/application/round-5/hs/14-acc-active",
+        text: "Job listings"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+
+<!-- START STANDARD LAYOUT -->
+<div class="govuk-width-container">
+
+    <!-- START Breadcrumbs + Back -->
+
+    <!-- <a class="govuk-back-link govuk-!-margin-top-3" href="/url/of/previous/page">Back</a> -->
+
+    <!--
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
+            </li>
+        </ol>
+    </div>
+    -->
+    <!-- END Breadcrumbs + Back -->
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- START PAGE HEADER -->
+            <div class="govuk-grid-column-full">
+                <!-- <span class="govuk-caption-l">Sub heading caption</span> -->
+                <h1 class="govuk-heading-xl">Department for Education Sign-in</h1>
+            </div>
+            <!-- END PAGE HEADER -->
+
+        </div>
+
+        <div class="govuk-grid-row">
+
+            <!-- START Main content -->
+            <div class="govuk-grid-column-two-thirds">
+                <p class="govuk-body">DfE Sign-in allows you to access several important services in the education sector, such as COLLECT.</p>
+
+                <!-- START FORM 1 -->
+                <form class="form" action="/prototypes/application/round-5/hs/00-acc-applicants" method="post">
+                    <fieldset class="govuk-fieldset">
+
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h3 class="govuk-fieldset__heading">
+                                Sign-in
+                            </h3>
+                        </legend>
+
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address-town">
+                                Email address
+                            </label>
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text">
+                        </div>
+
+                        <div class="govuk-form-group govuk-!-margin-bottom-0">
+                            <label class="govuk-label" for="address-county">
+                                Password
+                            </label>
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="password">
+                            <p class="govuk-!-margin-bottom-0"> <a href="">Forgotten your password?</a></p>
+                        </div>
+
+                    </fieldset>
+
+                    <div class="govuk-inset-text">
+                        By continuing you accept the <a href=""> terms and conditions</a>.
+                    </div>
+
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                        Sign in
+                    </button>
+                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                        Create account
+                    </button>
+                </form>
+                <!-- END FORM 1 -->
+
+
+            </div>
+            <!-- END Main content -->
+
+            <!-- START Sidebar -->
+            <div class="govuk-grid-column-one-third">
+                <!-- <aside class="app-related-items">
+                    <h2 class="govuk-heading-m" id="subsection-title">Sidebar</h2>
+                    <p class="govuk-body"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto ullam dolore, ipsum tenetur esse ut doloribus facilis aut dolorum expedita adipisci rem quidem harum sint maiores est tempora! Amet, iure.</p>
+                    <nav role="navigation" aria-labelledby="subsection-title">
+                        <ul class="govuk-list govuk-!-font-size-16">
+                            <li>
+                                <a class="govuk-link" href="#">
+                                    Related link
+                                </a>
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="#">
+                                    Related link
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="govuk-link govuk-!-font-weight-bold">
+                                    More <span class="govuk-visually-hidden">in Subsection</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside> -->
+            </div>
+            <!-- Sidebar END -->
+
+        </div>
+    </main>
+</div>
+<!-- END STANDARD LAYOUT -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %}
