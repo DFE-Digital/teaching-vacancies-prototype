@@ -76,10 +76,25 @@ span.acc-tag {
         background-color: #EEEFEF;
     }
     &.acc-tag__draft {
-        color: #80224D;
-        background-color: #F7D7E6;
+        color: #594D00;
+        background-color: #FFF7BF;
     }
 }
+
+/*
+    additional styles for application round 4
+*/
+.left-action1{
+  margin-right: 30px;
+}
+
+div.action-bar1{
+  margin-top: 50px;
+}
+
+/*
+    END additional styles for application round 4
+*/
 
 .mast-subData {
     span {
@@ -136,7 +151,7 @@ div.action-bar {
         flex-grow: 1;
     }
     .right-action {
-        
+
     }
 }
 
@@ -190,4 +205,3 @@ DASHBOARD TABLE ACTION BUTTONS (00-acc-applicants)
     top: 0;
     width: 2px;
 }
-

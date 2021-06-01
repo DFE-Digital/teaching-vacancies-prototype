@@ -1,3 +1,7 @@
+const fs = require('fs')
+const path = require('path')
+const individualFiltersFolder = path.join(__dirname, './filters')
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -6,6 +10,21 @@ module.exports = function (env) {
    * @type {Object}
    */
   var filters = {}
+
+   // Import filters from filters folder
+   if (fs.existsSync(individualFiltersFolder)) {
+    var files = fs.readdirSync(individualFiltersFolder)
+    files.forEach(file => {
+      let fileData = require(path.join(individualFiltersFolder, file))
+      // Loop through each exported function in file (likely just one)
+      Object.keys(fileData).forEach((filterGroup) => {
+        // Get each method from the file
+        Object.keys(fileData[filterGroup]).forEach(filterName => {
+          filters[filterName] = fileData[filterGroup][filterName]
+        })
+      })
+    })
+  }
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
