@@ -1,9 +1,17 @@
 
 .app-job-listing-card {
   display: block;
-  border-bottom: 1px solid $govuk-border-colour;
+  // border-bottom: 1px solid $govuk-border-colour;
   justify-content: space-between;
-  margin-bottom: govuk-spacing(3);
+  padding: govuk-spacing(3) 0;
+
+  &:not(:first-child) {
+    border-top: 1px solid $govuk-border-colour;
+  }
+  
+  &:last-child {
+    border-bottom: 1px solid $govuk-border-colour;
+  }
 
   .col {
     width: 100%;
@@ -28,7 +36,7 @@
 
   @include govuk-media-query($from: tablet) {
     display: flex;
-    
+
     .col {
       width: 33.333%;
     }
