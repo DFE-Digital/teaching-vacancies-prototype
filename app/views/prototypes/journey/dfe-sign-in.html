@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+{# {% set backLink = 'false' %}
+{% set hideNav = true %}
+{% set hidePrimaryNav = true %} #}
+
+{# Pretend we’re a different service #}
+{% set serviceName = "DfE Sign-in" %}
+
+{% set pageHeading = 'Department for Education Sign-in' %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half-from-desktop">
+
+    <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+
+    <p class="govuk-body">DfE Sign-in allows you to access several important services in the education sector, such as COLLECT.</p>
+
+    <h2 class="govuk-heading-m">Sign-in</h2>
+
+    {{ govukInput({
+      id: "email-address",
+      name: "_email-address",
+      classes: "app-!-max-width-two-thirds",
+      label: {
+        text: "Email address"
+      }
+    }) }}
+
+    {{ govukInput({
+      id: "password",
+      name: "_password",
+      classes: "app-!-max-width-two-thirds",
+      label: {
+        text: "Password"
+      }
+    }) }}
+    <p class="govuk-body"><a href="#" class="govuk-link">Forgotten your password?</a></p>
+
+    {{ govukButton({
+      "text": "Sign-in",
+      href: "/prototypes/journey/job-listings/01-acc-active"
+    }) }}
+
+    {{ govukButton({
+      "text": "Create account",
+      href: "#",
+      classes: "govuk-!-margin-left-2 govuk-button--secondary"
+    }) }}
+
+    <p class="govuk-body"><strong>Need help?</strong> <a class="govuk-link" href="#">See our DfE Sign-in help guides</a></p>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{# Override our default footer as we're pretending we're in a different service #}
+{# {% block footer %}
+  {{ appFooter({
+      classes: "govuk-footer--app",
+      meta: {
+        items: [{
+          href: "#",
+          text: "Cookies"
+        },{
+          href: "#",
+          text: "Terms and conditions"
+        },{
+          href: "#",
+          text: "Need help using this service?"
+        },{
+          href: "/admin",
+          text: "Prototype admin"
+        }, {
+          href: "/admin/clear-data",
+          text: "Clear data"
+        }]
+      }
+    }) }}
+{% endblock %} #}

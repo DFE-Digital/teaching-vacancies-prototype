@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% set sectionActive = "job listings" %}
+{% set navActive = "active jobs" %}
+
+{% block pageTitle %}
+    Dashboard - Active jobs
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+{% endblock %}
+
+{% block main %}
+
+<!-- START SUB-NAVIGATION -->
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper govuk-!-padding-0">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h2 class="govuk-heading-s govuk-!-padding-top-4 govuk-!-margin-bottom-2 acc-username">Joanna Bloggs - <span>Bexley Heath Academy</span></h2>
+                    <a href="/prototypes/application/round-3/hs/05-create-step-jobDetails" class="govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-3" style="float: right;" data-module="govuk-button">Create a job listing</a>
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+										{% include "includes/applications/secondary-nav.html" %}
+                </div>
+            </div>
+        </main>
+
+    </div>
+</div>
+<!-- END SUB-NAVIGATION -->
+
+<!-- START TABLE -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h2 class="govuk-heading-l table-title-number">Active jobs <span>(2)</span></h2>
+
+                <div class="govuk-form-group">
+                    <label for="jobs-sort-field" class="govuk-label-inline govuk-!-margin-right-2" id="jobs_sort_label">Sort by</label>
+                    <select class="govuk-select govuk-select govuk-body govuk-!-font-size-16" id="jobs-sort-field" name="jobs_sort">
+                        <option value="">closing date (soonest)</option>
+                        <option value="">Job title (A to Z)</option>
+                    </select>
+                </div>
+
+								{{ appJobListingCard ({
+										items: [{
+											jobName: "Test name",
+											jobLocation: "Location",
+											applicationCount: "8",
+											jobClosingDate: "06 October 2020 at 09:00am"
+										}]
+								}) }}
+								
+								{{ appJobListingCard ({
+										items: [{
+											jobName: "Test name",
+											jobLocation: "Location",
+											applicationCount: "8",
+											jobClosingDate: "31 May 2021 at 09:00am"
+										}]
+								}) }}
+								
+								{{ appJobListingCard ({
+										items: [{
+											jobName: "Test name",
+											jobLocation: "Location",
+											applicationCount: "8",
+											jobClosingDate: "12 June 2021 at 09:00amm"
+										}]
+								}) }}
+
+            </div>
+        </div>
+
+    </main>
+</div>
+<!-- END TABLE -->
+
+{% endblock %}
+
+{# {% block content %}
+
+<!-- Removed content from here to create bespoke header, overwrite 'main' block -->
+
+{% endblock %} #}

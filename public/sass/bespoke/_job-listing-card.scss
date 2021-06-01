@@ -1,0 +1,34 @@
+
+.app-job-listing-card {
+  display: flex;
+  border-bottom: 1px solid $govuk-border-colour;
+  justify-content: space-between;
+  margin-bottom: govuk-spacing(3);
+
+  .col {
+    width: 100%;
+    margin-bottom: govuk-spacing(3);
+
+    span.accepting {
+      font-weight: bold;
+      // color: $govuk-success-colour;
+      color: red;
+    }
+
+    span.passed {
+      font-weight: bold;
+      // color: $govuk-error-colour;
+      color: green;
+    }
+
+    ul.table-actions-list {
+        text-align: right;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .col {
+      width: 33.333%;
+    }
+  }
+}

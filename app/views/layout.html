@@ -31,6 +31,7 @@
 
 {# Custom components #}
 {% from "govuk/components/header/macro.njk"           import govukHeader %}
+{% from "components/listing-card/macro.njk"           import appJobListingCard %}
 
 {# MOJ components #}
 {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
@@ -106,15 +107,15 @@
         active: true if navActive == "start"
       },
       {
-        href: "#",
+        href: "/prototypes/journey/sign-in",
         text: "Sign in",
         active: true if navActive == "sign-in"
       }
       ,
       {
-        href: "#",
-        class: "test-class",
-        text: "For schools"
+        _href: "#",
+        _class: "test-class",
+        _text: "For schools"
       }
     ]
   }) }}
