@@ -1,20 +1,40 @@
-<ul class="acc-navigation__list">
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'active jobs' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/round-4/hs/01-acc-active">Active jobs</a>
-  </li>
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'passed deadline' }} ">
-    <a class="govuk-link govuk-link--no-visited-state" href="#">Passed deadline</a>
-  </li>
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'scheduled jobs' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="#">Scheduled jobs</a>
-  </li>
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'draft jobs' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="#">Draft jobs</a>
-  </li>
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'Jobs awaiting feedback' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="#">Jobs awaiting feedback</a>
-  </li>
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'manage settings' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/round-4/hs/Manage-Settings">Manage settings</a>
-  </li>
-</ul>
+<!-- START SUB-NAVIGATION -->
+<div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper govuk-!-padding-0">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h2 class="govuk-heading-s govuk-!-padding-top-4 govuk-!-margin-bottom-2 acc-username">Joanna Bloggs - <span>Bexleyheath Academy</span></h2>
+                    {# <a href="/prototypes/application/round-3/hs/05-create-step-jobDetails" class="govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-3" style="float: right;" data-module="govuk-button">Create a job listing</a> #}
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+							<div class="govuk-grid-column-full">
+                <ul class="acc-navigation__list">
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'active jobs' }}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/">Active jobs</a>
+                  </li>
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'passed deadline' }} ">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/01-acc-passed-deadline">Passed deadline</a>
+                  </li>
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'scheduled jobs' }}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/01-acc-scheduled">Scheduled jobs</a>
+                  </li>
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'draft jobs' }}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/01-acc-draft">Draft jobs</a>
+                  </li>
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'jobs awaiting feedback' }}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/01-acc-awaiting-feedback">Jobs awaiting feedback</a>
+                  </li>
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'manage settings' }}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/01-acc-manage-settings">Manage settings</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </main>
+
+    </div>
+</div>
+<!-- END SUB-NAVIGATION -->

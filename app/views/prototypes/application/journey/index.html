@@ -1,0 +1,436 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+T / Service start page
+{% endblock %}
+
+{% set bodyClasses = "app-home" %}
+{% set navActive = "start" %}
+
+{% block beforeContent %}
+{# beforeContent is reseting default phase banner #}
+{% endblock %}
+
+{% block main %}
+
+	{% if not data.settings.useAltHeader %}
+		<div class="govuk-width-container">
+			<div class="govuk-phase-banner">
+				<p class="govuk-phase-banner__content">
+					{{ govukTag({
+						text: "prototype",
+						classes: "govuk-phase-banner__content__tag start-page-banner__tag"
+					}) | indent(4) | trim }}
+					<span class="govuk-phase-banner__text">This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.</span>
+				</p>
+			</div>
+		</div>
+	{% endif %}
+
+	<!-- START MAST -->
+	<div class="full-BGstrip" style="background-color:#1d70b8;">
+			<div class="govuk-width-container">
+					<main class="govuk-main-wrapper">
+							<div class="govuk-grid-row">
+
+									<!-- START INTRO -->
+									<div class="govuk-grid-column-two-thirds start-search">
+											<h1 class="govuk-heading-l">Welcome to Teaching Vacancies</h1>
+											<p class="govuk-caption-m">Teaching Vacancies is a free job-listing service from the Department for Education. You can search for a job at a school or Trust in England and set up job alerts.</p>
+											<form action="">
+
+													<div class="govuk-form-group ss-input">
+															<label for="jobs-search-form-keyword-field" class="govuk-label govuk-label--s">Keywords</label>
+															<input id="jobs-search-form-keyword-field" class="govuk-input govuk-!-width-two-thirds" placeholder="Humanities, KS2, primary, NQT for example" type="text" name="jobs_search_form[keyword]">
+													</div>
+													<div class="govuk-form-group ss-input govuk-!-margin-bottom-1" id="location-text">
+															<label for="jobs-search-form-location-field" class="govuk-label govuk-label--s">Enter a location</label>
+															<input id="jobs-search-form-location-field" class="govuk-input js-location-finder__input govuk-!-width-one-half" placeholder="City, town or postcode" autocomplete="off" aria-expanded="false" aria-owns="location_listbox" aria-autocomplete="list" role="combobox" type="text" name="jobs_search_form[location]">
+													</div>
+													<div class="js-location-finder__link govuk-body-s ss-current">
+															or
+															<a id="current-location" class="govuk-link govuk-link--no-visited-state" data-loader="jobs-search-form-location-field" href="#">use current location</a>
+													</div>
+
+													<!-- START Add more filters -->
+													<div class="govuk-grid-row">
+															<div class="govuk-grid-column-two-thirds">
+																	<details class="govuk-details add-filters" data-module="govuk-details">
+																			<summary class="govuk-details__summary">
+																					<span class="govuk-details__summary-text">
+																							Add more filters
+																					</span>
+																			</summary>
+																			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+																					<h3 class="govuk-label govuk-label--s" id="checkbox-group-heading-job_roles">
+																							Job role
+																					</h3>
+																			</legend>
+																			<div aria-labelledby="checkbox-group-heading-job_roles" class="checkbox-group__container">
+																					<div class="tv-checkbox__group">
+																							<div class="govuk-form-group">
+																									<fieldset class="govuk-fieldset">
+																											<div class="govuk-checkboxes govuk-checkboxes--small " data-module="govuk-checkboxes"><input type="hidden" name="jobs_search_form[job_roles][]" value="">
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-teacher-field" class="govuk-checkboxes__input" type="checkbox" value="teacher" name="jobs_search_form[job_roles][]">
+																															<label for="jobs-search-form-job-roles-teacher-field" class="govuk-label govuk-checkboxes__label">Teacher</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-leadership-field" class="govuk-checkboxes__input" type="checkbox" value="leadership" name="jobs_search_form[job_roles][]">
+																															<label for="jobs-search-form-job-roles-leadership-field" class="govuk-label govuk-checkboxes__label">Leadership</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-sen-specialist-field" class="govuk-checkboxes__input" type="checkbox" value="sen_specialist" name="jobs_search_form[job_roles][]">
+																															<label for="jobs-search-form-job-roles-sen-specialist-field" class="govuk-label govuk-checkboxes__label">SEN
+																																	specialist</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-nqt-suitable-field" class="govuk-checkboxes__input" type="checkbox" value="nqt_suitable" name="jobs_search_form[job_roles][]">
+																															<label for="jobs-search-form-job-roles-nqt-suitable-field" class="govuk-label govuk-checkboxes__label">Suitable for
+																																	NQTs</label>
+																													</div>
+																											</div>
+																									</fieldset>
+																							</div>
+																					</div>
+
+																			</div>
+																			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+																					<h3 class="govuk-label govuk-label--s" id="checkbox-group-heading-phases">
+																							Education phase
+																					</h3>
+																			</legend>
+																			<div aria-labelledby="checkbox-group-heading-phases" class="checkbox-group__container">
+																					<div class="tv-checkbox__group">
+																							<div class="govuk-form-group">
+																									<fieldset class="govuk-fieldset">
+																											<div class="govuk-checkboxes govuk-checkboxes--small " data-module="govuk-checkboxes"><input type="hidden" name="jobs_search_form[phases][]" value="">
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-primary-field" class="govuk-checkboxes__input" type="checkbox" value="primary" name="jobs_search_form[phases][]">
+																															<label for="jobs-search-form-phases-primary-field" class="govuk-label govuk-checkboxes__label">Primary</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-middle-field" class="govuk-checkboxes__input" type="checkbox" value="middle" name="jobs_search_form[phases][]">
+																															<label for="jobs-search-form-phases-middle-field" class="govuk-label govuk-checkboxes__label">Middle</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-secondary-field" class="govuk-checkboxes__input" type="checkbox" value="secondary" name="jobs_search_form[phases][]">
+																															<label for="jobs-search-form-phases-secondary-field" class="govuk-label govuk-checkboxes__label">Secondary</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-16-19-field" class="govuk-checkboxes__input" type="checkbox" value="16-19" name="jobs_search_form[phases][]">
+																															<label for="jobs-search-form-phases-16-19-field" class="govuk-label govuk-checkboxes__label">16-19</label>
+																													</div>
+																											</div>
+																									</fieldset>
+																							</div>
+																					</div>
+
+																			</div>
+																			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+																					<h3 class="govuk-label govuk-label--s" id="checkbox-group-heading-working_patterns">
+																							Working pattern
+																					</h3>
+																			</legend>
+																			<div aria-labelledby="checkbox-group-heading-working_patterns" class="checkbox-group__container">
+																					<div class="tv-checkbox__group">
+																							<div class="govuk-form-group">
+																									<fieldset class="govuk-fieldset">
+																											<div class="govuk-checkboxes govuk-checkboxes--small " data-module="govuk-checkboxes"><input type="hidden" name="jobs_search_form[working_patterns][]" value="">
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-working-patterns-full-time-field" class="govuk-checkboxes__input" type="checkbox" value="full_time" name="jobs_search_form[working_patterns][]">
+																															<label for="jobs-search-form-working-patterns-full-time-field" class="govuk-label govuk-checkboxes__label">Full-time</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-working-patterns-part-time-field" class="govuk-checkboxes__input" type="checkbox" value="part_time" name="jobs_search_form[working_patterns][]">
+																															<label for="jobs-search-form-working-patterns-part-time-field" class="govuk-label govuk-checkboxes__label">Part-time</label>
+																													</div>
+																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-working-patterns-job-share-field" class="govuk-checkboxes__input" type="checkbox" value="job_share" name="jobs_search_form[working_patterns][]">
+																															<label for="jobs-search-form-working-patterns-job-share-field" class="govuk-label govuk-checkboxes__label">Job
+																																	share</label>
+																													</div>
+																											</div>
+																									</fieldset>
+																							</div>
+																					</div>
+
+																			</div>
+																	</details>
+															</div>
+													</div>
+													<!-- END Add more filters -->
+
+													<input type="submit" name="commit" value="Search" class="govuk-button govuk-button--start govuk-!-margin-0 govuk-!-margin-bottom-3" formnovalidate="formnovalidate" data-module="govuk-button">
+
+											</form>
+									</div>
+									<!-- END INTRO -->
+
+									<!-- START ASIDE -->
+									<div class="govuk-grid-column-one-third">
+											<div class="ss-signin">
+													<h2 class="govuk-heading-m">Apply for jobs</h2><p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="#">Sign in</a> or create an account to apply for jobs through Teaching Vacancies.</p><a class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" style="color: #000 !important" href="#">Create an account</a>
+											</div>
+									</div>
+									<!-- END ASIDE -->
+
+							</div>
+					</main>
+			</div>
+	</div>
+	<!-- END BESPOKE MAST -->
+
+  {# pulls in default gov uk template #}
+  {{super()}}
+{% endblock %}
+
+{% block content %}
+
+<!-- START LOCATIONS -->
+<div class="govuk-width-container-ls">
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-full">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half">
+                        <h3 class="govuk-heading-s">Cities and towns with teaching jobs</h3>
+                        <ul aria-label="Cities and towns with teaching jobs list" class="govuk-list two-column-list">
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Bath">Bath</a>
+                                (4)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Birmingham">Birmingham</a>
+                                (6)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Bournemouth">Bournemouth</a>
+                                (6)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Bristol">Bristol</a>
+                                (7)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Cheltenham">Cheltenham</a>
+                                (3)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Gillingham">Gillingham</a>
+                                (8)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Grimsby">Grimsby</a>
+                                (3)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Hartlepool">Hartlepool</a>
+                                (3)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Ipswich">Ipswich</a>
+                                (5)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Leeds">Leeds</a>
+                                (4)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-London">London</a>
+                                (93)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Luton">Luton</a>
+                                (3)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Manchester">Manchester</a>
+                                (5)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Mansfield">Mansfield</a>
+                                (2)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Northampton">Northampton</a>
+                                (5)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Nottingham">Nottingham</a>
+                                (2)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Peterborough">Peterborough</a>
+                                (2)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Plymouth">Plymouth</a>
+                                (6)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Preston">Preston</a>
+                                (3)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Sheffield">Sheffield</a>
+                                (3)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <h3 class="govuk-heading-s">Counties with teaching jobs</h3>
+                        <ul aria-label="Counties with teaching jobs list" class="govuk-list two-column-list">
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Bournemouth,%20Christchurch%20and%20Poole">Bournemouth, Christchurch and Poole</a>
+                                (12)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Cambridgeshire">Cambridgeshire</a>
+                                (12)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Cornwall">Cornwall</a>
+                                (15)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Derbyshire">Derbyshire</a>
+                                (8)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Essex">Essex</a>
+                                (12)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Gloucestershire">Gloucestershire</a>
+                                (8)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Hampshire">Hampshire</a>
+                                (11)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Hertfordshire">Hertfordshire</a>
+                                (15)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Kent">Kent</a>
+                                (14)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Leicestershire">Leicestershire</a>
+                                (7)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Medway">Medway</a>
+                                (15)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-North%20Yorkshire">North Yorkshire</a>
+                                (8)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Northamptonshire">Northamptonshire</a>
+                                (15)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Nottinghamshire">Nottinghamshire</a>
+                                (16)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Oxfordshire">Oxfordshire</a>
+                                (11)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Staffordshire">Staffordshire</a>
+                                (10)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Suffolk">Suffolk</a>
+                                (15)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Thurrock">Thurrock</a>
+                                (7)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-West%20Sussex">West Sussex</a>
+                                (10)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-in-Wiltshire">Wiltshire</a>
+                                (10)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half">
+                        <h3 class="govuk-heading-s">Current teaching jobs by subject</h3>
+                        <ul aria-label="Current teaching jobs by subject list" class="govuk-list two-column-list">
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-Design%20and%20technology">Design and technology</a>
+                                (18)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-English">English</a>
+                                (52)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-Food">Food</a>
+                                (28)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-German">German</a>
+                                (41)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-KS1">KS1</a>
+                                (18)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-KS2">KS2</a>
+                                (28)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-Mathematics">Mathematics</a>
+                                (47)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-Physics">Physics</a>
+                                (25)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-Primary">Primary</a>
+                                (189)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-Science">Science</a>
+                                (55)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <h3 class="govuk-heading-s">Current teaching jobs by role</h3>
+                        <ul aria-label="Current teaching jobs by role list" class="govuk-list two-column-list">
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-leadership">Leadership</a>
+                                (74)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-nqt_suitable">Suitable for NQTs</a>
+                                (296)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-sen_specialist">SEN specialist</a>
+                                (21)
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/teaching-jobs-for-teacher">Teacher</a>
+                                (388)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+<!-- END LOCATIONS -->
+
+{% endblock %}
+
+{# {% block content %}
+
+{% endblock %} #}
