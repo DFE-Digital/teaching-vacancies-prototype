@@ -1,0 +1,9 @@
+
+.app-job-listing-actions {
+  display: block;
+
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    justify-content: space-between;
+  }
+}

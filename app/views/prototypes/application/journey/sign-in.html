@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Teaching Vacancies Prototype Kit - Prototypes
+{% endblock %}
+
+{% block main %}
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            
+            <div class="govuk-grid-column-two-thirds-from-desktop">
+
+                <h1 class="govuk-heading-l">Sign in to Teaching Vacancies</h1>
+                
+                <h2 class="govuk-heading-m">To save and apply for jobs</h2>
+                <p class="govuk-body">Intro text here</p>
+                {{ govukButton({
+                    text: "Sign in as a job seeker",
+                    href: "#",
+                    classes: "govuk-!-margin-bottom-0"
+                }) }}
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                <h2 class="govuk-heading-m">To advertise jobs and manage applications</h2>
+                <p class="govuk-body">Intro text here</p>
+                {{ govukButton({
+                    text: "Sign in to manage jobs",
+                    href: "/prototypes/application/journey/dfe-sign-in.html",
+                    classes: "govuk-!-margin-bottom-0"
+                }) }}
+
+            </div>	
+
+            <div class="govuk-grid-column-one-third-from-desktop">
+                {# <h2 class="govuk-heading-m">Create an account</h2> #}
+            </div>
+
+        </div>
+
+    </main>
+</div>
+{% endblock %}

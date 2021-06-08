@@ -1,0 +1,22 @@
+
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/prototypes/application/round-4/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "/prototypes/application/round-3/hs/14-acc-active",
+        text: "Job listings",
+        active: true if sectionActive == "job listings"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
