@@ -1,7 +1,6 @@
 
 .app-job-listing-card {
   display: block;
-  justify-content: space-between;
   padding: govuk-spacing(3) 0;
 
   &:not(:first-child) {
@@ -29,9 +28,29 @@
     }
   }
 
+  dl {
+    margin: 0;
+  }
+
+  dd, dt {
+    display: inline;
+    margin: 0;
+  }
+
   @include govuk-media-query($from: tablet) {
     display: flex;
 
+    .col {
+      width: 50%;
+      margin-bottom: 0;
+    }
+    
+    .col:nth-child(2) {
+      padding-left: govuk-spacing(4);
+    }
+  }
+  
+  @include govuk-media-query($from: desktop) {
     .col {
       width: 33.333%;
     }
