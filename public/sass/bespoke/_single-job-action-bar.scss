@@ -1,0 +1,16 @@
+
+.app-single-job-action-bar {
+  display: block;
+  // margin-bottom: govuk-spacing(3);
+  
+  @include govuk-media-query($until: tablet) {
+   .govuk-button {
+    margin-bottom: govuk-spacing(2);
+   }
+  }
+  
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}

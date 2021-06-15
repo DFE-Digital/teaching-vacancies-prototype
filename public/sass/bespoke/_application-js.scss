@@ -17,7 +17,8 @@ ul.acc-navigation__list {
     position: relative;
     height: 50px;
     padding: 0 15px;
-    float: left;
+    // float: left;
+    display: inline-block;
     line-height: 50px;
 
     a {
@@ -43,6 +44,10 @@ ul.acc-navigation__list {
       color: #0b0c0c;
     }
   }
+}
+
+ul.acc-navigation__list--has-border {
+  border-bottom: 1px solid #ccc;
 }
 
 @media (max-width: 40.0625em) {
