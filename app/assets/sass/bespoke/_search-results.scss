@@ -370,10 +370,15 @@ div.results-top {
     }
     
     @include govuk-media-query($from: 750px, $until: 950px) {
-     & > * {
-       display: block;
-       width: 100%;
-     }
+      & > * {
+        display: block;
+        width: 100%;
+      }
+    }
+    
+    @include govuk-media-query($from: 951px) {
+      display: flex;
+      justify-content: space-between;
     }
 
 
@@ -389,7 +394,7 @@ div.results-top {
 
 .app-search-filter-wrapper {
   
-  .js-show-filters {
+  .js-show-filter {
     width: 100%;
   }
 
@@ -399,7 +404,7 @@ div.results-top {
     min-width: 250px;
 
     // button to toggle filter panel open
-    .js-show-filters {
+    .js-show-filter {
       display: none;
     }
 
@@ -418,28 +423,32 @@ div.results-top {
 .app-filter {
   border-top: 1px solid $govuk-border-colour;
   padding: 0 govuk-spacing(3) govuk-spacing(5) ;
+  background-color: govuk-colour("light-grey");
 
   .js-enabled & {
     outline: 0 none;
   
     @include govuk-media-query($until: 750px) {
-      background-color: govuk-colour("light-grey");
       bottom: govuk-spacing(1);
       border: 1px solid govuk-colour("mid-grey");
-      max-width: 310px;
-      min-width: 260px;
-      width: 100%;
+      // max-width: calc((100vw - 50px) - calc(100vw - 100%));
+      max-width: calc(100vw - 100px);
       overflow-y: scroll;
       position: fixed;
       right: govuk-spacing(1);
       top: govuk-spacing(1);
       z-index: 100;
+      display: none;
   
       &:focus {
         outline: $govuk-focus-width solid $govuk-focus-colour;
       }
     }
   }  
+}
+
+.js-enabled .app-filter.js-isOpen {
+  display: block;
 }
 
 .app-filter__header {
@@ -460,8 +469,30 @@ div.results-top {
   }
 }
 
+.app-filter__close {
+  display: flex;
+  align-items: center;
+  font-family: GDS Transport,arial,sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: $govuk-text-colour;
+  cursor: pointer;
 
-.app-filters__close {
+  svg {
+    margin-right: govuk-spacing(1);
+  }
+
+  &:focus {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    outline: none;
+  }
+
   @include govuk-media-query($from: 750px) {
     display: none;
   }

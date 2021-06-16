@@ -62,18 +62,20 @@ T / Search results
         <!-- END Search box -->
 
 				{{ govukButton({
-					text: "Show filters (# applied)",
-					classes: "govuk-button--secondary govuk-!-margin-top-6 govuk-!-margin-bottom-6 js-show-filters"
+					html: "<span class='js-show-filter__label'>Show filters</span> (# applied)",
+					classes: "govuk-button--secondary govuk-!-margin-top-6 govuk-!-margin-bottom-8 js-show-filter"
 				}) }}
 
         <!-- START filters -->
-				<div class="app-filter">
+				<div class="app-filter" tabindex="-1" aria-hidden="false">
 					<form class="side-search--filters">
 						<div class="app-filter__header">
 							<h3 class="govuk-heading-m govuk-!-margin-bottom-3">
 								Filter results
 							</h3>
-							<button class="app-filter__close" type="button">Close</button>
+							<button class="app-filter__close" type="button"> 			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M14 1.4L12.6 0 7 5.6 1.4 0 0 1.4 5.6 7 0 12.6 1.4 14 7 8.4l5.6 5.6 1.4-1.4L8.4 7z"/></svg>
+								Close
+							</button>
 						</div>
 						{{ govukCheckboxes({
 							idPrefix: "",
@@ -131,13 +133,16 @@ T / Search results
 							},
 							items: [
 								{
-									text: "Teacher"
+									text: "Primary"
 								},
 								{
-									text: "Leadership"
+									text: "Middle"
 								},
 								{
-									text: "SEN specialist"
+									text: "Secondary"
+								},
+								{
+									text: "16-19"
 								}
 							]
 						} | decorateAttributes(data, "data.searchFilter.educationPhase")) }}
