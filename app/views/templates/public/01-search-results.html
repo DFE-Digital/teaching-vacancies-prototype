@@ -27,28 +27,29 @@ T / Search results
 
             <!-- START Keyword -->
             <div class="govuk-form-group govuk-!-margin-bottom-3">
-                <label class="govuk-label" for="keywords">Keywords</label>
-                <input class="govuk-input" id="keywords" name="keywords" type="text" placeholder="{{ data['keywords'] }}" />
+                <label class="govuk-label govuk-!-font-weight-bold" for="keywords">Keywords</label>
+								<div class="govuk-hint">For example humanities, primary, NQT</div>
+                <input class="govuk-input" id="keywords" name="keywords" type="text" />
             </div>
             <!-- END Keyword -->
 
             <!-- START Location -->
             <div class="govuk-form-group govuk-body govuk-!-margin-bottom-3">
                 <fieldset class="govuk-fieldset">
-                    <label class="govuk-label" for="location">Location</label>
+                    <label class="govuk-label govuk-!-font-weight-bold" for="location">City, town or postcode</label>
                     <input class="govuk-input" id="location" name="location" type="text" />
-                    <p class="">
+                    <p class="govuk-!-margin-top-1">
                       or <a href="#">use current location</a>
                     </p>
 
                     <div class="govuk-!-margin-bottom-0">
 											<div class="govuk-form-group">
-													<label class="govuk-label" for="sort">
-															Within a radius of
+													<label class="govuk-label govuk-!-font-weight-bold" for="sort">
+															Search radius
 													</label>
 													<select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-															<option value="">1 miles</option>
-															<option value="" selected="selected">5 miles</option>
+															<option value="" selected="selected">1 mile</option>
+															<option value="">5 miles</option>
 															<option value="">10 miles</option>
 															<option value="">25 miles</option>
 															<option value="">50 miles</option>
@@ -97,6 +98,25 @@ T / Search results
 						} | decorateAttributes(data, "data.searchFilter.jobRole")) }}
 						
 						<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+						
+						{{ govukCheckboxes({
+							idPrefix: "",
+							name: "",
+							classes: "govuk-checkboxes--small",
+							fieldset: {
+								legend: {
+									text: "Suitable for NQTs",
+									classes: "govuk-fieldset__legend--s"
+								}
+							},
+							items: [
+								{
+									text: "Only show results suitable for NQTs"
+								}
+							]
+						} | decorateAttributes(data, "data.searchFilter.suitableForNqts")) }}
+						
+						<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
 
 						{{ govukCheckboxes({
 							idPrefix: "",
@@ -129,22 +149,22 @@ T / Search results
 							classes: "govuk-checkboxes--small",
 							fieldset: {
 								legend: {
-									text: "Job role",
+									text: "Working pattern",
 									classes: "govuk-fieldset__legend--s"
 								}
 							},
 							items: [
 								{
-									text: "Teacher"
+									text: "Fill time"
 								},
 								{
-									text: "Leadership"
+									text: "Part time"
 								},
 								{
-									text: "SEN specialist"
+									text: "Job share"
 								}
 							]
-						} | decorateAttributes(data, "data.searchFilter.jobRole")) }}
+						} | decorateAttributes(data, "data.searchFilter.workingPattern")) }}
 						
 					</div> 
 				</form>
