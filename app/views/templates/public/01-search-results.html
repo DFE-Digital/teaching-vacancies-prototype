@@ -61,18 +61,20 @@ T / Search results
         </form>
         <!-- END Search box -->
 
-				{# {{ govukButton({
+				{{ govukButton({
 					text: "Show filters (# applied)",
-					attributes: showFilterButton,
-					classes: "govuk-button--secondary"
-				}) }} #}
+					classes: "govuk-button--secondary govuk-!-margin-top-6 govuk-!-margin-bottom-6 js-show-filters"
+				}) }}
 
         <!-- START filters -->
-				<div class="filter-desktop app-filter-wrapper">
+				<div class="app-filter">
 					<form class="side-search--filters">
-						<h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-							Filter results
-						</h3>
+						<div class="app-filter__header">
+							<h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+								Filter results
+							</h3>
+							<button class="app-filter__close" type="button">Close</button>
+						</div>
 						{{ govukCheckboxes({
 							idPrefix: "",
 							name: "",
@@ -176,19 +178,19 @@ T / Search results
         <!-- Sort START -->
         <div class="results-top govuk-!-margin-bottom-3">
             <!-- <p class="page-amount"><span>Page 1</span> of 3</p> -->
-            <div class="govuk-form-group govuk-!-margin-bottom-0">
-                <label class="govuk-label sort-label" for="sort">
-                    Sort by
-                </label>
-                <select class="govuk-select" id="sort" name="sort">
-                    <option value="published" selected>most relevant first</option>
-                    <option value="updated">most time to apply</option>
-                    <option value="updated">least time to apply</option>
-                    <option value="updated">newest job listing</option>
-                </select>
-            </div>
-            <p>Showing 1 to 10 of 24 results</p>
-        </div>
+            <p class="govuk-!-margin-bottom-0">Showing <span class="govuk-!-font-weight-bold">1</span> to <span class="govuk-!-font-weight-bold">10</span> of <span class="govuk-!-font-weight-bold">24</span> results</p>
+						<div class="govuk-form-group govuk-!-margin-bottom-0">
+								<label class="govuk-label sort-label" for="sort">
+										Sort by
+								</label>
+								<select class="govuk-select" id="sort" name="sort">
+										<option value="published" selected>most relevant first</option>
+										<option value="updated">most time to apply</option>
+										<option value="updated">least time to apply</option>
+										<option value="updated">newest job listing</option>
+								</select>
+						</div>
+					</div>
         <!-- Sort END -->
 
         <!-- START Vacancies -->
