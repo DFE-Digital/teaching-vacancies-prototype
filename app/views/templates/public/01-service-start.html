@@ -78,7 +78,10 @@ T / Service start page
 														</select>
 													</div>
 
-													<input type="submit" name="commit" value="Search" class="govuk-button govuk-button--start govuk-!-margin-0 govuk-!-margin-bottom-3" formnovalidate="formnovalidate" data-module="govuk-button">
+													{{ govukButton({
+														text: "Search",
+														isStartButton: true
+													}) }}
 
 											</form>
 									</div>
