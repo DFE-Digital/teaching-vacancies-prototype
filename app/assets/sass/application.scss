@@ -14,6 +14,12 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/cookie-banner";
 
 // ----------------------------------------------------------  
+// Helpers
+// ----------------------------------------------------------
+
+@import "helpers/show-hide-at-breakpoint";
+
+// ----------------------------------------------------------  
 // Overrides
 // ----------------------------------------------------------
 
@@ -38,6 +44,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "bespoke/single-job-action-bar";
 @import "bespoke/service-start";
 @import "bespoke/create-listing";
+
 
 // ----------------------------------------------------------  
 // Prototype specific (to sort)
