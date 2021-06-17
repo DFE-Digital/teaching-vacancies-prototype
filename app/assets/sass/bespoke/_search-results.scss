@@ -348,13 +348,13 @@ div.results-top {
     }
 
     div.govuk-form-group {
-        margin-bottom: 10px;
+      margin-bottom: 10px;
 
-        .sort-label {
-            padding-right: 5px;
-            display: inline-block;
-            margin-bottom: 15px;
-          }
+      .sort-label {
+          padding-right: 5px;
+          display: inline-block;
+          margin-bottom: 15px;
+        }
     }
 
     @include govuk-media-query($until: 500px) {
