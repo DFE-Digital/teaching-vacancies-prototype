@@ -66,7 +66,7 @@ if (document.querySelector('.app-search-results') !== null) {
   
   // Close the filter
   closeFilterButton.onclick = () => {
-    openFilter();
+    closeFilter();
   }
 
   // If the filter is open - allow closing via keyboard
