@@ -17,28 +17,62 @@ if (document.querySelector('.app-search-results') !== null) {
   const filterPanel = document.querySelector('.app-filter')
   const closeFilterButton = document.querySelector('.app-filter__close')
   
-  // Open the filter
-  showFilterButton.onclick = () => {
+  // Open the filter set up
+  function openFilter() {
     // Show panel
     filterPanel.classList.add('js-isOpen');
     // Change button label
     showFilterButtonLabel.innerHTML = 'Close filters';
     // Shift the focus to the filter container
     filterPanel.focus();
+    // set aria attributes
+    filterPanel.setAttribute('aria-hidden', 'false');
+    showFilterButton.setAttribute('aria-expanded', 'true');
   }
-  
-  // Close the filter
-  closeFilterButton.onclick = () => {
+
+  // Close the filter set up
+  function closeFilter() {
     // Hide panel
     filterPanel.classList.remove('js-isOpen');
     // Change button label
     showFilterButtonLabel.innerHTML = 'Open filters';
     // Shift the focus back to where the user was originally
     showFilterButton.focus();
+    // set aria attributes
+    filterPanel.setAttribute('aria-hidden', 'true');
+    showFilterButton.setAttribute('aria-expanded', 'false');
   }
 
-  // If the filter is open - allow closing via keyboard
-  // Close it via keyboard escape key
+  // set up aria attribtues if under 750px
+  const mediaQuery = '(max-width: 750px)';
+  const mediaQueryList = window.matchMedia(mediaQuery);
+
+  mediaQueryList.addEventListener('change', event => {
+    console.log(window.innerWidth);
+    if (event.matches) {
+      // under 750px
+      filterPanel.setAttribute('aria-hidden', 'true');
+      showFilterButton.setAttribute('aria-expanded', 'false');
+    } else {
+      // over 750px
+      filterPanel.removeAttribute('aria-hidden', 'true')
+    }
+  })
+
+  // Open and close filter on click
+  showFilterButton.onclick = () => {
+    // first check if open
+    if (filterPanel.classList.contains('js-isOpen')) {
+      closeFilter();
+    } else {
+      openFilter();
+    }
+  }
+
+  closeFilterButton.onclick = () => {
+    closeFilter();
+  }
+
   document.onkeydown = function(evt) {
       evt = evt || window.event;
       var isEscape = false;
@@ -47,14 +81,11 @@ if (document.querySelector('.app-search-results') !== null) {
       } else {
           isEscape = (evt.keyCode === 27);
       }
+      // if escape key and filter is open
       if ( (isEscape) && (filterPanel.classList.contains('js-isOpen')) ) { {
-        // Hide panel
-        filterPanel.classList.remove('js-isOpen');
-        // Change button label
-        showFilterButtonLabel.innerHTML = 'Open filters';
-        // Shift the focus back to where the user was originally
-        showFilterButton.focus();
+        closeFilter();
       }
     }
   }
+
 }
