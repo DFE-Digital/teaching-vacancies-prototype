@@ -43,9 +43,9 @@ T / Search results
 															Search radius
 													</label>
 													<select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-															<option value="" selected="selected">1 mile</option>
+															<option value="">1 mile</option>
 															<option value="">5 miles</option>
-															<option value="">10 miles</option>
+															<option value="" selected="selected">10 miles</option>
 															<option value="">25 miles</option>
 															<option value="">50 miles</option>
 															<option value="">100 miles</option>
@@ -65,11 +65,14 @@ T / Search results
 
 				{{ govukButton({
 					html: "<span class='js-show-filter__label'>Show filters</span>",
-					classes: "govuk-button--secondary govuk-!-margin-top-8 govuk-!-margin-bottom-8 js-show-filter"
+					classes: "govuk-button--secondary govuk-!-margin-top-8 govuk-!-margin-bottom-8 js-show-filter",
+					attributes: {
+						"aria-controls": "filterPanel"
+					}
 				}) }}
 
         <!-- START filters -->
-				<div class="app-filter" tabindex="-1">
+				<div class="app-filter" tabindex="-1" id="filterPanel">
 					<form class="side-search--filters">
 						<div class="app-filter__header">
 							<h3 class="govuk-heading-m govuk-!-margin-bottom-3">
