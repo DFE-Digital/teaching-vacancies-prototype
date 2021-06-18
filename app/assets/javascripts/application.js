@@ -59,18 +59,20 @@ if (document.querySelector('.app-search-results') !== null) {
     }
   })
 
-  // Open filter on click
+  // Open and close filter on click
   showFilterButton.onclick = () => {
-    openFilter();
+    // first check if open
+    if (filterPanel.classList.contains('js-isOpen')) {
+      closeFilter();
+    } else {
+      openFilter();
+    }
   }
-  
-  // Close the filter
+
   closeFilterButton.onclick = () => {
     closeFilter();
   }
 
-  // If the filter is open - allow closing via keyboard
-  // Close it via keyboard escape key
   document.onkeydown = function(evt) {
       evt = evt || window.event;
       var isEscape = false;
