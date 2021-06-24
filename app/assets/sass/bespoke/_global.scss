@@ -16,6 +16,10 @@ body {
 
 .govuk-header__container {
     border-color: #F47738;
+    
+    .dfe-sign-in & {
+        border-color: $govuk-brand-colour;
+    }
 }
 
 /*

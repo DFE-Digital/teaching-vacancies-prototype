@@ -1,60 +1,66 @@
 
-{% extends "layout.html" %}
+{% extends "page.html" %}
 {# {% set backLink = 'false' %}
 {% set hideNav = true %}
 {% set hidePrimaryNav = true %} #}
 
-{# Pretend we’re a different service #}
+{% set hideNav = true %}
 {% set serviceName = "DfE Sign-in" %}
-
+{% set bodyClasses = "dfe-sign-in" %}
 {% set pageHeading = 'Department for Education Sign-in' %}
 
-{% block content %}
+{% block main %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-margin-bottom-8">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half-from-desktop">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half-from-desktop">
+          <h1 class="govuk-heading-xl govuk-!-margin-top-6 govuk-!-margin-bottom-6">{{pageHeading}}</h1>
 
-    <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+          <p class="govuk-body">DfE Sign-in is your gateway to several important services in the education sector.</p>
 
-    <p class="govuk-body">DfE Sign-in allows you to access several important services in the education sector, such as COLLECT.</p>
+          {{ govukInput({
+            id: "email-address",
+            name: "_email-address",
+            classes: "app-!-max-width-two-thirds",
+            label: {
+              text: "Email address",
+              classes: "govuk-!-font-weight-bold"
+            }
+          }) }}
 
-    <h2 class="govuk-heading-m">Sign-in</h2>
+          {{ govukInput({
+            id: "password",
+            name: "_password",
+            classes: "app-!-max-width-two-thirds",
+            label: {
+              text: "Password",
+              classes: "govuk-!-font-weight-bold"
+            }
+          }) }}
+          <p class="govuk-body"><a href="#" class="govuk-link">Forgotten your password?</a></p>
 
-    {{ govukInput({
-      id: "email-address",
-      name: "_email-address",
-      classes: "app-!-max-width-two-thirds",
-      label: {
-        text: "Email address"
-      }
-    }) }}
+          <div class="govuk-inset-text">
+            <p class="govuk-body">By signing in you accept our <a class="govuk-link govuk-!-font-weight-bold" href="#">terms and conditions</a>.</p>
+          </div>
 
-    {{ govukInput({
-      id: "password",
-      name: "_password",
-      classes: "app-!-max-width-two-thirds",
-      label: {
-        text: "Password"
-      }
-    }) }}
-    <p class="govuk-body"><a href="#" class="govuk-link">Forgotten your password?</a></p>
+          {{ govukButton({
+            "text": "Sign-in",
+            href: "/prototypes/application/journey/job-listings/"
+          }) }}
 
-    {{ govukButton({
-      "text": "Sign-in",
-      href: "/prototypes/application/journey/job-listings/"
-    }) }}
+          {{ govukButton({
+            "text": "Create account",
+            href: "#",
+            classes: "govuk-!-margin-left-2 govuk-button--secondary"
+          }) }}
 
-    {{ govukButton({
-      "text": "Create account",
-      href: "#",
-      classes: "govuk-!-margin-left-2 govuk-button--secondary"
-    }) }}
+          {# <p class="govuk-body"><strong>Need help?</strong> <a class="govuk-link" href="#">See our DfE Sign-in help guides</a></p> #}
 
-    <p class="govuk-body"><strong>Need help?</strong> <a class="govuk-link" href="#">See our DfE Sign-in help guides</a></p>
-
+        </div>
+      </div>
+    </main>
   </div>
-</div>
-
 {% endblock %}
 
 {# Override our default footer as we're pretending we're in a different service #}

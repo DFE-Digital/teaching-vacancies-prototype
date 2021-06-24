@@ -1,45 +1,49 @@
-{% extends "layout.html" %}
+{% extends "page.html" %}
 
 {% block pageTitle %}
   Teaching Vacancies Prototype Kit - Prototypes
 {% endblock %}
 
+{% set navActive = "sign-in" %}
+{% set backText = "Back to Teaching Vacancies" %}
+{% set backLink = "/prototypes/application/journey/" %}
+
 {% block main %}
-<div class="govuk-width-container">
-    <main class="govuk-main-wrapper">
+	<div class="govuk-width-container">
+			<main class="govuk-main-wrapper govuk-!-margin-bottom-8">
 
-        <div class="govuk-grid-row">
-            
-            <div class="govuk-grid-column-two-thirds-from-desktop">
+				<div class="govuk-grid-row">
 
-                <h1 class="govuk-heading-l">Sign in to Teaching Vacancies</h1>
-                
-                <h2 class="govuk-heading-m">To save and apply for jobs</h2>
-                <p class="govuk-body">Intro text here</p>
-                {{ govukButton({
-                    text: "Sign in as a job seeker",
-                    href: "#",
-                    classes: "govuk-!-margin-bottom-0"
-                }) }}
+					<div class="govuk-grid-column-two-thirds-from-desktop">
 
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+						<h1 class="govuk-heading-l">Sign in to Teaching Vacancies</h1>
 
-                <h2 class="govuk-heading-m">To advertise jobs and manage applications</h2>
-                <p class="govuk-body">Intro text here</p>
-                {{ govukButton({
-                    text: "Sign in to manage jobs",
-                    href: "/prototypes/application/journey/dfe-sign-in.html",
-                    classes: "govuk-!-margin-bottom-0"
-                }) }}
+						<h2 class="govuk-heading-m">Jobseeker sign in</h2>
+						<p class="govuk-body">Sign in here to save and apply for jobs.</p>
+						{{ govukButton({
+								text: "Sign in as a jobseeker",
+								href: "./job-seeker-sign-in",
+								classes: "govuk-!-margin-bottom-0"
+						}) }}
 
-            </div>	
+						<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-            <div class="govuk-grid-column-one-third-from-desktop">
-                {# <h2 class="govuk-heading-m">Create an account</h2> #}
-            </div>
+						<h2 class="govuk-heading-m">Hiring staff sign in</h2>
+						<p class="govuk-body">Sign in here to manage your job listings and applicants.</p>
+						{{ govukButton({
+								text: "Sign in as hiring staff",
+								href: "./hiring-staff-sign-in",
+								classes: "govuk-!-margin-bottom-0"
+						}) }}
 
-        </div>
+					</div>
 
-    </main>
-</div>
+					{# <div class="govuk-grid-column-one-third-from-desktop">
+
+					</div> #}
+
+				</div>
+
+			</main>
+	</div>
 {% endblock %}

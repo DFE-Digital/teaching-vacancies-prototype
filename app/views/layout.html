@@ -105,20 +105,34 @@
         href: "./01-service-start",
         text: "Find a teaching job",
         active: true if navActive == "start"
-      },
+      } if not hideNav,
       {
         href: "/prototypes/application/journey/sign-in",
         text: "Sign in",
         active: true if navActive == "sign-in"
-      }
-      ,
-      {
-        _href: "#",
-        _class: "test-class",
-        _text: "For schools"
-      }
+      } if not hideNav
     ]
   }) }}
+
+  <div class="govuk-width-container">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "prototype"
+      },
+      classes: 'govuk-!-margin-top-1',
+      html: 'This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.'
+    }) }}
+    {% if not hideNav %}
+      {% if backLink %}
+        {{ govukBackLink({
+          text: backText,
+          href: backLink,
+          classes: "govuk-!-margin-top-3"
+        }) }}
+      {% endif %}
+    {% endif %}
+  </div>
+  
 {% endif %}
 
 {# Set primary nav items #}
@@ -150,7 +164,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {# Show phase banner if not alte header #}
+  {# Show phase banner if not alt header #}
   {% if not data.settings.useAltHeader %}
     {{ govukPhaseBanner({
       tag: {
@@ -158,11 +172,13 @@
       },
       html: 'This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.'
     }) }}
-
   {% endif %}
-{# {% block pageNavigation %}
-{% endblock %}
-{% block pageBanner %} #}
+  
+  {# {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }} #}
+
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

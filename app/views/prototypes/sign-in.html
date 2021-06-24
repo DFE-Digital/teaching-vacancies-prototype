@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Teaching Vacancies Prototype Kit - Prototypes
+{% endblock %}
+
+{% block main %}
+{# <div class="full-BGstrip" style="background-color:#f3f2f1;">
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper govuk-!-padding-0">
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    {% include "includes/misc/tvs-nav-prototypes.html" %}
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div> #}
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-two-thirds-from-desktop">
+
+                <h1 class="govuk-heading-l">Sign in to Teaching Vacancies</h1>
+                
+                <h2 class="govuk-heading-m">To find a job</h2>
+                <p class="govuk-body">Intro text here</p>
+                {{ govukButton({
+                    text: "Continue as a job seeker",
+                    href: "/url",
+                    classes: "govuk-!-margin-bottom-0"
+                }) }}
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                <h2 class="govuk-heading-m">To advertise/manage jobs</h2>
+                <p class="govuk-body">Intro text here</p>
+                {{ govukButton({
+                    text: "Continue as an admin",
+                    href: "/url",
+                    classes: "govuk-!-margin-bottom-0"
+                }) }}
+
+            </div>
+
+        </div>
+
+    </main>
+</div>
+{% endblock %}
