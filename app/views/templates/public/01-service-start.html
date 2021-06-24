@@ -36,121 +36,41 @@ T / Service start page
 									<!-- START INTRO -->
 									<div class="govuk-grid-column-two-thirds start-search">
 											<h1 class="govuk-heading-l">Welcome to Teaching Vacancies</h1>
-											<p class="govuk-caption-m">Teaching Vacancies is a free job-listing service from the Department for Education. You can search for a job at a school or Trust in England and set up job alerts.</p>
-											<form action="">
+											<p class="govuk-caption-m">Teaching Vacancies is a free job-listing service from the Department for Education. You can search and apply for jobs at schools or trusts in England, save jobs and set up job alerts.</p>
+											<form action="./01-search-results">
 
-													<div class="govuk-form-group ss-input">
+													<div class="govuk-form-group ss-input govuk-!-margin-bottom-3">
 															<label for="jobs-search-form-keyword-field" class="govuk-label govuk-label--s">Keywords</label>
-															<input id="jobs-search-form-keyword-field" class="govuk-input govuk-!-width-two-thirds" placeholder="Humanities, KS2, primary, NQT for example" type="text" name="jobs_search_form[keyword]">
+															<div class="govuk-hint" style="color: #ffff">
+																For example humanities, KS2, primary, NQT
+															</div>
+															<input id="jobs-search-form-keyword-field" class="govuk-input govuk-!-width-two-thirds" type="text" name="jobs_search_form[keyword]">
 													</div>
 													<div class="govuk-form-group ss-input govuk-!-margin-bottom-1" id="location-text">
-															<label for="jobs-search-form-location-field" class="govuk-label govuk-label--s">Enter a location</label>
-															<input id="jobs-search-form-location-field" class="govuk-input js-location-finder__input govuk-!-width-one-half" placeholder="City, town or postcode" autocomplete="off" aria-expanded="false" aria-owns="location_listbox" aria-autocomplete="list" role="combobox" type="text" name="jobs_search_form[location]">
+															<label for="jobs-search-form-location-field" class="govuk-label govuk-label--s">City, town or postcode</label>
+															<input id="jobs-search-form-location-field" class="govuk-input js-location-finder__input govuk-!-width-two-thirds" autocomplete="off" aria-expanded="false" aria-owns="location_listbox" aria-autocomplete="list" role="combobox" type="text" name="jobs_search_form[location]">
 													</div>
 													<div class="js-location-finder__link govuk-body-s ss-current">
 															or
 															<a id="current-location" class="govuk-link govuk-link--no-visited-state" data-loader="jobs-search-form-location-field" href="#">use current location</a>
 													</div>
-
-													<!-- START Add more filters -->
-													<div class="govuk-grid-row">
-															<div class="govuk-grid-column-two-thirds">
-																	<details class="govuk-details add-filters" data-module="govuk-details">
-																			<summary class="govuk-details__summary">
-																					<span class="govuk-details__summary-text">
-																							Add more filters
-																					</span>
-																			</summary>
-																			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-																					<h3 class="govuk-label govuk-label--s" id="checkbox-group-heading-job_roles">
-																							Job role
-																					</h3>
-																			</legend>
-																			<div aria-labelledby="checkbox-group-heading-job_roles" class="checkbox-group__container">
-																					<div class="tv-checkbox__group">
-																							<div class="govuk-form-group">
-																									<fieldset class="govuk-fieldset">
-																											<div class="govuk-checkboxes govuk-checkboxes--small " data-module="govuk-checkboxes"><input type="hidden" name="jobs_search_form[job_roles][]" value="">
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-teacher-field" class="govuk-checkboxes__input" type="checkbox" value="teacher" name="jobs_search_form[job_roles][]">
-																															<label for="jobs-search-form-job-roles-teacher-field" class="govuk-label govuk-checkboxes__label">Teacher</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-leadership-field" class="govuk-checkboxes__input" type="checkbox" value="leadership" name="jobs_search_form[job_roles][]">
-																															<label for="jobs-search-form-job-roles-leadership-field" class="govuk-label govuk-checkboxes__label">Leadership</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-sen-specialist-field" class="govuk-checkboxes__input" type="checkbox" value="sen_specialist" name="jobs_search_form[job_roles][]">
-																															<label for="jobs-search-form-job-roles-sen-specialist-field" class="govuk-label govuk-checkboxes__label">SEN
-																																	specialist</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-job-roles-nqt-suitable-field" class="govuk-checkboxes__input" type="checkbox" value="nqt_suitable" name="jobs_search_form[job_roles][]">
-																															<label for="jobs-search-form-job-roles-nqt-suitable-field" class="govuk-label govuk-checkboxes__label">Suitable for
-																																	NQTs</label>
-																													</div>
-																											</div>
-																									</fieldset>
-																							</div>
-																					</div>
-
-																			</div>
-																			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-																					<h3 class="govuk-label govuk-label--s" id="checkbox-group-heading-phases">
-																							Education phase
-																					</h3>
-																			</legend>
-																			<div aria-labelledby="checkbox-group-heading-phases" class="checkbox-group__container">
-																					<div class="tv-checkbox__group">
-																							<div class="govuk-form-group">
-																									<fieldset class="govuk-fieldset">
-																											<div class="govuk-checkboxes govuk-checkboxes--small " data-module="govuk-checkboxes"><input type="hidden" name="jobs_search_form[phases][]" value="">
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-primary-field" class="govuk-checkboxes__input" type="checkbox" value="primary" name="jobs_search_form[phases][]">
-																															<label for="jobs-search-form-phases-primary-field" class="govuk-label govuk-checkboxes__label">Primary</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-middle-field" class="govuk-checkboxes__input" type="checkbox" value="middle" name="jobs_search_form[phases][]">
-																															<label for="jobs-search-form-phases-middle-field" class="govuk-label govuk-checkboxes__label">Middle</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-secondary-field" class="govuk-checkboxes__input" type="checkbox" value="secondary" name="jobs_search_form[phases][]">
-																															<label for="jobs-search-form-phases-secondary-field" class="govuk-label govuk-checkboxes__label">Secondary</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-phases-16-19-field" class="govuk-checkboxes__input" type="checkbox" value="16-19" name="jobs_search_form[phases][]">
-																															<label for="jobs-search-form-phases-16-19-field" class="govuk-label govuk-checkboxes__label">16-19</label>
-																													</div>
-																											</div>
-																									</fieldset>
-																							</div>
-																					</div>
-
-																			</div>
-																			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-																					<h3 class="govuk-label govuk-label--s" id="checkbox-group-heading-working_patterns">
-																							Working pattern
-																					</h3>
-																			</legend>
-																			<div aria-labelledby="checkbox-group-heading-working_patterns" class="checkbox-group__container">
-																					<div class="tv-checkbox__group">
-																							<div class="govuk-form-group">
-																									<fieldset class="govuk-fieldset">
-																											<div class="govuk-checkboxes govuk-checkboxes--small " data-module="govuk-checkboxes"><input type="hidden" name="jobs_search_form[working_patterns][]" value="">
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-working-patterns-full-time-field" class="govuk-checkboxes__input" type="checkbox" value="full_time" name="jobs_search_form[working_patterns][]">
-																															<label for="jobs-search-form-working-patterns-full-time-field" class="govuk-label govuk-checkboxes__label">Full-time</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-working-patterns-part-time-field" class="govuk-checkboxes__input" type="checkbox" value="part_time" name="jobs_search_form[working_patterns][]">
-																															<label for="jobs-search-form-working-patterns-part-time-field" class="govuk-label govuk-checkboxes__label">Part-time</label>
-																													</div>
-																													<div class="govuk-checkboxes__item"><input id="jobs-search-form-working-patterns-job-share-field" class="govuk-checkboxes__input" type="checkbox" value="job_share" name="jobs_search_form[working_patterns][]">
-																															<label for="jobs-search-form-working-patterns-job-share-field" class="govuk-label govuk-checkboxes__label">Job
-																																	share</label>
-																													</div>
-																											</div>
-																									</fieldset>
-																							</div>
-																					</div>
-
-																			</div>
-																	</details>
-															</div>
+													<div class="govuk-form-group ss-input govuk-!-margin-bottom-4" id="location-text">
+														<label for="jobs-search-form-location-field" class="govuk-label govuk-label--s">Search radius</label>
+														<select id="radius-field" class="govuk-select govuk-!-width-one-third" name="radius">
+															<option value="1">1 mile</option>
+															<option value="5">5 miles</option>
+															<option value="10" selected="selected">10 miles</option>
+															<option value="25">25 miles</option>}
+															<option value="50">50 miles</option>
+															<option value="100">100 miles</option>
+															<option value="200">200 miles</option>
+														</select>
 													</div>
-													<!-- END Add more filters -->
 
-													<input type="submit" name="commit" value="Search" class="govuk-button govuk-button--start govuk-!-margin-0 govuk-!-margin-bottom-3" formnovalidate="formnovalidate" data-module="govuk-button">
+													{{ govukButton({
+														text: "Search",
+														isStartButton: true
+													}) }}
 
 											</form>
 									</div>
@@ -159,11 +79,7 @@ T / Service start page
 									<!-- START ASIDE -->
 									<div class="govuk-grid-column-one-third">
 											<div class="ss-signin">
-													<h2 class="govuk-heading-m">Save and apply for jobs</h2>
-													<p>You don't need an account to search for a job. If you want to save or apply for a job sign in or <a href="#">create an account</a></p>
-													<form action="/identifications" accept-charset="UTF-8" method="post">
-															<input type="submit" name="commit" value="Sign in" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
-													</form>
+													<h2 class="govuk-heading-m">Apply for jobs</h2><p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="#">Sign in</a> or create an account to apply for jobs through Teaching Vacancies.</p><a class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" style="color: #000 !important" href="#">Create an account</a>
 											</div>
 									</div>
 									<!-- END ASIDE -->
@@ -181,8 +97,8 @@ T / Service start page
 {% block content %}
 
 <!-- START LOCATIONS -->
-<div class="govuk-width-container-ls">
-    <main class="govuk-main-wrapper">
+{# <div class="govuk-width-container-ls">
+    <main class="govuk-main-wrapper"> #}
         <div class="govuk-grid-row">
 
             <div class="govuk-grid-column-full">
@@ -428,8 +344,8 @@ T / Service start page
                 </div>
             </div>
 
-        </div>
-    </main>
+        {# </div>
+    </main> #}
 </div>
 <!-- END LOCATIONS -->
 
