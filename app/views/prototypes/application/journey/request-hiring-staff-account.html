@@ -53,7 +53,7 @@
 								name: "_email-address",
 								classes: "govuk-!-width-two-thirds",
 								label: {
-									text: "School unique reference number (URN) or trust unique identifier (UID) (optional)",
+									html: "School unique reference number (URN) or trust unique identifier (UID) <span class='govuk-!-font-weight-regular'>(optional)</span>",
 									classes: "govuk-!-font-weight-bold"
 								},
 								hint: {
@@ -63,7 +63,7 @@
 
 							{{ govukButton({
 								"text": "Request account",
-								href: "#"
+								href: "./request-thank-you.html"
 							}) }}
 
 							<p class="govuk-body"><a href="/" class="govuk-link">Cancel</a></p>
