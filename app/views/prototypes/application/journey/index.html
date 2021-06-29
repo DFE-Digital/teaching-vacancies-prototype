@@ -37,17 +37,17 @@ T / Service start page
 									<div class="govuk-grid-column-two-thirds start-search">
 											<h1 class="govuk-heading-l">Welcome to Teaching Vacancies</h1>
 											<p class="govuk-caption-m">Teaching Vacancies is a free job-listing service from the Department for Education. You can search for a job at a school or Trust in England and set up job alerts.</p>
-											<form action="">
+											<form action="/templates/public/01-search-results">
 
 													<div class="govuk-form-group ss-input govuk-!-margin-bottom-3">
 															<label for="jobs-search-form-keyword-field" class="govuk-label govuk-label--s">Keywords</label>
-															<div class="govuk-hint" style="color: #ffff">
-																For example humanities, KS2, primary, NQT
-															</div>
 															<input id="jobs-search-form-keyword-field" class="govuk-input govuk-!-width-two-thirds" type="text" name="jobs_search_form[keyword]">
 													</div>
 													<div class="govuk-form-group ss-input govuk-!-margin-bottom-1" id="location-text">
-															<label for="jobs-search-form-location-field" class="govuk-label govuk-label--s">City, town or postcode</label>
+															<label for="jobs-search-form-location-field" class="govuk-label govuk-label--s">Location</label>
+															<div class="govuk-hint" style="color: #ffff">
+																For example city, county or postcode
+															</div>
 															<input id="jobs-search-form-location-field" class="govuk-input js-location-finder__input govuk-!-width-two-thirds" autocomplete="off" aria-expanded="false" aria-owns="location_listbox" aria-autocomplete="list" role="combobox" type="text" name="jobs_search_form[location]">
 													</div>
 													<div class="js-location-finder__link govuk-body-s ss-current">
@@ -78,7 +78,10 @@ T / Service start page
 														</select>
 													</div>
 
-													<input type="submit" name="commit" value="Search" class="govuk-button govuk-button--start govuk-!-margin-0 govuk-!-margin-bottom-3" formnovalidate="formnovalidate" data-module="govuk-button">
+													{{ govukButton({
+														text: "Search",
+														isStartButton: true
+													}) }}
 
 											</form>
 									</div>
