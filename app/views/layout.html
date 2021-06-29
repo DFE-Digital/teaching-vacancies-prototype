@@ -165,14 +165,14 @@
 
 {% block beforeContent %}
   {# Show phase banner if not alt header #}
-  {% if not data.settings.useAltHeader %}
+  {# {% if not data.settings.useAltHeader %}
     {{ govukPhaseBanner({
       tag: {
         text: "prototype"
       },
       html: 'This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.'
     }) }}
-  {% endif %}
+  {% endif %} #}
   
   {# {{ govukBackLink({
     text: "Back",
