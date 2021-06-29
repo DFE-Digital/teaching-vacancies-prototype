@@ -9,6 +9,15 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
 
+$('a[href*=\\#]').on('click', function (event) {
+  if(this.pathname === window.location.pathname){
+    
+    var message ='Sorry, this hasn’t been built yet';
+    alert(message);
+
+  }
+});
+
 // Are we on the search results page?
 if (document.querySelector('.app-search-results') !== null) {
   
