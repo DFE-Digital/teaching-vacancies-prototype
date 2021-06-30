@@ -53,20 +53,20 @@
 								name: "_email-address",
 								classes: "govuk-!-width-two-thirds",
 								label: {
-									text: "School unique reference number (URN) or trust unique identifier (UID)",
+									html: "School unique reference number (URN) or trust unique identifier (UID) <span class='govuk-!-font-weight-regular'>(optional)</span>",
 									classes: "govuk-!-font-weight-bold"
 								},
 								hint: {
-									html: "You can find these details on <a href='https://www.get-information-schools.service.gov.uk/' class='govuk-link' target='_blank'>Get information about schools (opens in new tab)</a>.<br> Local authorities do not need to complete this."
+									html: "You can find these details on <a href='https://www.get-information-schools.service.gov.uk/' class='govuk-link' target='_blank'>Get information about schools (opens in new tab)</a>."
 								}
 							}) }}
 
 							{{ govukButton({
 								"text": "Request account",
-								href: "#"
+								href: "./request-thank-you.html"
 							}) }}
 
-							<p class="govuk-body"><a href="/" class="govuk-link">Cancel</a></p>
+							<p class="govuk-body"><a href="/prototypes/application/journey/" class="govuk-link">Cancel</a></p>
 
 					</div>
 
