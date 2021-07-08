@@ -5,9 +5,11 @@ SEARCH BLOCK
 ------------------------------------------------------------
 */
 
-.start-search {
+.start-search, {
  
-    h1, p {
+    h1,
+    p,
+    .govuk-fieldset__legend {
         color:#FFFFFF;
     }
 
@@ -23,6 +25,16 @@ SEARCH BLOCK
         label {
             color:#FFFFFF !important;
         } 
+    }
+
+    .govuk-checkboxes.ss-input label {
+      &:before {
+        border-color: $govuk-text-colour;
+        background: #fff;
+      }
+      &:after {
+        color: $govuk-text-colour;
+      }
     }
 
     .add-filters {

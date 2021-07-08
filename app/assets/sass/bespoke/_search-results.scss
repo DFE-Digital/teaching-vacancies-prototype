@@ -195,6 +195,16 @@ ul.vacancies {
         padding: 5px;
       }
     }
+
+    .govuk-tag {
+      padding: 3px 5px 2px;
+    }
+
+    .govuk-tag + .govuk-tag {
+      margin-left: govuk-spacing(1);
+    }
+
+
     @media (max-width: 40.0625em) {
       div.actions {
         .option-days {
@@ -239,7 +249,8 @@ ul.vacancies {
         display: inline-block;
         vertical-align: top;
         padding-bottom: 5px;
-        color: #6f777b;
+        color: $govuk-text-colour;
+        font-weight: 700;
       }
 
       dd.double {

@@ -7,7 +7,7 @@ T / Search results
 {% set bodyClasses = "app-search-results" %}
 
 {% set backText = "Back to Teaching Vacancies" %}
-{% set backLink = "/prototypes/application/journey/" %}
+{% set backLink = "./01-service-start.html" %}
 
 {% block content %}
 
@@ -72,7 +72,7 @@ T / Search results
 				}) }}
 
         <!-- START filters -->
-				<div class="app-filter" tabindex="-1" id="filterPanel">
+			    <div class="app-filter" tabindex="-1" id="filterPanel">
 					<form class="side-search--filters">
 						<div class="app-filter__header">
 							<h3 class="govuk-heading-m govuk-!-margin-bottom-3">
@@ -94,6 +94,9 @@ T / Search results
 							},
 							items: [
 								{
+									text: "Education support"
+								},
+								{
 									text: "Teacher"
 								},
 								{
@@ -101,6 +104,9 @@ T / Search results
 								},
 								{
 									text: "SEN specialist"
+								},
+								{
+									text: "Business manager"
 								}
 							]
 						} | decorateAttributes(data, "data.searchFilter.jobRole")) }}
@@ -201,36 +207,28 @@ T / Search results
 								</select>
 						</div>
 					</div>
-        <!-- Sort END -->
 
-        <!-- START Vacancies -->
         <div class="">
             <ul class="vacancies">
-                <!-- START VACANCY 1 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="00-listing-1">Primary Teacher</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Bronson Alcott Academy,
-                        Stratford, London
-                    </p>
-                    <dl>
-                        <dt>Trust type</dt>
-                        <dd class="double">
-                            Multi-Academy Trust of 10 schools
-                        </dd>
-                        <dt>Salary</dt>
-                        <dd class="double">£28,355-£44,541</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 1 -->
-                <!-- START VACANCY 2 -->
-                <li class="vacancy">
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Test title",
+                    jobUrl: "./01-listing-1.html",
+                    jobLocation: "test loctaion",
+                    tags: [
+                      "test",
+                      "test2"
+                    ],
+                    salary: "15 - 25",
+                    salaryFte: "10 - 20",
+                    salaryActual: "2 - 5",
+                    schoolType: "test school Type",
+                    workPattern: "test work pattern",
+                    closingDate: "14 July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {# <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Primary Teacher</a>
                     </h2>
@@ -251,8 +249,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 12:00pm</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 2 -->
-                <!-- START VACANCY 3 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Classroom Teacher</a>
@@ -273,38 +269,99 @@ T / Search results
                         <dd class="double">31 May 2020 at 12:59 pm</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 3 -->
-                <!-- START VACANCY 4 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Primary Teacher</a>
+                        <a class="govuk-link view-vacancy-link" href="#">Teaching Assistant (Physical Support Specialist)</a>
                     </h2>
                     <p class="govuk-body">
                         Bronson Alcott Academy, Friendship Way, London
                     </p>
+                    <div class="tag-wrapper">
+                      <span class="govuk-visually-hidden">Role </span>
+                      {{govukTag({
+                        text: "Education support",
+                        classes: "govuk-tag--blue govuk-!-font-size-14"
+                      })}}
+                    </div>
                     <dl>
-                        <dt>School type</dt>
-                        <dd class="double">Academy</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">£28,355 - £40,035</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
+                      <dt>School type</dt>
+                      <dd class="double">Academy</dd>
+                      <dt>Salary (FTE)</dt>
+                      <dd class="double">
+                        <div class="dd-inner govuk-!-margin-bottom-1">£28,355 - £40,035</div>
+                        <span class="govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16
+">Actual salary</span> 
+                        <span class="dd-inner">£10,400 - £16,020</span>
+                      </dd>
+                      <dt>Working pattern</dt>
+                      <dd class="double">Term time</dd>
+                      <dt>Closing date</dt>
+                      <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 4 -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!-- START VACANCY 5 -->
+                <li class="vacancy">
+                    <h2 class="govuk-heading-m mb0">
+                      <a class="govuk-link view-vacancy-link" href="#">Teacher of Science (1 year fixed term contract)</a>
+                    </h2>
+                    <p class="govuk-body">
+                        Bronson Alcott Academy, Friendship Way, London
+                    </p>
+                    <div class="tag-wrapper">
+                      <span class="govuk-visually-hidden">Role </span>
+                      {{govukTag({
+                        text: "Teacher",
+                        classes: "govuk-tag--grey govuk-!-font-size-14"
+                      })}}
+                      {{govukTag({
+                        text: "SEN specialist",
+                        classes: "govuk-tag--grey govuk-!-font-size-14"
+                      })}}
+                    </div>
+                    <dl>
+                      <dt>School type</dt>
+                      <dd class="double">Academy</dd>
+                      <dt>Salary</dt>
+                      <dd class="double">
+                        <div class="dd-inner">£28,355 - £40,035</div>
+                      </dd>
+                      <dt>Working pattern</dt>
+                      <dd class="double">Full-time</dd>
+                      <dt>Closing date</dt>
+                      <dd class="double">31 May 2020 at 9:00 am</dd>
+                    </dl>
+                </li> #}
+                <li class="vacancy">
+                    <h2 class="govuk-heading-m mb0">
+                        <a class="govuk-link view-vacancy-link" href="#">Teacher of Technology - Food & Catering</a>
+                    </h2>
+                    <p class="govuk-body">
+                        Bronson Alcott Academy, Friendship Way, London
+                    </p>
+                    <div class="tag-wrapper">
+                      <span class="govuk-visually-hidden">Role </span>
+                      {{govukTag({
+                        text: "Teacher",
+                        classes: "govuk-tag--grey govuk-!-font-size-14"
+                      })}}
+                    </div> 
+                    <dl>
+                      <dt>Role</dt>
+                      <dd class="double">Teacher</dd>
+                      <dt>School type</dt>
+                      <dd class="double">Academy</dd>
+                      <dt>Salary (FTE)</dt>
+                      <dd class="double">
+                        <div class="dd-inner govuk-!-margin-bottom-1">£28,355 - £40,035</div>
+                        <span class="govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16
+">Actual salary</span> 
+                        <span class="dd-inner">£14,400 - £20,020</span>
+                      </dd>
+                      <dt>Working pattern</dt>
+                      <dd class="double">Part-time</dd>
+                      <dt>Closing date</dt>
+                      <dd class="double">31 May 2020 at 9:00 am</dd>
+                    </dl>
+                </li>
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Year 1 & 3 Teachers (Primary)</a>
@@ -325,8 +382,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 5 -->
-                <!-- START VACANCY 6 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Primary Teacher KS3</a>
@@ -343,8 +398,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 6 -->
-                <!-- START VACANCY 7 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Teacher</a>
@@ -365,8 +418,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 7 -->
-                <!-- START VACANCY 8 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Year 1 & 3 Teachers (Primary)</a>
@@ -385,8 +436,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 8 -->
-                <!-- START VACANCY 9 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Primary Teacher KS3</a>
@@ -405,8 +454,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 9 -->
-                <!-- START VACANCY 10 -->
                 <li class="vacancy">
                     <h2 class="govuk-heading-m mb0">
                         <a class="govuk-link view-vacancy-link" href="#">Teacher KS3</a>
@@ -427,7 +474,6 @@ T / Search results
                         <dd class="double">31 May 2020 at 9:00 am</dd>
                     </dl>
                 </li>
-                <!-- END VACANCY 10 -->
             </ul>
         </div>
         <!-- END Vacancies -->

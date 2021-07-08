@@ -53,6 +53,35 @@ T / Service start page
 														</select>
 													</div>
 
+                          {# {{ govukCheckboxes({
+                            idPrefix: "",
+                            name: "",
+                            classes: "govuk-checkboxes--small ss-input",
+                            fieldset: {
+                              legend: {
+                                text: "Job role",
+                                classes: "govuk-fieldset__legend--s"
+                              }
+                            },
+                            items: [
+                              {
+                                text: "Education assistant"
+                              },
+                              {
+                                text: "Teacher"
+                              },
+                              {
+                                text: "Leadership"
+                              },
+                              {
+                                text: "SEN specialist"
+                              },
+                              {
+                                text: "Business manager"
+                              }
+                            ]
+                          } | decorateAttributes(data, "data.searchFilter.jobRole")) }} #}
+
 													{{ govukButton({
 														text: "Search",
 														isStartButton: true

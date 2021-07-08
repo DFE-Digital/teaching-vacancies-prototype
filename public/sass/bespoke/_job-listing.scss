@@ -673,3 +673,38 @@ img {
     left: auto;
     right: 0;
 }
+
+/*
+---------- Social sharing ------------------------------
+*/
+
+.share-links__link {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-right: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.share-links__list-item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 32px;
+  margin-bottom: 10px;
+  min-height: 32px;
+  padding-left: 42px;
+  position: relative;
+}
+
+.share-links__link-icon {
+  height: 32px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  vertical-align: top;
+  width: 32px;
+}
