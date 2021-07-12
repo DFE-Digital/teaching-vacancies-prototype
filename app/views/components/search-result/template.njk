@@ -14,19 +14,21 @@
       {% for tag in item.tags %}
         {{govukTag({
           text: tag,
-          classes: "govuk-tag--blue govuk-!-font-size-14"
+          classes: "govuk-tag--grey govuk-!-font-size-14"
         })}}
       {% endfor %}
 
     </div>
     <dl>
       {% if item.salaryFte %}
-        <dt>Salary (FTE)</dt>
+        <dt>Salary {% if item.salaryActual %}(FTE){% endif %}</dt>
         <dd class="double">
-          <div class="dd-inner govuk-!-margin-bottom-1">{{ item.salaryFte }}</div>
-          <span class="govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16
-    ">Actual salary</span> 
-          <span class="dd-inner">{{ item.salaryActual }}</span>
+          <div class="dd-inner {% if item.salaryActual %} govuk-!-margin-bottom-1{% endif %}">{{ item.salaryFte }}</div>
+          {% if item.salaryActual %}
+            <span class="govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16
+      ">Actual salary</span> 
+            <span class="dd-inner">{{ item.salaryActual }}</span>
+          {% endif %}
         </dd>
       {% endif %}
       {% if item.salary %}
