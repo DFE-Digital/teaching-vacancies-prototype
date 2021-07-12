@@ -1,4 +1,7 @@
 body {
+  -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+  -moz-osx-font-smoothing: grayscale; /* Firefox */
+  
   .govuk-width-container {
     @include govuk-media-query($from: desktop) {
       margin-left: auto;

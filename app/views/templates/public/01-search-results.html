@@ -6,12 +6,29 @@ T / Search results
 
 {% set bodyClasses = "app-search-results" %}
 
-{% set backText = "Back to Teaching Vacancies" %}
-{% set backLink = "/prototypes/application/journey/" %}
+{# {% set backText = "Back to Teaching Vacancies" %}
+{% set backLink = "./01-service-start.html" %} #}
 
 {% block content %}
 
-<h1 aria-level="1" class="govuk-heading-l govuk-!-font-weight-regular" role="heading">There are <span class="govuk-!-font-weight-bold">1218</span> jobs listed</h1>
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/">Home</a>
+        </li>
+
+
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">
+          Search results
+        </li>
+
+  </ol>
+</div>
+
+<h1 aria-level="1" class="govuk-heading-l govuk-!-font-weight-regular" role="heading"><span class="govuk-!-font-weight-bold">24</span> jobs match <span class="govuk-!-font-weight-bold text-wrap-apostrophe">“support”</span> 
+{# in <span class="govuk-!-font-weight-bold text-wrap-apostrophe text-capitalize">London</span> #}
+</h1>
 
 <div class="govuk-grid-row--flex">
     <!-- START Sidebar -->
@@ -72,7 +89,7 @@ T / Search results
 				}) }}
 
         <!-- START filters -->
-				<div class="app-filter" tabindex="-1" id="filterPanel">
+			    <div class="app-filter" tabindex="-1" id="filterPanel">
 					<form class="side-search--filters">
 						<div class="app-filter__header">
 							<h3 class="govuk-heading-m govuk-!-margin-bottom-3">
@@ -94,6 +111,9 @@ T / Search results
 							},
 							items: [
 								{
+									text: "Education support"
+								},
+								{
 									text: "Teacher"
 								},
 								{
@@ -101,6 +121,9 @@ T / Search results
 								},
 								{
 									text: "SEN specialist"
+								},
+								{
+									text: "Business manager"
 								}
 							]
 						} | decorateAttributes(data, "data.searchFilter.jobRole")) }}
@@ -172,6 +195,9 @@ T / Search results
 									text: "Part time"
 								},
 								{
+									text: "Term time"
+								},
+								{
 									text: "Job share"
 								}
 							]
@@ -201,233 +227,186 @@ T / Search results
 								</select>
 						</div>
 					</div>
-        <!-- Sort END -->
 
-        <!-- START Vacancies -->
         <div class="">
             <ul class="vacancies">
-                <!-- START VACANCY 1 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="00-listing-1">Primary Teacher</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Bronson Alcott Academy,
-                        Stratford, London
-                    </p>
-                    <dl>
-                        <dt>Trust type</dt>
-                        <dd class="double">
-                            Multi-Academy Trust of 10 schools
-                        </dd>
-                        <dt>Salary</dt>
-                        <dd class="double">£28,355-£44,541</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 1 -->
-                <!-- START VACANCY 2 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Primary Teacher</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Multiple locations at Ridgemont Academies Trust,
-                        Stratford, London
-                    </p>
-                    <dl>
-                        <dt>Trust type</dt>
-                        <dd class="double">
-                            Multi-Academy Trust of 42 schools
-                        </dd>
-                        <dt>Salary</dt>
-                        <dd class="double">TMS 1 - TMS 6</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 12:00pm</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 2 -->
-                <!-- START VACANCY 3 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Classroom Teacher</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Westerburg Academies Trust, Stratford, London
-                    </p>
-                    <dl>
-                        <dt>Trust type</dt>
-                        <dd class="double">
-                            Multi-Academy Trust of 16 schools
-                        </dd>
-                        <dt>Salary</dt>
-                        <dd class="double">Main Scale Range</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 12:59 pm</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 3 -->
-                <!-- START VACANCY 4 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Primary Teacher</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Bronson Alcott Academy, Friendship Way, London
-                    </p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">Academy</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">£28,355 - £40,035</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 4 -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-                <!-- START VACANCY 5 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Year 1 & 3 Teachers (Primary)</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Harvey Academy Firstwood, Stratford
-                    </p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">Academy</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">
-                            TMS 1 - TMS 6
-                        </dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 5 -->
-                <!-- START VACANCY 6 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Primary Teacher KS3</a>
-                    </h2>
-                    <p class="govuk-body">Jolia Primary School, London</p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">LA Maintained School</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">M1-M6</dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 6 -->
-                <!-- START VACANCY 7 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Teacher</a>
-                    </h2>
-                    <p class="govuk-body">
-                        City of London Academy Lansbury, London
-                    </p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">Academy</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">
-                            Main Scale Range
-                        </dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 7 -->
-                <!-- START VACANCY 8 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Year 1 & 3 Teachers (Primary)</a>
-                    </h2>
-                    <p class="govuk-body">Henry Garrard Academy, Erith, Kent</p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">Academy</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">
-                            TMS 1 - TMS 6
-                        </dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 8 -->
-                <!-- START VACANCY 9 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Primary Teacher KS3</a>
-                    </h2>
-                    <p class="govuk-body">The Brook Academy, London</p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">LA Maintained School</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">
-                            £28,355-£44,541
-                        </dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 9 -->
-                <!-- START VACANCY 10 -->
-                <li class="vacancy">
-                    <h2 class="govuk-heading-m mb0">
-                        <a class="govuk-link view-vacancy-link" href="#">Teacher KS3</a>
-                    </h2>
-                    <p class="govuk-body">
-                        Oaks Park High School, Ilford, Stratford
-                    </p>
-                    <dl>
-                        <dt>School type</dt>
-                        <dd class="double">Academy</dd>
-                        <dt>Salary</dt>
-                        <dd class="double">
-                            £28,355-£40,035
-                        </dd>
-                        <dt>Working pattern</dt>
-                        <dd class="double">Full-time</dd>
-                        <dt>Closing date</dt>
-                        <dd class="double">31 May 2020 at 9:00 am</dd>
-                    </dl>
-                </li>
-                <!-- END VACANCY 10 -->
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Specialist Learning Support Assistant (Mathematics)",
+                    jobUrl: "#",
+                    jobLocation: "Finham Park 2, Coventry, West Midlands, CV4 9WTA",
+                    tags: [
+                      "Teacher",
+                      "SEN specialist"
+                    ],
+                    salaryFte: "Grade 4 £19,698 - £23,080",
+                    salaryActual: "£16,097- £18,861",
+                    schoolType: "Free School, ages 13 to 19",
+                    workPattern: "Full-time only",
+                    closingDate: "4th August 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Behaviour Support Mentor",
+                    jobUrl: "#",
+                    jobLocation: "Broadlands Academy, Keynsham, Bristol, BS31 2DY",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salaryFte: "Grade 7, £27,741 - £30,451",
+                    salaryActual: "£9,490 - £10,417",
+                    schoolType: "Academy, ages 11-16",
+                    workPattern: "Part-time, term time only",
+                    closingDate: "26th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "1:1 Learning Support Assistant (28 hrs per week)",
+                    jobUrl: "#",
+                    jobLocation: "Danemill Primary School, Leicestershire, LE19 4LH",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salary: "Grade 5 (£18,933 - £19,314)",
+                    schoolType: "Academy, ages 3-11",
+                    workPattern: "Part-time, term time only",
+                    closingDate: "26th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {# {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Behaviour support worker",
+                    jobUrl: "#",
+                    jobLocation: "Briarwood School, Bristol, BS16 4EA",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salaryFte: " B1 (scale 4 - 6)",salaryActual: "£13,234 - 13,770",
+                    schoolType: "Academy, ages 3-11",
+                    workPattern: "Part-time, term-time",
+                    closingDate: "18th July 2021 at 9:00am"
+                  }]
+                }) }} #}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Teaching Assistant, Permanent",
+                    jobUrl: "#",
+                    jobLocation: "Northill CofE VA Lower School, Biggleswade, Bedfordshire SG18 9AH",
+                    tags: [
+                      "Education Support",
+                      "SEN specialist"
+                    ],
+                    salary: "NJC Scale points 1-6",
+                    schoolType: "Local authority Maintained SEND, ages 3-19",
+                    workPattern: "Full-time, term-time",
+                    closingDate: "16th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Learning Mentor",
+                    jobUrl: "#",
+                    jobLocation: "Matravers School, Westbury, Wiltshire, BA13 3QH",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salaryFte: "Grade F, 32 hours per week",
+                    salaryActual: "£17,812.85 - £18,210.74",
+                    schoolType: "Local authority maintained, ages 11-18",
+                    workPattern: "Term-time only",
+                    closingDate: "16th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Teaching Assistant",
+                    jobUrl: "#",
+                    jobLocation: "Harris Academy Sutton, Sutton, SM2 5RD",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salaryFte: "Grade 2 (Outer London) £21,408-£21,795",
+                    salaryActual: "£17,916.85-£18,240.74",
+                    schoolType: "Free school, ages 11-19",
+                    workPattern: "Term-time only",
+                    closingDate: "19th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "HLTA with Responsibility for Speech and Language",
+                    jobUrl: "#",
+                    jobLocation: "Harris Academy Greenwich,London, SE9 5EQ",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salaryFte: "Grade 6 (Outer London) £27,483-£29517",
+                    salaryActual: "£23,609 - £25,356",
+                    schoolType: "Free school, ages 11-19",
+                    workPattern: "Term-time only",
+                    closingDate: "15th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Teacher of Music Technology",
+                    jobUrl: "#",
+                    jobLocation: "St Paul's Catholic College, Burgess Hill, West Sussex, RH15 8GA",
+                    tags: [
+                      "Teacher"
+                    ],
+                    salaryFte: "TMS/UPS",
+                    salaryActual: "£23,609 - £25,356",
+                    schoolType: "Local authority maintained school, Roman Catholic, ages 11 to 18",
+                    workPattern: "Part-time only",
+                    closingDate: "16th July 2021 at 12:00pm"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Behaviour Support Learning Mentor",
+                    jobUrl: "#",
+                    jobLocation: "Bluecoat Primary Academy, Nottingham, Nottinghamshire, NG8 3BB",
+                    tags: [
+                      "Education Support",
+                      "SEN specialist"
+                    ],
+                    salaryFte: " Grade 6, points 7-12 £20,092 - £22,183 FTE",
+                    salaryActual: "£17,204 to £18,995 per annum TTO",
+                    schoolType: "Free school, ages 11-19",
+                    workPattern: "Term-time only",
+                    closingDate: "21st July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                {{ appSearchResult ({
+                  items: [{
+                    jobTitle: "Higher Level Teaching Assistant",
+                    jobUrl: "#",
+                    jobLocation: "Meadow Primary School, Epsom, Surrey, KT17 2LW",
+                    tags: [
+                      "Education Support"
+                    ],
+                    salaryFte: "PS6 £24,430-£26,967",
+                    salaryActual: "£18,150-£20,031",
+                    schoolType: "Local authority maintained, ages 3-11",
+                    workPattern: "Term-time only",
+                    closingDate: "20th July 2021 at 9:00am"
+                  }]
+                }) }}
+                
+                
             </ul>
         </div>
         <!-- END Vacancies -->
