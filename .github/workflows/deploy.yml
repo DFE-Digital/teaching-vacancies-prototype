@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-20.04
     timeout-minutes: 20
     steps:
-      - uses: softprops/turnstyle@v1
-        name: Check workflow concurrency
+      - uses: DFE-Digital/github-actions/turnstyle@master
         with:
+          initial-wait-seconds: 12
           poll-interval-seconds: 20
+          abort-after-seconds: 1800
           same-branch-only: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -22,6 +23,8 @@ jobs:
     name: Deploy to GOV.UK PaaS
     needs: turnstyle
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: teaching-vacancies-prototype
     steps:
       - uses: actions/checkout@v2
       - uses: DFE-Digital/github-actions/setup-cf-cli@master
@@ -34,7 +37,7 @@ jobs:
           PROTOTYPE_USERNAME: ${{ secrets.PROTOTYPE_USERNAME }}
           PROTOTYPE_PASSWORD: ${{ secrets.PROTOTYPE_PASSWORD }}
         run: |
-          cf set-env teaching-vacancies-prototype USERNAME $PROTOTYPE_USERNAME
-          cf set-env teaching-vacancies-prototype PASSWORD $PROTOTYPE_PASSWORD
+          cf set-env ${{ env.APP_NAME }} USERNAME $PROTOTYPE_USERNAME
+          cf set-env ${{ env.APP_NAME }} PASSWORD $PROTOTYPE_PASSWORD
       - name: Push application
         run: cf push
