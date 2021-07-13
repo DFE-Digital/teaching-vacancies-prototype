@@ -7,7 +7,11 @@
         {% endif %}
     </div>
     <div class="col">
-      <a class="govuk-!-font-size-19" href="{{ item.applicationUrl }}"><span class="govuk-visually-hidden">View</span> Applications ({{ item.applicationCount }}) </a> <span class="govuk-visually-hidden">for {{ item.jobName }}</span>
+      {% if item.jobUrl %}
+        <a class="govuk-!-font-size-19" href="{{ item.applicationUrl }}"><span class="govuk-visually-hidden">View</span> {{ item.applicationCount }} applications</a> <span class="govuk-visually-hidden">for {{ item.jobName }}</span>
+      {% else %}
+        <span class="govuk-!-font-size-19" href="{{ item.applicationUrl }}">0 applications</a></span>
+      {% endif %}
       <dl class="govuk-!-font-size-16 govuk-!-margin-top-1"><dt><span class="govuk-!-font-weight-bold">Closing date:</span></dt> <dd>{{ item.jobClosingDate }}</dd></dl>
     </div>
   {% endfor %}
