@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   turnstyle:
@@ -33,8 +40,8 @@ jobs:
       - name: Set application environment (Pull Request)
         if: github.event_name == 'pull_request'
         env:
-          GIT_REF: ${{ github.ref }}
-        run: echo "CF_APP_NAME=teaching-vacancies-prototype-${GIT_REF##*/}" >> $GITHUB_ENV
+          PR_NUMBER: ${{ github.event.number }}
+        run: echo "CF_APP_NAME=teaching-vacancies-prototype-pr-$PR_NUMBER" >> $GITHUB_ENV
       - uses: DFE-Digital/github-actions/setup-cf-cli@master
         with:
           CF_USERNAME: ${{ secrets.CF_USERNAME }}
