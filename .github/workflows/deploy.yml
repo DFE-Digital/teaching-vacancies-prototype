@@ -29,10 +29,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set application environment (main branch)
         if: github.event_name == 'push'
-        run: echo "TODO Main push"
+        run: echo "CF_APP_NAME=teaching-vacancies-prototype" >> $GITHUB_ENV
       - name: Set application environment (Pull Request)
         if: github.event_name == 'pull_request'
-        run: echo "TODO PR"
+        env:
+          GIT_REF: ${{ github.ref }}
+        run: echo "CF_APP_NAME=teaching-vacancies-prototype-${GIT_REF##*/}" >> $GITHUB_ENV
       - uses: DFE-Digital/github-actions/setup-cf-cli@master
         with:
           CF_USERNAME: ${{ secrets.CF_USERNAME }}
@@ -43,7 +45,7 @@ jobs:
           PROTOTYPE_USERNAME: teaching
           PROTOTYPE_PASSWORD: vacancies
         run: |
-          cf set-env ${{ env.APP_NAME }} USERNAME $PROTOTYPE_USERNAME
-          cf set-env ${{ env.APP_NAME }} PASSWORD $PROTOTYPE_PASSWORD
+          cf set-env ${{ env.CF_APP_NAME }} USERNAME $PROTOTYPE_USERNAME
+          cf set-env ${{ env.CF_APP_NAME }} PASSWORD $PROTOTYPE_PASSWORD
       - name: Push application
-        run: cf push
+        run: cf push ${{ env.CF_APP_NAME }}
