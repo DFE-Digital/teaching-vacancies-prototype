@@ -27,6 +27,12 @@ jobs:
       APP_NAME: teaching-vacancies-prototype
     steps:
       - uses: actions/checkout@v2
+      - name: Set application environment (main branch)
+        if: github.event_name == 'push'
+        run: echo "TODO Main push"
+      - name: Set application environment (Pull Request)
+        if: github.event_name == 'pull_request'
+        run: echo "TODO PR"
       - uses: DFE-Digital/github-actions/setup-cf-cli@master
         with:
           CF_USERNAME: ${{ secrets.CF_USERNAME }}
