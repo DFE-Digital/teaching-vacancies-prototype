@@ -47,12 +47,5 @@ jobs:
           CF_USERNAME: ${{ secrets.CF_USERNAME }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
           CF_SPACE_NAME: teaching-vacancies-prototype
-      - name: Set GOV.UK Prototype Kit basic auth credentials
-        env:
-          PROTOTYPE_USERNAME: teaching
-          PROTOTYPE_PASSWORD: vacancies
-        run: |
-          cf set-env ${{ env.CF_APP_NAME }} USERNAME $PROTOTYPE_USERNAME
-          cf set-env ${{ env.CF_APP_NAME }} PASSWORD $PROTOTYPE_PASSWORD
       - name: Push application
         run: cf push ${{ env.CF_APP_NAME }}
