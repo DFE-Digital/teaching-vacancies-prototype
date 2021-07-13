@@ -10,7 +10,7 @@
       {% if item.jobUrl %}
         <a class="govuk-!-font-size-19" href="{{ item.applicationUrl }}"><span class="govuk-visually-hidden">View</span> {{ item.applicationCount }} applications</a> <span class="govuk-visually-hidden">for {{ item.jobName }}</span>
       {% else %}
-        <span class="govuk-!-font-size-19" href="{{ item.applicationUrl }}">0 applications</a></span>
+        <span class="govuk-!-font-size-19">0 applications</span>
       {% endif %}
       <dl class="govuk-!-font-size-16 govuk-!-margin-top-1"><dt><span class="govuk-!-font-weight-bold">Closing date:</span></dt> <dd>{{ item.jobClosingDate }}</dd></dl>
     </div>
