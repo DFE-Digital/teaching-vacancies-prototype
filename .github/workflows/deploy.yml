@@ -30,8 +30,6 @@ jobs:
     name: Deploy to GOV.UK PaaS
     needs: turnstyle
     runs-on: ubuntu-latest
-    env:
-      APP_NAME: teaching-vacancies-prototype
     steps:
       - uses: actions/checkout@v2
       - name: Set application environment (main branch)
@@ -49,3 +47,9 @@ jobs:
           CF_SPACE_NAME: teaching-vacancies-prototype
       - name: Push application
         run: cf push ${{ env.CF_APP_NAME }}
+      - name: Post sticky pull request comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            Review app deployed to <https://teaching-vacancies-prototype-pr-${{ github.event.number }}.london.cloudapps.digital>
