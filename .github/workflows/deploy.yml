@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   turnstyle:
@@ -23,8 +30,6 @@ jobs:
     name: Deploy to GOV.UK PaaS
     needs: turnstyle
     runs-on: ubuntu-latest
-    env:
-      APP_NAME: teaching-vacancies-prototype
     steps:
       - uses: actions/checkout@v2
       - name: Set application environment (main branch)
@@ -33,19 +38,18 @@ jobs:
       - name: Set application environment (Pull Request)
         if: github.event_name == 'pull_request'
         env:
-          GIT_REF: ${{ github.ref }}
-        run: echo "CF_APP_NAME=teaching-vacancies-prototype-${GIT_REF##*/}" >> $GITHUB_ENV
+          PR_NUMBER: ${{ github.event.number }}
+        run: echo "CF_APP_NAME=teaching-vacancies-prototype-pr-$PR_NUMBER" >> $GITHUB_ENV
       - uses: DFE-Digital/github-actions/setup-cf-cli@master
         with:
           CF_USERNAME: ${{ secrets.CF_USERNAME }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
           CF_SPACE_NAME: teaching-vacancies-prototype
-      - name: Set GOV.UK Prototype Kit basic auth credentials
-        env:
-          PROTOTYPE_USERNAME: teaching
-          PROTOTYPE_PASSWORD: vacancies
-        run: |
-          cf set-env ${{ env.CF_APP_NAME }} USERNAME $PROTOTYPE_USERNAME
-          cf set-env ${{ env.CF_APP_NAME }} PASSWORD $PROTOTYPE_PASSWORD
       - name: Push application
         run: cf push ${{ env.CF_APP_NAME }}
+      - name: Post sticky pull request comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            Review app deployed to <https://teaching-vacancies-prototype-pr-${{ github.event.number }}.london.cloudapps.digital>

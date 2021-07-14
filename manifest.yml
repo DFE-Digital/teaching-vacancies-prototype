@@ -4,3 +4,6 @@ applications:
   memory: 128M
   buildpacks:
   - nodejs_buildpack
+  env:
+    USERNAME: teaching
+    PASSWORD: vacancies
