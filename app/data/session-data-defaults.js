@@ -17,8 +17,21 @@ Example usage:
 
 */
 
-module.exports = {
+let job = {
+  // Setting up the job aplication flow to be Primary by default
+  // Options: "Primary" "Secondary"
+  phase: "Primary",
+  
+  // Setting up the job aplication flow user to be single school by default
+  // Options: "singleSchool" "multiSchoolMat, "multiSchoolLa"
+  userType: "multiSchoolLa",
+}
 
+module.exports = {
+    
+  // Assign the phase to job
+  job: job,
+  
   // Insert values here
 
   "location": "N8 8AL",

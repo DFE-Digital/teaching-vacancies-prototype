@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% set activePage = "step0" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {{ govukHeader({
+      homepageUrl: "dashboard",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="create-title">
+        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing</h1>
+        <h5 class="govuk-heading-m">Step 1 of 8</h5>
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Job location</h2>
+
+                {# If a MAT #}
+                {% if data.job.userType == "multiSchoolMat" %}
+                  <form class="" action="/prototypes/scope_expansion/job-role-answer-mat" method="post">
+                      <!-- Location -->
+                      {{ govukRadios({
+                        fieldset: {
+                          legend: {
+                            text: "Where will the job be based?",
+                            classes: "govuk-fieldset__legend--s"
+                          }
+                        },
+                        items: [
+                          {
+                            text: "At one school in the trust"
+                          },
+                          {
+                            text: "At the trust's head office"
+                          },
+                          {
+                            text: "At more than one school in the trust"
+                          }
+                        ]
+                      } | decorateAttributes(data, "data.job.locationMat")) }}
+
+                    <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+                    {% endif %}
+
+                    {# if a LA #}
+                    {% if data.job.userType == "multiSchoolLa" %}
+
+                      <form class="" action="/prototypes/scope_expansion/job-role-answer-la" method="post">
+                    
+                        <!-- Location -->
+                        {{ govukRadios({
+                          fieldset: {
+                            legend: {
+                              text: "Where will the job be based?",
+                              classes: "govuk-fieldset__legend--s"
+                            }
+                          },
+                          items: [
+                            {
+                              text: "At one school"
+                            },
+                            {
+                              text: "At more than one school"
+                            }
+                          ]
+                        } | decorateAttributes(data, "data.job.locationLa")) }}
+
+                      <button class="govuk-button" data-module="govuk-button">Continue</button>
+                      {% endif %}
+
+                    <p><a href="dashboard-drafts">Save and return later</a></p> 
+
+                </form>
+
+            </div>
+            <!-- Main content END -->
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+                <!-- STEP HEADER START -->
+                <div class="app-step-nav-related app-step-nav-related--singular">
+                    <h2 class="app-step-nav-related__heading">
+                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                    </h2>
+                </div>
+                <!-- STEP HEADER END -->
+                {% include "includes/hiring-staff/acc-steps.html" %}
+            </div>
+            <!-- Sidebar END -->
+
+        </main>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% set activePage = "step1" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+
+  {{ govukHeader({
+      homepageUrl: "dashboard",
+      serviceName: serviceName,
+      serviceUrl: "dashboard",
+      containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Manage jobs"
+      },
+      {
+        href: "#",
+        text: "View public jobs"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="create-title">
+        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for []</h1>
+        <h5 class="govuk-heading-m">Step 1 of 8</h5>
+        <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+    </div>
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+
+            <!-- Main content START -->
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Job role</h2>
+
+                <form class="" action="2-job-details" method="post">
+
+                    <!-- ROLE START -->
+                    {{ govukCheckboxes({
+                      fieldset: {
+                        legend: {
+                          text: "What is job role/s?",
+                          classes: "govuk-fieldset__legend--s"
+                        }
+                      },
+                      hint: {
+                        text: "Select all that describe the role"
+                      },
+                      items: [
+                        {
+                          text: "Education support"
+                        },
+                        {
+                          text: "Teacher"
+                        },
+                        {
+                          text: "Leadership"
+                        },
+                        {
+                          text: "SEN specialist"
+                        },
+                        {
+                          text: "Business manager"
+                        }
+                      ]
+                    } | decorateAttributes(data, "data.job.role")) }}
+                    <!-- ROLE END -->
+
+                    <button class="govuk-button" data-module="govuk-button">Continue</button>
+                    <p><a href="dashboard-drafts">Save and return later</a></p> 
+
+                </form>
+
+            </div>
+            <!-- Main content END -->
+
+            <!-- Sidebar START -->
+            <div class="govuk-grid-column-one-third">
+                <!-- STEP HEADER START -->
+                <div class="app-step-nav-related app-step-nav-related--singular">
+                    <h2 class="app-step-nav-related__heading">
+                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                    </h2>
+                </div>
+                <!-- STEP HEADER END -->
+                {% include "includes/hiring-staff/acc-steps.html" %}
+            </div>
+            <!-- Sidebar END -->
+
+        </main>
+    </div>
+
+{% endblock %}

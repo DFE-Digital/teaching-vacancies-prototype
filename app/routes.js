@@ -51,4 +51,30 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
 })
 
+  // Scope expansion July 2021
+
+  router.post('/prototypes/scope_expansion/job-role-answer-mat', function (req, res) {
+  
+    let selectedLocationsMat = req.session.data.job.locationMat
+
+    if (selectedLocationsMat == "At one school in the trust") {
+      res.redirect('/prototypes/scope_expansion/0b-job-location-single')
+    } else if (selectedLocationsMat == "At more than one school in the trust") {
+      res.redirect('/prototypes/scope_expansion/0a-job-location-many')
+    } else {
+      res.redirect('/prototypes/scope_expansion/1-job-role')
+    }   
+  })
+  
+  router.post('/prototypes/scope_expansion/job-role-answer-la', function (req, res) {
+    
+    let selectedLocationsLa = req.session.data.job.locationLa
+
+    if (selectedLocationsLa == "At one school") {
+      res.redirect('/prototypes/scope_expansion/0b-job-location-single')
+    } else {
+      res.redirect('/prototypes/scope_expansion/0a-job-location-many')
+    }
+  })
+
 module.exports = router
