@@ -51,14 +51,28 @@
 
                 <form class="" action="4-important" method="post">
 
-                    <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--s" for="salary">
-                            Salary
-                        </label>
-                        <span id="job-title-hint" class="govuk-hint">
-                            Enter the annual salary or salary range, and/or pay scale range. Where relevant, state if the salary is full-time equivalent</span>
-                        <input class="govuk-input govuk-!-width-full" id="salary" name="salary" type="text" aria-describedby="salary">
-                    </div>
+                    {{ govukInput({
+                      label: {
+                        text: "Annual or full-time equivalent (FTE) salary",
+                        classes: "govuk-label--s"
+                      },
+                      classes: "govuk-!-width-two-thirds"
+                    } | decorateAttributes(data, "data.job.salary")) }}
+                    
+                    {% set actualSalaryLabel %}
+                      Actual salary <span class="govuk-!-font-weight-regular">(optional)</span>
+                    {% endset %}
+
+                    {{ govukInput({
+                      label: {
+                        html: actualSalaryLabel,
+                        classes: "govuk-label--s"
+                      },
+                      hint: {
+                        text: "For part-time or term-time roles this is what the candidate will actually be paid."
+                      },
+                      classes: "govuk-!-width-two-thirds"
+                    } | decorateAttributes(data, "data.job.salaryActual")) }}
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="benefits">

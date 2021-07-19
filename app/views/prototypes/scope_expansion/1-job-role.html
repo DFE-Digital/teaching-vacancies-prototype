@@ -36,7 +36,7 @@
 
     <div class="create-title">
         <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for []</h1>
-        <h5 class="govuk-heading-m">Step 1 of 8</h5>
+        <h5 class="govuk-heading-m">{% if isMultiSchool == "true" %}Step 2 of 8{% else %}Step 1 of 8{% endif %}</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
     </div>
 
