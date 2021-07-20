@@ -81,7 +81,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
     let selectedWorkingPattern = req.session.data.job.workingPattern
 
-    if ( (selectedWorkingPattern == "Full-time") && (selectedWorkingPattern != "Part-time") && (selectedWorkingPattern != "Term-time") && (selectedWorkingPattern != "Job share") ) {
+    if ( (selectedWorkingPattern == "Full time") && (selectedWorkingPattern != "Part time") && (selectedWorkingPattern != "Term time") && (selectedWorkingPattern != "Job share") ) {
       res.redirect('/prototypes/scope_expansion/3-pay-package')
     } else {
       res.redirect('/prototypes/scope_expansion/2b-days-hours') 

@@ -26,6 +26,7 @@ let job = {
   // Options: "singleSchool" "multiSchoolMat, "multiSchoolLa"
   userType: "multiSchoolMat",
 
+  // Fallback school name
   defaultSchoolName: "Bexleyheath Academy"
 }
 
