@@ -2,6 +2,10 @@
 
 {% set activePage = "step3" %}
 
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
 {% block pageTitle %}
   Find a job in Teaching
 {% endblock %}

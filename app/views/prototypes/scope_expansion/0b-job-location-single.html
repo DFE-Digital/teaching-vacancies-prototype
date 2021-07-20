@@ -37,7 +37,7 @@
     <div class="create-title">
       <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing</h1>
       <h5 class="govuk-heading-m">Step 1 of 8</h5>
-      <a href="./2-job-details" class="govuk-back-link">Go back to previous step</a>
+       <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
     </div>
 
     <main class="govuk-main-wrapper">
@@ -69,25 +69,27 @@
                         fieldset: {
                           legend: {
                             text: "In which school will the job be based?",
-                            classes: "govuk-fieldset__legend--s"
+                            classes: "govuk-fieldset__legend--m"
                           }
                         },
                         items: [
                           {
-                            html: school1,
-                            classes: "govuk-!-font-weight-bold"
+                            value: "Farnham Heath End",
+                            html: school1
                           },
                           {
+                            value: "Rodborough",
                             html: school2
                           },
                           {
+                            value: "The Abbey School",
                             html: school3
                           }
                         ]
-                      } | decorateAttributes(data, "data.job.phase")) }}
+                      } | decorateAttributes(data, "data.job.locationSingle")) }}
 
                     <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="./2-job-details">Cancel</a></p> 
+                    <p><a href="./0-job-location">Cancel</a></p> 
 
                 </form>
 

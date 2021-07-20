@@ -69,24 +69,27 @@
                         fieldset: {
                           legend: {
                             text: "In which school will the job be based?",
-                            classes: "govuk-fieldset__legend--s"
+                            classes: "govuk-fieldset__legend--m"
                           }
                         },
                         items: [
                           {
+                            value: "Farnham Heath End",
                             html: school1
                           },
                           {
+                            value: "Rodborough",
                             html: school2
                           },
                           {
+                            value: "The Abbey School",
                             html: school3
                           }
                         ]
-                      } | decorateAttributes(data, "data.job.phase")) }}
+                      } | decorateAttributes(data, "data.job.locationMany")) }}
 
                     <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="./2-job-details">Cancel</a></p> 
+                    <p><a href="./0-job-location">Cancel</a></p> 
 
                 </form>
 

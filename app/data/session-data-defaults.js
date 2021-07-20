@@ -20,11 +20,11 @@ Example usage:
 let job = {
   // Setting up the job aplication flow to be Primary by default
   // Options: "Primary" "Secondary"
-  phase: "Primary",
+  phase: "Secondary",
   
   // Setting up the job aplication flow user to be single school by default
   // Options: "singleSchool" "multiSchoolMat, "multiSchoolLa"
-  userType: "multiSchoolLa",
+  userType: "singleSchool",
 }
 
 module.exports = {

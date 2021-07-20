@@ -2,6 +2,10 @@
 
 {% set activePage = "step0" %}
 
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
 {% block pageTitle %}
   Find a job in Teaching
 {% endblock %}
@@ -55,7 +59,7 @@
                         fieldset: {
                           legend: {
                             text: "Where will the job be based?",
-                            classes: "govuk-fieldset__legend--s"
+                            classes: "govuk-fieldset__legend--m"
                           }
                         },
                         items: [

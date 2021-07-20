@@ -2,6 +2,10 @@
 
 {% set activePage = "step1" %}
 
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
 {% block pageTitle %}
   Find a job in Teaching
 {% endblock %}
@@ -37,7 +41,9 @@
     <div class="create-title">
         <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for []</h1>
         <h5 class="govuk-heading-m">{% if isMultiSchool == "true" %}Step 2 of 8{% else %}Step 1 of 8{% endif %}</h5>
-        <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+        {% if isMultiSchool == "true" %}
+          <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+        {% endif %}
     </div>
 
     <main class="govuk-main-wrapper">
@@ -54,8 +60,8 @@
                     {{ govukCheckboxes({
                       fieldset: {
                         legend: {
-                          text: "What is job role/s?",
-                          classes: "govuk-fieldset__legend--s"
+                          text: "What is the job role/s?",
+                          classes: "govuk-fieldset__legend--m"
                         }
                       },
                       hint: {

@@ -2,6 +2,8 @@
 
 {% set activePage = "step2" %}
 
+{% set roles = data.job.role | toArray %}
+
 {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
   {% set isMultiSchool = "true" %}
 {% endif %}
@@ -11,7 +13,6 @@
 {% endblock %}
 
 {% block header %}
-
   {{ govukHeader({
       homepageUrl: "dashboard",
       serviceName: serviceName,
@@ -39,9 +40,10 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-      <h1 class="govuk-heading-m govuk-!-margin-bottom-4">Create a job listing for []</h1>
-      <h5 class="govuk-heading-m">{% if isMultiSchool == "true" %}Step 3 of 8{% else %}Step 2 of 8{% endif %}</h5></h5>
-      <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for []</h1>
+        {% if isMultiSchool == "true" %}multiSchool{% endif %}
+        <h5 class="govuk-heading-m">{% if isMultiSchool == "true" %}Step 3 of 8{% else %}Step 2 of 8{% endif %}</h5></h5>
+        <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
     </div>
 
     <main class="govuk-main-wrapper">
@@ -50,41 +52,23 @@
 
             <!-- Main content START -->
             <div class="govuk-grid-column-two-thirds">
-                <form class="" action="2-job-details" method="post">
-
                 <h2 class="govuk-heading-l">Job details</h2>
 
-                    {# TODO - these are all the education phases 
-                    All
-                    16 plus
-                    All-through
-                    Middle deemed primary
-                    Middle deemed secondary
-                    Not applicable
-                    Not recorded
-                    Nursery
-                    Primary
-                    Secondary #}
+                <form class="" action="3-pay-package" method="post">
 
-                    {{ govukRadios({
-                        fieldset: {
-                          legend: {
-                            text: "What is the education phase?",
-                            classes: "govuk-fieldset__legend--m"
-                          }
-                        },
-                        items: [
-                          {
-                            text: "Primary"
-                          },
-                          {
-                            text: "Secondary"
-                          }
-                        ]
-                      } | decorateAttributes(data, "data.job.phase")) }}
+                  {{ govukInput({
+                    label: {
+                      text: "How many hours or days does the role cover?",
+                      classes: "govuk-label--m"
+                    },
+                    hint: {
+                      text: "For example, '20 hours a week' or 'Tuesday and Wednesday mornings'"
+                    },
+                    classes: "govuk-!-width-two-thirds"
+                  } | decorateAttributes(data, "data.job.hoursDays")) }}
 
-                    <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="./2-job-details">Cancel</a></p> 
+                  <button class="govuk-button" data-module="govuk-button">Continue</button>
+                  <p><a href="./2-job-details">Cancel</a></p> 
 
                 </form>
 
@@ -93,12 +77,21 @@
 
             <!-- Sidebar START -->
             <div class="govuk-grid-column-one-third">
+                <!-- STEP HEADER START -->
                 <div class="app-step-nav-related app-step-nav-related--singular">
                     <h2 class="app-step-nav-related__heading">
                         <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                        <!--
+                        <a href="#">
+                            Learn to drive a car: step by step
+                        </a>
+                        -->
                     </h2>
                 </div>
+                <!-- STEP HEADER END -->
+                
                 {% include "includes/hiring-staff/acc-steps.html" %}
+
             </div>
             <!-- Sidebar END -->
 

@@ -4,6 +4,10 @@
 
 {% set roles = data.job.role | toArray %}
 
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
 {% block pageTitle %}
   Find a job in Teaching
 {% endblock %}
@@ -31,13 +35,13 @@
   }) }}
 {% endblock %}
 
-
 {% block content %}
 
 <div class="govuk-width-container">
 
     <div class="create-title">
         <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for []</h1>
+        {% if isMultiSchool == "true" %}multiSchool{% endif %}
         <h5 class="govuk-heading-m">{% if isMultiSchool == "true" %}Step 3 of 8{% else %}Step 2 of 8{% endif %}</h5></h5>
         <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
     </div>
@@ -50,7 +54,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-l">Job details</h2>
 
-                <form class="" action="3-pay-package" method="post">
+                <form class="" action="2-job-details-answer" method="post">
                   
                   {# Educational phase #}
 
@@ -64,8 +68,6 @@
                     {% endif %}
                   {% endset %}
 
-                  {{ data.job.phase | log }}
-
                   {# Only show Education phase if the role isnt only "Business manager"#}
                   {% if ('Business manager' not in roles) or (roles | length > 1) %}    
 
@@ -73,7 +75,7 @@
                       <p class="govuk-body">You are listing a role in a {{ educationPhaseText }}. <a href="./2a-education-phase">Change the education phase</a>.</p>
                     {% endset %}
 
-                    <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Education phase</h2>
                     {{ govukInsetText({
                       html: educationPhaseInsetHtml
                     }) }}
@@ -98,26 +100,12 @@
                   {{ govukInput({
                     label: {
                       text: "Job title",
-                      classes: "govuk-label--s"
+                      classes: "govuk-label--m"
                     },
                     hint: {
                       html: jobTitleHintHtml
                     }
                   } | decorateAttributes(data, "data.job.title")) }}
-
-                  {# Set up test for only business manager #}
-                  {# {%  if "Education support" not in data.job.role
-                      and "Teacher" not in data.job.role
-                      and "Leadership" not in data.job.role
-                      and "SEN specialist" not in data.job.role %}
-                      
-                      {% set roleOnlyBusinessManager = "true" %}
-                  {% endif %} #}
-
-                  {# Only show Suitability and Subject if the role isnt only "Business manager"  #}
-                  {# {% if roleOnlyBusinessManager != "true" %} #}
-
-                  {# Only show Suitability and Subject if the role isnt only "Business manager"  #}
                   
                   {% if ('Business manager' not in roles) or (roles | length > 1) %}                  
                   
@@ -127,7 +115,7 @@
                       fieldset: {
                         legend: {
                           text: "Is this job suitable for NQTs?",
-                          classes: "govuk-fieldset__legend--s"
+                          classes: "govuk-fieldset__legend--m"
                         }
                       },
                       items: [
@@ -149,7 +137,7 @@
                         fieldset: {
                           legend: {
                             text: "Key stage",
-                            classes: "govuk-fieldset__legend--s"
+                            classes: "govuk-fieldset__legend--m"
                           }
                         },
                         hint: {
@@ -183,7 +171,7 @@
                       fieldset: {
                         legend: {
                           text: "Working patterns",
-                          classes: "govuk-fieldset__legend--s"
+                          classes: "govuk-fieldset__legend--m"
                         }
                       },
                       hint: {
