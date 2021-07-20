@@ -40,7 +40,19 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for []</h1>
+        
+        {% set SchoolName %}
+          {% if data.job.userType == "singleSchool" %}
+            {{ data.job.defaultSchoolName }}
+          {% elseif data.job.locationSingle %}
+            {{ data.job.locationSingle }}
+          {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
+            multiple schools
+          {% endif %}
+        {% endset %}
+
+        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
+        
         <h5 class="govuk-heading-m">Step 3 of 8</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>

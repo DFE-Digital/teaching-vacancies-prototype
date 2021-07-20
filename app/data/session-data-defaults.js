@@ -24,7 +24,9 @@ let job = {
   
   // Setting up the job aplication flow user to be single school by default
   // Options: "singleSchool" "multiSchoolMat, "multiSchoolLa"
-  userType: "singleSchool",
+  userType: "multiSchoolMat",
+
+  defaultSchoolName: "Bexleyheath Academy"
 }
 
 module.exports = {
