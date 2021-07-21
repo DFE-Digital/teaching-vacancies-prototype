@@ -64,48 +64,9 @@
             <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-l">Job details</h2>
 
-                <form class="" action="2-job-details-answer" method="post">
-                  
-                  {# Educational phase #}
-
-                  {# Setting up come langauge juggling #}
-                  {% set educationPhaseText %}
-                    {% if data.job.phase == "Primary" %}
-                      Primary school
-                    {% endif %}
-                    {% if data.job.phase == "Secondary" %}
-                      Secondary school
-                    {% endif %}
-                  {% endset %}
-
-                  {# Only show Education phase if the role isnt only "Business manager"#}
-                  {% if ('Business manager' not in roles) or (roles | length > 1) %}    
-
-                    {% set educationPhaseInsetHtml %}
-                      <p class="govuk-body">You are listing a role in a {{ educationPhaseText }}. <a href="./2a-education-phase">Change the education phase</a>.</p>
-                    {% endset %}
-
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Education phase</h2>
-                    {{ govukInsetText({
-                      html: educationPhaseInsetHtml
-                    }) }}
-
-                  {% endif %}
+                <form class="" action="3-pay-package" method="post">
 
                   {# Job title #}
-
-                  {% set jobTitleHintHtml %}
-                    {# If just Business manager we dont care about phase #}
-                    {% if 'Business manager' in roles and roles | length == 1 %}
-                      Include whether the role is at a school or a trust.
-                    {# {% endif %} #}
-                    {% elseif data.job.phase == "Primary" %}
-                      Include Key Stage if relevant.
-                    {# {% endif %} #}
-                    {% elseif data.job.phase == "Secondary" %}
-                      Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’.
-                    {% endif %}
-                  {% endset %}
 
                   {{ govukInput({
                     label: {
@@ -116,9 +77,7 @@
                       html: jobTitleHintHtml
                     }
                   } | decorateAttributes(data, "data.job.title")) }}
-                  
-                  {% if ('Business manager' not in roles) or (roles | length > 1) %}                  
-                  
+                                  
                     {# Suitability #}
 
                     {{ govukRadios({
@@ -139,42 +98,11 @@
                     } | decorateAttributes(data, "data.job.suitability")) }}
                     
                     {# Subject #}
-
-                    {# Only show this is phase is Primary #}
-                    {% if data.job.phase == "Primary" %} 
-                      <!-- Primary subject -->
-                      {{ govukCheckboxes({
-                        fieldset: {
-                          legend: {
-                            text: "Key stage",
-                            classes: "govuk-fieldset__legend--m"
-                          }
-                        },
-                        hint: {
-                          text: "What key stage(s) will the teacher focus on?"
-                        },
-                        items: [
-                          {
-                            text: "Early years"
-                          },
-                          {
-                            text: "KS1"
-                          },
-                          {
-                            text: "KS2"
-                          }
-                        ]
-                      } | decorateAttributes(data, "data.job.keyStage")) }}
-                      {# Show this is phase is Secondary #}
-                      {# TODO Make this test more specific #}
-                      {% else %}
-                        <!-- Secondary subject -->
-                        <div class="govuk-form-group">
-                          {% include "includes/hiring-staff/subject-autocomplete.html" %}
-                        </div>
-                      {% endif %}
-
-                    {% endif %}
+                    
+                    <!-- Secondary subject -->
+                    <div class="govuk-form-group">
+                      {% include "includes/hiring-staff/subject-autocomplete.html" %}
+                    </div>
 
                     {# Working patterns #}
                     {{ govukCheckboxes({
@@ -202,6 +130,19 @@
                         }
                       ]
                     } | decorateAttributes(data, "data.job.workingPattern")) }}
+
+                    {# Days/hours #}
+
+                    {{ govukInput({
+                    label: {
+                      text: "How many hours or days does the role cover?",
+                      classes: "govuk-label--m"
+                    },
+                    hint: {
+                      text: "For example, '20 hours a week' or 'Tuesday and Wednesday mornings'"
+                    },
+                    classes: "govuk-!-width-two-thirds"
+                  } | decorateAttributes(data, "data.job.hoursDays")) }}
 
                     <!-- working pattern END -->
 
