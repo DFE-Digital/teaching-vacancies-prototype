@@ -65,7 +65,7 @@
                 <h2 class="govuk-heading-l">Job details</h2>
 
                 <form class="" action="2-job-details-answer" method="post">
-                  
+
                   {# Educational phase #}
 
                   {# Setting up come langauge juggling #}
@@ -79,7 +79,7 @@
                   {% endset %}
 
                   {# Only show Education phase if the role isnt only "Business manager"#}
-                  {% if ('Business manager' not in roles) or (roles | length > 1) %}    
+                  {% if ('Business manager' not in roles) or (roles | length > 1) %}
 
                     {% set educationPhaseInsetHtml %}
                       <p class="govuk-body">You are listing a role in a {{ educationPhaseText }}. <a href="./2a-education-phase">Change the education phase</a>.</p>
@@ -116,9 +116,9 @@
                       html: jobTitleHintHtml
                     }
                   } | decorateAttributes(data, "data.job.title")) }}
-                  
-                  {% if ('Business manager' not in roles) or (roles | length > 1) %}                  
-                  
+
+                  {% if ('Business manager' not in roles) or (roles | length > 1) %}
+
                     {# Suitability #}
 
                     {{ govukRadios({
@@ -137,11 +137,11 @@
                         }
                       ]
                     } | decorateAttributes(data, "data.job.suitability")) }}
-                    
+
                     {# Subject #}
 
                     {# Only show this is phase is Primary #}
-                    {% if data.job.phase == "Primary" %} 
+                    {% if data.job.phase == "Primary" %}
                       <!-- Primary subject -->
                       {{ govukCheckboxes({
                         fieldset: {
@@ -151,17 +151,17 @@
                           }
                         },
                         hint: {
-                          text: "What key stage(s) will the teacher focus on?"
+                          text: "What key stage(s) will the role focus on?"
                         },
                         items: [
                           {
                             text: "Early years"
                           },
                           {
-                            text: "KS1"
+                            text: "KS1 (key stage 1)"
                           },
                           {
-                            text: "KS2"
+                            text: "KS2 (key stage 2)"
                           }
                         ]
                       } | decorateAttributes(data, "data.job.keyStage")) }}
@@ -226,7 +226,7 @@
                     </h2>
                 </div>
                 <!-- STEP HEADER END -->
-                
+
                 {% include "includes/hiring-staff/acc-steps.html" %}
 
             </div>

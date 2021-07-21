@@ -66,7 +66,7 @@
 
                 <h2 class="govuk-heading-l">Job details</h2>
 
-                    {# TODO - these are all the education phases 
+                    {# TODO - these are all the education phases
                     All
                     16 plus
                     All-through
@@ -81,7 +81,7 @@
                     {{ govukRadios({
                         fieldset: {
                           legend: {
-                            text: "What is the education phase?",
+                            text: "What education phase will this role be in?",
                             classes: "govuk-fieldset__legend--m"
                           }
                         },
@@ -96,7 +96,7 @@
                       } | decorateAttributes(data, "data.job.phase")) }}
 
                     <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="./2-job-details">Cancel</a></p> 
+                    <p><a href="./2-job-details">Cancel</a></p>
 
                 </form>
 
