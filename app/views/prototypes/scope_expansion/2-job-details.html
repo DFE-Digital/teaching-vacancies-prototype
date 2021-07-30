@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set activePage = "step2" %}
+{% set activePage = "step3" %}
 
 {% set roles = data.job.role | toArray %}
 
@@ -13,226 +13,187 @@
 {% endblock %}
 
 {% block header %}
-  {{ govukHeader({
-      homepageUrl: "dashboard",
-      serviceName: serviceName,
-      serviceUrl: "dashboard",
-      containerClasses: "govuk-width-container",
-    navigation: [
-      {
-        href: "#",
-        text: "Manage jobs"
-      },
-      {
-        href: "#",
-        text: "View public jobs"
-      },
-      {
-        href: "#",
-        text: "Sign out"
-      }
-    ]
-  }) }}
+  {% include "includes/applications/primary-header.html" %}
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-width-container">
+<div class="create-title">
 
-    <div class="create-title">
+    {% set SchoolName %}
+      {% if data.job.userType == "singleSchool" %}
+        {{ data.job.defaultSchoolName }}
+      {% elseif data.job.locationSingle %}
+        {{ data.job.locationSingle }}
+      {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
+        multiple schools
+      {% endif %}
+    {% endset %}
 
-        {% set SchoolName %}
-          {% if data.job.userType == "singleSchool" %}
-            {{ data.job.defaultSchoolName }}
-          {% elseif data.job.locationSingle %}
-            {{ data.job.locationSingle }}
-          {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
-            multiple schools
-          {% endif %}
-        {% endset %}
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
+    <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 3 of 9{% else %}Step 2 of 8{% endif %}</span>
+    <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+</div>
 
-        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
-        <h5 class="govuk-heading-m">{% if isMultiSchool == "true" %}Step 3 of 8{% else %}Step 2 of 8{% endif %}</h5></h5>
-        <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
-    </div>
+<main class="govuk-main-wrapper">
 
-    <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
 
-        <div class="govuk-grid-row">
+        <!-- Main content START -->
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Job details</h2>
 
-            <!-- Main content START -->
-            <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-l">Job details</h2>
+            <form class="" action="3-working-pattern" method="post">
+              
+              {# Educational phase #}
 
-                <form class="" action="2-job-details-answer" method="post">
+              {# Setting up come langauge juggling #}
+              {% set educationPhaseText %}
+                {% if data.job.phase == "Primary" %}
+                  Primary school
+                {% endif %}
+                {% if data.job.phase == "Secondary" %}
+                  Secondary school
+                {% endif %}
+              {% endset %}
+
+              {% set initialJobPhase %}
+                {% if data.job.phaseSetup %}
+                  {{ data.job.phaseSetup }}
+                {% else %}
+                  {{ data.job.phase }}
+                {% endif %}
+              {% endset %}
+              
+              {% set jobPhaseChangeLink %}
+                {% if data.job.phaseSetup %}
+                  ./2a-education-phase-setup
+                {% else %}
+                  ./2a-education-phase
+                {% endif %}
+              {% endset %}
+
+              {% set educationPhaseInsetHtml %}
+                <p class="govuk-body">You are listing a{% if data.job.phase == "All-through" %}n{% endif %} {{ initialJobPhase }} phase role. <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
+              {% endset %}
+
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
+              {{ govukInsetText({
+                html: educationPhaseInsetHtml
+              }) }}
+
+
+              {# Job title #}
+
+              {% set jobTitleHintHtml %}
+                {# If just Business manager we dont care about phase #}
+                {% if 'Business manager' in roles and roles | length == 1 %}
+                  Include whether the role is at a school or a trust.
+                {# {% endif %} #}
+                {% elseif data.job.phase == "Primary" %}
+                  Include Key Stage if relevant.
+                {# {% endif %} #}
+                {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" %}
+                  Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’.
+                {% endif %}
+              {% endset %}
+
+              {{ govukInput({
+                label: {
+                  text: "Job title",
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  html: jobTitleHintHtml
+                }
+              } | decorateAttributes(data, "data.job.title")) }}
+
+              {{ govukRadios({
+                  fieldset: {
+                    legend: {
+                      text: "Contract type",
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  items: [
+                    {
+                      text: "Permanent"
+                    },
+                    {
+                      text: "Fixed term",
+                      conditional: {
+                        html: conditionalContractHtml
+                      }
+                    }
+                  ]
+                } | decorateAttributes(data, "data.job.contractType")) }}
+              
+              {# {% if ('Business manager' not in roles) or (roles | length > 1) %} #}
+              
+                {# Subject #}
+
+                {# Only show this is phase is Primary #}
+                {% if data.job.phase == "Primary" %} 
+
+                  {% include "includes/hiring-staff/primary-subjects.html" %}
                   
-                  {# Educational phase #}
+                  {# Show this is phase is Secondary #}
+                {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" %}
+                    
+                    {% include "includes/hiring-staff/subject-autocomplete.html" %}
 
-                  {# Setting up come langauge juggling #}
-                  {% set educationPhaseText %}
-                    {% if data.job.phase == "Primary" %}
-                      Primary school
-                    {% endif %}
-                    {% if data.job.phase == "Secondary" %}
-                      Secondary school
-                    {% endif %}
-                  {% endset %}
+                {% else %}
 
-                  {# Only show Education phase if the role isnt only "Business manager"#}
-                  {% if ('Business manager' not in roles) or (roles | length > 1) %}    
+                    {% include "includes/hiring-staff/primary-subjects.html" %}
 
-                    {% set educationPhaseInsetHtml %}
-                      <p class="govuk-body">You are listing a role in a {{ educationPhaseText }}. <a href="./2a-education-phase">Change the education phase</a>.</p>
-                    {% endset %}
+                    {% include "includes/hiring-staff/subject-autocomplete.html" %}
 
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Education phase</h2>
-                    {{ govukInsetText({
-                      html: educationPhaseInsetHtml
-                    }) }}
+                {% endif %}
 
-                  {% endif %}
+                {# {% endif %} #}
 
-                  {# Job title #}
+                {# Contract type #}
 
-                  {% set jobTitleHintHtml %}
-                    {# If just Business manager we dont care about phase #}
-                    {% if 'Business manager' in roles and roles | length == 1 %}
-                      Include whether the role is at a school or a trust.
-                    {# {% endif %} #}
-                    {% elseif data.job.phase == "Primary" %}
-                      Include Key Stage if relevant.
-                    {# {% endif %} #}
-                    {% elseif data.job.phase == "Secondary" %}
-                      Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’.
-                    {% endif %}
-                  {% endset %}
-
+                {% set conditionalContractHtml %}
                   {{ govukInput({
                     label: {
-                      text: "Job title",
-                      classes: "govuk-label--m"
+                      text: "Duration of fixed term contract?",
+                      classes: "govuk-label--s"
                     },
                     hint: {
-                      html: jobTitleHintHtml
-                    }
-                  } | decorateAttributes(data, "data.job.title")) }}
-                  
-                  {% if ('Business manager' not in roles) or (roles | length > 1) %}                  
-                  
-                    {# Suitability #}
+                      text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
+                    },
+                    classes: "govuk-!-width-two-thirds"
+                  } | decorateAttributes(data, "data.job.contractDuration")) }}
+                {% endset %}
 
-                    {{ govukRadios({
-                      fieldset: {
-                        legend: {
-                          text: "Is this job suitable for NQTs?",
-                          classes: "govuk-fieldset__legend--m"
-                        }
-                      },
-                      items: [
-                        {
-                          text: "Yes"
-                        },
-                        {
-                          text: "No"
-                        }
-                      ]
-                    } | decorateAttributes(data, "data.job.suitability")) }}
-                    
-                    {# Subject #}
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+                <p><a href="dashboard-drafts">Save and return later</a></p>
+            </form>
 
-                    {# Only show this is phase is Primary #}
-                    {% if data.job.phase == "Primary" %} 
-                      <!-- Primary subject -->
-                      {{ govukCheckboxes({
-                        fieldset: {
-                          legend: {
-                            text: "Key stage",
-                            classes: "govuk-fieldset__legend--m"
-                          }
-                        },
-                        hint: {
-                          text: "What key stage(s) will the teacher focus on?"
-                        },
-                        items: [
-                          {
-                            text: "Early years"
-                          },
-                          {
-                            text: "KS1"
-                          },
-                          {
-                            text: "KS2"
-                          }
-                        ]
-                      } | decorateAttributes(data, "data.job.keyStage")) }}
-                      {# Show this is phase is Secondary #}
-                      {# TODO Make this test more specific #}
-                      {% else %}
-                        <!-- Secondary subject -->
-                        <div class="govuk-form-group">
-                          {% include "includes/hiring-staff/subject-autocomplete.html" %}
-                        </div>
-                      {% endif %}
+        </div>
+        <!-- Main content END -->
 
-                    {% endif %}
-
-                    {# Working patterns #}
-                    {{ govukCheckboxes({
-                      fieldset: {
-                        legend: {
-                          text: "Working patterns",
-                          classes: "govuk-fieldset__legend--m"
-                        }
-                      },
-                      hint: {
-                        text: "Select all working patterns you will consider for the role. Flexible working options may attract more candidates."
-                      },
-                      items: [
-                        {
-                          text: "Full time"
-                        },
-                        {
-                          text: "Part time"
-                        },
-                        {
-                          text: "Term time"
-                        },
-                        {
-                          text: "Job share"
-                        }
-                      ]
-                    } | decorateAttributes(data, "data.job.workingPattern")) }}
-
-                    <!-- working pattern END -->
-
-                    <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <p><a href="dashboard-drafts">Save and return later</a></p>
-                </form>
-
+        <!-- Sidebar START -->
+        <div class="govuk-grid-column-one-third">
+            <!-- STEP HEADER START -->
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                    <!--
+                    <a href="#">
+                        Learn to drive a car: step by step
+                    </a>
+                    -->
+                </h2>
             </div>
-            <!-- Main content END -->
+            <!-- STEP HEADER END -->
+            
+            {% include "includes/hiring-staff/acc-steps.html" %}
 
-            <!-- Sidebar START -->
-            <div class="govuk-grid-column-one-third">
-                <!-- STEP HEADER START -->
-                <div class="app-step-nav-related app-step-nav-related--singular">
-                    <h2 class="app-step-nav-related__heading">
-                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-                        <!--
-                        <a href="#">
-                            Learn to drive a car: step by step
-                        </a>
-                        -->
-                    </h2>
-                </div>
-                <!-- STEP HEADER END -->
-                
-                {% include "includes/hiring-staff/acc-steps.html" %}
+        </div>
+        <!-- Sidebar END -->
 
-            </div>
-            <!-- Sidebar END -->
-
-        </main>
-    </div>
+    </main>
 
 {% endblock %}

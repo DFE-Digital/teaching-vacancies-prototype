@@ -37,7 +37,7 @@
       {{ govukRadios({
         fieldset: {
           legend: {
-            text: "User types",
+            text: "User type",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -68,10 +68,16 @@
         },
         items: [
           {
+            text: "All-through"
+          },
+          {
             text: "Primary"
           },
           {
             text: "Secondary"
+          },
+          {
+            text: "16 to 19"
           }
         ]
       } | decorateAttributes(data, "data.job.phase")) }}
