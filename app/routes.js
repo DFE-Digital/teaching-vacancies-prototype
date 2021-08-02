@@ -70,8 +70,39 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     }   
   })
   
+  // Job role (v1)
+  router.post('/prototypes/scope_expansion_v1/0-job-role-answer', function (req, res) {
+  
+    let jobRole = req.session.data.job.role
+    let userType = req.session.data.job.userType
+
+    if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
+      res.redirect('/prototypes/scope_expansion_v1/1-job-location')
+    } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
+      res.redirect('/prototypes/scope_expansion_v1/0a-job-role-details') 
+    } else if (jobRole == "bussinessManager") {
+      res.redirect('/404')  
+    } else {
+      res.redirect('/prototypes/scope_expansion_v1/2-job-details')
+    }   
+  })
+  
+  // Job role details (v1)
+  router.post('/prototypes/scope_expansion_v1/0-job-role-details-answer', function (req, res) {
+  
+    let jobPhase = req.session.data.job.phase
+    let userType = req.session.data.job.userType
+    
+    // If mutli-school user go to location
+    if ((userType == "multiSchoolMat") || (userType == "multiSchoolLa")) {
+      res.redirect('/prototypes/scope_expansion_v1/1-job-location')
+    } else {
+      res.redirect('/prototypes/scope_expansion_v1/2-job-details')
+    } 
+  })
+  
   // Job role details
-  router.post('/prototypes/scope_expansion/0-job-role-details-anwser', function (req, res) {
+  router.post('/prototypes/scope_expansion/0-job-role-details-answer', function (req, res) {
   
     let jobPhase = req.session.data.job.phase
     let userType = req.session.data.job.userType
@@ -85,6 +116,22 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     } else {
       res.redirect('/prototypes/scope_expansion/2-job-details')
     } 
+  })
+  
+  // Job location MAT (v1)
+  router.post('/prototypes/scope_expansion_v1/job-role-answer-mat', function (req, res) {
+    
+    let selectedLocationsMat = req.session.data.job.locationMat
+    let jobPhase = req.session.data.job.phase
+
+    if (selectedLocationsMat == "At one school in the trust") {
+      res.redirect('/prototypes/scope_expansion_v1/1b-job-location-single')
+    } else if (selectedLocationsMat == "At more than one school in the trust") {
+      res.redirect('/prototypes/scope_expansion_v1/1a-job-location-many')
+    } else {
+      res.redirect('/prototypes/scope_expansion_v1/2-job-details')
+    }
+
   })
   
   // Job location MAT
@@ -105,7 +152,19 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
   })
 
-  // Job Location
+  // Job Location LA (v1)
+  router.post('/prototypes/scope_expansion_v1/job-role-answer-la', function (req, res) {
+    
+    let selectedLocationsLa = req.session.data.job.locationLa
+
+    if (selectedLocationsLa == "At one school") {
+      res.redirect('/prototypes/scope_expansion_v1/1b-job-location-single')
+    } else {
+      res.redirect('/prototypes/scope_expansion_v1/1a-job-location-many')
+    }
+  })
+
+  // Job Location LA
   router.post('/prototypes/scope_expansion/job-role-answer-la', function (req, res) {
     
     let selectedLocationsLa = req.session.data.job.locationLa
@@ -131,19 +190,5 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
   
-  // //set what ever is chosen in the job phase setup as the session phase
-  // router.post('/prototypes/scope_expansion/2a-education-phase-setup-answer', function (req, res) {
-    
-  //   let jobPhaseSetup = req.session.data.job.phaseSetup 
-    
-  //   if (jobPhaseSetup == "All-through") {
-  //     jobPhase = jobPhaseSetup
-  //     res.redirect('/prototypes/scope_expansion/2-job-details')
-  //   } else {
-  //     jobPhase = jobPhaseSetup
-  //     res.redirect('/prototypes/scope_expansion/2-job-details')
-  //   }
-
-  // })
 
 module.exports = router

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set activePage = "step3" %}
+{% set activePage = "step2" %}
 
 {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
   {% set isMultiSchool = "true" %}
@@ -77,7 +77,7 @@
                         text: "16 to 19"
                       }
                     ]
-                  } | decorateAttributes(data, "data.job.phaseSetup")) }}
+                  } | decorateAttributes(data, "data.job.phase")) }}
 
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
                 <p><a href="./2-job-details">Cancel</a></p> 

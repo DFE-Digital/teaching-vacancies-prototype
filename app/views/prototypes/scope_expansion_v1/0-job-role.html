@@ -29,7 +29,7 @@
         <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-l">Job role</h2>
 
-            <form class="" action="0-job-role-answer" method="post">
+            <form class="" action="/prototypes/scope_expansion_v1/0-job-role-answer" method="post">
 
               {% set teacher %}
                 <span class="govuk-!-font-weight-bold">Teacher</span>
@@ -47,10 +47,6 @@
 
               {% set sendCo %}
                 <span class="govuk-!-font-weight-bold">SENDCo (Special eduational needs and disabilities coordinator)</span>
-              {% endset %}
-              
-              {% set bussinessManager %}
-                <span class="govuk-!-font-weight-bold">Business manager</span>
               {% endset %}
 
                 <!-- ROLE START -->
@@ -77,10 +73,6 @@
                     {
                       html: sendCo,
                       value: "sendCo"
-                    },
-                    {
-                      html: bussinessManager,
-                      value: "bussinessManager"
                     }
                   ]
                 } | decorateAttributes(data, "data.job.role")) }}

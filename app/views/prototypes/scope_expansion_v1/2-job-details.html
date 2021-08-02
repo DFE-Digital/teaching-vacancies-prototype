@@ -20,6 +20,7 @@
 
 <div class="create-title">
 
+    {# todo - update this everywhere #}
     {% set SchoolName %}
       {% if data.job.userType == "singleSchool" %}
         {{ data.job.defaultSchoolName }}
@@ -46,44 +47,6 @@
             <h2 class="govuk-heading-l">Job details</h2>
 
             <form class="" action="3-working-pattern" method="post">
-              
-              {# Educational phase #}
-
-              {# Setting up come langauge juggling #}
-              {% set educationPhaseText %}
-                {% if data.job.phase == "Primary" %}
-                  Primary school
-                {% endif %}
-                {% if data.job.phase == "Secondary" %}
-                  Secondary school
-                {% endif %}
-              {% endset %}
-
-              {% set initialJobPhase %}
-                {% if data.job.phaseSetup %}
-                  {{ data.job.phaseSetup }}
-                {% else %}
-                  {{ data.job.phase }}
-                {% endif %}
-              {% endset %}
-              
-              {% set jobPhaseChangeLink %}
-                {% if data.job.phaseSetup %}
-                  ./2a-education-phase-setup
-                {% else %}
-                  ./2a-education-phase
-                {% endif %}
-              {% endset %}
-
-              {% set educationPhaseInsetHtml %}
-                <p class="govuk-body">You are listing a{% if data.job.phase == "All-through" %}n{% endif %} {{ initialJobPhase }} phase role. <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
-              {% endset %}
-
-              <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
-              {{ govukInsetText({
-                html: educationPhaseInsetHtml
-              }) }}
-
 
               {# Job title #}
 
@@ -106,9 +69,23 @@
                   classes: "govuk-label--s"
                 },
                 hint: {
-                  html: jobTitleHintHtml
+                  text: "For secondary school roles include subject and, if relevant, level of seniority (‘Subject leader for science’, for example)."
                 }
               } | decorateAttributes(data, "data.job.title")) }}
+
+              {# Contract type #}
+              {% set conditionalContractHtml %}
+                {{ govukInput({
+                  label: {
+                    text: "Duration of fixed term contract?",
+                    classes: "govuk-label--s"
+                  },
+                  hint: {
+                    text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
+                  },
+                  classes: "govuk-!-width-two-thirds"
+                } | decorateAttributes(data, "data.job.contractDuration")) }}
+              {% endset %}
 
               {{ govukRadios({
                   fieldset: {
@@ -132,37 +109,8 @@
                             
                 {# Subject #}
 
-                {# Only show this is phase is Primary #}
-                {% if data.job.phase == "Primary" or data.job.phaseSetup == "Primary"  %} 
-
-                  {% include "includes/hiring-staff/primary-subjects.html" %}
-                  
-                {# Show this is phase is Secondary or 16 to 19 #}
-                {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" or data.job.phaseSetup == "Secondary" or data.job.phaseSetup == "16 to 19" %}
-                    
-                    {% include "includes/hiring-staff/subject-autocomplete.html" %}
-
-                {% else %}
-
-                    {% include "includes/hiring-staff/primary-subjects.html" %}
-                    {% include "includes/hiring-staff/subject-autocomplete.html" %}
-
-                {% endif %}
-
-                {# Contract type #}
-
-                {% set conditionalContractHtml %}
-                  {{ govukInput({
-                    label: {
-                      text: "Duration of fixed term contract?",
-                      classes: "govuk-label--s"
-                    },
-                    hint: {
-                      text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
-                    },
-                    classes: "govuk-!-width-two-thirds"
-                  } | decorateAttributes(data, "data.job.contractDuration")) }}
-                {% endset %}
+                {% include "includes/hiring-staff/primary-subjects.html" %}
+                {% include "includes/hiring-staff/subject-autocomplete.html" %}
 
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
                 <p><a href="dashboard-drafts">Save and return later</a></p>

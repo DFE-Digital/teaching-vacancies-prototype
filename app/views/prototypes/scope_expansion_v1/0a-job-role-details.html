@@ -32,7 +32,7 @@
 
               {# If Teacher #}
               {% if data.job.role == "teacher" %}
-                <form class="" action="0-job-role-details-anwser" method="post">
+                <form action="/prototypes/scope_expansion_v1/0-job-role-details-answer" method="post">
                     {{ govukCheckboxes({
                       fieldset: {
                         legend: {
@@ -59,7 +59,7 @@
               
                 {# if leadership #}
                 {% if data.job.role == "leadership" %}
-                  <form class="" action="0-job-role-details-anwser" method="post">
+                  <form action="/prototypes/scope_expansion_v1/0-job-role-details-answer" method="post">
                       {{ govukRadios({
                         fieldset: {
                           legend: {
@@ -82,7 +82,7 @@
 
                   {# if education support #}
                   {% if data.job.role == "education support" %}
-                    <form class="" action="0-job-role-details-anwser" method="post">
+                    <form action="/prototypes/scope_expansion_v1/0-job-role-details-answer" method="post">
                         {{ govukCheckboxes({
                           fieldset: {
                             legend: {
