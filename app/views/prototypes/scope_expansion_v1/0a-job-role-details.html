@@ -83,25 +83,22 @@
                   {# if education support #}
                   {% if data.job.role == "education support" %}
                     <form action="/prototypes/scope_expansion_v1/0-job-role-details-answer" method="post">
-                        {{ govukCheckboxes({
-                          fieldset: {
-                            legend: {
-                              text: "Tell us more about the role",
-                              classes: "govuk-fieldset__legend--s"
-                            }
+                       {{ govukRadios({
+                        fieldset: {
+                          legend: {
+                            text: "Does the role have SEND responsibilities (special eduational needs and disabilities)?",
+                            classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+                          }
+                        },
+                        items: [
+                          {
+                            text: "Yes"
                           },
-                          hint: {
-                            text: "Select all that apply"
-                          },
-                          items: [
-                            {
-                              text: "Teaching assistant"
-                            },
-                            {
-                              text: "SEND responsibilities (special eduational needs and disabilities)"
-                            }
-                          ]
-                        } | decorateAttributes(data, "data.job.teacherRoleDetails")) }}
+                          {
+                            text: "No"
+                          }
+                        ]
+                      } | decorateAttributes(data, "data.job.teacherRoleDetails")) }}
                       <button class="govuk-button" data-module="govuk-button">Continue</button>
                       </form>
                     {% endif %}

@@ -111,19 +111,16 @@ T / Search results
 							},
 							items: [
 								{
-									text: "Education support"
-								},
-								{
 									text: "Teacher"
 								},
 								{
 									text: "Leadership"
 								},
 								{
-									text: "SEN specialist"
+									text: "Education support"
 								},
 								{
-									text: "Business manager"
+									text: "SENDCo"
 								}
 							]
 						} | decorateAttributes(data, "data.searchFilter.jobRole")) }}
@@ -136,20 +133,39 @@ T / Search results
 							classes: "govuk-checkboxes--small",
 							fieldset: {
 								legend: {
-									text: "Suitable for NQTs",
+									text: "Suitable for early career teachers",
 									classes: "govuk-fieldset__legend--s"
 								}
 							},
 							items: [
 								{
-									text: "Only show results suitable for NQTs"
+									text: "Only show results suitable for early career teachers"
 								}
 							]
-						} | decorateAttributes(data, "data.searchFilter.suitableForNqts")) }}
+						} | decorateAttributes(data, "data.searchFilter.suitableForEcf")) }}
+
+            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+						
+            {{ govukCheckboxes({
+							idPrefix: "",
+							name: "",
+							classes: "govuk-checkboxes--small",
+							fieldset: {
+								legend: {
+									text: "SEND responsibilities",
+									classes: "govuk-fieldset__legend--s"
+								}
+							},
+							items: [
+								{
+									text: "Only show results with SEND responsibilities"
+								}
+							]
+						} | decorateAttributes(data, "data.searchFilter.suitableForSend")) }}
 						
 						<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
 
-						{{ govukCheckboxes({
+						{# {{ govukCheckboxes({
 							idPrefix: "",
 							name: "",
 							classes: "govuk-checkboxes--small",
@@ -175,7 +191,7 @@ T / Search results
 							]
 						} | decorateAttributes(data, "data.searchFilter.educationPhase")) }}
 
-						<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+						<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3"> #}
 
 						{{ govukCheckboxes({
 							idPrefix: "",

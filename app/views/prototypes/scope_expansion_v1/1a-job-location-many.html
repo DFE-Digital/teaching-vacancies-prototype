@@ -47,7 +47,7 @@
                     fieldset: {
                       legend: {
                         text: "In which school will the job be based?",
-                        classes: "govuk-fieldset__legend--m"
+                        classes: "govuk-fieldset__legend--s"
                       }
                     },
                     items: [
@@ -65,6 +65,8 @@
                       }
                     ]
                   } | decorateAttributes(data, "data.job.locationMany")) }}
+
+                  <p class="govuk-body">Can't see the school you are looking for? <br><a class="govuk-link govuk-link--no-visited-state" href="#">Add a school to your account</a></p>
 
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
                 <p><a href="./0-job-location">Cancel</a></p> 
