@@ -8,7 +8,7 @@
     <p class="govuk-body">
       {{ item.jobLocation }}
     </p>
-    <div class="tag-wrapper">
+    {# <div class="tag-wrapper">
       <span class="govuk-visually-hidden">Role </span>
 
       {% for tag in item.tags %}
@@ -18,7 +18,7 @@
         })}}
       {% endfor %}
 
-    </div>
+    </div> #}
     <dl>
       {% if item.salaryFte %}
         <dt>Salary {% if item.salaryActual %}(FTE){% endif %}</dt>

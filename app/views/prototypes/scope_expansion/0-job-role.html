@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% set activePage = "step0" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="create-title">
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing </h1>
+    <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 1 of 9{% else %}Step 1 of 8{% endif %}</span>
+</div>
+
+<main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+
+        <!-- Main content START -->
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Job role</h2>
+
+            <form class="" action="0-job-role-answer" method="post">
+
+              {% set teacher %}
+                <span class="govuk-!-font-weight-bold">Teacher</span>
+              {% endset %}
+
+              {% set leadership %}
+                <span class="govuk-!-font-weight-bold">Leadership</span>
+                <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Head of Year/Subject, Deputy/Assistant Head, Headteacher, and trust-level roles</span>
+              {% endset %}
+
+              {% set edSupport %}
+                <span class="govuk-!-font-weight-bold">Education support</span>
+                <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Teaching assistant and Learning support</span>
+              {% endset %}
+
+              {% set sendCo %}
+                <span class="govuk-!-font-weight-bold">SENDCo (Special eduational needs and disabilities coordinator)</span>
+              {% endset %}
+              
+              {% set bussinessManager %}
+                <span class="govuk-!-font-weight-bold">Business manager</span>
+              {% endset %}
+
+                <!-- ROLE START -->
+                {{ govukRadios({
+                  fieldset: {
+                    legend: {
+                      text: "What is the job role?",
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  items: [
+                    {
+                      html: teacher,
+                      value: "teacher"
+                    },
+                    {
+                      html: leadership,
+                      value: "leadership"
+                    },
+                    {
+                      html: edSupport,
+                      value: "education support"
+                    },
+                    {
+                      html: sendCo,
+                      value: "sendCo"
+                    },
+                    {
+                      html: bussinessManager,
+                      value: "bussinessManager"
+                    }
+                  ]
+                } | decorateAttributes(data, "data.job.role")) }}
+                <!-- ROLE END -->
+
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+                <p><a href="dashboard-drafts">Save and return later</a></p> 
+
+            </form>
+
+        </div>
+        <!-- Main content END -->
+
+        <!-- Sidebar START -->
+        <div class="govuk-grid-column-one-third">
+            <!-- STEP HEADER START -->
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                </h2>
+            </div>
+            <!-- STEP HEADER END -->
+            {% include "includes/hiring-staff/acc-steps.html" %}
+        </div>
+        <!-- Sidebar END -->
+
+    </main>
+
+{% endblock %}

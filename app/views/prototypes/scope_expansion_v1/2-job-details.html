@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% set activePage = "step3" %}
+
+{% set roles = data.job.role | toArray %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="create-title">
+
+    {# todo - update this everywhere #}
+    {% set SchoolName %}
+      {% if data.job.userType == "singleSchool" %}
+        {{ data.job.defaultSchoolName }}
+      {% elseif data.job.locationSingle %}
+        {{ data.job.locationSingle }}
+      {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
+        multiple schools
+      {% elseif (data.job.locationMat == "At one school in the trust") or (data.job.locationLa == "At one school") %}
+        {{ data.job.locationSingle }}
+      {% endif %}
+    {% endset %}
+
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
+    <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 3 of 9{% else %}Step 2 of 8{% endif %}</span>
+    <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+</div>
+
+<main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+
+        <!-- Main content START -->
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Job details</h2>
+
+            <form class="" action="3-working-pattern" method="post">
+
+              {# Job title #}
+
+              {% set jobTitleHintHtml %}
+                {# If just Business manager we dont care about phase #}
+                {% if 'Business manager' in roles and roles | length == 1 %}
+                  Include whether the role is at a school or a trust.
+                {# {% endif %} #}
+                {% elseif data.job.phase == "Primary" %}
+                  Include Key Stage if relevant.
+                {# {% endif %} #}
+                {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" %}
+                  Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’.
+                {% endif %}
+              {% endset %}
+
+              {{ govukInput({
+                label: {
+                  text: "Job title",
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "For secondary school roles include subject and, if relevant, level of seniority (‘Subject leader for science’, for example)."
+                }
+              } | decorateAttributes(data, "data.job.title")) }}
+
+              {# Contract type #}
+              {% set conditionalContractHtml %}
+                {{ govukInput({
+                  label: {
+                    text: "Duration of fixed term contract?",
+                    classes: "govuk-label--s"
+                  },
+                  hint: {
+                    text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
+                  },
+                  classes: "govuk-!-width-two-thirds"
+                } | decorateAttributes(data, "data.job.contractDuration")) }}
+              {% endset %}
+
+              {{ govukRadios({
+                  fieldset: {
+                    legend: {
+                      text: "Contract type",
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  items: [
+                    {
+                      text: "Permanent"
+                    },
+                    {
+                      text: "Fixed term",
+                      conditional: {
+                        html: conditionalContractHtml
+                      }
+                    }
+                  ]
+                } | decorateAttributes(data, "data.job.contractType")) }}
+                            
+                {# Subject #}
+
+                {% include "includes/hiring-staff/subject-autocomplete.html" %}
+
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+                <p><a href="dashboard-drafts">Save and return later</a></p>
+            </form>
+
+        </div>
+        <!-- Main content END -->
+
+        <!-- Sidebar START -->
+        <div class="govuk-grid-column-one-third">
+            <!-- STEP HEADER START -->
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                </h2>
+            </div>
+            <!-- STEP HEADER END -->
+            
+            {% include "includes/hiring-staff/acc-steps.html" %}
+
+        </div>
+        <!-- Sidebar END -->
+
+    </main>
+
+{% endblock %}

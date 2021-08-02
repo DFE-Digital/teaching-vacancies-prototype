@@ -12,6 +12,8 @@
     
     <form action="" method="post">
 
+      <h2 class="govuk-heading-m">Headings and navigation</h2>
+
       {{ govukCheckboxes({
         items: [
           {
@@ -29,6 +31,56 @@
           }
         ]
       } | decorateAttributes(data, "data.settings.showPrimaryNav")) }}
+
+      {# user types #}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "User type",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "singleSchool",
+            text: "Single school"
+          },
+          {
+            value: "multiSchoolMat",
+            text: "MAT"
+          },
+          {
+            value: "multiSchoolLa",
+            text: "LA"
+          }
+        ]
+      } | decorateAttributes(data, "data.job.userType")) }}
+      
+      {# Education Phase #}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Education phase",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            text: "All-through"
+          },
+          {
+            text: "Primary"
+          },
+          {
+            text: "Secondary"
+          },
+          {
+            text: "16 to 19"
+          }
+        ]
+      } | decorateAttributes(data, "data.job.phase")) }}
 
       {{ govukButton({
         "text": "Update"

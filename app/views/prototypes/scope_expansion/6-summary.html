@@ -8,18 +8,14 @@
 
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-      homepageUrl: "/",
+      homepageUrl: "dashboard",
       serviceName: serviceName,
       serviceUrl: "dashboard",
       containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "dashboard",
+        href: "#",
         text: "Manage jobs"
-      },
-      {
-        href: "my-schools",
-        text: "Schools in your trust"
       },
       {
         href: "#",
@@ -38,8 +34,8 @@
 <div class="govuk-width-container">
 
     <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing</h1>
-        <h5 class="govuk-heading-m">Step 1 of 8</h5>
+        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
+        <h5 class="govuk-heading-m">Step 6 of 6</h5>
         <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 
@@ -49,78 +45,24 @@
 
             <!-- Main content START -->
             <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-l">Job location</h2>
+                <h2 class="govuk-heading-l">Summary</h2>
 
-                <form action="2-job-details" method="post">
+                <form class="" action="7-review" method="post">
 
                     <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
-                            <label class="govuk-label govuk-label-s" for="job-title">
-                                In which school will the job be based? (<span class="text-red">required</span>)
-                            </label>
-                            <div class="govuk-checkboxes">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-1" name="school" type="radio" value="{{ data['mat-name'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-1">
-                                        {{ data['mat-name'] }} (Trust head office)
-                                        <br>
-                                        {{ data['mat-address'] }}
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-2" name="school" type="radio" value="{{ data['mat-name2'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-2">
-                                        {{ data['mat-name2'] }}
-                                        <br>
-                                        {{ data['mat-name2-address'] }}
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-3" name="school" type="radio" value="{{ data['mat-name3'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-3">
-                                        {{ data['mat-name3'] }}
-                                        <br>
-                                        {{ data['mat-name3-address'] }}
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-4" name="school" type="radio" value="{{ data['mat-name4'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-4">
-                                        {{ data['mat-name4'] }}
-                                        <br>
-                                        {{ data['mat-name4-address'] }}
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-5" name="school" type="radio" value="{{ data['mat-name5'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-5">
-                                        {{ data['mat-name5'] }}
-                                        <br>
-                                        {{ data['mat-name5-address'] }}
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-6" name="school" type="radio" value="{{ data['mat-name6'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-6">
-                                        {{ data['mat-name6'] }}
-                                        <br>
-                                        {{ data['mat-name6-address'] }}
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-radios__input" id="school-7" name="school" type="radio" value="{{ data['mat-name7'] }}">
-                                    <label class="govuk-label govuk-radios__label" for="school-7">
-                                        {{ data['mat-name7'] }}
-                                        <br>
-                                        {{ data['mat-name7-address'] }}
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
+                        <label class="govuk-label govuk-label--m" for="summary">
+                            Job summary (<span class="text-red">required</span>)
+                        </label>
+                        <span id="more-detail-hint" class="govuk-hint">
+                            Give a brief summary of the job that jobseekers can quickly scan. This will be the first thing they see on the listing or in search engine results.
+                        </span>
+                        <textarea class="govuk-textarea summary-textarea" id="summary" name="summary" rows="8" aria-describedby="summary" maxlength="1000"></textarea>
+                        <p>1000 characters remaining</p>
                     </div>
 
-                    <button class="govuk-button" data-module="govuk-button">Continue</button>
-                    <!-- <p><a href="dashboard-drafts">Save and return later</a></p> -->
+                    <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                    <p><a href="dashboard-drafts">Save and return later</a></p>
+
                 </form>
 
             </div>
@@ -131,7 +73,7 @@
                 <!-- STEP HEADER START -->
                 <div class="app-step-nav-related app-step-nav-related--singular">
                     <h2 class="app-step-nav-related__heading">
-                        <span class="app-step-nav-related__pretitle">Create a job listing steps</span>
+                        <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
                         <!--
                         <a href="#">
                             Learn to drive a car: step by step
@@ -147,30 +89,6 @@
                     </div>
                     -->
                     <ol class="app-step-nav__steps">
-                        <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
-                            <div class="app-step-nav__header js-toggle-panel" data-position="1">
-                                <h3 class="app-step-nav__title">
-                                    <span class="app-step-nav__circle app-step-nav__circle--number">
-                                        <span class="app-step-nav__circle-inner">
-                                            <span class="app-step-nav__circle-background">
-                                                <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                1
-                                                <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                            </span>
-                                        </span>
-                                    </span>
-
-                                    <span class="js-step-title">
-                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-check-youre-allowed-to-drive-1">
-                                            <span class="js-step-title-text">
-                                                Job location
-                                            </span>
-                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                        </button>
-                                    </span>
-                                </h3>
-                            </div>
-                        </li>
                         <li class="app-step-nav__step js-step" aria-current="step" data-show="" id="check-youre-allowed-to-drive">
                             <div class="app-step-nav__header js-toggle-panel" data-position="1">
                                 <h3 class="app-step-nav__title">
@@ -178,7 +96,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                2
+                                                1
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -202,7 +120,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                3
+                                                2
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -227,7 +145,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                4
+                                                3
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -251,7 +169,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                5
+                                                4
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -268,7 +186,6 @@
                                 </h3>
                             </div>
                         </li>
-
                         <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
@@ -276,7 +193,7 @@
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                6
+                                                5
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -293,14 +210,14 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
                             <div class="app-step-nav__header js-toggle-panel" data-position="2">
                                 <h3 class="app-step-nav__title">
                                     <span class="app-step-nav__circle app-step-nav__circle--number">
                                         <span class="app-step-nav__circle-inner">
                                             <span class="app-step-nav__circle-background">
                                                 <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                7
+                                                6
                                                 <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
                                             </span>
                                         </span>
@@ -309,7 +226,7 @@
                                     <span class="js-step-title">
                                         <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
                                             <span class="js-step-title-text">
-                                                Job summary
+                                                Summary
                                             </span>
                                             <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
                                         </button>
@@ -317,30 +234,7 @@
                                 </h3>
                             </div>
                         </li>
-                        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
-                            <div class="app-step-nav__header js-toggle-panel" data-position="2">
-                                <h3 class="app-step-nav__title">
-                                    <span class="app-step-nav__circle app-step-nav__circle--number">
-                                        <span class="app-step-nav__circle-inner">
-                                            <span class="app-step-nav__circle-background">
-                                                <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                                8
-                                                <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                                            </span>
-                                        </span>
-                                    </span>
 
-                                    <span class="js-step-title">
-                                        <button class="app-step-nav__button app-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="step-panel-get-a-provisional-licence-2">
-                                            <span class="js-step-title-text">
-                                                Review the job listing
-                                            </span>
-                                            <!-- <span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden="">show</span> -->
-                                        </button>
-                                    </span>
-                                </h3>
-                            </div>
-                        </li>
                     </ol>
                 </div>
             </div>

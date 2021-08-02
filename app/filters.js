@@ -26,6 +26,10 @@ module.exports = function (env) {
     })
   }
 
+  filters.toArray = (input) => {
+    return [].concat(input)
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
