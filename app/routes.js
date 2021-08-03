@@ -109,7 +109,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
     // If all-through and single school then skip location and go to phase
     if ( (jobPhase == "All-through") && (userType == "singleSchool") ) {
-      //todo uncheck phase by default on this screen
       res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
     } else if ((userType == "multiSchoolMat") || (userType == "multiSchoolLa")) {
       res.redirect('/prototypes/scope_expansion/1-job-location')

@@ -27,11 +27,11 @@
 
 								{{ appJobListingCard ({
 									items: [{
-										jobUrl: "../job-01",
+										jobUrl: "#",
 										jobName: data['app2-jobListingName'],
 										jobLocation: "London",
 										applicationCount: "2",
-										applicationUrl: "../job-01/applications",
+										applicationUrl: "#",
 										jobClosingDate: "06 October 2020 at 09:00am"
 									}]
 								}) }}
@@ -42,16 +42,17 @@
 										jobName: "Trust-Wide Lead Practitioner - Mathematics",
 										jobLocation: "Newham local authority",
 										applicationCount: "49",
-										applicationUrl: jobUrl + "/applications", 
+										applicationUrl: "#", 
 										jobClosingDate: "31 May 2021 at 09:00am"
 									}]
 								}) }}
 								
 								{{ appJobListingCard ({
 									items: [{
-										jobName: "Teaching Assistant",
+										jobUrl: "#",
+                    jobName: "Teaching Assistant",
 										jobLocation: "Bermondsey",
-										applicationUrl: jobUrl + "/applications",
+										applicationUrl: "#",
 										jobClosingDate: "12 June 2021 at 09:00am"
 									}]
 								}) }}
