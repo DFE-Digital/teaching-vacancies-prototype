@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 
+{% set sectionActive = "job listings" %}
 {% set activePage = "step6" %}
 
 {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
@@ -15,8 +16,6 @@
 {% endblock %}
 
 {% block content %}
-
-  
   <div class="create-title">
       <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing</h1>
       <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 7 of 10{% else %}Step 6 of 9{% endif %}</span>
@@ -31,13 +30,14 @@
       <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-l">Applying for the job</h2>
           
-          {% set applyMethodInsetHtml %}
-            <p class="govuk-body">The Teaching Vacancies application form does not yet accommodate education support roles.</p>
-            <p class="govuk-body">Ensure to include details below on how candidates can apply through your own process.</p>
+          {% set applyMethodDetialsHtml %}
+            <p class="govuk-body">This option will be available to hiring staff in the future.</p>
+            <p class="govuk-body">For now ensure to include details on how candidates can apply through your own process.</p>
           {% endset %}
-          
-          {{ govukInsetText({
-            html: applyMethodInsetHtml
+
+          {{ govukDetails({
+            summaryText: "You can't accept Education support applications directly through Teaching Vacancies at this time",
+            html: applyMethodDetialsHtml
           }) }}
           
           {# <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's website. <a class="govuk-link" target="_blank" href="/pages/job-application-preview">Preview the application form (opens in new tab)</a></p> #}
