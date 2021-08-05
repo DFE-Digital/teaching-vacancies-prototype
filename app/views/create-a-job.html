@@ -10,9 +10,11 @@
 
 {% block header %}
   {% include "includes/applications/primary-header.html" %}
-  <div class="govuk-width-container">
-    <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
-  </div>
+  {% if activePage != "step0" %}
+    <div class="govuk-width-container">
+      <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+    </div>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
