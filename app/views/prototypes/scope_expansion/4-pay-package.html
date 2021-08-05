@@ -1,106 +1,51 @@
-{% extends "layout.html" %}
+{% extends "create-a-job.html" %}
 
 {% set activePage = "step5" %}
+{% set activePageNumber = "5" %}
 {% set sectionActive = "job listings" %}
 
-{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
-  {% set isMultiSchool = "true" %}
-{% endif %}
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Pay package</h2>
 
-{% block pageTitle %}
-  Find a job in Teaching
-{% endblock %}
+      <form class="" action="6-applying" method="post">
 
-{% block header %}
-  {% include "includes/applications/primary-header.html" %}
-{% endblock %}
+          {{ govukInput({
+            label: {
+              text: "Annual or full-time equivalent (FTE) salary",
+              classes: "govuk-label--s"
+            },
+            classes: "govuk-!-width-two-thirds"
+          } | decorateAttributes(data, "data.job.salary")) }}
+          
+          {% set actualSalaryLabel %}
+            Actual salary <span class="govuk-!-font-weight-regular">(optional)</span>
+          {% endset %}
 
-{% block content %}
+          {{ govukInput({
+            label: {
+              html: actualSalaryLabel,
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "For part-time or term-time roles this is what the candidate will actually be paid"
+            },
+            classes: "govuk-!-width-two-thirds"
+          } | decorateAttributes(data, "data.job.salaryActual")) }}
 
-<div class="create-title">
-    
-    {% set SchoolName %}
-      {% if data.job.userType == "singleSchool" %}
-        {{ data.job.defaultSchoolName }}
-      {% elseif data.job.locationSingle %}
-        {{ data.job.locationSingle }}
-      {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
-        multiple schools
-      {% endif %}
-    {% endset %}
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="benefits">
+                  Additional allowances <span class="govuk-!-font-weight-regular">(optional)</span>
+              </label>
+              <span id="more-detail-hint" class="govuk-hint">
+                Include special educational needs (SEN) allowances and teaching and learning responsibility (TLR) payments, for example</span>
+              <textarea class="govuk-textarea" id="benefits" name="benefits" rows="5" aria-describedby="benefits"></textarea>
+          </div>
 
-    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
-    <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 5 of 10{% else %}Step 4 of 9{% endif %}</span>
-    <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
-</div>
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="dashboard-drafts">Save and return later</a></p>
+      </form>
 
-<main class="govuk-main-wrapper">
-
-    <div class="govuk-grid-row">
-
-        <!-- Main content START -->
-        <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-l">Pay package</h2>
-
-            <form class="" action="6-applying" method="post">
-
-                {{ govukInput({
-                  label: {
-                    text: "Annual or full-time equivalent (FTE) salary",
-                    classes: "govuk-label--s"
-                  },
-                  classes: "govuk-!-width-two-thirds"
-                } | decorateAttributes(data, "data.job.salary")) }}
-                
-                {% set actualSalaryLabel %}
-                  Actual salary <span class="govuk-!-font-weight-regular">(optional)</span>
-                {% endset %}
-
-                {{ govukInput({
-                  label: {
-                    html: actualSalaryLabel,
-                    classes: "govuk-label--s"
-                  },
-                  hint: {
-                    text: "For part-time or term-time roles this is what the candidate will actually be paid"
-                  },
-                  classes: "govuk-!-width-two-thirds"
-                } | decorateAttributes(data, "data.job.salaryActual")) }}
-
-                <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="benefits">
-                        Additional allowances <span class="govuk-!-font-weight-regular">(optional)</span>
-                    </label>
-                    <span id="more-detail-hint" class="govuk-hint">
-                      Include special educational needs (SEN) allowances and teaching and learning responsibility (TLR) payments, for example</span>
-                    <textarea class="govuk-textarea" id="benefits" name="benefits" rows="5" aria-describedby="benefits"></textarea>
-                </div>
-
-                <button class="govuk-button" data-module="govuk-button">Continue</button>
-                <p><a href="dashboard-drafts">Save and return later</a></p>
-            </form>
-
-        </div>
-        <!-- Main content END -->
-
-        <!-- Sidebar START -->
-        <div class="govuk-grid-column-one-third">
-            <!-- STEP HEADER START -->
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-                    <!--
-                    <a href="#">
-                        Learn to drive a car: step by step
-                    </a>
-                    -->
-                </h2>
-            </div>
-            <!-- STEP HEADER END -->
-            {% include "includes/hiring-staff/acc-steps.html" %}
-        </div>
-        <!-- Sidebar END -->
-
-    </main>
+  </div>
 
 {% endblock %}

@@ -1,117 +1,61 @@
-{% extends "layout.html" %}
+{% extends "create-a-job.html" %}
 
 {% set sectionActive = "job listings" %}
+{% set activePageNumber = "4" %}
 {% set activePage = "step4" %}
 
-{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
-  {% set isMultiSchool = "true" %}
-{% endif %}
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Working pattern details</h2>
 
-{% block pageTitle %}
-  Find a job in Teaching
-{% endblock %}
+      <form class="" action="4-pay-package" method="post">
 
-{% block header %}
-  {% include "includes/applications/primary-header.html" %}
-{% endblock %}
+          {# Working patterns #}
+          {{ govukCheckboxes({
+            fieldset: {
+              legend: {
+                text: "Working patterns",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all working patterns you will consider for the role. Flexible working options may attract more candidates"
+            },
+            items: [
+              {
+                text: "Full time"
+              },
+              {
+                text: "Part time"
+              },
+              {
+                text: "Term time"
+              },
+              {
+                text: "Job share"
+              }
+            ]
+          } | decorateAttributes(data, "data.job.workingPattern")) }}
 
-{% block content %}
+          {% set hoursDaysLabel %}
+            How many hours or days does the role cover? <span class="govuk-!-font-weight-regular">(optional)</span>
+          {% endset %}
 
-  <div class="create-title">
-      
-      {% set SchoolName %}
-        {% if data.job.userType == "singleSchool" %}
-          {{ data.job.defaultSchoolName }}
-        {% elseif data.job.locationSingle %}
-          {{ data.job.locationSingle }}
-        {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
-          multiple schools
-        {% endif %}
-      {% endset %}
+          {{ govukInput({
+            label: {
+              html: hoursDaysLabel,
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "For example, '20 hours a week' or 'Tuesday and Wednesday mornings'"
+            },
+            classes: "govuk-!-width-two-thirds"
+          } | decorateAttributes(data, "data.job.hoursDays")) }}
 
-      <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
-      
-      <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 4 of 10{% else %}Step 3 of 9{% endif %}</span>
-      <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="dashboard-drafts">Save and return later</a></p>
+      </form>
+
   </div>
-
-  <main class="govuk-main-wrapper">
-
-      <div class="govuk-grid-row">
-
-          <!-- Main content START -->
-          <div class="govuk-grid-column-two-thirds">
-              <h2 class="govuk-heading-l">Working pattern details</h2>
-
-              <form class="" action="4-pay-package" method="post">
-
-                  {# Working patterns #}
-                  {{ govukCheckboxes({
-                    fieldset: {
-                      legend: {
-                        text: "Working patterns",
-                        classes: "govuk-fieldset__legend--s"
-                      }
-                    },
-                    hint: {
-                      text: "Select all working patterns you will consider for the role. Flexible working options may attract more candidates"
-                    },
-                    items: [
-                      {
-                        text: "Full time"
-                      },
-                      {
-                        text: "Part time"
-                      },
-                      {
-                        text: "Term time"
-                      },
-                      {
-                        text: "Job share"
-                      }
-                    ]
-                  } | decorateAttributes(data, "data.job.workingPattern")) }}
-
-                  {% set hoursDaysLabel %}
-                    How many hours or days does the role cover? <span class="govuk-!-font-weight-regular">(optional)</span>
-                  {% endset %}
-
-                  {{ govukInput({
-                    label: {
-                      html: hoursDaysLabel,
-                      classes: "govuk-label--s"
-                    },
-                    hint: {
-                      text: "For example, '20 hours a week' or 'Tuesday and Wednesday mornings'"
-                    },
-                    classes: "govuk-!-width-two-thirds"
-                  } | decorateAttributes(data, "data.job.hoursDays")) }}
-
-                  <button class="govuk-button" data-module="govuk-button">Continue</button>
-                  <p><a href="dashboard-drafts">Save and return later</a></p>
-              </form>
-
-          </div>
-          <!-- Main content END -->
-
-          <!-- Sidebar START -->
-          <div class="govuk-grid-column-one-third">
-              <!-- STEP HEADER START -->
-              <div class="app-step-nav-related app-step-nav-related--singular">
-                  <h2 class="app-step-nav-related__heading">
-                      <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-                      <!--
-                      <a href="#">
-                          Learn to drive a car: step by step
-                      </a>
-                      -->
-                  </h2>
-              </div>
-              <!-- STEP HEADER END -->
-              {% include "includes/hiring-staff/acc-steps.html" %}
-          </div>
-          <!-- Sidebar END -->
-
-      </main>
-
+ 
 {% endblock %}
