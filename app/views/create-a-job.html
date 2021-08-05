@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+  <div class="govuk-width-container">
+    <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="create-title" style="margin-top: -20px">
+  {% set SchoolName %}
+    {% if data.job.userType == "singleSchool" %}
+      {{ data.job.defaultSchoolName }}
+    {% elseif data.job.locationSingle %}
+      {{ data.job.locationSingle }}
+    {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
+      multiple schools
+    {% endif %}
+  {% endset %}
+
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
+    <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step {{ activePageNumber }} of 10{% else %}Step {{ activePageNumber }} of 9{% endif %}</span>
+</div>
+
+{# <main class="govuk-main-wrapper"> #}
+
+    <div class="govuk-grid-row">
+
+        {% block createJobcontent %}
+        {% endblock %}
+
+        <!-- Sidebar START -->
+        <div class="govuk-grid-column-one-third">
+            <!-- STEP HEADER START -->
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                </h2>
+            </div>
+            <!-- STEP HEADER END -->
+            {% include "includes/hiring-staff/acc-steps.html" %}
+        </div>
+        <!-- Sidebar END -->
+
+    {# </main> #}
+
+{% endblock %}

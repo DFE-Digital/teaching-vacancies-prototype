@@ -8,57 +8,94 @@
   <!-- Main content START -->
   <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-l">Applying for the job</h2>
+
+      {% set howToApply %}
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="apply">
+              How to apply
+          </label>
+          <span id="more-detail-hint" class="govuk-hint">
+            Explain how to apply for the job, referring to any relevant documents
+          </span>
+          <textarea class="govuk-textarea" id="apply" name="apply" rows="8" aria-describedby="apply"></textarea>
+        </div>
+      {% endset %}
       
-      {% set applyMethodDetialsHtml %}
-        <p class="govuk-body">This option will be available to hiring staff in the future.</p>
-        <p class="govuk-body">For now ensure to include details on how candidates can apply through your own process.</p>
+      {% set linkToApply %}
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="link">
+            Link to online application <span class="govuk-!-font-weight-regular">(optional)</span>
+          </label>
+          <span id="job-title-hint" class="govuk-hint">
+            Leave this blank unless candidates can apply directly on the school or council website
+          </span>
+          <input class="govuk-input govuk-!-width-two-thirds" id="link" name="link" type="text" aria-describedby="link">
+        </div>
       {% endset %}
 
-      {{ govukDetails({
-        summaryText: "You can't accept Education support applications directly through Teaching Vacancies at this time",
-        html: applyMethodDetialsHtml
-      }) }}
+      {% set conditionalTvsApplyContent %}
+        
+        {% set textAreaHtml %}
+          Help candidates to write their personal statement? <span class="govuk-!-font-weight-regular">(optional)</span>
+        {% endset %}
+        
+        {{ govukTextarea({
+          label: {
+            html: textAreaHtml,
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Is there any guidance you would like to give candidates on how to write their personal statement? For example, how long it should be or what information to include."
+          }
+        }) }}
+      {% endset %}
+
+      {% set conditionalNonTvsApplyContent %}
+        {{ howToApply | safe }}
+        {{ linkToApply | safe }}
+      {% endset %}
       
-      {# <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's website. <a class="govuk-link" target="_blank" href="/pages/job-application-preview">Preview the application form (opens in new tab)</a></p> #}
+      {% if data.job.role == "education support" %}
+        {% set applyMethodDetialsHtml %}
+          <p class="govuk-body">This option will be available to hiring staff in the future.</p>
+          <p class="govuk-body">For now ensure to include details on how candidates can apply through your own process.</p>
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "You can't accept Education support applications directly through Teaching Vacancies at this time",
+          html: applyMethodDetialsHtml
+        }) }}
+      {% endif %}
 
       <form class="" action="9-review" method="post">
 
-          {# {{ govukRadios({
-            fieldset: {
-              legend: {
-                text: "How would you like candidates to apply?",
-                classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
-              }
-            },
-            items: [
-              {
-                text: "Apply using the Teaching Vacancies application form"
+          {% if data.job.role != "education support" %}
+            {{ govukRadios({
+              fieldset: {
+                legend: {
+                  text: "How would you like candidates to apply?",
+                  classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+                }
               },
-              {
-                text: "Use another application process or form"
-              }
-            ]
-          } | decorateAttributes(data, "data.job.applyProcess")) }} #}
-
-          <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="apply">
-                  How to apply
-              </label>
-              <span id="more-detail-hint" class="govuk-hint">
-                Explain how to apply for the job, referring to any relevant documents
-              </span>
-              <textarea class="govuk-textarea" id="apply" name="apply" rows="10" aria-describedby="apply"></textarea>
-          </div>
-
-          <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="link">
-                Link to online application <span class="govuk-!-font-weight-regular">(optional)</span>
-              </label>
-              <span id="job-title-hint" class="govuk-hint">
-                Leave this blank unless candidates can apply directly on the school or council website
-              </span>
-              <input class="govuk-input govuk-!-width-two-thirds" id="link" name="link" type="text" aria-describedby="link">
-          </div>
+              items: [
+                {
+                  text: "Apply using the Teaching Vacancies application form",
+                  conditional: {
+                    html: conditionalTvsApplyContent
+                  }
+                },
+                {
+                  text: "Use another application process or form",
+                  conditional: {
+                    html: conditionalNonTvsApplyContent
+                  }
+                }
+              ]
+            } | decorateAttributes(data, "data.job.applyProcess")) }}
+        {% else %}
+          {{ howToApply | safe }}
+          {{ linkToApply | safe }}
+        {% endif %}
           
           <div class="govuk-form-group">
               <label class="govuk-label govuk-label--s" for="email">
@@ -90,8 +127,12 @@
               <textarea class="govuk-textarea" id="visits" name="visits" rows="5" aria-describedby="visits"></textarea>
           </div>
 
-          <button class="govuk-button" data-module="govuk-button">Continue</button>
-          <p><a href="dashboard-drafts">Save and return later</a></p>
+          {{ govukButton({
+            text: "Continue",
+            href: "#"
+          }) }}
+
+          <p><a href="#">Save and return later</a></p>
       </form>
 
   </div>
