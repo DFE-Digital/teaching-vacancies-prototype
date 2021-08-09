@@ -17,21 +17,25 @@
             },
             classes: "govuk-!-width-two-thirds"
           } | decorateAttributes(data, "data.job.salary")) }}
-          
-          {% set actualSalaryLabel %}
-            Actual salary <span class="govuk-!-font-weight-regular">(optional)</span>
-          {% endset %}
 
-          {{ govukInput({
-            label: {
-              html: actualSalaryLabel,
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "For part-time or term-time roles this is what the candidate will actually be paid"
-            },
-            classes: "govuk-!-width-two-thirds"
-          } | decorateAttributes(data, "data.job.salaryActual")) }}
+          {% if data.job.workingPattern != "Full time" %}
+          
+            {% set actualSalaryLabel %}
+              Actual salary <span class="govuk-!-font-weight-regular">(optional)</span>
+            {% endset %}
+
+            {{ govukInput({
+              label: {
+                html: actualSalaryLabel,
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "For part-time or term-time roles this is what the candidate will actually be paid"
+              },
+              classes: "govuk-!-width-two-thirds"
+            } | decorateAttributes(data, "data.job.salaryActual")) }}
+
+          {% endif %}
 
           <div class="govuk-form-group">
               <label class="govuk-label govuk-label--s" for="benefits">
