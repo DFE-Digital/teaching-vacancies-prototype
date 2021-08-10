@@ -1,7 +1,7 @@
 ---
 applications:
 - name: teaching-vacancies-prototype
-  memory: 128M
+  memory: 256M
   buildpacks:
   - nodejs_buildpack
   env:
