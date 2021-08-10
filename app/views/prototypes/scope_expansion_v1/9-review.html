@@ -1,0 +1,334 @@
+{% extends "layout.html" %}
+
+{% set activePage = "step9" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="create-title">
+
+  {% set SchoolName %}
+    {% if data.job.userType == "singleSchool" %}
+      {{ data.job.defaultSchoolName }}
+    {% elseif data.job.locationSingle %}
+      {{ data.job.locationSingle }}
+    {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
+      multiple schools
+    {% endif %}
+  {% endset %}
+
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
+    <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 10 of 10{% else %}Step 9 of 9{% endif %}</span>
+    <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+</div>
+
+<main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+
+        <!-- Main content START -->
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Review the job listing</h2>
+            <p>Review your entries for each section below, making any changes needed before you publish the listing.</p>
+
+            <ol class="app-task-list">
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        1. Job role
+                        </span>
+                        <a href="0-job-role">Change</a>
+                    </h2>
+
+                    {% set jobRoleHtml %}
+                      
+                      <ul class="govuk-list">
+                        <li>
+                          Suitable for early career teachers
+                        </li>
+                        <li>
+                          SEND responsibilities (special educational needs and disabilities)
+                        </li>
+                      </ul>
+                    {% endset %}
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Job role"
+                          },
+                          value: {
+                            text: "Teacher"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Job role details"
+                          },
+                          value: {
+                            html: jobRoleHtml
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        2. Job details 
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Job title"
+                          },
+                          value: {
+                            text: data['job-title']
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Contract type"
+                          },
+                          value: {
+                            text: "Fixed term"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Subject(s)"
+                          },
+                          value: {
+                            text: "Bengali, Biology, Chemistry"
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        3. Working pattern details 
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Working patterns"
+                          },
+                          value: {
+                            text: "Full time"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "How many hours or days does the role cover?"
+                          },
+                          value: {
+                            text: "20 hours a week"
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        4. Pay package 
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Annual or full-time equivalent (FTE) salary"
+                          },
+                          value: {
+                            text: "£45,000"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Actual salary"
+                          },
+                          value: {
+                            text: "£17,500"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Financial benefits"
+                          },
+                          value: {
+                            text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        5. Important dates and deadlines 
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Item"
+                          },
+                          value: {
+                            text: "Value"
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        6. Applying for the job
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "How to apply"
+                          },
+                          value: {
+                            text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Contact email"
+                          },
+                          value: {
+                            text: "Value"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Contact phone number"
+                          },
+                          value: {
+                            text: "Not defined (will not be seen on published listing)"
+                          }
+                        },
+                        {
+                          key: {
+                            text: "School visits"
+                          },
+                          value: {
+                            text: "Not defined (will not be seen on published listing)"
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        7. Supporting documents
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Item"
+                          },
+                          value: {
+                            text: "Value"
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+                
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        8. Job summary
+                        </span>
+                        <a href="1-job-details">Change</a>
+                    </h2>
+                    
+                    {{ govukSummaryList({
+                      rows: [
+                        {
+                          key: {
+                            text: "Item"
+                          },
+                          value: {
+                            text: "Value"
+                          }
+                        }
+                      ]
+                    }) }}
+                </li>
+            </ol>
+
+            <h3 class="govuk-heading-m">Preview this job listing</h3>
+            <p class="govuk-body">See how this job listing will appear to jobseekers on Teaching Vacancies</p>
+
+            {{ govukButton({
+              text: "Preview job listing"
+            }) }}
+
+            <h3 class="govuk-heading-m">Submit this listing for publication now (3 August 2021)</h3>
+
+            <p class="govuk-body">By publishing this job you agree to our <a href="/pages/terms-and-conditions" class="govuk-link" target="blank">terms and conditions</a> for schools and confirm that the details you have provided are, to the best of your knowledge, correct</p>
+
+            {{ govukButton({
+              text: "Confirm and submit job",
+              classes: "govuk-button--secondary"
+            }) }}
+            <p><a href="#">Save and return later</a></p>
+
+        </div>
+        <!-- Main content END -->
+
+        <!-- Sidebar START -->
+          <div class="govuk-grid-column-one-third">
+              <!-- STEP HEADER START -->
+              <div class="app-step-nav-related app-step-nav-related--singular">
+                  <h2 class="app-step-nav-related__heading">
+                      <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+                  </h2>
+              </div>
+              <!-- STEP HEADER END -->
+              {% include "includes/hiring-staff/acc-steps.html" %}
+          </div>
+          <!-- Sidebar END -->
+
+    </main>
+
+{% endblock %}
