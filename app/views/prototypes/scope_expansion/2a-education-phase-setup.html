@@ -1,103 +1,55 @@
-{% extends "layout.html" %}
+{% extends "create-a-job.html" %}
 
+{% set sectionActive = "job listings" %}
+{% set activePageNumber = "3" %}
 {% set activePage = "step3" %}
 
-{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
-  {% set isMultiSchool = "true" %}
-{% endif %}
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <form class="" action="2-job-details" method="post">
 
-{% block pageTitle %}
-  Find a job in Teaching
-{% endblock %}
+      <h2 class="govuk-heading-l">Job details</h2>
 
-{% block header %}
-  {% include "includes/applications/primary-header.html" %}
-{% endblock %}
+          {# TODO - these are all the education phases 
+          All
+          16 plus
+          All-through
+          Middle deemed primary
+          Middle deemed secondary
+          Not applicable
+          Not recorded
+          Nursery
+          Primary
+          Secondary #}
 
-{% block content %}
+          {{ govukRadios({
+              fieldset: {
+                legend: {
+                  text: "What education phase will the role be covering?",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  text: "All-through"
+                },
+                {
+                  text: "Primary"
+                },
+                {
+                  text: "Secondary"
+                },
+                {
+                  text: "16 to 19"
+                }
+              ]
+            } | decorateAttributes(data, "data.job.phaseSetup")) }}
 
-<div class="create-title">
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="./2-job-details">Cancel</a></p> 
 
-  {% set SchoolName %}
-    {% if data.job.userType == "singleSchool" %}
-      {{ data.job.defaultSchoolName }}
-    {% elseif data.job.locationSingle %}
-      {{ data.job.locationSingle }}
-    {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
-      multiple schools
-    {% endif %}
-  {% endset %}
+      </form>
 
-  <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
-
-  <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 3 of 8{% else %}Step 2 of 8{% endif %}</span>
-  <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
-</div>
-
-<main class="govuk-main-wrapper">
-
-    <div class="govuk-grid-row">
-
-        <!-- Main content START -->
-        <div class="govuk-grid-column-two-thirds">
-            <form class="" action="2-job-details" method="post">
-
-            <h2 class="govuk-heading-l">Job details</h2>
-
-                {# TODO - these are all the education phases 
-                All
-                16 plus
-                All-through
-                Middle deemed primary
-                Middle deemed secondary
-                Not applicable
-                Not recorded
-                Nursery
-                Primary
-                Secondary #}
-
-                {{ govukRadios({
-                    fieldset: {
-                      legend: {
-                        text: "What education phase will the role be covering?",
-                        classes: "govuk-fieldset__legend--s"
-                      }
-                    },
-                    items: [
-                      {
-                        text: "All-through"
-                      },
-                      {
-                        text: "Primary"
-                      },
-                      {
-                        text: "Secondary"
-                      },
-                      {
-                        text: "16 to 19"
-                      }
-                    ]
-                  } | decorateAttributes(data, "data.job.phaseSetup")) }}
-
-                <button class="govuk-button" data-module="govuk-button">Continue</button>
-                <p><a href="./2-job-details">Cancel</a></p> 
-
-            </form>
-
-        </div>
-        <!-- Main content END -->
-
-        <!-- Sidebar START -->
-        <div class="govuk-grid-column-one-third">
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-                </h2>
-            </div>
-            {% include "includes/hiring-staff/acc-steps.html" %}
-        </div>
-        <!-- Sidebar END -->
-
-    </main>
+  </div>
 
 {% endblock %}

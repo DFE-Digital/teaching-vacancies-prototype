@@ -1,21 +1,21 @@
 
   {{ govukHeader({
-    homepageUrl: "/",
+    homepageUrl: "/templates/public/01-service-start",
     serviceName: serviceName,
-    serviceUrl: "/prototypes/application/round-4/",
+    serviceUrl: "/templates/public/01-service-start",
     containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "/prototypes/application/round-3/hs/14-acc-active",
-        text: "Job listings",
+        href: "/prototypes/application/journey/job-listings/",
+        text: "Manage job listings",
         active: true if sectionActive == "job listings"
       },
       {
-        href: "#",
+        href: "/templates/public/01-service-start",
         text: "View public jobs"
       },
       {
-        href: "#",
+        href: "/templates/public/01-service-start",
         text: "Sign out"
       }
     ]
@@ -28,7 +28,7 @@
         text: "prototype"
       },
       classes: 'govuk-!-margin-top-1',
-      html: 'This is a new service - <a class="govuk-link" href="/feedback/new">your feedback</a> will help us to improve it.'
+      html: 'This is a new service - <a class="govuk-link" href="#">your feedback</a> will help us to improve it.'
     }) }}
 
   </div>

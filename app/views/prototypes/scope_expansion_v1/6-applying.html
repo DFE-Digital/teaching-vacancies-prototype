@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% set sectionActive = "job listings" %}
+{% set activePage = "step6" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="create-title">
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing</h1>
+      <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step 7 of 10{% else %}Step 6 of 9{% endif %}</span>
+      <a href="javascript:history.back()" class="govuk-back-link">Go back to previous step</a>
+  </div>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+
+      <!-- Main content START -->
+      <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Applying for the job</h2>
+          
+          {% set applyMethodDetialsHtml %}
+            <p class="govuk-body">This option will be available to hiring staff in the future.</p>
+            <p class="govuk-body">For now ensure to include details on how candidates can apply through your own process.</p>
+          {% endset %}
+
+          {{ govukDetails({
+            summaryText: "You can't accept Education support applications directly through Teaching Vacancies at this time",
+            html: applyMethodDetialsHtml
+          }) }}
+          
+          {# <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's website. <a class="govuk-link" target="_blank" href="/pages/job-application-preview">Preview the application form (opens in new tab)</a></p> #}
+
+          <form class="" action="9-review" method="post">
+
+              {# {{ govukRadios({
+                fieldset: {
+                  legend: {
+                    text: "How would you like candidates to apply?",
+                    classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+                  }
+                },
+                items: [
+                  {
+                    text: "Apply using the Teaching Vacancies application form"
+                  },
+                  {
+                    text: "Use another application process or form"
+                  }
+                ]
+              } | decorateAttributes(data, "data.job.applyProcess")) }} #}
+
+              <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="apply">
+                      How to apply
+                  </label>
+                  <span id="more-detail-hint" class="govuk-hint">
+                    Explain how to apply for the job, referring to any relevant documents
+                  </span>
+                  <textarea class="govuk-textarea" id="apply" name="apply" rows="10" aria-describedby="apply"></textarea>
+              </div>
+
+              <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="link">
+                    Link to online application <span class="govuk-!-font-weight-regular">(optional)</span>
+                  </label>
+                  <span id="job-title-hint" class="govuk-hint">
+                    Leave this blank unless candidates can apply directly on the school or council website
+                  </span>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="link" name="link" type="text" aria-describedby="link">
+              </div>
+              
+              <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="email">
+                      Contact email
+                  </label>
+                  <span id="job-title-hint" class="govuk-hint">
+                    This email address will be shown publicly as a point of contact
+                  </span>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="text" aria-describedby="email">
+              </div>
+              
+              <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="email">
+                      Contact phone number <span class="govuk-!-font-weight-regular">(optional)</span>
+                  </label>
+                  <span id="job-title-hint" class="govuk-hint">
+                    This phone number will be for any questions applicants may have about the role
+                  </span>
+                  <input class="govuk-input govuk-!-width-one-third" id="phone" name="email" type="text" aria-describedby="email">
+              </div>
+
+              <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="visits">
+                    School visits <span class="govuk-!-font-weight-regular">(optional)</span>
+                  </label>
+                  <span id="more-detail-hint" class="govuk-hint">
+                    Explain how a candidate can arrange a visit to the trust (give a phone number if possible)
+                  </span>
+                  <textarea class="govuk-textarea" id="visits" name="visits" rows="5" aria-describedby="visits"></textarea>
+              </div>
+
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+              <p><a href="#">Save and return later</a></p>
+          </form>
+
+      </div>
+      <!-- Main content END -->
+
+      <!-- Sidebar START -->
+    <div class="govuk-grid-column-one-third">
+        <!-- STEP HEADER START -->
+        <div class="app-step-nav-related app-step-nav-related--singular">
+            <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+            </h2>
+        </div>
+        <!-- STEP HEADER END -->
+        {% include "includes/hiring-staff/acc-steps.html" %}
+    </div>
+    <!-- Sidebar END -->
+
+  </main>
+
+{% endblock %}
