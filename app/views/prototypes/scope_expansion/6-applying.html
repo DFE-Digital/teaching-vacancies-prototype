@@ -1,8 +1,14 @@
 {% extends "create-a-job.html" %}
 
 {% set sectionActive = "job listings" %}
-{% set activePageNumber = "6" %}
-{% set activePage = "step6" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set activePageNumber = "7" %}
+  {% set activePage = "step7" %}
+{% else %}
+  {% set activePageNumber = "6" %}
+  {% set activePage = "step6" %}
+{% endif %}
 
 {% block createJobcontent %}
   <!-- Main content START -->
@@ -136,5 +142,12 @@
       </form>
 
   </div>
-  <!-- Main content END -->
+  {# <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %}
+  </div> #}
 {% endblock %}

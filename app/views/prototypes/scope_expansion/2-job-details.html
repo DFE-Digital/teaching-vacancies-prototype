@@ -1,8 +1,14 @@
 {% extends "create-a-job.html" %}
 
 {% set sectionActive = "job listings" %}
-{% set activePageNumber = "3" %}
-{% set activePage = "step3" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set activePageNumber = "3" %}
+  {% set activePage = "step3" %}
+{% else %}
+  {% set activePageNumber = "2" %}
+  {% set activePage = "step2" %}
+{% endif %}
 
 {% block createJobcontent %}
   <div class="govuk-grid-column-two-thirds">
@@ -73,6 +79,19 @@
           }
         } | decorateAttributes(data, "data.job.title")) }}
 
+        {% set conditionalContractHtml %}
+          
+          {{ govukTextarea({
+            label: {
+              text: "Duration of fixed term contract",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
+            }
+          }) }}
+        {% endset %}
+
         {{ govukRadios({
             fieldset: {
               legend: {
@@ -133,4 +152,13 @@
 
   </div>
 
+  {# <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %}
+  </div> #}
 {% endblock %}
+

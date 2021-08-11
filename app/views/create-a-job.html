@@ -24,15 +24,15 @@
 <div class="create-title" style="margin-top: -20px">
   {% set SchoolName %}
     {% if data.job.userType == "singleSchool" %}
-      {{ data.job.defaultSchoolName }}
+      for {{ data.job.defaultSchoolName }}
     {% elseif data.job.locationSingle %}
-      {{ data.job.locationSingle }}
+      for {{ data.job.locationSingle }}
     {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
-      multiple schools
+      for multiple schools
     {% endif %}
   {% endset %}
 
-    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing for {{ SchoolName }}</h1>
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Create a job listing {{ SchoolName }}</h1>
     <span class="govuk-caption-m govuk-!-margin-bottom-5">{% if isMultiSchool == "true" %}Step {{ activePageNumber }} of 10{% else %}Step {{ activePageNumber }} of 9{% endif %}</span>
 </div>
 
@@ -43,18 +43,16 @@
         {% block createJobcontent %}
         {% endblock %}
 
-        <!-- Sidebar START -->
         <div class="govuk-grid-column-one-third">
-            <!-- STEP HEADER START -->
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                    <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-                </h2>
-            </div>
-            <!-- STEP HEADER END -->
-            {% include "includes/hiring-staff/acc-steps.html" %}
+          <!-- STEP HEADER START -->
+          <div class="app-step-nav-related app-step-nav-related--singular">
+              <h2 class="app-step-nav-related__heading">
+                  <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+              </h2>
+          </div>
+          <!-- STEP HEADER END -->
+          {% include "includes/hiring-staff/acc-steps.html" %}
         </div>
-        <!-- Sidebar END -->
 
     {# </main> #}
 
