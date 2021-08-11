@@ -27,7 +27,7 @@ let job = {
   userType: "singleSchool",
 
   // Fallback school name
-  defaultSchoolName: "Bexleyheath Academy",
+  defaultSchoolName: "St Johns Primary",
 
   // Does the journey include an all-through school?
   // Defaults to no as its less common
