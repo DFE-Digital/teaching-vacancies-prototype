@@ -2,8 +2,10 @@
   {% for item in params.items %}
     <div class="col">
         <a href="{{ item.jobUrl }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold"> <span class="govuk-visually-hidden">View</span>{{ item.jobName }}</a>
-        {% if item.jobLocation %}
-          <p class="govuk-hint govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ item.jobLocation }}</p>
+        {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+          {% if item.jobLocation %}
+            <p class="govuk-hint govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ item.jobLocation }}</p>
+          {% endif %}
         {% endif %}
     </div>
     <div class="col">

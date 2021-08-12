@@ -27,7 +27,7 @@ let job = {
   userType: "singleSchool",
 
   // Fallback school name
-  defaultSchoolName: "Clore Shalom School",
+  defaultSchoolName: "Denham Green E-ACT Primary Academy",
 
   // Does the journey include an all-through school?
   // Defaults to no as its less common
