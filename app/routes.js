@@ -58,13 +58,16 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   
     let jobRole = req.session.data.job.role
     let userType = req.session.data.job.userType
+    let jobPhase = req.session.data.job.phase
 
     if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
       res.redirect('/prototypes/scope_expansion/1-job-location')
     } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
       res.redirect('/prototypes/scope_expansion/0a-job-role-details') 
     } else if (jobRole == "bussinessManager") {
-      res.redirect('/404')  
+      res.redirect('/404') 
+    } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
+      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')   
     } else {
       res.redirect('/prototypes/scope_expansion/2-job-details')
     }   
@@ -75,6 +78,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   
     let jobRole = req.session.data.job.role
     let userType = req.session.data.job.userType
+    let jobPhase = req.session.data.job.phase
 
     if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
       res.redirect('/prototypes/scope_expansion_v1/1-job-location')
@@ -82,6 +86,8 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       res.redirect('/prototypes/scope_expansion_v1/0a-job-role-details') 
     } else if (jobRole == "bussinessManager") {
       res.redirect('/404')  
+    } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
+      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')  
     } else {
       res.redirect('/prototypes/scope_expansion_v1/2-job-details')
     }   
@@ -90,7 +96,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   // Job role details (v1)
   router.post('/prototypes/scope_expansion_v1/0-job-role-details-answer', function (req, res) {
   
-    let jobPhase = req.session.data.job.phase
+    // let jobPhase = req.session.data.job.phase
     let userType = req.session.data.job.userType
     
     // If mutli-school user go to location
@@ -108,7 +114,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let userType = req.session.data.job.userType
     
     // If all-through and single school then skip location and go to phase
-    if ( (jobPhase == "All-through") && (userType == "singleSchool") ) {
+    if ( (jobPhase == "More than one phase") && (userType == "singleSchool") ) {
       res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
     } else if ((userType == "multiSchoolMat") || (userType == "multiSchoolLa")) {
       res.redirect('/prototypes/scope_expansion/1-job-location')
@@ -143,7 +149,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       res.redirect('/prototypes/scope_expansion/1b-job-location-single')
     } else if (selectedLocationsMat == "At more than one school in the trust") {
       res.redirect('/prototypes/scope_expansion/1a-job-location-many')
-    } else if ((selectedLocationsMat == "At the trust's head office") && (jobPhase == "All-through") )  {
+    } else if ((selectedLocationsMat == "At the trust's head office") && (jobPhase == "More than one phase") )  {
       res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
     } else {
       res.redirect('/prototypes/scope_expansion/2-job-details')
@@ -180,8 +186,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
     let jobPhase = req.session.data.job.phase
 
-    if (jobPhase == "All-through") {
-      //todo uncheck phase by default on this screen
+    if (jobPhase == "More than one phase") {
       res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
     } else {
       res.redirect('/prototypes/scope_expansion/2-job-details')
