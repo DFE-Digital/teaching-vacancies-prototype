@@ -44,8 +44,15 @@
           {% endif %}
         {% endset %}
 
+        {{ initialJobPhase | log }}
+
         {% set educationPhaseInsetHtml %}
-          <p class="govuk-body">You are listing a{% if data.job.phase == "All-through" %}n{% endif %} {{ initialJobPhase }} phase role. <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
+          {% if data.job.phase == "More than one phase" or data.job.phaseSetup == "More than one phase" %}
+            <p class="govuk-body">You are listing a role covering more than one phase.
+          {% else %} 
+            <p class="govuk-body">You are listing a {{ initialJobPhase }} phase role. 
+          {% endif %}
+            <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
         {% endset %}
 
         <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
