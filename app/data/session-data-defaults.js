@@ -19,15 +19,15 @@ Example usage:
 
 let job = {
   // Setting up the job aplication flow to be Primary by default
-  // Options: "All-through", "Primary" "Secondary", "16 to 19"
-  phase: "Secondary",
+  // Options: "More than one phase", "Primary" "Secondary", "16 to 19"
+  phase: "More than one phase",
   
   // Setting up the job aplication flow user to be single school by default
   // Options: "singleSchool" "multiSchoolMat, "multiSchoolLa"
   userType: "singleSchool",
 
   // Fallback school name
-  defaultSchoolName: "Albemarle College",
+  defaultSchoolName: "Bexleyheath Academy",
 
   // Does the journey include an all-through school?
   // Defaults to no as its less common
