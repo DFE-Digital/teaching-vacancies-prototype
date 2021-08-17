@@ -35,7 +35,7 @@
             {{ data.job.phase }}
           {% endif %}
         {% endset %}
-        
+
         {% set jobPhaseChangeLink %}
           {% if data.job.phaseSetup %}
             ./2a-education-phase-setup
@@ -47,19 +47,23 @@
         {{ initialJobPhase | log }}
 
         {% set educationPhaseInsetHtml %}
-          {% if data.job.phase == "More than one phase" or data.job.phaseSetup == "More than one phase" %}
+          {% if data.job.phase != "More than one phase" and data.job.phaseSetup != "More than one phase" %}
+            <p class="govuk-body">You are listing a {{ initialJobPhase }} phase role.
+          {% elseif data.job.phase != "More than one phase" and data.job.phaseSetup == "More than one phase" %}
             <p class="govuk-body">You are listing a role covering more than one phase.
-          {% else %} 
-            <p class="govuk-body">You are listing a {{ initialJobPhase }} phase role. 
+          {% elseif data.job.phase == "More than one phase" and (data.job.phaseSetup == "Primary" or data.job.phaseSetup == "Secondary" or data.job.phaseSetup == "16 to 19" ) %}
+            <p class="govuk-body">You are listing a {{ initialJobPhase }} phase role.
+          {% elseif data.job.phase == "More than one phase" %}
+            <p class="govuk-body">You are listing a role covering more than one phase.
           {% endif %}
             <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
         {% endset %}
 
         <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
+        
         {{ govukInsetText({
           html: educationPhaseInsetHtml
         }) }}
-
 
         {# Job title #}
 
