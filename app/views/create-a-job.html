@@ -11,11 +11,7 @@
 {% block header %}
   {% include "includes/applications/primary-header.html" %}
     <div class="govuk-width-container">
-    {% if pageName != "Job role 1" %}
-      <a href="javascript:history.back()" class="govuk-back-link">Back to previous step</a>
-    {% else %}
-      <a href="javascript:history.back()" class="govuk-back-link">Back to manage jobs</a>
-    {% endif %}
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
     </div>
 {% endblock %}
 
