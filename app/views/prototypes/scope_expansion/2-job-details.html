@@ -56,7 +56,10 @@
           {% elseif data.job.phase == "More than one phase" %}
             <p class="govuk-body">You are listing a role covering more than one phase.
           {% endif %}
+          {# Only show if it is an all-though phase school #}
+          {% if data.job.phase == "More than one phase" %}
             <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
+          {% endif %}
         {% endset %}
 
         <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
@@ -68,13 +71,9 @@
         {# Job title #}
 
         {% set jobTitleHintHtml %}
-          {# If just Business manager we dont care about phase #}
-          {# {% if 'Business manager' in roles and roles | length == 1 %} #}
             Include whether the role is at a school or a trust.
-          {# {% endif %} #}
           {% if data.job.phase == "Primary" %}
             Include Key Stage if relevant.
-          {# {% endif %} #}
           {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" %}
             Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’.
           {% endif %}
