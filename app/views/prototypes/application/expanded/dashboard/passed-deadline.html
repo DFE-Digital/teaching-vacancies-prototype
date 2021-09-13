@@ -1,0 +1,42 @@
+{% extends "templates/listings-template.html" %}
+
+{% set navActive = "passed deadline" %}
+{% set pageTitle = "Passed deadline <span>(3)</span>" %}
+
+{% block listings %}
+
+  {{ appJobListingCard ({
+    items: [{
+      jobUrl: "#",
+      jobName: data['app2-jobListingName'],
+      jobLocation: "London",
+      applicationCount: "2",
+      applicationUrl: "#",
+      jobListingDate: "06 October 2020 at 09:00am",
+      jobListingEndingDate: "06 October 2020 at 09:00am"
+    }]
+  }) }}
+  
+  {{ appJobListingCard ({
+    items: [{
+      jobUrl: "#",
+      jobName: "test Trust-Wide Lead Practitioner - Mathematics",
+      jobLocation: "Newham local authority",
+      applicationCount: "49",
+      applicationUrl: "#", 
+      jobListingDate: "31 May 2021 at 09:00am",
+      jobListingEndingDate: "31 May 2021 at 09:00am"
+    }]
+  }) }}
+  
+  {{ appJobListingCard ({
+    items: [{
+      jobUrl: "#",
+      jobName: "Teaching Assistant",
+      jobLocation: "Bermondsey",
+      jobListingDate: "12 June 2021 at 09:00am",
+      jobListingEndingDate: "12 June 2021 at 09:00am"
+    }]
+  }) }}
+
+{% endblock %}

@@ -14,7 +14,30 @@
       {% else %}
         <span class="govuk-!-font-size-19">0 applications</span>
       {% endif %}
-      <dl class="govuk-!-font-size-16 govuk-!-margin-top-1"><dt><span class="govuk-!-font-weight-bold">Closing date:</span></dt> <dd>{{ item.jobClosingDate }}</dd></dl>
+      <dl class="govuk-!-font-size-16 govuk-!-margin-top-1">
+        {% if item.jobClosingDate %}
+          <dt>
+            <span class="govuk-!-font-weight-bold">Closing date:</span>
+          </dt>
+          <dd>{{ item.jobClosingDate }}</dd>
+        {% endif %}
+        {% if item.jobListingDate %}
+          <div>
+            <dt>
+              <span class="govuk-!-font-weight-bold">Date listed:</span>
+            </dt>
+            <dd>{{ item.jobListingDate }}</dd>
+          </div>
+        {% endif %}
+        {% if item.jobListingEndingDate %}
+          <div>
+            <dt>
+              <span class="govuk-!-font-weight-bold">Listing ended:</span>
+            </dt>
+            <dd>{{ item.jobListingEndingDate }}</dd>
+          </div>
+        {% endif %}
+      </dl>
     </div>
   {% endfor %}
 </div>

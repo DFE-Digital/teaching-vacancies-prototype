@@ -1,0 +1,39 @@
+{% extends "templates/listings-template.html" %}
+
+{% set navActive = "active jobs" %}
+{% set pageTitle = "Active Jobs <span>(3)</span>" %}
+
+{% block listings %}
+
+  {{ appJobListingCard ({
+    items: [{
+      jobUrl: "#",
+      jobName: data['app2-jobListingName'],
+      jobLocation: "London",
+      applicationCount: "2",
+      applicationUrl: "#",
+      jobClosingDate: "06 October 2020 at 09:00am"
+    }]
+  }) }}
+  
+  {{ appJobListingCard ({
+    items: [{
+      jobUrl: "#",
+      jobName: "Trust-Wide Lead Practitioner - Mathematics",
+      jobLocation: "Newham local authority",
+      applicationCount: "49",
+      applicationUrl: "#", 
+      jobClosingDate: "31 May 2021 at 09:00am"
+    }]
+  }) }}
+  
+  {{ appJobListingCard ({
+    items: [{
+      jobUrl: "#",
+      jobName: "Teaching Assistant",
+      jobLocation: "Bermondsey",
+      jobClosingDate: "12 June 2021 at 09:00am"
+    }]
+  }) }}
+
+{% endblock %}
