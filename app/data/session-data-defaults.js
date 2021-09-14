@@ -27,14 +27,18 @@ let job = {
   userType: "singleSchool",
 
   // Fallback school name
-  defaultSchoolName: "Belle Vue Girls' Academy",
+  defaultSchoolName: "Belle Vue Girls Academy",
 
   // Does the journey include an all-through school?
   // Defaults to no as its less common
   // containsAllThroughPhase: "Yes"
 }
 
+const applications = require('./applications.json')
+
 module.exports = {
+
+  applications,
     
   // Assign the phase to job
   job: job,

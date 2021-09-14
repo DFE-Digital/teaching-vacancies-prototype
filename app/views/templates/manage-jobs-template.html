@@ -20,9 +20,10 @@
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <h2 class="govuk-heading-l table-title-number">{{ pageTitle | safe}}</h2>
-
-								{% include "includes/applications/job-listing-actions.html" %}
+                <div class="app-job-listing-actions govuk-!-margin-top-5">
+                  <h2 class="govuk-heading-l table-title-number">{{ pageTitle | safe}}</h2>
+                  <a href="/prototypes/scope_expansion/0-job-role" class="govuk-button" data-module="govuk-button">Create a job listing</a>
+                </div>
 
                 {% block listings %}
                 {% endblock %}

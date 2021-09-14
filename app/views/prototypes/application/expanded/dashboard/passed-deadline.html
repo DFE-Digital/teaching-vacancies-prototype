@@ -1,4 +1,4 @@
-{% extends "templates/listings-template.html" %}
+{% extends "templates/manage-jobs-template.html" %}
 
 {% set navActive = "passed deadline" %}
 {% set pageTitle = "Passed deadline <span>(3)</span>" %}
@@ -7,7 +7,7 @@
 
   {{ appJobListingCard ({
     items: [{
-      jobUrl: "#",
+      jobUrl: "../job-01",
       jobName: data['app2-jobListingName'],
       jobLocation: "London",
       applicationCount: "2",
@@ -20,9 +20,9 @@
   {{ appJobListingCard ({
     items: [{
       jobUrl: "#",
-      jobName: "test Trust-Wide Lead Practitioner - Mathematics",
+      jobName: "Deputy Headteacher",
       jobLocation: "Newham local authority",
-      applicationCount: "49",
+      applicationCount: "4",
       applicationUrl: "#", 
       jobListingDate: "31 May 2021 at 09:00am",
       jobListingEndingDate: "31 May 2021 at 09:00am"
@@ -32,7 +32,7 @@
   {{ appJobListingCard ({
     items: [{
       jobUrl: "#",
-      jobName: "Teaching Assistant",
+      jobName: "SENDCo - 0.3 FTE - Shrivenham Primary School",
       jobLocation: "Bermondsey",
       jobListingDate: "12 June 2021 at 09:00am",
       jobListingEndingDate: "12 June 2021 at 09:00am"

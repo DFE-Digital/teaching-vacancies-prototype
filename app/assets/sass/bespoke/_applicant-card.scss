@@ -1,5 +1,5 @@
 
-.app-job-listing-card {
+.app-applicant-card {
   display: block;
   padding: govuk-spacing(3) 0;
 
@@ -10,18 +10,6 @@
   .col {
     width: 100%;
     margin-bottom: govuk-spacing(3);
-
-    span.accepting {
-      font-weight: bold;
-      // color: $govuk-success-colour;
-      color: red;
-    }
-
-    span.passed {
-      font-weight: bold;
-      // color: $govuk-error-colour;
-      color: green;
-    }
 
     ul.table-actions-list {
         text-align: right;
@@ -37,12 +25,34 @@
     margin: 0;
   }
 
-  dl div {
+  dl {
     color: $govuk-secondary-text-colour;
   }
 
-  dl div + div {
-    margin-top: govuk-spacing(1);
+  dl div {
+    margin-top: govuk-spacing(2);
+  }
+
+  .applicant-actions {
+    // a:nth-child(1) {
+    //   padding-right: 10px;
+    //   position: relative;
+    // }
+    a:nth-child(2) {
+      position: relative;
+      padding-left: 10px;
+      margin-left: 8px;
+      
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 1px;
+        height: 100%;
+        background: $govuk-border-colour;
+        content: "";
+      }
+    }
   }
 
   @include govuk-media-query($from: tablet) {
@@ -53,7 +63,8 @@
       margin-bottom: 0;
     }
     
-    .col:nth-child(2) {
+    .col:nth-child(2),
+    .col:nth-child(3) {
       padding-left: govuk-spacing(4);
     }
   }
@@ -61,6 +72,10 @@
   @include govuk-media-query($from: desktop) {
     .col {
       width: 33.333%;
+    }
+
+    .col:nth-child(3) {
+      text-align: right;
     }
   }
 }
