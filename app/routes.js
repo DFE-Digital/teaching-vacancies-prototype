@@ -193,6 +193,37 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     }  
     
   })
-  
 
+  // applications
+  
+  // Job role details (v1)
+  router.get('/prototypes/application/expanded/job-01/applicant/:applicationId', function (req, res) {
+  
+    let applicationId = req.params.applicationId
+
+    res.render('prototypes/application/expanded/job-01/applicant/index.html', {
+      applicationId: applicationId
+      })
+    
+  })
+  
+  // Job role details (v1)
+  router.get('/prototypes/application/expanded/job-01/applicant/:applicationId/mark-reviewed', function (req, res) {
+  
+    let applicationId = req.params.applicationId
+
+    const applications = req.session.data.applications
+
+    let application = applications.find(application => application.id == applicationId)
+
+    application.status = "Reviewed"
+
+    
+
+    console.log(application)
+
+    res.redirect(`/prototypes/application/expanded/job-01/applicant/${applicationId}`)
+    
+  })
+  
 module.exports = router
