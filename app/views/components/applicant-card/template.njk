@@ -2,7 +2,7 @@
 
 <div class="app-applicant-card">
     <div class="col">
-      <a href="{{ application.id }}/application" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold"> <span class="govuk-visually-hidden">View application for</span>{{ application.name }}</a>
+      <a href="applicant-0{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold"> <span class="govuk-visually-hidden">View application for</span>{{ application.name }}</a>
     </div>
     <div class="col">
       {% if application.status == 'Unread' %}

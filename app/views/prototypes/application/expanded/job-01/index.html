@@ -4,10 +4,10 @@
 
 {% block listingsTabContent %}
 
-<h2 class="govuk-heading-m">Manage listing</h2>
-
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    <h2 class="govuk-heading-m">Manage listing</h2>
     <ol class="app-task-list govuk-!-padding-right-6">
       <li>
         <h2 class="app-task-list__section">
@@ -183,7 +183,7 @@
       </li>
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">5.</span>
+          <span class="app-task-list__section-number">7.</span>
           Applying for the job <a href="#">Change</a>
         </h2>
         {{ govukSummaryList({
@@ -262,9 +262,12 @@
 
   </div>
 
+
   <div class="govuk-grid-column-one-third grey-bg-container">
     <h3 class="govuk-heading-m">View the live job listing</h3>
     <a target="_blank" class="govuk-link govuk-body" href="#">View this listing (opens in new tab)</a>
   </div>
+
+</div>
 
 {% endblock %}

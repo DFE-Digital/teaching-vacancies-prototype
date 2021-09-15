@@ -12,20 +12,15 @@
 
 {% block main %}
 
-{% include "includes/applications/single-job-top-panel.html" %}
+{% include "includes/applications/single-application-top-panel.html" %}
 
 <div class="govuk-width-container">
-  <main class="govuk-main-wrapper govuk-!-padding-top-2">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-
-        {% include "includes/applications/single-job-nav.html" %}
-
-        {% block listingsTabContent %}
+    <main class="govuk-main-wrapper govuk-!-padding-top-2">
+      <div class="govuk-grid-row">
+        {% block applicationContent %}
         {% endblock %}
       </div>
-    </div>
-  </main>
+    </main>
 </div>
 
 {% endblock %}

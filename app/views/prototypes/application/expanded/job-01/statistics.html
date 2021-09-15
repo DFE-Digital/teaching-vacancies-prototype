@@ -6,5 +6,93 @@
 
   <h2 class="govuk-heading-m">Statistics</h2>
 
+  <p class="govuk-body">This may include data from candidates who have withdrawn their applications.<br>This is to ensure the anonymity of applicants who submit equal opportunities information.</p>
+
+  <a class="govuk-button govuk-button--secondary" href="#">Download statistics (csv, 0.2KB)</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h3 class="govuk-heading-m">Listing data</h3>
+      <div class="detail-component">
+        <div class="detail-component__body">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Views by jobseekers"
+                },
+                value: {
+                  text: "4"
+                }
+              },
+              {
+                key: {
+                  text: "Saves by jobseekers"
+                },
+                value: {
+                  text: "6"
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+      
+      <h3 class="govuk-heading-m">Application data</h3>
+      <div class="detail-component">
+        <div class="detail-component__body">
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Total applications"
+                },
+                value: {
+                  text: "4"
+                }
+              },
+              {
+                key: {
+                  text: "Unread applications"
+                },
+                value: {
+                  text: "2"
+                }
+              },
+              {
+                key: {
+                  text: "Shortlisted applications"
+                },
+                value: {
+                  text: "1"
+                }
+              },
+              {
+                key: {
+                  text: "Rejected applications"
+                },
+                value: {
+                  text: "0"
+                }
+              },
+              {
+                key: {
+                  text: "Withdrawn applications	"
+                },
+                value: {
+                  text: "0"
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 
 {% endblock %}

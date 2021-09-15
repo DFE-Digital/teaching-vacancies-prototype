@@ -3,8 +3,15 @@
 {% set listingTabActive = 'applications' %}
 
 {% block listingsTabContent %}
-
-  <h2 class="govuk-heading-m">Applications</h2>
+  
+  <div class="flex-header">
+    <h2 class="govuk-heading-m">Applications</h2>
+    {{ govukButton({
+      text: "Download applications (pdf)",
+      classes: "govuk-button--secondary",
+      href: "#"
+    }) }}
+  </div>
 
   {% for application in data.applications %}
     {% include "components/applicant-card/template.njk" %}

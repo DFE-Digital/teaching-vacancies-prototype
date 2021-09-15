@@ -1,9 +1,13 @@
 
-.app-job-listing-actions {
+// flex-header is a generic helper class to distribute objects  
+
+.app-job-listing-actions,
+.flex-header {
   display: block;
 
   @include govuk-media-query($from: tablet) {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 }
