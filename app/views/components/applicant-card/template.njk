@@ -2,55 +2,35 @@
 
 <div class="app-applicant-card">
     <div class="col">
-      <a href="applicant/{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold"> <span class="govuk-visually-hidden">View application for</span>{{ application.firstname }} {{ application.lastname }} </a>
+      <a href="applicant/{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View application for</span>{{ application.firstname }} {{ application.lastname }} </a>
     </div>
     <div class="col">
-      {% if application.status == 'Unread' %}
-        {{govukTag({
-          text: application.status,
-          classes: "govuk-tag--blue"
-        })}}
+      {% include "includes/applications/application-status-tags.html" %}
+      {% if application.status %}
+        <dl class="govuk-!-font-size-16 govuk-!-margin-top-1">
+          <div>
+            <dt>
+              <span class="govuk-!-font-weight-bold">Received on:</span>
+            </dt>
+            <dd>{{ application.recievedDateTime }}</dd>
+          </div>
+        </dl>
+      {% else %}
+      <dl class="govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-5">
+        <dt>
+          <span class="govuk-!-font-weight-bold">Received on:</span>
+        </dt>
+        <dd>{{ application.recievedDateTime }}</dd>
+        </dl>
       {% endif %}
-      {% if application.status == 'Withdrawn' %}
-        {{govukTag({
-          text: application.status,
-          classes: "govuk-tag--yellow"
-        })}}
-      {% endif %}
-      {% if application.status == 'Rejected' %}
-        {{govukTag({
-          text: application.status,
-          classes: "govuk-tag--red"
-        })}}
-      {% endif %}
-      {% if application.status == 'Invited to interview' %}
-        {{govukTag({
-          text: application.status,
-          classes: "govuk-tag--green"
-        })}}
-      {% endif %}
-      {% if application.status == 'Reviewed' %}
-        {{govukTag({
-          text: application.status,
-          classes: "govuk-tag--purple"
-        })}}
-      {% endif %}
-      <dl class="govuk-!-font-size-16 govuk-!-margin-top-1">
-        <div>
-          <dt>
-            <span class="govuk-!-font-weight-bold">Received on:</span>
-          </dt>
-          <dd>{{ application.recievedDateTime }}</dd>
-        </div>
-      </dl>
     </div>
     <div class="col">
       {% if application.status == 'Unread' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
         <div class="applicant-actions">
           {% if application.status != 'Invited to interview' %}
-            <a class="govuk-link" href="{{ application.id }}/invite">Invite to interview<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
+            <a class="govuk-link govuk-link--no-visited-state" href="#">Invite to interview<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
           {% endif %}
-          <a class="govuk-link" href="reject">Reject<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
+          <a class="govuk-link govuk-link--no-visited-state" href="#">Reject<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
         </div>
       {% endif %}
     </div>

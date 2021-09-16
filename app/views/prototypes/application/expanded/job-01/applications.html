@@ -6,11 +6,21 @@
   
   <div class="flex-header">
     <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Applications</h2>
-    {{ govukButton({
-      text: "Download applications (pdf)",
-      classes: "govuk-button--secondary",
-      href: "#"
-    }) }}
+    <div class="govuk-button-group">
+      {% set downloadButtonText %}
+        Download (pdf)
+      {% endset %}
+      {{ govukButton({
+        text: "Download (pdf)",
+        classes: "govuk-button--secondary",
+        href: "#"
+      }) }}
+      {{ govukButton({
+        text: "Share",
+        classes: "govuk-button--secondary",
+        href: "#"
+      }) }}
+    </div>
   </div>
 
   {% for application in data.applications %}

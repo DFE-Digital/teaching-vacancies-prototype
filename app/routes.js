@@ -191,14 +191,22 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   router.get('/prototypes/application/expanded/job-01/applicant/:applicationId', function (req, res) {
   
     let applicationId = req.params.applicationId
+    const applications = req.session.data.applications
+    let application = applications.find(application => application.id == applicationId)
+
+    // is the status "unread"?
+    if (application.status == "Unread") {
+      // then empty the status
+      application.status = ""
+    }
 
     res.render('prototypes/application/expanded/job-01/applicant/index.html', {
       applicationId: applicationId
-      })
+    })
     
   })
   
-  // Pattern for changing status based on url
+  // Pattern for changing status based on URL
   router.get('/prototypes/application/expanded/job-01/applicant/:applicationId/mark-reviewed', function (req, res) {
   
     let applicationId = req.params.applicationId

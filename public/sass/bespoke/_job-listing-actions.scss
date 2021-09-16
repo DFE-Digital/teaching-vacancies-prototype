@@ -5,6 +5,18 @@
 .flex-header {
   display: block;
 
+  .govuk-button-group {
+    margin-bottom: govuk-spacing(0);
+  }
+
+  .govuk-button {
+    margin-bottom: govuk-spacing(4);
+  }
+
+  * + * {
+    align-self: flex-start;
+  }
+
   @include govuk-media-query($from: tablet) {
     display: flex;
     justify-content: space-between;

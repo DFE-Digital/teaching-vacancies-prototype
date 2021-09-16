@@ -114,6 +114,7 @@ div.action-bar1{
     flex-flow: row wrap;
     justify-content: flex-end;
 }
+
 @media (min-width: 40.0625em) {
     .mast-buttons {
         button {
@@ -213,7 +214,7 @@ DASHBOARD TABLE ACTION BUTTONS (00-acc-applicants)
   padding: govuk-spacing(3);
 }
 
-// gaps in employment
+// Single application gaps in employment
 
 .employment-break {
 
@@ -226,3 +227,13 @@ DASHBOARD TABLE ACTION BUTTONS (00-acc-applicants)
   }
 
 }
+
+// Single application header
+
+.single-application-header__status {
+  position: relative;
+  display: inline-block;
+  margin-left: govuk-spacing(1);
+  bottom: 3px;
+}
+
