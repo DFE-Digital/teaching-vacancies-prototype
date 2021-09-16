@@ -1,0 +1,13 @@
+// Dashed list (used in Contents links list)
+
+.govuk-list--dash li {
+  position: relative;
+
+  &::before {
+    color: $govuk-secondary-text-colour;
+    content: "\2013";
+    left: -16px;
+    position: absolute;
+    top: 0;
+  }
+}

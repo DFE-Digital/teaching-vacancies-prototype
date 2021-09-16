@@ -9,7 +9,7 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
 
-$('a[href*=\\#]').on('click', function (event) {
+$('a[href=#]').on('click', function (event) {
   if(this.pathname === window.location.pathname){
     
     var message ='Sorry, this hasn’t been built yet';

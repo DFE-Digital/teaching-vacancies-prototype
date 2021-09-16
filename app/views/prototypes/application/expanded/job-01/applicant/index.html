@@ -4,10 +4,22 @@
 
 {% block applicationContent %}
 
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds"> 
     <h3 class="govuk-heading-m">Appplication sections</h3>
-    <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat tincidunt nulla quis aliquam. Fusce non congue turpis, sit amet elementum lorem. Morbi et hendrerit ex. Praesent vitae leo nisl. Integer pulvinar leo eu lectus placerat, sit amet finibus sapien venenatis. Nulla a tincidunt erat, vitae rhoncus quam. Duis iaculis tincidunt nunc, at luctus quam malesuada id. Nulla facilisi. Suspendisse accumsan orci quis arcu vehicula cursus. Praesent fermentum a ante eget pellentesque. Nullam vel quam pellentesque, euismod orci pretium, eleifend libero. Pellentesque in mi eget lacus sodales consectetur ac non neque. Suspendisse et commodo ligula. In aliquet placerat lectus. Suspendisse dolor nibh, elementum nec risus a, tincidunt cursus mi.</p>
-    <a href="./applications" class="govuk-body govuk-link">Return to all applicants</a>
+    <ul class="govuk-list govuk-list--dash govuk-!-margin-bottom-8">
+      <li><a class="govuk-link" href="./#personal_details">Personal details</a></li>
+      <li><a class="govuk-link" href="./#professional_status_summary">Professional status</a></li>
+      <li><a class="govuk-link" href="./#qualifications_summary">Education and qualifications</a></li>
+      <li><a class="govuk-link" href="./#employment_history_summary">Current role and employment history</a></li>
+      <li><a class="govuk-link" href="./#personal_statement_summary">Personal statement</a></li>
+      <li><a class="govuk-link" href="./#references_summary">References</a></li>
+      <li><a class="govuk-link" href="./#ask_for_support_summary">Ask for support if you have a disability or other needs</a></li>
+      <li><a class="govuk-link" href="./#declarations_summary">Declarations</a></li>
+    </ul>
+    
+    {% include "includes/applications/single-application-content.html" %}
+
+    <a href="../applications" class="govuk-body govuk-link">Return to all applicants</a>
   </div>
 
   <div class="govuk-grid-column-one-third grey-bg-container">

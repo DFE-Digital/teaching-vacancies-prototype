@@ -206,7 +206,23 @@ DASHBOARD TABLE ACTION BUTTONS (00-acc-applicants)
     width: 2px;
 }
 
+// sidebar
+
 .grey-bg-container {
   background:#f3f2f1;
   padding: govuk-spacing(3);
+}
+
+// gaps in employment
+
+.employment-break {
+
+  & > .govuk-accordion__section-header {
+    display: none;
+  }
+
+  .govuk-accordion__section-content {
+    padding: 0;
+  }
+
 }

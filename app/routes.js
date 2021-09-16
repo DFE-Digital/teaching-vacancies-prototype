@@ -18,15 +18,6 @@ router.post('/examples/branching/over-18-answer', function (req, res) {
   } else {
     res.redirect('/mat3/2-job-details')
   }
-  
-
-  // let aboutS = req.session.data['trust-location']
-
-  // if (aboutS === 'At more than one school in the trust') {
-  //   $("div#aboutTrust").hide();
-  // } else {
-  //   $("div#aboutTrust").show();
-  // }
 
 })
 
@@ -194,9 +185,9 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
 
-  // applications
+  // Applications
   
-  // Job role details (v1)
+  // Pattern for using applicationId to pull though the right data
   router.get('/prototypes/application/expanded/job-01/applicant/:applicationId', function (req, res) {
   
     let applicationId = req.params.applicationId
@@ -207,22 +198,17 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
   
-  // Job role details (v1)
+  // Pattern for changing status based on url
   router.get('/prototypes/application/expanded/job-01/applicant/:applicationId/mark-reviewed', function (req, res) {
   
     let applicationId = req.params.applicationId
-
     const applications = req.session.data.applications
-
     let application = applications.find(application => application.id == applicationId)
 
     application.status = "Reviewed"
 
-    
-
-    console.log(application)
-
-    res.redirect(`/prototypes/application/expanded/job-01/applicant/${applicationId}`)
+    // res.redirect(`/prototypes/application/expanded/job-01/applicant/${applicationId}`)
+    res.redirect(`/prototypes/application/expanded/job-01/applications`)
     
   })
   

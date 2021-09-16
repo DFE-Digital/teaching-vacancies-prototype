@@ -1,37 +1,42 @@
 [
   {
-    "name": "Firstname lastname",
+    "firstname": "Ronald",
+    "lastname": "Kenyon",
     "url": "#",
     "status": "Unread",
+    "recievedDateTime": "30 August 2021 at 15:18",
+    "id": "0"
+  },
+  {
+    "firstname": "Liliya",
+    "lastname": "Yeva",
+    "url": "#",
+    "status": "Invited to interview",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "1"
   },
   {
-    "name": "Firstname lastname 2",
+    "firstname": "Mildred",
+    "lastname": "Finn",
     "url": "#",
-    "status": "Invited to interview",
+    "status": "Rejected",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "2"
   },
   {
-    "name": "Firstname lastname 3",
+    "firstname": "Shu",
+    "lastname": "Akosua",
     "url": "#",
-    "status": "Rejected",
+    "status": "Withdrawn",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "3"
   },
   {
-    "name": "Firstname lastname 4",
-    "url": "#",
-    "status": "Withdrawn",
-    "recievedDateTime": "30 August 2021 at 15:18",
-    "id": "4"
-  },
-  {
-    "name": "Firstname lastname 5",
+    "firstname": "Sadie",
+    "lastname": "Roberts",
     "url": "#",
     "status": "Reviewed",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "id": "5"
+    "id": "4"
   }
 ]
