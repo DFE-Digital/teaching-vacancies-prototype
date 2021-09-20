@@ -5,38 +5,10 @@
 
 {% block listings %}
 
-  {{ appJobListingCard ({
-    items: [{
-      jobUrl: "../job-01",
-      jobName: data['app2-jobListingName'],
-      jobLocation: "London",
-      applicationCount: "5",
-      applicationUrl: "../job-01/applications",
-      jobListingDate: "06 October 2020 at 09:00am",
-      jobListingEndingDate: "06 October 2020 at 09:00am"
-    }]
-  }) }}
-  
-  {{ appJobListingCard ({
-    items: [{
-      jobUrl: "#",
-      jobName: "Deputy Headteacher",
-      jobLocation: "Newham local authority",
-      applicationCount: "4",
-      applicationUrl: "#", 
-      jobListingDate: "31 May 2021 at 09:00am",
-      jobListingEndingDate: "31 May 2021 at 09:00am"
-    }]
-  }) }}
-  
-  {{ appJobListingCard ({
-    items: [{
-      jobUrl: "#",
-      jobName: "SENDCo - 0.3 FTE - Shrivenham Primary School",
-      jobLocation: "Bermondsey",
-      jobListingDate: "12 June 2021 at 09:00am",
-      jobListingEndingDate: "12 June 2021 at 09:00am"
-    }]
-  }) }}
+  {% for job in data.jobs %}
+    {% if job.status == "passed-deadline" %}
+      {% include "components/listing-card/template.njk" %}
+    {% endif %}
+  {% endfor %}
 
 {% endblock %}

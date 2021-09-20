@@ -34,10 +34,12 @@ let job = {
   // containsAllThroughPhase: "Yes"
 }
 
+const jobs = require('./jobs.json')
 const applications = require('./applications.json')
 
 module.exports = {
 
+  jobs,
   applications,
     
   // Assign the phase to job
