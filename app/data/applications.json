@@ -2,7 +2,6 @@
   {
     "firstname": "Ronald",
     "lastname": "Kenyon",
-    "url": "#",
     "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "0"
@@ -10,7 +9,6 @@
   {
     "firstname": "Liliya",
     "lastname": "Yeva",
-    "url": "#",
     "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "1"
@@ -18,7 +16,6 @@
   {
     "firstname": "Mildred",
     "lastname": "Finn",
-    "url": "#",
     "status": "Rejected",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "2"
@@ -26,7 +23,6 @@
   {
     "firstname": "Shu",
     "lastname": "Akosua",
-    "url": "#",
     "status": "Withdrawn",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "3"
@@ -34,7 +30,6 @@
   {
     "firstname": "Sadie",
     "lastname": "Roberts",
-    "url": "#",
     "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "4"

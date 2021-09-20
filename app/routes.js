@@ -185,10 +185,49 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
 
-  // Applications
+  // Single job routes
+
+  // View a single job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId', function (req, res) {
   
-  // Pattern for using applicationId to pull though the right data
-  router.get('/prototypes/application/expanded/job-01/applicant/:applicationId', function (req, res) {
+    let jobId = req.params.jobId
+    // const jobs = req.session.data.jobs
+    // let job = jobs.find(job => job.id == jobId)
+
+    res.render('prototypes/application/expanded/dashboard/job/index.html', {
+      jobId: jobId
+    })
+    
+  })
+
+  // View the applications tab of a job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applications', function (req, res) {
+  
+    let jobId = req.params.jobId
+    // const jobs = req.session.data.jobs
+    // let job = jobs.find(job => job.id == jobId)
+
+    res.render('prototypes/application/expanded/dashboard/job/applications.html', {
+      jobId: jobId
+    })
+    
+  })
+  
+  // View the stats tab of a job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/statistics', function (req, res) {
+  
+    let jobId = req.params.jobId
+    // const jobs = req.session.data.jobs
+    // let job = jobs.find(job => job.id == jobId)
+
+    res.render('prototypes/application/expanded/dashboard/job/statistics.html', {
+      jobId: jobId
+    })
+    
+  })
+  
+  // View the applications of a job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId', function (req, res) {
   
     let applicationId = req.params.applicationId
     const applications = req.session.data.applications
@@ -200,23 +239,24 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       application.status = ""
     }
 
-    res.render('prototypes/application/expanded/job-01/applicant/index.html', {
+    res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
       applicationId: applicationId
     })
     
   })
   
-  // Pattern for changing status based on URL
-  router.get('/prototypes/application/expanded/job-01/applicant/:applicationId/mark-reviewed', function (req, res) {
+  // Mark an application as reviewed and return to all applicatios for that job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/mark-reviewed', function (req, res) {
   
     let applicationId = req.params.applicationId
+    let jobId = req.params.jobId
     const applications = req.session.data.applications
     let application = applications.find(application => application.id == applicationId)
 
     application.status = "Reviewed"
 
     // res.redirect(`/prototypes/application/expanded/job-01/applicant/${applicationId}`)
-    res.redirect(`/prototypes/application/expanded/job-01/applications`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications`)
     
   })
   

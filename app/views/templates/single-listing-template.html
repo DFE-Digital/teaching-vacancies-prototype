@@ -35,7 +35,8 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-2">
-            {{ data['app2-jobListingName'] }}
+            {# {{ data['app2-jobListingName'] }} #}
+            {{ data.jobs[jobId].name }}
           </h2>
         </div>
       </div>

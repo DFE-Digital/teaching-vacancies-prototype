@@ -1,7 +1,7 @@
 <div class="app-job-listing-card">
   {# {% for item in params.items %} #}
     <div class="col">
-        <a href="{{ jon.url }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View</span>{{ job.name }}</a>
+        <a href="./job/{{ job.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View</span>{{ job.name }}</a>
         {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
           {% if item.jobLocation %}
             <p class="govuk-hint govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ job.location }}</p>
@@ -10,7 +10,7 @@
     </div>
     <div class="col">
       {% if job.applicationCount > 0 %}
-        <a class="govuk-!-font-size-19 govuk-link--no-visited-state" href="{{ job.applicationUrl }}"><span class="govuk-visually-hidden">View</span> {{ job.applicationCount }} applications</a> <span class="govuk-visually-hidden">for {{ job.name }}</span>
+        <a class="govuk-!-font-size-19 govuk-link--no-visited-state" href="./job/{{ job.id }}/applications"><span class="govuk-visually-hidden">View</span> {{ job.applicationCount }} applications</a> <span class="govuk-visually-hidden">for {{ job.name }}</span>
       {% else %}
         <span class="govuk-!-font-size-19">0 applications</span>
       {% endif %}

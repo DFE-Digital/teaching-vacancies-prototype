@@ -1,11 +1,11 @@
 <ul class="acc-navigation__list acc-navigation__list--has-border acc-navigation__list govuk-!-margin-bottom-7">
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'manage listing' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/job-01">Manage listing</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}">Manage listing</a>
   </li>
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'applications' }} ">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/job-01/applications">Applications (5)</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/applications">Applications (5)</a>
   </li>
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'statistics' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/job-01/statistics">Statistics</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/statistics">Statistics</a>
   </li>
 </ul>
