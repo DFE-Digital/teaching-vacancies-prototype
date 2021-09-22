@@ -16,14 +16,14 @@
 
 <div class="govuk-width-container">
   <div
-    class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-3">
+    class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-0">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         {{ govukBreadcrumbs({
           items: [
             {
               text: "Passed deadline",
-              href: "/prototypes/application/expanded/dashboard/passed-deadline"
+              href: "../../passed-deadline"
             },
             {
               text: data['app2-jobListingName'],
@@ -40,7 +40,8 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="single-application-header">
           <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-3">
-            <span class="govuk-caption-l">{{data['app2-jobListingName']}}</span>
+            {# <span class="govuk-caption-l">{{data['app2-jobListingName']}}</span> #}
+            <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
             {{ name }}
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
             </div>
@@ -49,49 +50,17 @@
         </div>
       </div>
     </div>
-
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full govuk-!-margin-top-7">
-        <div class="flex-header">
-          <div class="govuk-button-group">
-            {% if data.applications[applicationId].status != 'Reviewed' %}
-              {{ govukButton({
-                text: "Mark as reviewed",
-                classes: "govuk-button--secondary",
-                href: "./" + applicationId +  "/mark-reviewed"
-              }) }}
-            {% endif %}
-
-            {{ govukButton({
-              text: "Invite to interview",
-              href: "./applicant-01/invite"
-            }) }}
-            
-            {{ govukButton({
-              text: "Reject",
-              classes: "govuk-button--warning",
-                href: "./" + applicationId +  "/reject"
-            }) }}
-          </div>
-          {{ govukButton({
-            text: "Download (pdf)",
-            classes: "govuk-button--secondary"
-          }) }}
-        </div>
-        <hr class="govuk-section-break govuk-section-break--visible">
+      <div class="govuk-grid-column-full govuk-!-margin-top-5">
+        {% include "includes/applications/single-application-nav.html" %}
       </div>
     </div>
     
   </div>
 </div>
 
-<div class="govuk-width-container">
-    <main class="govuk-main-wrapper govuk-!-padding-top-6">
-      <div class="govuk-grid-row">
-        {% block applicationContent %}
-        {% endblock %}
-      </div>
-    </main>
-</div>
+{% block applicationContent %}
+{% endblock %}
+
 
 {% endblock %}

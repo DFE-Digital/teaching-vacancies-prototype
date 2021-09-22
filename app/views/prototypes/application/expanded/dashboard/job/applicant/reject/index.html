@@ -1,37 +1,44 @@
 {% extends "templates/form-template.html" %}
 
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+
 {% block formContent %}
 
   <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
-    <span class="govuk-caption-m">{{ application.name }}Applicant name</span>
-    Primary Teacher
+    <span class="govuk-caption-l">{{ name }}</span>
+    {{ jobName }}
   </h1>
   
   <h2 class="govuk-heading-l">Reject applicant</h2>
 
-  {{ govukRadios({
-    fieldset: {
-      legend: {
-        text: "Would you like to email the applicant to let them know that their application has not been successful? ",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [
-      {
-        text: "Yes"
+  <form method="post" action="./send-reject-email-answer">
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "Email the applicant to let them know that their application has not been successful",
+          classes: "govuk-fieldset__legend--s"
+        }
       },
-      {
-        text: "No"
-      }
-    ]
-  } | decorateAttributes(data, "data.application.isRejected")) }}
+      items: [
+        {
+          text: "Yes"
+        },
+        {
+          text: "No"
+        }
+      ]
+    } | decorateAttributes(data, "data.application.isRejected")) }}
 
-  <div class="govuk-button-group">
-    {{ govukButton({
-      text: "Continue"
-    }) }}
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+      <a class="govuk-link" href="./" >Cancel</a>
+    </div>
 
-    <a class="govuk-link" href="../job-01/applications">Cancel</a>
-  </div>
+  </form>
 
 {% endblock %}
