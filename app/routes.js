@@ -1,5 +1,38 @@
+
 const express = require('express')
 const router = express.Router()
+const path = require('path')
+
+// Functions
+
+// Loosely copied from /lib/utils
+// Allows a template to live at 'foo/index' and be served from 'foo'
+// The kit normally does this by defualt, but not if you want to do your
+// own GET / POST routes
+const newRender = (path, res, next, ...args) => {
+
+  // Try to render the path
+  res.render(path, ...args, function (error, html) {
+    if (!error) {
+      // Success - send the response
+      res.set({ 'Content-type': 'text/html; charset=utf-8' })
+      res.end(html)
+      return
+    }
+    if (!error.message.startsWith('template not found')) {
+      // We got an error other than template not found - call next with the error
+      next(error)
+      return
+    }
+    if (!path.endsWith('/index')) {
+      // Maybe it's a folder - try to render [path]/index.html
+      newRender(path + '/index', res, next, ...args)
+      return
+    }
+    // We got template not found both times - call next to trigger the 404 page
+    next()
+  })
+}
 
 // Add your routes here - above the module.exports line
 
@@ -191,8 +224,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   router.get('/prototypes/application/expanded/dashboard/job/:jobId', function (req, res) {
   
     let jobId = req.params.jobId
-    // const jobs = req.session.data.jobs
-    // let job = jobs.find(job => job.id == jobId)
 
     res.render('prototypes/application/expanded/dashboard/job/index.html', {
       jobId: jobId
@@ -204,8 +235,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applications', function (req, res) {
   
     let jobId = req.params.jobId
-    // const jobs = req.session.data.jobs
-    // let job = jobs.find(job => job.id == jobId)
 
     res.render('prototypes/application/expanded/dashboard/job/applications.html', {
       jobId: jobId
@@ -217,8 +246,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/statistics', function (req, res) {
   
     let jobId = req.params.jobId
-    // const jobs = req.session.data.jobs
-    // let job = jobs.find(job => job.id == jobId)
 
     res.render('prototypes/application/expanded/dashboard/job/statistics.html', {
       jobId: jobId
@@ -248,19 +275,17 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   })
   
   // Render a single applications timeline of a job
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/timeline', function (req, res) {
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/timeline', function (req, res) {
   
-    let applicationId = req.params.applicationId
-    let jobId = req.params.jobId
-    // const applications = req.session.data.applications
-    // let application = applications.find(application => application.id == applicationId)
+  //   let applicationId = req.params.applicationId
+  //   let jobId = req.params.jobId
 
-    res.render('prototypes/application/expanded/dashboard/job/applicant/timeline.html', {
-      applicationId: applicationId,
-      jobId: jobId
-    })
+  //   res.render('prototypes/application/expanded/dashboard/job/applicant/timeline.html', {
+  //     applicationId: applicationId,
+  //     jobId: jobId
+  //   })
     
-  })
+  // })
   
   // Mark an application as reviewed and return to all applicatios for that job
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/mark-reviewed', function (req, res) {
@@ -277,53 +302,93 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   })
   
   // Mark an application as rejected
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject', function (req, res) {
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject', function (req, res) {
   
-    let applicationId = req.params.applicationId
-    let jobId = req.params.jobId
+  //   let applicationId = req.params.applicationId
+  //   let jobId = req.params.jobId
 
-    res.render('prototypes/application/expanded/dashboard/job/applicant/reject/index.html', {
-      applicationId: applicationId,
-      jobId: jobId
-    })
+  //   res.render('prototypes/application/expanded/dashboard/job/applicant/reject/index.html', {
+  //     applicationId: applicationId,
+  //     jobId: jobId
+  //   })
     
-  })
+  // })
   
   // Are you sending the applicant a rejection email?
   router.post('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject', function (req, res) {
   
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
-    let sendRejectionEmailAnswer = req.session.data.application.isRejected
+    let sendRejectionEmailAnswer = req.session.data.application.sendRejectionEmail
 
     if (sendRejectionEmailAnswer == "Yes") {
       res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/reject/rejection-reason`)
     } else {
-      res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/reject/confirm`)
+      res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/reject/confirm-no-email`)
     }
     
   })
   
   // Render the reject confirmation screen (no email sent)
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm', function (req, res) {
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm-no-email', function (req, res) {
   
+  //   let applicationId = req.params.applicationId
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/applicant/reject/confirm-no-email.html', {
+  //     applicationId: applicationId,
+  //     jobId: jobId
+  //   })
+    
+  // })
+
+  // Mark an application as rejected and return to all applicatios for that job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm-rejection', function (req, res) {
+
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
+    const applications = req.session.data.applications
+    let application = applications.find(application => application.id == applicationId)
 
-    res.render('prototypes/application/expanded/dashboard/job/applicant/reject/confirm.html', {
-      applicationId: applicationId,
-      jobId: jobId
-    })
+    application.status = "Rejected"
+
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications`)
     
   })
   
-  // Render the reject reason screen (email will be sent)
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/rejection-reason', function (req, res) {
+  // Render the reject reason screen
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/rejection-reason', function (req, res) {
+  
+  //   let applicationId = req.params.applicationId
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/applicant/reject/rejection-reason.html', {
+  //     applicationId: applicationId,
+  //     jobId: jobId
+  //   })
+    
+  // })
+ 
+  // Render the rejection check your answers screen
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/check-answers', function (req, res) {
+  
+  //   let applicationId = req.params.applicationId
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/applicant/reject/check-answers.html', {
+  //     applicationId: applicationId,
+  //     jobId: jobId
+  //   })
+    
+  // })
+  
+  // Dynamic route helper!
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/:page*', function (req, res, next) {
   
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
 
-    res.render('prototypes/application/expanded/dashboard/job/applicant/reject/rejection-reason.html', {
+    newRender(path.join(`prototypes/application/expanded/dashboard/job/applicant/`, req.params.page, req.params[0]), res, next, {
       applicationId: applicationId,
       jobId: jobId
     })

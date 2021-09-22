@@ -3,6 +3,7 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./reject" %}
 
 {% block formContent %}
 
@@ -13,7 +14,7 @@
   
   <h2 class="govuk-heading-l">Reject applicant</h2>
 
-  <form method="post" action="./send-reject-email-answer">
+  {# <form method="post" action="reject-email-answer"> #}
 
     {{ govukRadios({
       fieldset: {
@@ -30,7 +31,7 @@
           text: "No"
         }
       ]
-    } | decorateAttributes(data, "data.application.isRejected")) }}
+    } | decorateAttributes(data, "data.application.sendRejectionEmail")) }}
 
     <div class="govuk-button-group">
       {{ govukButton({
@@ -39,6 +40,6 @@
       <a class="govuk-link" href="./" >Cancel</a>
     </div>
 
-  </form>
+  {# </form> #}
 
 {% endblock %}

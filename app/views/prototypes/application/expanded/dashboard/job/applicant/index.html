@@ -11,29 +11,41 @@
       <div class="govuk-grid-column-full govuk-!-margin-bottom-5"> 
         <div class="flex-header">
           <div class="govuk-button-group">
-            {% if data.applications[applicationId].status != 'Reviewed' %}
+            {% if data.applications[applicationId].status != 'Rejected' %}
+            
+              {% if data.applications[applicationId].status != 'Reviewed' %}
+                {{ govukButton({
+                  text: "Mark as reviewed",
+                  classes: "govuk-button--secondary",
+                  href: "./" + applicationId +  "/mark-reviewed"
+                }) }}
+              {% endif %}
+
               {{ govukButton({
-                text: "Mark as reviewed",
-                classes: "govuk-button--secondary",
-                href: "./" + applicationId +  "/mark-reviewed"
+                text: "Invite to interview",
+                href: "./applicant-01/invite"
+              }) }}
+              
+              {{ govukButton({
+                text: "Reject",
+                classes: "govuk-button--warning",
+                  href: "./" + applicationId +  "/reject"
+              }) }}
+
+            {% endif %}
+            {% if data.applications[applicationId].status == 'Rejected' %}
+              {{ govukButton({
+                text: "Download (pdf)",
+                classes: "govuk-button--secondary"
               }) }}
             {% endif %}
-
-            {{ govukButton({
-              text: "Invite to interview",
-              href: "./applicant-01/invite"
-            }) }}
-            
-            {{ govukButton({
-              text: "Reject",
-              classes: "govuk-button--warning",
-                href: "./" + applicationId +  "/reject"
-            }) }}
           </div>
-          {{ govukButton({
-            text: "Download (pdf)",
-            classes: "govuk-button--secondary"
-          }) }}
+          {% if data.applications[applicationId].status != 'Rejected' %}
+            {{ govukButton({
+              text: "Download (pdf)",
+              classes: "govuk-button--secondary"
+            }) }}
+          {% endif %}
         </div>
       </div>
     </div>

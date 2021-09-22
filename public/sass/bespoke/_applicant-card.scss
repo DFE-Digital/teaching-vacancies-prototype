@@ -34,7 +34,7 @@
     margin-top: govuk-spacing(2);
   }
 
-  .applicant-actions {
+  .app-applicant-actions {
 
     a:nth-child(2) {
       position: relative;
@@ -51,6 +51,10 @@
         content: "";
       }
     }
+  }
+
+  .app-withdrawn-applicant {
+    color: $govuk-secondary-text-colour;
   }
 
   @include govuk-media-query($from: tablet) {

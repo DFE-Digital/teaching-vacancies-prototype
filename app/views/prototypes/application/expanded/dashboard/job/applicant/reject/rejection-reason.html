@@ -3,6 +3,7 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./check-answers" %}
 
 {% block formContent %}
 
@@ -13,32 +14,25 @@
   
   <h2 class="govuk-heading-l">Reject applicant</h2>
 
-  <form action="./reject-email-answer">
+  {# <form action="./check-answers" method="post"> #}
 
-    {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: "Email the applicant to let them know that their application has not been successful?",
-          classes: "govuk-fieldset__legend--s"
-        }
+    {{ govukTextarea({
+      label: {
+        text: "Why was the application not successful? (optional)",
+        classes: "govuk-label--s"
       },
-      items: [
-        {
-          text: "Yes"
-        },
-        {
-          text: "No"
-        }
-      ]
-    } | decorateAttributes(data, "data.application.isRejected")) }}
+      hint: {
+        text: "Include a brief explanation of why the applicant has not been successful. This can help them understand what they need to improve or develop."
+      }
+    } | decorateAttributes(data, "data.application.rejectionReason")) }}
 
     <div class="govuk-button-group">
       {{ govukButton({
         text: "Continue"
       }) }}
-      <a class="govuk-link" href="./" >Cancel</a>
+      <a class="govuk-link" href="../" >Cancel</a>
     </div>
 
-  </form>
+  {# </form> #}
 
 {% endblock %}

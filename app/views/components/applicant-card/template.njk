@@ -2,7 +2,11 @@
 
 <div class="app-applicant-card">
     <div class="col">
-      <a href="applicant/{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View application for</span>{{ application.firstname }} {{ application.lastname }} </a>
+      {% if application.status != 'Withdrawn' %}
+        <a href="applicant/{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View application for</span>{{ application.firstname }} {{ application.lastname }} </a>
+        {% else %}
+        <span class="app-withdrawn-applicant govuk-!-font-weight-bold govuk-!-font-size-24">{{ application.firstname }} {{ application.lastname }} </span>
+      {% endif %}
     </div>
     <div class="col">
       {% include "includes/applications/application-status-tags.html" %}
@@ -26,7 +30,7 @@
     </div>
     <div class="col">
       {% if application.status == 'Unread' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
-        <div class="applicant-actions">
+        <div class="app-applicant-actions">
           {% if application.status != 'Invited to interview' %}
             <a class="govuk-link govuk-link--no-visited-state" href="#">Invite to interview<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
           {% endif %}

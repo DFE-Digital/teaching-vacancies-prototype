@@ -13,14 +13,15 @@
   
   <h2 class="govuk-heading-l">Confirm rejection</h2>
 
-  <p class="govuk-body">The applicant will not be notified that application is unsuccessful.</p>
+  <p class="govuk-body">The applicant will not be notified that their application is unsuccessful.</p>
 
   <div class="govuk-button-group">
     {{ govukButton({
       text: "Reject this application",
-      classes: "govuk-button--warning"
+      classes: "govuk-button--warning",
+      href: "confirm-rejection"
     }) }}
-    <a class="govuk-link" href="./applications">Cancel</a>
+    <a class="govuk-link" href="../">Cancel</a>
   </div>
 
 {% endblock %}
