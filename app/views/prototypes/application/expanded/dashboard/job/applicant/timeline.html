@@ -1,0 +1,26 @@
+{% extends "templates/single-application-template.html" %}
+
+{% set applicationTabActive = 'timeline' %}
+
+{% block applicationContent %}
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-top-0">
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds"> 
+        <h3 class="govuk-heading-m">Timeline goes here</h3>
+        <p class="govuk-body">Fondue caerphilly monterey jack. Babybel emmental port-salut cheeseburger cheese slices gouda danish fontina boursin. Halloumi danish fontina fromage ricotta when the cheese comes out everybody's happy roquefort blue castello chalk and cheese. Cheese triangles emmental bavarian bergkase.</p>
+        <p class="govuk-body">Mascarpone macaroni cheese danish fontina. Mascarpone gouda bavarian bergkase fondue stinking bishop edam airedale say cheese. Blue castello brie cheese and biscuits airedale squirty cheese parmesan cheese slices pecorino. Cheese slices macaroni cheese parmesan cheese on toast stilton st. agur blue cheese.</p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        {# <h3 class="govuk-heading-m">Timeline</h3>
+        {% include "includes/applications/timeline.html" %} #}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

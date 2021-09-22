@@ -1,0 +1,26 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+    <span class="govuk-caption-l">{{ name }}</span>
+    {{ jobName }}
+  </h1>
+  
+  <h2 class="govuk-heading-l">Confirm rejection</h2>
+
+  <p class="govuk-body">The applicant will not be notified that application is unsuccessful.</p>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Reject this application",
+      classes: "govuk-button--warning"
+    }) }}
+    <a class="govuk-link" href="./applications">Cancel</a>
+  </div>
+
+{% endblock %}
