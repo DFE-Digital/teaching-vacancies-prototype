@@ -14,25 +14,21 @@
   
   <h2 class="govuk-heading-l">Reject applicant</h2>
 
-  {# <form action="./check-answers" method="post"> #}
+  {{ govukTextarea({
+    label: {
+      text: "Why was the application not successful? (optional)",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: "Include a brief explanation of why the applicant has not been successful. This can help them understand what they need to improve or develop."
+    }
+  } | decorateAttributes(data, "data.application.rejectionReason")) }}
 
-    {{ govukTextarea({
-      label: {
-        text: "Why was the application not successful? (optional)",
-        classes: "govuk-label--s"
-      },
-      hint: {
-        text: "Include a brief explanation of why the applicant has not been successful. This can help them understand what they need to improve or develop."
-      }
-    } | decorateAttributes(data, "data.application.rejectionReason")) }}
-
-    <div class="govuk-button-group">
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-      <a class="govuk-link" href="../" >Cancel</a>
-    </div>
-
-  {# </form> #}
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}" >Cancel</a>
+  </div>
 
 {% endblock %}

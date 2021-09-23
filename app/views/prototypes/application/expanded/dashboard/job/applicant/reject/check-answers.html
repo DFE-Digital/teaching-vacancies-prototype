@@ -3,6 +3,7 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./applicants" %}
 
 {% block formContent %}
 
@@ -13,56 +14,52 @@
   
   <h2 class="govuk-heading-l">Confirm reject applicant details</h2>
 
-  <form method="post" action="./update">
-
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Email the applicant to let them know that their application has not been successful"
-          },
-          value: {
-            text: data.application.sendRejectionEmail
-          },
-          actions: {
-            items: [
-              {
-                href: "./../reject",
-                text: "Change",
-                visuallyHiddenText: "notifying the applicant of the rejection"
-              }
-            ]
-          }
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Email the applicant to let them know that their application has not been successful"
         },
-        {
-          key: {
-            text: "Why was the application not successful?"
-          },
-          value: {
-            text: data.application.rejectionReason
-          },
-          actions: {
-            items: [
-              {
-                href: "./rejection-reason",
-                text: "Change",
-                visuallyHiddenText: "Reason why was the application not successful?"
-              }
-            ]
-          }
+        value: {
+          text: data.application.sendRejectionEmail
+        },
+        actions: {
+          items: [
+            {
+              href: "./../reject",
+              text: "Change",
+              visuallyHiddenText: "notifying the applicant of the rejection"
+            }
+          ]
         }
-      ]
+      },
+      {
+        key: {
+          text: "Why was the application not successful?"
+        },
+        value: {
+          text: data.application.rejectionReason
+        },
+        actions: {
+          items: [
+            {
+              href: "./rejection-reason",
+              text: "Change",
+              visuallyHiddenText: "Reason why was the application not successful?"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Reject this application",
+      classes: "govuk-button--warning",
+      href: "confirm-rejection"
     }) }}
-
-    <div class="govuk-button-group">
-      {{ govukButton({
-        text: "Reject this application",
-        classes: "govuk-button--warning",
-        href: "confirm-rejection"
-      }) }}
-      <a class="govuk-link" href="../">Cancel</a>
-    </div>
-
-  </form>
+    <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}">Cancel</a>
+  </div>
 
 {% endblock %}

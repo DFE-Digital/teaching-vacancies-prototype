@@ -26,7 +26,7 @@
               href: "../../passed-deadline"
             },
             {
-              text: data['app2-jobListingName'],
+              text: data.jobs[jobId].name,
               href: "../applications"          
             },
             {
@@ -40,7 +40,6 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="single-application-header">
           <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-3">
-            {# <span class="govuk-caption-l">{{data['app2-jobListingName']}}</span> #}
             <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
             {{ name }}
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}

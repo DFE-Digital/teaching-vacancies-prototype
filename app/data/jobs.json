@@ -9,14 +9,6 @@
   },
   {
     "id": "1",
-    "status": "active",
-    "name": "Teaching Assistant",
-    "applicationCount": "0",
-    "closingDate": "06 October 2020 at 09:00am",
-    "location": "Test location"
-  },
-  {
-    "id": "2",
     "status": "passed-deadline",
     "name": "Primary Teacher",
     "applicationCount": "4",
@@ -25,9 +17,9 @@
     "location": "Test location"
   },
   {
-    "id": "3",
+    "id": "2",
     "status": "passed-deadline",
-    "name": "Deputy Headteacher",
+    "name": "Headteacher",
     "applicationCount": "0",
     "listingDate": "06 October 2020 at 09:00am",
     "endingDate": "06 October 2020 at 09:00am",
