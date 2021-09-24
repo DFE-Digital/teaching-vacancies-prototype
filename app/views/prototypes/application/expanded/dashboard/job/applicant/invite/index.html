@@ -1,0 +1,58 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./invite/check-answers" %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+    <span class="govuk-caption-l">{{ name }}</span>
+    {{ jobName }}
+  </h1>
+  
+  <h2 class="govuk-heading-l">Set up interview</h2>
+
+    {{ govukDateInput({
+      fieldset: {
+        legend: {
+          text: "Date",
+          classes: "govuk-fieldset__legend--s"
+        }
+      }
+     } | decorateAttributes(data, "data.application.interviewDate")) }}
+
+    {{ govukInput({
+      label: {
+        text: "Time",
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "For example, 9am or 2:30pm - enter 12pm for midday"
+      },
+      classes: "govuk-!-width-one-quarter"
+    } | decorateAttributes(data, "data.application.interviewTime")) }}
+
+    {{ govukTextarea({
+      label: {
+        text: "Address or online meeting details",
+        classes: "govuk-label--s"
+      }
+    } | decorateAttributes(data, "data.application.interviewAddress")) }}
+    
+    {{ govukTextarea({
+      label: {
+        text: "Additional details (optional)",
+        classes: "govuk-label--s"
+      }
+    } | decorateAttributes(data, "data.application.interviewDetails")) }}
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+      <a class="govuk-link" href="../{{ data.applications[applicationId].id}}" >Cancel</a>
+    </div>
+
+{% endblock %}

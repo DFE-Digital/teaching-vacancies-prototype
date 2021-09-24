@@ -1,0 +1,98 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./applicants" %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+    <span class="govuk-caption-l">{{ name }}</span>
+    {{ jobName }}
+  </h1>
+  
+  <h2 class="govuk-heading-l">Check and send interview details</h2>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Date"
+        },
+        value: {
+          text: data.application.interviewDate
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: "date"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Time"
+        },
+        value: {
+          text: data.application.interviewTime
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: " time"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Address or online meeting details"
+        },
+        value: {
+          text: data.application.interviewAddress
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: " address or online meeting details"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Additional details"
+        },
+        value: {
+          text: data.application.interviewDetails
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: " additional details"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Send interview details",
+      href: "confirm-rejection"
+    }) }}
+    <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}">Cancel</a>
+  </div>
+
+{% endblock %}
