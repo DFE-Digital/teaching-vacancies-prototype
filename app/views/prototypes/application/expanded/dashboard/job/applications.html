@@ -6,25 +6,33 @@
   
   <div class="flex-header">
     <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Applications</h2>
-    <div class="govuk-button-group">
-      {% set downloadButtonText %}
-        Download (pdf)
-      {% endset %}
-      {{ govukButton({
-        text: "Download (pdf)",
-        classes: "govuk-button--secondary",
-        href: "#"
-      }) }}
-      {{ govukButton({
-        text: "Share",
-        classes: "govuk-button--secondary",
-        href: "#"
-      }) }}
-    </div>
+    {% if data.jobs[jobId].applicationCount > 0 %}
+      <div class="govuk-button-group">
+        {% set downloadButtonText %}
+          Download (pdf)
+        {% endset %}
+        {{ govukButton({
+          text: "Download (pdf)",
+          classes: "govuk-button--secondary",
+          href: "#"
+        }) }}
+        {{ govukButton({
+          text: "Share",
+          classes: "govuk-button--secondary",
+          href: "#"
+        }) }}
+      </div>
+    {% endif %}
   </div>
 
-  {% for application in data.applications %}
-    {% include "components/applicant-card/template.njk" %}
-  {% endfor %}
+  {% if data.jobs[jobId].applicationCount > 0 %}
+    {% for application in data.applications %}
+      {% include "components/applicant-card/template.njk" %}
+    {% endfor %}
+  {% else %}
+      {{ govukInsetText({
+        text: "No one has applied for this job yet"
+      }) }}
+  {% endif %}
 
 {% endblock %}

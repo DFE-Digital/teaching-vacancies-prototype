@@ -2,9 +2,8 @@
 
 {% set application = data.applications[applicationId] %}
 {% set name = application.firstname + " " + application.lastname %}
-
 {% set jobName = data.jobs[jobId].name %}
-{% set formAction = "./applicants" %}
+{% set formAction = "./invite/confirm-interview-invite" %}
 
 {% block formContent %}
 
@@ -16,13 +15,14 @@
   <h2 class="govuk-heading-l">Check and send interview details</h2>
 
   {{ application | log }}
-  {{ data.applications | log }}
+  {# {{ application.interviewTime | log }}
+  {{ data.applications[applicationId].interviewTime | log }} #}
 
   {{ govukSummaryList({
     rows: [
       {
         key: {
-          text: "Date"
+          text: "Interview date"
         },
         value: {
           text: application.interviewDate | govukDate or 'Not provided'
@@ -32,24 +32,24 @@
             {
               href: "./../invite",
               text: "Change",
-              visuallyHiddenText: "date"
+              visuallyHiddenText: " interview date"
             }
           ]
         }
       },
       {
         key: {
-          text: "Time"
+          text: "Interview time"
         },
         value: {
-          text: data.application.interviewTime
+          text: application.interviewTime
         },
         actions: {
           items: [
             {
               href: "./../invite",
               text: "Change",
-              visuallyHiddenText: " time"
+              visuallyHiddenText: " interview time"
             }
           ]
         }
@@ -76,7 +76,7 @@
           text: "Additional details"
         },
         value: {
-          text: data.application.interviewDetails
+          text: application.interviewDetails
         },
         actions: {
           items: [
@@ -94,7 +94,7 @@
   <div class="govuk-button-group">
     {{ govukButton({
       text: "Send interview details",
-      href: "confirm-rejection"
+      href: "../../" + data.applications[applicationId].id
     }) }}
     <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}">Cancel</a>
   </div>

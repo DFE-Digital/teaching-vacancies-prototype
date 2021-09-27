@@ -4,6 +4,8 @@
 
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./invite/check-answers" %}
+{% set application = data.applications[applicationId] %}
+{% set dateOfInterviewArray = application.interviewDate | toDateArray %}
 
 {% block formContent %}
 
@@ -14,77 +16,61 @@
   
   <h2 class="govuk-heading-l">Set up interview</h2>
 
-    {# {{ govukDateInput({
+    {{ govukDateInput({
+      id: "date-of-interview",
+      namePrefix: "applications[" + applicationId + "][interviewDate]",
       fieldset: {
         legend: {
-          text: "Date",
+          text: "Interview date",
           classes: "govuk-fieldset__legend--s"
         }
       },
       hint: {
         text: "For example, " + "" | today | toDateArray | spaceSeparate
-      }
-     } | decorateAttributes(data, "data.application" + [applicationId] + "interviewDate")) }} #}
-
-     {% set application = data.applications[applicationId] %}
-
-     {% set dateOfInterviewArray = application.interviewDate | toDateArray %}
-
-     {{ govukDateInput({
-        id: "date-of-interview",
-        namePrefix: "applications[" + applicationId + "][interviewDate]",
-        fieldset: {
-          legend: {
-            text: "Interview date",
-            classes: "govuk-fieldset__legend--s"
+      },
+      items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: dateOfInterviewArray["0"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: dateOfInterviewArray["1"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: dateOfInterviewArray["2"]
           }
-        },
-        hint: {
-          text: "For example, " + "" | today | toDateArray | spaceSeparate
-        },
-        items: [
-            {
-              name: "day",
-              classes: "govuk-input--width-2",
-              value: dateOfInterviewArray["0"]
-            },
-            {
-              name: "month",
-              classes: "govuk-input--width-2",
-              value: dateOfInterviewArray["1"]
-            },
-            {
-              name: "year",
-              classes: "govuk-input--width-4",
-              value: dateOfInterviewArray["2"]
-            }
-          ]
-      }) }}
+        ]
+    }) }}
 
     {{ govukInput({
       label: {
-        text: "Time",
+        text: "Interview time",
         classes: "govuk-label--s"
       },
       hint: {
         text: "For example, 9am or 2:30pm - enter 12pm for midday"
       },
       classes: "govuk-!-width-one-quarter"
-    } | decorateAttributes(data, "data.applications.interviewTime")) }}
+    } | decorateAttributes(data, "applications[" + applicationId + "][interviewTime]")) }}
 
     {{ govukTextarea({
       label: {
         text: "Address or online meeting details",
         classes: "govuk-label--s"
       }
-    } | decorateAttributes(data, "data.applications.interviewAddress")) }}
+    } | decorateAttributes(data, "applications[" + applicationId + "][interviewAddress]")) }}
     
-    {{ govukTextarea({
-      label: {
-        text: "Additional details (optional)",
-        classes: "govuk-label--s"
-      }
-    } | decorateAttributes(data, "data.application.interviewDetails")) }}
+      {{ govukTextarea({
+        label: {
+          text: "Additional details (optional)",
+          classes: "govuk-label--s"
+        }
+      } | decorateAttributes(data, "applications[" + applicationId + "][interviewDetails]")) }}
 
     <div class="govuk-button-group">
       {{ govukButton({
