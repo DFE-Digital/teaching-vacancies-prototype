@@ -1,6 +1,7 @@
 {% extends "templates/form-template.html" %}
 
-{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+{% set application = data.applications[applicationId] %}
+{% set name = application.firstname + " " + application.lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./applicants" %}
@@ -8,11 +9,14 @@
 {% block formContent %}
 
   <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
-    <span class="govuk-caption-l">{{ name }}</span>
-    {{ jobName }}
+    <span class="govuk-caption-l">{{ jobName }}</span>    
+    {{ name }}
   </h1>
   
   <h2 class="govuk-heading-l">Check and send interview details</h2>
+
+  {{ application | log }}
+  {{ data.applications | log }}
 
   {{ govukSummaryList({
     rows: [
@@ -21,7 +25,7 @@
           text: "Date"
         },
         value: {
-          text: data.application.interviewDate
+          text: application.interviewDate | govukDate or 'Not provided'
         },
         actions: {
           items: [
@@ -55,7 +59,7 @@
           text: "Address or online meeting details"
         },
         value: {
-          text: data.application.interviewAddress
+          text: application.interviewAddress
         },
         actions: {
           items: [

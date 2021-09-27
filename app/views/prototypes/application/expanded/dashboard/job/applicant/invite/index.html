@@ -8,20 +8,58 @@
 {% block formContent %}
 
   <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
-    <span class="govuk-caption-l">{{ name }}</span>
-    {{ jobName }}
+    <span class="govuk-caption-l">{{ jobName }}</span>    
+    {{ name }}
   </h1>
   
   <h2 class="govuk-heading-l">Set up interview</h2>
 
-    {{ govukDateInput({
+    {# {{ govukDateInput({
       fieldset: {
         legend: {
           text: "Date",
           classes: "govuk-fieldset__legend--s"
         }
+      },
+      hint: {
+        text: "For example, " + "" | today | toDateArray | spaceSeparate
       }
-     } | decorateAttributes(data, "data.application.interviewDate")) }}
+     } | decorateAttributes(data, "data.application" + [applicationId] + "interviewDate")) }} #}
+
+     {% set application = data.applications[applicationId] %}
+
+     {% set dateOfInterviewArray = application.interviewDate | toDateArray %}
+
+     {{ govukDateInput({
+        id: "date-of-interview",
+        namePrefix: "applications[" + applicationId + "][interviewDate]",
+        fieldset: {
+          legend: {
+            text: "Interview date",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example, " + "" | today | toDateArray | spaceSeparate
+        },
+        items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: dateOfInterviewArray["0"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: dateOfInterviewArray["1"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: dateOfInterviewArray["2"]
+            }
+          ]
+      }) }}
 
     {{ govukInput({
       label: {
@@ -32,14 +70,14 @@
         text: "For example, 9am or 2:30pm - enter 12pm for midday"
       },
       classes: "govuk-!-width-one-quarter"
-    } | decorateAttributes(data, "data.application.interviewTime")) }}
+    } | decorateAttributes(data, "data.applications.interviewTime")) }}
 
     {{ govukTextarea({
       label: {
         text: "Address or online meeting details",
         classes: "govuk-label--s"
       }
-    } | decorateAttributes(data, "data.application.interviewAddress")) }}
+    } | decorateAttributes(data, "data.applications.interviewAddress")) }}
     
     {{ govukTextarea({
       label: {
