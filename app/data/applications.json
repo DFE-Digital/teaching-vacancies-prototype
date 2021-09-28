@@ -1,41 +1,41 @@
-[
-  {
+{
+  "a0": {
     "firstname": "Ronald",
     "lastname": "Kenyon",
     "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "id": "0"
+    "id": "a0"
   },
-  {
+  "a1": {
     "firstname": "Liliya",
     "lastname": "Yeva",
     "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
     "interviewDate": "2021-09-30",
     "interviewTime": "9am",
-    "interviewAddress": "Test address",
-    "interviewDetails": "Test details",
-    "id": "1"
+    "interviewAddress": "Address details go here",
+    "interviewDetails": "Additional details go here",
+    "id": "a1"
   },
-  {
+  "a2": {
     "firstname": "Mildred",
     "lastname": "Finn",
     "status": "Rejected",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "id": "2"
+    "id": "a2"
   },
-  {
+  "a3": {
     "firstname": "Shu",
     "lastname": "Akosua",
     "status": "Withdrawn",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "id": "3"
+    "id": "a3"
   },
-  {
+  "a4": {
     "firstname": "Sadie",
     "lastname": "Roberts",
     "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "id": "4"
+    "id": "a4"
   }
-]
+}

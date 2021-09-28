@@ -14,9 +14,11 @@
   
   <h2 class="govuk-heading-l">Check and send interview details</h2>
 
+  {{ data.applications | log }}
+  {{ data.applicationss | log }}
   {{ application | log }}
-  {# {{ application.interviewTime | log }}
-  {{ data.applications[applicationId].interviewTime | log }} #}
+  {{ application.interviewTime | log }}
+  {{ data.applications[applicationId].interviewTime | log }}
 
   {{ govukSummaryList({
     rows: [

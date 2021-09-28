@@ -14,8 +14,6 @@
   
   <h2 class="govuk-heading-l">Reject applicant</h2>
 
-  {# <form method="post" action="reject-email-answer"> #}
-
     {{ govukRadios({
       fieldset: {
         legend: {
@@ -39,7 +37,5 @@
       }) }}
       <a class="govuk-link" href="../{{ data.applications[applicationId].id}}" >Cancel</a>
     </div>
-
-  {# </form> #}
 
 {% endblock %}

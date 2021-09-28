@@ -5,9 +5,15 @@
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./invite/check-answers" %}
 {% set application = data.applications[applicationId] %}
-{% set dateOfInterviewArray = application.interviewDate | toDateArray %}
+{% set dateOfInterviewArray = application.interviewDate | toDateArray %}0
+
+
 
 {% block formContent %}
+
+  {{ data.applications | log }}
+  {{ application | log }}
+  {{ data.applications[applicationId] | log }}
 
   <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
     <span class="govuk-caption-l">{{ jobName }}</span>    
@@ -56,21 +62,21 @@
         text: "For example, 9am or 2:30pm - enter 12pm for midday"
       },
       classes: "govuk-!-width-one-quarter"
-    } | decorateAttributes(data, "applications[" + applicationId + "][interviewTime]")) }}
+    } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewTime]")) }}
 
     {{ govukTextarea({
       label: {
         text: "Address or online meeting details",
         classes: "govuk-label--s"
       }
-    } | decorateAttributes(data, "applications[" + applicationId + "][interviewAddress]")) }}
+    } | decorateAttributes(data, "data.applications[" + applicationId + "].interviewAddress")) }}
     
     {{ govukTextarea({
       label: {
         text: "Additional details (optional)",
         classes: "govuk-label--s"
       }
-    } | decorateAttributes(data, "applications[" + applicationId + "][interviewDetails]")) }}
+    } | decorateAttributes(data, "data.applications[" + applicationId + "]interviewDetails")) }}
 
     <div class="govuk-button-group">
       {{ govukButton({

@@ -26,7 +26,7 @@
   </div>
 
   {% if data.jobs[jobId].applicationCount > 0 %}
-    {% for application in data.applications %}
+    {% for id, application in data.applications %}
       {% include "components/applicant-card/template.njk" %}
     {% endfor %}
   {% else %}

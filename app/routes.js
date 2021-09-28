@@ -243,6 +243,17 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   })
   
   // View the stats tab of a job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/interviews', function (req, res) {
+  
+    let jobId = req.params.jobId
+
+    res.render('prototypes/application/expanded/dashboard/job/interviews.html', {
+      jobId: jobId
+    })
+    
+  })
+
+  // View the stats tab of a job
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/statistics', function (req, res) {
   
     let jobId = req.params.jobId
@@ -259,7 +270,8 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    let application = applications.find(application => application.id == applicationId)
+    // let application = applications.find(application => application.id == applicationId)
+    let application = applications[applicationId]
 
     // is the status "unread"?
     if (application.status == "Unread") {
@@ -293,7 +305,8 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    let application = applications.find(application => application.id == applicationId)
+    // let application = applications.find(application => application.id == applicationId)
+    let application = applications[applicationId]
 
     application.status = "Reviewed"
 
@@ -348,7 +361,8 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    let application = applications.find(application => application.id == applicationId)
+    // let application = applications.find(application => application.id == applicationId)
+    let application = applications.applicationId
 
     application.status = "Rejected"
 
@@ -362,14 +376,19 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    let application = applications.find(application => application.id == applicationId)
+    // let application = applications.find(application => application.id == applicationId)
+    let application = applications[applicationId]
+
+    // console.log({applicationId})
+    // console.log({application})
+    // console.log({applications})
 
     delete application.interviewDate
     delete application.interviewTime
     delete application.interviewAddress
     delete application.interviewDetails
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/${applicationId}`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}`)
     
   })
   
