@@ -12,20 +12,13 @@
     <span class="govuk-caption-l">{{ jobName }}</span>    
     {{ name }}
   </h1>
-  
-  {# {{ govukTextarea({
-    label: {
-      text: "Reason for cancelling interview",
-      classes: "govuk-label--l"
-    }
-  } | decorateAttributes(data, "applications[" + applicationId + "][cancelInterviewReason]")) }} #}
 
   {{ govukTextarea({
     label: {
       text: "Reason for cancelling interview",
       classes: "govuk-label--l"
     }
-  } | decorateAttributes(data, "applications[" + applicationId + "].[cancelInterviewReason]")) }}
+  } | decorateAttributes(data, "applications[" + applicationId + "][cancelInterviewReason]")) }}
 
   <div class="govuk-button-group">
     {{ govukButton({

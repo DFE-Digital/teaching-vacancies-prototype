@@ -355,6 +355,23 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications`)
     
   })
+
+  // Confirm cancelation of interview and delete interview details
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/invite/confirm-cancel-interview', function (req, res) {
+
+    let applicationId = req.params.applicationId
+    let jobId = req.params.jobId
+    const applications = req.session.data.applications
+    let application = applications.find(application => application.id == applicationId)
+
+    delete application.interviewDate
+    delete application.interviewTime
+    delete application.interviewAddress
+    delete application.interviewDetails
+
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/${applicationId}`)
+    
+  })
   
   // Render the reject reason screen
   // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/rejection-reason', function (req, res) {

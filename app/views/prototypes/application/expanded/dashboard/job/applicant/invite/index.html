@@ -65,18 +65,18 @@
       }
     } | decorateAttributes(data, "applications[" + applicationId + "][interviewAddress]")) }}
     
-      {{ govukTextarea({
-        label: {
-          text: "Additional details (optional)",
-          classes: "govuk-label--s"
-        }
-      } | decorateAttributes(data, "applications[" + applicationId + "][interviewDetails]")) }}
+    {{ govukTextarea({
+      label: {
+        text: "Additional details (optional)",
+        classes: "govuk-label--s"
+      }
+    } | decorateAttributes(data, "applications[" + applicationId + "][interviewDetails]")) }}
 
     <div class="govuk-button-group">
       {{ govukButton({
         text: "Continue"
       }) }}
-      <a class="govuk-link" href="../{{ data.applications[applicationId].id}}" >Cancel</a>
+      <a class="govuk-link" href="../{{ application.id}}" >Cancel</a>
     </div>
 
 {% endblock %}

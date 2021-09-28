@@ -12,12 +12,12 @@
           Download (pdf)
         {% endset %}
         {{ govukButton({
-          text: "Download (pdf)",
+          text: "Download applications (pdf)",
           classes: "govuk-button--secondary",
           href: "#"
         }) }}
         {{ govukButton({
-          text: "Share",
+          text: "Share applications",
           classes: "govuk-button--secondary",
           href: "#"
         }) }}
@@ -30,9 +30,9 @@
       {% include "components/applicant-card/template.njk" %}
     {% endfor %}
   {% else %}
-      {{ govukInsetText({
-        text: "No one has applied for this job yet"
-      }) }}
+    {{ govukInsetText({
+      text: "No one has applied for this job yet"
+    }) }}
   {% endif %}
 
 {% endblock %}
