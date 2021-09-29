@@ -358,10 +358,8 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   // Mark an application as rejected and return to all applicatios for that job
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm-rejection', function (req, res) {
 
-    let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    // let application = applications.find(application => application.id == applicationId)
     let application = applications.applicationId
 
     application.status = "Rejected"

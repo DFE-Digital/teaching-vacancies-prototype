@@ -21,10 +21,14 @@
                 }) }}
               {% endif %}
 
-              {{ govukButton({
-                text: "Invite to interview",
-                 href: "./" + applicationId +  "/invite"
-              }) }}
+              {% if not data.applications[applicationId].interviewDate %}
+              
+                {{ govukButton({
+                  text: "Invite to interview",
+                  href: "./" + applicationId +  "/invite"
+                }) }}
+
+              {% endif %}
               
               {{ govukButton({
                 text: "Reject",

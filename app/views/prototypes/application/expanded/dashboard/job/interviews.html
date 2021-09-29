@@ -4,8 +4,59 @@
 
 {% block listingsTabContent %}
 
-  <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Upcoming interviews</h2>
+  {% if data.jobs[jobId].interviewCount > 0 %}
+    <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0 govuk-!-margin-bottom-2">Upcoming interviews</h2>
 
-  <p class="govuk-body">Upcoming interviews go here</p>
+    <a href="#" class="govuk-link govuk-body">View past interviews</a>
+  
+    <div class="app-interviews">
+          
+      <h2 class="govuk-heading-s govuk-!-margin-top-7 govuk-!-margin-bottom-3"><br>{{ "" | today |  govukDate }}<br></h2>
+      <div class="app-interview-card">
+        <div class="app-interview-card__time">
+          <p class="govuk-!-margin-bottom-1">
+            <a href="/applications/ZZGGMUX/interviews#interview-41d1bfc8-870c-4d98-ba31-309943cc5bfc" class="govuk-link--no-visited-state">
+            <time datetime="2021-09-29T11:30:56.356+00:00">
+              11:30am
+            </time>
+            <span class="govuk-visually-hidden"> on 29 September 2021 with Patricia Pym</span>
+            </a>
+          </p>
+        </div>
+        <div class="app-interview-card__candidate">
+          <p class="govuk-!-margin-bottom-1">Patricia Pym</p>
+          <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-1">Has interview preferences</p>
+        </div>
+      </div>
+      <h2 class="govuk-heading-s govuk-!-margin-top-7 govuk-!-margin-bottom-3">{{ "" | today | moment('add', 2, 'days') | govukDate }}</h2>
+      <div class="app-interview-card">
+        <div class="app-interview-card__time">
+          <p class="govuk-!-margin-bottom-1">
+            <a href="/applications/G5YQ4AE/interviews#interview-409498a1-51c7-480f-b2e8-bd92da9dba0c" class="govuk-link--no-visited-state">
+            <time datetime="2021-09-30T09:30:56.316+00:00">
+              9:30am
+            </time>
+            <span class="govuk-visually-hidden"> on 30 September 2021 with Heather Quill</span>
+            </a>
+          </p>
+        </div>
+        <div class="app-interview-card__candidate">
+          <p class="govuk-!-margin-bottom-1">Heather Quill</p>
+          <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-1">Has interview preferences</p>
+          {{govukTag({
+            text: "Yet to confirm",
+            classes: "govuk-tag--grey govuk-!-margin-top-1"
+          })}}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0 govuk-!-margin-bottom-8">Interviews</h2>
+    {{ govukInsetText({
+      text: "There are no interview sceduled for this job yet"
+    }) }}
+  {% endif %}
+
+</div>
 
 {% endblock %}
