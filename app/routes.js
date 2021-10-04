@@ -222,18 +222,16 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   // Application and job routes
   // ----------------------------------------------------
 
-  // Single job routes
-
   // View a single job
-  // router.get('/prototypes/application/expanded/dashboard/job/:jobId', function (req, res) {
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId', function (req, res) {
   
-  //   let jobId = req.params.jobId
+    let jobId = req.params.jobId
 
-  //   res.render('prototypes/application/expanded/dashboard/job/index.html', {
-  //     jobId: jobId
-  //   })
+    res.render('prototypes/application/expanded/dashboard/job/index.html', {
+      jobId: jobId
+    })
     
-  // })
+  })
 
   // View the applications tab of a job
   // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applications', function (req, res) {

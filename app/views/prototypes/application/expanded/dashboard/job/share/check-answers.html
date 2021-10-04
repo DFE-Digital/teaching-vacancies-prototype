@@ -7,23 +7,25 @@
 
   {{ data.applications[applicationId].status | log }}
 
-  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     <span class="govuk-caption-l">{{ jobName }}</span>
     Confirm recipients and share applications
   </h1>
 
   {# Loop though the selected applications and create a list #}
-  {% set applicationsToBeShared %}
-     <ul class="govuk-list">
-      {% for name in data.job.applicantNamesToShare %}
-        <li>
-          {{ name }}
-        </li>
-      {% endfor %}
-     </ul>
+  {% set applicationsToShare %}
+    {% if data.job.applicationsToShare == "Select all"  %}
+      All applications
+    {% else %}
+      <ul class="govuk-list">
+        {% for name in data.job.applicationsToShare %}
+          <li>
+            {{ name }}
+          </li>
+        {% endfor %}
+      </ul>
+     {% endif %}
   {% endset %}
-
-  {{ applicationsToBeShared | log }}
 
   {{ govukSummaryList({
     rows: [
@@ -32,7 +34,7 @@
           text: "Which applications are you sharing?"
         },
         value: {
-          html: applicationsToBeShared
+          html: applicationsToShare
         },
         actions: {
           items: [

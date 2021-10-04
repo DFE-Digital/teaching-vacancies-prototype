@@ -9,6 +9,7 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
 
+// Add an alert if you click on a link with a hash
 $('a[href=#]').on('click', function (event) {
   if(this.pathname === window.location.pathname){
     
@@ -18,6 +19,38 @@ $('a[href=#]').on('click', function (event) {
   }
 });
 
+// Powers the select all checkbox thingo
+// Found here: https://jsfiddle.net/52uny55w/
+
+var selectAllCheckboxes = $("#job-applicationsToShare, #job-applicationsToDownload")
+
+selectAllCheckboxes.change(function(){
+  
+  if(this.checked){
+    $(".govuk-checkboxes__input").each(function(){
+      this.checked=true;
+    })              
+  } else {
+    $(".govuk-checkboxes__input").each(function(){
+      this.checked=false;
+    })              
+  }
+});
+
+$(".govuk-checkboxes__input").click(function () {
+  if ($(this).is(":checked")){
+    var isAllChecked = 0;
+    $(".govuk-checkboxes__input").each(function(){
+      if(!this.checked)
+          isAllChecked = 1;
+    })              
+    if(isAllChecked == 0){ $("#job-applicationsToDownload").prop("checked", true); }     
+  }else {
+    $("#job-applicationsToDownload").prop("checked", false);
+  }
+});
+
+// Toggles open/closed the filters on search results page
 // Are we on the search results page?
 if (document.querySelector('.app-search-results') !== null) {
   

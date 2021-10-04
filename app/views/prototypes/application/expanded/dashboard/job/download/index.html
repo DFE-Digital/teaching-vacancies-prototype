@@ -3,7 +3,7 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
-{% set formAction = "./share/add-email-addresses" %}
+{% set formAction = "./download/check-answers" %}
 
 {% block formContent %}
 
@@ -33,16 +33,18 @@
   } | decorateAttributes(data, "data.job.applicationsNames")) }} #}
 
   {{ govukCheckboxes({
+    classes: "test class",
     fieldset: {
       legend: {
-        text: "Which applications do you want to share?",
+        text: "Which applications do you want to download?",
         classes: "govuk-fieldset__legend--l",
         isPageHeading: true
       }
     },
     items: [
       {
-        text: "Select all"
+        text: "Select all",
+        classes: "test class"
       },
       {
         divider: "or"
@@ -60,7 +62,7 @@
         text: "Sadie Roberts"
       }
     ]
-  } | decorateAttributes(data, "data.job.applicationsToShare")) }}
+  } | decorateAttributes(data, "data.job.applicationsToDownload")) }}
 
   <div class="govuk-button-group">
     {{ govukButton({
