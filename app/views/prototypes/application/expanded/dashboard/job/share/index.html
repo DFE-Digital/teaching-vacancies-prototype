@@ -1,0 +1,66 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./share/add-email-addresses" %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-0">
+    <span class="govuk-caption-l">{{ jobName }}</span>
+  </h1>
+
+  {# {% set applicationsNames = []  %}
+
+  {% for name, application in data.applications  %}
+    {% if data.applications.status != "Withdrawn" %}
+      {% set applicationsNames = applicationsNames | push ({ 
+        text: applications
+      }) %}
+    {% endif %}
+  {% endfor %} #}
+    
+  {# {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: "Which applications do you want to share?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: applicationsNames
+  } | decorateAttributes(data, "data.job.applicationsNames")) }} #}
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: "Which applications do you want to share?",
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: "Liliya Yeva"
+      },
+      {
+        text: "Mildred Finn"
+      },
+      {
+        text: "Ronald Kenyon"
+      },
+      {
+        text: "Sadie Roberts"
+      }
+    ]
+  } | decorateAttributes(data, "data.job.applicantNamesToShare")) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    <a class="govuk-link" href="./applications">Cancel</a>
+  </div>
+
+{% endblock %}

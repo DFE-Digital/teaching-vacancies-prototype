@@ -1,0 +1,36 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./check-answers" %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    <span class="govuk-caption-l">{{ jobName }}</span>
+    Who are you sharing the applications with?
+  </h1>
+
+  {{ govukInput({
+    label: {
+      text: "Email address",
+      classes: "govuk-label--s"
+    },
+    classes: "govuk-!-width-two-thirds"
+  } | decorateAttributes(data, "data.job.sharingRecipientNames")) }}
+
+  {{ govukButton({
+    text: "Add another email address",
+    classes: "govuk-button--secondary",
+    href: "#"
+  }) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    <a class="govuk-link" href="./applications">Cancel</a>
+  </div>
+
+{% endblock %}

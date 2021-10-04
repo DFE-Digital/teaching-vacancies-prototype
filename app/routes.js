@@ -218,48 +218,97 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
 
+  // ----------------------------------------------------
+  // Application and job routes
+  // ----------------------------------------------------
+
   // Single job routes
 
   // View a single job
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId', function (req, res) {
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId', function (req, res) {
   
-    let jobId = req.params.jobId
+  //   let jobId = req.params.jobId
 
-    res.render('prototypes/application/expanded/dashboard/job/index.html', {
-      jobId: jobId
-    })
+  //   res.render('prototypes/application/expanded/dashboard/job/index.html', {
+  //     jobId: jobId
+  //   })
     
-  })
+  // })
 
   // View the applications tab of a job
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applications', function (req, res) {
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applications', function (req, res) {
+  
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/applications.html', {
+  //     jobId: jobId
+  //   })
+    
+  // })
+  
+  // View the interviews tab of a job
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/interviews', function (req, res) {
+  
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/interviews.html', {
+  //     jobId: jobId
+  //   })
+    
+  // })
+
+  // View the stats tab of a job
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/statistics', function (req, res) {
+  
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/statistics.html', {
+  //     jobId: jobId
+  //   })
+    
+  // })
+
+  // Share: Select applications to share
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/share', function (req, res) {
+  
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/share/index.html', {
+  //     jobId: jobId
+  //   })
+    
+  // })
+
+  // Share: Add email addresses
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/share/add-email-addresses', function (req, res) {
+  
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/share/add-email-addresses.html', {
+  //     jobId: jobId
+  //   })
+    
+  // })
+
+  // Share: Check answers
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/share/check-answers', function (req, res) {
+  
+  //   let jobId = req.params.jobId
+
+  //   res.render('prototypes/application/expanded/dashboard/job/share/check-answers.html', {
+  //     jobId: jobId
+  //   })
+    
+  // })
+  
+  // Share: Share aplications and redirect to the applications page of a job with a success confirmation 
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/share/applicants-shared-success', function (req, res) {
   
     let jobId = req.params.jobId
 
     res.render('prototypes/application/expanded/dashboard/job/applications.html', {
-      jobId: jobId
-    })
-    
-  })
-  
-  // View the stats tab of a job
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/interviews', function (req, res) {
-  
-    let jobId = req.params.jobId
-
-    res.render('prototypes/application/expanded/dashboard/job/interviews.html', {
-      jobId: jobId
-    })
-    
-  })
-
-  // View the stats tab of a job
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/statistics', function (req, res) {
-  
-    let jobId = req.params.jobId
-
-    res.render('prototypes/application/expanded/dashboard/job/statistics.html', {
-      jobId: jobId
+      jobId: jobId,
+      showSuccessMessage: true
     })
     
   })
@@ -377,10 +426,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     // let application = applications.find(application => application.id == applicationId)
     let application = applications[applicationId]
 
-    // console.log({applicationId})
-    // console.log({application})
-    // console.log({applications})
-
     delete application.interviewDate
     delete application.interviewTime
     delete application.interviewAddress
@@ -416,7 +461,18 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   // })
   
-  // Dynamic route helper!
+  // Dynamic route helper for job pages
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/:page*', function (req, res, next) {
+  
+    let jobId = req.params.jobId
+
+    newRender(path.join(`prototypes/application/expanded/dashboard/job/`, req.params.page, req.params[0]), res, next, {
+      jobId: jobId
+    })
+    
+  })
+
+  // Dynamic route helper for application pages
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/:page*', function (req, res, next) {
   
     let applicationId = req.params.applicationId
