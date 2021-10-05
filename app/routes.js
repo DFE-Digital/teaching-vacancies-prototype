@@ -339,7 +339,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     // is the status "unread"?
     if (application.status == "Unread") {
       // then empty the status
-      application.status = ""
+      // application.status = ""
     }
 
     res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
@@ -395,7 +395,8 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
-    let sendRejectionEmailAnswer = req.session.data.application.sendRejectionEmail
+    const applications = req.session.data.applications
+    let sendRejectionEmailAnswer = applications[applicationId].sendRejectionEmail
 
     if (sendRejectionEmailAnswer == "Yes") {
       res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/reject/rejection-reason`)

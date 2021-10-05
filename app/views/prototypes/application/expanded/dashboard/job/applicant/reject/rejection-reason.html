@@ -22,7 +22,7 @@
     hint: {
       text: "Include a brief explanation of why the applicant has not been successful. This can help them understand what they need to improve or develop."
     }
-  } | decorateAttributes(data, "data.application.rejectionReason")) }}
+  } | decorateAttributes(data, "data.applications[" + applicationId + "][rejectionReason]")) }}
 
   <div class="govuk-button-group">
     {{ govukButton({

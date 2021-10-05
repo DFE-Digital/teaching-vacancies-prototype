@@ -4,10 +4,12 @@
 
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./applicants" %}
+{% set application = data.applications[applicationId] %}
 
 {% block formContent %}
 
   {{ data.applications[applicationId].status | log }}
+  {{ data.applications[applicationId] | log }}
 
   <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
     <span class="govuk-caption-l">{{ name }}</span>
@@ -23,7 +25,7 @@
           text: "Email the applicant to let them know that their application has not been successful"
         },
         value: {
-          text: data.application.sendRejectionEmail
+          text: application.sendRejectionEmail
         },
         actions: {
           items: [
@@ -40,7 +42,7 @@
           text: "Why was the application not successful?"
         },
         value: {
-          text: data.application.rejectionReason
+          text: application.rejectionReason
         },
         actions: {
           items: [

@@ -4,6 +4,7 @@
 
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./reject" %}
+{% set application = data.applications[applicationId] %}
 
 {% block formContent %}
 
@@ -29,7 +30,8 @@
           text: "No"
         }
       ]
-    } | decorateAttributes(data, "data.application.sendRejectionEmail")) }}
+    } | decorateAttributes(data, "data.applications[" + applicationId + "][sendRejectionEmail]")) }}
+    
 
     <div class="govuk-button-group">
       {{ govukButton({

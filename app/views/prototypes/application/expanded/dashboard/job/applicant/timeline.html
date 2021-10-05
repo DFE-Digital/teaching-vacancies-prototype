@@ -1,6 +1,7 @@
 {% extends "templates/single-application-template.html" %}
 
 {% set applicationTabActive = 'timeline' %}
+{% set application = data.applications[applicationId] %}
 
 {% block applicationContent %}
 
@@ -8,11 +9,65 @@
   <div class="govuk-main-wrapper govuk-!-padding-top-0">
     <div class="govuk-grid-row">
 
-      <div class="govuk-grid-column-two-thirds"> 
-        <h3 class="govuk-heading-m">Timeline goes here</h3>
-        <p class="govuk-body">Fondue caerphilly monterey jack. Babybel emmental port-salut cheeseburger cheese slices gouda danish fontina boursin. Halloumi danish fontina fromage ricotta when the cheese comes out everybody's happy roquefort blue castello chalk and cheese. Cheese triangles emmental bavarian bergkase.</p>
-        <p class="govuk-body">Mascarpone macaroni cheese danish fontina. Mascarpone gouda bavarian bergkase fondue stinking bishop edam airedale say cheese. Blue castello brie cheese and biscuits airedale squirty cheese parmesan cheese slices pecorino. Cheese slices macaroni cheese parmesan cheese on toast stilton st. agur blue cheese.</p>
-      </div>
+      <div class="govuk-grid-column-two-thirds">
+
+        {# <div class="app-timeline-item"> 
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Applicant contacted</h2>
+          <span class="govuk-body app-timeline-item__name">Alex, </span>
+          <time class="govuk-body">20 September 2021 at 8:15am</time>
+          <div class="app-timeline-item__content">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Feedback provided</h3>
+            <p class="govuk-body">Fondue caerphilly monterey jack. Babybel emmental port-salut cheeseburger cheese slices gouda danish fontina boursin.</p>
+          </div>
+        </div> #}
+      
+        {% if application.interviewDate %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Invited to interview</h2>
+            <span class="govuk-body app-timeline-item__name">By Raya Owens, </span>
+            <time class="govuk-body">20 September 2021 at 8:15am</time>
+            <div class="app-timeline-item__content">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Details</h2>
+              <p class="govuk-body">
+              {{ application.interviewDate | govukDate }} <br> 
+              {{ application.interviewAddress }}
+              <br>
+              
+              </p>
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if application.withdrawDateTime %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Withdrawn</h2>
+            <time class="govuk-body">{{ application.withdrawDateTime }}</time>
+          </div>
+        {% endif %}
+        
+        {% if application.reviewedDateTime %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Marked as reviewed</h2>
+            <span class="govuk-body app-timeline-item__name">By Raya Owens, </span>
+            <time class="govuk-body">{{ application.reviewedDateTime }}</time>
+          </div>
+        {% endif %}
+
+        {# {% if application.recievedDateTime %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Marked as reviewed</h2>
+            <span class="govuk-body app-timeline-item__name">Raya Owens, </span>
+            <time class="govuk-body">{{ application.recievedDateTime }}</time>
+          </div>
+        {% endif %} #}
+        
+        <div class="app-timeline-item"> 
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Submitted</h2>
+          <span class="govuk-body app-timeline-item__name"></span>
+          <time class="govuk-body">{{ application.recievedDateTime }}</time>
+        </div>
+      
+    </div>
 
       <div class="govuk-grid-column-one-third">
         {# <h3 class="govuk-heading-m">Timeline</h3>
