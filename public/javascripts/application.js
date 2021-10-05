@@ -45,7 +45,7 @@ $(".govuk-checkboxes__input").click(function () {
           isAllChecked = 1;
     })              
     if(isAllChecked == 0){ $("#job-applicationsToDownload").prop("checked", true); }     
-  }else {
+  } else {
     $("#job-applicationsToDownload").prop("checked", false);
   }
 });
