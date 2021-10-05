@@ -13,7 +13,7 @@
           <div class="govuk-button-group">
             {% if data.applications[applicationId].status != 'Rejected' %}
             
-              {% if data.applications[applicationId].status != 'Reviewed' %}
+              {% if data.applications[applicationId].status != 'Reviewed' and data.applications[applicationId].status != 'Invited to interview' %}
                 {{ govukButton({
                   text: "Mark as reviewed",
                   classes: "govuk-button--secondary",
@@ -39,20 +39,26 @@
             {% endif %}
             {% if data.applications[applicationId].status == 'Rejected' %}
               {{ govukButton({
-                text: "Download (pdf)",
-                classes: "govuk-button--secondary"
+                text: "Download (200kb, PDF)",
+                classes: "govuk-button--secondary",
+                href: "#"
               }) }}
             {% endif %}
           </div>
           {% if data.applications[applicationId].status != 'Rejected' %}
             {{ govukButton({
-              text: "Download (pdf)",
-              classes: "govuk-button--secondary"
+              text: "Download (200kb, PDF)",
+              classes: "govuk-button--secondary",
+              href: "#"
             }) }}
           {% endif %}
         </div>
       </div>
     </div>
+
+    {# {% set downloadButtonText %}
+      Download (200kb, PDF)
+    {% endset %} #}
 
     <div class="govuk-grid-row">
 

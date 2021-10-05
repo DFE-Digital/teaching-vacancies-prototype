@@ -9,7 +9,7 @@
   "a1": {
     "firstname": "Liliya",
     "lastname": "Yeva",
-    "status": "Unread",
+    "status": "Invited to interview",
     "recievedDateTime": "30 August 2021 at 15:18",
     "interviewDate": "2021-09-30",
     "interviewTime": "9am",
@@ -20,7 +20,7 @@
   "a2": {
     "firstname": "Mildred",
     "lastname": "Finn",
-    "status": "Rejected",
+    "status": "Unread",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "a2"
   },

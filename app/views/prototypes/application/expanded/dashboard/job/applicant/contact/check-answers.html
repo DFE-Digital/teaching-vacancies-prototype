@@ -1,0 +1,48 @@
+{% extends "templates/form-template.html" %}
+
+{% set application = data.applications[applicationId] %}
+{% set name = application.firstname + " " + application.lastname %}
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./applicant-contact-success" %}
+
+{% block formContent %}
+
+  {{ data.applications[applicationId].status | log }}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+    <span class="govuk-caption-l">{{ name }}</span>
+    {{ jobName }}
+  </h1>
+  
+  <h2 class="govuk-heading-l">Confirm and send email</h2>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Email the applicant"
+        },
+        value: {
+          text: application.sendEmail
+        },
+        actions: {
+          items: [
+            {
+              href: "./../contact",
+              text: "Change",
+              visuallyHiddenText: "the email sent to the applicant"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Send email"
+    }) }}
+    <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}">Cancel</a>
+  </div>
+
+{% endblock %}

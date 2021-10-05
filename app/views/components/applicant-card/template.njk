@@ -32,9 +32,9 @@
       {% if application.status == 'Unread' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
         <div class="app-applicant-actions">
           {% if application.status != 'Invited to interview' %}
-            <a class="govuk-link govuk-link--no-visited-state" href="#">Invite to interview<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
+            <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/invite">Invite to interview<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
           {% endif %}
-          <a class="govuk-link govuk-link--no-visited-state" href="#">Reject<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
+          <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
         </div>
       {% endif %}
     </div>

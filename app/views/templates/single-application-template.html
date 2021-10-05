@@ -27,10 +27,10 @@
             },
             {
               text: data.jobs[jobId].name,
-              href: "../applications"          
+              href: "../../" + jobId  
             },
             {
-              text: name           
+              text: name
             }
           ]
         }) }}
@@ -45,10 +45,46 @@
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
             </div>
           </h1>
-          <a href="#" class="govuk-body govuk-link govuk-link--no-visited-state">Contact applicant</a>
+          <a href="./{{ data.applications[applicationId].id }}/contact" class="govuk-body govuk-link govuk-link--no-visited-state">Contact applicant</a>
         </div>
       </div>
     </div>
+
+    {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
+    {% set successContactHtml %}
+      <h3 class="govuk-notification-banner__heading">
+        {{ name }} emailed
+      </h3>
+    {% endset %}
+    
+    {% set successInviteHtml %}
+      <h3 class="govuk-notification-banner__heading">
+        {{ name }} invited to interview
+      </h3>
+    {% endset %}
+    
+    {# {% set successRejectHtml %}
+      <h3 class="govuk-notification-banner__heading">
+        Applications shared with {{ data.job.sharingRecipientNames }}
+      </h3>
+    {% endset %} #}
+    
+    {% if showSuccessContactMessage %}
+      {{ govukNotificationBanner({
+        html: successContactHtml,
+        type: "success",
+        classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
+      }) }}
+    {% endif %}
+    
+    {% if showSuccessInviteHtml %}
+      {{ govukNotificationBanner({
+        html: successInviteHtml,
+        type: "success",
+        classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
+      }) }}
+    {% endif %}
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full govuk-!-margin-top-5">
         {% include "includes/applications/single-application-nav.html" %}
@@ -60,6 +96,5 @@
 
 {% block applicationContent %}
 {% endblock %}
-
 
 {% endblock %}

@@ -12,11 +12,11 @@
     Confirm recipients and share applications
   </h1>
 
+
   {# Loop though the selected applications and create a list #}
   {% set applicationsToShare %}
-    {% if data.job.applicationsToShare == "Select all"  %}
-      All applications
-    {% else %}
+    {# If select all isnt checked #}
+    {% if "Select all" not in data.job.applicationsToShare  %}
       <ul class="govuk-list">
         {% for name in data.job.applicationsToShare %}
           <li>
@@ -24,7 +24,10 @@
           </li>
         {% endfor %}
       </ul>
-     {% endif %}
+    {# Select all is checked #}
+    {% else %}
+      All applications
+    {% endif %}
   {% endset %}
 
   {{ govukSummaryList({

@@ -8,9 +8,6 @@
     <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Applications</h2>
     {% if data.jobs[jobId].applicationCount > 0 %}
       <div class="govuk-button-group">
-        {% set downloadButtonText %}
-          Download (pdf)
-        {% endset %}
         {{ govukButton({
           text: "Download applications",
           classes: "govuk-button--secondary",

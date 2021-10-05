@@ -11,6 +11,7 @@
     <span class="govuk-caption-l">{{ jobName }}</span>
   </h1>
 
+  {# TODO - this shouldnt pull names with 'withdraw status' #}
   {# {% set applicationsNames = []  %}
 
   {% for name, application in data.applications  %}
@@ -43,8 +44,7 @@
     },
     items: [
       {
-        text: "Select all",
-        classes: "test class"
+        text: "Select all"  
       },
       {
         divider: "or"

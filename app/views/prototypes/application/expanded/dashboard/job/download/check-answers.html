@@ -12,11 +12,10 @@
     Confirm and download applications
   </h1>
 
-  {# Loop though the selected applications and create a list #}
+  {# Loop though the selected applications and create a list but #}
   {% set applicationsToDownload %}
-    {% if data.job.applicationsToDownload == "Select all"  %}
-      All applications
-    {% else %}
+    {# If select all isnt checked #}
+    {% if "Select all" not in data.job.applicationsToDownload  %}
       <ul class="govuk-list">
         {% for name in data.job.applicationsToDownload %}
           <li>
@@ -24,6 +23,9 @@
           </li>
         {% endfor %}
       </ul>
+    {# Select all is checked #}
+    {% else %}
+      All applications
     {% endif %}
   {% endset %}
 

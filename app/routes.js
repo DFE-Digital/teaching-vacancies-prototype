@@ -299,14 +299,30 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   // })
   
-  // Share: Share aplications and redirect to the applications page of a job with a success confirmation 
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/share/applicants-shared-success', function (req, res) {
+  // Share application: Share aplications and redirect to the applications page of a job with a success confirmation
+  // TODO: fix the url that is rendered once this runs 
+  router.post('/prototypes/application/expanded/dashboard/job/:jobId/share/applicants-shared-success', function (req, res) {
   
     let jobId = req.params.jobId
 
     res.render('prototypes/application/expanded/dashboard/job/applications.html', {
       jobId: jobId,
       showSuccessMessage: true
+    })
+    
+  })
+
+  // Contact applicant: Send the applicant an email then redirect to their application with a success confirmation
+  // TODO: fix the url that is rendered once this runs  
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/contact/applicant-contact-success', function (req, res) {
+
+    let jobId = req.params.jobId
+    let applicationId = req.params.applicationId
+
+    res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
+      jobId: jobId,
+      applicationId: applicationId,
+      showSuccessContactMessage: true
     })
     
   })
