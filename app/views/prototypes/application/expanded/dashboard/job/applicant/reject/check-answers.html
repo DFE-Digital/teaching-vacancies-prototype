@@ -15,14 +15,14 @@
     <span class="govuk-caption-l">{{ name }}</span>
     {{ jobName }}
   </h1>
-  
-  <h2 class="govuk-heading-l">Confirm reject applicant details</h2>
+
+  <h2 class="govuk-heading-l">Confirm details for rejecting the applicant</h2>
 
   {{ govukSummaryList({
     rows: [
       {
         key: {
-          text: "Email the applicant to let them know that their application has not been successful"
+          text: "Would you like to let the applicant know that their application has not been successful?"
         },
         value: {
           text: application.sendRejectionEmail
