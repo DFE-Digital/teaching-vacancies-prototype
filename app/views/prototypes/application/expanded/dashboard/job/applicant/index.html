@@ -1,0 +1,91 @@
+{% extends "templates/single-application-template.html" %}
+
+{% set applicationTabActive = 'application' %}
+
+{% block applicationContent %}
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-top-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full govuk-!-margin-bottom-5"> 
+        <div class="flex-header">
+          <div class="govuk-button-group">
+            {% if data.applications[applicationId].status != 'Rejected' %}
+            
+              {% if data.applications[applicationId].status != 'Reviewed' and data.applications[applicationId].status != 'Invited to interview' %}
+                {{ govukButton({
+                  text: "Mark as reviewed",
+                  classes: "govuk-button--secondary",
+                  href: "./" + applicationId +  "/mark-reviewed"
+                }) }}
+              {% endif %}
+
+              {% if not data.applications[applicationId].interviewDate %}
+              
+                {{ govukButton({
+                  text: "Invite to interview",
+                  href: "./" + applicationId +  "/invite"
+                }) }}
+
+              {% endif %}
+              
+              {{ govukButton({
+                text: "Reject",
+                classes: "govuk-button--warning",
+                  href: "./" + applicationId +  "/reject"
+              }) }}
+
+            {% endif %}
+            {% if data.applications[applicationId].status == 'Rejected' %}
+              {{ govukButton({
+                text: "Download (200kb, PDF)",
+                classes: "govuk-button--secondary",
+                href: "#"
+              }) }}
+            {% endif %}
+          </div>
+          {% if data.applications[applicationId].status != 'Rejected' %}
+            {{ govukButton({
+              text: "Download (200kb, PDF)",
+              classes: "govuk-button--secondary",
+              href: "#"
+            }) }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {# {% set downloadButtonText %}
+      Download (200kb, PDF)
+    {% endset %} #}
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds"> 
+        <h3 class="govuk-heading-m">Appplication sections</h3>
+        <ul class="govuk-list govuk-list--dash govuk-!-margin-bottom-8">
+          <li><a class="govuk-link" href="./#personal_details">Personal details</a></li>
+          <li><a class="govuk-link" href="./#professional_status_summary">Professional status</a></li>
+          <li><a class="govuk-link" href="./#qualifications_summary">Education and qualifications</a></li>
+          <li><a class="govuk-link" href="./#employment_history_summary">Current role and employment history</a></li>
+          <li><a class="govuk-link" href="./#personal_statement_summary">Personal statement</a></li>
+          <li><a class="govuk-link" href="./#references_summary">References</a></li>
+          <li><a class="govuk-link" href="./#ask_for_support_summary">Ask for support if you have a disability or other needs</a></li>
+          <li><a class="govuk-link" href="./#declarations_summary">Declarations</a></li>
+        </ul>
+        
+        {% include "includes/applications/single-application-content.html" %}
+
+        <a href="../applications" class="govuk-body govuk-link">Return to all applicants</a>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        {# <h3 class="govuk-heading-m">Timeline</h3>
+        {% include "includes/applications/timeline.html" %} #}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

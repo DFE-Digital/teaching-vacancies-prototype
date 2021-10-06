@@ -16,7 +16,7 @@ ul.acc-navigation__list {
     display: block;
     position: relative;
     height: 50px;
-    padding: 0 15px;
+    // padding: 0 15px;
     // float: left;
     display: inline-block;
     line-height: 50px;
@@ -37,6 +37,10 @@ ul.acc-navigation__list {
     }
   }
 
+  li.acc-navigation__list-item + * {
+    margin-left: govuk-spacing(3);
+  }
+
   li.app-navigation__list-item--current {
     border-bottom: 4px solid #1d70b8;
 
@@ -44,6 +48,7 @@ ul.acc-navigation__list {
       color: #0b0c0c;
     }
   }
+  
 }
 
 ul.acc-navigation__list--has-border {

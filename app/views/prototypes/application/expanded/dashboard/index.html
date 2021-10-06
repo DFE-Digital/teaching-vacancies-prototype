@@ -1,0 +1,14 @@
+{% extends "templates/manage-jobs-template.html" %}
+
+{% set navActive = "active jobs" %}
+{% set pageTitle = "Active Jobs <span>(1)</span>" %}
+
+{% block listings %}
+  
+  {% for job in data.jobs %}
+    {% if job.status == "active" %}
+      {% include "components/listing-card/template.njk" %}
+    {% endif %}
+  {% endfor %}
+  
+{% endblock %}

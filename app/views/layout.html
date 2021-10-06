@@ -34,6 +34,7 @@
 {# Custom components #}
 {% from "govuk/components/header/macro.njk"           import govukHeader %}
 {% from "components/listing-card/macro.njk"           import appJobListingCard %}
+{% from "components/applicant-card/macro.njk"         import appApplicantCard %}
 {% from "components/search-result/macro.njk"          import appSearchResult %}
 
 {# MOJ components #}
@@ -110,7 +111,7 @@
         active: true if navActive == "start"
       } if not hideNav,
       {
-        href: "/prototypes/application/journey/sign-in",
+        href: "/prototypes/application/expanded/sign-in",
         text: "Sign in",
         active: true if navActive == "sign-in"
       } if not hideNav

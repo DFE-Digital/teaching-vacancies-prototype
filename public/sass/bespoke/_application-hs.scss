@@ -114,6 +114,7 @@ div.action-bar1{
     flex-flow: row wrap;
     justify-content: flex-end;
 }
+
 @media (min-width: 40.0625em) {
     .mast-buttons {
         button {
@@ -205,3 +206,34 @@ DASHBOARD TABLE ACTION BUTTONS (00-acc-applicants)
     top: 0;
     width: 2px;
 }
+
+// sidebar
+
+.grey-bg-container {
+  background:#f3f2f1;
+  padding: govuk-spacing(3);
+}
+
+// Single application gaps in employment
+
+.employment-break {
+
+  & > .govuk-accordion__section-header {
+    display: none;
+  }
+
+  .govuk-accordion__section-content {
+    padding: 0;
+  }
+
+}
+
+// Single application header
+
+.single-application-header__status {
+  position: relative;
+  display: inline-block;
+  margin-left: govuk-spacing(1);
+  bottom: 3px;
+}
+

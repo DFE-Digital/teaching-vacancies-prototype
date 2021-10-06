@@ -1,0 +1,74 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./download/check-answers" %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-0">
+    <span class="govuk-caption-l">{{ jobName }}</span>
+  </h1>
+
+  {# TODO - this shouldnt pull names with 'withdraw status' #}
+  {# {% set applicationsNames = []  %}
+
+  {% for name, application in data.applications  %}
+    {% if data.applications.status != "Withdrawn" %}
+      {% set applicationsNames = applicationsNames | push ({ 
+        text: applications
+      }) %}
+    {% endif %}
+  {% endfor %} #}
+    
+  {# {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: "Which applications do you want to share?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: applicationsNames
+  } | decorateAttributes(data, "data.job.applicationsNames")) }} #}
+
+  {{ govukCheckboxes({
+    classes: "test class",
+    fieldset: {
+      legend: {
+        text: "Which applications do you want to download?",
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: "Select all"  
+      },
+      {
+        divider: "or"
+      },
+      {
+        text: "Liliya Yeva"
+      },
+      {
+        text: "Mildred Finn"
+      },
+      {
+        text: "Ronald Kenyon"
+      },
+      {
+        text: "Sadie Roberts"
+      }
+    ]
+  } | decorateAttributes(data, "data.job.applicationsToDownload")) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    <a class="govuk-link" href="./applications">Cancel</a>
+  </div>
+
+{% endblock %}

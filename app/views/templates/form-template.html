@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% set sectionActive = "job listings" %}
+
+{% block pageTitle %}
+  Job listing name
+{% endblock %}
+
+{% block header %}
+  {% include "includes/applications/primary-header.html" %}
+    <div class="govuk-width-container">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    </div>
+{% endblock %}
+
+
+
+{% block main %}
+
+<!-- START TABLE -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+    <!-- START ACTIVE TABLE -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post" novalidate spellcheck="false">
+            {% block formContent %}
+            {% endblock %}
+          </form>
+        </div>
+      </div>
+    </main>
+</div>
+<!-- END TABLE -->
+
+{% endblock %}

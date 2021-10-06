@@ -37,6 +37,14 @@
     margin: 0;
   }
 
+  dl div {
+    color: $govuk-secondary-text-colour;
+  }
+
+  dl div + div {
+    margin-top: govuk-spacing(1);
+  }
+
   @include govuk-media-query($from: tablet) {
     display: flex;
 

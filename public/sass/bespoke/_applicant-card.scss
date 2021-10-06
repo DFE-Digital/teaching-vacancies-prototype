@@ -1,0 +1,93 @@
+
+.app-applicant-card {
+  display: block;
+  padding: govuk-spacing(3) 0;
+
+  &:not(:first-child) {
+    border-top: 1px solid $govuk-border-colour;
+  }
+
+  .col {
+    width: 100%;
+    margin-bottom: govuk-spacing(3);
+
+    ul.table-actions-list {
+      text-align: right;
+    }
+
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dd, dt {
+    display: inline;
+    margin: 0;
+  }
+
+  dl {
+    color: $govuk-secondary-text-colour;
+  }
+
+  dl div {
+    margin-top: govuk-spacing(2);
+  }
+
+  .app-applicant-actions {
+
+    a:nth-child(2) {
+      position: relative;
+      padding-left: 10px;
+      margin-left: 8px;
+      
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 1px;
+        height: 100%;
+        background: $govuk-border-colour;
+        content: "";
+      }
+    }
+  }
+
+  .app-withdrawn-applicant {
+    color: $govuk-secondary-text-colour;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+
+    .col {
+      width: 50%;
+      margin-bottom: 0;
+    }
+    
+    .col:nth-child(2),
+    .col:nth-child(3) {
+      padding-left: govuk-spacing(4);
+    }
+
+   .col:nth-child(3) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .applicant-actions {
+      margin-left: auto;
+    }
+  }
+  
+  @include govuk-media-query($from: desktop) {
+    .col {
+      width: 33.333%;
+    }
+
+    .col:nth-child(3) {
+      text-align: right;
+    }
+  }
+}

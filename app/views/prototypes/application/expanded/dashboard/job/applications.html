@@ -1,0 +1,35 @@
+{% extends "templates/single-listing-template.html" %}
+
+{% set listingTabActive = 'applications' %}
+
+{% block listingsTabContent %}
+  
+  <div class="flex-header">
+    <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Applications</h2>
+    {% if data.jobs[jobId].applicationCount > 0 %}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Download applications",
+          classes: "govuk-button--secondary",
+          href: "./download"
+        }) }}
+        {{ govukButton({
+          text: "Share applications",
+          classes: "govuk-button--secondary",
+          href: "./share"
+        }) }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if data.jobs[jobId].applicationCount > 0 %}
+    {% for id, application in data.applications %}
+      {% include "components/applicant-card/template.njk" %}
+    {% endfor %}
+  {% else %}
+    {{ govukInsetText({
+      text: "No one has applied for this job yet"
+    }) }}
+  {% endif %}
+
+{% endblock %}

@@ -32,20 +32,25 @@ $govuk-assets-path: '/govuk/assets/';
 // ----------------------------------------------------------
 
 @import "bespoke/global";
-@import "bespoke/alerts";
 @import "bespoke/account-creation";
+@import "bespoke/alerts";
+@import "bespoke/applicant-card";
 @import "bespoke/application-hs";
 @import "bespoke/application-hs";
 @import "bespoke/application-js";
+@import "bespoke/create-listing";
+@import "bespoke/dash-list";
+@import "bespoke/detail-component";
+@import "bespoke/interview-card";
 @import "bespoke/job-listing";
 @import "bespoke/job-listing-actions";
 @import "bespoke/job-listing-card";
 @import "bespoke/search-results";
-@import "bespoke/single-job-action-bar";
-@import "bespoke/sidebar";
 @import "bespoke/service-start";
-@import "bespoke/create-listing";
-
+@import "bespoke/sidebar";
+@import "bespoke/single-job-action-bar";
+@import "bespoke/timeline";
+@import "bespoke/timeline-item";
 
 // ----------------------------------------------------------  
 // Prototype specific (to sort)

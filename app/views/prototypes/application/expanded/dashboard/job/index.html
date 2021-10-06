@@ -1,0 +1,273 @@
+{% extends "templates/single-listing-template.html" %}
+
+{% set listingTabActive = 'manage listing' %}
+
+{% block listingsTabContent %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Manage listing</h2>
+    <ol class="app-task-list govuk-!-padding-right-6">
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">1.</span>
+          Job role <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Job role"
+              },
+              value: {
+                text: "Teacher"
+              }
+            },
+            {
+              key: {
+                text: "Job role details"
+              },
+              value: {
+                text: "SEND responsibilities (special educational needs and disabilities)"
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">2.</span>
+          Job details <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Job title"
+              },
+              value: {
+                text: "Primary Teacher"
+              }
+            },
+            {
+              key: {
+                text: "Subject(s)"
+              },
+              value: {
+                text: "Economics, Engineering"
+              }
+            },
+            {
+              key: {
+                text: "Contract type"
+              },
+              value: {
+                text: "Fixed term (12 months)"
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">3.</span>
+          Working patterns <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Working pattern"
+              },
+              value: {
+                text: "Will consider part-time, full-time"
+              }
+            },
+            {
+              key: {
+                text: "How many hours or days does the role cover?"
+              },
+              value: {
+                text: "30 hours per week"
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">4.</span>
+          Pay package <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Annual or full-time equivalent (FTE) salary"
+              },
+              value: {
+                text: "MPR / UPR"
+              }
+            },
+            {
+              key: {
+                text: "Actual salary"
+              },
+              value: {
+                text: "49978"
+              }
+            },
+            {
+              key: {
+                text: "Additional allowances"
+              },
+              value: {
+                text: "Ducimus exercitationem commodi. Hic cupiditate et. Quae iure excepturi."
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">5.</span>
+          Important dates and deadlines <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Date to be published"
+              },
+              value: {
+                text: "3 September 2021"
+              }
+            },
+            {
+              key: {
+                text: "Application deadline"
+              },
+              value: {
+                text: "3 March 2022 at 9:00am"
+              }
+            },
+            {
+              key: {
+                text: "Expected start date"
+              },
+              value: {
+                text: "3 September 2022"
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">6.</span>
+          Supporting documents <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Date to be published"
+              },
+              value: {
+                text: "No documents uploaded"
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">7.</span>
+          Applying for the job <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Apply through Teaching Vacancies"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "Personal statement instructions"
+              },
+              value: {
+                text: "Eum dicta sed. Et nostrum voluptatibus. Aut omnis dolore. Sit facilis dolorem. Fuga libero commodi."
+              }
+            },
+            {
+              key: {
+                text: "Contact email"
+              },
+              value: {
+                html: "<a aria-label='Email link for job contact email — jonell_turner@schuppe.net' class='govuk-link' href='mailto:Job%20contact%20email'>jonell_turner@schuppe.net</a>"
+              }
+            },
+            {
+              key: {
+                text: "Contact phone number"
+              },
+              value: {
+                html: "<a class='govuk-link' href='tel:01234 123456'>01234 123456</a>"
+              }
+            },
+            {
+              key: {
+                text: "School visits"
+              },
+              value: {
+                text: "Incidunt modi consequuntur. Vero et illum. Fugiat impedit reiciendis. Quo molestias dignissimos. Debitis laborum autem. Voluptatem perspiciatis consectetur."
+              }
+            }
+          ]
+        }) }}
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">8.</span>
+          Job summary <a href="#">Change</a>
+        </h2>
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Job advert"
+              },
+              value: {
+                text: "Et ut dolor. Ex voluptatem ea. Perferendis quo qui. Nostrum laboriosam ex. Nobis nemo molestiae. Porro modi atque. Eum doloremque aut. Itaque aperiam nesciunt. Quia ut nam. In consequatur ratione. Ea maiores et. Est voluptatum doloremque. Veritatis vel ullam. Fuga sit id. Dolor ratione necessitatibus. Quia et ducimus. Fugit impedit suscipit. Quia nobis magni. Est deserunt tempore. Enim voluptas eum. Et nam quod. Eum fugiat nesciunt. Rerum voluptas qui."
+              }
+            },
+            {
+              key: {
+                text: "About Bexleyheath Academy"
+              },
+              value: {
+                text: "Rerum est incidunt. Earum dolores sed. Saepe nulla qui. Debitis et esse. Consequatur qui ad. Consequuntur distinctio aut. Non in modi. Praesentium et optio."
+              }
+            }
+          ]
+        }) }}
+      </li>
+
+    </ol>
+
+  </div>
+
+
+  <div class="govuk-grid-column-one-third grey-bg-container">
+    <h3 class="govuk-heading-m">View the live job listing</h3>
+    <a target="_blank" class="govuk-link govuk-body" href="#">View this listing (opens in new tab)</a>
+  </div>
+
+</div>
+
+{% endblock %}

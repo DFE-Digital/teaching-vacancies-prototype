@@ -6,17 +6,16 @@
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
                     <h2 class="govuk-heading-s govuk-!-padding-top-4 govuk-!-margin-bottom-2 acc-username">Joanna Bloggs - <span>{{ data.job.defaultSchoolName }}</span></h2>
-                    {# <a href="/prototypes/application/round-3/hs/05-create-step-jobDetails" class="govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-3" style="float: right;" data-module="govuk-button">Create a job listing</a> #}
                 </div>
             </div>
             <div class="govuk-grid-row">
 							<div class="govuk-grid-column-full">
                 <ul class="acc-navigation__list">
                   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'active jobs' }}">
-                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/journey/job-listings/">Active jobs</a>
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/">Active jobs</a>
                   </li>
                   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'passed deadline' }} ">
-                    <a class="govuk-link govuk-link--no-visited-state" href="#">Passed deadline</a>
+                    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/passed-deadline">Passed deadline</a>
                   </li>
                   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'scheduled jobs' }}">
                     <a class="govuk-link govuk-link--no-visited-state" href="#">Scheduled jobs</a>
@@ -24,12 +23,9 @@
                   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'draft jobs' }}">
                     <a class="govuk-link govuk-link--no-visited-state" href="#">Draft jobs</a>
                   </li>
-                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'jobs awaiting feedback' }}">
-                    <a class="govuk-link govuk-link--no-visited-state" href="#">Jobs awaiting feedback</a>
-                  </li>
-                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'manage settings' }}">
+                  {# <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'manage settings' }}">
                     <a class="govuk-link govuk-link--no-visited-state" href="#">Manage settings</a>
-                  </li>
+                  </li> #}
                 </ul>
               </div>
             </div>

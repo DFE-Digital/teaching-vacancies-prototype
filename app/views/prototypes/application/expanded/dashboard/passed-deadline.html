@@ -1,0 +1,14 @@
+{% extends "templates/manage-jobs-template.html" %}
+
+{% set navActive = "passed deadline" %}
+{% set pageTitle = "Passed deadline <span>(2)</span>" %}
+
+{% block listings %}
+
+  {% for job in data.jobs %}
+    {% if job.status == "passed-deadline" %}
+      {% include "components/listing-card/template.njk" %}
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

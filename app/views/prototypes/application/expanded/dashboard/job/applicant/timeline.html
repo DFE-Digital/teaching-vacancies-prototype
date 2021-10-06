@@ -1,0 +1,79 @@
+{% extends "templates/single-application-template.html" %}
+
+{% set applicationTabActive = 'timeline' %}
+{% set application = data.applications[applicationId] %}
+
+{{ data.applications[applicationId] | log }}
+{{ application.sendEmailContent | log }}
+{{ application.interviewAddress | log }}
+
+{% block applicationContent %}
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-top-0">
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {% if application.sendEmailContent %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Applicant contacted</h2>
+            <span class="govuk-body app-timeline-item__name">Alex, </span>
+            <time class="govuk-body">20 September 2021 at 8:15am</time>
+            <div class="app-timeline-item__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Message sent</h3>
+              <p class="govuk-body">{{ application.sendEmailContent }}</p>
+            </div>
+          </div>
+        {% endif %}
+      
+        {% if application.interviewDate %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Invited to interview</h2>
+            <span class="govuk-body app-timeline-item__name">By Raya Owens, </span>
+            <time class="govuk-body">20 September 2021 at 8:15am</time>
+            <div class="app-timeline-item__content">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Interview details</h2>
+              <p class="govuk-body">
+              Date/Time: {{ application.interviewDate | govukDate }} <br> 
+              Address: {{ application.interviewAddress }}
+              
+              </p>
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if application.withdrawDateTime %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Withdrawn</h2>
+            <time class="govuk-body">{{ application.withdrawDateTime }}</time>
+          </div>
+        {% endif %}
+        
+        {% if application.status == "Reviewed" %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Marked as reviewed</h2>
+            <span class="govuk-body app-timeline-item__name">By Raya Owens, </span>
+            {# <time class="govuk-body">{{ application.reviewedDateTime }}</time> #}
+            <time class="govuk-body">20 September 2021 at 8:15am</time>
+          </div>
+        {% endif %}
+        
+        <div class="app-timeline-item"> 
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Application recieved</h2>
+          <span class="govuk-body app-timeline-item__name"></span>
+          <time class="govuk-body">{{ application.recievedDateTime }}</time>
+        </div>
+      
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        {# <h3 class="govuk-heading-m">Timeline</h3>
+        {% include "includes/applications/timeline.html" %} #}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
