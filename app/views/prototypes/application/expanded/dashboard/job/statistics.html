@@ -8,7 +8,11 @@
 
   <p class="govuk-body">This may include data from candidates who have withdrawn their applications.<br>This is to ensure the anonymity of applicants who submit equal opportunities information.</p>
 
-  <a class="govuk-button govuk-button--secondary" href="#">Download statistics (CSV, 0.2KB)</a>
+  {{ govukButton({
+    text: "Download statistics (CSV, 0.2KB)",
+    classes: "govuk-button--secondary",
+    href: "#"
+  }) }}
 
   <div class="govuk-grid-row">
 

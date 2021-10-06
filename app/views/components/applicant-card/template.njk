@@ -29,12 +29,12 @@
       {% endif %}
     </div>
     <div class="col">
-      {% if application.status == 'Unread' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
+      {% if application.status == 'Recieved' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
         <div class="app-applicant-actions">
           {% if application.status != 'Invited to interview' %}
-            <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/invite">Invite to interview<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
+            <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/invite">Invite <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span> to interview</a>
           {% endif %}
-          <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.name }}</span></a>
+          <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
         </div>
       {% endif %}
     </div>

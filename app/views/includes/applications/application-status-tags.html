@@ -1,6 +1,6 @@
-{% if application.status == 'Unread' or data.applications[applicationId].status == 'Unread' %}
+{% if application.status == 'Recieved' or data.applications[applicationId].status == 'Recieved' %}
   {{govukTag({
-    text: "Unread",
+    text: "Recieved",
     classes: "govuk-tag--blue"
   })}}
 {# {% endif %} #}

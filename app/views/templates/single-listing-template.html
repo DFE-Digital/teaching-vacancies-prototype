@@ -13,7 +13,7 @@
 {% block main %}
 
 <!-- START BESPOKE MAST 2 -->
-<div class="full-BGstrip" style="background-color: #f3f2f1">
+{# <div class="full-BGstrip" style="background-color: #f3f2f1"> #}
   <div class="govuk-width-container">
     <div
       class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-3">
@@ -67,7 +67,7 @@
       </div>
     </div>
   </div>
-</div>
+{# </div> #}
 <!-- END BESPOKE MAST 2 -->
 
 
@@ -83,7 +83,7 @@
           </h3>
         {% endset %}
 
-        {% if showSuccessMessage %}
+        {% if showSuccessSharedMessage %}
           {{ govukNotificationBanner({
             html: successMessageHtml,
             type: "success",

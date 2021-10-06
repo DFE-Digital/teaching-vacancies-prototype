@@ -8,6 +8,8 @@
 {% block formContent %}
 
   {{ data.applications[applicationId].status | log }}
+  {{ data.applications[applicationId] | log }}
+  {{ application.sendEmailContent | log }}
 
   <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
     <span class="govuk-caption-l">{{ name }}</span>
@@ -23,7 +25,7 @@
           text: "Email the applicant"
         },
         value: {
-          text: application.sendEmail
+          text: application.sendEmailContent
         },
         actions: {
           items: [

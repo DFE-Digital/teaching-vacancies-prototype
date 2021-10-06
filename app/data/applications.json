@@ -2,7 +2,7 @@
   "a0": {
     "firstname": "Ronald",
     "lastname": "Kenyon",
-    "status": "Unread",
+    "status": "Recieved",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "a0"
   },
@@ -36,7 +36,7 @@
   "a4": {
     "firstname": "Sadie",
     "lastname": "Roberts",
-    "status": "Unread",
+    "status": "Recieved",
     "recievedDateTime": "30 August 2021 at 15:18",
     "id": "a4"
   }

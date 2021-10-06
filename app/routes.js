@@ -307,7 +307,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
     res.render('prototypes/application/expanded/dashboard/job/applications.html', {
       jobId: jobId,
-      showSuccessMessage: true
+      showSuccessSharedMessage: true
     })
     
   })
@@ -333,7 +333,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    // let application = applications.find(application => application.id == applicationId)
     let application = applications[applicationId]
 
     // is the status "unread"?
@@ -368,7 +367,6 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     let jobId = req.params.jobId
     const applications = req.session.data.applications
-    // let application = applications.find(application => application.id == applicationId)
     let application = applications[applicationId]
 
     application.status = "Reviewed"
@@ -423,8 +421,9 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm-rejection', function (req, res) {
 
     let jobId = req.params.jobId
+    let applicationId = req.params.applicationId
     const applications = req.session.data.applications
-    let application = applications.applicationId
+    let application = applications[applicationId]
 
     application.status = "Rejected"
 

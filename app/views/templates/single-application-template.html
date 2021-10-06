@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 
 {% set sectionActive = "job listings" %}
+{% set job = data.jobs[jobId] %}
+{% set application = data.applications[applicationId] %}
 
 {% block pageTitle %}
   Job listing name
@@ -45,7 +47,7 @@
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
             </div>
           </h1>
-          <a href="./{{ data.applications[applicationId].id }}/contact" class="govuk-body govuk-link govuk-link--no-visited-state">Contact applicant</a>
+          <a href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/contact" class="govuk-body govuk-link govuk-link--no-visited-state">Contact applicant</a>
         </div>
       </div>
     </div>
@@ -53,13 +55,13 @@
     {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
     {% set successContactHtml %}
       <h3 class="govuk-notification-banner__heading">
-        {{ name }} emailed
+        A message has been sent to {{ name }}.
       </h3>
     {% endset %}
     
     {% set successInviteHtml %}
       <h3 class="govuk-notification-banner__heading">
-        {{ name }} invited to interview
+        {{ name }} has been invited to interview.
       </h3>
     {% endset %}
     
