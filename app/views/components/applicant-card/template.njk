@@ -1,9 +1,11 @@
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 
+{% set job = data.jobs[jobId] %}
+
 <div class="app-applicant-card">
     <div class="col">
       {% if application.status != 'Withdrawn' %}
-        <a href="applicant/{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View application for</span>{{ application.firstname }} {{ application.lastname }} </a>
+        <a href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state"> <span class="govuk-visually-hidden">View application for</span>{{ application.firstname }} {{ application.lastname }} </a>
         {% else %}
         <span class="app-withdrawn-applicant govuk-!-font-weight-bold govuk-!-font-size-24">{{ application.firstname }} {{ application.lastname }} </span>
       {% endif %}
@@ -32,9 +34,9 @@
       {% if application.status == 'Recieved' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
         <div class="app-applicant-actions">
           {% if application.status != 'Invited to interview' %}
-            <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/invite">Invite <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span> to interview</a>
+            <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/invite">Invite <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span> to interview</a>
           {% endif %}
-          <a class="govuk-link govuk-link--no-visited-state" href="./applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
+          <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
         </div>
       {% endif %}
     </div>

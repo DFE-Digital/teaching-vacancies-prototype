@@ -324,11 +324,12 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     const applications = req.session.data.applications
     let application = applications[applicationId]
+    let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
 
     application.status = "Rejected"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications`)
-    
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} rejected and notified`)
+
   })
 
   // Mark an application as 'invited to interview' and return to all applications for that job
@@ -338,12 +339,14 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let applicationId = req.params.applicationId
     const applications = req.session.data.applications
     let application = applications[applicationId]
+    let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
 
     application.status = "Invited to interview"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=Interview details sent to ${applicationName}`)
     
   })
+  
 
   // Confirm cancelation of interview and delete interview details
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/invite/confirm-cancel-interview', function (req, res) {
@@ -361,7 +364,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     // TODO: This should really go back to whatever the status was befroe being invited to interview
     application.status = "Recieved"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=Interview cancelled`)
     
   })
   

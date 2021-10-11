@@ -77,17 +77,18 @@
       <div class="govuk-grid-column-full">
 
         {# This is the 'successfully shared' notification banner, it fires based on the route from the "share applications" check your answers page #}
-        {% set successMessageHtml %}
+
+        {% set successHtml %}
           <h3 class="govuk-notification-banner__heading">
-            Applications shared with {{ data.job.sharingRecipientNames }}
+            {{ query._flash }}
           </h3>
         {% endset %}
 
-        {% if showSuccessSharedMessage %}
+        {% if query._flash %}
           {{ govukNotificationBanner({
-            html: successMessageHtml,
+            html: successHtml,
             type: "success",
-            classes: "govuk-!-margin-top-0 govuk-!-margin-bottom-5"
+            classes: "govuk-!-margin-top-0 govuk-!-margin-bottom-6"
           }) }}
         {% endif %}
 
