@@ -29,7 +29,7 @@
             },
             {
               text: data.jobs[jobId].name,
-              href: "/prototypes/application/expanded/dashboard/job/" + jobId  
+              href: "/prototypes/application/expanded/dashboard/job/" + jobId
             },
             {
               text: name
@@ -55,22 +55,22 @@
     {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
     {% set successContactHtml %}
       <h3 class="govuk-notification-banner__heading">
-        A message has been sent to {{ name }}.
+        An email has been sent to {{ name }}.
       </h3>
     {% endset %}
-    
+
     {% set successInviteHtml %}
       <h3 class="govuk-notification-banner__heading">
         {{ name }} has been invited to interview.
       </h3>
     {% endset %}
-    
+
     {# {% set successRejectHtml %}
       <h3 class="govuk-notification-banner__heading">
-        Applications shared with {{ data.job.sharingRecipientNames }}
+        The applications have been shared with {{ data.job.sharingRecipientNames }}
       </h3>
     {% endset %} #}
-    
+
     {% if showSuccessContactMessage %}
       {{ govukNotificationBanner({
         html: successContactHtml,
@@ -78,7 +78,7 @@
         classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
       }) }}
     {% endif %}
-    
+
     {% if showSuccessInviteHtml %}
       {{ govukNotificationBanner({
         html: successInviteHtml,
@@ -92,7 +92,7 @@
         {% include "includes/applications/single-application-nav.html" %}
       </div>
     </div>
-    
+
   </div>
 </div>
 

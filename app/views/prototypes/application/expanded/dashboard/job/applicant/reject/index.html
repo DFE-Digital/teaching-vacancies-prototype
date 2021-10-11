@@ -18,9 +18,12 @@
     {{ govukRadios({
       fieldset: {
         legend: {
-          text: "Do you want to let the applicant know that their application has not been successful?",
+          text: "Do you want to let the applicant know that they have not been successful?",
           classes: "govuk-fieldset__legend--s"
         }
+      },
+      hint: {
+        text: "Applicants appreciate being updated on the status of their application."
       },
       items: [
         {
