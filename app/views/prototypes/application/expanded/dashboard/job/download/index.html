@@ -1,7 +1,5 @@
 {% extends "templates/form-template.html" %}
 
-{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
-
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./download/check-answers" %}
 
@@ -11,21 +9,22 @@
     <span class="govuk-caption-l">{{ jobName }}</span>
   </h1>
 
-  {# TODO - this shouldnt pull names with 'withdraw status' #}
   {# {% set applicationsNames = []  %}
 
   {% for name, application in data.applications  %}
-    {% if data.applications.status != "Withdrawn" %}
+    {% if application.status != "Withdrawn" %}
       {% set applicationsNames = applicationsNames | push ({ 
-        text: applications
+        text: application.firstname + " " +  application.lastname
       }) %}
     {% endif %}
-  {% endfor %} #}
-    
-  {# {{ govukCheckboxes({
+  {% endfor %}
+
+  {{ applicationsNames | log }}
+
+  {{ govukCheckboxes({
     fieldset: {
       legend: {
-        text: "Which applications do you want to share?",
+        text: "Which applications do you want to downlaod?",
         isPageHeading: true,
         classes: "govuk-fieldset__legend--l"
       }

@@ -34,6 +34,11 @@ const newRender = (path, res, next, ...args) => {
   })
 }
 
+router.all('*', function(req, res, next){
+  res.locals.query = req.query
+  next()
+})
+
 // Add your routes here - above the module.exports line
 
 // Branching
@@ -248,18 +253,18 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
   // Contact applicant: Send the applicant an email then redirect to their application with a success confirmation
   // TODO: fix the url that is rendered once this runs  
-  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/contact/applicant-contact-success', function (req, res) {
+  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/contact/applicant-contact-success', function (req, res) {
 
-    let jobId = req.params.jobId
-    let applicationId = req.params.applicationId
+  //   let jobId = req.params.jobId
+  //   let applicationId = req.params.applicationId
 
-    res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
-      jobId: jobId,
-      applicationId: applicationId,
-      showSuccessContactMessage: true
-    })
+  //   res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
+  //     jobId: jobId,
+  //     applicationId: applicationId,
+  //     showSuccessContactMessage: true
+  //   })
     
-  })
+  // })
   
   // View a single application of a job
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId', function (req, res) {

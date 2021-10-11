@@ -42,7 +42,7 @@
         {% endif %}
       {% endfor %}
       
-      <h2 class="govuk-heading-s govuk-!-margin-top-7 govuk-!-margin-bottom-3">{{ "" | today | moment('add', 5, 'days') |  govukDate }}</h2>
+      {# <h2 class="govuk-heading-s govuk-!-margin-top-7 govuk-!-margin-bottom-3">{{ "" | today | moment('add', 5, 'days') |  govukDate }}</h2>
       
       <div class="app-interview-card">
         <div class="app-interview-card__time">
@@ -73,11 +73,11 @@
           <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-1">Has interview preferences</p>
         </div>
       </div>
-    </div>
+    </div> #}
   {% else %}
     <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0 govuk-!-margin-bottom-8">Interviews</h2>
     {{ govukInsetText({
-      text: "There are no interview sceduled for this job yet"
+      text: "This listing has no scheduled interviews"
     }) }}
   {% endif %}
 
