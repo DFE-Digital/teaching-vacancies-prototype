@@ -7,8 +7,6 @@
 {% set application = data.applications[applicationId] %}
 {% set dateOfInterviewArray = application.interviewDate | toDateArray %}0
 
-
-
 {% block formContent %}
 
   {{ data.applications | log }}

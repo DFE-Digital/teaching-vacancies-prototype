@@ -3,7 +3,7 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
-{% set formAction = "./applicants" %}
+{# {% set formAction = "./applicants" %} #}
 {% set application = data.applications[applicationId] %}
 
 {% block formContent %}
@@ -61,7 +61,7 @@
     {{ govukButton({
       text: "Reject this application",
       classes: "govuk-button--warning",
-      href: "confirm-rejection"
+      href: "confirm-rejection-and-notify"
     }) }}
     <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}">Cancel</a>
   </div>

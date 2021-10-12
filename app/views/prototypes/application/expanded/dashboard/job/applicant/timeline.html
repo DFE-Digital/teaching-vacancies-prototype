@@ -15,10 +15,25 @@
 
       <div class="govuk-grid-column-two-thirds">
 
+        {% if application.status == "Rejected" %}
+          <div class="app-timeline-item"> 
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Applicant rejected</h2>
+            <span class="govuk-body app-timeline-item__name">By Alex Thayer, </span>
+            <time class="govuk-body">30 September 2021 at 12:01pm</time>
+            {% if application.status == "Rejected" %}
+              <div class="app-timeline-item__content">
+                <h3 class="govuk-heading-s g  ovuk-!-margin-bottom-2">Message sent</h3>
+                <p class="govuk-body">
+                Your job application has been unsuccessful. <br>{{ application.rejectionReason }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        
         {% if application.sendEmailContent %}
           <div class="app-timeline-item"> 
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Applicant contacted</h2>
-            <span class="govuk-body app-timeline-item__name">Alex, </span>
+            <span class="govuk-body app-timeline-item__name">By Alex Thayer, </span>
             <time class="govuk-body">20 September 2021 at 8:15am</time>
             <div class="app-timeline-item__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Message sent</h3>

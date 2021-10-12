@@ -1,7 +1,7 @@
 {% extends "templates/form-template.html" %}
 
 {% set jobName = data.jobs[jobId].name %}
-{% set formAction = "./applicants-shared-success" %}
+{# {% set formAction = "./applicants-shared-success" %} #}
 
 {% block formContent %}
 
@@ -69,9 +69,13 @@
     ]
   }) }}
 
+  {# This is the success message that plays back to the user on the next screen #}
+  {% set successMessage %}The applications have been shared with {{ data.job.sharingRecipientNames }}.{% endset %}
+
   <div class="govuk-button-group">
     {{ govukButton({
-      text: "Share applications"
+      text: "Share applications",
+      href: "./../../" + jobId + "/applications/?_flash=" + successMessage
     }) }}
     <a class="govuk-link" href="../applications">Cancel</a>
   </div>
