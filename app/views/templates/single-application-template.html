@@ -53,24 +53,12 @@
     </div>
 
     {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
-    {# {% set successContactHtml %}
-      A message has been sent to {{ name }}.
-    {% endset %} #}
-    
-    {# {% set successInviteHtml %}
-      <h3 class="govuk-notification-banner__heading">
-        {{ name }} has been invited to interview.
-      </h3>
-    {% endset %} #}
-    
     {% set successHtml %}
       <h3 class="govuk-notification-banner__heading">
         {{ query._flash }}
       </h3>
     {% endset %}
     
-    {# {{ query | log }} #}
-
     {% if query._flash %}
       {{ govukNotificationBanner({
         html: successHtml,
@@ -78,14 +66,6 @@
         classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
       }) }}
     {% endif %}
-    
-    {# {% if showSuccessInviteHtml %}
-      {{ govukNotificationBanner({
-        html: successInviteHtml,
-        type: "success",
-        classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
-      }) }}
-    {% endif %} #}
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full govuk-!-margin-top-5">

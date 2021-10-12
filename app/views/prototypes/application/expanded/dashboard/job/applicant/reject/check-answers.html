@@ -57,13 +57,11 @@
     ]
   }) }}
 
-  {# {% set successMessage %}Application rejected and notified {{ name }}.{% endset %} #}
-
   <div class="govuk-button-group">
     {{ govukButton({
       text: "Reject this application",
       classes: "govuk-button--warning",
-      href: "confirm-rejection"
+      href: "confirm-rejection-and-notify"
     }) }}
     <a class="govuk-link" href="../../{{ data.applications[applicationId].id }}">Cancel</a>
   </div>

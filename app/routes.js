@@ -240,28 +240,13 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   
   // Share application: Share aplications and redirect to the applications page of a job with a success confirmation
   // TODO: fix the url that is rendered once this runs 
-  router.post('/prototypes/application/expanded/dashboard/job/:jobId/share/applicants-shared-success', function (req, res) {
+  // router.post('/prototypes/application/expanded/dashboard/job/:jobId/share/applicants-shared-success', function (req, res) {
   
-    let jobId = req.params.jobId
-
-    res.render('prototypes/application/expanded/dashboard/job/applications.html', {
-      jobId: jobId,
-      showSuccessSharedMessage: true
-    })
-    
-  })
-
-  // Contact applicant: Send the applicant an email then redirect to their application with a success confirmation
-  // TODO: fix the url that is rendered once this runs  
-  // router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/contact/applicant-contact-success', function (req, res) {
-
   //   let jobId = req.params.jobId
-  //   let applicationId = req.params.applicationId
 
-  //   res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
+  //   res.render('prototypes/application/expanded/dashboard/job/applications.html', {
   //     jobId: jobId,
-  //     applicationId: applicationId,
-  //     showSuccessContactMessage: true
+  //     showSuccessSharedMessage: true
   //   })
     
   // })
@@ -317,7 +302,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
 
-  // Mark an application as 'rejected' and return to all applications for that job
+  // Mark an application as 'rejected', dont notify the applicant and return to all applications for that job
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm-rejection', function (req, res) {
 
     let jobId = req.params.jobId
@@ -328,7 +313,22 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
     application.status = "Rejected"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} rejected and notified`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName}'s application has been rejected. They have not been notified.`)
+
+  })
+
+  // Mark an application as 'rejected', notify the applicant and return to all applications for that job
+  router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/reject/confirm-rejection-and-notify', function (req, res) {
+
+    let jobId = req.params.jobId
+    let applicationId = req.params.applicationId
+    const applications = req.session.data.applications
+    let application = applications[applicationId]
+    let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
+
+    application.status = "Rejected"
+
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} has been notified that their application was not successful.`)
 
   })
 
@@ -343,10 +343,10 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
     application.status = "Invited to interview"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=Interview details sent to ${applicationName}`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} has been invited to interview.`)
     
   })
-  
+
 
   // Confirm cancelation of interview and delete interview details
   router.get('/prototypes/application/expanded/dashboard/job/:jobId/applicant/:applicationId/invite/confirm-cancel-interview', function (req, res) {
@@ -355,6 +355,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let jobId = req.params.jobId
     const applications = req.session.data.applications
     let application = applications[applicationId]
+    let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
 
     delete application.interviewDate
     delete application.interviewTime
@@ -364,7 +365,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     // TODO: This should really go back to whatever the status was befroe being invited to interview
     application.status = "Recieved"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=Interview cancelled`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=The interview with ${applicationName} has been cancelled.`)
     
   })
   

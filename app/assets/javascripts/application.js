@@ -22,7 +22,7 @@ $('a[href=#]').on('click', function (event) {
 // Powers the select all checkbox thingo
 // Found here: https://jsfiddle.net/52uny55w/
 
-var selectAllCheckboxes = $("#job-applicationsToShare, #job-applicationsToDownload")
+var selectAllCheckboxes = $("#job-applicationsToShare, #job-applicationsToDownload, #job-applicationsNames")
 
 selectAllCheckboxes.click(function () {
   $(".govuk-checkboxes__input").prop('checked', $(this).prop('checked'));
