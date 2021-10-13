@@ -12,15 +12,18 @@
     <span class="govuk-caption-l">{{ name }}</span>
     {{ jobName }}
   </h1>
-  
-  <h2 class="govuk-heading-l">Reject applicant</h2>
+
+  <h2 class="govuk-heading-l">Reject application</h2>
 
     {{ govukRadios({
       fieldset: {
         legend: {
-          text: "Email the applicant to let them know that their application has not been successful",
+          text: "Do you want to let the applicant know that they have not been successful?",
           classes: "govuk-fieldset__legend--s"
         }
+      },
+      hint: {
+        text: "Applicants appreciate being updated on the status of their application."
       },
       items: [
         {
@@ -31,7 +34,7 @@
         }
       ]
     } | decorateAttributes(data, "data.applications[" + applicationId + "][sendRejectionEmail]")) }}
-    
+
 
     <div class="govuk-button-group">
       {{ govukButton({
