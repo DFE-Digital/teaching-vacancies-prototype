@@ -43,56 +43,59 @@
           }) }}
         </div>
       </div>
-      
-      <h3 class="govuk-heading-m">Application data</h3>
-      <div class="detail-component">
-        <div class="detail-component__body">
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Total applications"
+
+      {# Only show if tere are applications for this job #}
+      {% if data.jobs[jobId].applicationCount > 0 %}
+        <h3 class="govuk-heading-m">Application data</h3>
+        <div class="detail-component">
+          <div class="detail-component__body">
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Total applications"
+                  },
+                  value: {
+                    text: "4"
+                  }
                 },
-                value: {
-                  text: "4"
-                }
-              },
-              {
-                key: {
-                  text: "Unread applications"
+                {
+                  key: {
+                    text: "Unread applications"
+                  },
+                  value: {
+                    text: "2"
+                  }
                 },
-                value: {
-                  text: "2"
-                }
-              },
-              {
-                key: {
-                  text: "Shortlisted applications"
+                {
+                  key: {
+                    text: "Shortlisted applications"
+                  },
+                  value: {
+                    text: "1"
+                  }
                 },
-                value: {
-                  text: "1"
-                }
-              },
-              {
-                key: {
-                  text: "Rejected applications"
+                {
+                  key: {
+                    text: "Rejected applications"
+                  },
+                  value: {
+                    text: "0"
+                  }
                 },
-                value: {
-                  text: "0"
+                {
+                  key: {
+                    text: "Withdrawn applications	"
+                  },
+                  value: {
+                    text: "0"
+                  }
                 }
-              },
-              {
-                key: {
-                  text: "Withdrawn applications	"
-                },
-                value: {
-                  text: "0"
-                }
-              }
-            ]
-          }) }}
+              ]
+            }) }}
+          </div>
         </div>
-      </div>
+      {% endif %}
 
     </div>
 

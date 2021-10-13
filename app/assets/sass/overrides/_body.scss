@@ -10,28 +10,13 @@ body {
       width: 90%;
     }
   }
+}
 
-  // .govuk-header {
-  //   border-bottom: 0;
+// small overides
 
-  //   &__container {
-  //     border-bottom: govuk-spacing(2) solid govuk-colour('orange');
-  //   }
-
-  //   .govuk-header__logotype-text {
-  //     margin-left: govuk-spacing(1);
-  //   }
-
-  //   .govuk-phase-banner {
-  //     background-color: govuk-colour('white');
-  //     border: 0;
-  //     padding-bottom: 0;
-  //     padding-top: govuk-spacing(4);
-
-  //     .govuk-width-container {
-  //       border-bottom: 1px solid $govuk-border-colour;
-  //       padding-bottom: govuk-spacing(2);
-  //     }
-  //   }
-  // }
+// increase the width of the content in the notification banner.
+.govuk-notification-banner__heading {
+  @include govuk-media-query($from: desktop) {
+    max-width: 80%;
+  }
 }

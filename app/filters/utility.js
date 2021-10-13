@@ -39,6 +39,21 @@ filters.find = (items, key, value) => {
   return items.find(item => item[key] == value)
 }
 
+// // Look up several records using UUID
+// exports.getRecordsById = (records, array) => {
+//   return exports.filterRecordsBy(records, 'id', array)
+// }
+
+// // Utility function to filter by a key
+// // Basically identical to the ‘where’ filter
+// exports.filterRecordsBy = (records, key, array) => {
+//   array = [].concat(array) // force to array
+//   let filtered = records.filter(record => {
+//     return array.includes(record[key])
+//   })
+//   return filtered
+// }
+
 
 // Decorate attributes
 // Add name, value, id, idPrefix and checked attributes to GOVUK form components

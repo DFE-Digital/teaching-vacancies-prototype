@@ -9,20 +9,15 @@
   "a1": {
     "firstname": "Liliya",
     "lastname": "Yeva",
-    "status": "Invited to interview",
+    "status": "Recieved",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "interviewDate": "2021-09-30",
-    "interviewTime": "9am",
-    "interviewAddress": "Zoom link: https://zoom.us/j/91737115430?pwd=OVVHUWQ0ckhPWjQ3d2JNNEhyMXg0UT09",
-    "interviewDetails": "The interview will take approximately 1 hour.",
     "id": "a1"
   },
   "a2": {
     "firstname": "Mildred",
     "lastname": "Finn",
-    "status": "Reviewed",
+    "status": "Recieved",
     "recievedDateTime": "30 August 2021 at 15:18",
-    "reviewedDateTime": "13 August 2021 at 09:28",
     "id": "a2"
   },
   "a3": {

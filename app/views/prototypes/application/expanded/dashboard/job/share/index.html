@@ -11,26 +11,46 @@
     <span class="govuk-caption-l">{{ jobName }}</span>
   </h1>
 
-  {# {% set applicationsNames = []  %}
+  {# Setting dummy statuses for now  #} 
+  {% set checkbox1 %}
+    Liliya Yeva
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Recieved",
+        classes: "govuk-tag--blue"
+      })}}
+    </div>
+  {% endset %}
 
-  {% for name, application in data.applications  %}
-    {% if data.applications.status != "Withdrawn" %}
-      {% set applicationsNames = applicationsNames | push ({ 
-        text: applications
-      }) %}
-    {% endif %}
-  {% endfor %} #}
-    
-  {# {{ govukCheckboxes({
-    fieldset: {
-      legend: {
-        text: "Which applications do you want to share?",
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--l"
-      }
-    },
-    items: applicationsNames
-  } | decorateAttributes(data, "data.job.applicationsNames")) }} #}
+  {% set checkbox2 %}
+    Mildred Finn
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Reviewed",
+        classes: "govuk-tag--purple"
+      })}}
+    </div>
+  {% endset %}
+
+  {% set checkbox3 %}
+    Ronald Kenyon
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Recieved",
+        classes: "govuk-tag--blue"
+      })}}
+    </div>
+  {% endset %}
+
+  {% set checkbox4 %}
+    Sadie Roberts
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Rejected",
+        classes: "govuk-tag--red"
+      })}}
+    </div>
+  {% endset %}
 
   {{ govukCheckboxes({
     fieldset: {
@@ -42,22 +62,26 @@
     },
     items: [
       {
-        text: "Select all"
+        text: "Select all"  
       },
       {
         divider: "or"
       },
       {
-        text: "Liliya Yeva"
+        html: checkbox1,
+        value: "Liliya Yeva"
       },
       {
-        text: "Mildred Finn"
+        html: checkbox2,
+        value: "Mildred Finn"
       },
       {
-        text: "Ronald Kenyon"
+        html: checkbox3,
+        value: "Ronald Kenyon"
       },
       {
-        text: "Sadie Roberts"
+        html: checkbox4,
+        value: "Sadie Roberts"
       }
     ]
   } | decorateAttributes(data, "data.job.applicationsToShare")) }}

@@ -1,6 +1,10 @@
 {% extends "templates/single-listing-template.html" %}
 
 {% set listingTabActive = 'applications' %}
+{% set job = data.jobs[jobId] %}
+{% set application = data.applications[applicationId] %}
+
+{{ data.applications[applicationId] | log }}
 
 {% block listingsTabContent %}
   
@@ -11,12 +15,12 @@
         {{ govukButton({
           text: "Download applications",
           classes: "govuk-button--secondary",
-          href: "./download"
+          href: "/prototypes/application/expanded/dashboard/job/" + job.id + "/download"
         }) }}
         {{ govukButton({
           text: "Share applications",
           classes: "govuk-button--secondary",
-          href: "./share"
+          href: "/prototypes/application/expanded/dashboard/job/" + job.id + "/share"
         }) }}
       </div>
     {% endif %}
@@ -28,7 +32,7 @@
     {% endfor %}
   {% else %}
     {{ govukInsetText({
-      text: "No one has applied for this job yet"
+      text: "This listing has no applications"
     }) }}
   {% endif %}
 

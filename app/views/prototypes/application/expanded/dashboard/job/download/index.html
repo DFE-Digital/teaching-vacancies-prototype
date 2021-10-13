@@ -1,7 +1,5 @@
 {% extends "templates/form-template.html" %}
 
-{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
-
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./download/check-answers" %}
 
@@ -11,30 +9,84 @@
     <span class="govuk-caption-l">{{ jobName }}</span>
   </h1>
 
-  {# TODO - this shouldnt pull names with 'withdraw status' #}
-  {# {% set applicationsNames = []  %}
+  {# TODO - get this working! #}
+  {# {% set applicationsNamesItems = []  %}
+
+  {% set applicationsNamesItems = applicationsNamesItems | push ({ 
+    text: "Select all"
+  }) %}
+
+  {% set applicationsNamesItems = applicationsNamesItems | push ({ 
+    divider: "or"
+  }) %}
 
   {% for name, application in data.applications  %}
-    {% if data.applications.status != "Withdrawn" %}
-      {% set applicationsNames = applicationsNames | push ({ 
-        text: applications
+    {% if application.status != "Withdrawn" %}
+
+      {% set checkboxHtml %}
+        {{ application.firstname + " " +  application.lastname }}<br>
+        <div class="govuk-!-margin-top-1">{% include "includes/applications/application-status-tags.html" %}</div>
+      {% endset %}
+
+      {% set applicationsNamesItems = applicationsNamesItems | push ({ 
+        html: checkboxHtml | safe
       }) %}
     {% endif %}
-  {% endfor %} #}
-    
-  {# {{ govukCheckboxes({
+  {% endfor %}
+
+  {{ govukCheckboxes({
     fieldset: {
       legend: {
-        text: "Which applications do you want to share?",
+        text: "Which applications do you want to download?",
         isPageHeading: true,
         classes: "govuk-fieldset__legend--l"
       }
     },
-    items: applicationsNames
-  } | decorateAttributes(data, "data.job.applicationsNames")) }} #}
+    items: applicationsNamesItems
+  } | decorateAttributes(data, "data.job.applicationsToDownload")) }} #}
+
+  {# Setting dummy statuses for now  #} 
+  {% set checkbox1 %}
+    Liliya Yeva
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Recieved",
+        classes: "govuk-tag--blue"
+      })}}
+    </div>
+  {% endset %}
+
+  {% set checkbox2 %}
+    Mildred Finn
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Reviewed",
+        classes: "govuk-tag--purple"
+      })}}
+    </div>
+  {% endset %}
+
+  {% set checkbox3 %}
+    Ronald Kenyon
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Recieved",
+        classes: "govuk-tag--blue"
+      })}}
+    </div>
+  {% endset %}
+
+  {% set checkbox4 %}
+    Sadie Roberts
+    <div class="govuk-!-margin-top-1">
+      {{govukTag({
+        text: "Rejected",
+        classes: "govuk-tag--red"
+      })}}
+    </div>
+  {% endset %}
 
   {{ govukCheckboxes({
-    classes: "test class",
     fieldset: {
       legend: {
         text: "Which applications do you want to download?",
@@ -50,16 +102,20 @@
         divider: "or"
       },
       {
-        text: "Liliya Yeva"
+        html: checkbox1,
+        value: "Liliya Yeva"
       },
       {
-        text: "Mildred Finn"
+        html: checkbox2,
+        value: "Mildred Finn"
       },
       {
-        text: "Ronald Kenyon"
+        html: checkbox3,
+        value: "Ronald Kenyon"
       },
       {
-        text: "Sadie Roberts"
+        html: checkbox4,
+        value: "Sadie Roberts"
       }
     ]
   } | decorateAttributes(data, "data.job.applicationsToDownload")) }}
