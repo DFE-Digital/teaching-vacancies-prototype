@@ -25,7 +25,7 @@
     <div class="app-interviews">
       {% for id, application in data.applications %}
         {% if application.interviewDate %}
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-3"><br>{{ application.interviewDate | govukDate }} test<br></h2>
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-3"><br>{{ application.interviewDate | govukDate }} <br></h2>
           <div class="app-interview-card">
             <div class="app-interview-card__time">
               <p class="govuk-!-margin-bottom-1">
