@@ -63,6 +63,7 @@
     } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewTime]")) }}
 
     {{ govukTextarea({
+      rows: "8",
       label: {
         text: "Address or online meeting details",
         classes: "govuk-label--s"
@@ -70,6 +71,7 @@
     } | decorateAttributes(data, "data.applications[" + applicationId + "].interviewAddress")) }}
     
     {{ govukTextarea({
+      rows: "8",
       label: {
         text: "Additional details (optional)",
         classes: "govuk-label--s"
