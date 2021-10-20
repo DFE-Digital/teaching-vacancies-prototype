@@ -18,7 +18,7 @@
             <dt>
               <span class="govuk-!-font-weight-bold">Received on:</span>
             </dt>
-            <dd>{{ application.recievedDateTime }}</dd>
+            <dd>{{ application.receivedDateTime }}</dd>
           </div>
         </dl>
       {% else %}
@@ -26,7 +26,7 @@
         <dt>
           <span class="govuk-!-font-weight-bold">Received on:</span>
         </dt>
-        <dd>{{ application.recievedDateTime }}</dd>
+        <dd>{{ application.receivedDateTime }}</dd>
         </dl>
       {% endif %}
     </div>
@@ -34,7 +34,7 @@
         {% if application.status != 'Withdrawn' %}
         <div class="app-applicant-actions">
           <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/contact">Contact <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
-           {% if application.status == 'Recieved' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
+           {% if application.status == 'Received' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
               {% if application.status != 'Invited to interview' %}
                 <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/invite">Invite <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span> to interview</a>
               {% endif %}
@@ -80,7 +80,7 @@
           <dt>
             <span class="govuk-!-font-weight-bold">Received on:</span>
           </dt>
-          <dd>{{ item.applicationRecievedDate }}</dd>
+          <dd>{{ item.applicationReceivedDate }}</dd>
         </div>
       </dl>
     </div>

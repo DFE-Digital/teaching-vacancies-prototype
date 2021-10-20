@@ -351,7 +351,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     delete application.interviewDetails
 
     // TODO: This should really go back to whatever the status was befroe being invited to interview
-    application.status = "Recieved"
+    application.status = "Received"
 
     res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=The interview with ${applicationName} has been cancelled.`)
     
