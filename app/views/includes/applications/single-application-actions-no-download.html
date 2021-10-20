@@ -1,0 +1,36 @@
+<div class="govuk-button-group">
+  {% if data.applications[applicationId].status != 'Rejected' %}
+  
+    {% if data.applications[applicationId].status != 'Reviewed' and data.applications[applicationId].status != 'Invited to interview' %}
+      {{ govukButton({
+        text: "Mark as reviewed",
+        classes: "govuk-button--secondary",
+        href: "./" + applicationId +  "/mark-reviewed"
+      }) }}
+    {% endif %}
+
+    {% if not data.applications[applicationId].interviewDate %}
+    
+      {{ govukButton({
+        text: "Invite to interview",
+        href: "./" + applicationId +  "/invite"
+      }) }}
+
+    {% endif %}
+    
+    {{ govukButton({
+      text: "Reject",
+      classes: "govuk-button--warning",
+        href: "./" + applicationId +  "/reject"
+    }) }}
+
+  {% endif %}
+  | 
+  {# {% if data.applications[applicationId].status == 'Rejected' %} #}
+    {{ govukButton({
+      text: "Contact applicant",
+      classes: "govuk-button--secondary govuk-!-margin-left-3",
+      href: "/prototypes/application/expanded/dashboard/job/" +  job.id + "/applicant/" + application.id + "/contact"
+    }) }}
+  {# {% endif %} #}
+</div>
