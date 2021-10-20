@@ -31,6 +31,7 @@
       {% endif %}
     </div>
     <div class="col">
+        {% if application.status != 'Withdrawn' %}
         <div class="app-applicant-actions">
           <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/contact">Contact <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
            {% if application.status == 'Recieved' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
@@ -40,6 +41,7 @@
                 <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
             {% endif %}
           </div>
+        {% endif %}
     </div>
 
 </div>
