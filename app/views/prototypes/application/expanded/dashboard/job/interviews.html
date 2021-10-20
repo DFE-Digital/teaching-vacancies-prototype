@@ -23,16 +23,17 @@
     <a href="#" class="govuk-link--no-visited-state govuk-body">View past interviews</a>
 
     <div class="app-interviews">
+      {# Loop through the application data and list any interviews that have bene set up #}
       {% for id, application in data.applications %}
         {% if application.interviewDate %}
           <h2 class="govuk-heading-s govuk-!-margin-bottom-3"><br>{{ application.interviewDate | govukDate }} <br></h2>
           <div class="app-interview-card">
             <div class="app-interview-card__time">
               <p class="govuk-!-margin-bottom-1">
-                <a href="./applicant/{{ application.id }}/interview" class="govuk-link--no-visited-state">
+                {# <a href="./applicant/{{ application.id }}/interview" class="govuk-link--no-visited-state"> #}
                 <time datetime="2021-09-29T11:30:56.356+00:00">{{ application.interviewTime }}</time>
                 <span class="govuk-visually-hidden"> on 29 September 2021 with Patricia Pym</span>
-                </a>
+                {# </a> #}
               </p>
             </div>
             <div class="app-interview-card__candidate">
@@ -44,6 +45,10 @@
                 text: "Yet to confirm",
                 classes: "govuk-tag--grey govuk-!-margin-top-1"
               })}}
+               <div class="app-interview-details govuk-!-margin-top-3">
+                <a href="./applicant/{{ application.id }}/invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details <span class="govuk-visually-hidden">for {{ application.firstname }} {{ application.lastname }}</span></a>
+                <a href="./applicant/{{ application.id }}/invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview <span class="govuk-visually-hidden">for {{ application.firstname }} {{ application.lastname }}</span></a>
+              </div>
             </div>
           </div>
         {% endif %}
