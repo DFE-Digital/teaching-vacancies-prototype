@@ -47,25 +47,26 @@
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
             </div>
           </h1>
+
+          {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
+          {% set successHtml %}
+            <h3 class="govuk-notification-banner__heading">
+              {{ query._flash }}
+            </h3>
+          {% endset %}
+          
+          {% if query._flash %}
+            {{ govukNotificationBanner({
+              html: successHtml,
+              type: "success",
+              classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8"
+            }) }}
+          {% endif %} 
+
           {% include "includes/applications/single-application-actions-no-download.html" %}
         </div>
       </div>
     </div>
-
-    {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
-    {% set successHtml %}
-      <h3 class="govuk-notification-banner__heading">
-        {{ query._flash }}
-      </h3>
-    {% endset %}
-    
-    {% if query._flash %}
-      {{ govukNotificationBanner({
-        html: successHtml,
-        type: "success",
-        classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
-      }) }}
-    {% endif %}
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
