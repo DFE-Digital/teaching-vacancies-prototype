@@ -1,0 +1,39 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./contact/check-answers" %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+    <span class="govuk-caption-l">{{ name }}</span>
+    {{ jobName }}
+  </h1>
+  
+  <h2 class="govuk-heading-l">Contact applicant</h2>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Call the applicant</h3>
+  <p class="govuk-body">The applicant’s number is 07 334 129 150<p>
+
+  {{ govukTextarea({
+    rows: "10",
+    label: {
+      text: "Send the applicant an email",
+      classes: "govuk-label--s",
+      isPageHeading: true
+    },
+    hint: {
+      text: "The email will be sent to [applicant’s email address]"
+    }
+  } | decorateAttributes(data, "data.applications[" + applicationId + "][sendEmailContent]")) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    <a class="govuk-link" href="../{{ data.applications[applicationId].id}}" >Cancel</a>
+  </div>
+
+{% endblock %}
