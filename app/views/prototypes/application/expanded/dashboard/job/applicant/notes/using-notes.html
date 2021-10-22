@@ -3,37 +3,35 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
-{% set formAction = "./contact/check-answers" %}
+{% set formAction = "./add-note" %}
 
 {% block formContent %}
 
-  <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
-    <span class="govuk-caption-l">{{ name }}</span>
-    {{ jobName }}
-  </h1>
-  
-  <h2 class="govuk-heading-l">Contact applicant</h2>
+  <div class="app-callout-card">
 
-  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Call the applicant</h3>
-  <p class="govuk-body">The applicant’s number is 07 334 129 150<p>
+    <h1 class="govuk-heading-l">Using notes</h1>
 
-  {{ govukTextarea({
-    rows: "10",
-    label: {
-      text: "Send the applicant an email",
-      classes: "govuk-label--s",
-      isPageHeading: true
-    },
-    hint: {
-      text: "The email will be sent to [applicant’s email address]"
-    }
-  } | decorateAttributes(data, "data.applications[" + applicationId + "][sendEmailContent]")) }}
+      <p class="govuk-body">When you add a note to an application, it will only be visible to you and colleagues with access to applications for this job listing.<p>
+      <p class="govuk-body">The note will not be visible to the candidate.<p>
+      {{ govukCheckboxes({
+        fieldset: {
+          legend: {
+            text: "Do you want to hide this tip again in future?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "Do not show this tip again",
+            text: "Do not show this information again"
+          }
+        ]
+      } | decorateAttributes(data, "data.job.dismissUsingNotes")) }}
 
-  <div class="govuk-button-group">
-    {{ govukButton({
-      text: "Continue"
-    }) }}
-    <a class="govuk-link" href="../{{ data.applications[applicationId].id}}" >Cancel</a>
+      {{govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-bottom-0"
+      })}}
   </div>
 
 {% endblock %}

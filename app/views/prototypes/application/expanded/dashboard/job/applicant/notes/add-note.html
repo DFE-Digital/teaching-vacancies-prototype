@@ -3,7 +3,9 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
-{% set formAction = "./contact/check-answers" %}
+{# This is the success message that plays back to the user on the next screen #}
+{% set successMessage %}A note has been added.{% endset %}
+{% set formAction = "./../../" + applicationId + "?_flash=" + successMessage %}
 
 {% block formContent %}
 
@@ -12,38 +14,20 @@
     {{ jobName }}
   </h1>
   
-  <h2 class="govuk-heading-l">Notes</h2>
-
-  {% set notesLink %}
-    {# If they have dismissed the using Notes screen #}
-    {% if data.job.dismissedUsingNotes %}
-    
-
-  {% endset %}
-
-  {{ govukButton({
-    text: "Find address",
-    classes: "govuk-button--secondary",
-    href: "./"
-  }) }}
-
-  {{ govukTextarea({
-    rows: "10",
+  {{ govukCharacterCount({
+    maxlength: 500,
     label: {
-      text: "Send the applicant an email",
-      classes: "govuk-label--s",
-      isPageHeading: true
-    },
-    hint: {
-      text: "The email will be sent to [applicant’s email address]"
+      text: "Add a note",
+      classes: "govuk-label--l"
     }
-  } | decorateAttributes(data, "data.applications[" + applicationId + "][sendEmailContent]")) }}
+  } | decorateAttributes(data, "data.applications[" + applicationId + "][newNote]")) }}
+
 
   <div class="govuk-button-group">
     {{ govukButton({
-      text: "Continue"
+      text: "Save note"
     }) }}
-    <a class="govuk-link" href="../{{ data.applications[applicationId].id}}" >Cancel</a>
+    <a class="govuk-link" href="./../../{{ data.applications[applicationId].id}}">Cancel</a>
   </div>
 
 {% endblock %}

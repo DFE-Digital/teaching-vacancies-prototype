@@ -2,6 +2,10 @@
   padding: govuk-spacing(2) 0;
   border-top: 1px solid $govuk-border-colour;
 
+  p {
+    margin-bottom: govuk-spacing(2);
+  }
+
   p:last-of-type {
     margin-bottom: govuk-spacing(2);
   }

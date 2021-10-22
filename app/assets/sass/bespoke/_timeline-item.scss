@@ -1,5 +1,6 @@
 .app-timeline-item {
   display: block;
+  padding-top: govuk-spacing(2);
   
   .app-timeline-item__content {
     padding: govuk-spacing(3);
@@ -11,13 +12,12 @@
     margin: 0;
   }
   
-  &:not(:first-child) {
+  // &:not(:first-of-type) {
     border-top: 1px solid $govuk-border-colour;
-  }
+  // }
   
 }
 
 .app-timeline-item + .app-timeline-item {
-  padding-top: govuk-spacing(2);
   margin-top: govuk-spacing(7);
 }

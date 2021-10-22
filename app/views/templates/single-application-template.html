@@ -3,6 +3,9 @@
 {% set sectionActive = "job listings" %}
 {% set job = data.jobs[jobId] %}
 {% set application = data.applications[applicationId] %}
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{{ data.applications[applicationId] | log }}
 
 {% block pageTitle %}
   Job listing name
@@ -12,7 +15,6 @@
   {% include "includes/applications/primary-header.html" %}
 {% endblock %}
 
-{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% block main %}
 

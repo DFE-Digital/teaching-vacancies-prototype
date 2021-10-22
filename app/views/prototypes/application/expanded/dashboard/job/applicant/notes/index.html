@@ -5,6 +5,8 @@
 
 {% block applicationContent %}
 
+  {{ data.applications[applicationId] | log }}
+
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-top-0">
     <div class="govuk-grid-row">
@@ -14,11 +16,9 @@
         <h2 class="govuk-heading-m">Notes</h2>
 
           {% set notesUrl %}
-            {# If they have dismissed the using Notes screen #}
-            {% if data.job.dismissedUsingNotes %}
-              ./notes/add-note.html
-            {% else %}
-              ./notes/using-notes.html
+            {# This sets up the url depending on if they have dismissed the using Notes screen #}
+            {% if data.job.dismissUsingNotes %}./notes/add-note.html
+            {% else %}./notes/using-notes.html
             {% endif %}
           {% endset %}
 
@@ -28,14 +28,27 @@
             href: notesUrl
           }) }}
 
-        {% if application.existingNote %}
-          <div class="app-notes-item"> 
-            <p class="govuk-body">{{ application.existingNote }}</p>
-            <span class="app-notes-item__meta govuk-!-font-size-16">
-              By Joanna Bloggs, 21 October 2021 at 3.21pm
-            </span>
-          </div>
-        {% endif %}
+          {% if application.newNote %}
+            <div class="app-notes-item"> 
+              <p class="govuk-body">{{ application.newNote }}</p>
+              <p class="app-notes-item__meta govuk-!-font-size-16">
+                <span class="app-timeline-item__name">By Joanna Bloggs, </span>
+                {# Todays date #}
+                <time>{{ "" | today | govukDate }} at 11.56am</time>
+              </p>
+            </div>
+          {% endif %}
+        
+          {% if application.existingNote %}
+            <div class="app-notes-item"> 
+              <p class="govuk-body">{{ application.existingNote }}</p>
+              <p class="app-notes-item__meta govuk-!-font-size-16">
+                <span class="app-timeline-item__name">By Marcellus Pittman, </span>
+                {# 2 days before todays date #}
+                <time>{{ "" | today | moment('subtract', 2, 'days') |  govukDate }} at 3.21pm</time>
+              </p>
+            </div>
+          {% endif %}
       
       </div>
 
