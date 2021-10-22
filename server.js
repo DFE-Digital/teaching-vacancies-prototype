@@ -9,6 +9,7 @@ const nunjucks = require('nunjucks')
 const sessionInCookie = require('client-sessions')
 const sessionInMemory = require('express-session')
 const cookieParser = require('cookie-parser')
+const url = require('url')
 
 // Run before other code to make sure variables from .env are available
 dotenv.config()
@@ -320,9 +321,25 @@ if (useV6) {
   })
 }
 
+// Commenting this out as we are doing something different below
+
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
+// app.post(/^\/([^.]+)$/, function (req, res) {
+//   res.redirect('/' + req.params[0])
+// })
+
+// This is added to stop my query strings dissapearing.
+// Got it here: https://github.com/alphagov/govuk-prototype-kit/pull/1120
+
+// Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
+// EXTRA added by Ed Horsford: preserve query params
 app.post(/^\/([^.]+)$/, function (req, res) {
-  res.redirect('/' + req.params[0])
+  // res.redirect('/' + req.params[0])
+  res.redirect(url.format({
+    pathname: '/' + req.params[0],
+    query:req.query,
+    })
+   )
 })
 
 // Catch 404 and forward to error handler

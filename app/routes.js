@@ -314,6 +314,14 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let application = applications[applicationId]
     let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
 
+    // If the applicant has been invited to interview then delete all their interview data
+    if (application.status = "Invited to interview") {
+      delete application.interviewDate
+      delete application.interviewTime
+      delete application.interviewAddress
+      delete application.interviewDetails
+    }
+
     application.status = "Rejected"
 
     res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} has been notified that their application was not successful.`)

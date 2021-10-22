@@ -1,0 +1,37 @@
+{% extends "templates/form-template.html" %}
+
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{% set jobName = data.jobs[jobId].name %}
+{% set formAction = "./add-note" %}
+
+{% block formContent %}
+
+  <div class="app-callout-card">
+
+    <h1 class="govuk-heading-l">Using notes</h1>
+
+      <p class="govuk-body">When you add a note to an application, it will only be visible to you and colleagues with access to applications for this job listing.<p>
+      <p class="govuk-body">The note will not be visible to the applicant.<p>
+      {{ govukCheckboxes({
+        fieldset: {
+          legend: {
+            text: "Do you want to hide this tip again in future?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "Do not show this tip again",
+            text: "Do not show this information again"
+          }
+        ]
+      } | decorateAttributes(data, "data.job.dismissUsingNotes")) }}
+
+      {{govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-bottom-0"
+      })}}
+  </div>
+
+{% endblock %}

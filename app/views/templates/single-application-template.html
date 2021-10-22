@@ -3,6 +3,9 @@
 {% set sectionActive = "job listings" %}
 {% set job = data.jobs[jobId] %}
 {% set application = data.applications[applicationId] %}
+{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
+
+{{ data.applications[applicationId] | log }}
 
 {% block pageTitle %}
   Job listing name
@@ -12,7 +15,6 @@
   {% include "includes/applications/primary-header.html" %}
 {% endblock %}
 
-{% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% block main %}
 
@@ -39,7 +41,7 @@
       </div>
     </div>
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full">
         <div class="single-application-header">
           <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-7">
             <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
