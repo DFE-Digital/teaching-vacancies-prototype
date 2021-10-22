@@ -321,10 +321,15 @@ if (useV6) {
   })
 }
 
+// Commenting this out as we are doing something different below
+
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 // app.post(/^\/([^.]+)$/, function (req, res) {
 //   res.redirect('/' + req.params[0])
 // })
+
+// This is added to stop my query strings dissapearing.
+// Got it here: https://github.com/alphagov/govuk-prototype-kit/pull/1120
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 // EXTRA added by Ed Horsford: preserve query params
