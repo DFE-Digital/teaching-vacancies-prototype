@@ -20,6 +20,10 @@
   {{ application.interviewTime | log }}
   {{ data.applications[applicationId].interviewTime | log }} #}
 
+  {% set attachedInterviewDoc %}
+    <a href="#">Interview-task.pdf - 2.76 MB (opens in new tab)</a>
+  {% endset %}
+
   {{ govukSummaryList({
     rows: [
       {
@@ -86,6 +90,23 @@
               href: "./../invite",
               text: "Change",
               visuallyHiddenText: " additional details"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Supporting documents"
+        },
+        value: {
+          html: attachedInterviewDoc
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: " supporting documents"
             }
           ]
         }

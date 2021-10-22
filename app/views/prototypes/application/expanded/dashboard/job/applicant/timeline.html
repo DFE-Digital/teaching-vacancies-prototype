@@ -18,8 +18,8 @@
         {% if application.status == "Rejected" %}
           <div class="app-timeline-item"> 
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Applicant rejected</h2>
-            <span class="govuk-body app-timeline-item__name">By Alex Thayer, </span>
-            <time class="govuk-body">30 September 2021 at 12:01pm</time>
+            <span class="govuk-body app-timeline-item__name">By Joanna Bloggs, </span>
+            <time class="govuk-body">{{ "" | today | govukDate }} at 3.21pm</time>
             {% if application.status == "Rejected" %}
               <div class="app-timeline-item__content">
                 <h3 class="govuk-heading-s g  ovuk-!-margin-bottom-2">Message sent</h3>
@@ -33,8 +33,8 @@
         {% if application.sendEmailContent %}
           <div class="app-timeline-item"> 
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Applicant contacted</h2>
-            <span class="govuk-body app-timeline-item__name">By Alex Thayer, </span>
-            <time class="govuk-body">20 September 2021 at 8:15am</time>
+            <span class="govuk-body app-timeline-item__name">By Joanna Bloggs, </span>
+            <time class="govuk-body">{{ "" | today | govukDate }} at 3.21pm</time>
             <div class="app-timeline-item__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Message sent</h3>
               <p class="govuk-body">{{ application.sendEmailContent }}</p>
@@ -45,8 +45,8 @@
         {% if application.interviewDate %}
           <div class="app-timeline-item"> 
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Invited to interview</h2>
-            <span class="govuk-body app-timeline-item__name">By Raya Owens, </span>
-            <time class="govuk-body">20 September 2021 at 8:15am</time>
+            <span class="govuk-body app-timeline-item__name">By Joanna Bloggs, </span>
+            <time class="govuk-body">{{ "" | today | govukDate }} at 3.21pm</time>
             <div class="app-timeline-item__content">
               <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Interview details</h2>
               <p class="govuk-body">
@@ -68,16 +68,16 @@
         {% if application.status == "Reviewed" %}
           <div class="app-timeline-item"> 
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Marked as reviewed</h2>
-            <span class="govuk-body app-timeline-item__name">By Raya Owens, </span>
+            <span class="govuk-body app-timeline-item__name">By Joanna Bloggs, </span>
             {# <time class="govuk-body">{{ application.reviewedDateTime }}</time> #}
-            <time class="govuk-body">20 September 2021 at 8:15am</time>
+            <time class="govuk-body">{{ "" | today | govukDate }} at 3.21pm</time>
           </div>
         {% endif %}
         
         <div class="app-timeline-item"> 
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Application recieved</h2>
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Application received</h2>
           <span class="govuk-body app-timeline-item__name"></span>
-          <time class="govuk-body">{{ application.recievedDateTime }}</time>
+          <time class="govuk-body">{{ application.receivedDateTime }}</time>
         </div>
       
       </div>

@@ -13,6 +13,11 @@
 
         <div class="govuk-grid-column-two-thirds"> 
           <h3 class="govuk-heading-m">Interview details</h3>
+
+            {% set attachedInterviewDoc %}
+              <a href="#">Interview-task.pdf - 2.76 MB (opens in new tab)</a>
+            {% endset %}
+
           {{ govukSummaryList({
             rows: [
               {
@@ -54,7 +59,15 @@
                 value: {
                   text: application.interviewPreferences
                 }
-              } if application.interviewPreferences
+              } if application.interviewPreferences,
+              {
+                key: {
+                  text: "Supporting documents"
+                },
+                value: {
+                  html: attachedInterviewDoc
+                }
+              }
             ]
           }) }}
           <div class="app-interview-details">

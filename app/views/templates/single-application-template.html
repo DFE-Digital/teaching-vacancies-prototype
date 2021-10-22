@@ -41,34 +41,35 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <div class="single-application-header">
-          <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-3">
+          <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-7">
             <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
             {{ name }}
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
             </div>
           </h1>
-          <a href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/contact" class="govuk-body govuk-link govuk-link--no-visited-state">Contact applicant</a>
+
+          {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
+          {% set successHtml %}
+            <h3 class="govuk-notification-banner__heading">
+              {{ query._flash }}
+            </h3>
+          {% endset %}
+          
+          {% if query._flash %}
+            {{ govukNotificationBanner({
+              html: successHtml,
+              type: "success",
+              classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8"
+            }) }}
+          {% endif %} 
+
+          {% include "includes/applications/single-application-actions-no-download.html" %}
         </div>
       </div>
     </div>
 
-    {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
-    {% set successHtml %}
-      <h3 class="govuk-notification-banner__heading">
-        {{ query._flash }}
-      </h3>
-    {% endset %}
-    
-    {% if query._flash %}
-      {{ govukNotificationBanner({
-        html: successHtml,
-        type: "success",
-        classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
-      }) }}
-    {% endif %}
-
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full govuk-!-margin-top-5">
+      <div class="govuk-grid-column-full">
         {% include "includes/applications/single-application-nav.html" %}
       </div>
     </div>

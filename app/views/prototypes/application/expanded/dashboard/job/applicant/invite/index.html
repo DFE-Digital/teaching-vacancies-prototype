@@ -62,7 +62,9 @@
       classes: "govuk-!-width-one-quarter"
     } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewTime]")) }}
 
+
     {{ govukTextarea({
+      rows: "5",
       label: {
         text: "Address or online meeting details",
         classes: "govuk-label--s"
@@ -70,11 +72,19 @@
     } | decorateAttributes(data, "data.applications[" + applicationId + "].interviewAddress")) }}
     
     {{ govukTextarea({
+      rows: "10",
       label: {
         text: "Additional details (optional)",
         classes: "govuk-label--s"
       }
     } | decorateAttributes(data, "data.applications[" + applicationId + "]interviewDetails")) }}
+
+    {{ govukFileUpload({
+      label: {
+        text: "Upload supporting documents (optional)",
+        classes: "govuk-!-font-weight-bold govuk-!-margin--bottom-5"
+      }
+    } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewDoc]")) }}
 
     <div class="govuk-button-group">
       {{ govukButton({
