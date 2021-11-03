@@ -83,142 +83,142 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   // Scope expansion July 2021
 
   // Job role
-  router.post('/prototypes/scope_expansion/0-job-role-answer', function (req, res) {
+  router.post('/prototypes/create-a-job/0-job-role-answer', function (req, res) {
   
     let jobRole = req.session.data.job.role
     let userType = req.session.data.job.userType
     let jobPhase = req.session.data.job.phase
 
     if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
-      res.redirect('/prototypes/scope_expansion/1-job-location')
+      res.redirect('/prototypes/create-a-job/1-job-location')
     } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
-      res.redirect('/prototypes/scope_expansion/0a-job-role-details') 
+      res.redirect('/prototypes/create-a-job/0a-job-role-details') 
     } else if (jobRole == "bussinessManager") {
       res.redirect('/404') 
     } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
-      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')   
+      res.redirect('/prototypes/create-a-job/2a-education-phase-setup')   
     } else {
-      res.redirect('/prototypes/scope_expansion/2-job-details')
+      res.redirect('/prototypes/create-a-job/2-job-details')
     }   
   })
   
   // Job role (v1)
-  router.post('/prototypes/scope_expansion_v1/0-job-role-answer', function (req, res) {
+  router.post('/prototypes/create-a-job_v1/0-job-role-answer', function (req, res) {
   
     let jobRole = req.session.data.job.role
     let userType = req.session.data.job.userType
     let jobPhase = req.session.data.job.phase
 
     if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
-      res.redirect('/prototypes/scope_expansion_v1/1-job-location')
+      res.redirect('/prototypes/create-a-job_v1/1-job-location')
     } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
-      res.redirect('/prototypes/scope_expansion_v1/0a-job-role-details') 
+      res.redirect('/prototypes/create-a-job_v1/0a-job-role-details') 
     } else if (jobRole == "bussinessManager") {
       res.redirect('/404')  
     } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
-      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')  
+      res.redirect('/prototypes/create-a-job/2a-education-phase-setup')  
     } else {
-      res.redirect('/prototypes/scope_expansion_v1/2-job-details')
+      res.redirect('/prototypes/create-a-job_v1/2-job-details')
     }   
   })
   
   // Job role details (v1)
-  router.post('/prototypes/scope_expansion_v1/0-job-role-details-answer', function (req, res) {
+  router.post('/prototypes/create-a-job_v1/0-job-role-details-answer', function (req, res) {
   
     // let jobPhase = req.session.data.job.phase
     let userType = req.session.data.job.userType
     
     // If mutli-school user go to location
     if ((userType == "multiSchoolMat") || (userType == "multiSchoolLa")) {
-      res.redirect('/prototypes/scope_expansion_v1/1-job-location')
+      res.redirect('/prototypes/create-a-job_v1/1-job-location')
     } else {
-      res.redirect('/prototypes/scope_expansion_v1/2-job-details')
+      res.redirect('/prototypes/create-a-job_v1/2-job-details')
     } 
   })
   
   // Job role details
-  router.post('/prototypes/scope_expansion/0-job-role-details-answer', function (req, res) {
+  router.post('/prototypes/create-a-job/0-job-role-details-answer', function (req, res) {
   
     let jobPhase = req.session.data.job.phase
     let userType = req.session.data.job.userType
     
     // If all-through and single school then skip location and go to phase
     if ( (jobPhase == "More than one phase") && (userType == "singleSchool") ) {
-      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
+      res.redirect('/prototypes/create-a-job/2a-education-phase-setup')
     } else if ((userType == "multiSchoolMat") || (userType == "multiSchoolLa")) {
-      res.redirect('/prototypes/scope_expansion/1-job-location')
+      res.redirect('/prototypes/create-a-job/1-job-location')
     } else {
-      res.redirect('/prototypes/scope_expansion/2-job-details')
+      res.redirect('/prototypes/create-a-job/2-job-details')
     } 
   })
   
   // Job location MAT (v1)
-  router.post('/prototypes/scope_expansion_v1/job-role-answer-mat', function (req, res) {
+  router.post('/prototypes/create-a-job_v1/job-role-answer-mat', function (req, res) {
     
     let selectedLocationsMat = req.session.data.job.locationMat
     let jobPhase = req.session.data.job.phase
 
     if (selectedLocationsMat == "At one school in the trust") {
-      res.redirect('/prototypes/scope_expansion_v1/1b-job-location-single')
+      res.redirect('/prototypes/create-a-job_v1/1b-job-location-single')
     } else if (selectedLocationsMat == "At more than one school in the trust") {
-      res.redirect('/prototypes/scope_expansion_v1/1a-job-location-many')
+      res.redirect('/prototypes/create-a-job_v1/1a-job-location-many')
     } else {
-      res.redirect('/prototypes/scope_expansion_v1/2-job-details')
+      res.redirect('/prototypes/create-a-job_v1/2-job-details')
     }
 
   })
   
   // Job location MAT
-  router.post('/prototypes/scope_expansion/job-role-answer-mat', function (req, res) {
+  router.post('/prototypes/create-a-job/job-role-answer-mat', function (req, res) {
     
     let selectedLocationsMat = req.session.data.job.locationMat
     let jobPhase = req.session.data.job.phase
 
     if (selectedLocationsMat == "At one school in the trust") {
-      res.redirect('/prototypes/scope_expansion/1b-job-location-single')
+      res.redirect('/prototypes/create-a-job/1b-job-location-single')
     } else if (selectedLocationsMat == "At more than one school in the trust") {
-      res.redirect('/prototypes/scope_expansion/1a-job-location-many')
+      res.redirect('/prototypes/create-a-job/1a-job-location-many')
     } else if ((selectedLocationsMat == "At the trust's head office") && (jobPhase == "More than one phase") )  {
-      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
+      res.redirect('/prototypes/create-a-job/2a-education-phase-setup')
     } else {
-      res.redirect('/prototypes/scope_expansion/2-job-details')
+      res.redirect('/prototypes/create-a-job/2-job-details')
     }
 
   })
 
   // Job Location LA (v1)
-  router.post('/prototypes/scope_expansion_v1/job-role-answer-la', function (req, res) {
+  router.post('/prototypes/create-a-job_v1/job-role-answer-la', function (req, res) {
     
     let selectedLocationsLa = req.session.data.job.locationLa
 
     if (selectedLocationsLa == "At one school") {
-      res.redirect('/prototypes/scope_expansion_v1/1b-job-location-single')
+      res.redirect('/prototypes/create-a-job_v1/1b-job-location-single')
     } else {
-      res.redirect('/prototypes/scope_expansion_v1/1a-job-location-many')
+      res.redirect('/prototypes/create-a-job_v1/1a-job-location-many')
     }
   })
 
   // Job Location LA
-  router.post('/prototypes/scope_expansion/job-role-answer-la', function (req, res) {
+  router.post('/prototypes/create-a-job/job-role-answer-la', function (req, res) {
     
     let selectedLocationsLa = req.session.data.job.locationLa
 
     if (selectedLocationsLa == "At one school") {
-      res.redirect('/prototypes/scope_expansion/1b-job-location-single')
+      res.redirect('/prototypes/create-a-job/1b-job-location-single')
     } else {
-      res.redirect('/prototypes/scope_expansion/1a-job-location-many')
+      res.redirect('/prototypes/create-a-job/1a-job-location-many')
     }
   })
   
   // Job Location details
-  router.post('/prototypes/scope_expansion/1a-job-location-details-answer', function (req, res) {
+  router.post('/prototypes/create-a-job/1a-job-location-details-answer', function (req, res) {
     
     let jobPhase = req.session.data.job.phase
 
     if (jobPhase == "More than one phase") {
-      res.redirect('/prototypes/scope_expansion/2a-education-phase-setup')
+      res.redirect('/prototypes/create-a-job/2a-education-phase-setup')
     } else {
-      res.redirect('/prototypes/scope_expansion/2-job-details')
+      res.redirect('/prototypes/create-a-job/2-job-details')
     }  
     
   })
