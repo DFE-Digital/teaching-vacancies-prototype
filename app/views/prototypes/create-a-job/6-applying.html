@@ -15,139 +15,42 @@
   <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-l">Applying for the job</h2>
 
-      {% set howToApply %}
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--s" for="apply">
-              How to apply
-          </label>
-          <span id="more-detail-hint" class="govuk-hint">
-            Explain how to apply for the job.
-          </span>
-          <textarea class="govuk-textarea" id="apply" name="apply" rows="8" aria-describedby="apply"></textarea>
-        </div>
-      {% endset %}
-      
-      {% set linkToApply %}
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--s" for="link">
-            Link to online application <span class="govuk-!-font-weight-regular">(optional)</span>
-          </label>
-          <span id="job-title-hint" class="govuk-hint">
-            Leave this blank unless candidates can apply directly on the school or council website
-          </span>
-          <input class="govuk-input govuk-!-width-two-thirds" id="link" name="link" type="text" aria-describedby="link">
-        </div>
-      {% endset %}
+      <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's website. <a href="https://qa.teaching-vacancies.service.gov.uk/teaching-vacancies-application-form-guide-sept-21.pdf" class="govuk-link">Download more information about the application form (2.73 MB, PDF)</a></p>
 
-      {% set conditionalTvsApplyContent %}
-        
-        {% set textAreaHtml %}
-          Help candidates to write their personal statement? <span class="govuk-!-font-weight-regular">(optional)</span>
-        {% endset %}
-        
-        {{ govukTextarea({
-          label: {
-            html: textAreaHtml,
-            classes: "govuk-label--s"
-          },
-          hint: {
-            text: "Is there any guidance you would like to give candidates on how to write their personal statement? For example, how long it should be or what information to include."
-          }
-        }) }}
-      {% endset %}
+      <form class="" action="6-applying-answer" method="post">
 
-      {% set conditionalNonTvsApplyContent %}
-        {{ howToApply | safe }}
-        {{ linkToApply | safe }}
-      {% endset %}
-      
-      {% if data.job.role == "education support" %}
-        {% set applyMethodDetialsHtml %}
-          <p class="govuk-body">This option will be available to hiring staff in the future.</p>
-          <p class="govuk-body">For now ensure to include details on how candidates can apply through your own process.</p>
-        {% endset %}
-
-        {{ govukDetails({
-          summaryText: "You can't accept Education support applications directly through Teaching Vacancies at this time",
-          html: applyMethodDetialsHtml
-        }) }}
-      {% endif %}
-
-      <form class="" action="9-review" method="post">
-
-          {% if data.job.role != "education support" %}
-            {{ govukRadios({
-              fieldset: {
-                legend: {
-                  text: "How would you like candidates to apply?",
-                  classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+        {% if data.job.role != "education support" %}
+          {{ govukRadios({
+            fieldset: {
+              legend: {
+                text: "How would you like candidates to apply?",
+                classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+              }
+            },
+            items: [
+              {
+                text: "Use the Teaching Vacancies application form",
+                hint: {
+                  text: "You will be able to collect, manage and respond to applicants through Teaching Vacnaices"
                 }
               },
-              items: [
-                {
-                  text: "Apply using the Teaching Vacancies application form",
-                  conditional: {
-                    html: conditionalTvsApplyContent
-                  }
-                },
-                {
-                  text: "Use another application process or form",
-                  conditional: {
-                    html: conditionalNonTvsApplyContent
-                  }
-                }
-              ]
-            } | decorateAttributes(data, "data.job.applyProcess")) }}
+              {
+                text: "Use another application process"
+              }
+            ]
+          } | decorateAttributes(data, "data.job.applyProcess")) }}
         {% else %}
           {{ howToApply | safe }}
           {{ linkToApply | safe }}
         {% endif %}
-          
-          <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="email">
-                  Contact email
-              </label>
-              <span id="job-title-hint" class="govuk-hint">
-                This email address will be shown publicly as a point of contact
-              </span>
-              <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="text" aria-describedby="email">
-          </div>
-          
-          <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="email">
-                  Contact phone number <span class="govuk-!-font-weight-regular">(optional)</span>
-              </label>
-              <span id="job-title-hint" class="govuk-hint">
-                This phone number will be for any questions applicants may have about the role
-              </span>
-              <input class="govuk-input govuk-!-width-one-third" id="phone" name="email" type="text" aria-describedby="email">
-          </div>
 
-          <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="visits">
-                School visits <span class="govuk-!-font-weight-regular">(optional)</span>
-              </label>
-              <span id="more-detail-hint" class="govuk-hint">
-                Explain how a candidate can arrange a visit to the school (give a phone number if possible)
-              </span>
-              <textarea class="govuk-textarea" id="visits" name="visits" rows="5" aria-describedby="visits"></textarea>
-          </div>
+        {{ govukButton({
+          text: "Continue"        
+        }) }}
 
-          {{ govukButton({
-            text: "Continue",
-            href: "#"
-          }) }}
-
-          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+        <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
       </form>
 
   </div>
-  {# <div class="govuk-grid-column-one-third">
-    <div class="app-step-nav-related app-step-nav-related--singular">
-        <h2 class="app-step-nav-related__heading">
-            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-        </h2>
-    </div>
-    {% include "includes/hiring-staff/acc-steps.html" %}
-  </div> #}
+
 {% endblock %}
