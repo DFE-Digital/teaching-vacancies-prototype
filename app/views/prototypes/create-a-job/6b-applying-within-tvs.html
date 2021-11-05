@@ -48,7 +48,7 @@
               text: "Allow candidates to contact you about the role (this will be shown publicly)"
             },
             classes: "govuk-!-width-one-third"
-          } | decorateAttributes(data, "data.job.contactEmail")) }}
+          } | decorateAttributes(data, "data.job.contactPhone")) }}
 
           {{ govukTextarea({
             label: {
@@ -58,7 +58,7 @@
             hint: {
               text: "Explain how candidates can arrange a visit to the school (include contact details if different from those provided above)"
             }
-          }) }}
+          } | decorateAttributes(data, "data.job.schoolVisits")) }}
 
           {{ govukButton({
             text: "Continue"
