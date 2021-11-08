@@ -92,6 +92,7 @@
         {% set conditionalContractHtml %}
           
           {{ govukTextarea({
+            rows: "1",
             label: {
               text: "Duration of fixed term contract",
               classes: "govuk-label--s"
@@ -140,21 +141,6 @@
               {% include "includes/hiring-staff/subject-autocomplete.html" %}
 
           {% endif %}
-
-          {# Contract type #}
-
-          {% set conditionalContractHtml %}
-            {{ govukInput({
-              label: {
-                text: "Duration of fixed term contract?",
-                classes: "govuk-label--s"
-              },
-              hint: {
-                text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
-              },
-              classes: "govuk-!-width-two-thirds"
-            } | decorateAttributes(data, "data.job.contractDuration")) }}
-          {% endset %}
 
           <button class="govuk-button" data-module="govuk-button">Continue</button>
           <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
