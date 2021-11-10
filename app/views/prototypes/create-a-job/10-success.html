@@ -14,20 +14,30 @@
   <p class="govuk-body">The job listing will appear on the service until 12 December 2021 at 8:00am, after which it will no longer be visible to jobseekers.</p>
 
   <div class="govuk-button-group">
-    {{ govukButton({
-      text: "Copy this job"
-    }) }}
 
     {{ govukButton({
       text: "View your job listings",
       classes: "govuk-button--secondary"
     }) }}
+    
+    {{ govukButton({
+      text: "Create another job listing",
+      classes: "govuk-button--secondary"
+    }) }}
   </div>
+
+  {# <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4">
+  
+  <h2 class="govuk-heading-m">Creating another similar job listing?</h2>
+  {{ govukButton({
+    text: "Copy this job",
+    classes: "govuk-button--secondary"
+  }) }} #}
 
   <hr class="govuk-section-break govuk-section-break--visible">
 
   {% set insetHtml %}
-     <h2 class="govuk-heading-m">Share this job </h2>
+     <h2 class="govuk-heading-m">Share this job</h2>
      <p>https://qa.teaching-vacancies.service.gov.uk/jobs/test-copy</p>
      {{ govukButton({
       text: "Copy URL",
