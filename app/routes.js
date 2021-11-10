@@ -80,7 +80,20 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
 
 })
 
-  // Scope expansion July 2021
+  // Create a job flow
+
+  // Copy an existig job or start a new one?
+  router.post('/prototypes/create-a-job/copy-or-new-job-answer', function (req, res) {
+  
+    let newOrCopyExisting = req.session.data.job.newOrCopyExistingJob
+
+    if (newOrCopyExisting == "Start with a blank template") {
+      res.redirect('/prototypes/create-a-job/0-job-role')
+    } else {
+      res.redirect('/prototypes/create-a-job/copy-job')
+    }  
+    
+  })
 
   // Job role
   router.post('/prototypes/create-a-job/0-job-role-answer', function (req, res) {
