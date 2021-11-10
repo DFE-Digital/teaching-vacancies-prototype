@@ -8,11 +8,7 @@
     <h1 class="govuk-heading-m govuk-!-margin-bottom-5">Copy a job listing</h1>
   </div>
 
-  {% if data.job.numberOfJobsListed == "Less than or equal to 20" %}
-    <h2 class="govuk-heading-l">Select a job</h2>
-  {% else %}
-    <h2 class="govuk-heading-l">Search for a job</h2>
-  {% endif %}
+  <h2 class="govuk-heading-l">Select a job</h2>
   <p class="govuk-body">Content from the job listing will be copied. You will be able to check all details are correct before publishing this job listing.</p>
 
   {% set job1 %}
@@ -62,6 +58,7 @@
   {# Has more than 20 jobs show the autocomplete instead #}
 
     <div class="body-text">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Search for a job listing</h2>
       <div id="tt-default" class="autocomplete-wrapper govuk-!-width-two-thirds govuk-!-margin-bottom-6"></div>
     </div>
 
@@ -69,7 +66,7 @@
 
     <script type="text/javascript">
       var providers = [
-        "<span class='job-title'>Games Design Tutor</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>21 October 2021</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Bexleyheath Academy</span>",
+        "<span class='job-title'>Games Design Tutor</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: 21 October 2021</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Bexleyheath Academy</span>",
         "<span class='job-title'>Tutor of PE</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: 10 August 2021</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Farnham Heath End</span>",
         "<span class='job-title'>PROGRESS TUTOR (HEAD OF DEPARTMENT) FOR RS, PSHE, RSE AND CITIZENSHIP EDUCATION WITH TLR 2 £6698</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: 15 December 2020</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Bexleyheath Academy</span>"
       ]
