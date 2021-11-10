@@ -1,13 +1,13 @@
 {% extends "templates/form-template.html" %}
 
 {% set sectionActive = "job listings" %}
-{% set formAction = "./check-answers" %}
+{% set formAction = "./copy-or-new-job-answer" %}
 
 {% block formContent %}
   <div class="create-title" style="margin-top: -20px">
     <h1 class="govuk-heading-m govuk-!-margin-bottom-5">Create a job listing</h1>
   </div>
-  <!-- ROLE START -->
+
   {{ govukRadios({
     fieldset: {
       legend: {
@@ -24,8 +24,7 @@
         text: "Copy an existing job listing"
       }
     ]
-  } | decorateAttributes(data, "data.job.role")) }}
-  <!-- ROLE END -->
+  } | decorateAttributes(data, "data.job.newOrCopyExistingJob")) }}
 
   <button class="govuk-button" data-module="govuk-button">Continue</button>
   <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
