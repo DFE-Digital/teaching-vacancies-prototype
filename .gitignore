@@ -7,7 +7,6 @@ lib/extensions/_extensions.scss
 .DS_Store
 .start.pid
 .port.tmp
+public
 node_modules/*
-public/stylesheets/application*.css
-public/stylesheets/docs*.css
-public/stylesheets/unbranded.css
+.tmuxp.*
