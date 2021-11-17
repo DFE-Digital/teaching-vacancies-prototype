@@ -67,10 +67,40 @@
 
     <script type="text/javascript">
       var providers = [
-        "<span class='job-title'>Games Design Tutor</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: 21 October 2021</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Bexleyheath Academy</span>",
-        "<span class='job-title'>Tutor of PE</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: 10 August 2021</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Farnham Heath End</span>",
-        "<span class='job-title'>PROGRESS TUTOR (HEAD OF DEPARTMENT) FOR RS, PSHE, RSE AND CITIZENSHIP EDUCATION WITH TLR 2 £6698</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: 15 December 2020</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Bexleyheath Academy</span>"
-      ]
+        {
+          "id": "0",
+          "status": "active",
+          "name": "Trust-Wide Lead Practitioner",
+          "applicationCount": "0",
+          "closingDate": "31 October 2020 at 09:00am",
+          "location": "Test location"
+        },
+        {
+          "id": "1",
+          "status": "passed-deadline",
+          "name": "Primary Teacher",
+          "applicationCount": "4",
+          "interviewCount": "2",
+          "listingDate": "06 October 2020 at 07:45am",
+          "closingDate": "20 October 2020 at 09:00am",
+          "location": "Test location"
+        },
+        {
+          "id": "2",
+          "status": "passed-deadline",
+          "name": "Headteacher",
+          "applicationCount": "0",
+          "listingDate": "12 October 2020 at 09:00am",
+          "closingDate": "31 October 2020 at 12:00am",
+          "location": "Test location"
+        }
+      ];
+
+      var getSuggestions = () => {
+        var suggestions = []
+        providers.forEach(vacancy => suggestions.push(vacancy.name));
+        return suggestions;
+      }
     </script>
 
     <script type="text/javascript">
@@ -79,8 +109,14 @@
       accessibleAutocomplete({
         element: element,
         id: id,
-        source: providers,
-        name: "jobsList"
+        source: getSuggestions(),
+        name: "jobsList",
+        templates: {
+          suggestion: (value) => {
+            var vacancy = providers.find(vacancy => vacancy.name == value);
+            return `<span class='job-title'>${vacancy.name}</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>Closing date: ${vacancy.closingDate}</span><span class='govuk-hint govuk-!-margin-bottom-0 govuk-!-font-size-16'>${vacancy.location}</span>`
+          }
+        }
       })
     </script>
 
