@@ -1,13 +1,5 @@
 <div class="govuk-button-group">
   {% if data.applications[applicationId].status != 'Rejected' %}
-  
-    {% if data.applications[applicationId].status != 'Reviewed' and data.applications[applicationId].status != 'Invited to interview' %}
-      {{ govukButton({
-        text: "Mark as reviewed",
-        classes: "govuk-button--secondary",
-        href: "/prototypes/application/expanded/dashboard/job/1/applicant/" + applicationId +  "/mark-reviewed"
-      }) }}
-    {% endif %}
 
     {% if not data.applications[applicationId].interviewDate %}
     
@@ -24,13 +16,18 @@
         href: "/prototypes/application/expanded/dashboard/job/1/applicant/" + applicationId +  "/reject"
     }) }}
 
-  {% endif %}
-  {# |  #}
-  {# {% if data.applications[applicationId].status == 'Rejected' %} #}
     {{ govukButton({
-      text: "Contact applicant",
+      text: "Request references",
       classes: "govuk-button--secondary",
-      href: "/prototypes/application/expanded/dashboard/job/" +  job.id + "/applicant/" + application.id + "/contact"
+      href: "/prototypes/application/expanded/dashboard/job/1/applicant/" + applicationId +  "/references"
     }) }}
-  {# {% endif %} #}
+
+  {% endif %}
+
+  {{ govukButton({
+    text: "Contact applicant",
+    classes: "govuk-button--secondary",
+    href: "/prototypes/application/expanded/dashboard/job/" +  job.id + "/applicant/" + application.id + "/contact"
+  }) }}
+
 </div>
