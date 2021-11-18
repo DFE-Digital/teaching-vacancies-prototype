@@ -12,12 +12,17 @@
 
             <ol class="app-task-list">
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        1. Job role
-                        </span>
-                        <a href="0-job-role">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          1. Job role
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
 
                     {% set jobRoleHtml %}
                       
@@ -53,12 +58,17 @@
                     }) }}
                 </li>
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        2. Job details 
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          2. Job detials
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -90,12 +100,17 @@
                     }) }}
                 </li>
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        3. Working pattern details 
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          3. Working pattern
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -119,12 +134,17 @@
                     }) }}
                 </li>
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        4. Pay package 
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                   <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          3. Pay package
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -156,12 +176,17 @@
                     }) }}
                 </li>
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        5. Important dates and deadlines 
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          5. Important dates and deadlines
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -178,12 +203,17 @@
                 </li>
                 
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        6. Applying for the job
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          6. Applying for the job
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -224,12 +254,17 @@
                 </li>
                 
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        7. Supporting documents
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          7. Supporting documents
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -246,12 +281,17 @@
                 </li>
                 
                 <li>
-                    <h2 class="app-task-list__section">
-                        <span class="app-task-list__section-number">
-                        8. Job summary
-                        </span>
-                        <a href="1-job-details">Change</a>
-                    </h2>
+                    <div class="flex-header">
+                      <h2 class="app-task-list__section">
+                          <span class="app-task-list__section-number">
+                          8. Job role
+                          </span>
+                          <a href="0-job-role">Change</a>
+                      </h2>
+                      {{ govukTag({
+                        text: "completed"
+                      }) }}
+                    </div>
                     
                     {{ govukSummaryList({
                       rows: [
@@ -272,17 +312,20 @@
             <p class="govuk-body">See how this job listing will appear to jobseekers on Teaching Vacancies</p>
 
             {{ govukButton({
-              text: "Preview job listing"
+              text: "Preview job listing",
+              classes: "govuk-button--secondary",
+              href: "#"
             }) }}
 
             <h3 class="govuk-heading-m">Submit this listing for publication now (3 August 2021)</h3>
 
-            <p class="govuk-body">By publishing this job you agree to our <a href="/pages/terms-and-conditions" class="govuk-link" target="blank">terms and conditions</a> for schools and confirm that the details you have provided are, to the best of your knowledge, correct</p>
+            <p class="govuk-body">By publishing this job you agree to our <a href="/pages/terms-and-conditions" class="govuk-link" target="blank">terms and conditions</a> for schools and confirm that the details you have provided are, to the best of your knowledge, correct.</p>
 
             {{ govukButton({
               text: "Confirm and submit job",
-              classes: "govuk-button--secondary"
+              href: "10-success"
             }) }}
+            
             <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
 
         </div>
