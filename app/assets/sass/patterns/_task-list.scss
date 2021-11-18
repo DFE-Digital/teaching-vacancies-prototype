@@ -67,3 +67,9 @@
     margin-bottom: 0;
   }
 }
+
+.app-task-list {
+  .flex-header * + * {
+    align-self: unset;
+  }
+}
