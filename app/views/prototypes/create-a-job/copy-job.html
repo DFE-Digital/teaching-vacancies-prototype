@@ -52,7 +52,7 @@
           value: "PROGRESS LEADER (HEAD OF DEPARTMENT) FOR RS, PSHE, RSE AND CITIZENSHIP EDUCATION WITH TLR 2 £6698"
         }
       ]
-    } | decorateAttributes(data, "data.job.copyExistingJob")) }}
+    } | decorateAttributes(data, "data.existingJobDetails")) }}
   
   {% else %}
   {# Has more than 20 jobs show the autocomplete instead #}
@@ -101,7 +101,7 @@
         element: element,
         id: id,
         source: getSuggestions(),
-        name: "jobsList",
+        name: "existingJobDetails",
         templates: {
           suggestion: (value) => {
             var vacancy = providers.find(vacancy => vacancy.name == value);

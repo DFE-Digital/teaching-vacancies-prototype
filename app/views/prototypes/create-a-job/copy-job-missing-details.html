@@ -19,7 +19,8 @@
       },
       hint: {
         text: "Include whether the role is at a school or a trust. Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’."
-      }
+      },
+      value: data.existingJobDetails
     } | decorateAttributes(data, "data.job.titleCopy")) }}
 
     {% set conditionalListingDate %}
