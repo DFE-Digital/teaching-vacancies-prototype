@@ -58,7 +58,6 @@
 
 {% block header %}
 
-{# Set serviceName in config.js. #}
 {% if data.settings.useAltHeader %}
   {# Show the alternative header #}
   {{ govukHeader({
@@ -68,20 +67,9 @@
     "productName": serviceName,
     navigation: [
       {
-        href: "templates/public/01-service-start",
-        text: "Find a teaching job",
-        active: true if (navActive == "start")
-      } if not data.settings.showPrimaryNav,
-      {
         href: "#",
         text: "Sign in",
         active: true if (navActive == "sign-in")
-      }
-      ,
-      {
-        _href: "#",
-        _class: "test-class",
-        _text: "For schools"
       }
     ]
   }) }}
@@ -159,10 +147,25 @@
 
 {# Show primary nav if enabled #}
 {% if data.settings.showPrimaryNav %}
-  {{ mojPrimaryNavigation({
-    label: 'Primary navigation',
-    items: navItems    
-  }) }} 
+  <div class="moj-primary-navigation">
+    <div class="govuk-width-container">
+      <div class="moj-primary-navigation__container">
+        <div class="moj-primary-navigation__nav">
+          <nav class="moj-primary-navigation" aria-label="Primary navigation">
+            <ul class="moj-primary-navigation__list">
+                <li class="moj-primary-navigation__item">
+                  <a class="moj-primary-navigation__link" href="templates/public/01-service-start">Find a teaching job</a>
+                </li>
+              
+                <li class="moj-primary-navigation__item">
+                  <a class="moj-primary-navigation__link" href="#">Link name</a>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endif %}
 
 {% endblock %}

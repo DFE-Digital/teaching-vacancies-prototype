@@ -38,6 +38,10 @@ let job = {
   // containsAllThroughPhase: "Yes"
 }
 
+let settings = {
+  useAltHeader: "true"
+}
+
 const jobs = require('./jobs.json')
 const applications = require('./applications.json')
 
@@ -48,6 +52,9 @@ module.exports = {
     
   // Assign the phase to job
   job: job,
+  
+  // Assign layout settings
+  settings: settings,
   
   // Insert values here
 
