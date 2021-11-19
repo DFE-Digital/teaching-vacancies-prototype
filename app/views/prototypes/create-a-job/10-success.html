@@ -1,94 +1,125 @@
-{% extends "layout.html" %}
+{% extends "templates/form-template.html" %}
 
 {% set sectionActive = "job listings" %}
 
-{% block pageTitle %}
-  Find a job in Teaching
-{% endblock %}
+{% block formContent %}
 
-{% block header %}
+  {{ govukPanel({
+    titleText: "The job listing has been completed"
+  }) }}
 
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
-      homepageUrl: "dashboard",
-      serviceName: serviceName,
-      serviceUrl: "dashboard",
-      containerClasses: "govuk-width-container",
-    navigation: [
+  <h2 class="govuk-heading-m">What happens next</h2>
+
+  <p class="govuk-body">Your job listing will be posted on 8 December 2021.</p>
+  <p class="govuk-body">The job listing will appear on the service until 12 December 2021 at 8:00am, after which it will no longer be visible to jobseekers.</p>
+
+  <div class="govuk-button-group">
+
+    {{ govukButton({
+      text: "View your job listings",
+      classes: "govuk-button--secondary"
+    }) }}
+    
+    {{ govukButton({
+      text: "Create another job listing",
+      classes: "govuk-button--secondary",
+      href: "/prototypes/create-a-job/new-or-copy-job"
+    }) }}
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--visible">
+
+  {% set insetHtml %}
+     <h2 class="govuk-heading-m">Share this job</h2>
+     <p>https://qa.teaching-vacancies.service.gov.uk/jobs/test-copy</p>
+     {{ govukButton({
+      text: "Copy URL",
+      classes: "govuk-button--secondary"
+    }) }}
+
+  {% endset %}
+
+  {{ govukInsetText({
+    html: insetHtml
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4">
+  
+  <h2 class="govuk-heading-m">Have time to share some feedback?</h2>
+
+  <p class="govuk-body">Your feedback can help us improve the service to better support you as well as schools around England.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Do you need to report a problem, or request support with using Teaching Vacancies?",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
       {
-        href: "#",
-        text: "Manage jobs"
+        text: "Yes"
       },
       {
-        href: "#",
-        text: "View public jobs"
-      },
-      {
-        href: "#",
-        text: "Sign out"
+        text: "No"
       }
     ]
+  } | decorateAttributes(data, "data.job.reportAProblem")) }}
+  
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "How satisfied are you with the job listing process on Teaching Vacancies?",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        text: "Highly satisfied"
+      },
+      {
+        text: "Somewhat satisfied"
+      },
+      {
+        text: "Neither satisfied nor dissatisfied"
+      },
+      {
+        text: "Somewhat dissatisfied"
+      },
+      {
+        text: "Highly dissatisfied"
+      }
+    ]
+  } | decorateAttributes(data, "data.job.reportAProblem")) }}
+
+  {{ govukTextarea({
+    label: {
+      text: "Do you have any suggestions on how we should improve the service? (optional)",
+      classes: "govuk-label--s"
+    }
+  } | decorateAttributes(data, "data.job.suggestionsForImprovement")) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Would you like to participate in our research?",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateAttributes(data, "data.job.participate in our research")) }}
+
+  {{ govukButton({
+    text: "Submit feedback"
   }) }}
-{% endblock %}
 
-{% block content %}
-
-<div class="govuk-width-container">
-
-    <div class="create-title">
-        <h1 class="govuk-heading-m">Create a job listing for Bexley Heath Academy</h1>
-    </div>
-
-    <main class="govuk-main-wrapper">
-
-        <div class="govuk-grid-row">
-
-            <!-- Main content START -->
-            <div class="govuk-grid-column-two-thirds">
-
-                <div class="govuk-panel govuk-panel--confirmation">
-                    <span class="hod-checkmark move">
-                        <svg class="banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 25 25" height="40" width="40">
-                            <path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg>
-                    </span>
-                    <h1 class="govuk-panel__title">
-                        The job listing has been completed
-                    </h1>
-                    <div class="govuk-panel__body">
-
-                        <p><a href="job-listing">View your job listing</a></p>
-                        <p>You can also view, amend or delete it on <a href="dashboard">your school's dashboard</a></p>
-
-                    </div>
-                </div>
-
-                <h2 class="govuk-heading-m">What happens next</h2>
-
-                <p class="govuk-body">
-                    Your job listing will be posted on 29 January 2020.
-                </p>
-                <p class="govuk-body">
-                    The listing will appear on the service until 29 June 2020 at 09:00 am, after which it will no longer be visible to jobseekers.
-                </p>
-
-                <p class="govuk-body">
-                    <a href="#" class="govuk-link">What did you think of this service?</a>
-                    (takes 30 seconds)
-                </p>
-
-            </div>
-            <!-- Main content END -->
-
-            <!-- Sidebar START -->
-            <div class="govuk-grid-column-one-third">
-
-            </div>
-            <!-- Sidebar END -->
-
-        </main>
-    </div>
-
-
-
+</div>
 
 {% endblock %}

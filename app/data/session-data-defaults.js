@@ -29,6 +29,10 @@ let job = {
   // Fallback school name
   defaultSchoolName: "Belle Vue Girls Academy",
 
+  // How many jobs has the school listed
+  // Options: "More than 20" "Less than or equal to 20"
+  numberOfJobsListed: "More than 20",
+
   // Does the journey include an all-through school?
   // Defaults to no as its less common
   // containsAllThroughPhase: "Yes"
