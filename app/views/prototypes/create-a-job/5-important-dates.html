@@ -33,7 +33,7 @@
         {{ govukRadios({
             fieldset: {
               legend: {
-                text: "Listing date",
+                text: "Date job will be listed",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -118,34 +118,22 @@
 
         {% set conditionalListingStartDate %}
           {{ govukDateInput({
-              fieldset: {
-                legend: {
-                  text: "What is the starting date?",
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              hint: {
-                text: "For example, 04 01 2022"
+            fieldset: {
+              legend: {
+                text: "What is the starting date?",
+                classes: "govuk-fieldset__legend--s"
               }
-            } | decorateAttributes(data, "data.job.listingStartDate")) }}
-        {% endset %}
-        
-        {# {{ govukDateInput({
-          fieldset: {
-            legend: {
-              html: listingStartDateHtml, 
-              classes: "govuk-fieldset__legend--s"
+            },
+            hint: {
+              text: "For example, 04 01 2022"
             }
-          },
-          hint: {
-            text: "For example, 01 05 2021"
-          }
-      } | decorateAttributes(data, "data.job.listingStartDate")) }} #}
+          } | decorateAttributes(data, "data.job.listingStartDate")) }}
+      {% endset %}
 
       {{ govukRadios({
           fieldset: {
             legend: {
-              text: "Listing date",
+              text: "Date job starts (optional)",
               classes: "govuk-fieldset__legend--s"
             }
           },
@@ -167,14 +155,5 @@
       </form>
 
   </div>
-
-  {# <div class="govuk-grid-column-one-third">
-    <div class="app-step-nav-related app-step-nav-related--singular">
-        <h2 class="app-step-nav-related__heading">
-            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
-        </h2>
-    </div>
-    {% include "includes/hiring-staff/acc-steps.html" %}
-  </div> #}
 
 {% endblock %}

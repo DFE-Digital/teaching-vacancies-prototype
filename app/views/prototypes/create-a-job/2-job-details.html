@@ -79,7 +79,9 @@
           {% endif %}
         {% endset %}
 
-        {{ govukInput({
+        {{ govukCharacterCount({
+          maxlength: 100,
+          rows: "1",
           label: {
             text: "Job title",
             classes: "govuk-label--s"

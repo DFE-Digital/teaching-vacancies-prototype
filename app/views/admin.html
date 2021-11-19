@@ -32,8 +32,6 @@
         ]
       } | decorateAttributes(data, "data.settings.showPrimaryNav")) }}
 
-      {# user types #}
-
       {{ govukRadios({
         fieldset: {
           legend: {
@@ -57,8 +55,6 @@
         ]
       } | decorateAttributes(data, "data.job.userType")) }}
       
-      {# Education Phase #}
-
       {{ govukRadios({
         fieldset: {
           legend: {
@@ -81,6 +77,23 @@
           }
         ]
       } | decorateAttributes(data, "data.job.phase")) }}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Number of jobs a school has listed",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            text: "Less than or equal to 20"
+          },
+          {
+            text: "More than 20"
+          }
+        ]
+      } | decorateAttributes(data, "data.job.numberOfJobsListed")) }}
 
       {{ govukButton({
         "text": "Update"
