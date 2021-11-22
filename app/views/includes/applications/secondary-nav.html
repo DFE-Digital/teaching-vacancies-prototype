@@ -1,16 +1,25 @@
 <!-- START SUB-NAVIGATION -->
-<div class="full-BGstrip" style="background-color:#f3f2f1;">
     <div class="govuk-width-container">
 
         <main class="govuk-main-wrapper govuk-!-padding-0">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    <h2 class="govuk-heading-s govuk-!-padding-top-4 govuk-!-margin-bottom-2 acc-username">Joanna Bloggs - <span>{{ data.job.defaultSchoolName }}</span></h2>
-                </div>
+                  {# <div class="flex-header">   #}
+                    <h1 class="govuk-heading-l govuk-!-margin-bottom-6 govuk-!-margin-top-7">
+                      <span class="govuk-caption-l">{{ data.job.defaultSchoolName }}</span>
+                      Manage jobs
+                    </h1>
+                    {# {{ govukButton({
+                      text: "Create a job listing",
+                      href: "/prototypes/create-a-job/new-or-copy-job",
+                      classes: "govuk-!-margin-0"
+                    }) }} #}
+                  </div>
+                {# </div> #}
             </div>
             <div class="govuk-grid-row">
 							<div class="govuk-grid-column-full">
-                <ul class="acc-navigation__list">
+                <ul class="acc-navigation__list acc-navigation__list--has-border">
                   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'active jobs' }}">
                     <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard">Active jobs</a>
                   </li>
@@ -23,14 +32,13 @@
                   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'draft jobs' }}">
                     <a class="govuk-link govuk-link--no-visited-state" href="#">Draft jobs</a>
                   </li>
-                  {# <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'manage settings' }}">
-                    <a class="govuk-link govuk-link--no-visited-state" href="#">Manage settings</a>
-                  </li> #}
+                  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if navActive == 'awaiting feedback' }}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="#">Jobs awaiting feedback</a>
+                  </li>
                 </ul>
               </div>
             </div>
         </main>
 
     </div>
-</div>
 <!-- END SUB-NAVIGATION -->

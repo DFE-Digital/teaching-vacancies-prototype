@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 
-{% set sectionActive = "job listings" %}
+{% set primaryNavActive = "manage jobs" %}
+{% set sectionActive = "hiring staff" %}
+{# {% set navActive = "manage jobs" %} #}
 
 {% block pageTitle %}
   Job listing name
-{% endblock %}
-
-{% block header %}
-  {% include "includes/applications/primary-header.html" %}
 {% endblock %}
 
 {% block main %}
@@ -18,87 +16,89 @@
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper govuk-!-padding-bottom-8 govuk-!-margin-bottom-8">
 
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <div class="app-job-listing-actions govuk-!-margin-top-0">
-                  <h2 class="govuk-heading-l table-title-number">{{ pageTitle | safe}}</h2>
-                  <a href="/prototypes/create-a-job/new-or-copy-job" class="govuk-button" data-module="govuk-button">Create a job listing</a>
-                </div>
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+              <div class="app-job-listing-actions govuk-!-margin-top-0">
+                <h2 class="govuk-heading-l table-title-number">{{ pageTitle | safe}}</h2>
+                {{ govukButton({
+                  text: "Create a job listing",
+                  href: "/prototypes/create-a-job/new-or-copy-job"
+                }) }}
+              </div>
 
-                {% block listings %}
-                {% endblock %}
-								
-            </div>
-        </div>
+              {% block listings %}
+              {% endblock %}
+              
+          </div>
+      </div>
 
-        {# <h2 class="govuk-heading-m govuk-!-margin-top-8">About {{ data.job.defaultSchoolName }}</h2>
+      {# <h2 class="govuk-heading-m govuk-!-margin-top-8">About {{ data.job.defaultSchoolName }}</h2>
 
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Description"
-              },
-              value: {
-                text: data.job.defaultSchoolName + " is a mixed secondary school in Bexleyheath, in the London Borough of Bexley and is a key member of Academies Enterprise Trust (AET) one of 64 academies created to provide thousands of students/pupils with the best possible education. "
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Description"
             },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                text: "Woolwich Road, Bexleyheath, Kent, DA6 7DA"
-              }
+            value: {
+              text: data.job.defaultSchoolName + " is a mixed secondary school in Bexleyheath, in the London Borough of Bexley and is a key member of Academies Enterprise Trust (AET) one of 64 academies created to provide thousands of students/pupils with the best possible education. "
             },
-            {
-              key: {
-                text: "School age"
-              },
-              value: {
-                text: "11 to 18"
-              }
-            },
-            {
-              key: {
-                text: "School type"
-              },
-              value: {
-                text: '	Academies'
-              }
-            },
-            {
-              key: {
-                text: "School website"
-              },
-              value: {
-                html: "<a target='_blank' rel='noreferrer noopener' class='govuk-link wordwrap' href='http://www.bexleyheathacademy.org/'>http://www.bexleyheathacademy.org/ (opens in new tab)</a>"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
-          ]
-        }) }} #}
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: "Woolwich Road, Bexleyheath, Kent, DA6 7DA"
+            }
+          },
+          {
+            key: {
+              text: "School age"
+            },
+            value: {
+              text: "11 to 18"
+            }
+          },
+          {
+            key: {
+              text: "School type"
+            },
+            value: {
+              text: '	Academies'
+            }
+          },
+          {
+            key: {
+              text: "School website"
+            },
+            value: {
+              html: "<a target='_blank' rel='noreferrer noopener' class='govuk-link wordwrap' href='http://www.bexleyheathacademy.org/'>http://www.bexleyheathacademy.org/ (opens in new tab)</a>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }} #}
 
     </main>
 </div>
-<!-- END TABLE -->
 
 {% endblock %}
 

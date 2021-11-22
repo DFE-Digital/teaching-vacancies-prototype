@@ -13,9 +13,9 @@
     margin-bottom: govuk-spacing(4);
   }
 
-  * + * {
-    align-self: flex-start;
-  }
+  // * + * {
+  //   align-self: flex-start;
+  // }
 
   @include govuk-media-query($from: tablet) {
     display: flex;

@@ -26,8 +26,11 @@ let job = {
   // Options: "singleSchool" "multiSchoolMat, "multiSchoolLa"
   userType: "singleSchool",
 
-  // Fallback school name
+  // Default school name
   defaultSchoolName: "Belle Vue Girls Academy",
+
+  // Default user name
+  defaultUserName: "Ariadne LeGrande",
 
   // How many jobs has the school listed
   // Options: "More than 20" "Less than or equal to 20"
@@ -39,7 +42,8 @@ let job = {
 }
 
 let settings = {
-  useAltHeader: "true"
+  useAltHeader: "true",
+  showPrimaryNav: "true"
 }
 
 const jobs = require('./jobs.json')

@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
-{% set sectionActive = "job listings" %}
+{% set sectionActive = "hiring staff" %}
+{% set primaryNavActive = "manage jobs" %}
 {% set job = data.jobs[jobId] %}
 {% set application = data.applications[applicationId] %}
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
@@ -11,9 +12,9 @@
   Job listing name
 {% endblock %}
 
-{% block header %}
+{# {% block header %}
   {% include "includes/applications/primary-header.html" %}
-{% endblock %}
+{% endblock %} #}
 
 
 {% block main %}

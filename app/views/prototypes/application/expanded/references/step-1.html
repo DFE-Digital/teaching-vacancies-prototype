@@ -7,14 +7,14 @@
 
   <span class="govuk-caption-l">Provide a reference</span>
   <h1 class="govuk-heading-l">Your relationship with the applicant</h1>
-
+{# 
   {{ govukInput({
     label: {
       text: "What is the candidate name?",
       classes: "govuk-label--s"
     },
     classes: "govuk-!-width-two-thirds"
-  } | decorateAttributes(data, "data.reference.applicantName")) }}
+  } | decorateAttributes(data, "data.reference.applicantName")) }} #}
 
   {% set employerYesHtml %}
     {{ govukInput({
@@ -67,7 +67,7 @@
 
   {{ govukInput({
     label: {
-      text: "Please confirm your relationship to the applicant",
+      text: "Confirm your relationship to the applicant",
       classes: "govuk-label--s"
     },
     classes: "govuk-!-width-two-thirds"

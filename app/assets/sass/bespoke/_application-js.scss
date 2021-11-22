@@ -52,7 +52,7 @@ ul.acc-navigation__list {
 }
 
 ul.acc-navigation__list--has-border {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $govuk-border-colour;
 }
 
 @media (max-width: 40.0625em) {
