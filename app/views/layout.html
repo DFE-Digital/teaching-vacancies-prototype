@@ -67,7 +67,7 @@
     "productName": serviceName,
     navigation: [
       {
-        href: "/prototypes/application/expanded/job-seeker-sign-in",
+        href: "/prototypes/application/expanded/sign-in",
         text: "Sign in",
         active: true if (navActive == "sign-in")
       } if sectionActive == "public service",
@@ -88,7 +88,6 @@
       tag: {
         text: "prototype"
       },
-      classes: 'govuk-!-margin-top-1',
       html: 'This is a new service - <a class="govuk-link" href="#">your feedback</a> will help us to improve it.'
     }) }}
   </div>
@@ -120,10 +119,9 @@
       tag: {
         text: "prototype"
       },
-      classes: 'govuk-!-margin-top-1',
       html: 'This is a new service - <a class="govuk-link" href="#">your feedback</a> will help us to improve it.'
     }) }}
-    {# {% if not hideNav %} #}
+    {% if not hideNav %}
       {% if backLink %}
         {{ govukBackLink({
           text: backText,
@@ -131,7 +129,7 @@
           classes: "govuk-!-margin-top-3"
         }) }}
       {% endif %}
-    {# {% endif %} #}
+    {% endif %}
   </div>
   
 {% endif %}
@@ -167,7 +165,7 @@
                     <a class="moj-primary-navigation__link" href="/prototypes/application/expanded/dashboard" {{'aria-current="page"' if primaryNavActive == 'manage jobs'}}>Manage jobs</a>
                   </li>
                   <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="#" {{'aria-current="page"' if primaryNavActive == 'manage settings'}}>Mange settings</a>
+                    <a class="moj-primary-navigation__link" href="/prototypes/application/expanded/dashboard/manage-settings" {{'aria-current="page"' if primaryNavActive == 'manage settings'}}>Manage settings</a>
                   </li>
                   <li class="moj-primary-navigation__item">
                     <a class="moj-primary-navigation__link" href="#" {{'aria-current="page"' if primaryNavActive == 'notifications'}}>Notifications
@@ -190,7 +188,7 @@
             <nav class="moj-primary-navigation" aria-label="Primary navigation">
               <ul class="moj-primary-navigation__list">
                   <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="templates/public/01-service-start" {{'aria-current="page"' if primaryNavActive == 'service start'}}>Find a teaching job</a>
+                    <a class="moj-primary-navigation__link" href="/templates/public/01-service-start" {{'aria-current="page"' if primaryNavActive == 'service start'}}>Find a teaching job</a>
                   </li>
                   <li class="moj-primary-navigation__item">
                     <a class="moj-primary-navigation__link" href="#">Create a job alert</a>
@@ -201,7 +199,17 @@
         </div>
       </div>
     </div>
+    <div class="govuk-width-container">
+      {% if backLink %}
+        {{ govukBackLink({
+          text: backText,
+          href: backLink,
+          classes: "govuk-!-margin-top-3"
+        }) }}
+      {% endif %}
+    </div>
   {% endif %}
+
 {% endif %}
 
 {% endblock %}
