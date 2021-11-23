@@ -8,7 +8,11 @@
     <h1 class="govuk-heading-m govuk-!-margin-bottom-5">Copy a job listing</h1>
   </div>
 
-  <h2 class="govuk-heading-l">Select a job</h2>
+  {% if data.job.numberOfJobsListed == "Less than or equal to 20" %}
+    <h2 class="govuk-heading-l">Select a job to copy</h2>
+  {% else %}
+    <h2 class="govuk-heading-l">Search for job to copy</h2>
+  {% endif %}
   <p class="govuk-body">Content from the job listing will be copied. You will be able to check all details are correct before publishing this job listing.</p>
 
   {% set job1 %}
@@ -58,7 +62,7 @@
   {# Has more than 20 jobs show the autocomplete instead #}
 
     <div class="body-text">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Select a job listing</h2>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Search job listings</h2>
       <span class="govuk-hint">Search by job title</span>
       <div id="tt-default" class="autocomplete-wrapper govuk-!-width-two-thirds govuk-!-margin-bottom-6"></div>
     </div>
