@@ -8,6 +8,9 @@
       <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/applicant/{{data.applications[applicationId].id}}/interview">Interview</a>
     </li>
   {% endif %}
+<li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if applicationTabActive == 'references' }} ">
+    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/applicant/{{data.applications[applicationId].id}}/references">References</a>
+  </li>
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if applicationTabActive == 'notes' }} ">
     <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/applicant/{{data.applications[applicationId].id}}/notes">Notes</a>
   </li>

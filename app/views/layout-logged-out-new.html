@@ -48,18 +48,19 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
-{% if data.settings.useAltHeader and not data.settings.showPrimaryNav  %}
+{# {% if data.settings.useAltHeader and not data.settings.showPrimaryNav  %}
   {% set bodyClasses = "govuk-width-container-ls app-alt-header__on" %}
 {% elseif data.settings.showPrimaryNav and not data.settings.useAltHeader %}
   {% set bodyClasses = "govuk-width-container-ls app-primary-nav__on" %}
 {% elseif data.settings.useAltHeader and data.settings.showPrimaryNav %}
   {% set bodyClasses = "govuk-width-container-ls app-alt-header__on app-primary-nav__on" %}
-{% endif %}
+{% endif %} #}
+
+{% set bodyClasses = "govuk-width-container-ls app-alt-header__on app-primary-nav__on" %}
 
 {% block header %}
 
-{% if data.settings.useAltHeader %}
-  {# Show the alternative header #}
+{# {% if data.settings.useAltHeader %} #}
   {{ govukHeader({
     "classes": "app-alt-header",
     "containerClasses": "app-alt-header-container govuk-width-container",
@@ -67,19 +68,10 @@
     "productName": serviceName,
     navigation: [
       {
-        href: "/prototypes/application/expanded/sign-in",
+        href: "#",
         text: "Sign in",
         active: true if (navActive == "sign-in")
-      } if sectionActive == "public service",
-      {
-        href: "#",
-        text: "My account",
-        active: true if (navActive == "my-acccount")
-      } if sectionActive == "hiring staff",
-      {
-        href: "#",
-        text: "Sign out"      
-      } if sectionActive == "hiring staff"
+      }
     ]
   }) }}
 
@@ -88,12 +80,12 @@
       tag: {
         text: "prototype"
       },
+      classes: 'govuk-!-margin-top-1',
       html: 'This is a new service - <a class="govuk-link" href="#">your feedback</a> will help us to improve it.'
     }) }}
   </div>
 
-{% else %}
-  {# Show the original header #}
+{# {% else %}
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
@@ -119,6 +111,7 @@
       tag: {
         text: "prototype"
       },
+      classes: 'govuk-!-margin-top-1',
       html: 'This is a new service - <a class="govuk-link" href="#">your feedback</a> will help us to improve it.'
     }) }}
     {% if not hideNav %}
@@ -132,7 +125,7 @@
     {% endif %}
   </div>
   
-{% endif %}
+{% endif %} #}
 
 {# Set primary nav items #}
 {% set navItems = [{
@@ -141,75 +134,18 @@
     active: true if navActive == 'start'
   },
   {
-    text: 'Link name',
+    text: 'Create a job altert',
     href: '#',
-    active: true if navActive == 'records'
-  },
-  {
-    text: 'Link name',
-    href: '#',
-    active: true if navActive == 'bulk'
+    active: true if navActive == 'job-alert'
   }
 ] %}
 
 {# Show primary nav if enabled #}
 {% if data.settings.showPrimaryNav %}
-  {% if sectionActive == "hiring staff" %}
-    <div class="moj-primary-navigation">
-      <div class="govuk-width-container">
-        <div class="moj-primary-navigation__container">
-          <div class="moj-primary-navigation__nav">
-            <nav class="moj-primary-navigation" aria-label="Primary navigation">
-              <ul class="moj-primary-navigation__list">
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="/prototypes/application/expanded/dashboard" {{'aria-current="page"' if primaryNavActive == 'manage jobs'}}>Manage jobs</a>
-                  </li>
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="/prototypes/application/expanded/dashboard/manage-settings" {{'aria-current="page"' if primaryNavActive == 'manage settings'}}>Manage settings</a>
-                  </li>
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="#" {{'aria-current="page"' if primaryNavActive == 'notifications'}}>Notifications
-                    <span class="app-notification-number">2</span>
-                    </a>
-                  </li>
-                </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endif %}
-
-  {% if sectionActive == "public service" %}
-    <div class="moj-primary-navigation">
-      <div class="govuk-width-container">
-        <div class="moj-primary-navigation__container">
-          <div class="moj-primary-navigation__nav">
-            <nav class="moj-primary-navigation" aria-label="Primary navigation">
-              <ul class="moj-primary-navigation__list">
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="/templates/public/01-service-start" {{'aria-current="page"' if primaryNavActive == 'service start'}}>Find a teaching job</a>
-                  </li>
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="#">Create a job alert</a>
-                  </li>
-                </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="govuk-width-container">
-      {% if backLink %}
-        {{ govukBackLink({
-          text: backText,
-          href: backLink,
-          classes: "govuk-!-margin-top-3"
-        }) }}
-      {% endif %}
-    </div>
-  {% endif %}
-
+  {{ mojPrimaryNavigation({
+    label: 'Primary navigation',
+    items: navItems    
+  }) }} 
 {% endif %}
 
 {% endblock %}

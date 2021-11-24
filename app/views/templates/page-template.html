@@ -1,34 +1,27 @@
 {% extends "layout.html" %}
 
-{% set sectionActive = "job listings" %}
+{% set primaryNavActive = "manage jobs" %}
+{% set sectionActive = "hiring staff" %}
 
 {% block pageTitle %}
   Job listing name
 {% endblock %}
 
-{% block header %}
-  {% include "includes/applications/primary-header.html" %}
-    <div class="govuk-width-container">
-      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
-    </div>
-{% endblock %}
-
+<div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+</div>
 
 {% block main %}
 
-<!-- START TABLE -->
 <div class="govuk-width-container">
-    <main class="govuk-main-wrapper">
-
-    <!-- START ACTIVE TABLE -->
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          {% block pageContent %}
-          {% endblock %}
-        </div>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% block pageContent %}
+        {% endblock %}
       </div>
-    </main>
+    </div>
+  </main>
 </div>
-<!-- END TABLE -->
 
 {% endblock %}
