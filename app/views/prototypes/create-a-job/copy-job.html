@@ -58,8 +58,9 @@
       ]
     } | decorateAttributes(data, "data.existingJobDetails")) }}
   
-  {% else %}
-  {# Has more than 20 jobs show the autocomplete instead #}
+  {% endif %}
+
+  {% if data.job.numberOfJobsListed == "More than 20" %}
 
     <div class="body-text">
       <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Search job listings</h2>
