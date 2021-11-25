@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 
 {% if not backLink %}
-  {% set backLink      = 'javascript:history.back();' %}
+  {% set backLink = 'javascript:history.back();' %}
 {% endif %}
 {% if not backText %}
-  {% set backText      = 'Back'  %}
+  {% set backText = 'Back'  %}
 {% endif %}
 
 {% if backLink == 'false' %}

@@ -1,0 +1,21 @@
+.app-notification-number {
+  @include govuk-font($size: 16, $line-height: 25px);
+  border-radius: 50%;
+  background-color: govuk-colour('blue');
+  color: govuk-colour('white');
+  font-weight: bold;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  // position: absolute;
+  top: -0px;
+  right: 0;
+}
+
+.moj-primary-navigation__link:focus {
+  .app-notification-number  {
+    background-color: $govuk-focus-text-colour;
+  }
+}

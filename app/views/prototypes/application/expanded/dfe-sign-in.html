@@ -1,13 +1,53 @@
 
 {% extends "page.html" %}
-{# {% set backLink = 'false' %}
+{# {% set backLink = 'false' %} #}
 {% set hideNav = true %}
-{% set hidePrimaryNav = true %} #}
+{% set hidePrimaryNav = true %}
 
-{% set hideNav = true %}
 {% set serviceName = "DfE Sign-in" %}
 {% set bodyClasses = "dfe-sign-in" %}
 {% set pageHeading = 'Department for Education Sign-in' %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    "classes": "app-default-header dfe-sign-in",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "/templates/public/01-service-start",
+        text: "Find a teaching job",
+        active: true if navActive == "start"
+      } if not hideNav,
+      {
+        href: "/prototypes/application/expanded/sign-in",
+        text: "Sign in",
+        active: true if navActive == "sign-in"
+      } if not hideNav
+    ]
+  }) }}
+
+  <div class="govuk-width-container">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "prototype"
+      },
+      html: 'This is a new service - <a class="govuk-link" href="#">your feedback</a> will help us to improve it.',
+      classes: "govuk-phase-banner--has-border"
+    }) }}
+    {% if not hideNav %}
+      {% if backLink %}
+        {{ govukBackLink({
+          text: backText,
+          href: backLink,
+          classes: "govuk-!-margin-top-3"
+        }) }}
+      {% endif %}
+    {% endif %}
+  </div>
+{% endblock %}
 
 {% block main %}
   <div class="govuk-width-container">
@@ -55,35 +95,8 @@
             classes: "govuk-!-margin-left-2 govuk-button--secondary"
           }) }}
 
-          {# <p class="govuk-body"><strong>Need help?</strong> <a class="govuk-link" href="#">See our DfE Sign-in help guides</a></p> #}
-
         </div>
       </div>
     </main>
   </div>
 {% endblock %}
-
-{# Override our default footer as we're pretending we're in a different service #}
-{# {% block footer %}
-  {{ appFooter({
-      classes: "govuk-footer--app",
-      meta: {
-        items: [{
-          href: "#",
-          text: "Cookies"
-        },{
-          href: "#",
-          text: "Terms and conditions"
-        },{
-          href: "#",
-          text: "Need help using this service?"
-        },{
-          href: "/admin",
-          text: "Prototype admin"
-        }, {
-          href: "/admin/clear-data",
-          text: "Clear data"
-        }]
-      }
-    }) }}
-{% endblock %} #}

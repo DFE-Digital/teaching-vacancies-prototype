@@ -19,28 +19,34 @@
   .app-alt-header {
     border-bottom: 10px solid #f47738;
   }
-  .moj-primary-navigation__link[aria-current]:before {
-    background: #f47738;
-  }
 }
 
 .app-primary-nav__on {
   .govuk-phase-banner {
     border: 0;
   }
+
+  .govuk-phase-banner--has-border {
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+  
 }
 
 .app-alt-header__on.app-primary-nav__on {
   .govuk-phase-banner {
     border: 0;
   }
+
+  .govuk-phase-banner--has-border {
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+  
 }
 
 .app-alt-header-container {
   margin-bottom: 0;
   border: none;
 
-  // More space for service name
   .govuk-header__logo {
     @include mq ($from: desktop) {
       width: 50%;
@@ -55,8 +61,8 @@
   }
 
   .govuk-header nav {
-      display: inline-block;
-      float: right;
+    display: inline-block;
+    float: right;
   }
 
   .govuk-header__navigation {
