@@ -17,7 +17,8 @@
 
 .app-alt-header__on {
   .app-alt-header {
-    border-bottom: 10px solid #f47738;
+    // border-bottom: 10px solid #f47738;
+    border-bottom: 10px solid govuk-colour("blue");
   }
 }
 
