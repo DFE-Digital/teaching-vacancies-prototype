@@ -41,11 +41,13 @@ let job = {
   // containsAllThroughPhase: "Yes"
 }
 
+// Setting the default layout settings
 let settings = {
   useAltHeader: "true",
   showPrimaryNav: "true"
 }
 
+// Import data
 const jobs = require('./jobs.json')
 const applications = require('./applications.json')
 
