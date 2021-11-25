@@ -1,11 +1,7 @@
 .app-search-form-container {
-  padding: govuk-spacing(3);
+  padding: govuk-spacing(4);
   color: #fff;
-  background-color: govuk-colour("dark-blue");
-  background-image: url('/public/images/home/TVS-logo.png');
-  background-position: 100% 10px;
-  background-repeat: no-repeat;
-  background-size: 150px auto;
+  background: url('/public/images/home/TVS-logo.png') no-repeat 100% 10px/120px auto govuk-colour("dark-blue");
   
   .govuk-button {
     margin: 0;
@@ -20,6 +16,10 @@
   .govuk-link,
   h1 {
     color: #fff;
+  }
+
+  h1 {
+    padding-right: 150px;
   }
 
   .govuk-hint {
@@ -40,6 +40,8 @@
 
   @include govuk-media-query($from: 800px) {
     padding: govuk-spacing(6);
+
+    background: url('/public/images/home/TVS-logo.png') no-repeat 100% 10px/150px auto govuk-colour("dark-blue");
 
     .govuk-button,
     .govuk-form-group {
