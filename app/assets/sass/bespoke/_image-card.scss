@@ -1,6 +1,6 @@
 .app-card-container {
   
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: 800px) {
     display: flex;
 
     & > div {
@@ -26,8 +26,21 @@
     color: inherit;
   }
 
+  .govuk-hint {
+    display: block;
+    margin: 0;
+    text-decoration: none;
+  }
+
   a {
     display: block;
+    text-decoration: none;
+
+    h3 {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+    }
   }
 
   a:focus {
@@ -50,7 +63,7 @@
     margin-bottom: govuk-spacing(4);
   }
   
-  @include govuk-media-query($from: 400px, $until: tablet) {
+  @include govuk-media-query($from: 400px, $until: 800px) {
     a {
       display: flex;
       align-items: flex-start;
@@ -58,10 +71,10 @@
 
     img {
       margin-right: govuk-spacing(3);
-      width: 33%;
+      width: 35%;
     }
     
-    h3 {
+    .app-image-card__content {
       flex: 1;
     }
   }
