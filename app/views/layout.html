@@ -67,6 +67,11 @@
     "productName": serviceName,
     navigation: [
       {
+        href: "#",
+        text: "Create a job alert",
+        active: true if (navActive == "job-alert")
+      } if sectionActive == "public service",
+      {
         href: "/prototypes/application/expanded/sign-in",
         text: "Sign in",
         active: true if (navActive == "sign-in")
@@ -191,7 +196,7 @@
                     <a class="moj-primary-navigation__link" href="/templates/public/01-service-start" {{'aria-current="page"' if primaryNavActive == 'service start'}}>Find a teaching job</a>
                   </li>
                   <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="#">Create a job alert</a>
+                    <a class="moj-primary-navigation__link" href="#">Resources</a>
                   </li>
                 </ul>
             </nav>
