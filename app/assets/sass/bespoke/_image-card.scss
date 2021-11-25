@@ -26,8 +26,20 @@
     color: inherit;
   }
 
+  .govuk-hint {
+    margin: 0;
+    text-decoration: none;
+  }
+
   a {
     display: block;
+    text-decoration: none;
+
+    h3 {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+    }
   }
 
   a:focus {
