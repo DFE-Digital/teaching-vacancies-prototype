@@ -1,5 +1,5 @@
 
-{% extends "layout_tvs.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
     Teaching Vacancies Prototype Kit - Prototypes
@@ -20,72 +20,48 @@
     </div>
 </div>
 
-<!-- START BESPOKE MAST 2-->
-<div class="bg-full-blue">
-    <div class="govuk-width-container">
-
-        <!-- START Breadcrumbs + Back -->
-        <!--
-        <a class="govuk-back-link govuk-!-margin-top-3" href="/url/of/previous/page">Back</a>
-        <div class="govuk-breadcrumbs">
-            <ol class="govuk-breadcrumbs__list">
-                <li class="govuk-breadcrumbs__list-item">
-                    <a class="govuk-breadcrumbs__link" href="/">GOV.UK Prototype Kit</a>
-                </li>
-                <li class="govuk-breadcrumbs__list-item">
-                    <a class="govuk-breadcrumbs__link" href="/examples">Examples</a>
-                </li>
-            </ol>
-        </div>
-        -->
-        <!-- END Breadcrumbs + Back -->
-
-        <main class="govuk-main-wrapper">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    <h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Teaching Vacancies Prototype</h2>
-                    <span class="govuk-caption-l govuk-!-margin-bottom-0">Use this design system to generate prototypes based on the bespoke elements used within the Teaching Vacancies service. All template and atom elements are built on the combined research and design of the overarching <a href="https://design-system.service.gov.uk/" style="color: white;">GOV.UK design system</a>.</span>
-                </div>
-            </div>
-        </main>
-
-    </div>
-</div>
-<!-- END BESPOKE MAST 2 -->
-
 <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third-from-desktop govuk-!-margin-bottom-8">
-                <h2 class="govuk-heading-l govuk-!-font-weight-bold">Prototypes</h2>
-                <p class="govuk-body">Current and archived prototypes used in Teaching Vacancies research sessions.</p>
-                <p class="govuk-body govuk-!-margin-bottom-0"><a href="/prototypes/" class="govuk-link govuk-!-font-weight-bold">Browse prototypes</a></p>
-            </div>
-            <div class="govuk-grid-column-one-third-from-desktop govuk-!-margin-bottom-8">
-                <h2 class="govuk-heading-l">Templates</h2>
-                <p class="govuk-body">Common templates used within Teaching Vacancies prototypes.</p>
-                <p class="govuk-body govuk-!-margin-bottom-0"><a href="/templates/" class="govuk-link govuk-!-font-weight-bold">Browse templates</a></p>
-            </div>
-            <div class="govuk-grid-column-one-third-from-desktop govuk-!-margin-bottom-8">
-                <h2 class="govuk-heading-l">Patterns</h2>
-                <p class="govuk-body">User validated interaction patterns bespoke within Teaching Vacancies.</p>
-                <p class="govuk-body govuk-!-margin-bottom-0"><a href="/patterns/" class="govuk-link govuk-!-font-weight-bold">Browse patterns</a></p>
-            </div>
-
-
-
-            <div class="govuk-grid-column-full">
-                <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
-            </div>
-
-            <div class="govuk-grid-column-one-third">
-                
-            </div>
-
-            <div class="govuk-grid-column-one-third">
-                
-            </div>
-
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Prototype sections</h2>
+            <p class="govuk-body">The sections of Teaching Vacncies that have functional prototypes.</p>
+            <h2 class="govuk-heading-m">Public facing (logged out)</h2>
+            <ul class="govuk-list">
+              <li>
+                <a href="/templates/public/01-service-start" class="govuk-link">Service start page</a>
+              </li>
+              <li>
+                <a href="/templates/public/01-search-results" class="govuk-link">Search results</a>
+              </li>
+              <li>
+                <a href="/templates/public/01-listing-1.html" class="govuk-link">Single job listing</a>
+              </li>
+              <li>
+                <a href="/prototypes/application/expanded/sign-in" class="govuk-link">Sign in flow</a>
+              </li>
+            </ul>
+            <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+            <h2 class="govuk-heading-m">Hiring staff (logged in)</h2>
+            <ul class="govuk-list">
+              <li>
+                <a href="/prototypes/application/expanded/dashboard" class="govuk-link">Manage jobs dashboard</a>
+              </li>
+              <li>
+                <a href="/prototypes/create-a-job/new-or-copy-job" class="govuk-link">Create a job flow</a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-m">Notes on prototyping</h2>
+            <p classs="govuk-body"></p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Include links to this list when new sections are prototyped so it's easy for everyone to find them.</li>
+              <li>Where appropriate, link newly prototyped sections to existing flows.</li>
+              <li>You can add a hash to anchors to alert the user that something won't work if they click on it. Example: <a href="#">This link will notify the user that they can't go any further</a></li>
+              <li>Avoid versioning prototypes as it leads to unnecessary duplication of code. You'll never go back to an earlier version, trust me.</li>
+            </ul>
+          </div>
         </div>
     </div>
 </div>
