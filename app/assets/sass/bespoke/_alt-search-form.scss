@@ -19,7 +19,7 @@
   }
 
   h1 {
-    padding-right: 150px;
+    padding-right: 100px;
   }
 
   .govuk-hint {
@@ -40,8 +40,11 @@
 
   @include govuk-media-query($from: 800px) {
     padding: govuk-spacing(6);
-
     background: url('/public/images/home/TVS-logo.png') no-repeat 100% 10px/150px auto govuk-colour("dark-blue");
+
+    h1 {
+      padding-right: 150px;
+    }
 
     .govuk-button,
     .govuk-form-group {
