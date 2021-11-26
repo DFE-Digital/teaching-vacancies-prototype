@@ -7,6 +7,6 @@ lib/extensions/_extensions.scss
 .DS_Store
 .start.pid
 .port.tmp
-public
+/public
 node_modules/*
 .tmuxp.*
