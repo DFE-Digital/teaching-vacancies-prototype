@@ -34,11 +34,8 @@ T / Service start page
                     <div>
                       {{ govukInput({
                         label: {
-                          text: "Location",
+                          text: "City, county or postcode",
                           classes: "govuk-label--s"
-                        },
-                        hint: {
-                          text: "For example, city, county or postcode"
                         }
                       } | decorateAttributes(data, "data.search.location")) }}
                     </div>

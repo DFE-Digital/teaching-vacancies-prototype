@@ -4,14 +4,14 @@
 {% set formAction = "./copy-job-missing-details" %}
 
 {% block formContent %}
-  <div class="create-title">
+  {# <div class="create-title">
     <h1 class="govuk-heading-m govuk-!-margin-bottom-5">Copy a job listing</h1>
-  </div>
+  </div> #}
 
   {% if data.job.numberOfJobsListed == "Less than or equal to 20" %}
-    <h2 class="govuk-heading-l">Select a job to copy</h2>
+    <h1 class="govuk-heading-l">Select a job to copy</h1>
   {% else %}
-    <h2 class="govuk-heading-l">Search for job to copy</h2>
+    <h1 class="govuk-heading-l">Search for job to copy</h1>
   {% endif %}
   <p class="govuk-body">Content from the job listing will be copied. You will be able to check all details are correct before publishing this job listing.</p>
 

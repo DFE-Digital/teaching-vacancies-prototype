@@ -4,11 +4,11 @@
 {% set formAction = "./copy-review" %}
 
 {% block formContent %}
-  <div class="create-title">
+  {# <div class="create-title">
     <h1 class="govuk-heading-m govuk-!-margin-bottom-5">Copy {{data.job.copyExistingJob}}</h1>
-  </div>
+  </div> #}
   
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-5">New job listing details</h2>
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-5">New job listing details</h1>
 
     {{ govukCharacterCount({
       maxlength: 100,
