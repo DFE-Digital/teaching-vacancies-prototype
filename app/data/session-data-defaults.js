@@ -27,10 +27,10 @@ let job = {
   userType: "singleSchool",
 
   // Default school name
-  defaultSchoolName: "Belle Vue Girls Academy",
+  defaultSchoolName: "Hello school",
 
   // Default user name
-  defaultUserName: "Ariadne LeGrande",
+  defaultUserName: "Molly Capstick",
 
   // How many jobs has the school listed
   // Options: "More than 20" "Less than or equal to 20"
