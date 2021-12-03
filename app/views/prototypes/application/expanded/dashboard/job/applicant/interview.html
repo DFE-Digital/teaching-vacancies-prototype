@@ -18,68 +18,76 @@
               <a href="#">Interview-task.pdf - 2.76 MB (opens in new tab)</a>
             {% endset %}
 
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Interview date"
-                },
-                value: {
-                  text: application.interviewDate | govukDate or 'Not provided'
-                }
-              },
-              {
-                key: {
-                  text: "Interview time"
-                },
-                value: {
-                  text: application.interviewTime
-                }
-              },
-              {
-                key: {
-                  text: "Address or online meeting details"
-                },
-                value: {
-                  text: application.interviewAddress
-                }
-              },
-              {
-                key: {
-                  text: "Additional details"
-                },
-                value: {
-                  text: application.interviewDetails
-                }
-              },
-              {
-                key: {
-                  text: "Interview preferences"
-                },
-                value: {
-                  text: application.interviewPreferences
-                }
-              } if application.interviewPreferences,
-              {
-                key: {
-                  text: "Supporting documents"
-                },
-                value: {
-                  html: attachedInterviewDoc
-                }
-              }
-            ]
-          }) }}
-          <div class="app-interview-details">
-            <a href="./invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details</a>
-            <a href="./invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview</a>
-          </div>
-        </div>
+            {% set interviewDateAndStatus %}
+              {{ application.interviewDate | govukDate or 'Not provided' }} <br>
+              {{govukTag({
+                text: "Yet to confirm",
+                classes: "govuk-tag--grey govuk-!-margin-top-1"
+              })}}
+            {% endset %}
 
-        <div class="govuk-grid-column-one-third">
-          {# <h3 class="govuk-heading-m">Timeline</h3>
-          {% include "includes/applications/timeline.html" %} #}
-        </div>
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Interview date"
+                  },
+                  value: {
+                    html: interviewDateAndStatus 
+                  }
+                },
+                {
+                  key: {
+                    text: "Interview time"
+                  },
+                  value: {
+                    text: application.interviewTime
+                  }
+                },
+                {
+                  key: {
+                    text: "Address or online meeting details"
+                  },
+                  value: {
+                    text: application.interviewAddress
+                  }
+                },
+                {
+                  key: {
+                    text: "Additional details"
+                  },
+                  value: {
+                    text: application.interviewDetails
+                  }
+                },
+                {
+                  key: {
+                    text: "Interview preferences"
+                  },
+                  value: {
+                    text: application.interviewPreferences
+                  }
+                } if application.interviewPreferences,
+                {
+                  key: {
+                    text: "Supporting documents"
+                  },
+                  value: {
+                    html: attachedInterviewDoc
+                  }
+                }
+              ]
+            }) }}
+            <div class="app-interview-details">
+              <a href="./invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details</a>
+              <a href="./invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview</a>
+            </div>
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+            {# <h3 class="govuk-heading-m">Timeline</h3>
+            {% include "includes/applications/timeline.html" %} #}
+          </div>
 
       </div>
     </div>

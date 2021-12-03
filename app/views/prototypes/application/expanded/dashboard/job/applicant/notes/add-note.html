@@ -3,6 +3,7 @@
 {% set name = data.applications[applicationId].firstname + " " + data.applications[applicationId].lastname %}
 
 {% set jobName = data.jobs[jobId].name %}
+
 {# This is the success message that plays back to the user on the next screen #}
 {% set successMessage %}A note has been added.{% endset %}
 {% set formAction = "./../../" + applicationId + "?_flash=" + successMessage %}

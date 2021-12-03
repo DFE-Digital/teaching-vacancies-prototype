@@ -41,10 +41,10 @@
               {% if application.interviewPreferences %}
                 <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-1">Has interview preferences</p>
               {% endif %}
-              {{govukTag({
-                text: "Yet to confirm",
-                classes: "govuk-tag--grey govuk-!-margin-top-1"
-              })}}
+                {{govukTag({
+                  text: "Yet to confirm",
+                  classes: "govuk-tag--grey govuk-!-margin-top-1"
+                })}}
                <div class="app-interview-details govuk-!-margin-top-3">
                 <a href="./applicant/{{ application.id }}/invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details <span class="govuk-visually-hidden">for {{ application.firstname }} {{ application.lastname }}</span></a>
                 <a href="./applicant/{{ application.id }}/invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview <span class="govuk-visually-hidden">for {{ application.firstname }} {{ application.lastname }}</span></a>
@@ -89,7 +89,7 @@
   {% else %}
     <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0 govuk-!-margin-bottom-8">Interviews</h2>
     {{ govukInsetText({
-      text: "This listing has no applications sceduled interviews"
+      text: "This listing has no scheduled interviews"
     }) }}
   {% endif %}
 
