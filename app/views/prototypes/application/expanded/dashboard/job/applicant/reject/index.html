@@ -13,13 +13,14 @@
     {{ jobName }}
   </h1>
 
-  <h2 class="govuk-heading-l">Reject application</h2>
+  {# <h2 class="govuk-heading-l">Mark application as unsuccessful</h2> #}
 
     {{ govukRadios({
       fieldset: {
         legend: {
           text: "Do you want to let the applicant know that they have not been successful?",
-          classes: "govuk-fieldset__legend--s"
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
         }
       },
       hint: {

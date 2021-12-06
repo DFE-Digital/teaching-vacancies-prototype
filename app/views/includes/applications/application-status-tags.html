@@ -10,9 +10,9 @@
     classes: "govuk-tag--yellow"
   })}}
 {# {% endif %} #}
-{% elseif application.status == 'Rejected' or data.applications[applicationId].status == 'Rejected' %}
+{% elseif application.status == 'Unsuccessful' or data.applications[applicationId].status == 'Unsuccessful' %}
   {{govukTag({
-    text: "Rejected",
+    text: "Unsuccessful",
     classes: "govuk-tag--red"
   })}}
 {# {% endif %} #}

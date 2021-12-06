@@ -55,9 +55,7 @@
         {# This is the 'successfully shared' notification banner, it fires based on the route from the "share applications" check your answers page #}
 
         {% set successHtml %}
-          <h3 class="govuk-notification-banner__heading">
-            {{ query._flash }}
-          </h3>
+          {{ query._flash | safe }}
         {% endset %}
 
         {% if query._flash %}
