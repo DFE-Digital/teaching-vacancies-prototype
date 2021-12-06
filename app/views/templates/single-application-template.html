@@ -60,14 +60,20 @@
             }) }}
           {% endif %} 
           
-          <h1 class="govuk-heading-l govuk-!-margin-top-. govuk-!-margin-bottom-7">
+          <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-4">
             <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
             {{ name }}
             <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
             </div>
           </h1>
 
-          {% include "includes/applications/single-application-actions.html" %}
+          {{ govukButton({
+            text: "Contact applicant",
+            classes: "govuk-button--secondary",
+            href: "/prototypes/application/expanded/dashboard/job/" +  job.id + "/applicant/" + application.id + "/contact"
+          }) }}
+
+          {# {% include "includes/applications/single-application-actions.html" %} #}
         </div>
       </div>
     </div>

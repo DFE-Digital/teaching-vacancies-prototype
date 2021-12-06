@@ -30,10 +30,10 @@
           <div class="app-interview-card">
             <div class="app-interview-card__time">
               <p class="govuk-!-margin-bottom-1">
-                {# <a href="./applicant/{{ application.id }}/interview" class="govuk-link--no-visited-state"> #}
-                <time datetime="2021-09-29T11:30:56.356+00:00">{{ application.interviewTime }}</time>
-                <span class="govuk-visually-hidden"> on 29 September 2021 with Patricia Pym</span>
-                {# </a> #}
+                <a href="./applicant/{{ application.id }}/interview" class="govuk-link--no-visited-state">
+                  <time datetime="2021-09-29T11:30:56.356+00:00">{{ application.interviewTime }}</time>
+                  <span class="govuk-visually-hidden"> on 29 September 2021 with Patricia Pym</span>
+                </a>
               </p>
             </div>
             <div class="app-interview-card__candidate">
@@ -41,10 +41,6 @@
               {% if application.interviewPreferences %}
                 <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-1">Has interview preferences</p>
               {% endif %}
-                {{govukTag({
-                  text: "Yet to confirm",
-                  classes: "govuk-tag--grey govuk-!-margin-top-1"
-                })}}
                <div class="app-interview-details govuk-!-margin-top-3">
                 <a href="./applicant/{{ application.id }}/invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details <span class="govuk-visually-hidden">for {{ application.firstname }} {{ application.lastname }}</span></a>
                 <a href="./applicant/{{ application.id }}/invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview <span class="govuk-visually-hidden">for {{ application.firstname }} {{ application.lastname }}</span></a>

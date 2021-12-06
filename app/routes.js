@@ -274,10 +274,10 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let application = applications[applicationId]
 
     // is the status "unread"?
-    if (application.status == "Unread") {
-      // then empty the status
-      // application.status = ""
-    }
+    // if (application.status == "Unread") {
+    //   // then empty the status
+    //   // application.status = ""
+    // }
 
     res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
       applicationId: applicationId,

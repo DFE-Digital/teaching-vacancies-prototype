@@ -5,11 +5,7 @@
 {% set jobName = data.jobs[jobId].name %}
 
 {# This is the success message that plays back to the user on the next screen #}
-{% set successMessage %}
-  <h3 class="govuk-notification-banner__heading">A note has been added.</h3>
-  <p class="govuk-body"><a href="./notes" class="govuk-link">View notes</a></p>
-{% endset %}
-
+{% set successMessage %}A note has been added.{% endset %}
 {% set formAction = "./../../" + applicationId + "?_flash=" + successMessage %}
 
 {% block formContent %}

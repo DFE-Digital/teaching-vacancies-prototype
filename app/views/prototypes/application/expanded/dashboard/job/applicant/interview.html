@@ -14,74 +14,97 @@
         <div class="govuk-grid-column-two-thirds"> 
           <h3 class="govuk-heading-m">Interview details</h3>
 
-            {% set attachedInterviewDoc %}
-              <a href="#">Interview-task.pdf - 2.76 MB (opens in new tab)</a>
-            {% endset %}
+            {% if data.applications[applicationId].interviewDate %}
+            
+              {% set attachedInterviewDoc %}
+                <a href="#">Interview-task.pdf - 2.76 MB (opens in new tab)</a>
+              {% endset %}
 
-            {% set interviewDateAndStatus %}
-              {{ application.interviewDate | govukDate or 'Not provided' }} <br>
-              {{govukTag({
-                text: "Yet to confirm",
-                classes: "govuk-tag--grey govuk-!-margin-top-1"
-              })}}
-            {% endset %}
+              {% set interviewDateAndStatus %}
+                {{ application.interviewDate | govukDate or 'Not provided' }} 
+              {% endset %}
 
-            {{ govukSummaryList({
-              rows: [
-                {
-                  key: {
-                    text: "Interview date"
+              {{ govukSummaryList({
+                rows: [
+                  {
+                    key: {
+                      text: "Interview date"
+                    },
+                    value: {
+                      html: interviewDateAndStatus 
+                    }
                   },
-                  value: {
-                    html: interviewDateAndStatus 
-                  }
-                },
-                {
-                  key: {
-                    text: "Interview time"
+                  {
+                    key: {
+                      text: "Interview time"
+                    },
+                    value: {
+                      text: application.interviewTime
+                    }
                   },
-                  value: {
-                    text: application.interviewTime
-                  }
-                },
-                {
-                  key: {
-                    text: "Address or online meeting details"
+                  {
+                    key: {
+                      text: "Address or online meeting details"
+                    },
+                    value: {
+                      text: application.interviewAddress
+                    }
                   },
-                  value: {
-                    text: application.interviewAddress
-                  }
-                },
-                {
-                  key: {
-                    text: "Additional details"
+                  {
+                    key: {
+                      text: "Contact email address"
+                    },
+                    value: {
+                      text: application.interviewContactEmail
+                    }
                   },
-                  value: {
-                    text: application.interviewDetails
-                  }
-                },
-                {
-                  key: {
-                    text: "Interview preferences"
+                  {
+                    key: {
+                      text: "Contact phone number"
+                    },
+                    value: {
+                      text: application.interviewContactPhone
+                    }
                   },
-                  value: {
-                    text: application.interviewPreferences
-                  }
-                } if application.interviewPreferences,
-                {
-                  key: {
-                    text: "Supporting documents"
+                  {
+                    key: {
+                      text: "Additional details"
+                    },
+                    value: {
+                      text: application.interviewDetails
+                    }
                   },
-                  value: {
-                    html: attachedInterviewDoc
+                  {
+                    key: {
+                      text: "Interview preferences"
+                    },
+                    value: {
+                      text: "This data will come from the application form"
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Supporting documents"
+                    },
+                    value: {
+                      html: attachedInterviewDoc
+                    }
                   }
-                }
-              ]
-            }) }}
-            <div class="app-interview-details">
-              <a href="./invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details</a>
-              <a href="./invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview</a>
-            </div>
+                ]
+              }) }}
+              <div class="app-interview-details">
+                <a href="./invite" class="govuk-link govuk-body govuk-link--no-visited-state">Change details</a>
+                <a href="./invite/cancel-interview" class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-margin-left-2">Cancel interview</a>
+              </div>
+
+            {% else %}
+              {{ govukButton({
+                text: "Invite to interview",
+                href: "/prototypes/application/expanded/dashboard/job/1/applicant/" + applicationId +  "/invite"
+              }) }}
+            {% endif %}
+
+
           </div>
 
           <div class="govuk-grid-column-one-third">
