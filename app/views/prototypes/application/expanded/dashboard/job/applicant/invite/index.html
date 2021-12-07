@@ -62,7 +62,6 @@
       classes: "govuk-!-width-one-quarter"
     } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewTime]")) }}
 
-
     {{ govukTextarea({
       rows: "5",
       label: {
@@ -70,6 +69,28 @@
         classes: "govuk-label--s"
       }
     } | decorateAttributes(data, "data.applications[" + applicationId + "].interviewAddress")) }}
+
+    {{ govukInput({
+      label: {
+        text: "Contact email address",
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "Include an email address for the applicant to respond and confirm their attendance"
+      },
+      classes: "govuk-!-width-two-thirds"
+    } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewContactEmail]")) }}
+    
+    {{ govukInput({
+      label: {
+        text: "Contact phone number (optional)",
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "Include a phone number for the applicant to contact you"
+      },
+      classes: "govuk-!-width-two-thirds"
+    } | decorateAttributes(data, "data.applications[" + applicationId + "][interviewContactPhone]")) }}
     
     {{ govukTextarea({
       rows: "10",

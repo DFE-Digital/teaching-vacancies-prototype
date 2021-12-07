@@ -4,6 +4,9 @@
 {% set name = application.firstname + " " + application.lastname %}
 {% set jobName = data.jobs[jobId].name %}
 {% set formAction = "./invite/confirm-interview-invite" %}
+{# This is the success message that plays back to the user on the next screen #}
+{# {% set successMessage %}{{ name }} has been invited to interview{% endset %}
+{% set formAction = "./../../" + applicationId + "?_flash=" + successMessage %} #}
 
 {% block formContent %}
 
@@ -56,6 +59,40 @@
               href: "./../invite",
               text: "Change",
               visuallyHiddenText: " interview time"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Contact email address"
+        },
+        value: {
+          text: application.interviewContactEmail
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: " contact email address"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Contact email address"
+        },
+        value: {
+          text: application.interviewContactPhone
+        },
+        actions: {
+          items: [
+            {
+              href: "./../invite",
+              text: "Change",
+              visuallyHiddenText: " contact phone number"
             }
           ]
         }

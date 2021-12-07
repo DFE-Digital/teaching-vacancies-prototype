@@ -274,10 +274,10 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     let application = applications[applicationId]
 
     // is the status "unread"?
-    if (application.status == "Unread") {
-      // then empty the status
-      // application.status = ""
-    }
+    // if (application.status == "Unread") {
+    //   // then empty the status
+    //   // application.status = ""
+    // }
 
     res.render('prototypes/application/expanded/dashboard/job/applicant/index.html', {
       applicationId: applicationId,
@@ -324,10 +324,13 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     const applications = req.session.data.applications
     let application = applications[applicationId]
     let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
+    let flashContent = "<h3 class='govuk-notification-banner__heading'>" + applicationName+ "'s application has been marked as unsuccessful. They have not been notified.</h3>"
 
-    application.status = "Rejected"
+    application.status = "Unsuccessful"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName}'s application has been rejected. They have not been notified.`)
+    // res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName}'s application has been rejected. They have not been notified.`)
+
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=${flashContent}`)
 
   })
 
@@ -339,6 +342,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     const applications = req.session.data.applications
     let application = applications[applicationId]
     let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
+    let flashContent = "<h3 class='govuk-notification-banner__heading'>" + applicationName+ " has been notified that their application was not successful.</h3>"
 
     // If the applicant has been invited to interview then delete all their interview data
     if (application.status = "Invited to interview") {
@@ -348,9 +352,11 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       delete application.interviewDetails
     }
 
-    application.status = "Rejected"
+    application.status = "Unsuccessful"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} has been notified that their application was not successful.`)
+    // res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} has been notified that their application was not successful.`)
+
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=${flashContent}`)
 
   })
 
@@ -362,10 +368,11 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     const applications = req.session.data.applications
     let application = applications[applicationId]
     let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
+    let flashContent = "<h3 class='govuk-notification-banner__heading'>" + applicationName+ " has been invited to interview</h3><p class='govuk-body'>They will recieve an email containing a link to allow them to confirm their attendance.</p>"
 
     application.status = "Invited to interview"
 
-    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applications/?_flash=${applicationName} has been invited to interview.`)
+    res.redirect(`/prototypes/application/expanded/dashboard/job/${jobId}/applicant/${applicationId}/?_flash=${flashContent}`)
     
   })
 

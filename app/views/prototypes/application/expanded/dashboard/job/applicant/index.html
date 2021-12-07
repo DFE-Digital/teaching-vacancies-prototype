@@ -9,7 +9,16 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full"> 
-        <a href="/public/sample-applications-pack.pdf" download class="govuk-button govuk-button--secondary">Download (200kb, PDF)</a>
+        <div class="govuk-button-group">
+          {% if data.applications[applicationId].status != 'Rejected' %}
+            {{ govukButton({
+              text: "Mark as unsuccessful",
+              classes: "govuk-button--secondary",
+                href: "/prototypes/application/expanded/dashboard/job/1/applicant/" + applicationId +  "/reject"
+            }) }}
+          {% endif %}
+          <a href="/public/sample-applications-pack.pdf" download class="govuk-button govuk-button--secondary">Download (200kb, PDF)</a>
+        </div>
       </div>
     </div>
 

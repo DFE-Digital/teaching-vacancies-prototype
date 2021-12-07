@@ -16,7 +16,7 @@
     {{ jobName }}
   </h1>
 
-  <h2 class="govuk-heading-l">Confirm details for rejecting the applicant</h2>
+  <h2 class="govuk-heading-l">Confirm details for marking this applicant as unsuccessful</h2>
 
   {{ govukSummaryList({
     rows: [
@@ -59,7 +59,7 @@
 
   <div class="govuk-button-group">
     {{ govukButton({
-      text: "Reject this application",
+      text: "Confirm decision",
       classes: "govuk-button--warning",
       href: "confirm-rejection-and-notify"
     }) }}

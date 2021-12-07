@@ -33,13 +33,21 @@
     <div class="col">
         {% if application.status != 'Withdrawn' %}
         <div class="app-applicant-actions">
-          <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/contact">Contact <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
+          <ul>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/contact">Contact <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
+            </li>
            {% if application.status == 'Received' or application.status == 'Invited to interview' or application.status == 'Reviewed' %}
-              {% if application.status != 'Invited to interview' %}
+            {% if application.status != 'Invited to interview' %}
+              <li>
                 <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/invite">Invite <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span> to interview</a>
-              {% endif %}
-                <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/reject">Reject<span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }}</span></a>
+              </li>
             {% endif %}
+                <li>
+                  <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{ job.id }}/applicant/{{ application.id }}/reject">Mark <span class="govuk-visually-hidden"> {{ application.firstname }} {{ application.lastname }} </span> as unsuccessful</a>
+                </li>
+              {% endif %}
+            <ul>
           </div>
         {% endif %}
     </div>

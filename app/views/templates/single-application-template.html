@@ -28,11 +28,11 @@
           items: [
             {
               text: "Passed deadline",
-              href: "../../passed-deadline"
+              href: "/prototypes/application/expanded/dashboard/passed-deadline"
             },
             {
               text: data.jobs[jobId].name,
-              href: "/prototypes/application/expanded/dashboard/job/" + jobId  
+              href: "/prototypes/application/expanded/dashboard/job/" + jobId + "/applications"  
             },
             {
               text: name
@@ -44,17 +44,11 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <div class="single-application-header">
-          <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-7">
-            <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
-            {{ name }}
-            <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
-            </div>
-          </h1>
-
+          
           {# This is the 'successfully' contacted/invited/rejected notification banner, it fires based on the route from each of the check your answers pages #}
           {% set successHtml %}
             <h3 class="govuk-notification-banner__heading">
-              {{ query._flash }}
+              {{ query._flash | safe }}
             </h3>
           {% endset %}
           
@@ -62,11 +56,24 @@
             {{ govukNotificationBanner({
               html: successHtml,
               type: "success",
-              classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8"
+              classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-6"
             }) }}
           {% endif %} 
+          
+          <h1 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+            <span class="govuk-caption-l">{{data.jobs[jobId].name}}</span>
+            {{ name }}
+            <div class="single-application-header__status">{% include "includes/applications/application-status-tags.html" %}
+            </div>
+          </h1>
 
-          {% include "includes/applications/single-application-actions.html" %}
+          {{ govukButton({
+            text: "Contact applicant",
+            classes: "govuk-button--secondary",
+            href: "/prototypes/application/expanded/dashboard/job/" +  job.id + "/applicant/" + application.id + "/contact"
+          }) }}
+
+          {# {% include "includes/applications/single-application-actions.html" %} #}
         </div>
       </div>
     </div>

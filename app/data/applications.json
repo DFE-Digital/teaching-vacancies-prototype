@@ -9,7 +9,7 @@
   "a1": {
     "firstname": "Liliya",
     "lastname": "Yeva",
-    "status": "Reviewed",
+    "status": "Received",
     "receivedDateTime": "15 October 2021 at 09:12am",
     "reviwedDateTime": "31 October 2021 at 15:10pm",
     "existingNote": "Check right to work in the UK",
@@ -26,7 +26,7 @@
     "firstname": "Shu",
     "lastname": "Akosua",
     "status": "Withdrawn",
-    "receivedDateTime": "30 October 2021 at 15:18pm",
+    "receivedDateTime": "18 October 2021 at 15:18pm",
     "withdrawDateTime": "21 October 2021 at 09:51am",
     "id": "a3"
   },
@@ -34,7 +34,7 @@
     "firstname": "Sadie",
     "lastname": "Roberts",
     "status": "Received",
-    "receivedDateTime": "30 October 2021 at 16:55pm",
+    "receivedDateTime": "19 October 2021 at 16:55pm",
     "id": "a4"
   }
 }
