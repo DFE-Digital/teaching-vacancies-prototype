@@ -368,7 +368,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     const applications = req.session.data.applications
     let application = applications[applicationId]
     let applicationName = applications[applicationId].firstname + " " + applications[applicationId].lastname
-    let flashContent = "<h3 class='govuk-notification-banner__heading'>" + applicationName+ " has been invited to interview</h3><p class='govuk-body'>They will recieve an email containing a link to allow them to confirm their attendance.</p>"
+    let flashContent = "<h3 class='govuk-notification-banner__heading'>" + applicationName+ " has been invited to interview</h3><p class='govuk-body'>They will receive an email containing the interview details.</p>"
 
     application.status = "Invited to interview"
 
