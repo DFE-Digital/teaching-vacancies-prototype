@@ -1,0 +1,11 @@
+{
+  "name": "Teaching Vacancies Prototype",
+  "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-16-bullseye",
+  "extensions": [],
+  "forwardPorts": [8080],
+  "mounts": [
+    "source=teaching-vacancies-prototype-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "postCreateCommand": "sudo chown node node_modules && npm install",
+  "remoteUser": "node"
+}
