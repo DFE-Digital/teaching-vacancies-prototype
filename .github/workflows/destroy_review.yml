@@ -8,22 +8,10 @@ on:
       - closed
 
 jobs:
-  turnstyle:
-    name: Wait for previous deploys to finish
-    runs-on: ubuntu-20.04
-    timeout-minutes: 20
-    steps:
-      - uses: DFE-Digital/github-actions/turnstyle@master
-        with:
-          initial-wait-seconds: 12
-          poll-interval-seconds: 20
-          abort-after-seconds: 1800
-          same-branch-only: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   destroy_review:
     name: Destroy review app on merge
     runs-on: ubuntu-latest
+    concurrency: deploy-${{ github.ref }}
     steps:
       - name: Set application environment
         env:
