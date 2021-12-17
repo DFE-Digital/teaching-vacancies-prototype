@@ -7,11 +7,12 @@ on:
     types:
       - closed
 
+concurrency: deploy-${{ github.ref }}
+
 jobs:
   destroy_review:
     name: Destroy review app on merge
     runs-on: ubuntu-latest
-    concurrency: deploy-${{ github.ref }}
     steps:
       - name: Set application environment
         env:

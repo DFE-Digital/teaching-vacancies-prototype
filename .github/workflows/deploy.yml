@@ -12,11 +12,12 @@ on:
       - synchronize
       - reopened
 
+concurrency: deploy-${{ github.ref }}
+
 jobs:
   deploy:
     name: Deploy to GOV.UK PaaS
     runs-on: ubuntu-latest
-    concurrency: deploy-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
       - name: Set application environment (main branch)
