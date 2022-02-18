@@ -1,0 +1,96 @@
+{% extends "create-a-job-four-steps.html" %}
+
+{% set activePage = "step0" %}
+{% set pageName = "Job role 1" %}
+{% set activePageNumber = "1" %}
+{% set sectionActive = "hiring staff" %}
+
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Job role</h2>
+
+      <form class="" action="0-job-role-answer" method="post">
+
+        {% set teacher %}
+          <span class="govuk-!-font-weight-bold">Teacher</span>
+        {% endset %}
+
+        {% set leadership %}
+          <span class="govuk-!-font-weight-bold">Leadership</span>
+          <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Head of Year/Subject, Deputy/Assistant Head, Headteacher, and trust-level roles</span>
+        {% endset %}
+
+        {% set edSupport %}
+          <span class="govuk-!-font-weight-bold">Education support</span>
+          <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Teaching assistant and Learning support</span>
+        {% endset %}
+
+        {% set sendCo %}
+          <span class="govuk-!-font-weight-bold">Special educational needs and disabilities coordinator (SENDCo)</span>
+        {% endset %}
+        
+        {% set bussinessManager %}
+          <span class="govuk-!-font-weight-bold">Business manager</span>
+        {% endset %}
+
+          <!-- ROLE START -->
+          {{ govukRadios({
+            fieldset: {
+              legend: {
+                text: "What is the job role?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                html: teacher,
+                value: "teacher"
+              },
+              {
+                html: leadership,
+                value: "leadership"
+              },
+              {
+                html: edSupport,
+                value: "education support"
+              },
+              {
+                html: sendCo,
+                value: "sendCo"
+              },
+              {
+                html: bussinessManager,
+                value: "bussinessManager"
+              }
+            ]
+          } | decorateAttributes(data, "data.job.role")) }}
+          <!-- ROLE END -->
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p> 
+
+      </form>
+
+  </div>
+  
+  {# <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %}
+  </div> #}
+
+{% endblock %}
+
+<!-- <script>
+  
+  const nav = document.querySelector('nav');
+  const div = document.createElement('div');
+
+  div.textContent = 'David Ricardo, Assessment and Qualifications Alliance';
+  nav.prepend(div);
+  div.style.textAlign = 'right';
+
+</script> -->

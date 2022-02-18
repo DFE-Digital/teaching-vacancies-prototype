@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+{% set sectionActive = "hiring staff" %}
+{% set primaryNavActive = "manage jobs" %}
+
+{% block pageTitle %}
+  Find a job in Teaching
+{% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container">
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper govuk-!-padding-top-2">
+    <div class="create-title">
+      {% set SchoolName %}
+        {% if data.job.userType == "singleSchool" %}
+          for {{ data.job.defaultSchoolName }}
+        {% elseif data.job.locationSingle %}
+          for {{ data.job.locationSingle }}
+        {% elseif (data.job.locationMat == "At more than one school in the trust") or (data.job.locationLa == "At more than one school") %}
+          for multiple schools
+        {% endif %}
+      {% endset %}
+
+      <!-- <span class="govuk-caption-m govuk-!-margin-bottom-0">{% if isMultiSchool == "true" %}Step {{ activePageNumber }} of 10{% else %}Step {{ activePageNumber }} of 9{% endif %}</span> -->
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-5">Create a job listing for Bexleyheath Academy</h1>
+    </div>
+
+    <div class="govuk-grid-row">
+
+      {% block createJobcontent %}
+      {% endblock %}
+
+      <div class="govuk-grid-column-one-third">
+       
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+
+{% endblock %}
