@@ -8,7 +8,7 @@
   <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-l">Job role</h2>
 
-      {# If Teacher #}
+      <!-- {# If Teacher #}
       {% if data.job.role == "teacher" %}
         <form class="" action="0-job-role-details-answer" method="post">
             {{ govukCheckboxes({
@@ -33,7 +33,7 @@
 
             <button class="govuk-button" data-module="govuk-button">Continue</button>
           </form>
-        {% endif %}
+        {% endif %} -->
       
         {# if leadership #}
         {% if data.job.role == "leadership" %}
@@ -86,12 +86,12 @@
       </form>
 
   </div>
-  {# <div class="govuk-grid-column-one-third">
+  <!-- {# <div class="govuk-grid-column-one-third">
     <div class="app-step-nav-related app-step-nav-related--singular">
         <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
         </h2>
     </div>
     {% include "includes/hiring-staff/acc-steps.html" %}
-  </div> #}
+  </div> #} -->
 {% endblock %}

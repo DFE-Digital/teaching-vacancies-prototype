@@ -96,8 +96,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   })
 
 
-  // Create a job listing (in 4 steps)
-
+// Create a job listing (in 4 steps)
   // Copy an existig job or start a new one?
   router.post('/prototypes/create-a-job-listing-in-four-steps/copy-or-new-job-answer', function (req, res) {
   
@@ -133,6 +132,31 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       res.redirect('/prototypes/create-a-job/2-job-details')
     }   
   })
+
+
+// Create a job listing (in 4 steps)
+  // Job role
+  router.post('/prototypes/create-a-job-listing-in-four-steps/0-job-role-answer', function (req, res) {
+  
+    let jobRole = req.session.data.job.role
+    let userType = req.session.data.job.userType
+    let jobPhase = req.session.data.job.phase
+
+    if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/1-job-location')
+    } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/0a-job-role-details') 
+    } else if (jobRole == "bussinessManager") {
+      res.redirect('/404') 
+    } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/2a-education-phase-setup')   
+    } else {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/2-job-details')
+    }   
+  })
+
+
+
   
   // Job role (v1)
   router.post('/prototypes/create-a-job_v1/0-job-role-answer', function (req, res) {

@@ -32,19 +32,28 @@
       <h1 class="govuk-heading-l govuk-!-margin-bottom-5">Create a job listing for Bexleyheath Academy</h1>
     </div>
 
-    <div class="govuk-grid-row">
+    
 
-      {% block createJobcontent %}
-      {% endblock %}
+        {% block createJobcontent %}
+        {% endblock %}
 
-      <div class="govuk-grid-column-one-third">
-       
-      </div>
+        <!-- {% block tellUsMoreAboutRole %}
+        {% endblock %} -->
 
-    </div>
+
+
   </main>
 
 </div>
+
+
+<script>
+  // const body = document.querySelector('body.govuk-template__body');
+  const body = document.querySelector('body.govuk-template__body');
+
+  // body.setAttribute('style', 'background-color: #F2F2F2;');
+  body.style.backgroundColor = '#F2F2F2';
+</script>
 
 
 {% endblock %}
