@@ -1,0 +1,392 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+T / Service start page
+{% endblock %}
+
+{% set bodyClasses = "app-home-alt" %}
+{% set sectionActive = "public service" %}
+{% set primaryNavActive = "service start" %}
+
+{% block beforeContent %}
+{# beforeContent is reseting default phase banner #}
+{% endblock %}
+
+{% block main %}
+
+	<!-- START MAST -->
+	<div class="full-BGstrip">
+			<div class="govuk-width-container">
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                <div class="app-search-form-container govuk-!-margin-bottom-6">
+                  <h1 class="govuk-heading-l">Find teacher and school jobs near you</h1> 
+                  <div class="app-search-form-inner">
+                    <div>
+                      {{ govukInput({
+                        label: {
+                          text: "Keywords",
+                          classes: "govuk-label--s"
+                        }
+                      } | decorateAttributes(data, "data.search.keyWords")) }}
+                    </div>
+                    <div>
+                      {{ govukInput({
+                        label: {
+                          text: "City, county or postcode",
+                          classes: "govuk-label--s"
+                        }
+                      } | decorateAttributes(data, "data.search.location")) }}
+                    </div>
+                    <div>
+                      {{ govukButton({
+                        text: "Search",
+                        href: "/templates/public/01-search-results"
+                      }) }}
+                      <span class="app-advanced-search">or <a href="#" class="govuk-link">advanaced search</a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">About Teaching Vacancies</h2>
+                <p class="govuk-body">Find education support, teacher and school leadership jobs across England on Teaching Vacancies. Apply for teaching jobs directly to schools.</p>
+              </div>
+              <div class="govuk-grid-column-one-quarter">
+                <h2 class="govuk-heading-m">Apply for jobs</h2>
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/job-seeker-sign-in">Sign in</a> or <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/create-job-seeker-account">create an account</a> to apply for jobs that use the Teaching Vacancies application form.</p>
+              </div>
+              <div class="govuk-grid-column-one-quarter">
+                <h2 class="govuk-heading-m">Advertise a school job</h2>
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/hiring-staff-sign-in">Sign in</a> to manage your job listings and applicants or <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/request-hiring-staff-account">sign up.</a> 
+              </div>
+
+            </div>
+            
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-4">
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Helpful resources for jobseekers and hiring staff</h2>
+
+             <div class="govuk-grid-row govuk-!-margin-bottom-6">
+                <div class="govuk-grid-column-full">
+                  <div class="app-card-container">
+                    <div>
+                      <div class="app-image-card">
+                        <a href="#" class="govuk-body govuk-link govuk-!-font-weight-bold">
+                          <img src="/public/images/home/home-image-1.jpg" alt="">
+                          <div class="app-image-card__content">
+                            <span class="govuk-hint">Jobseeker</span>
+                            <h3 class="govuk-heading-s govuk-link">How to write proper good job applications</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="app-image-card">
+                        <a href="#" class="govuk-body govuk-link govuk-!-font-weight-bold">
+                          <img src="/public/images/home/home-image-2.jpg" alt="">
+                          <div class="app-image-card__content">
+                            <span class="govuk-hint">Jobseeker</span>
+                            <h3 class="govuk-heading-s govuk-link">How to design a resume that stands out in a crowd</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="app-image-card">
+                        <a href="#" class="govuk-body govuk-link govuk-!-font-weight-bold">
+                          <img src="/public/images/home/home-image-3.jpg" alt="">
+                          <div class="app-image-card__content">
+                            <span class="govuk-hint">Hiring staff</span>
+                            <h3 class="govuk-heading-s govuk-link">Tips and tricks to writing the best EVER job descriptions</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="app-image-card">
+                        <a href="#" class="govuk-body govuk-link govuk-!-font-weight-bold">
+                          <img src="/public/images/home/home-image-4.jpg" alt="">
+                          <div class="app-image-card__content">
+                            <span class="govuk-hint">Hiring staff</span>
+                            <h3 class="govuk-heading-s govuk-link">Why no one applying for your job and how to fix it</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                  <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-one-half">
+                          <h3 class="govuk-heading-s">Cities and towns with teaching jobs</h3>
+                          <ul aria-label="Cities and towns with teaching jobs list" class="govuk-list two-column-list">
+                              <li>
+                                  <a class="govuk-link" href="#">Bath</a>
+                                  (4)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Birmingham</a>
+                                  (6)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Bournemouth</a>
+                                  (6)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Bristol</a>
+                                  (7)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Cheltenham</a>
+                                  (3)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Gillingham</a>
+                                  (8)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Grimsby</a>
+                                  (3)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Hartlepool</a>
+                                  (3)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Ipswich</a>
+                                  (5)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Leeds</a>
+                                  (4)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">London</a>
+                                  (93)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Luton</a>
+                                  (3)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Manchester</a>
+                                  (5)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Mansfield</a>
+                                  (2)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Northampton</a>
+                                  (5)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Nottingham</a>
+                                  (2)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Peterborough</a>
+                                  (2)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Plymouth</a>
+                                  (6)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Preston</a>
+                                  (3)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Sheffield</a>
+                                  (3)
+                              </li>
+                          </ul>
+                          <h3 class="govuk-heading-s">Counties with teaching jobs</h3>
+                          <ul aria-label="Counties with teaching jobs list" class="govuk-list two-column-list">
+                              <li>
+                                  <a class="govuk-link" href="#">Bournemouth, Christchurch and Poole</a>
+                                  (12)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Cambridgeshire</a>
+                                  (12)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Cornwall</a>
+                                  (15)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Derbyshire</a>
+                                  (8)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Essex</a>
+                                  (12)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Gloucestershire</a>
+                                  (8)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Hampshire</a>
+                                  (11)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Hertfordshire</a>
+                                  (15)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Kent</a>
+                                  (14)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Leicestershire</a>
+                                  (7)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Medway</a>
+                                  (15)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">North Yorkshire</a>
+                                  (8)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Northamptonshire</a>
+                                  (15)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Nottinghamshire</a>
+                                  (16)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Oxfordshire</a>
+                                  (11)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Staffordshire</a>
+                                  (10)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Suffolk</a>
+                                  (15)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Thurrock</a>
+                                  (7)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">West Sussex</a>
+                                  (10)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Wiltshire</a>
+                                  (10)
+                              </li>
+                          </ul>
+                      </div>
+                      <div class="govuk-grid-column-one-half">
+                          <h3 class="govuk-heading-s">Current teaching jobs by subject</h3>
+                          <ul aria-label="Current teaching jobs by subject list" class="govuk-list two-column-list">
+                              <li>
+                                  <a class="govuk-link" href="#">Design and technology</a>
+                                  (18)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">English</a>
+                                  (52)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Food</a>
+                                  (28)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">German</a>
+                                  (41)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">KS1</a>
+                                  (18)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">KS2</a>
+                                  (28)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Mathematics</a>
+                                  (47)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Physics</a>
+                                  (25)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Primary</a>
+                                  (189)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Science</a>
+                                  (55)
+                              </li>
+                          </ul>
+                          <h3 class="govuk-heading-s">Current teaching jobs by role</h3>
+                          <ul aria-label="Current teaching jobs by role list" class="govuk-list two-column-list">
+                              <li>
+                                  <a class="govuk-link" href="#">Teacher</a>
+                                  (388)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Leadership</a>
+                                  (74)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Education support</a>
+                                  (296)
+                              </li>
+                              <li>
+                                  <a class="govuk-link" href="#">Special Educational Needs and Disability Coordinator (SENDCo)</a>
+                                  (21)
+                              </li>
+                          </ul>
+                          <h3 class="govuk-heading-s">Current jobs suitable for early career teachers</h3>
+                          <ul aria-label="Current teaching jobs by role list" class="govuk-list">
+                              <li><a class="govuk-link" href="#">Suitable for early career teachers</a> (74)</li>
+                          </ul>
+                          <h3 class="govuk-heading-s">Current jobs with SEND responsibilities</h3>
+                          <ul aria-label="Current teaching jobs by role list" class="govuk-list">
+                              <li><a class="govuk-link" href="#">SEND responsibilities</a> (18)</li>
+                          </ul>
+                      </div>
+                      <div class="govuk-grid-column-full">
+                          <div class="govuk-grid-row">
+                              <div class="govuk-grid-column-full govuk-!-margin-top-6">
+                                  <a class="govuk-link govuk-body" href="#">Browse all teaching jobs in England</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </main>
+			</div>
+	</div>
+	<!-- END BESPOKE MAST -->
+
+  {# pulls in default gov uk template #}
+  {{super()}}
+{% endblock %}
+
+{% block content %}
+
+</div>
+
+{% endblock %}
