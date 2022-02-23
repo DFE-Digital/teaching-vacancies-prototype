@@ -30,7 +30,7 @@
       padding: 30px 0;
       /* left padding should compensate for arrow width */
       margin: 0;
-      border: 1px solid #B1B4B6;
+      border: 2px solid #B1B4B6;
 	}
 }
 	
@@ -41,19 +41,24 @@
 	 display: block;
 }
  .tabs li:hover {
-	 background-color: #F3F2F1;
-   border: 2px solid #1D70B8;
+	 background-color:#F3F2F1;
+  //  border: 2px solid#1D70B8; 
 }
+
+.tabs a:hover::before {
+  color: #ffffff;
+  background-color:#1D70B8;
+}
+
  
  .tabs li.active {
-	 background-color: #1D70B8;
+	 background-color:#1D70B8;
 	 color: white;
 }
  
  .tabs li.active a {
 	 color: white;
 }
-
 
 .tabs {
   counter-reset: counter-any-name;
@@ -70,6 +75,7 @@
   left: 1.6em;
   top: -0.4em;
   background: #ffffff;
+  color: #0B0C0C;
   width: 2em;
   height: 2em;
   border-radius: 50%;
@@ -80,9 +86,6 @@
   box-sizing: border-box;
 }
 
-body > div:nth-child(8) > main > div.sub-nav.govuk-grid-row.full-width-bg-white.govuk-\!-margin-bottom-6.govuk-\!-margin-left-0 > ul > li.active > a::before {
-  color: #0B0C0C;
-}
 
 
 
