@@ -1,6 +1,4 @@
-{% extends "create-a-job.html" %}
-
-{% set sectionActive = "hiring staff" %}
+{% extends "create-a-job-four-steps.html" %}
 
 {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
   {% set activePageNumber = "7" %}
@@ -11,8 +9,20 @@
 {% endif %}
 
 {% block createJobcontent %}
+<div class="sub-nav govuk-grid-row full-width-bg-white govuk-!-margin-bottom-6 govuk-!-margin-left-0">
+ 
+  <ul class="tabs">
+    <li><a href="0-job-role.html">Step one</a></li>
+    <li><a href="3-working-pattern">Step two</a></li>
+    <li><a href="6-applying">Step three</a></li>
+    <li class="active"><a href="#">Step four</a></li>
+  </ul>
+
+</div>
+
   <!-- Main content START -->
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0">
+    <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-l">Applying for the job</h2>
 
       <form class="" action="7-supporting-documents" method="post">
@@ -47,7 +57,7 @@
             hint: {
               text: "Allow candidates to contact you about the role (this will be shown publicly)"
             },
-            classes: "govuk-!-width-one-third"
+            classes: "govuk-!-width-two-thirds"
           } | decorateAttributes(data, "data.job.contactPhone")) }}
 
           {{ govukTextarea({
@@ -60,13 +70,159 @@
             }
           } | decorateAttributes(data, "data.job.schoolVisits")) }}
 
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-
-          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+        
       </form>
 
   </div>
+  </div>
+
+  <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-top-6">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Important dates and deadlines</h2>
+      <form class="" action="6-applying" method="post">
+        
+        {% set conditionalListingDate %}
+          {{ govukDateInput({
+              fieldset: {
+                legend: {
+                  text: "What date will the job be listed?",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "For example, 01 01 2021"
+              }
+            } | decorateAttributes(data, "data.job.listingDateCustom")) }}
+        {% endset %}
+
+        {% set conditionalListingTime %}
+        <div class="govuk-form-group">
+          <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Enter time
+          </legend> -->
+          <div id="job-listingDateCustom-hint" class="govuk-hint">
+            For example, 9am or 2:30 pm - enter 12pm for midday
+          </div>
+          <label class="govuk-label" for="width-10">
+            Enter time
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+        </div>
+        {% endset %}
+      
+        
+        {{ govukRadios({
+            fieldset: {
+              legend: {
+                text: "Date job will be listed",
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                text: "Today"
+              },
+              {
+                text: "Tomorrow"
+              },
+              {
+                text: "On another day",
+                conditional: {
+                  html: conditionalListingDate
+                }
+              }
+            ]
+          } | decorateAttributes(data, "data.job.listingDate")) }}
+
+        {{ govukDateInput({
+            fieldset: {
+              legend: {
+                text: "Closing date",
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "For example, 01 05 2021"
+            }
+        } | decorateAttributes(data, "data.job.listingClosingDate")) }}
+
+        {{ govukRadios({
+          fieldset: {
+            legend: {
+              text: "Time application is due",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              text: "9am"
+            },
+            {
+              text: "Midday"
+            },
+            {
+              text: "11:59pm"
+            },
+            {
+              text: "At a specific time",
+              conditional: {
+                html: conditionalListingTime
+              }
+            }
+          ]
+        } | decorateAttributes(data, "data.job.listingDueDate")) }}
+
+        {% set listingStartDateHtml %}
+          Date job starts <span class="govuk-!-font-weight-regular">(optional)</span>
+        {% endset %}
+
+        {% set conditionalListingStartDate %}
+          {{ govukDateInput({
+            fieldset: {
+              legend: {
+                text: "Enter date",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, 04 01 2022"
+            }
+          } | decorateAttributes(data, "data.job.listingStartDate")) }}
+      {% endset %}
+
+      {{ govukRadios({
+          fieldset: {
+            legend: {
+              text: "Date job starts (optional)",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              text: "On a speficic date",
+              conditional: {
+                html: conditionalListingStartDate
+              }
+            },
+            {
+              text: "As soon as possible"
+            }
+          ]
+        } | decorateAttributes(data, "data.job.listingStartDate")) }}
+
+        <div class="govuk-button-group">
+          <!-- <button class="govuk-button" data-module="govuk-button">
+            Save and continue
+          </button> -->
+    
+          <a class="govuk-button" data-module="govuk-button" href="6-applying">Save and continue</a>
+          <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="#">Save as draft</a>
+
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+        </div>
+        
+      </form>
+    </div>
+  </div>  
 
 {% endblock %}

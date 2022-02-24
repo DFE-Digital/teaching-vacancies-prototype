@@ -1,3 +1,4 @@
+
 .govuk-grid-row.full-width-bg-white {
   background-color: #ffffff;
 }
@@ -30,7 +31,8 @@
       padding: 30px 0;
       /* left padding should compensate for arrow width */
       margin: 0;
-      border: 2px solid #B1B4B6;
+      border: 1px solid #B1B4B6;
+
 	}
 }
 	
@@ -43,6 +45,12 @@
  .tabs li:hover {
 	 background-color:#F3F2F1;
   //  border: 2px solid#1D70B8; 
+}
+
+.tabs li a:focus {
+  outline: none;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .tabs a:hover::before {

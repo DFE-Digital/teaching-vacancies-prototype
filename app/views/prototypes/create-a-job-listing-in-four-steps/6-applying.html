@@ -1,6 +1,5 @@
-{% extends "create-a-job.html" %}
+{% extends "create-a-job-four-steps.html" %}
 
-{% set sectionActive = "hiring staff" %}
 
 {% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
   {% set activePageNumber = "7" %}
@@ -11,11 +10,100 @@
 {% endif %}
 
 {% block createJobcontent %}
-  <!-- Main content START -->
-  <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Applying for the job</h2>
 
-      <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's website. <a href="https://qa.teaching-vacancies.service.gov.uk/teaching-vacancies-application-form-guide-sept-21.pdf" class="govuk-link">Download more information about the application form (2.73 MB, PDF)</a></p>
+<div class="sub-nav govuk-grid-row full-width-bg-white govuk-!-margin-bottom-6 govuk-!-margin-left-0">
+ 
+  <ul class="tabs">
+    <li><a href="0-job-role.html">Step one</a></li>
+    <li><a href="3-working-pattern">Step two</a></li>
+    <li class="active"><a href="6-applying">Step three</a></li>
+    <li><a href="#">Step four</a></li>
+  </ul>
+
+</div>
+
+<!-- Main content START -->
+<div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Job summary</h2>
+
+      {{ govukCharacterCount({
+        name: "with-hint",
+        id: "with-hint",
+        maxlength: 200,
+        label: {
+          text: "Job advert",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Provide a brief job summary, max 400 words. The first 20 - 40 words 
+          will show in the search results. Include what the role is and the ideal candidate. "
+        }
+      }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Supporting documents</h2>
+      <h3 class="govuk-heading-m">Upload files</h3>
+
+      <p class="govuk-body">You can upload files such as a job description or person specification.</p>
+      <h3 class="govuk-heading-m">Each file must be:</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          in pdf, jpeg, png, mp4, doc, ppt or xls format
+        </li>
+        <li>
+          smaller than 10 MB
+        </li>
+        <li>
+          accessible for users with disabilities or impairments - <a class="govuk-link" target="_blank" href="https://www.gov.uk/guidance/publishing-accessible-documents#writing-accessible-documents">how to make documents accessible (opens in new tab).</a>
+        </li>
+      </ul>
+
+      {{ govukButton({
+        text: "Select a file",
+        classes: "govuk-button--secondary govuk-!-margin-top-3"
+      }) }}
+
+      <div class="js-documents">
+        <table class="govuk-table js-documents__table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header">File name</th>
+              <th class="govuk-table__header">Status</th>
+              <th class="govuk-table__header">File size</th>
+              <th class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body" id="js-documents__table-body">
+            <tr class="govuk-table__row js-document-row" data-document-id="15cb24e5-1001-4680-8897-9838f4b555dc">
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="#">File-name.pdf (opens in new tab)</a>
+              </td>
+              <td class="govuk-table__cell">Uploaded</td>
+              <td class="govuk-table__cell">142 KB</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" rel="nofollow" data-method="delete" href="#">Remove <span class="govuk-visually-hidden"> Screenshot 2021-10-28 at 09.44.39.png supporting document</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {# <p class="js-documents__no-files">No files selected</p> #}
+      </div>
+  </div>
+</div>
+
+
+<div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Applying for the job</h2>
+
+      <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's 
+        website which may include local authority website or your school website. <a href="https://qa.teaching-vacancies.service.gov.uk/teaching-vacancies-application-form-guide-sept-21.pdf" class="govuk-link">Download more information about the application form (2.73 MB, PDF)</a></p>
 
       <form class="" action="6-applying-answer" method="post">
 
@@ -44,13 +132,22 @@
           {{ linkToApply | safe }}
         {% endif %}
 
-        {{ govukButton({
-          text: "Continue"        
-        }) }}
+        <div class="govuk-button-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Save and continue
+          </button>
+    
+          <!-- <a class="govuk-button" data-module="govuk-button" href="6-applying">Save and continue</a> -->
+          <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="#">Save as draft</a>
 
-        <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+        </div>
+
       </form>
 
+
   </div>
+  </div>
+
 
 {% endblock %}

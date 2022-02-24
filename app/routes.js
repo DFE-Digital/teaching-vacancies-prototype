@@ -292,6 +292,19 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
 
+  // Applying for the job 4 steps
+    router.post('/prototypes/create-a-job-listing-in-four-steps/6-applying-answer', function (req, res) {
+    
+      let applyProcess = req.session.data.job.applyProcess
+  
+      if (applyProcess == "Use the Teaching Vacancies application form") {
+        res.redirect('/prototypes/create-a-job-listing-in-four-steps/6b-applying-within-tvs')
+      } else {
+        res.redirect('/prototypes/create-a-job-listing-in-four-steps/6c-applying-outside-tvs')
+      }  
+      
+    })
+
   // ----------------------------------------------------
   // Applications and job routes
   // ----------------------------------------------------
