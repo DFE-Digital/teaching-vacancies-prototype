@@ -1,63 +1,372 @@
-{% extends "create-a-job.html" %}
+{% extends "create-a-job-four-steps.html" %}
 
-{% set sectionActive = "hiring staff" %}
-{% set activePageNumber = "9" %}
-{% set activePage = "step9" %}
+
+      {% set activePageNumber = "9" %}
+      {% set activePage = "step9" %}
 
       {% block createJobcontent %}
         <!-- Main content START -->
-        <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-l">Review the job listing</h2>
-            <p>Review your entries for each section below, making any changes needed before you publish the listing.</p>
+       
+       
+        <h2 class="govuk-heading-l">Review the job listing a job listing for Bexleyheath Academy</h2>
+        <p>Review your entries for each section below, making any changes needed before you publish the listing.</p>
 
-            <ol class="app-task-list">
-                <li>
-                    <div class="flex-header">
-                      <h2 class="app-task-list__section">
-                          <span class="app-task-list__section-number">
-                          1. Job role
-                          </span>
-                          <a href="0-job-role">Change</a>
-                      </h2>
-                      {{ govukTag({
-                        text: "completed"
-                      }) }}
-                    </div>
+        <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
+          <div class="govuk-grid-column-full">
 
-                    {% set jobRoleHtml %}
-                      
-                      <ul class="govuk-list">
-                        <li>
-                          Suitable for early career teachers
-                        </li>
-                        <li>
-                          SEND responsibilities (special educational needs and disabilities)
-                        </li>
-                      </ul>
-                    {% endset %}
-                    
-                    {{ govukSummaryList({
-                      rows: [
-                        {
-                          key: {
-                            text: "Job role"
-                          },
-                          value: {
-                            text: "Teacher"
-                          }
-                        },
-                        {
-                          key: {
-                            text: "Job role details"
-                          },
-                          value: {
-                            html: jobRoleHtml
-                          }
-                        }
-                      ]
+            <section>
+                <div class="flex-header">
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        1. Step one
+                        </span>
+                        <a href="0-job-role">Change</a>
+                    </h2>
+                    {{ govukTag({
+                      text: "completed"
                     }) }}
-                </li>
-                <li>
+                </div>
+
+                {% set jobRoleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Suitable for early career teachers
+                    </li>
+                    <li>
+                      SEND responsibilities (special educational needs and disabilities)
+                    </li>
+                  </ul>
+                {% endset %}
+
+                {% set jobTitleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Philosophy teacher
+                    </li>
+                  </ul>
+                {% endset %}
+                    
+                {{ govukSummaryList({
+                  rows: [
+                    {
+                      key: {
+                        text: "Job role"
+                      },
+                      value: {
+                        text: "Teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job role details"
+                      },
+                      value: {
+                        html: jobRoleHtml
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job title"
+                      },
+                      value: {
+                        text: "Philosophy teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Contract type"
+                      },
+                      value: {
+                        text: "Permanent"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Subject(s)"
+                      },
+                      value: {
+                        text: "Philosophy"
+                      }
+                    }
+                    
+                  ]
+                }) }}
+            </section>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
+          <div class="govuk-grid-column-full">
+
+            <section>
+                <div class="flex-header">
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        2. Step two
+                        </span>
+                        <a href="0-job-role">Change</a>
+                    </h2>
+                    {{ govukTag({
+                      text: "completed"
+                    }) }}
+                </div>
+
+                {% set jobRoleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Suitable for early career teachers
+                    </li>
+                    <li>
+                      SEND responsibilities (special educational needs and disabilities)
+                    </li>
+                  </ul>
+                {% endset %}
+
+                {% set jobTitleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Philosophy teacher
+                    </li>
+                  </ul>
+                {% endset %}
+                    
+                {{ govukSummaryList({
+                  rows: [
+                    {
+                      key: {
+                        text: "Job role"
+                      },
+                      value: {
+                        text: "Teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job role details"
+                      },
+                      value: {
+                        html: jobRoleHtml
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job title"
+                      },
+                      value: {
+                        text: "Philosophy teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Contract type"
+                      },
+                      value: {
+                        text: "Permanent"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Subject(s)"
+                      },
+                      value: {
+                        text: "Philosophy"
+                      }
+                    }
+                    
+                  ]
+                }) }}
+            </section>
+          </div>
+        </div>
+                
+
+        <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
+          <div class="govuk-grid-column-full">
+
+            <section>
+                <div class="flex-header">
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        3. Step three
+                        </span>
+                        <a href="0-job-role">Change</a>
+                    </h2>
+                    {{ govukTag({
+                      text: "completed"
+                    }) }}
+                </div>
+
+                {% set jobRoleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Suitable for early career teachers
+                    </li>
+                    <li>
+                      SEND responsibilities (special educational needs and disabilities)
+                    </li>
+                  </ul>
+                {% endset %}
+
+                {% set jobTitleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Philosophy teacher
+                    </li>
+                  </ul>
+                {% endset %}
+                    
+                {{ govukSummaryList({
+                  rows: [
+                    {
+                      key: {
+                        text: "Job role"
+                      },
+                      value: {
+                        text: "Teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job role details"
+                      },
+                      value: {
+                        html: jobRoleHtml
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job title"
+                      },
+                      value: {
+                        text: "Philosophy teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Contract type"
+                      },
+                      value: {
+                        text: "Permanent"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Subject(s)"
+                      },
+                      value: {
+                        text: "Philosophy"
+                      }
+                    }
+                    
+                  ]
+                }) }}
+            </section>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
+          <div class="govuk-grid-column-full">
+
+            <section>
+                <div class="flex-header">
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">
+                        4. Step four
+                        </span>
+                        <a href="0-job-role">Change</a>
+                    </h2>
+                    {{ govukTag({
+                      text: "completed"
+                    }) }}
+                </div>
+
+                {% set jobRoleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Suitable for early career teachers
+                    </li>
+                    <li>
+                      SEND responsibilities (special educational needs and disabilities)
+                    </li>
+                  </ul>
+                {% endset %}
+
+                {% set jobTitleHtml %}
+                  <ul class="govuk-list">
+                    <li>
+                      Philosophy teacher
+                    </li>
+                  </ul>
+                {% endset %}
+                    
+                {{ govukSummaryList({
+                  rows: [
+                    {
+                      key: {
+                        text: "Job role"
+                      },
+                      value: {
+                        text: "Teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job role details"
+                      },
+                      value: {
+                        html: jobRoleHtml
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Job title"
+                      },
+                      value: {
+                        text: "Philosophy teacher"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Contract type"
+                      },
+                      value: {
+                        text: "Permanent"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Subject(s)"
+                      },
+                      value: {
+                        text: "Philosophy"
+                      }
+                    }
+                    
+                  ]
+                }) }}
+            </section>
+          </div>
+        </div>
+
+
+        
+                <!-- <li>
                     <div class="flex-header">
                       <h2 class="app-task-list__section">
                           <span class="app-task-list__section-number">
@@ -306,7 +615,7 @@
                       ]
                     }) }}
                 </li>
-            </ol>
+            </section> -->
 
             <h3 class="govuk-heading-m">Preview this job listing</h3>
             <p class="govuk-body">See how this job listing will appear to jobseekers on Teaching Vacancies</p>
