@@ -24,9 +24,10 @@
 
 {% set jobSummaryHint %}
   <ul class="govuk-list govuk-list--bullet">
-    <li>Provide a brief job summary</li>
-    <li>You may want to include what the role is</li>
-    <li>and the ideal candidate</li>
+    <li>the main responsibilities</li>
+    <li>the skills and qualities you are looking for in a candidate</li>
+    <li>what candidates should include in their personal statement</li>
+    <li>how candidates can arrange a school visit</li>
   </ul>
 {% endset %}
 
@@ -38,7 +39,7 @@
       {{ govukCharacterCount({
         name: "with-hint",
         id: "with-hint",
-        maxlength: 400,
+        maxlength: 3000,
         label: {
           text: "Job advert",
           classes: "govuk-label--m",
