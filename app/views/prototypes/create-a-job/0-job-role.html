@@ -22,15 +22,22 @@
 
         {% set edSupport %}
           <span class="govuk-!-font-weight-bold">Education support</span>
-          <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Teaching assistant and Learning support</span>
+          <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes learning support and tutors</span>
         {% endset %}
 
         {% set sendCo %}
-          <span class="govuk-!-font-weight-bold">Special educational needs and disabilities coordinator (SENDCo)</span>
+        <span class="govuk-!-font-weight-bold">SENDCo</span>
+        <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Special educational needs and disabilities coordinator</span>
         {% endset %}
-        
-        {% set bussinessManager %}
-          <span class="govuk-!-font-weight-bold">Business manager</span>
+
+        {% set teachingAssistant %}
+          <span class="govuk-!-font-weight-bold">Teaching assistant</span>
+          <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Higher Level Teaching Assistants (HLTAs) and SEND teaching assistants</span>
+        {% endset %}
+
+        {% set middleLeader %}
+        <span class="govuk-!-font-weight-bold">Middle leader</span>
+        <span class="govuk-hint govuk-checkboxes__hint govuk-!-padding-0 govuk-!-margin-0">Includes Head of Year/Department</span>
         {% endset %}
 
           <!-- ROLE START -->
@@ -51,23 +58,27 @@
                 value: "leadership"
               },
               {
+                html: middleLeader,
+                value: "middleLeader"
+              },
+              {
+                html: teachingAssistant,
+                value: "teachingAssistant"
+              },
+              {
                 html: edSupport,
                 value: "education support"
               },
               {
                 html: sendCo,
                 value: "sendCo"
-              },
-              {
-                html: bussinessManager,
-                value: "bussinessManager"
               }
             ]
           } | decorateAttributes(data, "data.job.role")) }}
           <!-- ROLE END -->
 
           <button class="govuk-button" data-module="govuk-button">Continue</button>
-          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p> 
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
 
       </form>
 
