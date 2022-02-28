@@ -100,24 +100,30 @@
   line-height: 1.11111;
 }
 
-.flex-header .counters {
-  counter-increment: second-counter-name;
+
+// Counter for review page
+
+
+.counters-review {
+  counter-reset: counter-for-review;
 }
 
-.flex-header.number-container {
+.flex-header h2 {
   position: relative;
+  padding-left: 60px;
 }
 
 span.circle-number::before {
-  counter-increment: counter-any-name;
-  content: counter(counter-any-name);
+  counter-increment: counter-for-review;
+  content: counter(counter-for-review);
   position: absolute;
-  left: 1.6em;
-  top: -0.4em;
+  left: 0em;
+  top: 0em;
+  font-size: 30px;
   background: #ffffff;
   color: #0B0C0C;
-  width: 2em;
-  height: 2em;
+  width: 1.5em;
+  height: 1.5em;
   border-radius: 50%;
   display: flex;
   justify-content: center;
