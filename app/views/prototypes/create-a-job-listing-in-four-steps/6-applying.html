@@ -22,6 +22,14 @@
 
 </div>
 
+{% set jobSummaryHint %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Provide a brief job summary</li>
+    <li>You may want to include what the role is</li>
+    <li>and the ideal candidate</li>
+  </ul>
+{% endset %}
+
 <!-- Main content START -->
 <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0 govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
@@ -37,8 +45,7 @@
           isPageHeading: true
         },
         hint: {
-          text: "Provide a brief job summary, max 400 words. You may want to 
-          include what the role is and the ideal candidate"
+          html: jobSummaryHint
         }
       }) }}
   </div>
