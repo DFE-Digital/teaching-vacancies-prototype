@@ -287,23 +287,11 @@
                   </ul>
                 {% endset %}
 
-                {% set personalStatementHtml %}
-                  <p>Your personal statement is used to explain why you want to become a teacher and your 
-                    suitability for the role. While your application form briefly outlines your qualifications, 
-                    skills and work experience...</p>
-                {% endset %}
+                
                     
                 {{ govukSummaryList({
                   rows: [
-                    {
-                      key: {
-                        text: "Personal statement"
-                      },
-                      value: {
-                        html: personalStatementHtml
-                      }
-                    },
-
+              
                     {
                       key: {
                         text: "Contact email"
@@ -324,10 +312,37 @@
 
                     {
                       key: {
-                        text: "School visits (optional)"
+                        text: "Date job will be listed"
                       },
                       value: {
-                        text: "Not defined (will not be seen on published listing)"
+                        text: "Today"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Closing date"
+                      },
+                      value: {
+                        text: "22.04.2022"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Time application is due"
+                      },
+                      value: {
+                        text: "9am"
+                      }
+                    },
+
+                    {
+                      key: {
+                        text: "Date job starts (optional)"
+                      },
+                      value: {
+                        text: "As soon as possible"
                       }
                     }
                   ]
