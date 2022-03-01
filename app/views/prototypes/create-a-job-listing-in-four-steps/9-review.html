@@ -110,7 +110,7 @@
                     <span class="govuk-heading-m circle-number">
                       Step two
                     </span>
-                    <a href="0-job-role">Change</a>
+                    <a href="3-working-pattern">Change</a>
                 </h2>
                 {{ govukTag({
                   text: "completed"
@@ -120,7 +120,7 @@
                 {% set jobRoleHtml %}
                   <ul class="govuk-list">
                     <li>
-                      Suitable for early career teachers
+                      Most of the data suggests that teachers typically work around 50 hours a week in term time,
                     </li>
                     <li>
                       SEND responsibilities (special educational needs and disabilities)
@@ -140,16 +140,16 @@
                   rows: [
                     {
                       key: {
-                        text: "Job role"
+                        text: "Contract type"
                       },
                       value: {
-                        text: "Teacher"
+                        text: "Full time"
                       }
                     },
 
                     {
                       key: {
-                        text: "Job role details"
+                        text: "How many hours or days does the role cover?"
                       },
                       value: {
                         html: jobRoleHtml
@@ -158,31 +158,21 @@
 
                     {
                       key: {
-                        text: "Job title"
+                        text: "Annual or full-time equivalent (FTE) salary"
                       },
                       value: {
-                        text: "Philosophy teacher"
+                        text: "£45,000"
                       }
                     },
 
                     {
                       key: {
-                        text: "Contract type"
+                        text: "What are the specifics of the working pattern? "
                       },
                       value: {
-                        text: "Permanent"
+                        text: "no specifics"
                       }
-                    },
-
-                    {
-                      key: {
-                        text: "Subject(s)"
-                      },
-                      value: {
-                        text: "Philosophy"
-                      }
-                    }
-                    
+                    }  
                   ]
                 }) }}
             </section>
@@ -199,7 +189,7 @@
                     <span class="govuk-heading-m circle-number">
                       Step three
                     </span>
-                    <a href="0-job-role">Change</a>
+                    <a href="6-applying">Change</a>
                 </h2>
                 {{ govukTag({
                   text: "completed"
@@ -229,10 +219,11 @@
                   rows: [
                     {
                       key: {
-                        text: "Job role"
+                        text: "Job advert"
                       },
                       value: {
-                        text: "Teacher"
+                        text: "Recently graded ‘Good’ by Ofsted (December 2021), we are looking for an inspirational, enthusiastic and creative teacher to join our team. 
+                        Weston Park is a large federated primary school and infant school in the east of Southampton..."
                       }
                     },
 
@@ -247,31 +238,21 @@
 
                     {
                       key: {
-                        text: "Job title"
+                        text: "Supporting documents"
                       },
                       value: {
-                        text: "Philosophy teacher"
+                        text: "item_1"
                       }
                     },
 
                     {
                       key: {
-                        text: "Contract type"
+                        text: "How would you like candidates to apply?"
                       },
                       value: {
-                        text: "Permanent"
+                        text: "Use the Teaching Vacancies application form"
                       }
-                    },
-
-                    {
-                      key: {
-                        text: "Subject(s)"
-                      },
-                      value: {
-                        text: "Philosophy"
-                      }
-                    }
-                    
+                    }   
                   ]
                 }) }}
             </section>
@@ -285,9 +266,9 @@
                 <div class="flex-header number-container">
                   <h2 class="app-task-list__section counters">
                       <span class="govuk-heading-m circle-number">
-                        Step one
+                        Step four
                       </span>
-                      <a href="0-job-role">Change</a>
+                      <a href="6b-applying-within-tvs">Change</a>
                   </h2>
                   {{ govukTag({
                     text: "completed"
@@ -312,54 +293,50 @@
                     </li>
                   </ul>
                 {% endset %}
+
+                {% set personalStatementHtml %}
+                  <p>Your personal statement is used to explain why you want to become a teacher and your 
+                    suitability for the role. While your application form briefly outlines your qualifications, 
+                    skills and work experience...</p>
+                {% endset %}
                     
                 {{ govukSummaryList({
                   rows: [
                     {
                       key: {
-                        text: "Job role"
+                        text: "Personal statement"
                       },
                       value: {
-                        text: "Teacher"
+                        html: personalStatementHtml
                       }
                     },
 
                     {
                       key: {
-                        text: "Job role details"
+                        text: "Contact email"
                       },
                       value: {
-                        html: jobRoleHtml
+                        text: "example@example.com"
                       }
                     },
 
                     {
                       key: {
-                        text: "Job title"
+                        text: "Contact phone number"
                       },
                       value: {
-                        text: "Philosophy teacher"
+                        text: "Not defined (will not be seen on published listing)"
                       }
                     },
 
                     {
                       key: {
-                        text: "Contract type"
+                        text: "School visits (optional)"
                       },
                       value: {
-                        text: "Permanent"
-                      }
-                    },
-
-                    {
-                      key: {
-                        text: "Subject(s)"
-                      },
-                      value: {
-                        text: "Philosophy"
+                        text: "Not defined (will not be seen on published listing)"
                       }
                     }
-                    
                   ]
                 }) }}
             </section>
