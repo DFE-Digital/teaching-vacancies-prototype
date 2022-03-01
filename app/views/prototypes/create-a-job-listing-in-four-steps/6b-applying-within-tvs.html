@@ -28,7 +28,7 @@
 
       <form class="" action="7-supporting-documents" method="post">
           
-          {{ govukTextarea({
+          <!-- {{ govukTextarea({
             rows: "8",
             label: {
               text: "Help candidates to write their personal statement (optional)",
@@ -38,7 +38,7 @@
               text: "Provide guidance on how long it should be and any specific information you’d like them to include"
             }
           } | decorateAttributes(data, "data.job.howToApply")) }}
-          
+           -->
           {{ govukInput({
             label: {
               text: "Contact email",
@@ -61,7 +61,7 @@
             classes: "govuk-!-width-two-thirds"
           } | decorateAttributes(data, "data.job.contactPhone")) }}
 
-          {{ govukTextarea({
+          <!-- {{ govukTextarea({
             label: {
               text: "School visits (optional)",
               classes: "govuk-label--m"
@@ -69,7 +69,7 @@
             hint: {
               text: "Explain how candidates can arrange a visit to the school (include contact details if different from those provided above)"
             }
-          } | decorateAttributes(data, "data.job.schoolVisits")) }}
+          } | decorateAttributes(data, "data.job.schoolVisits")) }} -->
 
         
       </form>
