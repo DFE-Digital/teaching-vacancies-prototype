@@ -59,7 +59,7 @@
       <h3 class="govuk-heading-m">Upload files</h3>
 
       <p class="govuk-body">You can upload files such as a job description or person specification.</p>
-      <h3 class="govuk-heading-m">Each file must be:</h3>
+      <p>Each file must be:<p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
           in pdf, jpeg, png, mp4, doc, ppt or xls format
@@ -114,13 +114,17 @@
       <p class="govuk-body">Candidates can apply using the Teaching Vacancies application form, or you can direct them to another service, like the local authority or a school's 
         website which may include local authority website or your school website. <a href="https://qa.teaching-vacancies.service.gov.uk/teaching-vacancies-application-form-guide-sept-21.pdf" class="govuk-link">Download more information about the application form (2.73 MB, PDF)</a></p>
 
+      {% set jobSummaryHint %}
+      <h3 class="govuk-heading-m">How would you like candidates to apply?</h3>
+      {% endset %}
+
       <form class="" action="6-applying-answer" method="post">
 
         {% if data.job.role != "education support" %}
           {{ govukRadios({
             fieldset: {
               legend: {
-                text: "How would you like candidates to apply?",
+                html: jobSummaryHint,
                 classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
               }
             },
