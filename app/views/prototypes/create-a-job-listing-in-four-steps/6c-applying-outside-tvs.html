@@ -199,25 +199,120 @@
         } | decorateAttributes(data, "data.job.listingStartDate")) }}
     {% endset %}
 
-    {{ govukRadios({
+      {% set exactStartDate %}
+      {{ govukDateInput({
         fieldset: {
           legend: {
-            text: "Date job starts (optional)",
-            classes: "govuk-fieldset__legend--m"
+            text: "Enter date",
+            classes: "govuk-fieldset__legend--s"
           }
         },
-        items: [
-          {
-            text: "On a specific date",
-            conditional: {
-              html: conditionalListingStartDate
+        hint: {
+          text: "For example, 04 01 2022"
+        }
+      } | decorateAttributes(data, "data.job.listingStartDate")) }}
+    {% endset %}
+
+    {% set conditionalListingStartDate %}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example, 09 03 2022 to 11 03 2022 
+            </div>
+            <div class="govuk-date-input" id="passport-issued" style="float: left;">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    to
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+        
+          </fieldset>
+        </div>
+        {% endset %}
+
+        {{ govukRadios({
+          fieldset: {
+            legend: {
+              text: "Date job starts (optional)",
+              classes: "govuk-fieldset__legend--m"
             }
           },
-          {
-            text: "As soon as possible"
-          }
-        ]
-      } | decorateAttributes(data, "data.job.listingStartDate")) }}
+          items: [
+            {
+              text: "As soon as possible"
+            },
+            {
+              text: "Exact start date",
+              conditional: {
+                html: exactStartDate
+              }
+            },
+            {
+              text: "As soon as possible",
+              conditional: {
+                html: conditionalListingStartDate
+              }
+            }
+            
+          ]
+        } | decorateAttributes(data, "data.job.listingStartDate")) }}
+
+    
 
       <div class="govuk-button-group">
         <!-- <button class="govuk-button" data-module="govuk-button">
