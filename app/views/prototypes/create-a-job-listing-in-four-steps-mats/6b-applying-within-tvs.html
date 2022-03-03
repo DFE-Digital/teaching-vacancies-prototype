@@ -95,7 +95,6 @@
               }
             } | decorateAttributes(data, "data.job.listingDateCustom")) }}
         {% endset %}
-        
 
         {% set conditionalListingTime %}
         <div class="govuk-form-group">
@@ -178,8 +177,7 @@
           Date job starts <span class="govuk-!-font-weight-regular">(optional)</span>
         {% endset %}
 
-
-        {% set exactStartDate %}
+        {% set conditionalListingStartDate %}
           {{ govukDateInput({
             fieldset: {
               legend: {
@@ -191,39 +189,7 @@
               text: "For example, 04 01 2022"
             }
           } | decorateAttributes(data, "data.job.listingStartDate")) }}
-        {% endset %}
-
-
-        {% set conditionalListingStartDate %}
-          {{ govukDateInput({
-            fieldset: {
-              legend: {
-                text: "Enter date",
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            hint: {
-              text: "For example, 09 03 2022 to 11 03 2022"
-            }
-          } | decorateAttributes(data, "data.job.listingStartDate")) }}
-
-          {{ govukDateInput({
-            fieldset: {
-              legend: {
-                text: "Enter date",
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            hint: {
-              text: "For example, 09 03 2022 to 11 03 2022"
-            }
-          } | decorateAttributes(data, "data.job.listingStartDate")) }}
-        {% endset %}
-
-
-
-
-
+      {% endset %}
 
       {{ govukRadios({
           fieldset: {
@@ -234,21 +200,14 @@
           },
           items: [
             {
-              text: "As soon as possible"
-            },
-            {
-              text: "Exact start date",
-              conditional: {
-                html: exactStartDate
-              }
-            },
-            {
-              text: "As soon as possible",
+              text: "On a specific date",
               conditional: {
                 html: conditionalListingStartDate
               }
+            },
+            {
+              text: "As soon as possible"
             }
-            
           ]
         } | decorateAttributes(data, "data.job.listingStartDate")) }}
 

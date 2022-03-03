@@ -96,6 +96,7 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   })
 
 
+
 // Create a job listing (in 4 steps)
   // Copy an existig job or start a new one?
   router.post('/prototypes/create-a-job-listing-in-four-steps/copy-or-new-job-answer', function (req, res) {
@@ -477,5 +478,20 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     })
     
   })
+
+   // Select Bexleyheath Academy or WEYDON MULTI ACADEMY TRUST 
+
+  router.post(`/prototypes/create-a-job-listing-in-four-steps/new-or-copy-job`, function (req, res) {
+    const checkOrg = req.session.data['select-your-organisation-2-steps'];
+
+    if (checkOrg === 'bexleyheath-academy-open') {
+        res.redirect(`/prototypes/create-a-job-listing-in-four-steps/new-or-copy-job`);
+    } else {
+        res.redirect(`/prototypes/create-a-job-listing-in-four-steps-mats/new-or-copy-job`);
+    }
+})
+
+
+
 
 module.exports = router

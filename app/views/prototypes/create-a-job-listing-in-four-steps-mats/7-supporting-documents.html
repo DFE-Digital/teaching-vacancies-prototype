@@ -1,0 +1,71 @@
+{% extends "create-a-job.html" %}
+
+{% set sectionActive = "hiring staff" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set activePageNumber = "8" %}
+  {% set activePage = "step8" %}
+{% else %}
+  {% set activePageNumber = "7" %}
+  {% set activePage = "step7" %}
+{% endif %}
+
+{% block createJobcontent %}
+  <!-- Main content START -->
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Supporting documents</h2>
+      <h3 class="govuk-heading-s">Upload files</h3>
+
+      <p class="govuk-body">You can upload files such as a job description or person specification.</p>
+      <p class="govuk-body">You can upload as many files as you like. Each file must be:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          in pdf, jpeg, png, mp4, doc, ppt or xls format
+        </li>
+        <li>
+          smaller than 10 MB
+        </li>
+        <li>
+          accessible for users with disabilities or impairments - <a class="govuk-link" target="_blank" href="https://www.gov.uk/guidance/publishing-accessible-documents#writing-accessible-documents">how to make documents accessible (opens in new tab).</a>
+        </li>
+      </ul>
+
+      {{ govukButton({
+        text: "Select a file",
+        classes: "govuk-button--secondary govuk-!-margin-top-3"
+      }) }}
+
+      <div class="js-documents">
+        <table class="govuk-table js-documents__table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header">File name</th>
+              <th class="govuk-table__header">Status</th>
+              <th class="govuk-table__header">File size</th>
+              <th class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body" id="js-documents__table-body">
+            <tr class="govuk-table__row js-document-row" data-document-id="15cb24e5-1001-4680-8897-9838f4b555dc">
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="#">File-name.pdf (opens in new tab)</a>
+              </td>
+              <td class="govuk-table__cell">Uploaded</td>
+              <td class="govuk-table__cell">142 KB</td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" rel="nofollow" data-method="delete" href="#">Remove <span class="govuk-visually-hidden"> Screenshot 2021-10-28 at 09.44.39.png supporting document</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {# <p class="js-documents__no-files">No files selected</p> #}
+      </div>
+
+      {{ govukButton({
+        text: "Continue"        
+      }) }}
+
+  </div>
+
+{% endblock %}

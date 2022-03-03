@@ -1,0 +1,72 @@
+{% extends "create-a-job.html" %}
+
+{% set sectionActive = "hiring staff" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set activePageNumber = "3" %}
+  {% set activePage = "step3" %}
+{% else %}
+  {% set activePageNumber = "2" %}
+  {% set activePage = "step2" %}
+{% endif %}
+
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <form class="" action="2-job-details" method="post">
+
+      <h2 class="govuk-heading-l">Job details</h2>
+
+          {# TODO - these are all the education phases 
+          All
+          16 plus
+          All-through
+          Middle deemed primary
+          Middle deemed secondary
+          Not applicable
+          Not recorded
+          Nursery
+          Primary
+          Secondary #}
+
+          {{ govukRadios({
+              fieldset: {
+                legend: {
+                  text: "What education phase will the role be covering?",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  text: "Primary"
+                },
+                {
+                  text: "Secondary"
+                },
+                {
+                  text: "16 to 19"
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  text: "More than one phase"
+                }
+              ]
+            } | decorateAttributes(data, "data.job.phaseSetup")) }}
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="./2-job-details">Cancel</a></p> 
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {# <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %} #}
+  </div>
+
+{% endblock %}
