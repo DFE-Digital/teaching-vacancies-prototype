@@ -491,6 +491,19 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     }
 })
 
+// Create a job listing (in 4 steps) for MATs
+// Copy an existig job or start a new one?
+router.post('/prototypes/create-a-job-listing-in-four-steps-mats/copy-or-new-job-answer', function (req, res) {
+
+  let newOrCopyExisting = req.session.data.job.newOrCopyExistingJob
+
+  if (newOrCopyExisting == "Start with a blank template") {
+    res.redirect('/prototypes/create-a-job-listing-in-four-steps-mats/0-job-role')
+  } else {
+    res.redirect('/prototypes/create-a-job-listing-in-four-steps-mats/copy-job')
+  }  
+  
+})
 
 
 
