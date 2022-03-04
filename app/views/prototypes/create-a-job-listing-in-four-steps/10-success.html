@@ -1,6 +1,6 @@
-{% extends "templates/form-template.html" %}
+{% extends "templates/form-template-4.html" %}
 
-{% set sectionActive = "hiring staff" %}
+
 
 {% block formContent %}
 
@@ -15,15 +15,13 @@
 
   <div class="govuk-button-group">
 
-    {{ govukButton({
-      text: "View your job listings",
-      classes: "govuk-button--secondary"
-    }) }}
+
+    <a href="#" class="govuk-button govuk-button--secondary">View your job listings</a>
     
     {{ govukButton({
       text: "Create another job listing",
       classes: "govuk-button--secondary",
-      href: "/prototypes/create-a-job/new-or-copy-job"
+      href: "/prototypes/create-a-job-listing-in-four-steps/new-or-copy-job"
     }) }}
   </div>
 
