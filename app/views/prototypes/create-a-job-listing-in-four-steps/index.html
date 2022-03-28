@@ -1,0 +1,29 @@
+{% extends "layout_gds-basic.html" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set isMultiSchool = "true" %}
+{% endif %}
+
+{% block pageTitle %}
+  Prototype start
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Create a job listing</h1>
+        <p>Usability test for introducing Education Support roles when creating jobs - August 2021</p>
+        
+        {{ govukButton({
+          text: "Start now",
+          href: "/prototypes/create-a-job/new-or-copy-job",
+          isStartButton: true
+        }) }}
+
+    </div>
+</div>
+
+{% endblock %}

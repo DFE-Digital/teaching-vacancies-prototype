@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+
+
+{% block pageTitle %}
+  Job listing name
+{% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper govuk-!-padding-top-2">
+
+    <div class="govuk-grid-row full-width-bg-white govuk-!-padding-top-8 govuk-!-padding-bottom-4 govuk-!-padding-left-3 govuk-!-padding-right-3 govuk-!-margin-left-0">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post" novalidate spellcheck="false">
+          {% block formContent %}
+          {% endblock %}
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  // const body = document.querySelector('body.govuk-template__body');
+  const body = document.querySelector('body.govuk-template__body');
+
+  // body.setAttribute('style', 'background-color: #F2F2F2;');
+  body.style.backgroundColor = '#F2F2F2';
+</script>
+
+{% endblock %}

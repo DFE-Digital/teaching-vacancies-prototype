@@ -95,6 +95,25 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     
   })
 
+
+
+// Create a job listing (in 4 steps)
+  // Copy an existig job or start a new one?
+  router.post('/prototypes/create-a-job-listing-in-four-steps/copy-or-new-job-answer', function (req, res) {
+  
+    let newOrCopyExisting = req.session.data.job.newOrCopyExistingJob
+
+    if (newOrCopyExisting == "Start with a blank template") {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/0-job-role')
+    } else {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/copy-job')
+    }  
+    
+  })
+
+
+
+
   // Job role
   router.post('/prototypes/create-a-job/0-job-role-answer', function (req, res) {
   
@@ -114,6 +133,31 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       res.redirect('/prototypes/create-a-job/2-job-details')
     }   
   })
+
+
+// Create a job listing (in 4 steps)
+  // Job role
+  router.post('/prototypes/create-a-job-listing-in-four-steps/0-job-role-answer', function (req, res) {
+  
+    let jobRole = req.session.data.job.role
+    let userType = req.session.data.job.userType
+    let jobPhase = req.session.data.job.phase
+
+    if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/1-job-location')
+    } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/0a-job-role-details') 
+    } else if (jobRole == "bussinessManager") {
+      res.redirect('/404') 
+    } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/2a-education-phase-setup')   
+    } else {
+      res.redirect('/prototypes/create-a-job-listing-in-four-steps/2-job-details')
+    }   
+  })
+
+
+
   
   // Job role (v1)
   router.post('/prototypes/create-a-job_v1/0-job-role-answer', function (req, res) {
@@ -248,6 +292,19 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     }  
     
   })
+
+  // Applying for the job 4 steps
+    router.post('/prototypes/create-a-job-listing-in-four-steps/6-applying-answer', function (req, res) {
+    
+      let applyProcess = req.session.data.job.applyProcess
+  
+      if (applyProcess == "Use the Teaching Vacancies application form") {
+        res.redirect('/prototypes/create-a-job-listing-in-four-steps/6b-applying-within-tvs')
+      } else {
+        res.redirect('/prototypes/create-a-job-listing-in-four-steps/6c-applying-outside-tvs')
+      }  
+      
+    })
 
   // ----------------------------------------------------
   // Applications and job routes
@@ -421,5 +478,33 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     })
     
   })
+
+   // Select Bexleyheath Academy or WEYDON MULTI ACADEMY TRUST 
+
+  router.post(`/prototypes/create-a-job-listing-in-four-steps/new-or-copy-job`, function (req, res) {
+    const checkOrg = req.session.data['select-your-organisation-2-steps'];
+
+    if (checkOrg === 'bexleyheath-academy-open') {
+        res.redirect(`/prototypes/create-a-job-listing-in-four-steps/new-or-copy-job`);
+    } else {
+        res.redirect(`/prototypes/create-a-job-listing-in-four-steps-mats/new-or-copy-job`);
+    }
+})
+
+// Create a job listing (in 4 steps) for MATs
+// Copy an existig job or start a new one?
+router.post('/prototypes/create-a-job-listing-in-four-steps-mats/copy-or-new-job-answer', function (req, res) {
+
+  let newOrCopyExisting = req.session.data.job.newOrCopyExistingJob
+
+  if (newOrCopyExisting == "Start with a blank template") {
+    res.redirect('/prototypes/create-a-job-listing-in-four-steps-mats/0-job-role')
+  } else {
+    res.redirect('/prototypes/create-a-job-listing-in-four-steps-mats/copy-job')
+  }  
+  
+})
+
+
 
 module.exports = router
