@@ -1,0 +1,162 @@
+{% extends "create-a-job.html" %}
+
+{% set sectionActive = "hiring staff" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set activePageNumber = "3" %}
+  {% set activePage = "step3" %}
+{% else %}
+  {% set activePageNumber = "2" %}
+  {% set activePage = "step2" %}
+{% endif %}
+
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Job details</h2>
+
+      <form class="" action="3-working-pattern" method="post">
+        
+        {# Educational phase #}
+
+        {# Setting up come langauge juggling #}
+        {% set educationPhaseText %}
+          {% if data.job.phase == "Primary" %}
+            Primary school
+          {% endif %}
+          {% if data.job.phase == "Secondary" %}
+            Secondary school
+          {% endif %}
+        {% endset %}
+
+        {% set initialJobPhase %}
+          {% if data.job.phaseSetup %}
+            {{ data.job.phaseSetup }}
+          {% else %}
+            {{ data.job.phase }}
+          {% endif %}
+        {% endset %}
+
+        {% set jobPhaseChangeLink %}
+          {% if data.job.phaseSetup %}
+            ./2a-education-phase-setup
+          {% else %}
+            ./2a-education-phase
+          {% endif %}
+        {% endset %}
+
+        {{ initialJobPhase | log }}
+
+        {% set educationPhaseInsetHtml %}
+          {% if data.job.phase != "More than one phase" and data.job.phaseSetup != "More than one phase" %}
+            <p class="govuk-body">You are listing a {{ initialJobPhase }} phase role.
+          {% elseif data.job.phase != "More than one phase" and data.job.phaseSetup == "More than one phase" %}
+            <p class="govuk-body">You are listing a role covering more than one phase.
+          {% elseif data.job.phase == "More than one phase" and (data.job.phaseSetup == "Primary" or data.job.phaseSetup == "Secondary" or data.job.phaseSetup == "16 to 19" ) %}
+            <p class="govuk-body">You are listing a {{ initialJobPhase }} phase role.
+          {% elseif data.job.phase == "More than one phase" %}
+            <p class="govuk-body">You are listing a role covering more than one phase.
+          {% endif %}
+          {# Only show if it is an all-though phase school #}
+          {% if data.job.phase == "More than one phase" %}
+            <a href="{{ jobPhaseChangeLink }}">Change the education phase</a>.</p>
+          {% endif %}
+        {% endset %}
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h2>
+        
+        {{ govukInsetText({
+          html: educationPhaseInsetHtml
+        }) }}
+
+        {# Job title #}
+
+        {% set jobTitleHintHtml %}
+            Include whether the role is at a school or a trust.
+          {% if data.job.phase == "Primary" %}
+            Include Key Stage if relevant.
+          {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" %}
+            Include subject and level of seniority, if relevant. For example, ‘Subject leader for science’.
+          {% endif %}
+        {% endset %}
+
+        {{ govukCharacterCount({
+          maxlength: 100,
+          rows: "1",
+          label: {
+            text: "Job title",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            html: jobTitleHintHtml
+          }
+        } | decorateAttributes(data, "data.job.title")) }}
+
+        {% set conditionalContractHtml %}
+          
+          {{ govukTextarea({
+            rows: "1",
+            label: {
+              text: "Duration of fixed term contract",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Contract length should be more than 12 weeks. Short term cover should not be advertised on Teaching Vacancies."
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+            fieldset: {
+              legend: {
+                text: "Contract type",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                text: "Permanent"
+              },
+              {
+                text: "Fixed term",
+                conditional: {
+                  html: conditionalContractHtml
+                }
+              }
+            ]
+          } | decorateAttributes(data, "data.job.contractType")) }}
+                      
+          {# Subject #}
+
+          {# Only show this is phase is Primary #}
+          {% if data.job.phase == "Primary" or data.job.phaseSetup == "Primary"  %} 
+
+            {% include "includes/hiring-staff/primary-subjects.html" %}
+            
+          {# Show this is phase is Secondary or 16 to 19 #}
+          {% elseif data.job.phase == "Secondary" or data.job.phase == "16 to 19" or data.job.phaseSetup == "Secondary" or data.job.phaseSetup == "16 to 19" %}
+              
+              {% include "includes/hiring-staff/subject-autocomplete.html" %}
+
+          {% else %}
+
+              {% include "includes/hiring-staff/primary-subjects.html" %}
+              {% include "includes/hiring-staff/subject-autocomplete.html" %}
+
+          {% endif %}
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+      </form>
+
+  </div>
+
+  {# <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %}
+  </div> #}
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends "templates/form-template.html" %}
+
+{% set sectionActive = "hiring staff" %}
+{% set formAction = "./copy-or-new-job-answer" %}
+
+{% block formContent %}
+
+  
+  {# <div class="create-title">
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-5">Create a job listing</h1>
+  </div> #}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "What do you want to do?",
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: "Start with a blank template"
+      },
+      {
+        text: "Copy an existing job listing"
+      }
+    ]
+  } | decorateAttributes(data, "data.job.newOrCopyExistingJob")) }}
+
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+  <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+
+{% endblock %}

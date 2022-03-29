@@ -1,0 +1,70 @@
+{% extends "create-a-job.html" %}
+
+{% set activePage = "step4" %}
+
+{% if data.job.userType == "multiSchoolMat" or data.job.userType == "multiSchoolLa" %}
+  {% set activePageNumber = "5" %}
+  {% set activePage = "step5" %}
+{% else %}
+  {% set activePageNumber = "4" %}
+  {% set activePage = "step4" %}
+{% endif %}
+
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Pay package</h2>
+
+      <form class="" action="5-important-dates" method="post">
+
+          {{ govukInput({
+            label: {
+              text: "Annual or full-time equivalent (FTE) salary",
+              classes: "govuk-label--s"
+            },
+            classes: "govuk-!-width-two-thirds"
+          } | decorateAttributes(data, "data.job.salary")) }}
+
+          {% if data.job.workingPattern != "Full time" %}
+          
+            {% set actualSalaryLabel %}
+              Actual salary <span class="govuk-!-font-weight-regular">(optional)</span>
+            {% endset %}
+
+            {{ govukInput({
+              label: {
+                html: actualSalaryLabel,
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "For part-time or term-time roles this is what the candidate will actually be paid"
+              },
+              classes: "govuk-!-width-two-thirds"
+            } | decorateAttributes(data, "data.job.salaryActual")) }}
+
+          {% endif %}
+
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="benefits">
+                  Additional allowances <span class="govuk-!-font-weight-regular">(optional)</span>
+              </label>
+              <span id="more-detail-hint" class="govuk-hint">
+                Include special educational needs (SEN) allowances and teaching and learning responsibility (TLR) payments, for example</span>
+              <textarea class="govuk-textarea" id="benefits" name="benefits" rows="5" aria-describedby="benefits"></textarea>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p>
+      </form>
+
+  </div>
+
+  {# <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %}
+  </div> #}
+
+{% endblock %}

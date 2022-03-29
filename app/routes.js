@@ -112,6 +112,22 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
   })
 
 
+  // Create a job flow (applying)
+
+  // Copy an existig job or start a new one?
+  router.post('/prototypes/create-a-job-applying/copy-or-new-job-answer', function (req, res) {
+  
+    let newOrCopyExisting = req.session.data.job.newOrCopyExistingJob
+
+    if (newOrCopyExisting == "Start with a blank template") {
+      res.redirect('/prototypes/create-a-job-applying/6-applying')
+    } else {
+      res.redirect('/prototypes/create-a-job-applying/copy-job')
+    }  
+    
+  })
+
+
 
 
   // Job role
@@ -156,6 +172,27 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     }   
   })
 
+
+  
+// Job role (applying)
+router.post('/prototypes/create-a-job-applying/0-job-role-answer', function (req, res) {
+  
+  let jobRole = req.session.data.job.role
+  let userType = req.session.data.job.userType
+  let jobPhase = req.session.data.job.phase
+
+  if ( (jobRole == "sendCo") && ((userType == "multiSchoolMat") || (userType == "multiSchoolLA")) ) {
+    res.redirect('/prototypes/create-a-job-applying/1-job-location')
+  } else if ( ((jobRole == "teacher") || (jobRole == "leadership") || (jobRole == "education support")) ) {
+    res.redirect('/prototypes/create-a-job-applying/0a-job-role-details') 
+  } else if (jobRole == "bussinessManager") {
+    res.redirect('/404') 
+  } else if ( (jobRole == "sendCo") && (userType == "singleSchool") && (jobPhase == "More than one phase") ) {
+    res.redirect('/prototypes/create-a-job-applying/2a-education-phase-setup')   
+  } else {
+    res.redirect('/prototypes/create-a-job-applying/2-job-details')
+  }   
+})
 
 
   
@@ -209,6 +246,23 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
     } 
   })
   
+ // Job role details (applying)
+ router.post('/prototypes/create-a-job-applying/0-job-role-details-answer', function (req, res) {
+  
+  let jobPhase = req.session.data.job.phase
+  let userType = req.session.data.job.userType
+  
+  // If all-through and single school then skip location and go to phase
+  if ( (jobPhase == "More than one phase") && (userType == "singleSchool") ) {
+    res.redirect('/prototypes/create-a-job-applying/2a-education-phase-setup')
+  } else if ((userType == "multiSchoolMat") || (userType == "multiSchoolLa")) {
+    res.redirect('/prototypes/create-a-job-applying/1-job-location')
+  } else {
+    res.redirect('/prototypes/create-a-job-applying/2-job-details')
+  } 
+})
+
+
   // Job location MAT (v1)
   router.post('/prototypes/create-a-job_v1/job-role-answer-mat', function (req, res) {
     
@@ -305,6 +359,22 @@ router.post('/assets/views/job_alerts2/create-1', function (req, res) {
       }  
       
     })
+
+
+  // Applying for the job (applying)
+    router.post('/prototypes/create-a-job-applying/6-applying-answer', function (req, res) {
+    
+    let applyProcess = req.session.data.job.applyProcess
+
+    if (applyProcess == "Use the Teaching Vacancies application form") {
+      res.redirect('/prototypes/create-a-job-applying/0-job-role')
+    } else {
+      res.redirect('/prototypes/create-a-job-applying/6c-applying-outside-tvs')
+    }  
+    
+  })
+
+  
 
   // ----------------------------------------------------
   // Applications and job routes

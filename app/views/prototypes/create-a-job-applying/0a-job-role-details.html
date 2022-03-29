@@ -1,0 +1,97 @@
+{% extends "create-a-job.html" %}
+
+{% set activePage = "step0" %}
+{% set activePageNumber = "1" %}
+{% set sectionActive = "hiring staff" %}
+
+{% block createJobcontent %}
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Job role</h2>
+
+      {# If Teacher #}
+      {% if data.job.role == "teacher" %}
+        <form class="" action="0-job-role-details-answer" method="post">
+            {{ govukCheckboxes({
+              fieldset: {
+                legend: {
+                  text: "Tell us more about the role (optional)",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "Select all that apply"
+              },
+              items: [
+                {
+                  text: "Suitable for early career teachers"
+                },
+                {
+                  text: "SEND responsibilities (special educational needs and disabilities)"
+                }
+              ]
+            } | decorateAttributes(data, "data.job.teacherRoleDetails")) }}
+
+            <button class="govuk-button" data-module="govuk-button">Continue</button>
+          </form>
+        {% endif %}
+      
+        {# if leadership #}
+        {% if data.job.role == "leadership" %}
+          <form class="" action="0-job-role-details-answer" method="post">
+              {{ govukRadios({
+                fieldset: {
+                  legend: {
+                    text: "Does the role have SEND responsibilities (special educational needs and disabilities)?",
+                    classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+                  }
+                },
+                items: [
+                  {
+                    text: "Yes"
+                  },
+                  {
+                    text: "No"
+                  }
+                ]
+              } | decorateAttributes(data, "data.job.teacherRoleDetails")) }}
+            <button class="govuk-button" data-module="govuk-button">Continue</button>
+            </form>
+          {% endif %}
+
+          {# if education support #}
+          {% if data.job.role == "education support" %}
+            <form class="" action="0-job-role-details-answer" method="post">
+              {{ govukRadios({
+                fieldset: {
+                  legend: {
+                    text: "Does the role have SEND responsibilities (special educational needs and disabilities)?",
+                    classes: "govuk-fieldset__legend--s govuk-!-width-two-thirds"
+                  }
+                },
+                items: [
+                  {
+                    text: "Yes"
+                  },
+                  {
+                    text: "No"
+                  }
+                ]
+              } | decorateAttributes(data, "data.job.teacherRoleDetails")) }}
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+              </form>
+            {% endif %}
+          
+          <p><a href="/prototypes/application/expanded/dashboard">Cancel and return to manage jobs</a></p> 
+
+      </form>
+
+  </div>
+  {# <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Creating a job listing steps</span>
+        </h2>
+    </div>
+    {% include "includes/hiring-staff/acc-steps.html" %}
+  </div> #}
+{% endblock %}
