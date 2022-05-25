@@ -56,7 +56,7 @@
 
   .govuk-header__content {
     @include mq ($from: desktop) {
-      width: 50%;
+      width: 100%;
       float: right;
     }
   }

@@ -77,9 +77,29 @@
         active: true if (navActive == "sign-in")
       } if sectionActive == "public service",
       {
-        href: "#",
-        text: "My account",
+        href: "/prototypes/application/expanded/dashboard",
+        text: "Manage jobs",
         active: true if (navActive == "my-acccount")
+      } if sectionActive == "hiring staff",
+      {
+        href: "#",
+        text: " Manage settings",
+        active: true if (navActive == "my-acccount")
+      } if sectionActive == "hiring staff",
+      {
+        href: "#",
+        text: "Notifications",
+        active: true if (navActive == "my-acccount")
+      } if sectionActive == "hiring staff",
+      {
+        href: "#",
+        text: "School hiring guides",
+        active: true if (navActive == "my-acccount")
+      } if sectionActive == "hiring staff",
+      {
+        href: "/templates/hiringstaff/job-seekers",
+        text: "Job seekers",
+        active: true if (navActive == "job-seekers")
       } if sectionActive == "hiring staff",
       {
         href: "#",
@@ -160,29 +180,7 @@
 {# Show primary nav if enabled #}
 {% if data.settings.showPrimaryNav %}
   {% if sectionActive == "hiring staff" %}
-    <div class="moj-primary-navigation">
-      <div class="govuk-width-container">
-        <div class="moj-primary-navigation__container">
-          <div class="moj-primary-navigation__nav">
-            <nav class="moj-primary-navigation" aria-label="Primary navigation">
-              <ul class="moj-primary-navigation__list">
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="/prototypes/application/expanded/dashboard" {{'aria-current="page"' if primaryNavActive == 'manage jobs'}}>Manage jobs</a>
-                  </li>
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="/prototypes/application/expanded/dashboard/manage-settings" {{'aria-current="page"' if primaryNavActive == 'manage settings'}}>Manage settings</a>
-                  </li>
-                  <li class="moj-primary-navigation__item">
-                    <a class="moj-primary-navigation__link" href="#" {{'aria-current="page"' if primaryNavActive == 'notifications'}}>Notifications
-                    <span class="app-notification-number">2</span>
-                    </a>
-                  </li>
-                </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   {% endif %}
 
   {% if sectionActive == "public service" %}

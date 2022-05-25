@@ -1,0 +1,212 @@
+{% extends "templates/profile-template-saved.html" %}
+
+{% set listingTabActive = 'manage listing' %}
+
+{% block listingsTabContent %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  
+    
+    {{ govukButton({
+      text: "Invite to apply",
+      href: "/prototypes/talent-pool/invite-to-apply"
+    }) }}
+
+    {{ govukButton({
+      text: "Unfavourite",
+      classes: "govuk-button--secondary"
+    }) }}
+
+    <ol class="app-task-list govuk-!-padding-right-6">
+
+        <strong class="govuk-tag govuk-tag--blue"> Saved</strong> </ol><br>
+
+      <h1 class="govuk-heading-l">Lisa Green</h1>
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">Personal details</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Location"
+          },
+          value: {
+            text: "London"
+          },
+          actions: {
+            items: [
+      
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Phone number"
+          },
+          value: {
+            text: "07893 234 829"
+          },
+          actions: {
+            items: [
+         
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: "lisa.green@gmail.com"
+          },
+          actions: {
+            items: [
+         
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            text: "Actively looking for role"
+          },
+          actions: {
+            items: [
+        
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">About me</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+    <p class="govuk-body">I'm Lisa Green and I have recently gained QTS after doing my PGCE Secondary Mathematics at University of Manchester. I really enjoyed my placement at Harrytown RC High School, where I had the opportunity to prepare lessons across KS3 and KS4. It enabled me to explore theory in practice and be immersed in school life.
+    </p>
+
+    <p class="govuk-body">I have a strong interest in curriculum design and I believe it is about developing strong relationships with pupils to make connections with the curriculum. </p>
+     
+    <p class="govuk-body">I have a real passion for maths and would welcome the opportunity to shape the maths curriculum.
+    </p>
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">Education</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+    <p class="govuk-body">Primary</p>
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">Subjects</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <p class="govuk-body">Math</p>
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">Working pattern</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <p class="govuk-body">Full time</p>
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">ECT staus</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <p class="govuk-body">Yes</p>
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">Work history</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "School or other organisation"
+          },
+          value: {
+            text: "Westside School"
+          }
+        },
+        {
+          key: {
+            text: "Subjects and key stages taught"
+          },
+          value: {
+            text: "Not provided "
+          }
+        },
+        {
+          key: {
+            text: "Main duties	"
+          },
+          value: {
+            text: "Not provided "
+          }
+        },
+        {
+          key: {
+            text: "Dates"
+          },
+          value: {
+            text: "12 February 2020 to present"
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-!-font-size-24 govuk-!-margin-top-0">Education and qualifications</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Subjects and grades"
+          },
+          value: {
+            text: "Math - C"
+          }
+        },
+        {
+          key: {
+            text: "School, college, or other organisation"
+          },
+          value: {
+            text: "Kings College "
+          }
+        },
+        {
+          key: {
+            text: "Year qualification(s) was/were awarded	"
+          },
+          value: {
+            text: "2020 "
+          }
+        },
+        {
+          key: {
+            text: "Activites"
+          },
+          value: {
+            text: "Not provided"
+          }
+        }
+      ]
+    }) }}
+
+    </div>
+
+    </ol>
+
+  </div>
+</div>
+
+{% endblock %}
