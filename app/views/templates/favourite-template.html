@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% set primaryNavActive = "manage jobs" %}
+{% set sectionActive = "hiring staff" %}
+
+
+{# {% set navActive = "manage jobs" %} #}
+
+{% block pageTitle %}
+  Job listing name
+{% endblock %}
+
+{% block main %}
+
+{% include "includes/applications/secondary-nav.html" %}
+
+<!-- START TABLE -->
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-padding-bottom-8 govuk-!-margin-bottom-8">
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+              <div class="app-job-listing-actions govuk-!-margin-top-0">
+                <h2 class="govuk-heading-l table-title-number">{{ pageTitle | safe}}</h2>
+            
+              </div>
+
+              {% block listings %}
+              {% endblock %}
+              
+          </div>
+      </div>
+
+    </main>
+</div>
+
+{% endblock %}
