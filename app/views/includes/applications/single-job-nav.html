@@ -2,8 +2,8 @@
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'manage listing' }} ">
     <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}">Manage job listing  
   </li>
-  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'interviews' }} ">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/interviews">Applications</a>
+  <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'applications' }} ">
+    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/applications">Applications</a>
   </li>
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'invites' }}">
     <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/invites">Invites</a>
@@ -12,6 +12,6 @@
     <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/statistics">Statistics</a>
   </li>
   <li class="acc-navigation__list-item {{ 'app-navigation__list-item--current' if listingTabActive == 'activity' }}">
-    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/statistics">Activity log</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application/expanded/dashboard/job/{{data.jobs[jobId].id}}/activity">Activity log</a>
   </li>
 </ul>
