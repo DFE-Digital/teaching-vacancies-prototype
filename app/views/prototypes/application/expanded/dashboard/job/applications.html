@@ -7,9 +7,9 @@
 {{ data.applications[applicationId] | log }}
 
 {% block listingsTabContent %}
-  
+<h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Applications</h2>
   <div class="flex-header">
-    <h2 class="govuk-!-font-size-27 govuk-!-margin-top-0">Applications</h2>
+   
     {% if data.jobs[jobId].applicationCount > 0 %}
       <div class="govuk-button-group">
         {{ govukButton({
