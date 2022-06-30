@@ -46,6 +46,10 @@ module.exports = router => {
       text: 'Primary',
       checked: profile.phases && profile.phases.includes('Primary')
     }, {
+      value: 'Middle',
+      text: 'Middle',
+      checked: profile.phases && profile.phases.includes('Middle')
+    }, {
       value: 'Secondary',
       text: 'Secondary',
       checked: profile.phases && profile.phases.includes('Secondary')

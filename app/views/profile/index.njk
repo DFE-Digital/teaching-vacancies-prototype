@@ -186,7 +186,7 @@
             },
              {
                   key: {
-                    text: "Education phases"
+                    text: "Age groups"
                   },
                   value: {
                     text: user.profile.phases | join(', ')
@@ -206,7 +206,7 @@
                     text: "Key stages"
                   },
                   value: {
-                    text: user.profile.keyStages
+                    text: user.profile.keyStages | join(', ')
                   },
                   actions: {
                     items: [
@@ -464,6 +464,43 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
+          About you
+        </h2>
+
+        {% if user.profile.interests %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Interests"
+                },
+                value: {
+                  html: user.profile.interests
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/interests",
+                      text: "Change",
+                      visuallyHiddenText: "Phone number"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% else %}
+          <p>Provide information about yourself.</p>
+          {{ govukButton({
+            text: "Add details about you",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/interests'
+          }) }}
+        {% endif %}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
          Experience
         </h2>
 
@@ -529,96 +566,6 @@
             text: "Add experience",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/experience/experience'
-          }) }}
-        {% endif %}
-      </div>
-      {# <div class="app-profile__section">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Special education needs and disability (SEND) experience
-        </h2>
-
-        {% if user.profile.provideSENDExperience %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Do you have experience with special education needs and disability (SEND)?"
-                },
-                value: {
-                  html: user.profile.provideSENDExperience
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/send",
-                      text: "Change",
-                      visuallyHiddenText: "if you have experience with special education needs and disability"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Special education needs and disability (SEND) experience"
-                },
-                value: {
-                  html: user.profile.send
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/send/experience",
-                      text: "Change",
-                      visuallyHiddenText: "Special education needs and disability (SEND) experience"
-                    }
-                  ]
-                }
-              } if user.profile.provideSENDExperience == 'Yes'
-            ]
-          }) }}
-        {% else %}
-          {{ govukButton({
-            text: "Add SEND experience",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/send'
-          }) }}
-        {% endif %}
-      </div> #}
-      <div class="app-profile__section">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Interests
-        </h2>
-
-        {% if user.profile.interests %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Interests"
-                },
-                value: {
-                  html: user.profile.interests
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/interests",
-                      text: "Change",
-                      visuallyHiddenText: "Phone number"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-        {% else %}
-          <p>Provide information about you and your interests.</p>
-          {{ govukButton({
-            text: "Add interests",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/interests'
           }) }}
         {% endif %}
       </div>
