@@ -1,0 +1,86 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Skills and experience
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Skills and experience"
+            },
+            value: {
+              text: profile.experience
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/experience/experience",
+                  text: "Change",
+                  visuallyHiddenText: "Skills and experience"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you have experience with special education needs and disability (SEND)?"
+            },
+            value: {
+              html: profile.provideSENDExperience
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/experience/provide-send",
+                  text: "Change",
+                  visuallyHiddenText: "if you have experience with special education needs and disability"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Special education needs and disability (SEND) experience"
+            },
+            value: {
+              html: profile.SENDExperience
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/experience/send-experience",
+                  text: "Change",
+                  visuallyHiddenText: "Special education needs and disability (SEND) experience"
+                }
+              ]
+            }
+          } if profile.provideSENDExperience == 'Yes'
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

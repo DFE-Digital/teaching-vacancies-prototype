@@ -1,0 +1,104 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Qualification type' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Qualifications
+        </span>
+        {{title}}
+      {% endset %}
+
+      {% set anotherUKQualification %}
+        {{ govukInput({
+          id: "profile[qualifications]["+id+"][anotherUKQualification]",
+          name: "profile[qualifications]["+id+"][anotherUKQualification]",
+          label: {
+            text: "Qualification name",
+            classes: 'govuk-label--s'
+          },
+          value: anotherUKQualification
+        }) }}
+      {% endset %}
+
+      {% set nonUKQualification %}
+        {{ govukInput({
+          id: "profile[qualifications]["+id+"][nonUKQualification]",
+          name: "profile[qualifications]["+id+"][nonUKQualification]",
+          label: {
+            text: "Qualification name",
+            classes: 'govuk-label--s'
+          },
+          hint: {
+            text: 'For example, High school diploma, Higher Secondary School Certificate, Baccalauréat Général, Título de Bachiller'
+          },
+          value: nonUKQualification
+        }) }}
+      {% endset %}
+
+      <form method="post" novalidate>
+        {{ govukRadios({
+          idPrefix: "profile[qualifications]["+id+"][type]",
+          name: "profile[qualifications]["+id+"][type]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [{
+            value: options[0].value,
+            text: options[0].text,
+            checked: options[0].checked
+          }, {
+            value: options[1].value,
+            text: options[1].text,
+            checked: options[1].checked
+          }, {
+            value: options[2].value,
+            text: options[2].text,
+            checked: options[2].checked
+          }, {
+            value: options[3].value,
+            text: options[3].text,
+            checked: options[3].checked,
+            conditional: {
+              html: anotherUKQualification
+            }
+          }, {
+            value: options[4].value,
+            text: options[4].text,
+            checked: options[4].checked,
+            conditional: {
+              html: nonUKQualification
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

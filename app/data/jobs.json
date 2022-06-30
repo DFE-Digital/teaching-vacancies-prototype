@@ -1,29 +1,48 @@
 [
   {
-    "id": "0",
-    "status": "active",
-    "name": "Trust-Wide Lead Practitioner",
-    "applicationCount": "2",
-    "closingDate": "31 October 2020 at 09:00am",
-    "location": "Test location"
-  },
-  {
-    "id": "1",
-    "status": "passed-deadline",
-    "name": "Primary Teacher",
-    "applicationCount": "4",
-    "interviewCount": "2",
-    "listingDate": "06 October 2020 at 07:45am",
-    "endingDate": "20 October 2020 at 09:00am",
-    "location": "Test location"
-  },
-  {
-    "id": "2",
-    "status": "passed-deadline",
-    "name": "Headteacher",
-    "applicationCount": "0",
-    "listingDate": "12 October 2020 at 09:00am",
-    "endingDate": "31 October 2020 at 12:00am",
-    "location": "Test location"
+    "id": "798162",
+    "organisation": {
+      "type": "mat",
+      "name": "Boom Academy Trust",
+      "locations": [
+        {
+          "id": "b2bed817-0cfc-4403-9c25-b4858a504251",
+          "name": "Boom Primary School",
+          "address": {
+            "address1": "123 Main Street",
+            "town": "Some town",
+            "postcode": "AB1 2CD"
+          }
+        },
+        {
+          "id": "028dcb5e-8a1d-489c-a43b-bcccf39e9024",
+          "name": "Town Primary School",
+          "address": {
+            "address1": "321 Main Street",
+            "town": "Some place",
+            "postcode": "AB2 3CD"
+          }
+        }
+      ]
+    },
+    "location": {
+      "id": "b2bed817-0cfc-4403-9c25-b4858a504251",
+      "name": "Boom Primary School",
+      "address": {
+        "address1": "123 Main Street",
+        "town": "Some town",
+        "postcode": "AB1 2CD"
+      }
+    },
+    "role": "Teacher",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "roleHasSendResponsibilities": "No",
+    "title": "Teacher of religious education",
+    "contractType": "Fixed term",
+    "subjects": "Health and social care",
+    "workingPatterns": "Term time",
+    "workingPatternDetails": "Monday to Wedensday",
+    "salary": "Main Pay Scale 1 -6/UPS 1-3",
+    "additionalAllowances": "TLR"
   }
 ]

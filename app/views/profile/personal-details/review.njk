@@ -1,0 +1,125 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Personal details' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {% set emailAddress %}
+        <p>{{user.username}}</p>
+
+        {{ govukInsetText({
+          classes: 'govuk-!-margin-top-3',
+          html: 'Change your email address from within your <a href="#">account</a>.'
+        }) }}
+
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: profile.firstName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/name",
+                  text: "Change",
+                  visuallyHiddenText: "First name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: profile.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/name",
+                  text: "Change",
+                  visuallyHiddenText: "Last name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: emailAddress
+            }
+          },
+          {
+            key: {
+              text: "Do you want to provide a phone number?"
+            },
+            value: {
+              text: profile.providePhoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "if you want to provide a phone number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: profile.phoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Phone number"
+                }
+              ]
+            }
+          } if profile.providePhoneNumber == 'Yes'
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile"
+      }) }}
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

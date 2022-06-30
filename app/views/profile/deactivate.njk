@@ -1,0 +1,40 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Deactivate profile
+      </span>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+        Confirm that you want to deactivate your profile
+      </h1>
+
+      <p>When you deactivate your profile, schools will not be able to find your profile.</p>
+
+      <p>If a school has saved your profile, it’ll be removed from their list.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: "Deactivate profile"
+        }) }}
+      </form>
+      <p><a href="/profile">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

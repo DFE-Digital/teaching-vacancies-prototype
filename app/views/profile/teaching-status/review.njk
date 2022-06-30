@@ -1,0 +1,86 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Teaching status
+      </h1>
+
+      {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you have qualified teaching status (QTS)?"
+              },
+              value: {
+                html: profile.qts
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/qts",
+                    text: "Change",
+                    visuallyHiddenText: "if you have qualified teaching status (QTS)"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Year QTS awarded"
+              },
+              value: {
+                text: profile.qtsAwardedYear
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/qts",
+                    text: "Change",
+                    visuallyHiddenText: "Year QTS awarded"
+                  }
+                ]
+              }
+            } if profile.qtsAwardedYear,
+            {
+              key: {
+                text: "Are you an early career teacher (ECT)?"
+              },
+              value: {
+                text: profile.ect
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/ect",
+                    text: "Change",
+                    visuallyHiddenText: "if you are an early career teacher (ECT)"
+                  }
+                ]
+              }
+            } if profile.ect
+          ]
+        }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -4,7 +4,7 @@
 
 module.exports = {
   // Service name used in header. Eg: 'Renew your passport'
-  serviceName: 'Teaching Vacancies',
+  serviceName: 'Find teaching jobs',
 
   // Default port that prototype runs on
   port: '3000',
@@ -25,10 +25,7 @@ module.exports = {
   // Force HTTP to redirect to HTTPS on production
   useHttps: 'true',
 
-  // Enable or disable Browser Sync
-  useBrowserSync: 'true',
-
-  // Cookie warning - update link to service's cookie page.
-  cookieText: 'GOV.UK uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>',
+  // Enable or disable Browser Sync (local development only)
+  useBrowserSync: 'true'
 
 }

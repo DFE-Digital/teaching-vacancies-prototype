@@ -5,22 +5,30 @@ const url = require('url')
 
 // NPM dependencies
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const express = require('express')
 const nunjucks = require('nunjucks')
 const sessionInCookie = require('client-sessions')
 const sessionInMemory = require('express-session')
 
+// Added dependencies
+const flash = require('connect-flash')
+// const passport = require('passport')
+// const LocalStrategy = require('passport-local').Strategy
+// const authenticationModel = require('./app/models/authentication')
+
 // Run before other code to make sure variables from .env are available
 dotenv.config()
 
 // Local dependencies
 const middleware = [
-  require('./lib/middleware/authentication/authentication.js'),
+  // require('./lib/middleware/authentication/authentication.js')(),
   require('./lib/middleware/extensions/extensions.js')
 ]
 const config = require('./app/config.js')
 const documentationRoutes = require('./docs/documentation_routes.js')
+const prototypeAdminRoutes = require('./lib/prototype-admin-routes.js')
 const packageJson = require('./package.json')
 const routes = require('./app/routes.js')
 const utils = require('./lib/utils.js')
@@ -47,8 +55,7 @@ if (useV6) {
 
 // Set up configuration variables
 var releaseVersion = packageJson.version
-var glitchEnv = (process.env.PROJECT_REMIX_CHAIN) ? 'production' : false // glitch.com
-var env = (process.env.NODE_ENV || glitchEnv || 'development').toLowerCase()
+var env = utils.getNodeEnv()
 var useAutoStoreData = process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData
 var useCookieSessionStore = process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
 var useHttps = process.env.USE_HTTPS || config.useHttps
@@ -72,6 +79,47 @@ if (isSecure) {
   app.set('trust proxy', 1) // needed for secure cookies on heroku
 }
 
+// Add variables that are available in all views
+app.locals.asset_path = '/public/'
+app.locals.useAutoStoreData = (useAutoStoreData === 'true')
+app.locals.useCookieSessionStore = (useCookieSessionStore === 'true')
+app.locals.promoMode = promoMode
+app.locals.releaseVersion = 'v' + releaseVersion
+app.locals.serviceName = config.serviceName
+// extensionConfig sets up variables used to add the scripts and stylesheets to each page.
+app.locals.extensionConfig = extensions.getAppConfig()
+
+// use cookie middleware for reading authentication cookie
+app.use(cookieParser())
+
+// Session uses service name to avoid clashes with other prototypes
+const sessionName = 'govuk-prototype-kit-' + (Buffer.from(config.serviceName, 'utf8')).toString('hex')
+const sessionHours = (promoMode === 'true') ? 20 : 4
+const sessionOptions = {
+  secret: sessionName,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * sessionHours,
+    secure: isSecure
+  }
+}
+
+// Support session data in cookie or memory
+if (useCookieSessionStore === 'true') {
+  app.use(sessionInCookie(Object.assign(sessionOptions, {
+    cookieName: sessionName,
+    proxy: true,
+    requestKey: 'session'
+  })))
+} else {
+  app.use(sessionInMemory(Object.assign(sessionOptions, {
+    name: sessionName,
+    resave: false,
+    saveUninitialized: false
+  })))
+}
+
+// Authentication middleware must be loaded before other middleware such as
+// static assets to prevent unauthorised access
 middleware.forEach(func => app.use(func))
 
 // Set up App
@@ -98,7 +146,7 @@ var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 utils.addNunjucksFilters(nunjucksAppEnv)
 
 // Set views engine
-app.set('view engine', 'html')
+app.set('view engine', 'njk')
 
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')))
@@ -152,41 +200,6 @@ if (useV6) {
   app.use('/public/v6/javascripts/govuk/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit/javascripts/govuk/')))
 }
 
-// Add variables that are available in all views
-app.locals.asset_path = '/public/'
-app.locals.useAutoStoreData = (useAutoStoreData === 'true')
-app.locals.useCookieSessionStore = (useCookieSessionStore === 'true')
-app.locals.promoMode = promoMode
-app.locals.releaseVersion = 'v' + releaseVersion
-app.locals.serviceName = config.serviceName
-// extensionConfig sets up variables used to add the scripts and stylesheets to each page.
-app.locals.extensionConfig = extensions.getAppConfig()
-
-// Session uses service name to avoid clashes with other prototypes
-const sessionName = 'govuk-prototype-kit-' + (Buffer.from(config.serviceName, 'utf8')).toString('hex')
-const sessionOptions = {
-  secret: sessionName,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 4, // 4 hours
-    secure: isSecure
-  }
-}
-
-// Support session data in cookie or memory
-if (useCookieSessionStore === 'true') {
-  app.use(sessionInCookie(Object.assign(sessionOptions, {
-    cookieName: sessionName,
-    proxy: true,
-    requestKey: 'session'
-  })))
-} else {
-  app.use(sessionInMemory(Object.assign(sessionOptions, {
-    name: sessionName,
-    resave: false,
-    saveUninitialized: false
-  })))
-}
-
 // Automatically store all data users enter
 if (useAutoStoreData === 'true') {
   app.use(utils.autoStoreData)
@@ -199,11 +212,29 @@ if (useAutoStoreData === 'true') {
   }
 }
 
-// Clear all data in session if you open /prototype-admin/clear-data
-app.post('/prototype-admin/clear-data', function (req, res) {
-  req.session.data = {}
-  res.render('prototype-admin/clear-data-success')
-})
+// passport.serializeUser((user, done) => {
+//   done(null, user)
+// })
+// passport.deserializeUser((user, done) => {
+//   done(null, user)
+// })
+// passport.use(new LocalStrategy(
+//   (username, password, done) => {
+//     const user = authenticationModel.findOne({
+//       username: username,
+//       password: password
+//     })
+//     if (user) { return done(null, user) }
+//     return done(null, false)
+//   }
+// ))
+// app.use(passport.initialize())
+// app.use(passport.session())
+
+app.use(flash())
+
+// Load prototype admin routes
+app.use('/prototype-admin', prototypeAdminRoutes)
 
 // Redirect root to /docs when in promo mode.
 if (promoMode === 'true') {
@@ -298,11 +329,6 @@ if (useV6) {
     utils.matchRoutes(req, res, next)
   })
 }
-
-// Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
-// app.post(/^\/([^.]+)$/, function (req, res) {
-//   res.redirect('/' + req.params[0])
-// })
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, function (req, res) {

@@ -5,7 +5,6 @@
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
-
   @include govuk-media-query($from: tablet) {
     min-width: 550px;
   }
@@ -31,7 +30,7 @@
   list-style: none;
   padding-left: 0;
   @include govuk-media-query($from: tablet) {
-    padding-left: govuk-spacing(6);
+    // padding-left: govuk-spacing(6);
   }
 }
 
@@ -66,13 +65,5 @@
     float: right;
     margin-top: 0;
     margin-bottom: 0;
-  }
-}
-
-.app-task-list .flex-header {
-  border-bottom: 1px solid $govuk-border-colour;
-
-  .govuk-tag {
-    align-self: center;
   }
 }

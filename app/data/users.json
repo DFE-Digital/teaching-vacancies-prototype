@@ -1,0 +1,24 @@
+[
+  {
+    "username": "anne@example.com",
+    "password": "tv",
+    "profile": {
+      "status": "Inactive",
+      "phase": {},
+      "teachingStatus": {},
+      "qualifications": []
+    }
+  },
+  {
+    "username": "susy@example.com",
+    "password": "tv",
+    "profile": {
+      "status": "Started",
+      "firstName": "Susy",
+      "lastName": "Gamora",
+      "phase": {},
+      "teachingStatus": {},
+      "qualifications": []
+    }
+  }
+]
