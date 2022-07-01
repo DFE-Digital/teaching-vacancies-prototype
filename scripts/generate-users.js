@@ -43,10 +43,8 @@ const generateUser = (params = {}) => {
   // Work history
   user.profile.workHistory = params.profile && params.profile.workHistory
 
-  // Experience
-  user.profile.experience = params.profile && params.profile.experience
-  user.profile.provideSENDExperience = params.profile && params.profile.provideSENDExperience
-  user.profile.SENDExperience = params.profile && params.profile.SENDExperience
+  // About
+  user.profile.about = params.profile && params.profile.about
 
   return user
 }

@@ -1,8 +1,17 @@
 const { v4: uuidv4 } = require('uuid');
 
+
+function isAuthenticated(req, res, next) {
+  if (req.session.user) {
+    next()
+  } else {
+    res.redirect('/sign-in')
+  }
+}
+
 module.exports = router => {
 
-  router.get('/profile', (req, res) => {
+  router.get('/profile', isAuthenticated, (req, res) => {
     let sectionsTotal = 0
     let sectionsComplete = 0
     for(let key in req.session.user.profile) {

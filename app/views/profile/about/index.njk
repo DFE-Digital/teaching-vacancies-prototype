@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'About you' %}
+{% set title = 'What to say about yourself' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -16,6 +16,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <span class="govuk-caption-l">
+        About you
+      </span>
       <h1 class="govuk-heading-l">
         {{title}}
       </h1>
@@ -39,6 +42,9 @@
           any extra training you’ve done
         </li>
         <li>
+         experience in special educational needs and disability (SEND)
+        </li>
+        <li>
           additional responsibilities you’ve taken on in school
         </li>
       </ul>
@@ -48,14 +54,14 @@
       <form method="post" novalidate>
 
         {{ govukTextarea({
-          id: "profile[experience]",
-          name: "profile[experience]",
+          id: "profile[about]",
+          name: "profile[about]",
           label: {
-            html: 'Summary',
+            html: 'About you',
             isPageHeading: true,
             classes: 'govuk-label--m'
           },
-          value: profile.experience,
+          value: profile.about,
           rows: 10
         }) }}
 

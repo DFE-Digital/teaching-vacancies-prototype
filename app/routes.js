@@ -34,7 +34,7 @@ require('./routes/profile')(router)
 require('./routes/profile-personal-details')(router)
 require('./routes/profile-job-preferences')(router)
 require('./routes/profile-teaching-status')(router)
-require('./routes/profile-experience')(router)
+require('./routes/profile-about')(router)
 require('./routes/profile-qualifications')(router)
 
 module.exports = router
