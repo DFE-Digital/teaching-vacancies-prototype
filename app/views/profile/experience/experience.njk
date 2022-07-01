@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Skills and experience' %}
+{% set title = 'About you' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -16,9 +16,34 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
+      <h1 class="govuk-heading-l">
         {{title}}
-      {% endset %}
+      </h1>
+
+      <p>Include information about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          working with a particular age group
+        </li>
+        <li>
+          your teaching style and classroom management
+        </li>
+        <li>
+          your knowledge of the curriculum
+        </li>
+        <li>
+          your understanding of safeguarding and student wellbeing
+        </li>
+        <li>
+          any extra training you’ve done
+        </li>
+        <li>
+          additional responsibilities you’ve taken on in school
+        </li>
+      </ul>
+
+      <p>If you do not have teaching experience, add relevant skills gained in other roles. For example, communication, teamwork, planning and time management.</p>
 
       <form method="post" novalidate>
 
@@ -26,11 +51,12 @@
           id: "profile[experience]",
           name: "profile[experience]",
           label: {
-            html: h1,
+            html: 'About you and your skills',
             isPageHeading: true,
-            classes: 'govuk-label--l'
+            classes: 'govuk-label--m'
           },
-          value: profile.experience
+          value: profile.experience,
+          rows: 10
         }) }}
 
         {{ govukButton({

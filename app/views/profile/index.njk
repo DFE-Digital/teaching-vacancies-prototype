@@ -339,6 +339,77 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
+         About you
+        </h2>
+
+        {% if user.profile.experience %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Skills and experience"
+                },
+                value: {
+                  html: user.profile.experience
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/experience/experience",
+                      text: "Change",
+                      visuallyHiddenText: "Skills and experience"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Do you have experience with special education needs and disability (SEND)?"
+                },
+                value: {
+                  html: user.profile.provideSENDExperience
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/experience/provide-send",
+                      text: "Change",
+                      visuallyHiddenText: "if you have experience with special education needs and disability"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Special education needs and disability (SEND) experience"
+                },
+                value: {
+                  html: user.profile.SENDExperience
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/experience/send-experience",
+                      text: "Change",
+                      visuallyHiddenText: "Special education needs and disability (SEND) experience"
+                    }
+                  ]
+                }
+              } if user.profile.provideSENDExperience == 'Yes'
+            ]
+          }) }}
+        {% else %}
+          <p>Provide details about you and your skills.</p>
+          {{ govukButton({
+            text: "Add details about you",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/experience/experience'
+          }) }}
+        {% endif %}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
           Qualifications
         </h2>
 
@@ -450,125 +521,18 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Work history
+          Experience
         </h2>
 
-        <p>Provide details of your work history.</p>
+        <p>Provide details of your work experience.</p>
 
         {{ govukButton({
-          text: "Add work history",
+          text: "Add experience",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '#'
         }) }}
       </div>
-      <div class="app-profile__section">
 
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          About you
-        </h2>
-
-        {% if user.profile.interests %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Interests"
-                },
-                value: {
-                  html: user.profile.interests
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/interests",
-                      text: "Change",
-                      visuallyHiddenText: "Phone number"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-        {% else %}
-          <p>Provide information about yourself.</p>
-          {{ govukButton({
-            text: "Add details about you",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/interests'
-          }) }}
-        {% endif %}
-      </div>
-      <div class="app-profile__section">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-         Experience
-        </h2>
-
-        {% if user.profile.experience %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Skills and experience"
-                },
-                value: {
-                  html: user.profile.experience
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/experience/experience",
-                      text: "Change",
-                      visuallyHiddenText: "Skills and experience"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Do you have experience with special education needs and disability (SEND)?"
-                },
-                value: {
-                  html: user.profile.provideSENDExperience
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/experience/provide-send",
-                      text: "Change",
-                      visuallyHiddenText: "if you have experience with special education needs and disability"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Special education needs and disability (SEND) experience"
-                },
-                value: {
-                  html: user.profile.SENDExperience
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/experience/send-experience",
-                      text: "Change",
-                      visuallyHiddenText: "Special education needs and disability (SEND) experience"
-                    }
-                  ]
-                }
-              } if user.profile.provideSENDExperience == 'Yes'
-            ]
-          }) }}
-        {% else %}
-          <p>Provide details of your experience in teaching.</p>
-          {{ govukButton({
-            text: "Add experience",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/experience/experience'
-          }) }}
-        {% endif %}
-      </div>
 
     </div>
   </div>
