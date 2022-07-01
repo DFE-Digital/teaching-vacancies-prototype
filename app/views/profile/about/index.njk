@@ -52,10 +52,10 @@
       <p>If you do not have teaching experience, add relevant skills gained in other roles. For example, communication, teamwork, planning and time management.</p>
 
       <form method="post" novalidate>
-
-        {{ govukTextarea({
-          id: "profile[about]",
+        {{ govukCharacterCount({
           name: "profile[about]",
+          id: "profile[about]",
+          maxwords: 1000,
           label: {
             html: 'About you',
             isPageHeading: true,

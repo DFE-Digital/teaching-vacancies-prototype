@@ -9,10 +9,110 @@
     Jobs (240)
   </h1>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/jobs-filter-panel.njk" %}
+    </div>
 
+    <div class="app-filter-layout__content">
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div>
+        {%- if applications.length %}
+
+          <div class="app-application-cards">
+            {%- for a in applications %}
+
+
+              {% include "_includes/application-card.njk" %}
+
+
+            {% endfor -%}
+          </div>
+
+        {% endif -%}
+      </div>
+
+      {% if applications.length and pagination %}
+        {% include "_includes/pagination.njk" %}
+      {% endif %}
+
+      {%- if not applications.length %}
+
+        <p class="govuk-body">
+
+          {%- if data.keywords -%}
+
+            {%- if hasFilters -%}
+
+              {%- if selectedFilters.categories.length > 1 or selectedFilters.categories[0].items.length > 1 -%}
+
+                There are no results for ‘{{ data.keywords }}’ and the selected filters.
+
+              {%- else -%}
+
+                There are no results for ‘{{ data.keywords }}’ and the selected filter.
+
+              {%- endif -%}
+
+            {%- else -%}
+
+              There are no results for ‘{{ data.keywords }}’.
+
+            {%- endif -%}
+
+          {%- else -%}
+
+            {%- if hasFilters -%}
+
+              {%- if selectedFilters.categories.length > 1 or selectedFilters.categories[0].items.length > 1 -%}
+
+                There are no results for the selected filters.
+
+              {%- else -%}
+
+                There are no results for the selected filter.
+
+              {%- endif -%}
+
+            {%- else -%}
+
+              There are no results.
+
+            {%- endif -%}
+
+          {%- endif -%}
+
+        </p>
+
+      {% endif -%}
     </div>
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
 {% endblock %}

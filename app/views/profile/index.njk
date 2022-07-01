@@ -339,43 +339,6 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-         About you
-        </h2>
-
-        {% if user.profile.about %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "About you"
-                },
-                value: {
-                  html: user.profile.about
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/about",
-                      text: "Change",
-                      visuallyHiddenText: "About you"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-        {% else %}
-          <p>Provide details about your experience and skills.</p>
-          {{ govukButton({
-            text: "Add details about you",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/about'
-          }) }}
-        {% endif %}
-      </div>
-      <div class="app-profile__section">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
           Qualifications
         </h2>
 
@@ -487,16 +450,53 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Experience
+          Work experience
         </h2>
 
         <p>Provide details of your work experience.</p>
 
         {{ govukButton({
-          text: "Add experience",
+          text: "Add work experience",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '#'
         }) }}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+         About you
+        </h2>
+
+        {% if user.profile.about %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "About you"
+                },
+                value: {
+                  html: user.profile.about
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/about",
+                      text: "Change",
+                      visuallyHiddenText: "About you"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% else %}
+          <p>Provide details about your experience and skills.</p>
+          {{ govukButton({
+            text: "Add details about you",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/about'
+          }) }}
+        {% endif %}
       </div>
 
 

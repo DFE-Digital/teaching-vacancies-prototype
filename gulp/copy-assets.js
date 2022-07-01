@@ -31,3 +31,8 @@ gulp.task('copy-assets-v6', function () {
   ])
     .pipe(gulp.dest(config.paths.public + '/v6'))
 })
+
+gulp.task('copy-component-assets', function () {
+  return gulp.src([config.paths.components + '/**/*.js'])
+    .pipe(gulp.dest(config.paths.public + 'javascripts/components'))
+})
