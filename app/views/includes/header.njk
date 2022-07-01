@@ -1,5 +1,9 @@
 {% if user %}
-  {% set navigationItems = [
+  {% set navigationItems = [{
+      href: "/profile",
+      text: "Profile",
+      active: primaryNavId == 'profile'
+    },
     {
       href: "/account",
       text: "Account",
