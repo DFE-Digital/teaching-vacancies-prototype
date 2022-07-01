@@ -27,13 +27,13 @@ module.exports = router => {
 
   router.post('/profile/activate', (req, res) => {
     req.session.user.profile.status = 'Active'
-    req.flash('success', 'Profile activated')
+    req.flash('success', 'Profile turned on')
     res.redirect('/profile')
   })
 
   router.post('/profile/deactivate', (req, res) => {
     req.session.user.profile.status = 'Not active'
-    req.flash('success', 'Profile deactivated')
+    req.flash('success', 'Profile turned off')
     res.redirect('/profile')
   })
 

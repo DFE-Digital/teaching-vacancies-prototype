@@ -3,6 +3,8 @@
 
 {% set primaryNavId = 'profile' %}
 
+{% set title = 'Confirm that you want to turn on your profile' %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -16,18 +18,18 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-l">
-        Activate profile
+        Turn on profile
       </span>
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-        Confirm that you want to activate your profile
+        {{title}}
       </h1>
 
-      <p>When you activate your profile, schools will be able to find your profile.</p>
+      <p>When you turn on your profile, schools will be able to find it.</p>
 
       <form method="post">
 
         {{ govukButton({
-          text: "Activate profile"
+          text: "Turn on profile"
         }) }}
       </form>
       <p><a href="/profile">Cancel</a></p>

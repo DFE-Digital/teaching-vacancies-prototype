@@ -23,12 +23,12 @@
 
       {% if user.profile.status == 'Active' %}
         {{ govukButton({
-          text: "Deactivate",
+          text: "Turn off profile",
           href: "/profile/deactivate"
         }) }}
       {% else %}
         {{ govukButton({
-          text: "Activate",
+          text: "Turn on profile",
           href: "/profile/activate"
         }) }}
       {% endif %}
