@@ -1,0 +1,73 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Special education needs and disability experience' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+     {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Do you have experience with special education needs and disability (SEND)?"
+            },
+            value: {
+              html: profile.provideSENDExperience
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/send",
+                  text: "Change",
+                  visuallyHiddenText: "if you have experience with special education needs and disability"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Special education needs and disability (SEND) experience"
+            },
+            value: {
+              html: profile.send
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/send/experience",
+                  text: "Change",
+                  visuallyHiddenText: "Special education needs and disability (SEND) experience"
+                }
+              ]
+            }
+          } if profile.provideSENDExperience == 'Yes'
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile"
+      }) }}
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

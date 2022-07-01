@@ -1,0 +1,79 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'What to say about yourself' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        About you
+      </span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>Include information about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          working with a particular age group
+        </li>
+        <li>
+          your teaching style and classroom management
+        </li>
+        <li>
+          your knowledge of the curriculum
+        </li>
+        <li>
+          your understanding of safeguarding and student wellbeing
+        </li>
+        <li>
+          any extra training you’ve done
+        </li>
+        <li>
+         experience in special educational needs and disability (SEND)
+        </li>
+        <li>
+          additional responsibilities you’ve taken on in school
+        </li>
+      </ul>
+
+      <p>If you do not have teaching experience, add relevant skills gained in other roles. For example, communication, teamwork, planning and time management.</p>
+
+      <form method="post" novalidate>
+        {{ govukCharacterCount({
+          name: "profile[about]",
+          id: "profile[about]",
+          maxwords: 1000,
+          label: {
+            html: 'About you',
+            isPageHeading: true,
+            classes: 'govuk-label--m'
+          },
+          value: profile.about,
+          rows: 10
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

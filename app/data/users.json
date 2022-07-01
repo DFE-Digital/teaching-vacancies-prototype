@@ -1,0 +1,20 @@
+[
+  {
+    "username": "anne@example.com",
+    "password": "tv",
+    "profile": {
+      "status": "Inactive",
+      "qualifications": []
+    }
+  },
+  {
+    "username": "susy@example.com",
+    "password": "tv",
+    "profile": {
+      "status": "Started",
+      "firstName": "Susy",
+      "lastName": "Gamora",
+      "qualifications": []
+    }
+  }
+]

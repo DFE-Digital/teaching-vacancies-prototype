@@ -1,0 +1,45 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Account created' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: title
+      }) }}
+
+      <p class="govuk-body">
+        You can now <a href="/jobs">search for teaching jobs</a>.
+      </p>
+
+      <h2 class="govuk-heading-m">Create a profile</h2>
+
+      <p class="govuk-body">
+        A profile allows you to:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          share your qualifications and experience with schools
+        </li>
+        <li>
+          specify the types of teaching jobs you’re looking for
+        </li>
+      </ul>
+
+
+      <p class="govuk-body">
+        When you turn on your profile, schools will be able to contact you about relevant jobs.
+      </p>
+
+      {{ govukButton({
+        text: "Create a profile",
+        href: "/profile"
+      }) }}
+
+
+    </div>
+  </div>
+
+{% endblock %}

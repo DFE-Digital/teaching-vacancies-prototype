@@ -1,0 +1,56 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'About you' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{profile | log}}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "About you"
+            },
+            value: {
+              text: profile.interests
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/interests",
+                  text: "Change",
+                  visuallyHiddenText: "Interests"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

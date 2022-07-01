@@ -1,0 +1,31 @@
+{%- from "govuk/components/button/macro.njk" import govukButton %}
+
+<div class="app-button-menu {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="app-button-menu__wrapper">
+    {%- for item in params.items %}
+      {% if item.action %}
+        <form action="{{item.action}}" method="post">
+      {% endif %}
+      {% if item.type == 'link' %}
+        <a class="app-button-menu__item govuk-link" href="#">{{item.text}}</a>
+      {% else %}
+        {{ govukButton({
+          element: item.element,
+          classes: 'app-button-menu__item ' + (item.classes if item.classes) + ' ' + (params.buttonClasses if params.buttonClasses),
+          text: item.text,
+          html: item.html,
+          name: item.name,
+          type: item.type,
+          value: item.value,
+          href: item.href,
+          disabled: item.disabled,
+          attributes: item.attributes,
+          preventDoubleClick: items.preventDoubleClick
+        }) }}
+      {% endif %}
+      {% if item.action %}
+        </form>
+      {% endif %}
+    {% endfor -%}
+  </div>
+</div>

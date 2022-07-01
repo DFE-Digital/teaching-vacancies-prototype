@@ -1,0 +1,99 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set type = data.profile.qualifications[id].type %}
+
+{% if type == 'A level' %}
+  {% set title = 'A level' %}
+{% elseif type == 'AS level' %}
+  {% set title = 'A level' %}
+{% elseif type == 'GCSE' %}
+  {% set title = 'GCSE' %}
+  {% set hint = 'For example, ‘C’, ‘CD’, ‘4’ or ‘4-3’' %}
+{% elseif type == 'Another UK qualification' %}
+  {% set title = 'Another UK qualification' %}
+{% elseif type == 'A qualification not from the UK' %}
+  {% set title = 'A qualification not from the UK' %}
+{% endif %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Qualifications
+      </span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "profile[qualifications]["+id+"][subject]",
+          name: "profile[qualifications]["+id+"][subject]",
+          label: {
+            text: "Subject",
+            classes: 'govuk-label--m'
+          },
+          value: subject
+        }) }}
+
+        {% if type == 'A qualification not from the UK' %}
+          {{ govukInput({
+            id: "profile[qualifications]["+id+"][country]",
+            name: "profile[qualifications]["+id+"][country]",
+            label: {
+              text: "Country where you studied",
+              classes: 'govuk-label--m'
+            },
+            value: country
+          }) }}
+        {% endif%}
+
+        {{ govukInput({
+          id: "profile[qualifications]["+id+"][grade]",
+          name: "profile[qualifications]["+id+"][grade]",
+          label: {
+            text: "Grade (optional)",
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: hint
+          } if hint,
+          classes: 'govuk-input--width-10',
+          value: grade
+        }) }}
+
+        {{ govukInput({
+          id: "profile[qualifications]["+id+"][year]",
+          name: "profile[qualifications]["+id+"][year]",
+          label: {
+            text: "Year awarded",
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: 'For example, 1998'
+          },
+          classes: 'govuk-input--width-5',
+          value: year
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{{ appPrimaryNavigation({
+  items: [
+    {
+      href: "/jobs",
+      text: "Jobs",
+      active: primaryNavId == 'jobs'
+    },
+    {
+      href: "/schools",
+      text: "Schools",
+      active: primaryNavId == 'schools'
+    },
+    {
+      href: "/application",
+      text: "Applications",
+      active: primaryNavId == 'applications'
+    } if user,
+    {
+      href: "/alerts",
+      text: "Alerts",
+      active: primaryNavId == 'alerts'
+    } if user,
+    {
+      href: "/profile",
+      text: "Profile",
+      active: primaryNavId == 'profile'
+    } if user
+  ]
+}) if pageId != 'start'}}

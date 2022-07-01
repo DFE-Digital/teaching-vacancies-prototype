@@ -1,0 +1,41 @@
+[
+  {
+    "type": "school",
+    "name": "Boom Primary School",
+    "locations": [
+      {
+        "id": "c450cc74-e6af-43d0-91fe-67a544c60abb",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      }
+    ]
+  },
+  {
+    "type": "mat",
+    "name": "Boom Academy Trust",
+    "locations": [
+      {
+        "id": "46a13e9e-6e9d-4783-b737-2f092204fb1a",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      },
+      {
+        "id": "316027f9-78d3-4a8b-adbc-4753f41463aa",
+        "name": "Town Primary School",
+        "address": {
+          "address1": "321 Main Street",
+          "town": "Some place",
+          "postcode": "AB2 3CD"
+        }
+      }
+    ]
+  }
+]

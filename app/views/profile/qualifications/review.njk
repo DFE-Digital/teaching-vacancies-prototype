@@ -1,0 +1,143 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Qualifications' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukButton({
+        text: "Add qualification",
+        classes: 'govuk-button--secondary',
+        href: '/profile/qualifications/'+qualificationId+'/type'
+      }) }}
+
+      {% for id, qualification in profile.qualifications %}
+
+        {{appPageHeader({
+          classes: 'govuk-!-margin-bottom-1',
+          heading: {
+            level: 2,
+            text: qualification.subject,
+            classes: 'govuk-heading-m'
+          },
+          items: [{
+            text: 'Delete qualification',
+            href: "profile/qualifications/"+id+"/delete",
+            type: 'link'
+          }]
+        })}}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Type"
+              },
+              value: {
+                text: qualification.type
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/type/",
+                    text: "Change",
+                    visuallyHiddenText: "Type"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Subject"
+              },
+              value: {
+                text: qualification.subject
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Country where you studied"
+              },
+              value: {
+                text: qualification.country
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            } if qualification.country,
+            {
+              key: {
+                text: "Grade (optional)"
+              },
+              value: {
+                text: qualification.grade or 'Not entered'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Year awarded"
+              },
+              value: {
+                text: qualification.year or 'Not entered'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      {% endfor %}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

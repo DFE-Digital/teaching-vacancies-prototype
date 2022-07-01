@@ -1,0 +1,30 @@
+{% if user %}
+  {% set navigationItems = [
+    {
+      href: "/account",
+      text: "Account",
+      active: primaryNavId == 'account'
+    }, {
+      href: "/sign-out",
+      text: "Sign out"
+    }]
+  %}
+
+{% else %}
+  {% set navigationItems = [{
+      href: "/create-account",
+      text: "Create account"
+    }, {
+      href: "/sign-in",
+      text: "Sign in"
+    }]
+  %}
+{% endif %}
+
+{{ govukHeader({
+  containerClasses: "govuk-width-container",
+  navigationLabel: "Account menu",
+  "navigationClasses": "govuk-header__navigation--end",
+  "productName": serviceName,
+  "navigation": navigationItems
+}) }}

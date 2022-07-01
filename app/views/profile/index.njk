@@ -1,0 +1,506 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+        Profile {{govukTag({
+        text: user.profile.status,
+        classes: 'govuk-tag--green'
+      }) if user.profile.status == 'Active'}}
+      </h1>
+
+      {% if user.profile.status == 'Active' %}
+        {{ govukButton({
+          text: "Turn off profile",
+          href: "/profile/deactivate"
+        }) }}
+      {% else %}
+        {{ govukButton({
+          text: "Turn on profile",
+          href: "/profile/activate"
+        }) }}
+      {% endif %}
+
+      {{ govukButton({
+        text: "Preview profile",
+        href: "#",
+        classes: 'govuk-!-margin-left-2 govuk-button--secondary govuk-!-margin-bottom-2'
+      }) }}
+
+      <p>
+        {# You’ve completed {{sections.completed}} out of {{sections.total}} sections. #}
+
+        Your profile allows schools to find and invite you to apply for their jobs.
+
+        {% if sections.completed == 0 or sections.completed != sections.total %}
+          Add more information to increase the chance of being contacted.
+        {% endif %}
+      </p>
+
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Personal details
+        </h2>
+
+        {% if user.profile.firstName and user.profile.providePhoneNumber %}
+
+          {% set emailAddress %}
+            <p>{{user.username}}</p>
+
+            {{ govukInsetText({
+              classes: 'govuk-!-margin-top-3',
+              html: 'Change your email address from within your <a href="#">account</a>.'
+            }) }}
+
+          {% endset %}
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "First name"
+                },
+                value: {
+                  text: user.profile.firstName
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/name",
+                      text: "Change",
+                      visuallyHiddenText: "First name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Last name"
+                },
+                value: {
+                  text: user.profile.lastName
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/name",
+                      text: "Change",
+                      visuallyHiddenText: "Last name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  html: emailAddress
+                }
+              },
+              {
+                key: {
+                  text: "Do you want to provide a phone number?"
+                },
+                value: {
+                  text: user.profile.providePhoneNumber
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/phone-number",
+                      text: "Change",
+                      visuallyHiddenText: "Phone number"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Phone number"
+                },
+                value: {
+                  text: user.profile.phoneNumber
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/phone-number",
+                      text: "Change",
+                      visuallyHiddenText: "Phone number"
+                    }
+                  ]
+                }
+              } if user.profile.providePhoneNumber == 'Yes'
+            ]
+          }) }}
+        {% else %}
+          <p>Provide your name and contact details.</p>
+          {{ govukButton({
+            text: "Add personal details",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/personal-details/name'
+          }) }}
+        {% endif %}
+
+
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Job preferences
+        </h2>
+
+        {% if user.profile.roles and user.profile.phases and user.profile.workingPatterns %}
+          {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Roles"
+              },
+              value: {
+                html: user.profile.roles | join('<br><br>')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/job-preferences/roles",
+                    text: "Change",
+                    visuallyHiddenText: "Roles"
+                  }
+                ]
+              }
+            },
+             {
+                  key: {
+                    text: "Age groups"
+                  },
+                  value: {
+                    text: user.profile.phases | join(', ')
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/profile/job-preferences/education-phases",
+                        text: "Change",
+                        visuallyHiddenText: "Education phases"
+                      }
+                    ]
+                  }
+                } if user.profile.phases,
+                {
+                  key: {
+                    text: "Key stages"
+                  },
+                  value: {
+                    text: user.profile.keyStages | join(', ')
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/profile/job-preferences/key-stages",
+                        text: "Change",
+                        visuallyHiddenText: "Key stages"
+                      }
+                    ]
+                  }
+                } if user.profile.keyStages,
+                {
+                  key: {
+                    text: "Subjects"
+                  },
+                  value: {
+                    html: user.profile.subjects | join(', ')
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/profile/job-preferences/subjects",
+                        text: "Change",
+                        visuallyHiddenText: "Subjects"
+                      }
+                    ]
+                  }
+                } if user.profile.subjects,
+                {
+                key: {
+                  text: "Working patterns"
+                },
+                value: {
+                  text: user.profile.workingPatterns | join(', ')
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/job-preferences/working-patterns",
+                      text: "Change",
+                      visuallyHiddenText: "Working patterns"
+                    }
+                  ]
+                }
+              }
+          ]
+        }) }}
+      {% else %}
+        <p>Provide your job preferences such as type of role and working pattern.</p>
+        {{ govukButton({
+          text: "Add job preferences",
+          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+          href: '/profile/job-preferences/roles'
+        }) }}
+      {% endif %}
+      </div>
+
+      <div class="app-profile__section">
+
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Teaching status
+        </h2>
+
+        {% if user.profile.qts %}
+          {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you have qualified teaching status (QTS)?"
+              },
+              value: {
+                html: user.profile.qts
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/qts",
+                    text: "Change",
+                    visuallyHiddenText: "if you have qualified teaching status (QTS)"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Year QTS awarded"
+              },
+              value: {
+                text: user.profile.qtsAwardedYear
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/qts",
+                    text: "Change",
+                    visuallyHiddenText: "Year QTS awarded"
+                  }
+                ]
+              }
+            } if user.profile.qtsAwardedYear,
+            {
+              key: {
+                text: "Are you an early career teacher (ECT)?"
+              },
+              value: {
+                text: user.profile.ect
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/ect",
+                    text: "Change",
+                    visuallyHiddenText: "if you are an early career teacher (ECT)"
+                  }
+                ]
+              }
+            } if user.profile.ect
+          ]
+        }) }}
+        {% else %}
+          <p>Provide whether you have qualified teaching status (QTS).</p>
+          {{ govukButton({
+            text: "Add teaching status",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/teaching-status/qts'
+          }) }}
+        {% endif %}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Qualifications
+        </h2>
+
+        {% if user.profile.qualifications | length > 0 %}
+          {% set classes = 'govuk-button--secondar govuk-!-margin-bottom-6' %}
+        {% else %}
+          {% set classes = 'govuk-button--secondar govuk-!-margin-bottom-2' %}
+        {% endif %}
+
+
+        <p>Provide your qualifications such as GCSEs and A levels.</p>
+
+        {{ govukButton({
+          text: 'Add qualifications',
+          classes: classes,
+          href: '/profile/qualifications/'+qualificationId+'/type'
+        }) }}
+
+        {% for id, qualification in user.profile.qualifications %}
+
+          {{appPageHeader({
+            classes: 'govuk-!-margin-bottom-1',
+            heading: {
+              level: 2,
+              text: qualification.subject,
+              classes: 'govuk-heading-m'
+            },
+            items: [{
+              text: 'Delete qualification',
+              href: "profile/qualifications/"+id+"/delete",
+              type: 'link'
+            }]
+          })}}
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Type"
+                },
+                value: {
+                  text: qualification.type
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/qualifications/"+id+"/type/",
+                      text: "Change",
+                      visuallyHiddenText: "Type"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Subject"
+                },
+                value: {
+                  text: qualification.subject
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/qualifications/"+id+"/details/",
+                      text: "Change",
+                      visuallyHiddenText: "Item label"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Grade (optional)"
+                },
+                value: {
+                  text: qualification.grade or 'Not entered'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/qualifications/"+id+"/details/",
+                      text: "Change",
+                      visuallyHiddenText: "Item label"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Year awarded"
+                },
+                value: {
+                  text: qualification.year or 'Not entered'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/qualifications/"+id+"/details/",
+                      text: "Change",
+                      visuallyHiddenText: "Item label"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% endfor %}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Work experience
+        </h2>
+
+        <p>Provide details of your work experience.</p>
+
+        {{ govukButton({
+          text: "Add work experience",
+          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+          href: '#'
+        }) }}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+         About you
+        </h2>
+
+        {% if user.profile.about %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "About you"
+                },
+                value: {
+                  html: user.profile.about
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/about",
+                      text: "Change",
+                      visuallyHiddenText: "About you"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% else %}
+          <p>Provide details about your experience and skills.</p>
+          {{ govukButton({
+            text: "Add details about you",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/about'
+          }) }}
+        {% endif %}
+      </div>
+
+
+    </div>
+  </div>
+
+{% endblock %}

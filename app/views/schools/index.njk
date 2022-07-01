@@ -1,0 +1,197 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'schools' %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Schools (1025)
+  </h1>
+
+    <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/schools-filter-panel.njk" %}
+    </div>
+
+    <div class="app-filter-layout__content">
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div class="app-schools">
+
+        <div class="app-schools__item">
+          <h2 class="govuk-heading-m">
+            <a href="/schools/show">Bronson Alcott Academy</a>
+          </h2>
+          <p>Friendship Way, London E15 2JQ</p>
+          {{ govukSummaryList({
+            classes: 'govuk-summary-list--no-border',
+            rows: [
+              {
+                key: {
+                  text: "Type"
+                },
+                value: {
+                  text: "Academy"
+                }
+              },
+              {
+                key: {
+                  text: "Age group"
+                },
+                value: {
+                  text: "Primary"
+                }
+              },
+              {
+                key: {
+                  text: "Live jobs"
+                },
+                value: {
+                  text: "2"
+                }
+              }
+            ]
+          }) }}
+
+        </div>
+        <div class="app-schools__item">
+          <h2 class="govuk-heading-m">
+            <a href="/schools/show">Bronson Alcott Academy</a>
+          </h2>
+          <p>Friendship Way, London E15 2JQ</p>
+          {{ govukSummaryList({
+            classes: 'govuk-summary-list--no-border',
+            rows: [
+              {
+                key: {
+                  text: "Type"
+                },
+                value: {
+                  text: "Academy"
+                }
+              },
+              {
+                key: {
+                  text: "Age group"
+                },
+                value: {
+                  text: "Primary"
+                }
+              },
+              {
+                key: {
+                  text: "Live jobs"
+                },
+                value: {
+                  text: "2"
+                }
+              }
+            ]
+          }) }}
+
+        </div>
+        <div class="app-schools__item">
+          <h2 class="govuk-heading-m">
+            <a href="/schools/show">Bronson Alcott Academy</a>
+          </h2>
+          <p>Friendship Way, London E15 2JQ</p>
+          {{ govukSummaryList({
+            classes: 'govuk-summary-list--no-border',
+            rows: [
+              {
+                key: {
+                  text: "Type"
+                },
+                value: {
+                  text: "Academy"
+                }
+              },
+              {
+                key: {
+                  text: "Age group"
+                },
+                value: {
+                  text: "Primary"
+                }
+              },
+              {
+                key: {
+                  text: "Live jobs"
+                },
+                value: {
+                  text: "2"
+                }
+              }
+            ]
+          }) }}
+
+        </div>
+        <div class="app-schools__item">
+          <h2 class="govuk-heading-m">
+            <a href="/schools/show">Bronson Alcott Academy</a>
+          </h2>
+          <p>Friendship Way, London E15 2JQ</p>
+          {{ govukSummaryList({
+            classes: 'govuk-summary-list--no-border',
+            rows: [
+              {
+                key: {
+                  text: "Type"
+                },
+                value: {
+                  text: "Academy"
+                }
+              },
+              {
+                key: {
+                  text: "Age group"
+                },
+                value: {
+                  text: "Primary"
+                }
+              },
+              {
+                key: {
+                  text: "Live jobs"
+                },
+                value: {
+                  text: "2"
+                }
+              }
+            ]
+          }) }}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
+{% endblock %}

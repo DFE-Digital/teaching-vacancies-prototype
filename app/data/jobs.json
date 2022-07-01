@@ -1,29 +1,48 @@
 [
   {
-    "id": "0",
-    "status": "active",
-    "name": "Trust-Wide Lead Practitioner",
-    "applicationCount": "2",
-    "closingDate": "31 October 2020 at 09:00am",
-    "location": "Test location"
-  },
-  {
-    "id": "1",
-    "status": "passed-deadline",
-    "name": "Primary Teacher",
-    "applicationCount": "4",
-    "interviewCount": "2",
-    "listingDate": "06 October 2020 at 07:45am",
-    "endingDate": "20 October 2020 at 09:00am",
-    "location": "Test location"
-  },
-  {
-    "id": "2",
-    "status": "passed-deadline",
-    "name": "Headteacher",
-    "applicationCount": "0",
-    "listingDate": "12 October 2020 at 09:00am",
-    "endingDate": "31 October 2020 at 12:00am",
-    "location": "Test location"
+    "id": "707821",
+    "organisation": {
+      "type": "mat",
+      "name": "Boom Academy Trust",
+      "locations": [
+        {
+          "id": "46a13e9e-6e9d-4783-b737-2f092204fb1a",
+          "name": "Boom Primary School",
+          "address": {
+            "address1": "123 Main Street",
+            "town": "Some town",
+            "postcode": "AB1 2CD"
+          }
+        },
+        {
+          "id": "316027f9-78d3-4a8b-adbc-4753f41463aa",
+          "name": "Town Primary School",
+          "address": {
+            "address1": "321 Main Street",
+            "town": "Some place",
+            "postcode": "AB2 3CD"
+          }
+        }
+      ]
+    },
+    "location": {
+      "id": "46a13e9e-6e9d-4783-b737-2f092204fb1a",
+      "name": "Boom Primary School",
+      "address": {
+        "address1": "123 Main Street",
+        "town": "Some town",
+        "postcode": "AB1 2CD"
+      }
+    },
+    "role": "Education support",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "roleHasSendResponsibilities": "No",
+    "title": "Teacher of religious education",
+    "contractType": "Fixed term",
+    "subjects": "Physical education",
+    "workingPatterns": "Part time",
+    "workingPatternDetails": "20 hours per week",
+    "salary": "A1/B1 depending on experience",
+    "additionalAllowances": "SEN"
   }
 ]

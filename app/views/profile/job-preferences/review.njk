@@ -1,0 +1,122 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Job preferences' %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Roles"
+            },
+            value: {
+              text: profile.roles | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/roles",
+                  text: "Change",
+                  visuallyHiddenText: "Roles"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age groups"
+            },
+            value: {
+              text: profile.phases | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/education-phases",
+                  text: "Change",
+                  visuallyHiddenText: "Education phases"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Key stages"
+            },
+            value: {
+              text: profile.keyStages | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/key-stages",
+                  text: "Change",
+                  visuallyHiddenText: "Key stages"
+                }
+              ]
+            }
+          } if profile.keyStages,
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: profile.subjects | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/subjects",
+                  text: "Change",
+                  visuallyHiddenText: "Subjects"
+                }
+              ]
+            }
+          } if profile.subjects,
+          {
+            key: {
+              text: "Working patterns"
+            },
+            value: {
+              text: profile.workingPatterns | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/working-patterns",
+                  text: "Change",
+                  visuallyHiddenText: "Working patterns"
+                }
+              ]
+            }
+          } if profile.subjects
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
