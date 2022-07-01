@@ -82,6 +82,10 @@ h1 .govuk-tag {
   border-bottom: 0;
 }
 
+.app-schools {
+  margin-bottom: govuk-spacing(4);
+}
+
 .app-schools__item {
   border-bottom: 1px solid $govuk-border-colour;
   padding-top: govuk-spacing(3);

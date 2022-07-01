@@ -21,7 +21,6 @@
       </div>
 
       <div class="app-schools">
-
         <div class="app-schools__item">
           <h2 class="govuk-heading-m">
             <a href="/schools/show">Bronson Alcott Academy</a>
@@ -166,8 +165,27 @@
           }) }}
 
         </div>
-
       </div>
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
     </div>
   </div>
 
