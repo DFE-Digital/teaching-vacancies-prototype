@@ -3,6 +3,8 @@
 
 {% set primaryNavId = 'profile' %}
 
+{% set title = 'About you' %}
+
 {% block beforeContent %}
    {{ govukBackLink({
     text: "Back",
@@ -16,14 +18,14 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Skills and experience
+        {{title}}
       </h1>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Skills and experience"
+              text: "Summary"
             },
             value: {
               text: profile.experience

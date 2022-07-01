@@ -4,8 +4,6 @@
     "password": "tv",
     "profile": {
       "status": "Inactive",
-      "phase": {},
-      "teachingStatus": {},
       "qualifications": []
     }
   },
@@ -16,8 +14,6 @@
       "status": "Started",
       "firstName": "Susy",
       "lastName": "Gamora",
-      "phase": {},
-      "teachingStatus": {},
       "qualifications": []
     }
   }

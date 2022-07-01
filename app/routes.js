@@ -25,7 +25,10 @@ router.get('/sign-out', (req, res) => {
   res.redirect('/')
 })
 
-
+router.post('/create-account', (req, res) => {
+  res.locals.user = req.session.user = users[0]
+  res.redirect('/create-account/confirmation')
+})
 
 require('./routes/profile')(router)
 require('./routes/profile-personal-details')(router)

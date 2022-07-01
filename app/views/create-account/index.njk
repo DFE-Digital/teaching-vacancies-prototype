@@ -1,0 +1,53 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Create an account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <form method="post">
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m"
+          },
+          id: "email",
+          name: "email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          id: "password",
+          name: "password",
+          label: {
+            text: "Password",
+            classes: "govuk-label--m"
+          },
+          type: "password",
+          hint: {
+            text: "Your password must be at least 8 characters long"
+          }
+        }) }}
+
+
+
+        {{ govukButton({
+          text: 'Create account'
+        }) }}
+      </form>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

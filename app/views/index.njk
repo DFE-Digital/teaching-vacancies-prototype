@@ -8,11 +8,36 @@
         Find teaching jobs
       </h1>
 
-      {{ govukButton({
-        text: 'Search',
-        isStartButton: true,
-        href: '/jobs'
-      }) }}
+      <form>
+
+        {{ govukInput({
+          id: "keywords",
+          name: "keywords",
+          label: {
+            text: "Keywords",
+            classes: "govuk-label--m"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "location",
+          name: "location",
+          label: {
+            text: "City, county or postcode",
+            classes: "govuk-label--m"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: 'Search',
+          href: '/jobs'
+        }) }}
+      </form>
+
+      <p><a href="/jobs">Browse all teaching jobs</a></p>
+
+
+
 
 
     </div>
