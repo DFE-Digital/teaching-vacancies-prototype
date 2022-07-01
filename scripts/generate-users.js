@@ -48,9 +48,6 @@ const generateUser = (params = {}) => {
   user.profile.provideSENDExperience = params.profile && params.profile.provideSENDExperience
   user.profile.SENDExperience = params.profile && params.profile.SENDExperience
 
-  // Interests
-  user.profile.interests = params.profile && params.profile.interests
-
   return user
 }
 
