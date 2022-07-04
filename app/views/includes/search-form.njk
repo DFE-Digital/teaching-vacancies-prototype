@@ -1,0 +1,26 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+      id: "keywords",
+      name: "keywords",
+      label: {
+        text: "Keywords",
+        classes: "govuk-label--s"
+      }
+    }) }}
+
+    {{ govukInput({
+      id: "location",
+      name: "location",
+      label: {
+        text: "City, county or postcode",
+        classes: "govuk-label--s"
+      }
+    }) }}
+
+    {{ govukButton({
+      text: 'Search',
+      href: '/jobs'
+    }) }}
+  </form>
+</div>

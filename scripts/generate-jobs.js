@@ -55,6 +55,15 @@ const generateJob = (params = {}) => {
     'Main pay range 1 to Main pay range 6, £25,714 to £36,961'
   ])
 
+  job.salary = params.salary || {
+    fullTimeEquivalentSalary: faker.helpers.arrayElement([
+      '£16,000',
+      '£25,000',
+      '£33,000',
+      '£42,000'
+    ])
+  }
+
   job.additionalAllowances = params.additionalAllowances || faker.helpers.arrayElement([
     null,
     'TLR',
@@ -83,6 +92,16 @@ const generateJob = (params = {}) => {
 const generateJobs = () => {
   const jobs = []
 
+  jobs.push(generateJob({
+    title: 'Teacher of Geography'
+  }))
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
   jobs.push(generateJob())
 
   return jobs

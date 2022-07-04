@@ -14,81 +14,91 @@
       {% include "includes/jobs-filter-panel.njk" %}
     </div>
 
+
+
     <div class="app-filter-layout__content">
+      {% include "includes/search-form.njk" %}
 
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
       </div>
 
       <div>
-        {%- if applications.length %}
+        <div class="app-jobs">
 
-          <div class="app-application-cards">
-            {%- for a in applications %}
+        {% for job in jobs %}
+          <div class="app-schools__item">
+            <h2 class="govuk-heading-m">
+              <a href="/jobs/show">{{job.title}}</a>
+            </h2>
+            <p>
+              {{job.location.name}},
+              {% for part, value in job.location.address %}
+                {{value}}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </p>
+            {{ govukSummaryList({
+              classes: 'govuk-summary-list--no-border',
+              rows: [
+                {
+                  key: {
+                    text: "Role"
+                  },
+                  value: {
+                    text: job.role
+                  }
+                },
+                {
+                  key: {
+                    text: "Full time equivalent salary"
+                  },
+                  value: {
+                    text: job.salary.fullTimeEquivalentSalary
+                  }
+                },
+                {
+                  key: {
+                    text: "Age group"
+                  },
+                  value: {
+                    text: 'Primary'
+                  }
+                },
+                {
+                  key: {
+                    text: "Working pattern"
+                  },
+                  value: {
+                    text: job.workingPatterns
+                  }
+                }
+              ]
+            }) }}
 
-
-              {% include "_includes/application-card.njk" %}
-
-
-            {% endfor -%}
           </div>
-
-        {% endif -%}
+        {% endfor %}
       </div>
 
-      {% if applications.length and pagination %}
-        {% include "_includes/pagination.njk" %}
-      {% endif %}
-
-      {%- if not applications.length %}
-
-        <p class="govuk-body">
-
-          {%- if data.keywords -%}
-
-            {%- if hasFilters -%}
-
-              {%- if selectedFilters.categories.length > 1 or selectedFilters.categories[0].items.length > 1 -%}
-
-                There are no results for ‘{{ data.keywords }}’ and the selected filters.
-
-              {%- else -%}
-
-                There are no results for ‘{{ data.keywords }}’ and the selected filter.
-
-              {%- endif -%}
-
-            {%- else -%}
-
-              There are no results for ‘{{ data.keywords }}’.
-
-            {%- endif -%}
-
-          {%- else -%}
-
-            {%- if hasFilters -%}
-
-              {%- if selectedFilters.categories.length > 1 or selectedFilters.categories[0].items.length > 1 -%}
-
-                There are no results for the selected filters.
-
-              {%- else -%}
-
-                There are no results for the selected filter.
-
-              {%- endif -%}
-
-            {%- else -%}
-
-              There are no results.
-
-            {%- endif -%}
-
-          {%- endif -%}
-
-        </p>
-
-      {% endif -%}
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
     </div>
   </div>
 

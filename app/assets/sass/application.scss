@@ -112,3 +112,51 @@ h1 .govuk-tag {
     padding-bottom: govuk-spacing(0);
   }
 }
+
+.app-search-form {
+  background: govuk-colour('light-grey');
+  padding: govuk-spacing(3);
+  margin-bottom: govuk-spacing(4);
+
+  .govuk-button {
+    margin-bottom: 0;
+  }
+
+  .govuk-form-group {
+    margin-bottom: govuk-spacing(4);
+  }
+}
+
+
+
+
+.app-jobs {
+  margin-bottom: govuk-spacing(4);
+}
+
+.app-jobs__item {
+  border-bottom: 1px solid $govuk-border-colour;
+  padding-top: govuk-spacing(3);
+  padding-bottom: govuk-spacing(4);
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  h2 {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  p {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .govuk-summary-list {
+    @include govuk-font(16);
+    margin-bottom: 0;
+  }
+
+  .govuk-summary-list__key, .govuk-summary-list__value {
+    padding-bottom: govuk-spacing(0);
+  }
+}

@@ -10,11 +10,6 @@ router.all('*', (req, res, next) => {
   next()
 })
 
-
-router.get('/jobs', (req, res) => {
-  res.render('jobs/index')
-})
-
 router.post('/sign-in', (req, res) => {
   res.locals.user = req.session.user = users[0]
   res.redirect('/jobs')
@@ -37,6 +32,7 @@ require('./routes/profile-teaching-status')(router)
 require('./routes/profile-about')(router)
 require('./routes/profile-qualifications')(router)
 
+require('./routes/jobs')(router)
 require('./routes/schools')(router)
 
 module.exports = router
