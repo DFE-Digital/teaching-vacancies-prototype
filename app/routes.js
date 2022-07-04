@@ -24,7 +24,9 @@ router.post('/create-account', (req, res) => {
   res.locals.user = req.session.user = {
     username: req.body.emailAddress,
     password: req.body.password,
-    profile: {}
+    profile: {
+      qualifications: []
+    }
   }
   res.redirect('/create-account/confirmation')
 })
