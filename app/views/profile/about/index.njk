@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'What to say about yourself' %}
+{% set title = 'What you can include about you' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -48,8 +48,6 @@
           additional responsibilities you’ve taken on in school
         </li>
       </ul>
-
-      <p>If you do not have teaching experience, add relevant skills gained in other roles. For example, communication, teamwork, planning and time management.</p>
 
       <form method="post" novalidate>
         {{ govukCharacterCount({
