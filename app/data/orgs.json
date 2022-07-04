@@ -1,25 +1,12 @@
 [
   {
-    "type": "school",
-    "name": "Boom Primary School",
-    "locations": [
-      {
-        "id": "c450cc74-e6af-43d0-91fe-67a544c60abb",
-        "name": "Boom Primary School",
-        "address": {
-          "address1": "123 Main Street",
-          "town": "Some town",
-          "postcode": "AB1 2CD"
-        }
-      }
-    ]
-  },
-  {
     "type": "mat",
-    "name": "Boom Academy Trust",
+    "name": "Bronson Alcott Academy",
+    "ageGroup": "Secondary",
+    "isSpecialSchool": false,
     "locations": [
       {
-        "id": "46a13e9e-6e9d-4783-b737-2f092204fb1a",
+        "id": "8a6bdcd5-2c74-4aec-9df6-b27e0a7ca8cf",
         "name": "Boom Primary School",
         "address": {
           "address1": "123 Main Street",
@@ -28,7 +15,7 @@
         }
       },
       {
-        "id": "316027f9-78d3-4a8b-adbc-4753f41463aa",
+        "id": "80b3f719-eaa9-4c70-892e-9c4fabbea314",
         "name": "Town Primary School",
         "address": {
           "address1": "321 Main Street",
@@ -36,6 +23,100 @@
           "postcode": "AB2 3CD"
         }
       }
-    ]
+    ],
+    "address": {
+      "line1": "Friendship Way",
+      "town": "London",
+      "county": "London",
+      "postcode": "E15 2JQ"
+    }
+  },
+  {
+    "type": "mat",
+    "name": "Tamsin Academy",
+    "ageGroup": "Secondary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "506f0498-f6c8-417a-a1f1-b02ba89ae7c2",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      },
+      {
+        "id": "84defee5-5b44-4941-b9e8-c8e3727aba21",
+        "name": "Town Primary School",
+        "address": {
+          "address1": "321 Main Street",
+          "town": "Some place",
+          "postcode": "AB2 3CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "c/o Tile Kiln Lane",
+      "town": "Palmers Green",
+      "county": "London",
+      "postcode": "N13 6BY"
+    }
+  },
+  {
+    "type": "school",
+    "name": "Leadenham Church of England Primary School",
+    "ageGroup": "Primary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "3335e22d-7fb1-473d-ac73-edc09c9d20c9",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "52 The Crescent",
+      "line2": "Tavistock",
+      "town": "Mill Hill",
+      "county": "Barnet",
+      "postcode": "NW7 4NA"
+    }
+  },
+  {
+    "type": "mat",
+    "name": "Sommerset Secondary School",
+    "ageGroup": "Secondary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "286fbfc5-f44e-4053-b98d-6fd71748fbb3",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      },
+      {
+        "id": "5ee1a34a-c455-4a15-9174-8e54c1cbbd8d",
+        "name": "Town Primary School",
+        "address": {
+          "address1": "321 Main Street",
+          "town": "Some place",
+          "postcode": "AB2 3CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "tratford Road",
+      "town": "Henley-in-Arden",
+      "county": "Warwickshire",
+      "postcode": "C95 6AD"
+    }
   }
 ]

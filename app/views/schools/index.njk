@@ -21,150 +21,50 @@
       </div>
 
       <div class="app-schools">
-        <div class="app-schools__item">
-          <h2 class="govuk-heading-m">
-            <a href="/schools/show">Bronson Alcott Academy</a>
-          </h2>
-          <p>Friendship Way, London E15 2JQ</p>
-          {{ govukSummaryList({
-            classes: 'govuk-summary-list--no-border',
-            rows: [
-              {
-                key: {
-                  text: "Type"
-                },
-                value: {
-                  text: "Academy"
-                }
-              },
-              {
-                key: {
-                  text: "Age group"
-                },
-                value: {
-                  text: "Primary"
-                }
-              },
-              {
-                key: {
-                  text: "Live jobs"
-                },
-                value: {
-                  text: "2"
-                }
-              }
-            ]
-          }) }}
 
-        </div>
-        <div class="app-schools__item">
-          <h2 class="govuk-heading-m">
-            <a href="/schools/show">Bronson Alcott Academy</a>
-          </h2>
-          <p>Friendship Way, London E15 2JQ</p>
-          {{ govukSummaryList({
-            classes: 'govuk-summary-list--no-border',
-            rows: [
-              {
-                key: {
-                  text: "Type"
+        {% for school in schools %}
+          <div class="app-schools__item">
+            <h2 class="govuk-heading-m">
+              <a href="/schools/show">{{school.name}}</a>
+            </h2>
+            <p>
+              {% for part, value in school.address %}
+                {{value}}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </p>
+            {{ govukSummaryList({
+              classes: 'govuk-summary-list--no-border',
+              rows: [
+                {
+                  key: {
+                    text: "Type"
+                  },
+                  value: {
+                    text: "Academy"
+                  }
                 },
-                value: {
-                  text: "Academy"
-                }
-              },
-              {
-                key: {
-                  text: "Age group"
+                {
+                  key: {
+                    text: "Age group"
+                  },
+                  value: {
+                    text: school.ageGroup
+                  }
                 },
-                value: {
-                  text: "Primary"
+                {
+                  key: {
+                    text: "Live jobs"
+                  },
+                  value: {
+                    text: [1, 2, 3, 4] | random
+                  }
                 }
-              },
-              {
-                key: {
-                  text: "Live jobs"
-                },
-                value: {
-                  text: "2"
-                }
-              }
-            ]
-          }) }}
+              ]
+            }) }}
 
-        </div>
-        <div class="app-schools__item">
-          <h2 class="govuk-heading-m">
-            <a href="/schools/show">Bronson Alcott Academy</a>
-          </h2>
-          <p>Friendship Way, London E15 2JQ</p>
-          {{ govukSummaryList({
-            classes: 'govuk-summary-list--no-border',
-            rows: [
-              {
-                key: {
-                  text: "Type"
-                },
-                value: {
-                  text: "Academy"
-                }
-              },
-              {
-                key: {
-                  text: "Age group"
-                },
-                value: {
-                  text: "Primary"
-                }
-              },
-              {
-                key: {
-                  text: "Live jobs"
-                },
-                value: {
-                  text: "2"
-                }
-              }
-            ]
-          }) }}
+          </div>
+        {% endfor %}
 
-        </div>
-        <div class="app-schools__item">
-          <h2 class="govuk-heading-m">
-            <a href="/schools/show">Bronson Alcott Academy</a>
-          </h2>
-          <p>Friendship Way, London E15 2JQ</p>
-          {{ govukSummaryList({
-            classes: 'govuk-summary-list--no-border',
-            rows: [
-              {
-                key: {
-                  text: "Type"
-                },
-                value: {
-                  text: "Academy"
-                }
-              },
-              {
-                key: {
-                  text: "Age group"
-                },
-                value: {
-                  text: "Primary"
-                }
-              },
-              {
-                key: {
-                  text: "Live jobs"
-                },
-                value: {
-                  text: "2"
-                }
-              }
-            ]
-          }) }}
-
-        </div>
       </div>
       {{ govukPagination({
           next: {

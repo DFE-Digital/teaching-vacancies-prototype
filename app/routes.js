@@ -37,4 +37,6 @@ require('./routes/profile-teaching-status')(router)
 require('./routes/profile-about')(router)
 require('./routes/profile-qualifications')(router)
 
+require('./routes/schools')(router)
+
 module.exports = router

@@ -12,8 +12,10 @@ const generateOrg = (params = {}) => {
 
   org.type = params.type || generateType()
   org.name = params.name || faker.company.companyName({format: 5})
+  org.ageGroup = params.ageGroup || 'Primary'
+  org.isSpecialSchool = params.isSpecialSchool || false
   org.locations = params.locations || generateLocations({ type: org.type })
-
+  org.address = params.address || null
   return org
 }
 
@@ -21,13 +23,56 @@ const generateOrgs = () => {
   const orgs = []
 
   orgs.push(generateOrg({
-    type: 'school',
-    name: 'Boom Primary School'
+    type: 'mat',
+    name: 'Bronson Alcott Academy',
+    ageGroup: 'Secondary',
+    isSpecialSchool: false,
+    address: {
+      line1: 'Friendship Way',
+      town: 'London',
+      county: 'London',
+      postcode: 'E15 2JQ'
+    }
   }))
 
   orgs.push(generateOrg({
     type: 'mat',
-    name: 'Boom Academy Trust'
+    name: 'Tamsin Academy',
+    ageGroup: 'Secondary',
+    isSpecialSchool: false,
+    address: {
+      line1: 'c/o Tile Kiln Lane',
+      town: 'Palmers Green',
+      county: 'London',
+      postcode: 'N13 6BY'
+    }
+  }))
+
+  orgs.push(generateOrg({
+    type: 'school',
+    name: 'Leadenham Church of England Primary School',
+    ageGroup: 'Primary',
+    isSpecialSchool: false,
+    address: {
+      line1: '52 The Crescent',
+      line2: 'Tavistock',
+      town: 'Mill Hill',
+      county: 'Barnet',
+      postcode: 'NW7 4NA'
+    }
+  }))
+
+  orgs.push(generateOrg({
+    type: 'mat',
+    name: 'Sommerset Secondary School',
+    ageGroup: 'Secondary',
+    isSpecialSchool: false,
+    address: {
+      line1: 'tratford Road',
+      town: 'Henley-in-Arden',
+      county: 'Warwickshire',
+      postcode: 'C95 6AD'
+    }
   }))
 
   return orgs
