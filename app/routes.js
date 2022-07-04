@@ -21,7 +21,11 @@ router.get('/sign-out', (req, res) => {
 })
 
 router.post('/create-account', (req, res) => {
-  res.locals.user = req.session.user = users[0]
+  res.locals.user = req.session.user = {
+    username: req.body.emailAddress,
+    password: req.body.password,
+    profile: {}
+  }
   res.redirect('/create-account/confirmation')
 })
 

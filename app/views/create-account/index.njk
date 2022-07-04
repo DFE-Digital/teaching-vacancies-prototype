@@ -10,15 +10,15 @@
         {{title}}
       </h1>
 
-      <form method="post">
+      <form method="post" novalidate>
 
         {{ govukInput({
           label: {
             text: "Email address",
             classes: "govuk-label--m"
           },
-          id: "email",
-          name: "email",
+          id: "emailAddress",
+          name: "emailAddress",
           type: "email",
           autocomplete: "email",
           spellcheck: false
