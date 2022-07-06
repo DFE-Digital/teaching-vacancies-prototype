@@ -3,6 +3,19 @@
 </script>
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
+<script>
+  var links = $('a')
+  links.each(function(i, item) {
+    var href = $(item).attr("href");
+	  href = href.slice(href.indexOf("#"), href.length);
+    if(href == "#") {
+      $(item).on('click', function(e) {
+        alert('Not working yet')
+        e.preventDefault()
+      })
+    }
+  })
+</script>
 
 {% for scriptUrl in extensionConfig.scripts %}
   <script src="{{scriptUrl}}"></script>
