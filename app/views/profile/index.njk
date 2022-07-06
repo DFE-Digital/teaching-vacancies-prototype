@@ -255,7 +255,7 @@
           ]
         }) }}
       {% else %}
-        <p>Job preferences such as working pattern.</p>
+        <p>Role, age group, working pattern.</p>
         {{ govukButton({
           text: "Add job preferences",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
@@ -339,7 +339,21 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Qualifications
+          Degrees
+        </h2>
+
+        <p>Degree qualifications.</p>
+
+        {{ govukButton({
+          text: "Add degrees",
+          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+          href: '#'
+        }) }}
+      </div>
+      <div class="app-profile__section">
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Other qualifications
         </h2>
 
         {% if user.profile.qualifications | length > 0 %}
