@@ -10,6 +10,10 @@ router.all('*', (req, res, next) => {
   next()
 })
 
+router.get('/', (req, res) => {
+  res.redirect('/jobs')
+})
+
 router.post('/sign-in', (req, res) => {
   res.locals.user = req.session.user = users[0]
   res.redirect('/jobs')

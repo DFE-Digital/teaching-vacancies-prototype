@@ -26,8 +26,8 @@
 
       {% set anotherUKQualification %}
         {{ govukInput({
-          id: "profile[qualifications]["+id+"][anotherUKQualification]",
-          name: "profile[qualifications]["+id+"][anotherUKQualification]",
+          id: "profile[qualifications][anotherUKQualification]",
+          name: "profile[qualifications][anotherUKQualification]",
           label: {
             text: "Qualification name",
             classes: 'govuk-label--s'
@@ -38,8 +38,8 @@
 
       {% set nonUKQualification %}
         {{ govukInput({
-          id: "profile[qualifications]["+id+"][nonUKQualification]",
-          name: "profile[qualifications]["+id+"][nonUKQualification]",
+          id: "profile[qualifications][nonUKQualification]",
+          name: "profile[qualifications][nonUKQualification]",
           label: {
             text: "Qualification name",
             classes: 'govuk-label--s'
@@ -53,8 +53,8 @@
 
       <form method="post" novalidate>
         {{ govukRadios({
-          idPrefix: "profile[qualifications]["+id+"][type]",
-          name: "profile[qualifications]["+id+"][type]",
+          idPrefix: "profile[qualifications][type]",
+          name: "profile[qualifications][type]",
           fieldset: {
             legend: {
               html: h1,

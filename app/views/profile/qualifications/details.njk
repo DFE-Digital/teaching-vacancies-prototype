@@ -2,8 +2,6 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set type = data.profile.qualifications[id].type %}
-
 {% if type == 'A level' %}
   {% set title = 'A level' %}
 {% elseif type == 'AS level' %}
@@ -24,6 +22,8 @@
   }) }}
 {% endblock %}
 
+{{data | log}}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -38,8 +38,8 @@
       <form method="post" novalidate>
 
         {{ govukInput({
-          id: "profile[qualifications]["+id+"][subject]",
-          name: "profile[qualifications]["+id+"][subject]",
+          id: "profile[qualifications][subject]",
+          name: "profile[qualifications][subject]",
           label: {
             text: "Subject",
             classes: 'govuk-label--m'
@@ -49,8 +49,8 @@
 
         {% if type == 'A qualification not from the UK' %}
           {{ govukInput({
-            id: "profile[qualifications]["+id+"][country]",
-            name: "profile[qualifications]["+id+"][country]",
+            id: "profile[qualifications][country]",
+            name: "profile[qualifications][country]",
             label: {
               text: "Country where you studied",
               classes: 'govuk-label--m'
@@ -60,8 +60,8 @@
         {% endif%}
 
         {{ govukInput({
-          id: "profile[qualifications]["+id+"][grade]",
-          name: "profile[qualifications]["+id+"][grade]",
+          id: "profile[qualifications][grade]",
+          name: "profile[qualifications][grade]",
           label: {
             text: "Grade (optional)",
             classes: 'govuk-label--m'
@@ -74,8 +74,8 @@
         }) }}
 
         {{ govukInput({
-          id: "profile[qualifications]["+id+"][year]",
-          name: "profile[qualifications]["+id+"][year]",
+          id: "profile[qualifications][year]",
+          name: "profile[qualifications][year]",
           label: {
             text: "Year awarded",
             classes: 'govuk-label--m'

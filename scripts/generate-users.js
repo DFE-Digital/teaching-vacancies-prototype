@@ -38,7 +38,7 @@ const generateUser = (params = {}) => {
   user.profile.ect = params.profile && params.profile.ect
 
   // Qualifications
-  user.profile.qualifications = params.profile && params.profile.qualifications || []
+  user.profile.qualifications = params.profile && params.profile.qualifications || {}
 
   // Work history
   user.profile.workHistory = params.profile && params.profile.workHistory
