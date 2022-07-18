@@ -9,17 +9,17 @@
       text: "Account",
       active: primaryNavId == 'account'
     }, {
-      href: "/sign-out",
+      href: "/account/sign-out",
       text: "Sign out"
     }]
   %}
 
 {% else %}
   {% set navigationItems = [{
-      href: "/create-account",
+      href: "/account/new",
       text: "Create account"
     }, {
-      href: "/sign-in",
+      href: "/account/sign-in",
       text: "Sign in"
     }]
   %}
