@@ -11,7 +11,7 @@ const generateUser = (params = {}) => {
 
   user.profile = params.profile || {}
 
-  user.profile.status = params.profile && params.profile.status || 'Inactive'
+  user.profile.status = params.profile && params.profile.status
 
   // Personal details
   user.profile.firstName = params.profile && params.profile.firstName

@@ -21,23 +21,25 @@
       }) if user.profile.status == 'Active'}}
       </h1>
 
-      {% if user.profile.status == 'Active' %}
+      {% if user.profile.status %}
+        {% if user.profile.status == 'Active' %}
+          {{ govukButton({
+            text: "Turn off profile",
+            href: "/profile/deactivate"
+          }) }}
+        {% else %}
+          {{ govukButton({
+            text: "Turn on profile",
+            href: "/profile/activate"
+          }) }}
+        {% endif %}
         {{ govukButton({
-          text: "Turn off profile",
-          href: "/profile/deactivate"
-        }) }}
-      {% else %}
-        {{ govukButton({
-          text: "Turn on profile",
-          href: "/profile/activate"
+          text: "Preview profile",
+          href: "#",
+          classes: 'govuk-!-margin-left-2 govuk-button--secondary govuk-!-margin-bottom-2'
         }) }}
       {% endif %}
 
-      {{ govukButton({
-        text: "Preview profile",
-        href: "#",
-        classes: 'govuk-!-margin-left-2 govuk-button--secondary govuk-!-margin-bottom-2'
-      }) }}
 
       <p>
         {# You’ve completed {{sections.completed}} out of {{sections.total}} sections. #}
@@ -149,11 +151,12 @@
           }) }}
         {% else %}
           <p>Name and contact details.</p>
-          {{ govukButton({
+          {# {{ govukButton({
             text: "Add personal details",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/personal-details/name'
-          }) }}
+          }) }} #}
+          <p><a href="#">Add personal details</a></p>
         {% endif %}
 
 
@@ -256,11 +259,12 @@
         }) }}
       {% else %}
         <p>Role, age group, working pattern.</p>
-        {{ govukButton({
+        {# {{ govukButton({
           text: "Add job preferences",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '/profile/job-preferences/roles'
-        }) }}
+        }) }} #}
+        <p><a href="#">Add job preferences</a></p>
       {% endif %}
       </div>
 
@@ -329,11 +333,13 @@
         }) }}
         {% else %}
           <p>Qualified teaching status (QTS).</p>
-          {{ govukButton({
+          {# {{ govukButton({
             text: "Add teaching status",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/teaching-status/qts'
-          }) }}
+          }) }} #}
+
+          <p><a href="#">Add teaching status</a></p>
         {% endif %}
       </div>
       <div class="app-profile__section">
@@ -344,11 +350,13 @@
 
         <p>Degree qualifications such as a bachelor degree.</p>
 
-        {{ govukButton({
+        {# {{ govukButton({
           text: "Add degrees",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '#'
-        }) }}
+        }) }} #}
+
+        <p><a href="#">Add degrees</a></p>
       </div>
       <div class="app-profile__section">
 
@@ -365,11 +373,13 @@
 
         <p>Qualifications such as GCSEs.</p>
 
-        {{ govukButton({
+        {# {{ govukButton({
           text: 'Add other qualifications',
           classes: classes,
           href: '/profile/qualifications/type'
-        }) }}
+        }) }} #}
+
+        <p><a href="#">Add other qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications %}
 
@@ -469,11 +479,13 @@
 
         <p>Current and previous jobs.</p>
 
-        {{ govukButton({
+        {# {{ govukButton({
           text: "Add work experience",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '#'
-        }) }}
+        }) }} #}
+
+        <p><a href="#">Add work experience</a></p>
       </div>
       <div class="app-profile__section">
 
@@ -505,13 +517,36 @@
           }) }}
         {% else %}
           <p>Skills and experience.</p>
-          {{ govukButton({
+          {# {{ govukButton({
             text: "Add details about you",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/about'
-          }) }}
+          }) }} #}
+
+          <p><a href="#">Add details about you</a></p>
+
         {% endif %}
       </div>
+
+      <div class="app-profile__section">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Preview and finish profile
+        </h2>
+        <p>Preview profile, set status and publish profile</p>
+
+
+
+
+        {{ govukButton({
+          text: "Preview profile",
+          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+          href: '/profile/finish'
+        }) }}
+
+
+
+      </div>
+
 
 
     </div>
