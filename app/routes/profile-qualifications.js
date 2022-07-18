@@ -121,10 +121,12 @@ module.exports = router => {
   })
 
   router.post('/profile/qualifications/:id/details', (req, res) => {
-    req.session.user.profile.qualifications[req.params.id].subject = req.session.data.profile.qualifications.subject
-    req.session.user.profile.qualifications[req.params.id].grade = req.session.data.profile.qualifications.grade
-    req.session.user.profile.qualifications[req.params.id].year = req.session.data.profile.qualifications.year
-    req.session.user.profile.qualifications[req.params.id].country = req.session.data.profile.qualifications.country
+    req.session.user.profile.qualifications[req.params.id].subject = req.body.profile.qualifications.subject
+    req.session.user.profile.qualifications[req.params.id].country = req.body.profile.qualifications.country
+    req.session.user.profile.qualifications[req.params.id].grade = req.body.profile.qualifications.grade
+    req.session.user.profile.qualifications[req.params.id].year = req.body.profile.qualifications.year
+    req.session.user.profile.qualifications[req.params.id].country = req.body.profile.qualifications.country
+
     res.redirect('/profile/qualifications/review')
   })
 
