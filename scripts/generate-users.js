@@ -11,6 +11,8 @@ const generateUser = (params = {}) => {
 
   user.profile = params.profile || {}
 
+  user.profile.published = params.profile && paramss.profile.published || false
+
   user.profile.status = params.profile && params.profile.status
 
   // Personal details

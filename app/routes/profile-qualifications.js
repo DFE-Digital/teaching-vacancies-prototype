@@ -7,28 +7,23 @@ module.exports = router => {
 
     let options = [  {
       value: "A level",
-      text: "A level",
-      checked: profile.qualifications.type == 'A level'
+      text: "A level"
     },
     {
       value: "AS level",
-      text: "AS level",
-      checked: profile.qualifications.type == 'AS level'
+      text: "AS level"
     },
     {
       value: "GCSE",
-      text: "GCSE",
-      checked: profile.qualifications.type == 'GCSE'
+      text: "GCSE"
     },
     {
       value: "Another UK qualification",
-      text: "Another UK qualification",
-      checked: profile.qualifications.type == 'Another UK qualification'
+      text: "Another UK qualification"
     },
     {
       value: "A qualification not from the UK",
-      text: "A qualification not from the UK",
-      checked: profile.qualifications.type == 'A qualification not from the UK'
+      text: "A qualification not from the UK"
     }]
 
     let anotherUKQualification = profile.qualifications.anotherUKQualification
