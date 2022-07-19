@@ -3,7 +3,9 @@
     "username": "anne@example.com",
     "password": "tv",
     "profile": {
-      "qualifications": {}
+      "published": false,
+      "qualifications": {},
+      "workHistory": {}
     }
   },
   {
@@ -13,7 +15,9 @@
       "status": "Started",
       "firstName": "Susy",
       "lastName": "Gamora",
-      "qualifications": {}
+      "published": false,
+      "qualifications": {},
+      "workHistory": {}
     }
   }
 ]

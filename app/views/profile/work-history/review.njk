@@ -1,0 +1,75 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Work history' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukButton({
+        text: "Add job",
+        classes: 'govuk-button--secondary',
+        href: '/profile/work-history'
+      }) }}
+
+      {% for id, job in profile.workHistory %}
+
+        {{appPageHeader({
+          classes: 'govuk-!-margin-bottom-1',
+          heading: {
+            level: 2,
+            text: job.role,
+            classes: 'govuk-heading-m'
+          },
+          items: [{
+            text: 'Delete job',
+            href: "profile/work-history/"+id+"/delete",
+            type: 'link'
+          }]
+        })}}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Employer"
+              },
+              value: {
+                text: job.employer
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Type"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      {% endfor %}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

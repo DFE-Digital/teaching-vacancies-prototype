@@ -58,7 +58,7 @@
             ]
           }) }}
         {% else %}
-          <p>State whether you’re actively looking or would be open to hearing about new jobs.</p>
+          {# <p>State whether you’re actively looking or would be open to hearing about new jobs.</p> #}
           <p><a href="/profile/status">Add status</a></p>
         {% endif %}
       </div>
@@ -162,13 +162,13 @@
             ]
           }) }}
         {% else %}
-          <p>Name and contact details.</p>
+          {# <p>Name and contact details.</p> #}
           {# {{ govukButton({
             text: "Add personal details",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/personal-details/name'
           }) }} #}
-          <p><a href="#">Add personal details</a></p>
+          <p><a href="/profile/personal-details/name">Add personal details</a></p>
         {% endif %}
 
 
@@ -270,13 +270,13 @@
           ]
         }) }}
       {% else %}
-        <p>Role, age group, working pattern.</p>
+        {# <p>Role, age group, working pattern.</p> #}
         {# {{ govukButton({
           text: "Add job preferences",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '/profile/job-preferences/roles'
         }) }} #}
-        <p><a href="#">Add job preferences</a></p>
+        <p><a href="/profile/job-preferences/roles">Add job preferences</a></p>
       {% endif %}
       </div>
 
@@ -344,14 +344,14 @@
           ]
         }) }}
         {% else %}
-          <p>Qualified teaching status (QTS).</p>
+          {# <p>Qualified teaching status (QTS).</p> #}
           {# {{ govukButton({
             text: "Add teaching status",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/teaching-status/qts'
           }) }} #}
 
-          <p><a href="#">Add teaching status</a></p>
+          <p><a href="/profile/teaching-status/qts">Add teaching status</a></p>
         {% endif %}
       </div>
       <div class="app-profile__section">
@@ -360,7 +360,7 @@
           Degrees
         </h2>
 
-        <p>Degree qualifications such as a bachelor degree.</p>
+        {# <p>Degree qualifications such as a bachelor degree.</p> #}
 
         {# {{ govukButton({
           text: "Add degrees",
@@ -368,7 +368,7 @@
           href: '#'
         }) }} #}
 
-        <p><a href="#">Add degrees</a></p>
+        <p><a href="/profile/degrees">Add degrees</a></p>
       </div>
       <div class="app-profile__section">
 
@@ -383,7 +383,7 @@
         {% endif %}
 
 
-        <p>Qualifications such as GCSEs.</p>
+        {# <p>Qualifications such as GCSEs.</p> #}
 
         {# {{ govukButton({
           text: 'Add other qualifications',
@@ -391,7 +391,7 @@
           href: '/profile/qualifications/type'
         }) }} #}
 
-        <p><a href="#">Add other qualifications</a></p>
+        <p><a href="/profile/qualifications/type">Add other qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications %}
 
@@ -486,10 +486,10 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Work experience
+          Work history
         </h2>
 
-        <p>Current and previous jobs.</p>
+        {# <p>Current and previous jobs.</p> #}
 
         {# {{ govukButton({
           text: "Add work experience",
@@ -497,12 +497,12 @@
           href: '#'
         }) }} #}
 
-        <p><a href="#">Add work experience</a></p>
+        <p><a href="/profile/work-history">Add work history</a></p>
       </div>
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-         About you
+          Skills and experience
         </h2>
 
         {% if user.profile.about %}
@@ -528,14 +528,14 @@
             ]
           }) }}
         {% else %}
-          <p>Skills and experience.</p>
+          {# <p>Skills and experience.</p> #}
           {# {{ govukButton({
             text: "Add details about you",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/about'
           }) }} #}
 
-          <p><a href="#">Add details about you</a></p>
+          <p><a href="#">Add skills and experience</a></p>
 
         {% endif %}
       </div>

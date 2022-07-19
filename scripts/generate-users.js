@@ -11,7 +11,7 @@ const generateUser = (params = {}) => {
 
   user.profile = params.profile || {}
 
-  user.profile.published = params.profile && paramss.profile.published || false
+  user.profile.published = params.profile && params.profile.published || false
 
   user.profile.status = params.profile && params.profile.status
 
@@ -43,7 +43,7 @@ const generateUser = (params = {}) => {
   user.profile.qualifications = params.profile && params.profile.qualifications || {}
 
   // Work history
-  user.profile.workHistory = params.profile && params.profile.workHistory
+  user.profile.workHistory = params.profile && params.profile.workHistory || {}
 
   // About
   user.profile.about = params.profile && params.profile.about

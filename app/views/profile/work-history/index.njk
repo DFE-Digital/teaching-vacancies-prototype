@@ -1,0 +1,103 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Job details' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Work history
+      </span>
+      <h1 class="govuk-heading-xl">
+        {{title}}
+      </h1>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "profile[employer]",
+          name: "profile[employer]",
+          label: {
+            text: 'Name of school or employer',
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: "If you worked for yourself, enter ‘self-employed’"
+          },
+          value: employer
+        }) }}
+
+        {{ govukInput({
+          id: "profile[role]",
+          name: "profile[role]",
+          label: {
+            text: 'Role',
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: "If you had more than one role with this employer, enter your last role"
+          },
+          value: role
+        }) }}
+
+        {{ govukDateInput({
+          id: "profile[startDate]",
+          name: "profile[startDate]",
+          fieldset: {
+            legend: {
+              text: "Start date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2011"
+          },
+          items: [{
+            name: "profile[startDate][month]",
+            label: "Month",
+            classes: "govuk-input--width-2",
+            value: startDate.month
+          }, {
+            name: "profile[startDate][year]",
+            label: "Year",
+            classes: "govuk-input--width-4",
+            value: startdate.year
+          }]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "profile[currentRole]",
+          name: "profile[currentRole]",
+          fieldset: {
+            legend: {
+              text: "Are you still working in this job?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: currentRoleOptions
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
