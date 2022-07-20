@@ -54,9 +54,9 @@ module.exports = router => {
       text: 'Secondary',
       checked: profile.phases && profile.phases.includes('Secondary')
     }, {
-      value: '16 to 19',
-      text: '16 to 19',
-      checked: profile.phases && profile.phases.includes('16 to 19')
+      value: 'Sixth form or college',
+      text: 'Sixth form or college',
+      checked: profile.phases && profile.phases.includes('Sixth form or college')
     }]
 
     res.render('profile/job-preferences/education-phases', {
@@ -101,7 +101,7 @@ module.exports = router => {
     let profile = req.session.user.profile
     profile.keyStages = req.body.profile.keyStages
 
-    if(profile.phases.includes('Secondary') || profile.phases.includes('16 to 19')) {
+    if(profile.phases.includes('Secondary') || profile.phases.includes('Sixth form or college')) {
       res.redirect('/profile/job-preferences/subjects')
     } else {
       res.redirect('/profile/job-preferences/working-patterns')

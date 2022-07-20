@@ -12,7 +12,7 @@ const generateOrg = (params = {}) => {
 
   org.type = params.type || generateType()
   org.name = params.name || faker.company.companyName({format: 5})
-  org.ageGroup = params.ageGroup || 'Primary'
+  org.phase = params.phase || 'Primary'
   org.isSpecialSchool = params.isSpecialSchool || false
   org.locations = params.locations || generateLocations({ type: org.type })
   org.address = params.address || null
@@ -25,7 +25,7 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     type: 'mat',
     name: 'Bronson Alcott Academy',
-    ageGroup: 'Secondary',
+    phase: 'Secondary',
     isSpecialSchool: false,
     address: {
       line1: 'Friendship Way',
@@ -38,7 +38,7 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     type: 'mat',
     name: 'Tamsin Academy',
-    ageGroup: 'Secondary',
+    phase: 'Secondary',
     isSpecialSchool: false,
     address: {
       line1: 'c/o Tile Kiln Lane',
@@ -51,7 +51,7 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     type: 'school',
     name: 'Leadenham Church of England Primary School',
-    ageGroup: 'Primary',
+    phase: 'Primary',
     isSpecialSchool: false,
     address: {
       line1: '52 The Crescent',
@@ -65,7 +65,7 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     type: 'mat',
     name: 'Sommerset Secondary School',
-    ageGroup: 'Secondary',
+    phase: 'Secondary',
     isSpecialSchool: false,
     address: {
       line1: 'tratford Road',

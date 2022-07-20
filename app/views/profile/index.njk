@@ -3,6 +3,8 @@
 
 {% set primaryNavId = 'profile' %}
 
+{% set title = 'Your profile' %}
+
 {% block content %}
 
   {{ govukNotificationBanner({
@@ -15,11 +17,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-        Your profile
-        {# {{govukTag({
-          text: user.profile.status,
-          classes: 'govuk-tag--green'
-        }) if user.profile.status == 'Active'}} #}
+        {{title}}
       </h1>
 
       {% if user.profile.published %}
@@ -32,7 +30,7 @@
 
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Status
+          Job search status
         </h2>
 
         {% if user.profile.status %}
@@ -40,7 +38,7 @@
             rows: [
               {
                 key: {
-                  text: "Status"
+                  text: "Job search status"
                 },
                 value: {
                   html: user.profile.status
@@ -58,8 +56,7 @@
             ]
           }) }}
         {% else %}
-          {# <p>State whether you’re actively looking or would be open to hearing about new jobs.</p> #}
-          <p><a href="/profile/status">Add status</a></p>
+          <p><a href="/profile/status">Add job search status</a></p>
         {% endif %}
       </div>
 
@@ -201,7 +198,7 @@
             },
              {
                   key: {
-                    text: "Age groups"
+                    text: "Phases"
                   },
                   value: {
                     text: user.profile.phases | join(', ')
@@ -270,7 +267,6 @@
           ]
         }) }}
       {% else %}
-        {# <p>Role, age group, working pattern.</p> #}
         {# {{ govukButton({
           text: "Add job preferences",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
@@ -510,7 +506,7 @@
             rows: [
               {
                 key: {
-                  text: "About you"
+                  text: "Skills and experience"
                 },
                 value: {
                   html: user.profile.about | nl2br
@@ -535,7 +531,7 @@
             href: '/profile/about'
           }) }} #}
 
-          <p><a href="#">Add skills and experience</a></p>
+          <p><a href="/profile/about">Add skills and experience</a></p>
 
         {% endif %}
       </div>

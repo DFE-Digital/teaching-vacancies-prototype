@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'What to say about yourself' %}
+{% set title = 'Skills and experience' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -16,9 +16,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
-        About you
-      </span>
       <h1 class="govuk-heading-l">
         {{title}}
       </h1>
@@ -55,7 +52,7 @@
           id: "profile[about]",
           maxwords: 1000,
           label: {
-            html: 'About you',
+            html: 'Skills and experience',
             isPageHeading: true,
             classes: 'govuk-label--m'
           },

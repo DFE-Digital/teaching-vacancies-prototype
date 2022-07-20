@@ -2,11 +2,11 @@
   {
     "type": "mat",
     "name": "Bronson Alcott Academy",
-    "ageGroup": "Secondary",
+    "phase": "Secondary",
     "isSpecialSchool": false,
     "locations": [
       {
-        "id": "540cd920-fbd0-48b2-b05c-902a0288b7e5",
+        "id": "5305e8e8-22a6-4426-9365-3be8fb8bb2dc",
         "name": "Boom Primary School",
         "address": {
           "address1": "123 Main Street",
@@ -15,7 +15,7 @@
         }
       },
       {
-        "id": "f2bf4205-79cc-4ba9-ad43-187e60371b48",
+        "id": "af02a5c6-4f22-4abb-b170-136e1eb31f9e",
         "name": "Town Primary School",
         "address": {
           "address1": "321 Main Street",
@@ -34,11 +34,11 @@
   {
     "type": "mat",
     "name": "Tamsin Academy",
-    "ageGroup": "Secondary",
+    "phase": "Secondary",
     "isSpecialSchool": false,
     "locations": [
       {
-        "id": "796f2d9f-77b9-458b-a416-8a690cceeb79",
+        "id": "66cdc2eb-f45c-498e-bb5a-e1a6c01296d1",
         "name": "Boom Primary School",
         "address": {
           "address1": "123 Main Street",
@@ -47,7 +47,7 @@
         }
       },
       {
-        "id": "aeb49c73-2620-42da-a3e2-a7364f4bd132",
+        "id": "5144c983-3793-4075-9ec9-874f7c4f0898",
         "name": "Town Primary School",
         "address": {
           "address1": "321 Main Street",
@@ -66,11 +66,11 @@
   {
     "type": "school",
     "name": "Leadenham Church of England Primary School",
-    "ageGroup": "Primary",
+    "phase": "Primary",
     "isSpecialSchool": false,
     "locations": [
       {
-        "id": "d3f99884-92f4-45a4-b806-9b848128a803",
+        "id": "1df384a8-0f9b-452a-bc8b-2edd9272210d",
         "name": "Boom Primary School",
         "address": {
           "address1": "123 Main Street",
@@ -90,11 +90,11 @@
   {
     "type": "mat",
     "name": "Sommerset Secondary School",
-    "ageGroup": "Secondary",
+    "phase": "Secondary",
     "isSpecialSchool": false,
     "locations": [
       {
-        "id": "eacce8f2-0b44-4e50-9cd3-16d8579f23b9",
+        "id": "7b0bf28d-6416-481e-860a-d96514aa9272",
         "name": "Boom Primary School",
         "address": {
           "address1": "123 Main Street",
@@ -103,7 +103,7 @@
         }
       },
       {
-        "id": "f38c0246-ebed-40fc-a50c-ec995974c5ce",
+        "id": "cab0634b-2d82-44f9-a7d3-460f2f9a7621",
         "name": "Town Primary School",
         "address": {
           "address1": "321 Main Street",
