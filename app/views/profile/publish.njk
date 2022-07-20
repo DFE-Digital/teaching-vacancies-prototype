@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Set up job search status and publish profile' %}
+{% set title = 'Status of your job search' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -16,9 +16,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
+      {# <h1 class="govuk-heading-xl">
         {{title}}
-      </h1>
+      </h1> #}
+
+      {% set h1 %}
+        <span class="govuk-caption-xl">
+          Publish profile
+        </span>
+        {{title}}
+      {% endset %}
 
       <form method="post" novalidate>
         {{ govukRadios({
@@ -27,12 +34,14 @@
           fieldset: {
             legend: {
               html: 'Job search status',
-              classes: "govuk-fieldset__legend--m"
+              html: title,
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
             }
           },
           items: options
         }) }}
-
 
         {{ govukWarningText({
           text: "When you publish your profile, schools will be able to find it.",

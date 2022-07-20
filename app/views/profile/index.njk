@@ -536,13 +536,17 @@
       {% if not user.profile.status %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Finish your profile
+            Publish your profile
           </h2>
 
           <p>Set up job search status and publish your profile.</p>
 
           {{ govukButton({
             text: "Set up job search status and publish profile",
+            text: "Continue to finish profile",
+            text: "Set up job search status",
+            text: "Continue",
+            text: "Publish profile",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/publish'
           }) }}
