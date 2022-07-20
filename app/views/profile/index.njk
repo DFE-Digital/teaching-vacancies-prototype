@@ -34,7 +34,7 @@
 
 
       {% if user.profile.status %}
-        <p><a class="govuk-!-margin-right-2" href="/profile/status">Change job search status</a> <a href="#">Preview profile (opens in new tab)</a></p>
+        <p><a class="govuk-!-margin-right-2" href="/profile/status">Change profile status</a> <a href="#">Preview profile (opens in new tab)</a></p>
       {% else %}
         <p><a href="#">Preview profile (opens in new tab)</a></p>
         <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
@@ -334,7 +334,7 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Other qualifications
+          Qualifications
         </h2>
 
         {% if user.profile.qualifications | length > 0 %}
@@ -344,15 +344,13 @@
         {% endif %}
 
 
-        {# <p>Qualifications such as GCSEs.</p> #}
-
         {# {{ govukButton({
           text: 'Add other qualifications',
           classes: classes,
           href: '/profile/qualifications/type'
         }) }} #}
 
-        <p><a href="/profile/qualifications/type">Add other qualifications</a></p>
+        <p><a href="/profile/qualifications/type">Add qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications %}
 
@@ -536,10 +534,10 @@
       {% if not user.profile.status %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Publish your profile
+            Set up status of your profile and publish
           </h2>
 
-          <p>Set up job search status and publish your profile.</p>
+          {# <p>Set up job search status and publish your profile.</p> #}
 
           {{ govukButton({
             text: "Set up job search status and publish profile",
@@ -547,6 +545,8 @@
             text: "Set up job search status",
             text: "Continue",
             text: "Publish profile",
+            text: "Choose status and publish profile",
+            text: "Set up status and publish profile",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/publish'
           }) }}
