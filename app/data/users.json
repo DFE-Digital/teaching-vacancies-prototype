@@ -12,7 +12,6 @@
     "username": "susy@example.com",
     "password": "tv",
     "profile": {
-      "status": "Started",
       "firstName": "Susy",
       "lastName": "Gamora",
       "published": false,

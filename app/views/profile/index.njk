@@ -18,47 +18,28 @@
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
         {{title}}
+
+        {% set classes = 'govuk-tag--green' %}
+        {% if user.profile.status == 'Not looking for a new role' %}
+          {% set classes = 'govuk-tag--grey' %}
+        {% elseif user.profile.status == 'Open to a new role' %}
+          {% set classes = 'govuk-tag--orange' %}
+        {% endif %}
+
+        {{govukTag({
+          text: user.profile.status,
+          classes: classes
+        }) if user.profile.status }}
       </h1>
 
-      {% if user.profile.published %}
-        <p><a href="#">Preview profile</a></p>
+
+      {% if user.profile.status %}
+        <p><a class="govuk-!-margin-right-2" href="/profile/status">Change job search status</a> <a href="#">Preview profile (opens in new tab)</a></p>
+      {% else %}
+        <p><a href="#">Preview profile (opens in new tab)</a></p>
+        <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
       {% endif %}
 
-      <p>
-        Your profile allows schools to find and invite you to apply for their jobs.
-      </p>
-
-      <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Job search status
-        </h2>
-
-        {% if user.profile.status %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Job search status"
-                },
-                value: {
-                  html: user.profile.status
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/status",
-                      text: "Change",
-                      visuallyHiddenText: "Status"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-        {% else %}
-          <p><a href="/profile/status">Add job search status</a></p>
-        {% endif %}
-      </div>
 
       <div class="app-profile__section">
 
@@ -353,22 +334,6 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Degrees
-        </h2>
-
-        {# <p>Degree qualifications such as a bachelor degree.</p> #}
-
-        {# {{ govukButton({
-          text: "Add degrees",
-          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-          href: '#'
-        }) }} #}
-
-        <p><a href="/profile/degrees">Add degrees</a></p>
-      </div>
-      <div class="app-profile__section">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
           Other qualifications
         </h2>
 
@@ -526,7 +491,7 @@
         {% else %}
           {# <p>Skills and experience.</p> #}
           {# {{ govukButton({
-            text: "Add details about you",
+            text: "Add skills and experience",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/about'
           }) }} #}
@@ -536,21 +501,54 @@
         {% endif %}
       </div>
 
-      <div class="app-profile__section">
+      {# <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Check and publish
+          Job search status
         </h2>
-        <p>Check and publish your profile.</p>
 
-        {{ govukButton({
-          text: "Check profile",
-          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-          href: '/profile/finish'
-        }) }}
+        {% if user.profile.status %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Job search status"
+                },
+                value: {
+                  html: user.profile.status
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/status",
+                      text: "Change",
+                      visuallyHiddenText: "Status"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% else %}
+          <p><a href="/profile/status">Add job search status</a></p>
+        {% endif %}
+      </div> #}
 
+      {% if not user.profile.status %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Finish your profile
+          </h2>
 
+          <p>Set up job search status and publish your profile.</p>
 
-      </div>
+          {{ govukButton({
+            text: "Set up job search status and publish profile",
+            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
+            href: '/profile/publish'
+          }) }}
+        </div>
+
+      {% endif %}
 
 
 
