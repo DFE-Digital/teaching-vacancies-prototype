@@ -73,7 +73,7 @@
             name: "profile[startDate][year]",
             label: "Year",
             classes: "govuk-input--width-4",
-            value: startdate.year
+            value: startDate.year
           }]
         }) }}
 
@@ -94,12 +94,12 @@
               name: "profile[endDate][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: endDate.month
+              value: endDate.month if endDate
             }, {
               name: "profile[endDate][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: endDate.year
+              value: endDate.year if endDate
             }]
           }) }}
         {% endset %}
@@ -115,10 +115,12 @@
           },
           items: [{
             value: currentRoleOptions[0].value,
-            text: currentRoleOptions[0].text
+            text: currentRoleOptions[0].text,
+            checked: currentRoleOptions[0].checked
           }, {
             value: currentRoleOptions[1].value,
             text: currentRoleOptions[1].text,
+            checked: currentRoleOptions[1].checked,
             conditional: {
               html: endDate
             }

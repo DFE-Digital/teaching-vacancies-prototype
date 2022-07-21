@@ -45,7 +45,7 @@
           rows: [
             {
               key: {
-                text: "Employer"
+                text: "Name of school or employer"
               },
               value: {
                 text: role.employer
@@ -82,7 +82,7 @@
                 text: "Start date"
               },
               value: {
-                text: role.startDate
+                text: role.startDate | monthAndYearOnly
               },
               actions: {
                 items: [
@@ -99,7 +99,7 @@
                 text: "End date"
               },
               value: {
-                text: role.endDate
+                text: role.endDate | monthAndYearOnly
               },
               actions: {
                 items: [
@@ -127,7 +127,24 @@
                   }
                 ]
               }
-            } if not role.endDate
+            } if not role.endDate,
+            {
+              key: {
+                text: "Description"
+              },
+              value: {
+                text: role.description
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "description"
+                  }
+                ]
+              }
+            }
           ]
         }) }}
       {% endfor %}
