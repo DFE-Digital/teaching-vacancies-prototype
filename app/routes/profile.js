@@ -25,4 +25,10 @@ module.exports = router => {
     req.flash('success', 'Profile turned off')
     res.redirect('/profile')
   })
+
+  router.get('/profile/preview', (req, res) => {
+    res.render('profile/preview', {
+      profile: req.session.user.profile
+    })
+  })
 }
