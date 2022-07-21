@@ -38,7 +38,11 @@ module.exports = router => {
     let item = {
       id: uuidv4(),
       role: req.body.profile.role,
-      employer: req.body.profile.employer
+      employer: req.body.profile.employer,
+      startDate: req.body.profile.startDate.year,
+      endDate: req.body.profile.endDate.year,
+      currentRole: req.body.profile.currentRole,
+      description: req.body.profile.description
     }
     req.session.user.profile.workHistory[item.id] = item
     res.redirect(`/profile/work-history/review`)

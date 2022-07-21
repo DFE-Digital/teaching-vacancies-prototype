@@ -448,15 +448,120 @@
           Work history
         </h2>
 
-        {# <p>Current and previous jobs.</p> #}
-
         {# {{ govukButton({
           text: "Add work experience",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '#'
         }) }} #}
 
-        <p><a href="/profile/work-history">Add work history</a></p>
+        <p><a href="/profile/work-history">Add roles</a></p>
+
+        {% for id, role in user.profile.workHistory %}
+
+        {{appPageHeader({
+          classes: 'govuk-!-margin-bottom-1',
+          heading: {
+            level: 2,
+            text: role.role,
+            classes: 'govuk-heading-m'
+          },
+          items: [{
+            text: 'Delete role',
+            href: "profile/work-history/"+id+"/delete",
+            type: 'link'
+          }]
+        })}}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Employer"
+              },
+              value: {
+                text: role.employer
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Employer"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Role"
+              },
+              value: {
+                text: role.role
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Role"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Start date"
+              },
+              value: {
+                text: role.startDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Start date"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "End date"
+              },
+              value: {
+                text: role.endDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Start date"
+                  }
+                ]
+              }
+            } if role.endDate,
+            {
+              key: {
+                text: "Are you still working in this role?"
+              },
+              value: {
+                text: role.currentRole
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "if you are still working in this role?"
+                  }
+                ]
+              }
+            } if not role.endDate
+          ]
+        }) }}
+      {% endfor %}
       </div>
       <div class="app-profile__section">
 
