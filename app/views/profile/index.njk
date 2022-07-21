@@ -18,27 +18,24 @@
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
         {{title}}
-
-        {% set classes = 'govuk-tag--green' %}
-        {% if user.profile.status == 'Not looking for a new role' %}
-          {% set classes = 'govuk-tag--grey' %}
-        {% elseif user.profile.status == 'Open to a new role' %}
-          {% set classes = 'govuk-tag--orange' %}
-        {% endif %}
-
         {{govukTag({
           text: user.profile.status,
-          classes: classes
-        }) if user.profile.status }}
+          classes: 'govuk-tag--green'
+        }) if user.profile.status == 'Active'}}
       </h1>
 
+      <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
+      <p>
 
       {% if user.profile.status %}
-        <p><a class="govuk-!-margin-right-2" href="/profile/status">Change profile status</a> <a href="#">Preview profile (opens in new tab)</a></p>
-      {% else %}
-        <p><a href="#">Preview profile (opens in new tab)</a></p>
-        <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
+        {% if user.profile.status == 'Active' %}
+          <a class="govuk-!-margin-right-2" href="/profile/deactivate">Turn off profile</a>
+        {% else %}
+          <a class="govuk-!-margin-right-2" href="/profile/activate">Turn on profile</a>
+        {% endif %}
       {% endif %}
+
+      <a href="#">Preview profile (opens in new tab)</a></p>
 
 
       <div class="app-profile__section">
@@ -639,16 +636,15 @@
       {% if not user.profile.status %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Publish profile
+            Turn on profile
           </h2>
 
-          <p>When you publish your profile, schools will be able to view it.</p>
-
+          <p>When you turn on your profile, it’ll be visible to hiring staff.</p>
 
           <form method="post">
 
             {{ govukButton({
-              text: "Publish profile"
+              text: "Turn on profile"
             }) }}
           </form>
         </div>

@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 require('./routes/account')(router)
 
 require('./routes/profile')(router)
-require('./routes/profile-status')(router)
 require('./routes/profile-personal-details')(router)
 require('./routes/profile-job-preferences')(router)
 require('./routes/profile-teaching-status')(router)

@@ -9,9 +9,20 @@ module.exports = router => {
   })
 
   router.post('/profile', (req, res) => {
-    req.session.user.profile.status = 'Looking for a new role'
+    req.session.user.profile.status = 'Active'
     req.flash('success', 'Profile published')
     res.redirect('/profile')
   })
 
+  router.post('/profile/activate', (req, res) => {
+    req.session.user.profile.status = 'Active'
+    req.flash('success', 'Profile turned on')
+    res.redirect('/profile')
+  })
+
+  router.post('/profile/deactivate', (req, res) => {
+    req.session.user.profile.status = 'Not active'
+    req.flash('success', 'Profile turned off')
+    res.redirect('/profile')
+  })
 }
