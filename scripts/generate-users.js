@@ -12,8 +12,6 @@ const generateUser = (params = {}) => {
 
   user.profile = params.profile || {}
 
-  user.profile.published = _.get('params.profile.published') || false
-
   user.profile.status = _.get('params.profile.status')
 
   // Personal details

@@ -3,7 +3,6 @@
     "username": "anne@example.com",
     "password": "tv",
     "profile": {
-      "published": false,
       "qualifications": {},
       "workHistory": {}
     }
@@ -14,7 +13,6 @@
     "profile": {
       "firstName": "Susy",
       "lastName": "Gamora",
-      "published": false,
       "qualifications": {},
       "workHistory": {}
     }
