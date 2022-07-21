@@ -12,11 +12,6 @@ module.exports = router => {
         checked: profile.status == 'Looking for a new role'
       },
       {
-        text: 'Open to a new role',
-        value: 'Open to a new role',
-        checked: profile.status == 'Open to a new role'
-      },
-      {
         text: 'Not looking for a new role',
         value: 'Not looking for a new role',
         checked: profile.status == 'Not looking for a new role'
@@ -31,14 +26,8 @@ module.exports = router => {
 
   router.post('/profile/status', (req, res) => {
     req.session.user.profile.status = req.body.profile.status
-    res.redirect('/profile/status/review')
-  })
-
-  router.get('/profile/status/review', (req, res) => {
-    let profile = req.session.user.profile
-    res.render('profile/status/review', {
-      profile
-    })
+    req.flash('success', 'Profile status updated')
+    res.redirect('/profile')
   })
 
 }
