@@ -9,37 +9,37 @@ module.exports = router => {
     let options = [  {
       value: "A level",
       text: "A level",
-      checked: _.get('req.session.data.profile.qualifications') == 'A level'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'A level'
     },
     {
       value: "AS level",
       text: "AS level",
-      checked: _.get('req.session.data.profile.qualifications') == 'AS level'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'AS level'
     },
     {
       value: "GCSE",
       text: "GCSE",
-      checked: _.get('req.session.data.profile.qualifications') == 'GCSE'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'GCSE'
     },
     {
       value: "Another UK qualification",
       text: "Another UK qualification",
-      checked: _.get('req.session.data.profile.qualifications') == 'Another UK qualification'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'Another UK qualification'
     },
     {
       value: "A qualification not from the UK",
       text: "A qualification not from the UK",
-      checked: _.get('req.session.data.profile.qualifications') == 'A qualification not from the UK'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'A qualification not from the UK'
     },
     {
       value: "Undergraduate degree",
       text: "Undergraduate degree",
-      checked: _.get('req.session.data.profile.qualifications') == 'Undergraduate degree'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'Undergraduate degree'
     },
     {
       value: "Postgraduate degree",
       text: "Postgraduate degree",
-      checked: _.get('req.session.data.profile.qualifications') == 'Postgraduate degree'
+      checked: _.get(req, 'session.data.profile.qualifications') == 'Postgraduate degree'
     }]
 
     let anotherUKQualification = profile.qualifications.anotherUKQualification
@@ -147,7 +147,7 @@ module.exports = router => {
     req.session.user.profile.qualifications[req.params.id].year = req.body.profile.qualifications.year
     req.session.user.profile.qualifications[req.params.id].country = req.body.profile.qualifications.country
 
-    // _.set('req.session.data.profile.qualifications')
+    // _.set(req, 'session.data.profile.qualifications')
 
     res.redirect('/profile/qualifications/review')
   })

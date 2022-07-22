@@ -7,6 +7,8 @@
 
 {% block content %}
 
+  {{user | log}}
+
   {{ govukNotificationBanner({
     html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
     type: "success",
@@ -510,7 +512,7 @@
                 text: "Start date"
               },
               value: {
-                text: role.startDate
+                text: role.startDate | monthAndYearOnly
               },
               actions: {
                 items: [
@@ -527,7 +529,7 @@
                 text: "End date"
               },
               value: {
-                text: role.endDate
+                text: role.endDate | monthAndYearOnly
               },
               actions: {
                 items: [
@@ -571,7 +573,7 @@
             rows: [
               {
                 key: {
-                  text: "Skills and experience"
+                  text: "About you and your experience"
                 },
                 value: {
                   html: user.profile.about | nl2br

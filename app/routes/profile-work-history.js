@@ -7,32 +7,32 @@ module.exports = router => {
   router.get('/profile/work-history', (req, res) => {
     let profile = req.session.user.profile
 
-    let employer = _.get('req.session.data.profile.employer')
-    let role = _.get('req.session.data.profile.role')
+    let employer = _.get(req, 'session.data.profile.employer')
+    let role = _.get(req, 'session.data.profile.role')
 
     let currentRoleOptions = [
       {
         value: "Yes",
         text: "Yes",
-        checked: _.get('req.session.data.profile.currentRole') == 'Yes'
+        checked: _.get(req, 'session.data.profile.currentRole') == 'Yes'
       },{
         value: "No",
         text: "No",
-        checked: _.get('req.session.data.profile.currentRole') == 'No'
+        checked: _.get(req, 'session.data.profile.currentRole') == 'No'
       }
     ]
 
     let startDate = {
-      month: _.get('req.session.data.profile.startDate.month'),
-      year: _.get('req.session.data.profile.startDate.year')
+      month: _.get(req, 'session.data.profile.startDate.month'),
+      year: _.get(req, 'session.data.profile.startDate.year')
     }
 
     let endDate = {
-      month: _.get('req.session.data.profile.endDate.month'),
-      year: _.get('req.session.data.profile.endDate.year')
+      month: _.get(req, 'session.data.profile.endDate.month'),
+      year: _.get(req, 'session.data.profile.endDate.year')
     }
 
-    let description = _.get('req.session.data.profile.description')
+    let description = _.get(req, 'session.data.profile.description')
 
     res.render('profile/work-history/index', {
       employer,

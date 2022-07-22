@@ -9,7 +9,7 @@ module.exports = router => {
   })
 
   router.post('/account/sign-in', (req, res) => {
-    res.locals.user = req.session.user = users[0]
+    res.locals.user = req.session.user = users[1]
 
     if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
@@ -29,7 +29,7 @@ module.exports = router => {
       username: req.body.emailAddress,
       password: req.body.password,
       profile: {
-        qualifications: []
+        qualifications: {}
       }
     }
     res.redirect('/account/new/confirmation')

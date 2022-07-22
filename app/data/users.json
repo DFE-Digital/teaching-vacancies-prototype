@@ -1,6 +1,6 @@
 [
   {
-    "username": "anne@example.com",
+    "username": "anne.smith@example.com",
     "password": "tv",
     "profile": {
       "qualifications": {},
@@ -11,10 +11,60 @@
     "username": "susy@example.com",
     "password": "tv",
     "profile": {
+      "status": "Active",
       "firstName": "Susy",
       "lastName": "Gamora",
-      "qualifications": {},
-      "workHistory": {}
+      "providePhoneNumber": "No",
+      "roles": [
+        "Teacher"
+      ],
+      "phases": [
+        "Primary"
+      ],
+      "keyStages": [
+        "KS1",
+        "KS2"
+      ],
+      "workingPatterns": [
+        "Full time"
+      ],
+      "qts": "Yes",
+      "ect": "Yes",
+      "qualifications": {
+        "8e970b8f-7613-435a-b327-74af5ca72d4c": {
+          "id": "8e970b8f-7613-435a-b327-74af5ca72d4c",
+          "type": "GCSE",
+          "subject": "Maths",
+          "grade": "A",
+          "year": "2020"
+        },
+        "fd07eb3b-ee35-4243-922c-d4f2ee27e8e7": {
+          "id": "fd07eb3b-ee35-4243-922c-d4f2ee27e8e7",
+          "type": "AS level",
+          "subject": "English",
+          "grade": "B",
+          "year": "2022"
+        }
+      },
+      "workHistory": {
+        "d281905f-bf7e-4e83-a458-e63316f10157": {
+          "id": "d281905f-bf7e-4e83-a458-e63316f10157",
+          "employer": "Colindale Primary School",
+          "role": "Teacher",
+          "description": "Some description",
+          "startDate": "2018-01-01T00:00:00.000+00:00",
+          "endDate": "2019-12-01T00:00:00.000+00:00"
+        },
+        "4fce4a66-061a-4ca0-b49c-5e2a99d0bd53": {
+          "id": "4fce4a66-061a-4ca0-b49c-5e2a99d0bd53",
+          "employer": "Courtland Primary School",
+          "role": "Teacher",
+          "description": "Some description",
+          "startDate": "2020-01-01T00:00:00.000+00:00",
+          "currentRole": "Yes"
+        }
+      },
+      "about": "Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus."
     }
   }
 ]
