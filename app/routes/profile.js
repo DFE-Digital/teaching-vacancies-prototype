@@ -10,7 +10,7 @@ module.exports = router => {
 
   router.post('/profile', (req, res) => {
     req.session.user.profile.status = 'Active'
-    req.flash('success', 'Profile published')
+    req.flash('success', 'Profile turned on')
     res.redirect('/profile')
   })
 
