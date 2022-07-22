@@ -28,7 +28,7 @@ module.exports = router => {
 
   router.get('/profile/preview', (req, res) => {
     res.render('profile/preview', {
-      profile: req.session.user.profile
+      user: req.session.user
     })
   })
 }

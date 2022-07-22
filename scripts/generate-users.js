@@ -9,7 +9,7 @@ const { DateTime } = require('luxon')
 const generateUser = (params = {}) => {
   let user = {}
 
-  user.username = params.username
+  user.emailAddress = params.emailAddress
   user.password = params.password || 'tv'
 
   user.profile = params.profile || {}
@@ -56,10 +56,8 @@ const generateUsers = () => {
   const users = []
 
   users.push(generateUser({
-    username: 'anne.smith@example.com'
+    emailAddress: 'anne.smith@example.com'
   }))
-
-
 
   let qualifications = {}
 
@@ -106,7 +104,7 @@ const generateUsers = () => {
   workHistory[r2.id] = r2
 
   users.push(generateUser({
-    username: 'susy@example.com',
+    emailAddress: 'susy@example.com',
     profile: {
       status: 'Active',
       firstName: 'Susy',

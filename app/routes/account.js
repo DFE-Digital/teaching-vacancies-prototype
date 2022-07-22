@@ -5,8 +5,8 @@ module.exports = router => {
   router.get('/account/sign-in', (req, res) => {
     var options = users.map(user => {
       return {
-        text: user.username,
-        value: user.username,
+        text: user.emailAddress,
+        value: user.emailAddress,
         hint: {
           text: user.profile.status ? 'Profile: ' + user.profile.status : ''
         }
@@ -20,7 +20,7 @@ module.exports = router => {
 
   router.post('/account/sign-in', (req, res) => {
     if(req.body.emailAddress) {
-      res.locals.user = req.session.user = users.find(user => user.username == req.body.emailAddress)
+      res.locals.user = req.session.user = users.find(user => user.emailAddress == req.body.emailAddress)
     } else {
       res.locals.user = req.session.user = users[0]
     }
@@ -39,7 +39,7 @@ module.exports = router => {
 
   router.post('/account/new', (req, res) => {
     res.locals.user = req.session.user = {
-      username: req.body.emailAddress,
+      emailAddress: req.body.emailAddress,
       password: req.body.password,
       profile: {
         qualifications: {}

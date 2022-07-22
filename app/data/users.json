@@ -1,6 +1,6 @@
 [
   {
-    "username": "anne.smith@example.com",
+    "emailAddress": "anne.smith@example.com",
     "password": "tv",
     "profile": {
       "qualifications": {},
@@ -8,7 +8,7 @@
     }
   },
   {
-    "username": "susy@example.com",
+    "emailAddress": "susy@example.com",
     "password": "tv",
     "profile": {
       "status": "Active",
@@ -31,15 +31,15 @@
       "qts": "Yes",
       "ect": "Yes",
       "qualifications": {
-        "8e970b8f-7613-435a-b327-74af5ca72d4c": {
-          "id": "8e970b8f-7613-435a-b327-74af5ca72d4c",
+        "ea4f8f7d-521d-4e41-a917-b153e30474f1": {
+          "id": "ea4f8f7d-521d-4e41-a917-b153e30474f1",
           "type": "GCSE",
           "subject": "Maths",
           "grade": "A",
           "year": "2020"
         },
-        "fd07eb3b-ee35-4243-922c-d4f2ee27e8e7": {
-          "id": "fd07eb3b-ee35-4243-922c-d4f2ee27e8e7",
+        "1f00a94e-bcd8-4ade-ab12-27bbef52b173": {
+          "id": "1f00a94e-bcd8-4ade-ab12-27bbef52b173",
           "type": "AS level",
           "subject": "English",
           "grade": "B",
@@ -47,16 +47,16 @@
         }
       },
       "workHistory": {
-        "d281905f-bf7e-4e83-a458-e63316f10157": {
-          "id": "d281905f-bf7e-4e83-a458-e63316f10157",
+        "e8e31d9d-fece-4ee8-a5bb-371fffd6c606": {
+          "id": "e8e31d9d-fece-4ee8-a5bb-371fffd6c606",
           "employer": "Colindale Primary School",
           "role": "Teacher",
           "description": "Some description",
           "startDate": "2018-01-01T00:00:00.000+00:00",
           "endDate": "2019-12-01T00:00:00.000+00:00"
         },
-        "4fce4a66-061a-4ca0-b49c-5e2a99d0bd53": {
-          "id": "4fce4a66-061a-4ca0-b49c-5e2a99d0bd53",
+        "58ed34ef-085a-4316-8c40-682d62432472": {
+          "id": "58ed34ef-085a-4316-8c40-682d62432472",
           "employer": "Courtland Primary School",
           "role": "Teacher",
           "description": "Some description",

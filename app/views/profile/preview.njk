@@ -1,18 +1,11 @@
 
 {% extends "layout.njk" %}
 
-{# {% set serviceName = 'Manage teaching jobs' %} #}
-
 {% set primaryNavId = 'profile' %}
 
-{% set title = [profile.firstName, profile.lastName] | join(' ') %}
+{% set title = [user.profile.firstName, user.profile.lastName] | join(' ') %}
 
 {% block beforeContent %}
-  {# {{ govukBackLink({
-    text: "Back to profile",
-    href: "/profile"
-  }) }} #}
-
   {{ govukBreadcrumbs({
     items: [{
       text: 'Profile',
@@ -34,9 +27,232 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-        {{title}}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        {{title}} {{govukTag({
+          text: 'Looking for a role',
+          classes: 'govuk-tag--green'
+        }) if user.profile.status == 'Active'}}
       </h1>
+      <p>
+        Email: <a href="mailto:{{user.emailAddress}}">{{user.emailAddress}}</a>
+      </p>
+
+      {% if user.profile.about %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            About
+          </h2>
+
+          <p>{{user.profile.about | nl2br | safe }}</p>
+        </div>
+      {% endif %}
+
+      {% if user.profile.qts or user.profile.ect %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Teaching status
+          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Qualified teacher status"
+                },
+                value: {
+                  text: user.profile.qts
+                }
+              } if user.profile.qts,
+              {
+                key: {
+                  text: "Early career teacher"
+                },
+                value: {
+                  text: user.profile.ect
+                }
+              } if user.profile.ect
+            ]
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if user.profile.roles %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Job preferences
+          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Roles"
+                },
+                value: {
+                  text: user.profile.roles
+                }
+              } if user.profile.roles,
+              {
+                key: {
+                  text: "Phases"
+                },
+                value: {
+                  text: user.profile.phases
+                }
+              } if user.profile.phases,
+              {
+                key: {
+                  text: "Key stages"
+                },
+                value: {
+                  text: user.profile.keyStages | join(', ')
+                }
+              } if user.profile.keyStages,
+              {
+                key: {
+                  text: "Subjects"
+                },
+                value: {
+                  text: user.profile.subjects
+                }
+              } if user.profile.subjects,
+              {
+                key: {
+                  text: "Working patterns"
+                },
+                value: {
+                  text: user.profile.workingPatterns
+                }
+              } if user.profile.workingPatterns
+            ]
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if user.profile.workHistory | length %}
+        <div class="app-profile__section">
+
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Work history
+          </h2>
+
+        {% for id, role in user.profile.workHistory %}
+
+        {{appPageHeader({
+          classes: 'govuk-!-margin-bottom-1',
+          heading: {
+            level: 2,
+            text: role.role,
+            classes: 'govuk-heading-m'
+          }
+        })}}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name of school or employer"
+              },
+              value: {
+                text: role.employer
+              }
+            },
+            {
+              key: {
+                text: "Role"
+              },
+              value: {
+                text: role.role
+              }
+            },
+            {
+              key: {
+                text: "Start date"
+              },
+              value: {
+                text: role.startDate | monthAndYearOnly
+              }
+            },
+            {
+              key: {
+                text: "End date"
+              },
+              value: {
+                text: role.endDate | monthAndYearOnly
+              }
+            } if role.endDate,
+            {
+              key: {
+                text: "Are you still working in this role?"
+              },
+              value: {
+                text: role.currentRole
+              }
+            } if not role.endDate
+          ]
+        }) }}
+      {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if user.profile.qualifications | length %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Qualifications
+          </h2>
+
+          {% for id, qualification in user.profile.qualifications %}
+
+            {{appPageHeader({
+              classes: 'govuk-!-margin-bottom-1',
+              heading: {
+                level: 3,
+                text: qualification.subject,
+                classes: 'govuk-heading-m'
+              }
+            })}}
+
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Type"
+                  },
+                  value: {
+                    text: qualification.type
+                  }
+                },
+                {
+                  key: {
+                    text: "Subject"
+                  },
+                  value: {
+                    text: qualification.subject
+                  }
+                },
+                {
+                  key: {
+                    text: "Grade (optional)"
+                  },
+                  value: {
+                    text: qualification.grade or 'Not entered'
+                  }
+                },
+                {
+                  key: {
+                    text: "Year awarded"
+                  },
+                  value: {
+                    text: qualification.year or 'Not entered'
+                  }
+                }
+              ]
+            }) }}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+
 
 
 

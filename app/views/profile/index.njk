@@ -49,7 +49,7 @@
         {% if user.profile.firstName and user.profile.providePhoneNumber %}
 
           {% set emailAddress %}
-            <p>{{user.username}}</p>
+            <p>{{user.emailAddress}}</p>
 
             {{ govukInsetText({
               classes: 'govuk-!-margin-top-3',
