@@ -3,6 +3,8 @@
 
 {% set primaryNavId = 'profile' %}
 
+{% set title = 'Your profile' %}
+
 {% block content %}
 
   {{ govukNotificationBanner({
@@ -14,40 +16,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-        Profile {{govukTag({
-        text: user.profile.status,
-        classes: 'govuk-tag--green'
-      }) if user.profile.status == 'Active'}}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        {{title}}
+        {{govukTag({
+          text: user.profile.status,
+          classes: 'govuk-tag--green'
+        }) if user.profile.status == 'Active'}}
       </h1>
 
-      {% if user.profile.status == 'Active' %}
-        {{ govukButton({
-          text: "Turn off profile",
-          href: "/profile/deactivate"
-        }) }}
-      {% else %}
-        {{ govukButton({
-          text: "Turn on profile",
-          href: "/profile/activate"
-        }) }}
+      <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
+      <p>
+
+      {% if user.profile.status %}
+        {% if user.profile.status == 'Active' %}
+          <a class="govuk-!-margin-right-2" href="/profile/deactivate">Turn off profile</a>
+        {% else %}
+          <a class="govuk-!-margin-right-2" href="/profile/activate">Turn on profile</a>
+        {% endif %}
       {% endif %}
 
-      {{ govukButton({
-        text: "Preview profile",
-        href: "#",
-        classes: 'govuk-!-margin-left-2 govuk-button--secondary govuk-!-margin-bottom-2'
-      }) }}
+      <a href="/profile/preview">Preview profile</a></p>
 
-      <p>
-        {# You’ve completed {{sections.completed}} out of {{sections.total}} sections. #}
-
-        Your profile allows schools to find and invite you to apply for their jobs.
-
-        {% if sections.completed == 0 or sections.completed != sections.total %}
-          Add more information to increase the chance of being contacted.
-        {% endif %}
-      </p>
 
       <div class="app-profile__section">
 
@@ -148,12 +137,13 @@
             ]
           }) }}
         {% else %}
-          <p>Name and contact details.</p>
-          {{ govukButton({
+          {# <p>Name and contact details.</p> #}
+          {# {{ govukButton({
             text: "Add personal details",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/personal-details/name'
-          }) }}
+          }) }} #}
+          <p><a href="/profile/personal-details/name">Add personal details</a></p>
         {% endif %}
 
 
@@ -186,7 +176,7 @@
             },
              {
                   key: {
-                    text: "Age groups"
+                    text: "Phases"
                   },
                   value: {
                     text: user.profile.phases | join(', ')
@@ -255,12 +245,12 @@
           ]
         }) }}
       {% else %}
-        <p>Role, age group, working pattern.</p>
-        {{ govukButton({
+        {# {{ govukButton({
           text: "Add job preferences",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '/profile/job-preferences/roles'
-        }) }}
+        }) }} #}
+        <p><a href="/profile/job-preferences/roles">Add job preferences</a></p>
       {% endif %}
       </div>
 
@@ -328,32 +318,20 @@
           ]
         }) }}
         {% else %}
-          <p>Qualified teaching status (QTS).</p>
-          {{ govukButton({
+          {# <p>Qualified teaching status (QTS).</p> #}
+          {# {{ govukButton({
             text: "Add teaching status",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/teaching-status/qts'
-          }) }}
+          }) }} #}
+
+          <p><a href="/profile/teaching-status/qts">Add teaching status</a></p>
         {% endif %}
       </div>
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Degrees
-        </h2>
-
-        <p>Degree qualifications such as a bachelor degree.</p>
-
-        {{ govukButton({
-          text: "Add degrees",
-          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-          href: '#'
-        }) }}
-      </div>
-      <div class="app-profile__section">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Other qualifications
+          Qualifications
         </h2>
 
         {% if user.profile.qualifications | length > 0 %}
@@ -363,13 +341,13 @@
         {% endif %}
 
 
-        <p>Qualifications such as GCSEs.</p>
-
-        {{ govukButton({
+        {# {{ govukButton({
           text: 'Add other qualifications',
           classes: classes,
           href: '/profile/qualifications/type'
-        }) }}
+        }) }} #}
+
+        <p><a href="/profile/qualifications/type">Add qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications %}
 
@@ -464,21 +442,128 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Work experience
+          Work history
         </h2>
 
-        <p>Current and previous jobs.</p>
-
-        {{ govukButton({
+        {# {{ govukButton({
           text: "Add work experience",
           classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
           href: '#'
+        }) }} #}
+
+        <p><a href="/profile/work-history">Add roles</a></p>
+
+        {% for id, role in user.profile.workHistory %}
+
+        {{appPageHeader({
+          classes: 'govuk-!-margin-bottom-1',
+          heading: {
+            level: 2,
+            text: role.role,
+            classes: 'govuk-heading-m'
+          },
+          items: [{
+            text: 'Delete role',
+            href: "profile/work-history/"+id+"/delete",
+            type: 'link'
+          }]
+        })}}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name of school or employer"
+              },
+              value: {
+                text: role.employer
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Employer"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Role"
+              },
+              value: {
+                text: role.role
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Role"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Start date"
+              },
+              value: {
+                text: role.startDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Start date"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "End date"
+              },
+              value: {
+                text: role.endDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Start date"
+                  }
+                ]
+              }
+            } if role.endDate,
+            {
+              key: {
+                text: "Are you still working in this role?"
+              },
+              value: {
+                text: role.currentRole
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "if you are still working in this role?"
+                  }
+                ]
+              }
+            } if not role.endDate
+          ]
         }) }}
+      {% endfor %}
       </div>
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-         About you
+          About you
         </h2>
 
         {% if user.profile.about %}
@@ -486,7 +571,7 @@
             rows: [
               {
                 key: {
-                  text: "About you"
+                  text: "Skills and experience"
                 },
                 value: {
                   html: user.profile.about | nl2br
@@ -504,14 +589,68 @@
             ]
           }) }}
         {% else %}
-          <p>Skills and experience.</p>
-          {{ govukButton({
-            text: "Add details about you",
+          {# <p>Skills and experience.</p> #}
+          {# {{ govukButton({
+            text: "Add skills and experience",
             classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
             href: '/profile/about'
-          }) }}
+          }) }} #}
+
+          <p><a href="/profile/about">Add details about you</a></p>
+
         {% endif %}
       </div>
+
+      {# <div class="app-profile__section">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Job search status
+        </h2>
+
+        {% if user.profile.status %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Job search status"
+                },
+                value: {
+                  html: user.profile.status
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/status",
+                      text: "Change",
+                      visuallyHiddenText: "Status"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% else %}
+          <p><a href="/profile/status">Add job search status</a></p>
+        {% endif %}
+      </div> #}
+
+      {% if not user.profile.status %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Turn on profile
+          </h2>
+
+          <p>When you turn on your profile, it’ll be visible to hiring staff.</p>
+
+          <form method="post">
+
+            {{ govukButton({
+              text: "Turn on profile"
+            }) }}
+          </form>
+        </div>
+
+      {% endif %}
+
 
 
     </div>

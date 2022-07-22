@@ -1,7 +1,9 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Create an account' %}
+{% set title = 'Sign in' %}
+
+
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -10,15 +12,20 @@
         {{title}}
       </h1>
 
-      <form method="post" novalidate>
+      <form method="post">
+
+        {% if returnUrl %}
+          <input type="hidden" name="returnUrl" value="{{returnUrl}}">
+        {% endif %}
+
 
         {{ govukInput({
           label: {
             text: "Email address",
             classes: "govuk-label--m"
           },
-          id: "emailAddress",
-          name: "emailAddress",
+          id: "email",
+          name: "email",
           type: "email",
           autocomplete: "email",
           spellcheck: false
@@ -31,16 +38,13 @@
             text: "Password",
             classes: "govuk-label--m"
           },
-          type: "password",
-          hint: {
-            text: "Your password must be at least 8 characters long"
-          }
+          type: "password"
         }) }}
 
 
 
         {{ govukButton({
-          text: 'Create account'
+          text: 'Sign in'
         }) }}
       </form>
 

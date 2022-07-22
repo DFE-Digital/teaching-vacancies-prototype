@@ -19,7 +19,7 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Other qualifications
+          Qualifications
         </span>
         {{title}}
       {% endset %}
@@ -88,6 +88,14 @@
             conditional: {
               html: nonUKQualification
             }
+          }, {
+            value: options[5].value,
+            text: options[5].text,
+            checked: options[5].checked
+          }, {
+            value: options[6].value,
+            text: options[6].text,
+            checked: options[6].checked
           }]
         }) }}
 

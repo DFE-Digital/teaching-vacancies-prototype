@@ -3,18 +3,18 @@
     "username": "anne@example.com",
     "password": "tv",
     "profile": {
-      "status": "Inactive",
-      "qualifications": {}
+      "qualifications": {},
+      "workHistory": {}
     }
   },
   {
     "username": "susy@example.com",
     "password": "tv",
     "profile": {
-      "status": "Started",
       "firstName": "Susy",
       "lastName": "Gamora",
-      "qualifications": {}
+      "qualifications": {},
+      "workHistory": {}
     }
   }
 ]

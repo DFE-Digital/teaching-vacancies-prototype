@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+const _ = require('lodash');
 
 module.exports = router => {
 
@@ -8,27 +9,37 @@ module.exports = router => {
     let options = [  {
       value: "A level",
       text: "A level",
-      checked: profile.qualifications.type == 'A level'
+      checked: _.get('req.session.data.profile.qualifications') == 'A level'
     },
     {
       value: "AS level",
       text: "AS level",
-      checked: profile.qualifications.type == 'AS level'
+      checked: _.get('req.session.data.profile.qualifications') == 'AS level'
     },
     {
       value: "GCSE",
       text: "GCSE",
-      checked: profile.qualifications.type == 'GCSE'
+      checked: _.get('req.session.data.profile.qualifications') == 'GCSE'
     },
     {
       value: "Another UK qualification",
       text: "Another UK qualification",
-      checked: profile.qualifications.type == 'Another UK qualification'
+      checked: _.get('req.session.data.profile.qualifications') == 'Another UK qualification'
     },
     {
       value: "A qualification not from the UK",
       text: "A qualification not from the UK",
-      checked: profile.qualifications.type == 'A qualification not from the UK'
+      checked: _.get('req.session.data.profile.qualifications') == 'A qualification not from the UK'
+    },
+    {
+      value: "Undergraduate degree",
+      text: "Undergraduate degree",
+      checked: _.get('req.session.data.profile.qualifications') == 'Undergraduate degree'
+    },
+    {
+      value: "Postgraduate degree",
+      text: "Postgraduate degree",
+      checked: _.get('req.session.data.profile.qualifications') == 'Postgraduate degree'
     }]
 
     let anotherUKQualification = profile.qualifications.anotherUKQualification
@@ -82,6 +93,15 @@ module.exports = router => {
       value: "A qualification not from the UK",
       text: "A qualification not from the UK",
       checked: qualification.type == 'A qualification not from the UK'
+    }, {
+      value: "Undergraduate degree",
+      text: "Undergraduate degree",
+      checked: qualification.type == 'Undergraduate degree'
+    },
+    {
+      value: "Postgraduate degree",
+      text: "Postgraduate degree",
+      checked: qualification.type == 'Postgraduate degree'
     }]
 
     let anotherUKQualification = qualification.anotherUKQualification
@@ -126,6 +146,8 @@ module.exports = router => {
     req.session.user.profile.qualifications[req.params.id].grade = req.body.profile.qualifications.grade
     req.session.user.profile.qualifications[req.params.id].year = req.body.profile.qualifications.year
     req.session.user.profile.qualifications[req.params.id].country = req.body.profile.qualifications.country
+
+    // _.set('req.session.data.profile.qualifications')
 
     res.redirect('/profile/qualifications/review')
   })

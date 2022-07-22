@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Qualifications' %}
+{% set title = 'Work history' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -19,26 +19,24 @@
         {{title}}
       </h1>
 
-      {{profile | log}}
-
       {{ govukButton({
-        text: "Add qualification",
+        text: "Add role",
         classes: 'govuk-button--secondary',
-        href: '/profile/qualifications/type'
+        href: '/profile/work-history'
       }) }}
 
-      {% for id, qualification in profile.qualifications %}
+      {% for id, role in profile.workHistory %}
 
         {{appPageHeader({
           classes: 'govuk-!-margin-bottom-1',
           heading: {
             level: 2,
-            text: qualification.subject,
+            text: role.role,
             classes: 'govuk-heading-m'
           },
           items: [{
-            text: 'Delete qualification',
-            href: "profile/qualifications/"+id+"/delete",
+            text: 'Delete role',
+            href: "profile/work-history/"+id+"/delete",
             type: 'link'
           }]
         })}}
@@ -47,85 +45,102 @@
           rows: [
             {
               key: {
-                text: "Type"
+                text: "Name of school or employer"
               },
               value: {
-                text: qualification.type
+                text: role.employer
               },
               actions: {
                 items: [
                   {
-                    href: "/profile/qualifications/"+id+"/type",
+                    href: "/profile/work-history/"+id+"/edit",
                     text: "Change",
-                    visuallyHiddenText: "Type"
+                    visuallyHiddenText: "Employer"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "Subject"
+                text: "Role"
               },
               value: {
-                text: qualification.subject
+                text: role.role
               },
               actions: {
                 items: [
                   {
-                    href: "/profile/qualifications/"+id+"/details/",
+                    href: "/profile/work-history/"+id+"/edit",
                     text: "Change",
-                    visuallyHiddenText: "Item label"
+                    visuallyHiddenText: "Role"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "Country where you studied"
+                text: "Start date"
               },
               value: {
-                text: qualification.country
+                text: role.startDate | monthAndYearOnly
               },
               actions: {
                 items: [
                   {
-                    href: "/profile/qualifications/"+id+"/details/",
+                    href: "/profile/work-history/"+id+"/edit",
                     text: "Change",
-                    visuallyHiddenText: "Item label"
-                  }
-                ]
-              }
-            } if qualification.country,
-            {
-              key: {
-                text: "Grade (optional)"
-              },
-              value: {
-                text: qualification.grade or 'Not entered'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/qualifications/"+id+"/details/",
-                    text: "Change",
-                    visuallyHiddenText: "Item label"
+                    visuallyHiddenText: "Start date"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "Year awarded"
+                text: "End date"
               },
               value: {
-                text: qualification.year or 'Not entered'
+                text: role.endDate | monthAndYearOnly
               },
               actions: {
                 items: [
                   {
-                    href: "/profile/qualifications/"+id+"/details/",
+                    href: "/profile/work-history/"+id+"/edit",
                     text: "Change",
-                    visuallyHiddenText: "Item label"
+                    visuallyHiddenText: "Start date"
+                  }
+                ]
+              }
+            } if role.endDate,
+            {
+              key: {
+                text: "Are you still working in this role?"
+              },
+              value: {
+                text: role.currentRole
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "if you are still working in this role?"
+                  }
+                ]
+              }
+            } if not role.endDate,
+            {
+              key: {
+                text: "Description"
+              },
+              value: {
+                text: role.description
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/work-history/"+id+"/edit",
+                    text: "Change",
+                    visuallyHiddenText: "description"
                   }
                 ]
               }

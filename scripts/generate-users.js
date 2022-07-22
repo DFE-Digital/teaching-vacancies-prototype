@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
+const _ = require('lodash');
 
 const generateUser = (params = {}) => {
   let user = {}
@@ -11,7 +12,7 @@ const generateUser = (params = {}) => {
 
   user.profile = params.profile || {}
 
-  user.profile.status = params.profile && params.profile.status || 'Inactive'
+  user.profile.status = _.get('params.profile.status')
 
   // Personal details
   user.profile.firstName = params.profile && params.profile.firstName
@@ -41,7 +42,7 @@ const generateUser = (params = {}) => {
   user.profile.qualifications = params.profile && params.profile.qualifications || {}
 
   // Work history
-  user.profile.workHistory = params.profile && params.profile.workHistory
+  user.profile.workHistory = params.profile && params.profile.workHistory || {}
 
   // About
   user.profile.about = params.profile && params.profile.about

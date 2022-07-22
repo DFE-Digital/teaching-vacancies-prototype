@@ -1,24 +1,24 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Sign in' %}
+{% set title = 'Create an account' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-xl">
         {{title}}
       </h1>
 
-      <form method="post">
+      <form method="post" novalidate>
 
         {{ govukInput({
           label: {
             text: "Email address",
             classes: "govuk-label--m"
           },
-          id: "email",
-          name: "email",
+          id: "emailAddress",
+          name: "emailAddress",
           type: "email",
           autocomplete: "email",
           spellcheck: false
@@ -31,13 +31,16 @@
             text: "Password",
             classes: "govuk-label--m"
           },
-          type: "password"
+          type: "password",
+          hint: {
+            text: "Your password must be at least 8 characters long"
+          }
         }) }}
 
 
 
         {{ govukButton({
-          text: 'Sign in'
+          text: 'Create account'
         }) }}
       </form>
 
