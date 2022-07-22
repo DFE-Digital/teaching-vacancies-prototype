@@ -3,20 +3,33 @@ const users = require('../data/users.json')
 module.exports = router => {
 
   router.get('/account/sign-in', (req, res) => {
+    var options = users.map(user => {
+      return {
+        text: user.username,
+        value: user.username,
+        hint: {
+          text: user.profile.status ? 'Profile: ' + user.profile.status : ''
+        }
+      }
+    })
     res.render('account/sign-in', {
-      returnUrl: req.query.returnUrl
+      returnUrl: req.query.returnUrl,
+      options
     })
   })
 
   router.post('/account/sign-in', (req, res) => {
-    res.locals.user = req.session.user = users[1]
+    if(req.body.emailAddress) {
+      res.locals.user = req.session.user = users.find(user => user.username == req.body.emailAddress)
+    } else {
+      res.locals.user = req.session.user = users[0]
+    }
 
     if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
     } else {
       res.redirect('/jobs')
     }
-
   })
 
   router.get('/account/sign-out', (req, res) => {

@@ -1,16 +1,14 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Sign in' %}
-
-
+{% set title = 'User profile' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
+      {% set h1 %}
         {{title}}
-      </h1>
+      {% endset %}
 
       <form method="post">
 
@@ -18,8 +16,22 @@
           <input type="hidden" name="returnUrl" value="{{returnUrl}}">
         {% endif %}
 
+        {{ govukRadios({
+          idPrefix: "emailAddress",
+          name: "emailAddress",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: options
+        }) }}
 
-        {{ govukInput({
+
+
+        {# {{ govukInput({
           label: {
             text: "Email address",
             classes: "govuk-label--m"
@@ -39,9 +51,7 @@
             classes: "govuk-label--m"
           },
           type: "password"
-        }) }}
-
-
+        }) }} #}
 
         {{ govukButton({
           text: 'Sign in'
