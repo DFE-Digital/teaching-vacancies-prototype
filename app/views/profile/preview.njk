@@ -138,7 +138,7 @@
           <div class="app-list">
             {% for id, role in user.profile.workHistory %}
               <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">
                   {{role.employer}}
                 </h3>
                 <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
@@ -167,22 +167,21 @@
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Qualifications
           </h2>
-
           {% for key, qualifications in qualifications %}
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-2">
-              {{key}}s
-            </h3>
+            <div class="app-qualification-group {% if loop.first %}app-qualification-group--first{% endif %} {% if loop.last %}app-qualification-group--last{% endif %}">
+              <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-2">
+                {{key}}s
+              </h3>
 
-            {% for qualification in qualifications %}
-              <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
-                <p class="govuk-!-margin-bottom-0">{{qualification.subject}}, {{qualification.grade or 'Not entered'}}</p>
+              {% for qualification in qualifications %}
+                <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
+                  <p class="govuk-!-margin-bottom-0">{{qualification.subject}}, {{qualification.grade or 'Not entered'}}</p>
 
-                <p class="govuk-caption-m govuk-!-margin-bottom-0">{{qualification.year or 'Not entered'}}, {{qualification.organisation or 'Not entered'}}</p>
-              </div>
-            {% endfor %}
-
+                  <p class="govuk-caption-m govuk-!-margin-bottom-0">{{qualification.year or 'Not entered'}}, {{qualification.organisation or 'Not entered'}}</p>
+                </div>
+              {% endfor %}
+            </div>
           {% endfor %}
-
         </div>
       {% endif %}
     </div>
