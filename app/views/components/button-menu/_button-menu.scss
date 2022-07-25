@@ -93,7 +93,7 @@
   .app-button-menu__item {
     display: inline-block;
     margin-right: govuk-spacing(2);
-    margin-bottom: govuk-spacing(2);
+    // margin-bottom: govuk-spacing(2);
     width: auto; // Override GDS’s 100% width
     font-size: 19px !important;
     &:last-child {

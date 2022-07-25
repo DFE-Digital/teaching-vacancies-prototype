@@ -1,4 +1,5 @@
 const authenticaton = require('../middleware/authenticaton')
+const _ = require('lodash')
 
 module.exports = router => {
 
@@ -26,9 +27,21 @@ module.exports = router => {
     res.redirect('/profile')
   })
 
-  router.get('/profile/preview', (req, res) => {
+  router.get('/profile/preview', authenticaton.isAuthenticated, (req, res) => {
+
+    let qualifications = req.session.user.profile.qualifications
+
+    qualifications = _.sortBy(qualifications, function(item) {
+      return item.year
+    }).reverse()
+
+    qualifications = _.groupBy(qualifications, function(item){
+      return item.type
+    })
+
     res.render('profile/preview', {
-      user: req.session.user
+      user: req.session.user,
+      qualifications
     })
   })
 }

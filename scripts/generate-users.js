@@ -66,7 +66,8 @@ const generateUsers = () => {
     type: 'GCSE',
     subject: 'Maths',
     grade: 'A',
-    year: '2020'
+    year: '2020',
+    organisation: 'Bushey Meads School'
   }
 
   let q2 = {
@@ -74,11 +75,32 @@ const generateUsers = () => {
     type: 'AS level',
     subject: 'English',
     grade: 'B',
-    year: '2022'
+    year: '2022',
+    organisation: 'Bushey Meads School'
+  }
+
+  let q3 = {
+    id: uuidv4(),
+    type: 'AS level',
+    subject: 'Science',
+    grade: 'B',
+    year: '2022',
+    organisation: 'Bushey Meads School'
+  }
+
+  let q4 = {
+    id: uuidv4(),
+    type: 'Undergraduate degree',
+    subject: 'Biotechnology',
+    grade: 'First',
+    year: '2025',
+    organisation: 'University of Cambridge'
   }
 
   qualifications[q1.id] = q1
   qualifications[q2.id] = q2
+  qualifications[q3.id] = q3
+  qualifications[q4.id] = q4
 
   let workHistory = {}
 

@@ -40,7 +40,7 @@
       <a href="/profile/preview">Preview profile</a></p>
 
 
-      <div class="app-profile__section">
+      <div class="app-profile__section app-profile__section--first">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Personal details
@@ -336,19 +336,6 @@
           Qualifications
         </h2>
 
-        {% if user.profile.qualifications | length > 0 %}
-          {% set classes = 'govuk-button--secondar govuk-!-margin-bottom-6' %}
-        {% else %}
-          {% set classes = 'govuk-button--secondar govuk-!-margin-bottom-2' %}
-        {% endif %}
-
-
-        {# {{ govukButton({
-          text: 'Add other qualifications',
-          classes: classes,
-          href: '/profile/qualifications/type'
-        }) }} #}
-
         <p><a href="/profile/qualifications/type">Add qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications %}
@@ -436,6 +423,23 @@
                     }
                   ]
                 }
+              },
+              {
+                key: {
+                  text: "Organisation"
+                },
+                value: {
+                  text: qualification.organisation or 'Not entered'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/qualifications/"+id+"/details/",
+                      text: "Change",
+                      visuallyHiddenText: "Item label"
+                    }
+                  ]
+                }
               }
             ]
           }) }}
@@ -455,112 +459,43 @@
 
         <p><a href="/profile/work-history">Add roles</a></p>
 
+        <div class="app-workHistory">
+
         {% for id, role in user.profile.workHistory %}
+          <div class="app-workHistory__item">
 
-        {{appPageHeader({
-          classes: 'govuk-!-margin-bottom-1',
-          heading: {
-            level: 2,
-            text: role.role,
-            classes: 'govuk-heading-m'
-          },
-          items: [{
-            text: 'Delete role',
-            href: "profile/work-history/"+id+"/delete",
-            type: 'link'
-          }]
-        })}}
+            {{appPageHeader({
+              classes: 'govuk-!-margin-bottom-0',
+              heading: {
+                level: 2,
+                text: role.employer,
+                classes: 'govuk-heading-s'
+              },
+              items: [{
+                text: 'Change',
+                href: "/profile/work-history/"+id+"/edit",
+                type: 'link'
+              }, {
+                text: 'Delete role',
+                href: "/profile/work-history/"+id+"/delete",
+                type: 'link'
+              }]
+            })}}
 
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Name of school or employer"
-              },
-              value: {
-                text: role.employer
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/work-history/"+id+"/edit",
-                    text: "Change",
-                    visuallyHiddenText: "Employer"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Role"
-              },
-              value: {
-                text: role.role
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/work-history/"+id+"/edit",
-                    text: "Change",
-                    visuallyHiddenText: "Role"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Start date"
-              },
-              value: {
-                text: role.startDate | monthAndYearOnly
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/work-history/"+id+"/edit",
-                    text: "Change",
-                    visuallyHiddenText: "Start date"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "End date"
-              },
-              value: {
-                text: role.endDate | monthAndYearOnly
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/work-history/"+id+"/edit",
-                    text: "Change",
-                    visuallyHiddenText: "Start date"
-                  }
-                ]
-              }
-            } if role.endDate,
-            {
-              key: {
-                text: "Are you still working in this role?"
-              },
-              value: {
-                text: role.currentRole
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/work-history/"+id+"/edit",
-                    text: "Change",
-                    visuallyHiddenText: "if you are still working in this role?"
-                  }
-                ]
-              }
-            } if not role.endDate
-          ]
-        }) }}
-      {% endfor %}
+            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
+            <p class="govuk-caption-m govuk-!-margin-bottom-0">
+              {{role.startDate | monthAndYearOnly}}
+              to
+              {% if role.endDate %}
+                {{role.endDate | monthAndYearOnly}}
+              {% else %}
+                present
+              {% endif %}
+            </p>
+            <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p>
+          </div>
+        {% endfor %}
+      </div>
       </div>
       <div class="app-profile__section">
 
