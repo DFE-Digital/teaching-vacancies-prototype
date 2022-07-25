@@ -7,7 +7,7 @@
         <form action="{{item.action}}" method="post">
       {% endif %}
       {% if item.type == 'link' %}
-        <a class="app-button-menu__item govuk-link" href="#">{{item.text}}</a>
+        <a class="app-button-menu__item govuk-link" href="{{item.href}}">{{item.text}}</a>
       {% else %}
         {{ govukButton({
           element: item.element,

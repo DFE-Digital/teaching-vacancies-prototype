@@ -2,7 +2,7 @@
   @include govuk-clearfix;
   font-size: 0; // Hide whitespace between elements
   margin-bottom: govuk-spacing(7);
-  min-height: govuk-spacing(7); // Match button height
+  // min-height: govuk-spacing(7); // Match button height
   text-align: justify; // Trick to remove the need for floats
   &:after {
     content: '';
