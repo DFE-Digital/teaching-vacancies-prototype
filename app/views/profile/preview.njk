@@ -34,7 +34,11 @@
         }) if user.profile.status == 'Active'}}
       </h1>
       <p>
-        Email: <a href="mailto:{{user.emailAddress}}">{{user.emailAddress}}</a>
+        Email address: <a href="mailto:{{user.emailAddress}}">{{user.emailAddress}}</a>
+        {% if user.profile.phoneNumber %}
+          | Phone number: {{user.profile.phoneNumber}}
+        {% endif %}
+
       </p>
 
       {% if user.profile.about %}
