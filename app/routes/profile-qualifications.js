@@ -160,4 +160,24 @@ module.exports = router => {
     })
   })
 
+  router.get('/profile/qualifications/:id/delete', (req, res) => {
+    let id = req.params.id
+    let profile = req.session.user.profile
+    let qualification = profile.qualifications[id]
+
+    res.render('profile/qualifications/delete', {
+      qualification
+    })
+  })
+
+  router.post('/profile/qualifications/:id/delete', (req, res) => {
+    let id = req.params.id
+    let profile = req.session.user.profile
+
+    delete profile.qualifications[id]
+
+    req.flash('success', 'Qualification deleted')
+    res.redirect('/profile/qualifications/review')
+  })
+
 }

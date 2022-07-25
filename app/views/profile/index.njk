@@ -7,8 +7,6 @@
 
 {% block content %}
 
-  {{user | log}}
-
   {{ govukNotificationBanner({
     html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
     type: "success",
@@ -349,7 +347,7 @@
             },
             items: [{
               text: 'Delete qualification',
-              href: "profile/qualifications/"+id+"/delete",
+              href: "/profile/qualifications/"+id+"/delete",
               type: 'link'
             }]
           })}}
@@ -508,7 +506,7 @@
             rows: [
               {
                 key: {
-                  text: "About you and your experience"
+                  text: "About you"
                 },
                 value: {
                   html: user.profile.about | nl2br

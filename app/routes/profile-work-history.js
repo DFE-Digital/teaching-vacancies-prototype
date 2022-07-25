@@ -134,4 +134,24 @@ module.exports = router => {
     })
   })
 
+  router.get('/profile/work-history/:id/delete', (req, res) => {
+    let id = req.params.id
+    let profile = req.session.user.profile
+    let role = profile.workHistory[id]
+
+    res.render('profile/work-history/delete', {
+      role
+    })
+  })
+
+  router.post('/profile/work-history/:id/delete', (req, res) => {
+    let id = req.params.id
+    let profile = req.session.user.profile
+
+    delete profile.workHistory[id]
+
+    req.flash('success', 'Role deleted')
+    res.redirect('/profile/work-history/review')
+  })
+
 }
