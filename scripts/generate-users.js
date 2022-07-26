@@ -73,9 +73,8 @@ const generateUsers = () => {
   let a2 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2015', organisation: 'Bushey Meads School' }
   let a3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2013', organisation: 'Aldenham College' }
 
-  let d1 = { id: uuidv4(), type: 'Undergraduate degree', subject: 'Chemistry', grade: '1st', year: '2019', organisation: 'University of Hertfordshire' }
-
-  let p1 = { id: uuidv4(), type: 'Postgraduate degree', subject: 'Social science', organisation: 'UCL' }
+  let d1 = { id: uuidv4(), type: 'Degree', subject: 'Multimedia Technology BSc', grade: '1st', year: '2019', organisation: 'University of Hertfordshire' }
+  let d2 = { id: uuidv4(), type: 'Degree', subject: 'Social science PhD', organisation: 'UCL' }
 
   qualifications[g1.id] = g1
   qualifications[g2.id] = g2
@@ -90,8 +89,7 @@ const generateUsers = () => {
   qualifications[a3.id] = a3
 
   qualifications[d1.id] = d1
-
-  qualifications[p1.id] = p1
+  qualifications[d2.id] = d2
 
   let workHistory = {}
 

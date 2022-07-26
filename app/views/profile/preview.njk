@@ -189,7 +189,7 @@
                       {%- if qualification.grade %}
                         ({{qualification.grade}})
                       {%- else %}
-                        {% if qualification.type == 'Postgraduate degree' or qualification.type == 'Undergraduate degree' %}
+                        {% if qualification.type == 'Degree' %}
                           (not finished yet)
                         {% endif %}
                       {%- endif %}
@@ -198,9 +198,9 @@
                   </p>
 
                   <p class="govuk-caption-m govuk-!-margin-bottom-0">
-                    {{qualifications[0].organisation}},
-                    {%- if qualifications[0].year %}
-                      {{qualifications[0].year}}
+                    {{qualifications[0].organisation}}
+                    {%- if qualifications[0].year -%}
+                      , {{qualifications[0].year}}
                     {%- endif %}
                   </p>
                 </div>
