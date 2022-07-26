@@ -95,7 +95,8 @@
     margin-right: govuk-spacing(2);
     // margin-bottom: govuk-spacing(2);
     width: auto; // Override GDS’s 100% width
-    font-size: 19px !important;
+    @include govuk-font($size: 19);
+    // @include govuk-responsive-margin(6, "bottom");
     &:last-child {
       margin-right: 0;
     }

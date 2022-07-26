@@ -33,9 +33,12 @@
 
 .app-page-header__actions {
 
+  margin-bottom: govuk-spacing(2);
+
   @include govuk-media-query($from: tablet) {
     display: inline-block;
     vertical-align: middle;
+    margin-bottom: govuk-spacing(0);
   }
 
 }
