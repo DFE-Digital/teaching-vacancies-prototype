@@ -61,46 +61,33 @@ const generateUsers = () => {
 
   let qualifications = {}
 
-  let q1 = {
-    id: uuidv4(),
-    type: 'GCSE',
-    subject: 'Maths',
-    grade: 'A',
-    year: '2020',
-    organisation: 'Bushey Meads School'
-  }
+  let g1 = { id: uuidv4(), type: 'GCSE', subject: 'Maths', grade: 'A', year: '2020', organisation: 'Bushey Meads School' }
+  let g2 = { id: uuidv4(), type: 'GCSE', subject: 'English', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
+  let g3 = { id: uuidv4(), type: 'GCSE', subject: 'Science', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
+  let g4 = { id: uuidv4(), type: 'GCSE', subject: 'Geography', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
+  let g5 = { id: uuidv4(), type: 'GCSE', subject: 'History', grade: 'D', year: '2020', organisation: 'Bushey Meads School' }
+  let g6 = { id: uuidv4(), type: 'GCSE', subject: 'Statistics', grade: 'A', year: '2020', organisation: 'Bushey Meads School' }
+  let g7 = { id: uuidv4(), type: 'GCSE', subject: 'French', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
 
-  let q2 = {
-    id: uuidv4(),
-    type: 'AS level',
-    subject: 'English',
-    grade: 'B',
-    year: '2022',
-    organisation: 'Bushey Meads School'
-  }
+  let a1 = { id: uuidv4(), type: 'A level', subject: 'English', grade: 'A', year: '2022', organisation: 'Bushey Meads School' }
+  let a2 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2022', organisation: 'Bushey Meads School' }
+  let a3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2022', organisation: 'Bushey Meads School' }
 
-  let q3 = {
-    id: uuidv4(),
-    type: 'AS level',
-    subject: 'Science',
-    grade: 'B',
-    year: '2022',
-    organisation: 'Bushey Meads School'
-  }
+  let d1 = { id: uuidv4(), type: 'Undergraduate degree', subject: 'Chemistry', grade: '1st', year: '2025', organisation: 'University of Hertfordshire' }
 
-  let q4 = {
-    id: uuidv4(),
-    type: 'Undergraduate degree',
-    subject: 'Biotechnology',
-    grade: 'First',
-    year: '2025',
-    organisation: 'University of Cambridge'
-  }
+  qualifications[g1.id] = g1
+  qualifications[g2.id] = g2
+  qualifications[g3.id] = g3
+  qualifications[g4.id] = g4
+  qualifications[g5.id] = g5
+  qualifications[g6.id] = g6
+  qualifications[g7.id] = g7
 
-  qualifications[q1.id] = q1
-  qualifications[q2.id] = q2
-  qualifications[q3.id] = q3
-  qualifications[q4.id] = q4
+  qualifications[a1.id] = a1
+  qualifications[a2.id] = a2
+  qualifications[a3.id] = a3
+
+  qualifications[d1.id] = d1
 
   let workHistory = {}
 
