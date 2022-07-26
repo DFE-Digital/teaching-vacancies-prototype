@@ -61,19 +61,21 @@ const generateUsers = () => {
 
   let qualifications = {}
 
-  let g1 = { id: uuidv4(), type: 'GCSE', subject: 'Maths', grade: 'A', year: '2020', organisation: 'Bushey Meads School' }
-  let g2 = { id: uuidv4(), type: 'GCSE', subject: 'English', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
-  let g3 = { id: uuidv4(), type: 'GCSE', subject: 'Science', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
-  let g4 = { id: uuidv4(), type: 'GCSE', subject: 'Geography', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
-  let g5 = { id: uuidv4(), type: 'GCSE', subject: 'History', grade: 'D', year: '2020', organisation: 'Bushey Meads School' }
-  let g6 = { id: uuidv4(), type: 'GCSE', subject: 'Statistics', grade: 'A', year: '2020', organisation: 'Bushey Meads School' }
-  let g7 = { id: uuidv4(), type: 'GCSE', subject: 'French', grade: 'B', year: '2020', organisation: 'Bushey Meads School' }
+  let g1 = { id: uuidv4(), type: 'GCSE', subject: 'Maths', grade: 'A', year: '2013', organisation: 'Bushey Meads School' }
+  let g2 = { id: uuidv4(), type: 'GCSE', subject: 'English', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
+  let g3 = { id: uuidv4(), type: 'GCSE', subject: 'Science', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
+  let g4 = { id: uuidv4(), type: 'GCSE', subject: 'Geography', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
+  let g5 = { id: uuidv4(), type: 'GCSE', subject: 'History', year: '2013', organisation: 'Bushey Meads School' }
+  let g6 = { id: uuidv4(), type: 'GCSE', subject: 'Statistics', grade: 'A', year: '2013', organisation: 'Bushey Meads School' }
+  let g7 = { id: uuidv4(), type: 'GCSE', subject: 'French', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
 
-  let a1 = { id: uuidv4(), type: 'A level', subject: 'English', grade: 'A', year: '2022', organisation: 'Bushey Meads School' }
-  let a2 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2022', organisation: 'Bushey Meads School' }
-  let a3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2022', organisation: 'Bushey Meads School' }
+  let a1 = { id: uuidv4(), type: 'A level', subject: 'English', grade: 'A', year: '2015', organisation: 'Bushey Meads School' }
+  let a2 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2015', organisation: 'Bushey Meads School' }
+  let a3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2013', organisation: 'Aldenham College' }
 
-  let d1 = { id: uuidv4(), type: 'Undergraduate degree', subject: 'Chemistry', grade: '1st', year: '2025', organisation: 'University of Hertfordshire' }
+  let d1 = { id: uuidv4(), type: 'Undergraduate degree', subject: 'Chemistry', grade: '1st', year: '2019', organisation: 'University of Hertfordshire' }
+
+  let p1 = { id: uuidv4(), type: 'Postgraduate degree', subject: 'Social science', organisation: 'UCL' }
 
   qualifications[g1.id] = g1
   qualifications[g2.id] = g2
@@ -88,6 +90,8 @@ const generateUsers = () => {
   qualifications[a3.id] = a3
 
   qualifications[d1.id] = d1
+
+  qualifications[p1.id] = p1
 
   let workHistory = {}
 

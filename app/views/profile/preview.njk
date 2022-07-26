@@ -166,24 +166,46 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {{qualificationsGroup | log}}
+
       {% if user.profile.qualifications | length %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Qualifications
           </h2>
-          {% for key, qualifications in qualifications %}
+          {% for key, type in qualificationsGroup %}
             <div class="app-qualification-group {% if loop.first %}app-qualification-group--first{% endif %} {% if loop.last %}app-qualification-group--last{% endif %}">
-              <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-2">
+              <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
                 {{key}}s
               </h3>
 
-              {% for qualification in qualifications %}
-                <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
-                  <p class="govuk-!-margin-bottom-0">{{qualification.subject}}, {{qualification.grade or 'Not entered'}}</p>
+              {% for key, qualifications in type %}
 
-                  <p class="govuk-caption-m govuk-!-margin-bottom-0">{{qualification.year or 'Not entered'}}, {{qualification.organisation or 'Not entered'}}</p>
+                <div class="app-qualifications-group__org-year">
+
+                  <p class="govuk-!-margin-bottom-1">
+                    {% for qualification in qualifications %}
+                      {{qualification.subject}}
+                      {%- if qualification.grade %}
+                        ({{qualification.grade}})
+                      {%- else %}
+                        {% if qualification.type == 'Postgraduate degree' or qualification.type == 'Undergraduate degree' %}
+                          (not finished yet)
+                        {% endif %}
+                      {%- endif %}
+                      {%- if not loop.last %},{% endif%}
+                    {% endfor %}
+                  </p>
+
+                  <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                    {{qualifications[0].organisation}},
+                    {%- if qualifications[0].year %}
+                      {{qualifications[0].year}}
+                    {%- endif %}
+                  </p>
                 </div>
-              {% endfor %}
+
+              {% endfor%}
             </div>
           {% endfor %}
         </div>

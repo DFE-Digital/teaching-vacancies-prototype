@@ -31,17 +31,25 @@ module.exports = router => {
 
     let qualifications = req.session.user.profile.qualifications
 
-    qualifications = _.sortBy(qualifications, function(item) {
+    let qualificationsGroup = _.sortBy(qualifications, function(item) {
       return item.year
     }).reverse()
 
-    qualifications = _.groupBy(qualifications, function(item){
+    qualificationsGroup = _.groupBy(qualificationsGroup, function(item){
       return item.type
+    })
+
+    _.forIn(qualificationsGroup, function(value, key, object) {
+      // value = the array
+
+      object[key] = _.groupBy(value, function(item) {
+        return item.year + item.organisation
+      })
     })
 
     res.render('profile/preview', {
       user: req.session.user,
-      qualifications
+      qualificationsGroup
     })
   })
 }
