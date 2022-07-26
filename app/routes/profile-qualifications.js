@@ -6,41 +6,38 @@ module.exports = router => {
   router.get('/profile/qualifications/type', (req, res) => {
     let profile = req.session.user.profile
 
-    let options = [  {
-      value: "A level",
-      text: "A level",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'A level'
-    },
-    {
-      value: "AS level",
-      text: "AS level",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'AS level'
-    },
-    {
-      value: "GCSE",
-      text: "GCSE",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'GCSE'
-    },
-    {
-      value: "Another UK qualification",
-      text: "Another UK qualification",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'Another UK qualification'
-    },
-    {
-      value: "A qualification not from the UK",
-      text: "A qualification not from the UK",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'A qualification not from the UK'
-    },
-    {
-      value: "Undergraduate degree",
-      text: "Undergraduate degree",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'Undergraduate degree'
-    },
-    {
-      value: "Postgraduate degree",
-      text: "Postgraduate degree",
-      checked: _.get(req, 'session.data.profile.qualifications') == 'Postgraduate degree'
-    }]
+    let options = [
+      {
+        value: "GCSE",
+        text: "GCSE",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'GCSE'
+      },
+      {
+        value: "AS level",
+        text: "AS level",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'AS level'
+      },
+      {
+        value: "A level",
+        text: "A level",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'A level'
+      },
+      {
+        value: "Degree",
+        text: "Degree",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'Degree'
+      },
+      {
+        value: "Another UK qualification",
+        text: "Another UK qualification",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'Another UK qualification'
+      },
+      {
+        value: "A qualification not from the UK",
+        text: "A qualification not from the UK",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'A qualification not from the UK'
+      }
+    ]
 
     let anotherUKQualification = profile.qualifications.anotherUKQualification
     let nonUKQualification = profile.qualifications.nonUKQualification
@@ -69,22 +66,24 @@ module.exports = router => {
 
     let qualification = profile.qualifications[id]
 
-    let options = [  {
+    let options = [{
+      value: "GCSE",
+      text: "GCSE",
+      checked: qualification.type == 'GCSE'
+    }, {
+      value: "AS level",
+      text: "AS level",
+      checked: qualification.type == 'AS level'
+    }, {
       value: "A level",
       text: "A level",
       checked: qualification.type == 'A level'
     },
     {
-      value: "AS level",
-      text: "AS level",
-      checked: qualification.type == 'AS level'
-    },
-    {
-      value: "GCSE",
-      text: "GCSE",
-      checked: qualification.type == 'GCSE'
-    },
-    {
+      value: "Degree",
+      text: "Degree",
+      checked: qualification.type == 'Degree'
+    }, {
       value: "Another UK qualification",
       text: "Another UK qualification",
       checked: qualification.type == 'Another UK qualification'
@@ -93,15 +92,6 @@ module.exports = router => {
       value: "A qualification not from the UK",
       text: "A qualification not from the UK",
       checked: qualification.type == 'A qualification not from the UK'
-    }, {
-      value: "Undergraduate degree",
-      text: "Undergraduate degree",
-      checked: qualification.type == 'Undergraduate degree'
-    },
-    {
-      value: "Postgraduate degree",
-      text: "Postgraduate degree",
-      checked: qualification.type == 'Postgraduate degree'
     }]
 
     let anotherUKQualification = qualification.anotherUKQualification
