@@ -155,6 +155,15 @@
           Job preferences
         </h2>
 
+        {% set locations %}
+          {% for key, location in user.profile.locations %}
+            {{location.location}} ({{location.radius}})
+            {%- if not loop.last -%}
+            ,
+            {%- endif -%}
+          {% endfor %}
+        {% endset %}
+
         {% if user.profile.roles and user.profile.phases and user.profile.workingPatterns %}
           {{ govukSummaryList({
           rows: [
@@ -175,74 +184,91 @@
                 ]
               }
             },
-             {
-                  key: {
-                    text: "Phases"
-                  },
-                  value: {
-                    text: user.profile.phases | join(', ')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/profile/job-preferences/education-phases",
-                        text: "Change",
-                        visuallyHiddenText: "Education phases"
-                      }
-                    ]
+            {
+              key: {
+                text: "Phases"
+              },
+              value: {
+                text: user.profile.phases | join(', ')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/job-preferences/education-phases",
+                    text: "Change",
+                    visuallyHiddenText: "Education phases"
                   }
-                } if user.profile.phases,
-                {
-                  key: {
-                    text: "Key stages"
-                  },
-                  value: {
-                    text: user.profile.keyStages | join(', ')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/profile/job-preferences/key-stages",
-                        text: "Change",
-                        visuallyHiddenText: "Key stages"
-                      }
-                    ]
-                  }
-                } if user.profile.keyStages,
-                {
-                  key: {
-                    text: "Subjects"
-                  },
-                  value: {
-                    html: user.profile.subjects | join(', ')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/profile/job-preferences/subjects",
-                        text: "Change",
-                        visuallyHiddenText: "Subjects"
-                      }
-                    ]
-                  }
-                } if user.profile.subjects,
-                {
-                key: {
-                  text: "Working patterns"
-                },
-                value: {
-                  text: user.profile.workingPatterns | join(', ')
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/job-preferences/working-patterns",
-                      text: "Change",
-                      visuallyHiddenText: "Working patterns"
-                    }
-                  ]
-                }
+                ]
               }
+            } if user.profile.phases,
+            {
+              key: {
+                text: "Key stages"
+              },
+              value: {
+                text: user.profile.keyStages | join(', ')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/job-preferences/key-stages",
+                    text: "Change",
+                    visuallyHiddenText: "Key stages"
+                  }
+                ]
+              }
+            } if user.profile.keyStages,
+            {
+              key: {
+                text: "Subjects"
+              },
+              value: {
+                html: user.profile.subjects | join(', ')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/job-preferences/subjects",
+                    text: "Change",
+                    visuallyHiddenText: "Subjects"
+                  }
+                ]
+              }
+            } if user.profile.subjects,
+            {
+              key: {
+                text: "Working patterns"
+              },
+              value: {
+                text: user.profile.workingPatterns | join(', ')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/job-preferences/working-patterns",
+                    text: "Change",
+                    visuallyHiddenText: "Working patterns"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Locations"
+              },
+              value: {
+                text: locations
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/job-preferences/location-check",
+                    text: "Change",
+                    visuallyHiddenText: "Locations"
+                  }
+                ]
+              }
+            }
           ]
         }) }}
       {% else %}

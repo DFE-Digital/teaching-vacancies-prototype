@@ -117,6 +117,16 @@ const generateUsers = () => {
   workHistory[r1.id] = r1
   workHistory[r2.id] = r2
 
+  let locations = {}
+
+  let l1 = {
+    id: uuidv4(),
+    location: 'London',
+    radius: '5 miles',
+  }
+
+  locations[l1.id] = l1
+
   users.push(generateUser({
     emailAddress: 'susy@example.com',
     profile: {
@@ -129,6 +139,7 @@ const generateUsers = () => {
       phases: ['Primary'],
       keyStages: ['KS1', 'KS2'],
       workingPatterns: ['Full time'],
+      locations,
       qts: 'Yes',
       ect: 'Yes',
       qualifications,
