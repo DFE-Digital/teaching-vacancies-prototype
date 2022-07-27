@@ -24,18 +24,20 @@
         }) if user.profile.status == 'Active'}}
       </h1>
 
-      <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
-      <p>
 
       {% if user.profile.status %}
-        {% if user.profile.status == 'Active' %}
-          <a class="govuk-!-margin-right-2" href="/profile/deactivate">Turn off profile</a>
-        {% else %}
-          <a class="govuk-!-margin-right-2" href="/profile/activate">Turn on profile</a>
-        {% endif %}
+        <p>
+          {% if user.profile.status == 'Active' %}
+            <a class="govuk-!-margin-right-2" href="/profile/deactivate">Turn off profile</a>
+          {% else %}
+            <a class="govuk-!-margin-right-2" href="/profile/activate">Turn on profile</a>
+          {% endif %}
+          <a href="/profile/preview">Preview profile</a></p>
+        </p>
+      {% else %}
       {% endif %}
+      <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
 
-      <a href="/profile/preview">Preview profile</a></p>
 
 
       <div class="app-profile__section app-profile__section--first">
@@ -571,8 +573,10 @@
       {% if not user.profile.status %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Turn on profile
+            Preview and turn on profile
           </h2>
+
+          <p><a href="/profile/preview">Preview profile</a></p>
 
           <p>When you turn on your profile, it’ll be visible to hiring staff.</p>
 

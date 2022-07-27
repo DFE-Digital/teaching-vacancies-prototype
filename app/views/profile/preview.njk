@@ -6,13 +6,17 @@
 {% set title = [user.profile.firstName, user.profile.lastName] | join(' ') %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
+  {# {{ govukBreadcrumbs({
     items: [{
       text: 'Profile',
       href: '/profile'
     }, {
       text: 'Preview'
     }]
+  }) }} #}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
   }) }}
 {% endblock %}
 
