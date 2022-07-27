@@ -19,6 +19,15 @@
         {{title}}
       </h1>
 
+      {% set locations %}
+        {% for key, location in profile.locations %}
+          {{location.location}} ({{location.radius}})
+          {%- if not loop.last -%}
+          ,
+          {%- endif -%}
+        {% endfor %}
+      {% endset %}
+
       {{ govukSummaryList({
         rows: [
           {
@@ -105,9 +114,28 @@
                 }
               ]
             }
-          } if profile.subjects
+          } if profile.subjects,
+          {
+            key: {
+              text: "Locations"
+            },
+            value: {
+              text: locations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/location-check",
+                  text: "Change",
+                  visuallyHiddenText: "Locations"
+                }
+              ]
+            }
+          }
         ]
       }) }}
+
+
 
       {{ govukButton({
         text: "Return to profile",

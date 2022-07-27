@@ -34,6 +34,9 @@ const generateUser = (params = {}) => {
   // Working patterns
   user.profile.workingPatterns = _.get(params, 'profile.workingPatterns')
 
+  // Locations
+  user.profile.locations = _.get(params, 'profile.locations') || {}
+
   // QTS
   user.profile.qts = _.get(params, 'profile.qts')
 

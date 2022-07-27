@@ -3,7 +3,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Key stages' %}
+{% set title = 'Location' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -17,26 +17,37 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
+      <h1 class="govuk-heading-xl">
         <span class="govuk-caption-xl">
-          Job preferences - primary
+          Job preferences
         </span>
         {{title}}
-      {% endset %}
+      </h1>
+
+
 
       <form method="post" novalidate>
 
-        {{ govukCheckboxes({
-          idPrefix: "profile[keyStages]",
-          name: "profile[keyStages]",
+        {{ govukInput({
+          id: "profile[location]",
+          name: "profile[location]",
+          label: {
+            text: "Location",
+            classes: 'govuk-label--m'
+          },
+          value: location
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "profile[radius]",
+          name: "profile[radius]",
           fieldset: {
             legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              text: "Search radius",
+              classes: "govuk-fieldset__legend--m"
             }
           },
-          items: options
+          items: searchRadiusOptions
         }) }}
 
         {{ govukButton({

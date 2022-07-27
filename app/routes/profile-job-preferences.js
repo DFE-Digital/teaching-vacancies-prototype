@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+const _ = require('lodash');
 
 module.exports = router => {
 
@@ -362,9 +364,105 @@ module.exports = router => {
 
   router.post('/profile/job-preferences/working-patterns', (req, res) => {
     req.session.user.profile.workingPatterns = req.body.profile.workingPatterns
-    res.redirect('/profile/job-preferences/review')
+    res.redirect('/profile/job-preferences/location')
   })
 
+  router.get('/profile/job-preferences/location', (req, res) => {
+    let location = _.get(req, 'session.data.profile.location')
+
+    let searchRadiusOptions = [
+      {
+        value: "This area only",
+        text: "This area only",
+        checked: _.get(req, 'session.data.profile.radius') == 'This area only'
+      },
+      {
+        value: "1 mile",
+        text: "1 mile",
+        checked: _.get(req, 'session.data.profile.radius') == '1 mile'
+      },
+      {
+        value: "5 miles",
+        text: "5 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '5 miles'
+      },
+      {
+        value: "10 miles",
+        text: "10 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '10 miles'
+      },
+      {
+        value: "15 miles",
+        text: "15 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '15 miles'
+      },
+      {
+        value: "20 miles",
+        text: "20 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '20 miles'
+      },
+      {
+        value: "20 miles",
+        text: "20 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '20 miles'
+      },
+      {
+        value: "25 miles",
+        text: "25 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '25 miles'
+      },
+      {
+        value: "50 miles",
+        text: "50 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '50 miles'
+      },
+      {
+        value: "100 miles",
+        text: "100 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '100 miles'
+      },
+      {
+        value: "200 miles",
+        text: "200 miles",
+        checked: _.get(req, 'session.data.profile.radius') == '200 miles'
+      }
+    ]
+
+    res.render('profile/job-preferences/location', {
+      location,
+      searchRadiusOptions
+    })
+  })
+
+
+  router.post('/profile/job-preferences/location', (req, res) => {
+    let location = {}
+    location.id = uuidv4()
+    location.location = req.body.profile.location
+    location.radius = req.body.profile.radius
+
+    req.session.user.profile.locations[location.id] = location
+
+    res.redirect('/profile/job-preferences/location-check')
+  })
+
+  router.get('/profile/job-preferences/location-check', (req, res) => {
+    let locations = req.session.user.profile.locations
+
+    res.render('profile/job-preferences/location-check', {
+      locations
+    })
+  })
+
+  router.post('/profile/job-preferences/location-check', (req, res) => {
+    if(_.get(req, 'session.data.profile.addAnotherLocation') == 'Yes') {
+      // TODO: set values to null
+
+      res.redirect('/profile/job-preferences/location')
+    } else {
+      res.redirect('/profile/job-preferences/review')
+    }
+  })
 
   router.get('/profile/job-preferences/review', (req, res) => {
     let profile = req.session.user.profile
