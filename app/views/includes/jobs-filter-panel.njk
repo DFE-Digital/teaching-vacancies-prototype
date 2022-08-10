@@ -33,6 +33,340 @@
     }]
   }) }}
 
+  {{ appCheckboxFilter({
+    idPrefix: "subjects",
+    name: "filters[subjects]",
+    classes: "govuk-checkboxes--small",
+    legend: {
+      text: "Subject",
+      classes: "govuk-fieldset__legend--s"
+    },
+    items: [
+      {
+        value: "Accounting",
+        text: "Accounting",
+        hint: {
+          text: 'Includes Finance and accounting'
+        },
+        checked: checked("['filters']['subjects']", "Accounting")
+      },
+      {
+        value: "Art and design",
+        text: "Art and design",
+        checked: checked("['filters']['subjects']", "Art and design")
+      },
+      {
+        value: "Biology",
+        text: "Biology",
+        checked: checked("['filters']['subjects']", "Biology")
+      },
+      {
+        value: "Business studies",
+        text: "Business studies",
+        checked: checked("['filters']['subjects']", "Business studies")
+      },
+      {
+        value: "Chemistry",
+        text: "Chemistry",
+        checked: checked("['filters']['subjects']", "Chemistry")
+      },
+      {
+        value: "Citizenship",
+        text: "Citizenship",
+        checked: checked("['filters']['subjects']", "Citizenship")
+      },
+      {
+        value: "Classics",
+        text: "Classics",
+        hint: {
+          text: 'Includes Latin'
+        },
+        checked: checked("['filters']['subjects']", "Classics")
+      },
+      {
+        value: "Computing",
+        text: "Computing",
+        hint: {
+          text: 'Includes Computer science, Information technology, and ICT'
+        },
+        checked: checked("['filters']['subjects']", "Computing")
+      },
+      {
+        value: "Dance",
+        text: "Dance",
+        checked: checked("['filters']['subjects']", "Dance")
+      },
+      {
+        value: "Design and technology",
+        text: "Design and technology",
+        hint: {
+          text: 'Includes Product design, Textiles and Systems and control'
+        },
+        checked: checked("['filters']['subjects']", "Design and technology")
+      },
+      {
+        value: "Drama",
+        text: "Drama",
+        hint: {
+          text: 'Includes Theatre studies and Performing arts'
+        },
+        checked: checked("['filters']['subjects']", "Drama")
+      },
+      {
+        value: "Economics",
+        text: "Economics",
+        checked: checked("['filters']['subjects']", "Economics")
+      },
+      {
+        value: "Engineering",
+        text: "Engineering",
+        checked: checked("['filters']['subjects']", "Engineering")
+      },
+      {
+        value: "English",
+        text: "English",
+        hint: {
+          text: 'Includes English language and literature'
+        },
+        checked: checked("['filters']['subjects']", "English")
+      },
+      {
+        value: "Food Technology",
+        text: "Food Technology",
+        hint: {
+          text: 'Includes Hospitality and catering'
+        },
+        checked: checked("['filters']['subjects']", "Food Technology")
+      },
+      {
+        value: "French",
+        text: "French",
+        checked: checked("['filters']['subjects']", "French")
+      },
+      {
+        value: "Geography",
+        text: "Geography",
+        checked: checked("['filters']['subjects']", "Geography")
+      },
+      {
+        value: "German",
+        text: "German",
+        checked: checked("['filters']['subjects']", "German")
+      },
+      {
+        value: "Health and social care",
+        text: "Health and social care",
+        checked: checked("['filters']['subjects']", "Health and social care")
+      },
+      {
+        value: "History",
+        text: "History",
+        checked: checked("['filters']['subjects']", "History")
+      },
+      {
+        value: "Humanities",
+        text: "Humanities",
+        checked: checked("['filters']['subjects']", "Humanities")
+      },
+      {
+        value: "ICT",
+        text: "ICT",
+        checked: checked("['filters']['subjects']", "ICT")
+      },
+      {
+        value: "Law",
+        text: "Law",
+        checked: checked("['filters']['subjects']", "Law")
+      },
+      {
+        value: "Mandarin",
+        text: "Mandarin",
+        checked: checked("['filters']['subjects']", "Mandarin")
+      },
+      {
+        value: "Mathematics",
+        text: "Mathematics",
+        checked: checked("['filters']['subjects']", "Mathematics")
+      },
+      {
+        value: "Media studies",
+        text: "Media studies",
+        checked: checked("['filters']['subjects']", "Media studies")
+      },
+      {
+        value: "Music",
+        text: "Music",
+        checked: checked("['filters']['subjects']", "Music")
+      },
+      {
+        value: "Philosophy",
+        text: "Philosophy",
+        checked: checked("['filters']['subjects']", "Philosophy")
+      },
+      {
+        value: "Physical education",
+        text: "Physical education",
+        checked: checked("['filters']['subjects']", "Physical education")
+      },
+      {
+        value: "Physics",
+        text: "Physics",
+        checked: checked("['filters']['subjects']", "Physics")
+      },
+      {
+        value: "Politics",
+        text: "Politics",
+        checked: checked("['filters']['subjects']", "Politics")
+      },
+      {
+        value: "Psychology",
+        text: "Psychology",
+        checked: checked("['filters']['subjects']", "Psychology")
+      },
+      {
+        value: "Religious education",
+        text: "Religious education",
+        hint: {
+          text: 'Includes religious studies'
+        },
+        checked: checked("['filters']['subjects']", "Religious education")
+      },
+      {
+        value: "Relationships and sex education",
+        text: "Relationships and sex education",
+        checked: checked("['filters']['subjects']", "Relationships and sex education")
+      },
+      {
+        value: "Science",
+        text: "Science",
+        checked: checked("['filters']['subjects']", "Science")
+      },
+      {
+        value: "Social sciences",
+        text: "Social sciences",
+        checked: checked("['filters']['subjects']", "Social sciences")
+      },
+      {
+        value: "Sociology",
+        text: "Sociology",
+        checked: checked("['filters']['subjects']", "Sociology")
+      },
+      {
+        value: "Spanish",
+        text: "Spanish",
+        checked: checked("['filters']['subjects']", "Spanish")
+      },
+      {
+        value: "Statistics",
+        text: "Statistics",
+        checked: checked("['filters']['subjects']", "Statistics")
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[suitability]",
+    name: "filters[suitability]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Suitability for early career teachers (ECT)",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Suitable for ECTs',
+      text: 'Suitable for ECTs'
+    }, {
+      value: 'Not suitable for ECTs',
+      text: 'Not suitable for ECTs'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[phase]",
+    name: "filters[phase]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Phase of education",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Nursery school',
+      text: 'Nursery school'
+    }, {
+      value: 'Primary school',
+      text: 'Primary school'
+    }, {
+      value: 'Middle school deemed primary',
+      text: 'Middle school deemed primary'
+    }, {
+      value: 'Middle school',
+      text: 'Middle school'
+    }, {
+      value: 'Secondary school',
+      text: 'Secondary school'
+    }, {
+      value: 'Sixth form or college',
+      text: 'Sixth form or college'
+    }, {
+      value: 'Through school',
+      text: 'Through school'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[keyStages]",
+    name: "filters[keyStages]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Key stage",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Early years',
+      text: 'Early years'
+    }, {
+      value: 'KS1',
+      text: 'KS1'
+    }, {
+      value: 'KS2',
+      text: 'KS2'
+    }, {
+      value: 'KS3',
+      text: 'KS3'
+    }, {
+      value: 'KS4',
+      text: 'KS4'
+    }, {
+      value: 'KS5',
+      text: 'KS5'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[workingPatterns]",
+    name: "filters[workingPatterns]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Working pattern",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Suitable for ECTs',
+      text: 'Suitable for ECTs'
+    }, {
+      value: 'Not suitable for ECTs',
+      text: 'Not suitable for ECTs'
+    }]
+  }) }}
+
 {% endset %}
 
 <div class="app-filter">

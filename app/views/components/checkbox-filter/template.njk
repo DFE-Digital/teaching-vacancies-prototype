@@ -1,0 +1,63 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+
+{#- If an id 'prefix' is not passed, fall back to using the name attribute -#}
+{%- set idPrefix = params.idPrefix if params.idPrefix else params.name -%}
+
+<div id="{{ idPrefix }}" class="app-checkbox-filter {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  <div class="govuk-form-group">
+
+    {%- call govukFieldset({
+      legend: {
+        text: params.legend.text,
+        html: params.legend.html,
+        isPageHeading: params.legend.isPageHeading,
+        classes: params.legend.classes | default('govuk-fieldset__legend--s')
+      }
+    }) -%}
+
+      {%- if params.selectedItems.length -%}
+        <div class="app-checkbox-filter__selected">
+
+          <ul class="app-checkbox-filter__tags">
+            {%- for item in params.selectedItems -%}
+              <li>
+                <a class="app-filter__tag" href="{{ item.href }}">
+                  <span class="govuk-visually-hidden">Remove this filter</span> {{ item.text }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+        </div>
+      {%- endif -%}
+
+      <div class="app-checkbox-filter__container">
+
+        <div class="govuk-checkboxes app-checkbox-filter__container-inner">
+
+          {%- for item in params.items -%}
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="{{ idPrefix }}-{{ item.id }}" name="{{ params.name }}" type="checkbox" value="{{ item.value }}" {{ 'checked' if item.checked }}>
+              <label class="govuk-label govuk-checkboxes__label" for="{{ idPrefix }}-{{ item.id }}">
+                {{- item.text -}}
+              </label>
+
+              <div id="{{ idPrefix }}-{{ item.id }}-hint" class="govuk-hint govuk-checkboxes__hint {{- ' ' + item.hint.classes if item.hint.classes }}">
+                {{- item.hint.text -}}
+              </div>
+
+            </div>
+
+          {%- endfor -%}
+
+        </div>
+
+      </div>
+
+    {%- endcall -%}
+
+  </div>
+
+</div>
