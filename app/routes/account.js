@@ -42,7 +42,9 @@ module.exports = router => {
       emailAddress: req.body.emailAddress,
       password: req.body.password,
       profile: {
-        qualifications: {}
+        locations: {},
+        qualifications: {},
+        workHistory: {}
       }
     }
     res.redirect('/account/new/confirmation')

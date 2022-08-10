@@ -402,11 +402,6 @@ module.exports = router => {
         checked: _.get(req, 'session.data.profile.radius') == '20 miles'
       },
       {
-        value: "20 miles",
-        text: "20 miles",
-        checked: _.get(req, 'session.data.profile.radius') == '20 miles'
-      },
-      {
         value: "25 miles",
         text: "25 miles",
         checked: _.get(req, 'session.data.profile.radius') == '25 miles'
