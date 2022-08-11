@@ -100,16 +100,15 @@ const generateUsers = () => {
     id: uuidv4(),
     employer: 'Colindale Primary School',
     role: 'Teacher',
-    description: 'Nullam blandit ornare magna vitae maximus. Donec fermentum aliquet leo non venenatis. Curabitur porta sagittis sodales. Sed eget rhoncus magna.',
     startDate: DateTime.fromObject({ year: 2018, month: 1 }).toISO(),
-    endDate: DateTime.fromObject({ year: 2019, month: 12 }).toISO()
+    endDate: DateTime.fromObject({ year: 2019, month: 12 }).toISO(),
+    currentRole: 'No'
   }
 
   let r2 = {
     id: uuidv4(),
     employer: 'Courtland Primary School',
     role: 'Teacher',
-    description: 'Etiam blandit, sed sodales turpis vel arcu rutrum suscipit. Donec pellentesque varius tristique.',
     startDate: DateTime.fromObject({ year: 2020, month: 1 }).toISO(),
     currentRole: 'Yes'
   }

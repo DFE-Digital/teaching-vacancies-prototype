@@ -13,14 +13,14 @@ module.exports = router => {
     let currentRoleOptions = [
       {
         value: "Yes",
-        text: "Yes",
-        checked: _.get(req, 'session.data.profile.currentRole') == 'Yes'
+        text: "Yes"
       },{
         value: "No",
-        text: "No",
-        checked: _.get(req, 'session.data.profile.currentRole') == 'No'
+        text: "No"
       }
     ]
+
+    let currentRole = _.get(req, 'session.data.profile.currentRole')
 
     let startDate = {
       month: _.get(req, 'session.data.profile.startDate.month'),
@@ -39,6 +39,7 @@ module.exports = router => {
       role,
       startDate,
       currentRoleOptions,
+      currentRole,
       endDate,
       description
     })
@@ -79,27 +80,33 @@ module.exports = router => {
       year: DateTime.fromISO(item.startDate).year,
     }
 
-    let endDate
+    let endDate = {
+      month: DateTime.fromISO(item.endDate).month,
+      year: DateTime.fromISO(item.endDate).year,
+    }
 
     let description = item.description
 
     let currentRoleOptions = [
       {
         value: "Yes",
-        text: "Yes",
-        checked: item.currentRole == 'Yes'
+        text: "Yes"
       },{
         value: "No",
-        text: "No",
-        checked: item.currentRole == 'No'
+        text: "No"
       }
     ]
+
+    let currentRole = item.currentRole
+
 
     res.render('profile/work-history/index', {
       employer,
       role,
       startDate,
+      endDate,
       currentRoleOptions,
+      currentRole,
       endDate,
       description
     })

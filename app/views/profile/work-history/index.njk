@@ -103,7 +103,6 @@
             }]
           }) }}
         {% endset %}
-
         {{ govukRadios({
           idPrefix: "profile[currentRole]",
           name: "profile[currentRole]",
@@ -113,28 +112,17 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
+          value: currentRole,
           items: [{
             value: currentRoleOptions[0].value,
-            text: currentRoleOptions[0].text,
-            checked: currentRoleOptions[0].checked
+            text: currentRoleOptions[0].text
           }, {
             value: currentRoleOptions[1].value,
             text: currentRoleOptions[1].text,
-            checked: currentRoleOptions[1].checked,
             conditional: {
               html: endDate
             }
           }]
-        }) }}
-
-        {{ govukTextarea({
-          id: "profile[description]",
-          name: "profile[description]",
-          label: {
-            text: "Brief description",
-            classes: 'govuk-label--m'
-          },
-          value: description
         }) }}
 
         {{ govukButton({
