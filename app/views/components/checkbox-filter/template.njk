@@ -38,8 +38,10 @@
 
           {%- for item in params.items -%}
 
+            {% set isChecked = item.checked | default(params.values and item.value in params.values) %}
+
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="{{ idPrefix }}-{{ item.id }}" name="{{ params.name }}" type="checkbox" value="{{ item.value }}" {{ 'checked' if item.checked }}>
+              <input class="govuk-checkboxes__input" id="{{ idPrefix }}-{{ item.id }}" name="{{ params.name }}" type="checkbox" value="{{ item.value }}" {{-" checked" if isChecked }}>
               <label class="govuk-label govuk-checkboxes__label" for="{{ idPrefix }}-{{ item.id }}">
                 {{- item.text -}}
               </label>

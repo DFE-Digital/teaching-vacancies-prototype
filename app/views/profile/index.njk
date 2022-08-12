@@ -525,7 +525,7 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          About you and your experience
+          Experience
         </h2>
 
         {% if user.profile.about %}
@@ -541,7 +541,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/about/key-stage",
+                      href: "/profile/about/key-stages",
                       text: "Change",
                       visuallyHiddenText: "if you have experience teaching a key stage"
                     }
@@ -575,7 +575,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/about/subject",
+                      href: "/profile/about/subjects",
                       text: "Change",
                       visuallyHiddenText: "if you have experience teaching a subject"
                     }
@@ -592,9 +592,9 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/about/key-stages",
+                      href: "/profile/about/subjects",
                       text: "Change",
-                      visuallyHiddenText: "Key stages"
+                      visuallyHiddenText: "subjects"
                     }
                   ]
                 }
@@ -609,7 +609,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/about/key-stages",
+                      href: "/profile/about/about",
                       text: "Change",
                       visuallyHiddenText: "About you"
                     }
@@ -619,7 +619,7 @@
             ]
           }) }}
         {% else %}
-          <p><a href="/profile/about/key-stages">Add details about you and your experience</a></p>
+          <p><a href="/profile/about/key-stages">Add experience</a></p>
         {% endif %}
       </div>
 

@@ -18,7 +18,7 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          About you and your experience
+          Experience
         </span>
         {{title}}
       {% endset %}
@@ -32,7 +32,7 @@
             text: "Subject",
             classes: "govuk-fieldset__legend--s"
           },
-          values: experiencedSubjects,
+          values: profile.experiencedSubjects,
           items: [
             {
               value: "Accounting",
