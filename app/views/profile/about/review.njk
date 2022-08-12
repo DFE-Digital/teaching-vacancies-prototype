@@ -21,8 +21,78 @@
         {{title}}
       </h1>
 
+      {{profile | log}}
+
       {{ govukSummaryList({
         rows: [
+          {
+            key: {
+              text: "Do you have experience teaching a key stage?"
+            },
+            value: {
+              html: profile.hasExperienceWithKeyStages
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/about/key-stages",
+                  text: "Change",
+                  visuallyHiddenText: "if you have experience teaching a key stage"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Key stages"
+            },
+            value: {
+              text: profile.experiencedKeyStages | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/about/key-stages",
+                  text: "Change",
+                  visuallyHiddenText: "Key stages"
+                }
+              ]
+            }
+          } if profile.hasExperienceWithKeyStages,
+          {
+            key: {
+              text: "Do you have experience teaching a subject?"
+            },
+            value: {
+              html: profile.hasExperienceWithSubjects
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/about/subject",
+                  text: "Change",
+                  visuallyHiddenText: "if you have experience teaching a subject"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: profile.experiencedSubjects | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/about/key-stages",
+                  text: "Change",
+                  visuallyHiddenText: "Key stages"
+                }
+              ]
+            }
+          } if profile.hasExperienceWithSubjects,
           {
             key: {
               text: "About you"

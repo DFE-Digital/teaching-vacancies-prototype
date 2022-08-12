@@ -143,6 +143,10 @@ const generateUsers = () => {
       ect: 'Yes',
       qualifications,
       workHistory,
+      hasExperienceWithKeyStages: 'Yes',
+      experiencedKeyStages: ['KS1', 'KS2'],
+      hasExperienceWithSubjects: 'Yes',
+      experiencedSubjects: ['Mathematics'],
       about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.'
     }
   }))

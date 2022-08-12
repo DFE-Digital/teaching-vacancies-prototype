@@ -525,12 +525,80 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          About you
+          About you and your experience
         </h2>
 
         {% if user.profile.about %}
           {{ govukSummaryList({
             rows: [
+              {
+                key: {
+                  text: "Do you have experience teaching a key stage?"
+                },
+                value: {
+                  html: user.profile.hasExperienceWithKeyStages
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/about/key-stage",
+                      text: "Change",
+                      visuallyHiddenText: "if you have experience teaching a key stage"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Key stages"
+                },
+                value: {
+                  text: user.profile.experiencedKeyStages | join(', ')
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/about/key-stages",
+                      text: "Change",
+                      visuallyHiddenText: "Key stages"
+                    }
+                  ]
+                }
+              } if user.profile.hasExperienceWithKeyStages,
+              {
+                key: {
+                  text: "Do you have experience teaching a subject?"
+                },
+                value: {
+                  html: user.profile.hasExperienceWithSubjects
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/about/subject",
+                      text: "Change",
+                      visuallyHiddenText: "if you have experience teaching a subject"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Subjects"
+                },
+                value: {
+                  text: user.profile.experiencedSubjects | join(', ')
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/about/key-stages",
+                      text: "Change",
+                      visuallyHiddenText: "Key stages"
+                    }
+                  ]
+                }
+              } if user.profile.hasExperienceWithSubjects,
               {
                 key: {
                   text: "About you"
@@ -541,7 +609,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/about",
+                      href: "/profile/about/key-stages",
                       text: "Change",
                       visuallyHiddenText: "About you"
                     }
@@ -551,49 +619,9 @@
             ]
           }) }}
         {% else %}
-          {# <p>Skills and experience.</p> #}
-          {# {{ govukButton({
-            text: "Add skills and experience",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/about'
-          }) }} #}
-
-          <p><a href="/profile/about">Add details about you</a></p>
-
+          <p><a href="/profile/about/key-stages">Add details about you and your experience</a></p>
         {% endif %}
       </div>
-
-      {# <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Job search status
-        </h2>
-
-        {% if user.profile.status %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Job search status"
-                },
-                value: {
-                  html: user.profile.status
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/status",
-                      text: "Change",
-                      visuallyHiddenText: "Status"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-        {% else %}
-          <p><a href="/profile/status">Add job search status</a></p>
-        {% endif %}
-      </div> #}
 
       {% if not user.profile.status %}
         <div class="app-profile__section">

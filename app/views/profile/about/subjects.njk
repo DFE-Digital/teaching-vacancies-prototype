@@ -1,0 +1,273 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you have experience teaching a subject?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          About you and your experience
+        </span>
+        {{title}}
+      {% endset %}
+
+      {% set subjects %}
+        {{ appCheckboxFilter({
+          idPrefix: "subjects",
+          name: "profile[experiencedSubjects]",
+          classes: "govuk-checkboxes--small",
+          legend: {
+            text: "Subject",
+            classes: "govuk-fieldset__legend--s"
+          },
+          values: experiencedSubjects,
+          items: [
+            {
+              value: "Accounting",
+              text: "Accounting",
+              hint: {
+                text: 'Includes Finance and accounting'
+              }
+            },
+            {
+              value: "Art and design",
+              text: "Art and design"
+            },
+            {
+              value: "Biology",
+              text: "Biology"
+            },
+            {
+              value: "Business studies",
+              text: "Business studies"
+            },
+            {
+              value: "Chemistry",
+              text: "Chemistry"
+            },
+            {
+              value: "Citizenship",
+              text: "Citizenship"
+            },
+            {
+              value: "Classics",
+              text: "Classics",
+              hint: {
+                text: 'Includes Latin'
+              }
+            },
+            {
+              value: "Computing",
+              text: "Computing",
+              hint: {
+                text: 'Includes Computer science, Information technology, and ICT'
+              }
+            },
+            {
+              value: "Dance",
+              text: "Dance"
+            },
+            {
+              value: "Design and technology",
+              text: "Design and technology",
+              hint: {
+                text: 'Includes Product design, Textiles and Systems and control'
+              }
+            },
+            {
+              value: "Drama",
+              text: "Drama",
+              hint: {
+                text: 'Includes Theatre studies and Performing arts'
+              }
+            },
+            {
+              value: "Economics",
+              text: "Economics"
+            },
+            {
+              value: "Engineering",
+              text: "Engineering"
+            },
+            {
+              value: "English",
+              text: "English",
+              hint: {
+                text: 'Includes English language and literature'
+              }
+            },
+            {
+              value: "Food Technology",
+              text: "Food Technology",
+              hint: {
+                text: 'Includes Hospitality and catering'
+              }
+            },
+            {
+              value: "French",
+              text: "French"
+            },
+            {
+              value: "Geography",
+              text: "Geography"
+            },
+            {
+              value: "German",
+              text: "German"
+            },
+            {
+              value: "Health and social care",
+              text: "Health and social care"
+            },
+            {
+              value: "History",
+              text: "History"
+            },
+            {
+              value: "Humanities",
+              text: "Humanities"
+            },
+            {
+              value: "ICT",
+              text: "ICT"
+            },
+            {
+              value: "Law",
+              text: "Law"
+            },
+            {
+              value: "Mandarin",
+              text: "Mandarin"
+            },
+            {
+              value: "Mathematics",
+              text: "Mathematics"
+            },
+            {
+              value: "Media studies",
+              text: "Media studies"
+            },
+            {
+              value: "Music",
+              text: "Music"
+            },
+            {
+              value: "Philosophy",
+              text: "Philosophy"
+            },
+            {
+              value: "Physical education",
+              text: "Physical education"
+            },
+            {
+              value: "Physics",
+              text: "Physics"
+            },
+            {
+              value: "Politics",
+              text: "Politics"
+            },
+            {
+              value: "Psychology",
+              text: "Psychology"
+            },
+            {
+              value: "Religious education",
+              text: "Religious education",
+              hint: {
+                text: 'Includes religious studies'
+              }
+            },
+            {
+              value: "Relationships and sex education",
+              text: "Relationships and sex education"
+            },
+            {
+              value: "Science",
+              text: "Science"
+            },
+            {
+              value: "Social sciences",
+              text: "Social sciences"
+            },
+            {
+              value: "Sociology",
+              text: "Sociology"
+            },
+            {
+              value: "Spanish",
+              text: "Spanish"
+            },
+            {
+              value: "Statistics",
+              text: "Statistics"
+            }
+          ]
+        }) }}
+      {% endset %}
+
+
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          idPrefix: "profile[hasExperienceWithSubjects]",
+          name: "profile[hasExperienceWithSubjects]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          value: profile.hasExperienceWithSubjects,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: subjects
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

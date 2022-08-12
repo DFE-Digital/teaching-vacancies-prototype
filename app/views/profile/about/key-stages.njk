@@ -1,0 +1,100 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you have experience teaching a key stage?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          About you and your experience
+        </span>
+        {{title}}
+      {% endset %}
+
+      {% set keyStagesExperience %}
+        {{ govukCheckboxes({
+          idPrefix: "profile[experiencedKeyStages]",
+          name: "profile[experiencedKeyStages]",
+          fieldset: {
+            legend: {
+              html: 'Key stages',
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          values: profile.experiencedKeyStages,
+          items: [{
+            value: 'Early years',
+            text: 'Early years'
+          }, {
+            value: 'KS1',
+            text: 'KS1'
+          }, {
+            value: 'KS2',
+            text: 'KS2'
+          }, {
+            value: 'KS3',
+            text: 'KS3'
+          }, {
+            value: 'KS4',
+            text: 'KS4'
+          }, {
+            value: 'KS5',
+            text: 'KS5'
+          }]
+        }) }}
+      {% endset %}
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          idPrefix: "profile[hasExperienceWithKeyStages]",
+          name: "profile[hasExperienceWithKeyStages]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          value: profile.hasExperienceWithKeyStages,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: keyStagesExperience
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

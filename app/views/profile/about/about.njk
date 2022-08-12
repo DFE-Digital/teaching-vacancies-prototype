@@ -17,6 +17,9 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
+          About you and your experience
+        </span>
         {{title}}
       </h1>
 
@@ -49,7 +52,9 @@
         </li>
       </ul>
 
+
       <form method="post" novalidate>
+
         {{ govukCharacterCount({
           name: "profile[about]",
           id: "profile[about]",
