@@ -1,6 +1,14 @@
 {% set filterOptionsHtml %}
 
 
+  {# {{ govukInput({
+    id: "location",
+    name: "location",
+    label: {
+      text: "Location",
+      classes: "govuk-label--s"
+    }
+  }) }} #}
 
   {{ govukCheckboxes({
     idPrefix: "filters[role]",

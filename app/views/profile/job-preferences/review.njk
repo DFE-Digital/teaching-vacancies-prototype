@@ -46,7 +46,7 @@
                 }
               ]
             }
-          },
+          } if profile.roles,
           {
             key: {
               text: "Phases"
@@ -63,7 +63,7 @@
                 }
               ]
             }
-          },
+          } if profile.phases,
           {
             key: {
               text: "Key stages"
@@ -114,7 +114,7 @@
                 }
               ]
             }
-          } if profile.subjects,
+          } if profile.workingPatterns,
           {
             key: {
               text: "Locations"
@@ -131,11 +131,9 @@
                 }
               ]
             }
-          }
+          } if profile.locations | length
         ]
       }) }}
-
-
 
       {{ govukButton({
         text: "Return to profile",

@@ -11,17 +11,54 @@
       }
     },
     items: [{
-      value: 'Primary',
-      text: 'Primary'
+      value: 'Nursery school',
+      text: 'Nursery school'
     }, {
-      value: 'Middle',
-      text: 'Middle'
+      value: 'Primary school',
+      text: 'Primary school'
     }, {
-      value: 'Secondary',
-      text: 'Secondary'
+      value: 'Middle school',
+      text: 'Middle school'
     }, {
-      value: '16 to 19',
-      text: '16 to 19'
+      value: 'Secondary school',
+      text: 'Secondary school'
+    }, {
+      value: 'Sixth form or college',
+      text: 'Sixth form or college'
+    }, {
+      value: 'Through school',
+      text: 'Through school'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[keyStages]",
+    name: "filters[keyStages]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Key stage",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Early years',
+      text: 'Early years'
+    }, {
+      value: 'KS1',
+      text: 'KS1'
+    }, {
+      value: 'KS2',
+      text: 'KS2'
+    }, {
+      value: 'KS3',
+      text: 'KS3'
+    }, {
+      value: 'KS4',
+      text: 'KS4'
+    }, {
+      value: 'KS5',
+      text: 'KS5'
     }]
   }) }}
 
@@ -36,8 +73,8 @@
       }
     },
     items: [{
-      value: 'Is a special school',
-      text: 'Is a special school'
+      value: 'Special school',
+      text: 'Special school'
     }]
   }) }}
 
@@ -47,13 +84,16 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Jobs",
+        text: "Job availablility",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Has jobs available',
-      text: 'Has jobs available'
+      value: 'Has jobs',
+      text: 'Has jobs'
+    }, {
+      value: 'Does not have any jobs',
+      text: 'Does not have any jobs'
     }]
   }) }}
 

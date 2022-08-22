@@ -4,7 +4,7 @@
       id: "keywords",
       name: "keywords",
       label: {
-        text: "Job title or description",
+        text: "Search for school",
         classes: "govuk-label--s"
       }
     }) }}
@@ -20,7 +20,24 @@
 
     {{ govukButton({
       text: 'Search',
-      href: '/jobs'
+      href: '/schools'
     }) }}
   </form>
 </div>
+
+{# {{ appSearch({
+  label: {
+    text: 'Search by job title or description',
+    classes: 'govuk-label--s'
+  },
+  input: {
+    id: 'keywords',
+    name: 'keywords',
+    value: data.keywords
+  },
+  action: '/jobs',
+  buttons: [{
+    text: 'Search',
+    classes: 'app-search__button'
+  }]
+}) }} #}
