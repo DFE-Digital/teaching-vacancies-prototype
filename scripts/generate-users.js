@@ -40,8 +40,7 @@ const generateUser = (params = {}) => {
   // QTS
   user.profile.qts = _.get(params, 'profile.qts')
 
-  // ECT
-  user.profile.ect = _.get(params, 'profile.ect')
+  user.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear')
 
   // Qualifications
   user.profile.qualifications = _.get(params, 'profile.qualifications') || {}
@@ -140,7 +139,7 @@ const generateUsers = () => {
       workingPatterns: ['Full time'],
       locations,
       qts: 'Yes',
-      ect: 'Yes',
+      qtsAwardedYear: '2022',
       qualifications,
       workHistory,
       hasExperienceWithKeyStages: 'Yes',

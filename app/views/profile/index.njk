@@ -285,7 +285,7 @@
 
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Teaching status
+          Qualified teaching status (QTS)
         </h2>
 
         {% if user.profile.qts %}
@@ -324,35 +324,11 @@
                   }
                 ]
               }
-            } if user.profile.qtsAwardedYear,
-            {
-              key: {
-                text: "Are you an early career teacher (ECT)?"
-              },
-              value: {
-                text: user.profile.ect
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/teaching-status/ect",
-                    text: "Change",
-                    visuallyHiddenText: "if you are an early career teacher (ECT)"
-                  }
-                ]
-              }
-            } if user.profile.ect
+            } if user.profile.qtsAwardedYear
           ]
         }) }}
         {% else %}
-          {# <p>Qualified teaching status (QTS).</p> #}
-          {# {{ govukButton({
-            text: "Add teaching status",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/teaching-status/qts'
-          }) }} #}
-
-          <p><a href="/profile/teaching-status/qts">Add teaching status</a></p>
+          <p><a href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
         {% endif %}
       </div>
       <div class="app-profile__section">
