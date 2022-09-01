@@ -28,25 +28,107 @@
     icon: false
   }) if flash and flash.length }}
 
+  {% set teachingStatus %}
+        {% if user.profile.qts == 'Yes' %}
+          Awarded {{user.profile.qtsAwardedYear}}
+        {% elseif user.profile.qts == 'I’m on track to receive QTS' %}
+          On track to receive QTS
+        {% else %}
+          Does not have QTS
+        {% endif %}
+      {% endset %}
+
+  {% set locations %}
+        {% for key, location in user.profile.locations %}
+          {{location.location}} ({{location.radius}})
+          {%- if not loop.last -%}
+          ,
+          {%- endif -%}
+        {% endfor %}
+      {% endset %}
+
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-">
         {{title}} {{govukTag({
           text: 'Looking for a role',
           classes: 'govuk-tag--green'
         }) if user.profile.status == 'Active' and 1 == 2}}
       </h1>
-      <p>
-        Email address: <a href="mailto:{{user.emailAddress}}">{{user.emailAddress}}</a>
-        {% if user.profile.phoneNumber %}
-          | Phone number: {{user.profile.phoneNumber}}
-        {% endif %}
+      <p>Does not have QTS.</p>
+      <br><br><br>
+      {% if user.profile.roles %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Job preferences
+          </h2>
 
-      </p>
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Qualified teaching status (QTS)"
+                },
+                value: {
+                  text: teachingStatus
+                }
+              } if teachingStatus | trim | length and 1 == 2,
+              {
+                key: {
+                  text: "Role"
+                },
+                value: {
+                  text: user.profile.roles | join(', ')
+                }
+              } if user.profile.roles,
+              {
+                key: {
+                  text: "Education phase"
+                },
+                value: {
+                  text: user.profile.phases
+                }
+              } if user.profile.phases,
+              {
+                key: {
+                  text: "Key stage"
+                },
+                value: {
+                  text: user.profile.keyStages | join(', ')
+                }
+              } if user.profile.keyStages,
+              {
+                key: {
+                  text: "Subject"
+                },
+                value: {
+                  text: user.profile.subjects
+                }
+              } if user.profile.subjects,
+              {
+                key: {
+                  text: "Working pattern"
+                },
+                value: {
+                  text: user.profile.workingPatterns
+                }
+              } if user.profile.workingPatterns,
+              {
+                key: {
+                  text: "Location"
+                },
+                value: {
+                  text: locations
+                }
+              }
+            ]
+          }) }}
+        </div>
+      {% endif %}
 
       {% if user.profile.about %}
-        <div class="app-profile__section app-profile__section--first">
+        <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             About
           </h2>
@@ -55,21 +137,42 @@
         </div>
       {% endif %}
 
-      {% if user.profile.qts %}
+      <div class="app-profile__section app-profile__section--first">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Contact details
+        </h2>
+
+        {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  html: '<a href="mailto:'+ user.emailAddress + '">'+ user.emailAddress + '</a>'
+                }
+              },
+              {
+                key: {
+                  text: "Phone number"
+                },
+                value: {
+                  html: '<a href="tel:'+ user.profile.phoneNumber + '">'+ user.profile.phoneNumber + '</a>'
+                }
+              } if user.profile.phoneNumber
+            ]
+          }) }}
+      </div>
+
+
+
+      {# {% if user.profile.qts %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Qualified teaching status (QTS)
           </h2>
 
-          {% set teachingStatus %}
-            {% if user.profile.qts == 'Yes' %}
-              Qualified {{user.profile.qtsAwardedYear}}
-            {% elseif user.profile.qts == 'I’m on track to receive QTS' %}
-              On track to receive QTS
-            {% else %}
-              Does not have QTS
-            {% endif %}
-          {% endset %}
+
 
           {{ govukSummaryList({
             rows: [
@@ -84,77 +187,11 @@
             ]
           }) }}
         </div>
-      {% endif %}
+      {% endif %} #}
 
-      {% set locations %}
-        {% for key, location in user.profile.locations %}
-          {{location.location}} ({{location.radius}})
-          {%- if not loop.last -%}
-          ,
-          {%- endif -%}
-        {% endfor %}
-      {% endset %}
 
-      {% if user.profile.roles %}
-        <div class="app-profile__section">
-          <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Job preferences
-          </h2>
 
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Roles"
-                },
-                value: {
-                  text: user.profile.roles
-                }
-              } if user.profile.roles,
-              {
-                key: {
-                  text: "Phases"
-                },
-                value: {
-                  text: user.profile.phases
-                }
-              } if user.profile.phases,
-              {
-                key: {
-                  text: "Key stages"
-                },
-                value: {
-                  text: user.profile.keyStages | join(', ')
-                }
-              } if user.profile.keyStages,
-              {
-                key: {
-                  text: "Subjects"
-                },
-                value: {
-                  text: user.profile.subjects
-                }
-              } if user.profile.subjects,
-              {
-                key: {
-                  text: "Working patterns"
-                },
-                value: {
-                  text: user.profile.workingPatterns
-                }
-              } if user.profile.workingPatterns,
-              {
-                key: {
-                  text: "Locations"
-                },
-                value: {
-                  text: locations
-                }
-              }
-            ]
-          }) }}
-        </div>
-      {% endif %}
+
 
       {% if user.profile.workHistory | length %}
         <div class="app-profile__section">
@@ -178,7 +215,7 @@
                     present
                   {% endif %}
                 </p>
-                <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p>
+                {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
               </div>
             {% endfor %}
           </div>
