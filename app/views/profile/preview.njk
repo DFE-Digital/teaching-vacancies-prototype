@@ -35,7 +35,7 @@
         {{title}} {{govukTag({
           text: 'Looking for a role',
           classes: 'govuk-tag--green'
-        }) if user.profile.status == 'Active'}}
+        }) if user.profile.status == 'Active' and 1 == 2}}
       </h1>
       <p>
         Email address: <a href="mailto:{{user.emailAddress}}">{{user.emailAddress}}</a>
@@ -58,27 +58,29 @@
       {% if user.profile.qts %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Teaching status
+            Qualified teaching status (QTS)
           </h2>
+
+          {% set teachingStatus %}
+            {% if user.profile.qts == 'Yes' %}
+              Qualified {{user.profile.qtsAwardedYear}}
+            {% elseif user.profile.qts == 'I’m on track to receive QTS' %}
+              On track to receive QTS
+            {% else %}
+              Does not have QTS
+            {% endif %}
+          {% endset %}
 
           {{ govukSummaryList({
             rows: [
               {
                 key: {
-                  text: "Qualified teacher status"
+                  text: "QTS"
                 },
                 value: {
-                  text: user.profile.qts
+                  text: teachingStatus
                 }
-              } if user.profile.qts,
-              {
-                key: {
-                  text: "Early career teacher"
-                },
-                value: {
-                  text: user.profile.ect
-                }
-              } if user.profile.ect
+              } if teachingStatus | trim | length
             ]
           }) }}
         </div>
