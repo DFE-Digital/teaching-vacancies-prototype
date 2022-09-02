@@ -501,80 +501,12 @@
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Experience
+          About you
         </h2>
 
         {% if user.profile.about %}
           {{ govukSummaryList({
             rows: [
-              {
-                key: {
-                  text: "Do you have experience teaching a key stage?"
-                },
-                value: {
-                  html: user.profile.hasExperienceWithKeyStages
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/about/key-stages",
-                      text: "Change",
-                      visuallyHiddenText: "if you have experience teaching a key stage"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Key stages"
-                },
-                value: {
-                  text: user.profile.experiencedKeyStages | join(', ')
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/about/key-stages",
-                      text: "Change",
-                      visuallyHiddenText: "Key stages"
-                    }
-                  ]
-                }
-              } if user.profile.hasExperienceWithKeyStages == 'Yes',
-              {
-                key: {
-                  text: "Do you have experience teaching a subject?"
-                },
-                value: {
-                  html: user.profile.hasExperienceWithSubjects
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/about/subjects",
-                      text: "Change",
-                      visuallyHiddenText: "if you have experience teaching a subject"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Subjects"
-                },
-                value: {
-                  text: user.profile.experiencedSubjects | join(', ')
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/about/subjects",
-                      text: "Change",
-                      visuallyHiddenText: "subjects"
-                    }
-                  ]
-                }
-              } if user.profile.hasExperienceWithSubjects == 'Yes',
               {
                 key: {
                   text: "About you"
@@ -595,7 +527,7 @@
             ]
           }) }}
         {% else %}
-          <p><a href="/profile/about/key-stages">Add experience</a></p>
+          <p><a href="/profile/about/about">Add details about you</a></p>
         {% endif %}
       </div>
 

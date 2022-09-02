@@ -69,12 +69,7 @@ module.exports = router => {
   router.post('/profile/job-preferences/education-phases', (req, res) => {
     let profile = req.session.user.profile
     profile.phases = req.body.profile.phases
-
-    if(profile.phases.includes('Primary')) {
-      res.redirect('/profile/job-preferences/key-stages')
-    } else {
-      res.redirect('/profile/job-preferences/working-patterns')
-    }
+    res.redirect('/profile/job-preferences/key-stages')
   })
 
   router.get('/profile/job-preferences/key-stages', (req, res) => {
