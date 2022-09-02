@@ -31,6 +31,9 @@ const generateUser = (params = {}) => {
   // Key stages
   user.profile.keyStages = _.get(params, 'profile.keyStages')
 
+  // Subjects
+  user.profile.subjects = _.get(params, 'profile.subjects')
+
   // Working patterns
   user.profile.workingPatterns = _.get(params, 'profile.workingPatterns')
 
@@ -134,9 +137,10 @@ const generateUsers = () => {
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
       roles: ['Teacher'],
-      phases: ['Nursery school', 'Primary school'],
-      keyStages: ['Key stage 1', 'Key stage 2'],
+      phases: ['Primary school', 'Secondary school'],
+      keyStages: ['Key stage 2', 'Key stage 3', 'Key stage 4'],
       workingPatterns: ['Full time'],
+      subjects: ['Biology'],
       locations,
       qts: 'Yes',
       qtsAwardedYear: '2022',

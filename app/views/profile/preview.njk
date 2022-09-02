@@ -29,14 +29,14 @@
   }) if flash and flash.length }}
 
   {% set teachingStatus %}
-        {% if user.profile.qts == 'Yes' %}
-          Awarded {{user.profile.qtsAwardedYear}}
-        {% elseif user.profile.qts == 'I’m on track to receive QTS' %}
-          On track to receive QTS
-        {% else %}
-          Does not have QTS
-        {% endif %}
-      {% endset %}
+    {% if user.profile.qts == 'Yes' %}
+      QTS awarded in {{user.profile.qtsAwardedYear}}.
+    {% elseif user.profile.qts == 'I’m on track to receive QTS' %}
+      On track to receive QTS.
+    {% else %}
+      Does not have QTS.
+    {% endif %}
+  {% endset %}
 
   {% set locations %}
         {% for key, location in user.profile.locations %}
@@ -56,7 +56,7 @@
           classes: 'govuk-tag--green'
         }) if user.profile.status == 'Active' and 1 == 2}}
       </h1>
-      <p>Does not have QTS.</p>
+      <p>{{teachingStatus}}</p>
 
       {% if user.profile.roles %}
         <div class="app-profile__section app-profile__section--first">
@@ -87,7 +87,7 @@
                   text: "Education phase"
                 },
                 value: {
-                  text: user.profile.phases
+                  text: user.profile.phases | join(', ')
                 }
               } if user.profile.phases,
               {
