@@ -50,16 +50,16 @@
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
         {{title}} {{govukTag({
           text: 'Looking for a role',
           classes: 'govuk-tag--green'
         }) if user.profile.status == 'Active' and 1 == 2}}
       </h1>
       <p>Does not have QTS.</p>
-      <br><br><br>
+
       {% if user.profile.roles %}
-        <div class="app-profile__section">
+        <div class="app-profile__section app-profile__section--first">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Job preferences
           </h2>
@@ -137,7 +137,7 @@
         </div>
       {% endif %}
 
-      <div class="app-profile__section app-profile__section--first">
+      <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Contact details
         </h2>
@@ -195,7 +195,6 @@
 
       {% if user.profile.workHistory | length %}
         <div class="app-profile__section">
-
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Work history
           </h2>
@@ -221,12 +220,6 @@
           </div>
         </div>
       {% endif %}
-    </div>
-  </div>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      {{qualificationsGroup | log}}
 
       {% if user.profile.qualifications | length %}
         <div class="app-profile__section">

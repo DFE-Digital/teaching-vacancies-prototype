@@ -65,7 +65,7 @@ h1 .govuk-tag {
 }
 
 .app-profile__section {
-  // background: lightgray;
+  // background: lightblue;
   margin-bottom: govuk-spacing(5);
   padding-bottom: govuk-spacing(5);
 
@@ -75,6 +75,10 @@ h1 .govuk-tag {
 
   &--first {
     margin-top: govuk-spacing(8);
+  }
+
+  *:last-child {
+    margin-bottom: 0;
   }
 }
 
