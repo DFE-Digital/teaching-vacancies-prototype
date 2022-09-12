@@ -13,61 +13,77 @@
 
       <p>Friendship Way, London E15 2JQ</p>
 
-      {{ govukButton({
-        text: "Send profile to school",
-        href: '/schools/send-profile'
-      }) }}
+      <div class="app-panel">
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                text: "Friendship Way, London E15 2JQ"
+              }
+            } if 1 == 2,
+            {
+              key: {
+                text: "Type"
+              },
+              value: {
+                text: "Academy"
+              }
+            },
+            {
+              key: {
+                text: "Education phase"
+              },
+              value: {
+                text: "Primary school"
+              }
+            },
+            {
+              key: {
+                text: "School size"
+              },
+              value: {
+                text: "294 pupils"
+              }
+            },
+            {
+              key: {
+                text: "Age range"
+              },
+              value: {
+                text: "5 to 11"
+              }
+            },
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: '<a href="#">https://bronson.school (opens in new tab)</a>'
+              }
+            },
+            {
+              key: {
+                text: "Ofsted report"
+              },
+              value: {
+                html: '<a href="#">View ofsted report</a>'
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: '<a href="#">	email@bronsonalcottacademy.org.uk</a>'
+              }
+            }
+          ]
+        }) }}
 
-      {{ govukButton({
-        text: "Add school to favourites",
-        href: '/schools/save-school',
-        classes: 'govuk-!-margin-left-2 govuk-button--secondary'
-      }) }}
-
-      <h2 class="govuk-heading-l">2 jobs available</h3>
-
-      {# <p><a href="/jobs">2 jobs at Bronson Alcott Academy</a></p> #}
-
-      <p>
-        Job 1 etc
-      </p>
-      <p>
-        Job 2 etc
-      </p>
-
-      <h2 class="govuk-heading-l">About</h3>
-      <table class="govuk-table">
-        <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">School type</td>
-                <td class="govuk-table__cell">Academy</td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">Education phase</td>
-                <td class="govuk-table__cell">Primary school</td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">School size</td>
-                <td class="govuk-table__cell">294 pupils</td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">Age range</td>
-                <td class="govuk-table__cell">5 to 11</td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">Ofsted report</td>
-                <td class="govuk-table__cell"><a href="#">View ofsted report</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">School website</td>
-                <td class="govuk-table__cell"><a href="#">school website link (opens in a new window)</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__header">Contact email</td>
-                <td class="govuk-table__cell"><a href="#">email@bronsonalcottacademy.org.uk</a></td>
-            </tr>
-        </tbody>
-      </table>
+      </div>
 
       <p class="govuk-body">
           Bronson Alcott Academy is at the heart of a growing family of outstanding schools. This support allows us unique relationships within London, its independent schools and seats of learning. We pride ourselves on:
@@ -80,9 +96,9 @@
           <li>our strong commitment to staff wellbeing and recognition. We can offer you a range of benefits which include cycle to work and childcare voucher schemes, free parking, an employee discount scheme, a laptop and access to the on-site swimming pool.</li>
       </ul>
 
-      <h2 class="govuk-heading-l">How early career teachers are supported</h2>
+      <h2 class="govuk-heading-l">What we offer our employees</h2>
       <p class="govuk-body">
-        Information goes here about how early career teachers are supported.
+        Information goes here about how we support our employees.
       </p>
 
       <h2 class="govuk-heading-l">Location</h3>
@@ -93,16 +109,59 @@
         <img src="/public/images/map2.png" width="100%">
       </div>
 
+      <h2 class="govuk-heading-l">Current jobs</h3>
 
+      {% for job in currentJobs %}
+          <div class="app-schools__item">
+            <h2 class="govuk-heading-m">
+              <a href="/jobs/show">{{job.title}}</a>
+            </h2>
+            {# <p>
+              {{job.location.name}},
+              {% for part, value in job.location.address %}
+                {{value}}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </p> #}
+            {{ govukSummaryList({
+              classes: 'govuk-summary-list--no-border',
+              rows: [
+                {
+                  key: {
+                    text: "Role"
+                  },
+                  value: {
+                    text: job.role
+                  }
+                },
+                {
+                  key: {
+                    text: "Full time equivalent salary"
+                  },
+                  value: {
+                    text: job.salary.fullTimeEquivalentSalary
+                  }
+                },
+                {
+                  key: {
+                    text: "Phase of education"
+                  },
+                  value: {
+                    text: 'Primary'
+                  }
+                },
+                {
+                  key: {
+                    text: "Working pattern"
+                  },
+                  value: {
+                    text: job.workingPatterns
+                  }
+                }
+              ]
+            }) }}
 
-
-      <h2 class="govuk-heading-l">Additional documents</h3>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="#" class="document-link">School brochure (PDF, 3MB)</a>
-        </li>
-      </ul>
+          </div>
+        {% endfor %}
 
     </div>
   </div>
