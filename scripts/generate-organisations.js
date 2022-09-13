@@ -23,9 +23,9 @@ const generateOrgs = () => {
   const orgs = []
 
   orgs.push(generateOrg({
-    type: 'mat',
-    name: 'Bronson Alcott Academy',
-    phase: 'Secondary',
+    type: 'school',
+    name: 'Courtland Primary School',
+    phase: 'Primary',
     isSpecialSchool: false,
     address: {
       line1: 'Friendship Way',
