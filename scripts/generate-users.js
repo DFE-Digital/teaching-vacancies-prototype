@@ -129,11 +129,11 @@ const generateUsers = () => {
   locations[l1.id] = l1
 
   users.push(generateUser({
-    emailAddress: 'susy@example.com',
+    emailAddress: 'adam@example.com',
     profile: {
       status: 'Active',
-      firstName: 'Susy',
-      lastName: 'Gamora',
+      firstName: 'Adam',
+      lastName: 'Silver',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
       roles: ['Teacher'],
