@@ -24,14 +24,23 @@
 
         {% for school in schools %}
           <div class="app-schools__item">
-            <h2 class="govuk-heading-m">
-              <a href="/schools/show">{{school.name}}</a>
-            </h2>
-            <p>
-              {% for part, value in school.address %}
-                {{value}}{% if not loop.last %}, {% endif %}
-              {% endfor %}
-            </p>
+            <div>
+
+              {% if school.name == 'Bronson Alcott Academy' %}
+                <img src="/public/images/logos/courtland.png" width="60" style="float: left; margin-right: 15px;">
+              {% else %}
+                {% set color = ['lightgrey', 'lightblue', 'lightpink', 'lightyellow', '#F08080'] | random %}
+                <div style="width: 60px; height: 60px; background: {{color}}; float: left; margin-right: 15px"></div>
+              {% endif %}
+              <h2 class="govuk-heading-m">
+                <a href="/schools/show">{{school.name}}</a>
+              </h2>
+              <p>
+                {% for part, value in school.address %}
+                  {{value}}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </p>
+            </div>
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border',
               rows: [
