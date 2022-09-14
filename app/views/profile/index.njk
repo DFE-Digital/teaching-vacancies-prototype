@@ -447,59 +447,53 @@
         {% endfor %}
       </div>
       <div class="app-profile__section">
-
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Work history
         </h2>
 
-        {# {{ govukButton({
-          text: "Add work experience",
-          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-          href: '#'
-        }) }} #}
-
         <p><a href="/profile/work-history">Add roles</a></p>
 
-        <div class="app-list">
+        {% if user.profile.workHistory | length %}
+          <div class="app-list">
 
-        {% for id, role in user.profile.workHistory %}
-          <div class="app-list__item">
+            {% for id, role in user.profile.workHistory %}
+              <div class="app-list__item">
 
-            {{appPageHeader({
-              classes: 'govuk-!-margin-bottom-0',
-              heading: {
-                level: 2,
-                text: role.employer,
-                classes: 'govuk-heading-s'
-              },
-              items: [{
-                text: 'Change',
-                href: "/profile/work-history/"+id+"/edit",
-                type: 'link'
-              }, {
-                text: 'Delete role',
-                href: "/profile/work-history/"+id+"/delete",
-                type: 'link'
-              }]
-            })}}
+                {{appPageHeader({
+                  classes: 'govuk-!-margin-bottom-0',
+                  heading: {
+                    level: 2,
+                    text: role.employer,
+                    classes: 'govuk-heading-s'
+                  },
+                  items: [{
+                    text: 'Change',
+                    href: "/profile/work-history/"+id+"/edit",
+                    type: 'link'
+                  }, {
+                    text: 'Delete role',
+                    href: "/profile/work-history/"+id+"/delete",
+                    type: 'link'
+                  }]
+                })}}
 
-            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
-            <p class="govuk-caption-m govuk-!-margin-bottom-0">
-              {{role.startDate | monthAndYearOnly}}
-              to
-              {% if role.endDate %}
-                {{role.endDate | monthAndYearOnly}}
-              {% else %}
-                present
-              {% endif %}
-            </p>
-            {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
+                <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                  {{role.startDate | monthAndYearOnly}}
+                  to
+                  {% if role.endDate %}
+                    {{role.endDate | monthAndYearOnly}}
+                  {% else %}
+                    present
+                  {% endif %}
+                </p>
+                {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
+              </div>
+            {% endfor %}
           </div>
-        {% endfor %}
-      </div>
+        {% endif %}
       </div>
       <div class="app-profile__section">
-
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           About you
         </h2>
