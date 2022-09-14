@@ -6,10 +6,10 @@ module.exports = (params) => {
   let locations = []
 
   // only generate one location
-  if(params.type == 'school') {
+  if(params.org.type == 'school') {
     locations.push({
       id: faker.datatype.uuid(),
-      name: 'Boom Primary School',
+      name: params.org.name,
       address: {
         address1: '123 Main Street',
         town: 'Some town',

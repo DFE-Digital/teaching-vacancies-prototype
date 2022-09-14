@@ -12,9 +12,9 @@ const generateOrg = (params = {}) => {
 
   org.type = params.type || generateType()
   org.name = params.name || faker.company.companyName({format: 5})
-  org.phase = params.phase || 'Primary'
+  org.phase = params.phase || 'Primary school'
   org.isSpecialSchool = params.isSpecialSchool || false
-  org.locations = params.locations || generateLocations({ type: org.type })
+  org.locations = params.locations || generateLocations({ org })
   org.address = params.address || null
   return org
 }
