@@ -196,3 +196,31 @@ h1 .govuk-tag {
 .app-qualifications-group__org-year {
   margin-bottom: govuk-spacing(3);
 }
+
+.app-summary-list--compact {
+  @include govuk-font(16);
+  margin-bottom: 0;
+
+  .govuk-summary-list__key, .govuk-summary-list__value {
+    padding-bottom: govuk-spacing(0);
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .govuk-summary-list__key {
+      width: 37%;
+    }
+  }
+}
+
+.app-prose {
+  ul:not([class]) {
+    @extend %govuk-list;
+    @extend %govuk-list--bullet;
+    max-width: 40rem;
+  }
+}
+
+hr {
+  border-top: 1px solid govuk-colour('mid-grey');
+  margin-bottom: govuk-spacing(6);
+}

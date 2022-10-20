@@ -11,4 +11,4 @@ lib/extensions/_extensions.scss
 node_modules/*
 .tmuxp.*
 app/data/jobs.json
-app/data/orgs.json
+app/data/organisations.json

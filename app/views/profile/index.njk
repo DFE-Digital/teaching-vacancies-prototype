@@ -479,10 +479,10 @@
 
                 <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
                 <p class="govuk-caption-m govuk-!-margin-bottom-0">
-                  {{role.startDate | monthAndYearOnly}}
+                  {{role.startDate | monthYear}}
                   to
                   {% if role.endDate %}
-                    {{role.endDate | monthAndYearOnly}}
+                    {{role.endDate | monthYear}}
                   {% else %}
                     present
                   {% endif %}
