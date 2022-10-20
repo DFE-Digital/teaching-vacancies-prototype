@@ -1,0 +1,397 @@
+[
+  {
+    "id": "1cdf1df5-8d8e-4a11-b23c-f24cb49e027b",
+    "name": "Courtland Primary School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Primary school",
+    "ageGroup": "11 to 16",
+    "size": "1000",
+    "website": "https://utter-drag.me.uk",
+    "emailAddress": "email@courtlandprimaryschool.org.uk",
+    "about": "Dolor reprehenderit dignissimos facilis dicta facere occaecati id culpa dignissimos. Tenetur laboriosam vero. At in cupiditate magnam accusantium. Odit id animi id quos in corporis.\n\nPorro neque voluptatibus consequuntur aliquid provident. Adipisci consequatur reiciendis voluptatibus ut nam. Consequatur praesentium consectetur. Tempora vitae reiciendis tempora ullam.",
+    "safeguardingCommitment": "Voluptates vel cum nobis animi blanditiis dolor. Error laboriosam unde totam sint officia. Ipsa laboriosam eligendi. Modi cumque voluptates numquam. Itaque eius eveniet repellendus maxime fugit quas neque. Quam excepturi at temporibus perferendis architecto animi.\n\nAut quas quisquam aspernatur. Modi veniam expedita pariatur. Libero accusamus ipsam repellat vero est.",
+    "logo": "/public/images/logos/courtland.png",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "61e42362-4cbf-46b2-995d-6571ae1e6c20",
+    "name": "Bushey Meads Primary School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Primary school",
+    "ageGroup": "11 to 16",
+    "size": "1000",
+    "website": "Not entered",
+    "emailAddress": "Not entered",
+    "about": "Not entered",
+    "safeguardingCommitment": "Not entered",
+    "logo": "Not entered",
+    "photo": "Not entered"
+  },
+  {
+    "id": "a3a16d5e-8e47-4dd5-8dbd-2acd31115dd0",
+    "name": "LS Secondary School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Secondary school",
+    "ageGroup": "11 to 16",
+    "size": "500",
+    "website": "http://personal-man.org.uk",
+    "emailAddress": "email@lssecondaryschool.org.uk",
+    "about": "Quis et velit esse doloremque libero non impedit officia. Laborum nisi sunt voluptatibus modi. Quidem tempore natus temporibus sapiente quis doloremque provident repellendus odio.\n\nFugiat ab nam a quam. Unde iusto tenetur possimus totam impedit. Quibusdam consequuntur inventore quos mollitia voluptate non commodi. Voluptate aliquam ex dolorum quas eligendi. Maiores eum nam tenetur dignissimos. Veritatis dicta odio.",
+    "safeguardingCommitment": "Occaecati quae iusto dolorem. Aliquid fugiat quo. Modi mollitia praesentium quo optio ratione ab quos. Eligendi itaque deleniti reiciendis reprehenderit odit cupiditate esse. Tempore aspernatur laborum nesciunt praesentium facilis omnis.\n\nArchitecto quo tenetur mollitia blanditiis. Officiis voluptas quos suscipit minus esse mollitia. Non soluta aperiam sit omnis aperiam perspiciatis placeat fugiat.",
+    "logo": "/public/images/logos/courtland.png",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "eee27db9-996f-4fe1-b103-e7ea3b19837a",
+    "name": "ML Secondary School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Secondary school",
+    "ageGroup": "11 to 16",
+    "size": "100",
+    "website": "Not entered",
+    "emailAddress": "Not entered",
+    "about": "Not entered",
+    "safeguardingCommitment": "Not entered",
+    "logo": "Not entered",
+    "photo": "Not entered"
+  },
+  {
+    "id": "c9f64333-1bdd-4eec-9f73-157d66845f02",
+    "name": "Thor Primary School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Primary school",
+    "ageGroup": "11 to 16",
+    "size": "1000",
+    "website": "http://everlasting-kingdom.scot",
+    "emailAddress": "email@thorprimaryschool.org.uk",
+    "about": "Maxime omnis unde cum ex. Velit animi officia unde ipsam. Odit saepe quam pariatur odit fuga quia. Quas quam dolorum accusantium numquam temporibus.\n\nAdipisci nam quis. Maxime in doloribus quia accusamus iure non ipsam perferendis. Mollitia asperiores repellendus laboriosam. Dolorum dignissimos dolorum saepe voluptatum fugit assumenda unde magni doloremque.",
+    "safeguardingCommitment": "Dolorem voluptatem omnis quibusdam accusantium molestias magni explicabo in perspiciatis. Ad deleniti veniam. Minus nulla sit architecto facere.\n\nPerferendis dignissimos adipisci. Esse illum incidunt vero. Esse exercitationem error nemo. Natus itaque eius quaerat recusandae maiores eum.",
+    "logo": "https://loremflickr.com/100/100/abstract",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "61e9cffc-71f4-434c-9f98-5fa4d4467a5c",
+    "name": "Ragnarok School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Secondary school",
+    "ageGroup": "11 to 16",
+    "size": "1000",
+    "website": "http://athletic-migrant.org.uk",
+    "emailAddress": "email@ragnarokschool.org.uk",
+    "about": "Nihil modi vitae dolores. Est fugit esse. Atque saepe enim. Sit modi dolore alias aliquam numquam perferendis repudiandae velit consectetur.\n\nDolorem recusandae nesciunt quisquam non ea. Illum deserunt quasi ipsa ipsa ea corporis sunt asperiores. Expedita officiis quas nihil.",
+    "safeguardingCommitment": "Architecto expedita optio dolore ipsam voluptatem modi facilis corrupti. Beatae eos temporibus quas minima aperiam. Quia repudiandae dignissimos nesciunt consequatur consequuntur. Voluptatibus esse reiciendis odio. Iure enim blanditiis sapiente aspernatur dolorum quas ratione iste.\n\nCum tenetur est ducimus dolorum. Dolore quas numquam eaque. Iste nemo cupiditate eaque neque itaque. Nostrum aperiam dignissimos.",
+    "logo": "https://loremflickr.com/100/100/abstract",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "cfbef8ea-c7b2-4c90-8e21-cb245b7beae9",
+    "name": "Ultron School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Middle school",
+    "ageGroup": "11 to 16",
+    "size": "100",
+    "website": "http://close-mining.ltd.uk",
+    "emailAddress": "email@ultronschool.org.uk",
+    "about": "Tempore doloribus illo vero dicta blanditiis. Doloribus consectetur itaque minus magni quae. Dignissimos nostrum est. Dolor nostrum aliquid vel pariatur. Molestiae doloremque sapiente.\n\nRepellendus velit odio quo cumque eos. Nobis quibusdam sunt necessitatibus nulla beatae velit veritatis soluta. Nostrum consequuntur blanditiis sequi dolore. Inventore quisquam eveniet.",
+    "safeguardingCommitment": "Necessitatibus sequi mollitia alias vel et iure. Architecto ea dicta sunt officia. Quidem cum adipisci magni ex minus harum accusamus id. Distinctio dolor expedita soluta eius itaque nisi debitis quae. Laboriosam dicta facilis tempora quidem quibusdam.\n\nSimilique temporibus repellendus debitis doloremque error doloribus facere. A amet minus similique ipsam quidem libero. Nesciunt totam adipisci consequuntur dolorem culpa repellat doloremque. Quaerat quae amet dolor nihil. Dolore non rem eligendi quasi illum quod ipsam asperiores aut.",
+    "logo": "https://loremflickr.com/100/100/abstract",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "0e084f53-b6db-4505-8b48-5c93f779b48a",
+    "name": "Endgame School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Sixth form or college",
+    "ageGroup": "11 to 16",
+    "size": "1000",
+    "website": "http://defenseless-retrospectivity.gov.uk",
+    "emailAddress": "email@endgameschool.org.uk",
+    "about": "Numquam odit autem enim quibusdam praesentium. Voluptas odit voluptatum et porro. Harum eveniet similique. Est aut architecto dolorem quidem quaerat aperiam recusandae atque sint.\n\nAccusantium tempore hic ullam. Tenetur est quidem magnam amet odit distinctio nisi. Eligendi placeat facilis reprehenderit. Nisi nam aperiam.",
+    "safeguardingCommitment": "Dolorem numquam at nisi iure odit. A optio cupiditate et impedit. Atque mollitia voluptates magnam excepturi. Molestias ex eaque tenetur officia debitis explicabo saepe quisquam.\n\nAutem maiores natus nobis quae aperiam quis necessitatibus cumque amet. Nobis aliquid non accusamus hic culpa soluta. Dolores vero totam.",
+    "logo": "https://loremflickr.com/100/100/abstract",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "78c8a3dc-621f-4200-b442-7a942ec448b2",
+    "name": "Stark Primary School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    },
+    "type": "Academy",
+    "phase": "Primary school",
+    "ageGroup": "11 to 16",
+    "size": "500",
+    "website": "http://normal-enforcement.info",
+    "emailAddress": "email@starkprimaryschool.org.uk",
+    "about": "Corrupti quam ipsum nesciunt tempora distinctio autem. Qui vitae facilis cum dolorum itaque neque. Reiciendis hic dolores placeat magni maxime nulla. Corrupti voluptate ea quaerat autem nihil voluptates. Adipisci optio dicta commodi quibusdam molestias. Quas quae laboriosam velit consectetur fugit soluta excepturi.\n\nSit repudiandae tempore illum earum ipsam nesciunt laudantium ipsum. Accusamus impedit quis aperiam consequuntur laboriosam molestias assumenda vitae laborum. Eos laboriosam eum magni voluptas perferendis. Nostrum error eos eius. Voluptatum voluptas illo dolores enim.",
+    "safeguardingCommitment": "Vitae dolor doloribus commodi autem dolores et enim. Quibusdam ea quidem nam. Pariatur doloremque perspiciatis nisi expedita voluptates libero sint nihil. Sint fuga natus voluptas.\n\nSit quaerat iste voluptatem. Mollitia recusandae incidunt et in. Iusto architecto architecto animi ab quasi suscipit porro et. Eum ipsam perferendis atque soluta sed nihil repudiandae exercitationem nobis. Delectus dignissimos recusandae alias a inventore occaecati tempora eum molestias. Libero fuga dolorem repellendus cum doloremque nostrum.",
+    "logo": "https://loremflickr.com/100/100/abstract",
+    "photo": "https://loremflickr.com/640/320/abstract"
+  },
+  {
+    "id": "d541880b-610a-4171-8908-94eab6ed2a70",
+    "name": "Royal Academy Trust",
+    "address": {
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
+    },
+    "website": "http://vicious-region.gov.uk",
+    "emailAddress": "email@royalacademytrust.org.uk",
+    "about": "Iusto temporibus rem voluptatibus asperiores delectus laudantium atque exercitationem. Saepe libero sapiente sit distinctio ratione saepe. Minima ratione magni a cum dolor. Qui dolorum cupiditate doloremque quisquam. Est explicabo perspiciatis cumque ipsa earum nostrum aspernatur.\n\nUllam accusamus aliquid assumenda excepturi numquam quam nam. Soluta nam distinctio libero. Molestiae autem quo porro veniam illo laboriosam error atque. Dicta optio quos aspernatur eaque neque consectetur.",
+    "safeguardingCommitment": "Quo sit amet. Distinctio quas cumque aliquam aspernatur in. Itaque tenetur explicabo adipisci ipsa aut. Rerum eos itaque deserunt excepturi officia. Non atque itaque debitis laborum.\n\nAtque possimus possimus. Velit eveniet odio itaque. Excepturi pariatur iure maxime unde distinctio praesentium molestiae odio nulla. Voluptatibus recusandae neque assumenda.",
+    "logo": "/public/images/logos/royal.png",
+    "photo": "https://loremflickr.com/640/320/abstract",
+    "schools": [
+      {
+        "id": "c9f64333-1bdd-4eec-9f73-157d66845f02",
+        "name": "Thor Primary School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Primary school",
+        "ageGroup": "11 to 16",
+        "size": "1000",
+        "website": "http://everlasting-kingdom.scot",
+        "emailAddress": "email@thorprimaryschool.org.uk",
+        "about": "Maxime omnis unde cum ex. Velit animi officia unde ipsam. Odit saepe quam pariatur odit fuga quia. Quas quam dolorum accusantium numquam temporibus.\n\nAdipisci nam quis. Maxime in doloribus quia accusamus iure non ipsam perferendis. Mollitia asperiores repellendus laboriosam. Dolorum dignissimos dolorum saepe voluptatum fugit assumenda unde magni doloremque.",
+        "safeguardingCommitment": "Dolorem voluptatem omnis quibusdam accusantium molestias magni explicabo in perspiciatis. Ad deleniti veniam. Minus nulla sit architecto facere.\n\nPerferendis dignissimos adipisci. Esse illum incidunt vero. Esse exercitationem error nemo. Natus itaque eius quaerat recusandae maiores eum.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "61e9cffc-71f4-434c-9f98-5fa4d4467a5c",
+        "name": "Ragnarok School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Secondary school",
+        "ageGroup": "11 to 16",
+        "size": "1000",
+        "website": "http://athletic-migrant.org.uk",
+        "emailAddress": "email@ragnarokschool.org.uk",
+        "about": "Nihil modi vitae dolores. Est fugit esse. Atque saepe enim. Sit modi dolore alias aliquam numquam perferendis repudiandae velit consectetur.\n\nDolorem recusandae nesciunt quisquam non ea. Illum deserunt quasi ipsa ipsa ea corporis sunt asperiores. Expedita officiis quas nihil.",
+        "safeguardingCommitment": "Architecto expedita optio dolore ipsam voluptatem modi facilis corrupti. Beatae eos temporibus quas minima aperiam. Quia repudiandae dignissimos nesciunt consequatur consequuntur. Voluptatibus esse reiciendis odio. Iure enim blanditiis sapiente aspernatur dolorum quas ratione iste.\n\nCum tenetur est ducimus dolorum. Dolore quas numquam eaque. Iste nemo cupiditate eaque neque itaque. Nostrum aperiam dignissimos.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "cfbef8ea-c7b2-4c90-8e21-cb245b7beae9",
+        "name": "Ultron School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Middle school",
+        "ageGroup": "11 to 16",
+        "size": "100",
+        "website": "http://close-mining.ltd.uk",
+        "emailAddress": "email@ultronschool.org.uk",
+        "about": "Tempore doloribus illo vero dicta blanditiis. Doloribus consectetur itaque minus magni quae. Dignissimos nostrum est. Dolor nostrum aliquid vel pariatur. Molestiae doloremque sapiente.\n\nRepellendus velit odio quo cumque eos. Nobis quibusdam sunt necessitatibus nulla beatae velit veritatis soluta. Nostrum consequuntur blanditiis sequi dolore. Inventore quisquam eveniet.",
+        "safeguardingCommitment": "Necessitatibus sequi mollitia alias vel et iure. Architecto ea dicta sunt officia. Quidem cum adipisci magni ex minus harum accusamus id. Distinctio dolor expedita soluta eius itaque nisi debitis quae. Laboriosam dicta facilis tempora quidem quibusdam.\n\nSimilique temporibus repellendus debitis doloremque error doloribus facere. A amet minus similique ipsam quidem libero. Nesciunt totam adipisci consequuntur dolorem culpa repellat doloremque. Quaerat quae amet dolor nihil. Dolore non rem eligendi quasi illum quod ipsam asperiores aut.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "0e084f53-b6db-4505-8b48-5c93f779b48a",
+        "name": "Endgame School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Sixth form or college",
+        "ageGroup": "11 to 16",
+        "size": "1000",
+        "website": "http://defenseless-retrospectivity.gov.uk",
+        "emailAddress": "email@endgameschool.org.uk",
+        "about": "Numquam odit autem enim quibusdam praesentium. Voluptas odit voluptatum et porro. Harum eveniet similique. Est aut architecto dolorem quidem quaerat aperiam recusandae atque sint.\n\nAccusantium tempore hic ullam. Tenetur est quidem magnam amet odit distinctio nisi. Eligendi placeat facilis reprehenderit. Nisi nam aperiam.",
+        "safeguardingCommitment": "Dolorem numquam at nisi iure odit. A optio cupiditate et impedit. Atque mollitia voluptates magnam excepturi. Molestias ex eaque tenetur officia debitis explicabo saepe quisquam.\n\nAutem maiores natus nobis quae aperiam quis necessitatibus cumque amet. Nobis aliquid non accusamus hic culpa soluta. Dolores vero totam.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "78c8a3dc-621f-4200-b442-7a942ec448b2",
+        "name": "Stark Primary School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Primary school",
+        "ageGroup": "11 to 16",
+        "size": "500",
+        "website": "http://normal-enforcement.info",
+        "emailAddress": "email@starkprimaryschool.org.uk",
+        "about": "Corrupti quam ipsum nesciunt tempora distinctio autem. Qui vitae facilis cum dolorum itaque neque. Reiciendis hic dolores placeat magni maxime nulla. Corrupti voluptate ea quaerat autem nihil voluptates. Adipisci optio dicta commodi quibusdam molestias. Quas quae laboriosam velit consectetur fugit soluta excepturi.\n\nSit repudiandae tempore illum earum ipsam nesciunt laudantium ipsum. Accusamus impedit quis aperiam consequuntur laboriosam molestias assumenda vitae laborum. Eos laboriosam eum magni voluptas perferendis. Nostrum error eos eius. Voluptatum voluptas illo dolores enim.",
+        "safeguardingCommitment": "Vitae dolor doloribus commodi autem dolores et enim. Quibusdam ea quidem nam. Pariatur doloremque perspiciatis nisi expedita voluptates libero sint nihil. Sint fuga natus voluptas.\n\nSit quaerat iste voluptatem. Mollitia recusandae incidunt et in. Iusto architecto architecto animi ab quasi suscipit porro et. Eum ipsam perferendis atque soluta sed nihil repudiandae exercitationem nobis. Delectus dignissimos recusandae alias a inventore occaecati tempora eum molestias. Libero fuga dolorem repellendus cum doloremque nostrum.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      }
+    ]
+  },
+  {
+    "id": "5083565c-e3d3-4490-a0a3-28bcfcb959eb",
+    "name": "Svelte Academy Trust",
+    "address": {
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
+    },
+    "website": "Not entered",
+    "emailAddress": "Not entered",
+    "about": "Not entered",
+    "safeguardingCommitment": "Not entered",
+    "logo": "Not entered",
+    "photo": "Not entered",
+    "schools": [
+      {
+        "id": "c9f64333-1bdd-4eec-9f73-157d66845f02",
+        "name": "Thor Primary School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Primary school",
+        "ageGroup": "11 to 16",
+        "size": "1000",
+        "website": "http://everlasting-kingdom.scot",
+        "emailAddress": "email@thorprimaryschool.org.uk",
+        "about": "Maxime omnis unde cum ex. Velit animi officia unde ipsam. Odit saepe quam pariatur odit fuga quia. Quas quam dolorum accusantium numquam temporibus.\n\nAdipisci nam quis. Maxime in doloribus quia accusamus iure non ipsam perferendis. Mollitia asperiores repellendus laboriosam. Dolorum dignissimos dolorum saepe voluptatum fugit assumenda unde magni doloremque.",
+        "safeguardingCommitment": "Dolorem voluptatem omnis quibusdam accusantium molestias magni explicabo in perspiciatis. Ad deleniti veniam. Minus nulla sit architecto facere.\n\nPerferendis dignissimos adipisci. Esse illum incidunt vero. Esse exercitationem error nemo. Natus itaque eius quaerat recusandae maiores eum.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "61e9cffc-71f4-434c-9f98-5fa4d4467a5c",
+        "name": "Ragnarok School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Secondary school",
+        "ageGroup": "11 to 16",
+        "size": "1000",
+        "website": "http://athletic-migrant.org.uk",
+        "emailAddress": "email@ragnarokschool.org.uk",
+        "about": "Nihil modi vitae dolores. Est fugit esse. Atque saepe enim. Sit modi dolore alias aliquam numquam perferendis repudiandae velit consectetur.\n\nDolorem recusandae nesciunt quisquam non ea. Illum deserunt quasi ipsa ipsa ea corporis sunt asperiores. Expedita officiis quas nihil.",
+        "safeguardingCommitment": "Architecto expedita optio dolore ipsam voluptatem modi facilis corrupti. Beatae eos temporibus quas minima aperiam. Quia repudiandae dignissimos nesciunt consequatur consequuntur. Voluptatibus esse reiciendis odio. Iure enim blanditiis sapiente aspernatur dolorum quas ratione iste.\n\nCum tenetur est ducimus dolorum. Dolore quas numquam eaque. Iste nemo cupiditate eaque neque itaque. Nostrum aperiam dignissimos.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "cfbef8ea-c7b2-4c90-8e21-cb245b7beae9",
+        "name": "Ultron School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Middle school",
+        "ageGroup": "11 to 16",
+        "size": "100",
+        "website": "http://close-mining.ltd.uk",
+        "emailAddress": "email@ultronschool.org.uk",
+        "about": "Tempore doloribus illo vero dicta blanditiis. Doloribus consectetur itaque minus magni quae. Dignissimos nostrum est. Dolor nostrum aliquid vel pariatur. Molestiae doloremque sapiente.\n\nRepellendus velit odio quo cumque eos. Nobis quibusdam sunt necessitatibus nulla beatae velit veritatis soluta. Nostrum consequuntur blanditiis sequi dolore. Inventore quisquam eveniet.",
+        "safeguardingCommitment": "Necessitatibus sequi mollitia alias vel et iure. Architecto ea dicta sunt officia. Quidem cum adipisci magni ex minus harum accusamus id. Distinctio dolor expedita soluta eius itaque nisi debitis quae. Laboriosam dicta facilis tempora quidem quibusdam.\n\nSimilique temporibus repellendus debitis doloremque error doloribus facere. A amet minus similique ipsam quidem libero. Nesciunt totam adipisci consequuntur dolorem culpa repellat doloremque. Quaerat quae amet dolor nihil. Dolore non rem eligendi quasi illum quod ipsam asperiores aut.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "0e084f53-b6db-4505-8b48-5c93f779b48a",
+        "name": "Endgame School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Sixth form or college",
+        "ageGroup": "11 to 16",
+        "size": "1000",
+        "website": "http://defenseless-retrospectivity.gov.uk",
+        "emailAddress": "email@endgameschool.org.uk",
+        "about": "Numquam odit autem enim quibusdam praesentium. Voluptas odit voluptatum et porro. Harum eveniet similique. Est aut architecto dolorem quidem quaerat aperiam recusandae atque sint.\n\nAccusantium tempore hic ullam. Tenetur est quidem magnam amet odit distinctio nisi. Eligendi placeat facilis reprehenderit. Nisi nam aperiam.",
+        "safeguardingCommitment": "Dolorem numquam at nisi iure odit. A optio cupiditate et impedit. Atque mollitia voluptates magnam excepturi. Molestias ex eaque tenetur officia debitis explicabo saepe quisquam.\n\nAutem maiores natus nobis quae aperiam quis necessitatibus cumque amet. Nobis aliquid non accusamus hic culpa soluta. Dolores vero totam.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      },
+      {
+        "id": "78c8a3dc-621f-4200-b442-7a942ec448b2",
+        "name": "Stark Primary School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "type": "Academy",
+        "phase": "Primary school",
+        "ageGroup": "11 to 16",
+        "size": "500",
+        "website": "http://normal-enforcement.info",
+        "emailAddress": "email@starkprimaryschool.org.uk",
+        "about": "Corrupti quam ipsum nesciunt tempora distinctio autem. Qui vitae facilis cum dolorum itaque neque. Reiciendis hic dolores placeat magni maxime nulla. Corrupti voluptate ea quaerat autem nihil voluptates. Adipisci optio dicta commodi quibusdam molestias. Quas quae laboriosam velit consectetur fugit soluta excepturi.\n\nSit repudiandae tempore illum earum ipsam nesciunt laudantium ipsum. Accusamus impedit quis aperiam consequuntur laboriosam molestias assumenda vitae laborum. Eos laboriosam eum magni voluptas perferendis. Nostrum error eos eius. Voluptatum voluptas illo dolores enim.",
+        "safeguardingCommitment": "Vitae dolor doloribus commodi autem dolores et enim. Quibusdam ea quidem nam. Pariatur doloremque perspiciatis nisi expedita voluptates libero sint nihil. Sint fuga natus voluptas.\n\nSit quaerat iste voluptatem. Mollitia recusandae incidunt et in. Iusto architecto architecto animi ab quasi suscipit porro et. Eum ipsam perferendis atque soluta sed nihil repudiandae exercitationem nobis. Delectus dignissimos recusandae alias a inventore occaecati tempora eum molestias. Libero fuga dolorem repellendus cum doloremque nostrum.",
+        "logo": "https://loremflickr.com/100/100/abstract",
+        "photo": "https://loremflickr.com/640/320/abstract"
+      }
+    ]
+  }
+]

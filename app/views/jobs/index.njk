@@ -26,18 +26,20 @@
 
 
         {% for job in jobs %}
+
+          {% set address %}
+            {% for part, value in job.organisation.address %}
+              {{value}}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          {% endset %}
+
           <div class="app-schools__item">
             <h2 class="govuk-heading-m">
-              <a href="/jobs/show">{{job.title}}</a>
+              <a href="/jobs/{{job.id}}">{{job.title}}</a>
             </h2>
-            <p>
-              {{job.location.name}},
-              {% for part, value in job.location.address %}
-                {{value}}{% if not loop.last %}, {% endif %}
-              {% endfor %}
-            </p>
+            <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{address}}</p>
             {{ govukSummaryList({
-              classes: 'govuk-summary-list--no-border',
+              classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
                 {
                   key: {
@@ -49,15 +51,32 @@
                 },
                 {
                   key: {
-                    text: "Full time equivalent salary"
+                    text: "Full-time equivalent salary"
                   },
                   value: {
-                    text: job.salary.fullTimeEquivalentSalary
+                    html: job.fullTimeEquivalentSalaryDetails
                   }
-                },
+                } if job.fullTimeEquivalentSalaryDetails,
                 {
                   key: {
-                    text: "Phase of education"
+                    text: "Actual salary"
+                  },
+                  value: {
+                    html: job.actualSalaryDetails
+                  }
+                } if job.actualSalaryDetails,
+                {
+
+                  key: {
+                    text: "Pay scale"
+                  },
+                  value: {
+                    html: job.payScaleDetails
+                  }
+                } if job.payScaleDetails,
+                {
+                  key: {
+                    text: "Education phase"
                   },
                   value: {
                     text: 'Primary'
@@ -70,7 +89,15 @@
                   value: {
                     text: job.workingPatterns
                   }
-                }
+                },
+                {
+                  key: {
+                    text: "Subject"
+                  },
+                  value: {
+                    html: job.subjects | join(', ') | capitalize
+                  }
+                } if job.subjects
               ]
             }) }}
 

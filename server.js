@@ -14,6 +14,8 @@ const sessionInMemory = require('express-session')
 
 // Added dependencies
 const flash = require('connect-flash')
+const markdown = require('nunjucks-markdown')
+const { marked } = require('marked')
 // const passport = require('passport')
 // const LocalStrategy = require('passport-local').Strategy
 // const authenticationModel = require('./app/models/authentication')
@@ -141,6 +143,8 @@ if (env === 'development') {
 nunjucksConfig.express = app
 
 var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+
+markdown.register(nunjucksAppEnv, marked)
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)

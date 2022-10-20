@@ -15,7 +15,7 @@
     "test": "gulp generate-assets && jest && npm run lint"
   },
   "dependencies": {
-    "@faker-js/faker": "^6.3.1",
+    "@faker-js/faker": "^7.4.0",
     "acorn": "^8.5.0",
     "ansi-colors": "^4.1.1",
     "body-parser": "^1.14.1",
@@ -43,6 +43,7 @@
     "marked": "^4.0.10",
     "notifications-node-client": "^5.1.0",
     "nunjucks": "^3.2.1",
+    "nunjucks-markdown": "^2.0.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "portscanner": "^2.1.1",

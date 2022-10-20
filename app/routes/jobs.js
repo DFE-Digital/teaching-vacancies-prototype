@@ -8,4 +8,11 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/:id', (req, res) => {
+    let job = jobs.find(job => job.id == req.params.id)
+    res.render('jobs/show', {
+      job
+    })
+  })
+
 }
