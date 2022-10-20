@@ -22,21 +22,28 @@
 
       <div class="app-schools">
 
-        {% for school in schools %}
+        {% for organisation in organisations %}
+
+          {% set phase %}
+            {% if organisation.phase %}
+              {{organisation.phase}}
+            {% else %}
+              Multiple phases
+            {% endif %}
+          {% endset %}
+
+
           <div class="app-schools__item">
             <div>
 
-              {% if school.name == 'Courtland Primary School' %}
-                <img src="/public/images/logos/courtland.png" width="60" style="float: left; margin-right: 15px;">
-              {% else %}
-                {% set color = ['lightgrey', 'lightblue', 'lightpink', 'lightyellow', '#F08080'] | random %}
-                <div style="width: 60px; height: 60px; background: {{color}}; float: left; margin-right: 15px"></div>
+              {% if organisation.logo != 'Not entered' %}
+                <img src="{{organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
               {% endif %}
               <h2 class="govuk-heading-m">
-                <a href="/schools/show">{{school.name}}</a>
+                <a href="/schools/show">{{organisation.name}}</a>
               </h2>
               <p>
-                {% for part, value in school.address %}
+                {% for part, value in organisation.address %}
                   {{value}}{% if not loop.last %}, {% endif %}
                 {% endfor %}
               </p>
@@ -57,7 +64,7 @@
                     text: "Education phase"
                   },
                   value: {
-                    text: school.phase
+                    text: phase
                   }
                 },
                 {

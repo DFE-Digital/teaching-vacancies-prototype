@@ -17,8 +17,10 @@ Example usage:
 
 */
 
+const jobs = require('../data/jobs.json')
+const organisations = require('../data/organisations.json')
+
 module.exports = {
-
-  // Insert values here
-
+  jobs,
+  organisations
 }
