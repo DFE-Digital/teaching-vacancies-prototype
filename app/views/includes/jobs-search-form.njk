@@ -18,6 +18,30 @@
       }
     }) }}
 
+    {{ govukSelect({
+      id: "radius",
+      name: "radius",
+      label: {
+        text: "Search radius",
+        classes: "govuk-label--s"
+      },
+      items: [
+        {
+          value: "updated",
+          text: "This area only",
+          selected: true
+        },
+        {
+          value: "views",
+          text: "Most views"
+        },
+        {
+          value: "comments",
+          text: "Most comments"
+        }
+      ]
+    }) }}
+
     {{ govukButton({
       text: 'Search',
       href: '/jobs'
