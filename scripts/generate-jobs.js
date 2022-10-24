@@ -98,8 +98,7 @@ const generateJob = (params = {}) => {
         size: '2MB'
       }
 
-      job.emailAddressForApplications = params.emailAddressForApplications || faker.helpers.arrayElement(users).username
-
+      job.emailAddressForApplications = params.emailAddressForApplications || job.organisation.emailAddress || faker.helpers.arrayElement(users).emailAddress
     }
 
     if(job.applicationMethod == 'Through a website') {
