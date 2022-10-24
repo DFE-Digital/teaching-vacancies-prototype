@@ -176,7 +176,8 @@ const generateJobs = () => {
   const jobs = []
 
   jobs.push(generateJob({
-    title: 'Teacher of Geography'
+    title: 'Teacher of Geography',
+    organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust')
   }))
   jobs.push(generateJob())
   jobs.push(generateJob())

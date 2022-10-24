@@ -220,25 +220,24 @@
         {{additionalDocuments | safe }}
       {% endif %}
 
+      {% set address %}
+        {% for part, value in job.organisation.address %}
+          {{value}}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      {% endset %}
+
+      {% set emailAddress %}
+        <a href="{{job.organisation.emailAddress}}">{{job.organisation.emailAddress}}</a>
+      {% endset %}
+
+      {% set website %}
+        <a href="{{job.organisation.website}}">{{job.organisation.website}} (opens in new tab)</a>
+      {% endset %}
+
       {% if job.locations.length == 1 %}
         <h2 class="govuk-heading-m">
           About the school
         </h2>
-
-
-        {% set address %}
-          {% for part, value in job.organisation.address %}
-            {{value}}{% if not loop.last %}, {% endif %}
-          {% endfor %}
-        {% endset %}
-
-        {% set emailAddress %}
-          <a href="{{job.organisation.emailAddress}}">{{job.organisation.emailAddress}}</a>
-        {% endset %}
-
-        {% set website %}
-          <a href="{{job.organisation.website}}">{{job.organisation.website}} (opens in new tab)</a>
-        {% endset %}
 
         {{ govukSummaryList({
           rows: [
@@ -331,6 +330,51 @@
         <h2 class="govuk-heading-m">
           About the schools
         </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: job.organisation.name
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                text: address
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: emailAddress
+              }
+            } if job.organisation.emailAddress != 'Not entered',
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: website
+              }
+            } if job.organisation.website != 'Not entered'
+          ]
+        }) }}
+
+        {% if job.organisation.about != 'Not entered' %}
+          <div class="app-prose govuk-!-margin-bottom-6">
+            {% markdown %}
+              {{job.organisation.about}}
+            {% endmarkdown %}
+          </div>
+        {% endif %}
 
         <p>You can find out more information about:</p>
 
