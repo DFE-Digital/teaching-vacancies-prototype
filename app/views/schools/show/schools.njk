@@ -8,13 +8,6 @@
   {% endfor %}
 {% endset %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Exit preview",
-    href: "/organisation"
-  }) }}
-{% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -51,7 +44,7 @@
       </h2>
 
       {% for school in organisation.schools %}
-        <p><a href="/organisation/{{school.id}}/preview">{{school.name}}</a></p>
+        <p><a href="/schools/{{school.id}}">{{school.name}}</a></p>
       {% endfor %}
 
     </div>

@@ -33,11 +33,11 @@
   {% if organisation.schools %}
     {{appSubNavigation({
       items: [{
-        href: '/schools/'+organisation.id+'/preview',
+        href: '/schools/'+organisation.id,
         text: 'Organisation',
         active: true
       }, {
-        href: '/schools/'+organisation.id+'/preview/schools',
+        href: '/schools/'+organisation.id+'/schools',
         text: 'Schools'
       }]
     })}}
@@ -52,7 +52,7 @@
       </h2>
 
       {% if organisation.parentOrganisation %}
-        <p>Part of <a href="/schools/{{organisation.parentOrganisation.id}}/preview">{{organisation.parentOrganisation.name}}</a>.</p>
+        <p>Part of <a href="/schools/{{organisation.parentOrganisation.id}}">{{organisation.parentOrganisation.name}}</a>.</p>
       {% endif %}
 
       {{ govukSummaryList({
