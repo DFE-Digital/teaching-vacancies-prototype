@@ -29,15 +29,18 @@ const generateJob = (params = {}) => {
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
-  let phase = 'Primary school'
 
   if(job.organisation.schools == 'School') {
-    phase = job.organisation.schools[0].phase
+    job.phase = job.organisation.schools[0].phase
   } else {
-    phase = job.organisation.phase
+    job.phase = job.organisation.phase
+  }
+  if(!job.phase) {
+    job.phase = 'Primary school'
   }
 
-  job.keyStages = params.keyStages || generateKeyStages({phase})
+
+  job.keyStages = params.keyStages || generateKeyStages({phase: job.phase})
 
   job.subjects = params.subjects || generateSubjects()
 
@@ -175,12 +178,35 @@ const generateJobs = () => {
   const jobs = []
 
   jobs.push(generateJob({
+    status: 'Active',
     title: 'Teacher of Geography',
-    organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust')
+    organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust'),
+    isUsingApplicationForm: 'Yes',
+    hasSafeguardingCommitment: 'Yes',
+    hasFurtherDetailsAboutTheRole: 'Yes'
   }))
-  jobs.push(generateJob())
-  jobs.push(generateJob())
-  jobs.push(generateJob())
+  jobs.push(generateJob({
+    status: 'Active',
+    isUsingApplicationForm: 'No',
+    applicationMethod: 'Through a website',
+    hasSafeguardingCommitment: 'Yes',
+    hasFurtherDetailsAboutTheRole: 'Yes'
+  }))
+  jobs.push(generateJob({
+    status: 'Active',
+    isUsingApplicationForm: 'No',
+    applicationMethod: 'By email',
+    hasSafeguardingCommitment: 'Yes',
+    hasFurtherDetailsAboutTheRole: 'Yes'
+  }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
+  jobs.push(generateJob({ status: 'Active' }))
   jobs.push(generateJob())
   jobs.push(generateJob())
   jobs.push(generateJob())

@@ -378,11 +378,13 @@
 
         <p>You can find out more information about:</p>
 
+        {{job.locations | log}}
+
         <ul class="govuk-list govuk-list--bullet">
           {% for location in job.locations %}
             {% if location.name != job.organisation.name %}
               <li>
-                <a href="">{{location.name}}</a>
+                <a href="/schools/{{location.id}}">{{location.name}}</a>
               </li>
             {% endif %}
           {% endfor %}

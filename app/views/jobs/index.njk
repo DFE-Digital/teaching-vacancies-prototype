@@ -38,6 +38,7 @@
               <a href="/jobs/{{job.id}}">{{job.title}}</a>
             </h2>
             <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{job.organisation.name}},{{address}}</p>
+
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
@@ -79,15 +80,15 @@
                     text: "Education phase"
                   },
                   value: {
-                    text: 'Primary'
+                    text: job.phase | capitalize
                   }
-                },
+                } if job.phase,
                 {
                   key: {
                     text: "Working pattern"
                   },
                   value: {
-                    text: job.workingPatterns
+                    text: job.workingPatterns | join(', ') | capitalize
                   }
                 },
                 {
