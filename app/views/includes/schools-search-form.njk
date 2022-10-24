@@ -4,7 +4,7 @@
       id: "keywords",
       name: "keywords",
       label: {
-        text: "Search for school",
+        text: "Name of school",
         classes: "govuk-label--s"
       }
     }) }}
@@ -16,6 +16,21 @@
         text: "City, county or postcode",
         classes: "govuk-label--s"
       }
+    }) }}
+
+    {{ govukSelect({
+      id: "radius",
+      name: "radius",
+      label: {
+        text: "Search radius",
+        classes: "govuk-label--s"
+      },
+      items: [
+        {
+          value: "updated",
+          text: "This area only"
+        }
+      ]
     }) }}
 
     {{ govukButton({
