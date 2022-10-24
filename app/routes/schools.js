@@ -8,13 +8,16 @@ module.exports = router => {
     })
   })
 
-  router.get('/schools/show', (req, res) => {
+  router.get('/schools/:id', (req, res) => {
+    let organisation = req.session.data.organisations.find(organisation => organisation.id == req.params.id)
+
     let jobs = req.session.data.jobs
 
-    let currentJobs = [jobs[0], jobs[1]]
+    jobs = [jobs[0], jobs[1]]
 
-    res.render('schools/show', {
-      currentJobs
+    res.render('schools/show/index', {
+      jobs,
+      organisation
     })
   })
 

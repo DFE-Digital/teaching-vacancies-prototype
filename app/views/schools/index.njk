@@ -40,7 +40,7 @@
                 <img src="{{organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
               {% endif %}
               <h2 class="govuk-heading-m">
-                <a href="/schools/show">{{organisation.name}}</a>
+                <a href="/schools/{{organisation.id}}">{{organisation.name}}</a>
               </h2>
               <p>
                 {% for part, value in organisation.address %}
@@ -69,7 +69,7 @@
                 },
                 {
                   key: {
-                    text: "Current jobs"
+                    text: "Active jobs"
                   },
                   value: {
                     text: [0, 1, 2, 3, 4] | random

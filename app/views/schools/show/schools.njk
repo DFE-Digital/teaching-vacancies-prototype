@@ -1,0 +1,59 @@
+{% extends "layout.njk" %}
+{% set title = organisation.name %}
+{% set primaryNavId = 'organisation' %}
+
+{% set address %}
+  {% for part, value in organisation.address %}
+    {{value}}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Exit preview",
+    href: "/organisation"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="app-school-title">
+        {% if organisation.logo %}
+          <img src="{{organisation.logo}}">
+        {% endif %}
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+          {{title}}
+        </h1>
+        <p>{{address}}</p>
+      </div>
+    </div>
+  </div>
+
+  {% if organisation.schools %}
+    {{appSubNavigation({
+      items: [{
+        href: '/organisation/'+organisation.id+'/preview',
+        text: 'Organisation'
+      }, {
+        href: '/organisation/'+organisation.id+'/preview/schools',
+        text: 'Schools',
+        active: true
+      }]
+    })}}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">
+        Schools
+      </h2>
+
+      {% for school in organisation.schools %}
+        <p><a href="/organisation/{{school.id}}/preview">{{school.name}}</a></p>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}

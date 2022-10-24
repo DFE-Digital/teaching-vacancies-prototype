@@ -1,0 +1,167 @@
+{% extends "layout.njk" %}
+{% set title = organisation.name %}
+{% set primaryNavId = 'schools' %}
+
+{% set address %}
+  {% for part, value in organisation.address %}
+    {{value}}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% if organisation.website != 'Not entered' %}
+  {% set website %}
+    <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
+  {% endset %}
+{% endif %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="app-school-title">
+        {% if organisation.logo != 'Not entered' %}
+          <img src="{{organisation.logo}}">
+        {% endif %}
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+          {{title}}
+        </h1>
+        <p>{{address}}</p>
+      </div>
+    </div>
+  </div>
+
+  {% if organisation.schools %}
+    {{appSubNavigation({
+      items: [{
+        href: '/schools/'+organisation.id+'/preview',
+        text: 'Organisation',
+        active: true
+      }, {
+        href: '/schools/'+organisation.id+'/preview/schools',
+        text: 'Schools'
+      }]
+    })}}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h2 class="govuk-heading-m">
+        Summary
+      </h2>
+
+      {% if organisation.parentOrganisation %}
+        <p>Part of <a href="/schools/{{organisation.parentOrganisation.id}}/preview">{{organisation.parentOrganisation.name}}</a>.</p>
+      {% endif %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Education phase"
+            },
+            value: {
+              text: organisation.phase
+            }
+          } if organisation.phase,
+          {
+            key: {
+              text: "School size"
+            },
+            value: {
+              text: organisation.size + ' pupils'
+            }
+          } if organisation.size,
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: organisation.ageGroup
+            }
+          } if organisation.ageGroup,
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              html: website
+            }
+          } if organisation.website != 'Not entered',
+          {
+            key: {
+              text: "Ofsted report"
+            },
+            value: {
+              html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+            }
+          } if not organisation.schools,
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: '<a href="#">'+organisation.emailAddress+'</a>'
+            }
+          } if organisation.emailAddress != 'Not entered'
+        ]
+      }) }}
+
+      {% if organisation.about != 'Not entered' or organisation.photo != 'Not entered' %}
+        <h2 class="govuk-heading-m">
+          About {{organisation.name}}
+        </h2>
+
+        {% if organisation.photo != 'Not entered' %}
+          <div class="app-school-photo">
+            <img src="{{organisation.photo}}">
+          </div>
+        {% endif %}
+
+        <p>{{organisation.about | nl2br | safe}}</p>
+      {% endif %}
+
+      {% if organisation.safeguardingCommitment != 'Not entered' %}
+        <h2 class="govuk-heading-m">
+          Commitment to safeguarding
+        </h2>
+        <p>{{organisation.safeguardingCommitment | nl2br | safe}}</p>
+      {% endif %}
+
+
+      <h2 class="govuk-heading-m">
+        Location
+      </h2>
+
+      <div class="app-map">
+        <img src="/public/images/maps/courtland.png">
+      </div>
+
+      <h2 class="govuk-heading-m">
+        Current jobs
+      </h2>
+      {% if jobs.length %}
+        {{appJobList({
+          jobs: jobs,
+          heading: {
+            level: 3
+          }
+        })}}
+      {% else %}
+        <p>There are no jobs - <a href="#">set up job alert</a>.</p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Set up a job alert
+      </h2>
+
+      <p>Get a job alert whenever a role is listed at {{organisation.name}}.</p>
+
+      {{ govukButton({
+        text: "Set up job alert",
+        classes: 'govuk-button--secondary'
+      }) }}
+    </div>
+  </div>
+{% endblock %}

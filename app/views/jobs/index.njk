@@ -37,7 +37,7 @@
             <h2 class="govuk-heading-m">
               <a href="/jobs/{{job.id}}">{{job.title}}</a>
             </h2>
-            <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{address}}</p>
+            <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{job.organisation.name}},{{address}}</p>
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
@@ -97,10 +97,9 @@
                   value: {
                     html: job.subjects | join(', ') | capitalize
                   }
-                } if job.subjects
+                } if job.subjects.length
               ]
             }) }}
-
           </div>
         {% endfor %}
       </div>
