@@ -12,7 +12,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="app-school-title">
-        {% if organisation.logo %}
+        {% if organisation.logo != 'Not entered' %}
           <img src="{{organisation.logo}}">
         {% endif %}
         <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
