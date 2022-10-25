@@ -46,67 +46,70 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if organisation.phase or organisation.size or organisation.ageGroup or organisation.website != 'Not entered' or organisation.emailAddress != 'Not entered' %}
 
-      <h2 class="govuk-heading-m">
-        Summary
-      </h2>
+        <h2 class="govuk-heading-m">
+          Summary
+        </h2>
 
-      {% if organisation.parentOrganisation %}
-        <p>Part of <a href="/schools/{{organisation.parentOrganisation.id}}">{{organisation.parentOrganisation.name}}</a>.</p>
+        {% if organisation.parentOrganisation %}
+          <p>Part of <a href="/schools/{{organisation.parentOrganisation.id}}">{{organisation.parentOrganisation.name}}</a>.</p>
+        {% endif %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Education phase"
+              },
+              value: {
+                text: organisation.phase
+              }
+            } if organisation.phase,
+            {
+              key: {
+                text: "School size"
+              },
+              value: {
+                text: organisation.size + ' pupils'
+              }
+            } if organisation.size,
+            {
+              key: {
+                text: "Age range"
+              },
+              value: {
+                text: organisation.ageGroup
+              }
+            } if organisation.ageGroup,
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: website
+              }
+            } if organisation.website != 'Not entered',
+            {
+              key: {
+                text: "Ofsted report"
+              },
+              value: {
+                html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+              }
+            } if not organisation.schools,
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: '<a href="#">'+organisation.emailAddress+'</a>'
+              }
+            } if organisation.emailAddress != 'Not entered'
+          ]
+        }) }}
+
       {% endif %}
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Education phase"
-            },
-            value: {
-              text: organisation.phase
-            }
-          } if organisation.phase,
-          {
-            key: {
-              text: "School size"
-            },
-            value: {
-              text: organisation.size + ' pupils'
-            }
-          } if organisation.size,
-          {
-            key: {
-              text: "Age range"
-            },
-            value: {
-              text: organisation.ageGroup
-            }
-          } if organisation.ageGroup,
-          {
-            key: {
-              text: "Website"
-            },
-            value: {
-              html: website
-            }
-          } if organisation.website != 'Not entered',
-          {
-            key: {
-              text: "Ofsted report"
-            },
-            value: {
-              html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-            }
-          } if not organisation.schools,
-          {
-            key: {
-              text: "Email address"
-            },
-            value: {
-              html: '<a href="#">'+organisation.emailAddress+'</a>'
-            }
-          } if organisation.emailAddress != 'Not entered'
-        ]
-      }) }}
 
       {% if organisation.about != 'Not entered' or organisation.photo != 'Not entered' %}
         <h2 class="govuk-heading-m">
@@ -131,8 +134,10 @@
 
 
       <h2 class="govuk-heading-m">
-        Location
+        Location and map
       </h2>
+
+      <p>{{address}}</p>
 
       <div class="app-map">
         <img src="/public/images/maps/courtland.png">
