@@ -1,14 +1,24 @@
 {% set filterOptionsHtml %}
 
+  {{ govukCheckboxes({
+    idPrefix: "filters[keyStages]",
+    name: "filters[keyStages]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Application method",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Quick apply',
+      text: 'Quick apply',
+      hint: {
+        text: 'Saves your information to make further applications quicker'
+      }
+    }]
+  }) }}
 
-  {# {{ govukInput({
-    id: "location",
-    name: "location",
-    label: {
-      text: "Location",
-      classes: "govuk-label--s"
-    }
-  }) }} #}
 
   {{ govukCheckboxes({
     idPrefix: "filters[role]",
