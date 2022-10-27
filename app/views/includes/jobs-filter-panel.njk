@@ -1,26 +1,6 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[keyStages]",
-    name: "filters[keyStages]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Application method",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Quick apply',
-      text: 'Quick apply',
-      hint: {
-        text: 'Saves your information to make further applications quicker'
-      }
-    }]
-  }) }}
-
-
-  {{ govukCheckboxes({
     idPrefix: "filters[role]",
     name: "filters[role]",
     classes: "govuk-checkboxes--small",
@@ -379,6 +359,25 @@
     }, {
       value: 'Part time',
       text: 'Part time'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[quick]",
+    name: "filters[quick]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Application method",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Quick apply',
+      text: 'Quick apply',
+      hint: {
+        text: 'Saves your information to make further applications quicker'
+      }
     }]
   }) }}
 
