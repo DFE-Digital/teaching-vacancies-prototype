@@ -18,6 +18,12 @@ module.exports = router => {
     })
   })
 
+  router.get('/account/sign-in-as-profile', (req, res) => {
+    res.render('account/sign-in-as-profile', {
+      users
+    })
+  })
+
   router.post('/account/sign-in', (req, res) => {
     if(req.body.emailAddress) {
       res.locals.user = req.session.user = users.find(user => user.emailAddress == req.body.emailAddress)
