@@ -5,20 +5,20 @@
 
 {% block content %}
 
-    <span class="govuk-caption-xl">
-    {{job.organisation.name}}
-  </span>
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-    {{job.title}}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% if job.status == 'Closed' %}
-      {{ govukTag({
-        text: "Ended",
-        classes: 'govuk-tag--red'
-      }) }}
-    {% endif %}
-
-  </h1>
+      <div class="app-school-title">
+        {% if job.organisation.logo != 'Not entered' %}
+          <img src="{{job.organisation.logo}}">
+        {% endif %}
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+          {{job.title}}
+        </h1>
+        <p>{{job.organisation.name}}</p>
+      </div>
+    </div>
+  </div>
 
   {% set inset %}
     <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>
