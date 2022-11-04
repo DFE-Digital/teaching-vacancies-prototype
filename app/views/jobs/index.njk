@@ -34,6 +34,9 @@
           {% endset %}
 
           <div class="app-schools__item">
+            {% if job.organisation.logo != 'Not entered' %}
+              <img src="{{job.organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
+            {% endif %}
             <h2 class="govuk-heading-m">
               <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
