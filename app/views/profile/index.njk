@@ -430,7 +430,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/qualifications/"+id+"/details/",
+                      href: "/profile/qualifications/"+id+"/details",
                       text: "Change",
                       visuallyHiddenText: "Item label"
                     }
@@ -447,7 +447,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/qualifications/"+id+"/details/",
+                      href: "/profile/qualifications/"+id+"/details",
                       text: "Change",
                       visuallyHiddenText: "Item label"
                     }
@@ -464,7 +464,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/qualifications/"+id+"/details/",
+                      href: "/profile/qualifications/"+id+"/details",
                       text: "Change",
                       visuallyHiddenText: "Item label"
                     }
@@ -481,7 +481,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/profile/qualifications/"+id+"/details/",
+                      href: "/profile/qualifications/"+id+"/details",
                       text: "Change",
                       visuallyHiddenText: "Item label"
                     }
@@ -494,7 +494,8 @@
           {% if incomplete %}
             <p>You have not completed this qualification.</p>
             {{ govukButton({
-              text: "Complete qualification"
+              text: "Complete qualification",
+              href: "/profile/qualifications/"+id+"/details"
             }) }}
           {% endif %}
 
