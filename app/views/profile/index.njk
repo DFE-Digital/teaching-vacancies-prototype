@@ -45,7 +45,10 @@
           Personal details
         </h2>
 
-        {% if user.profile.firstName and user.profile.providePhoneNumber %}
+        {% if user.profile.firstName %}
+
+          {% set incomplete = not user.profile.providePhoneNumber %}
+
 
           {% set emailAddress %}
             <p>{{user.emailAddress}}</p>
@@ -56,6 +59,10 @@
             }) }}
 
           {% endset %}
+
+          {% if incomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section">
+          {% endif %}
 
           {{ govukSummaryList({
             rows: [
@@ -117,7 +124,7 @@
                     }
                   ]
                 }
-              },
+              } if user.profile.providePhoneNumber,
               {
                 key: {
                   text: "Phone number"
@@ -137,13 +144,20 @@
               } if user.profile.providePhoneNumber == 'Yes'
             ]
           }) }}
+
+
+          {% if incomplete %}
+            <p>You have not completed this section of your profile.</p>
+            {{ govukButton({
+              text: "Complete personal details",
+              href: '/profile/personal-details/phone-number'
+            }) }}
+          {% endif %}
+
+          {% if incomplete %}
+            </div>
+          {% endif %}
         {% else %}
-          {# <p>Name and contact details.</p> #}
-          {# {{ govukButton({
-            text: "Add personal details",
-            classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-            href: '/profile/personal-details/name'
-          }) }} #}
           <p><a href="/profile/personal-details/name">Add personal details</a></p>
         {% endif %}
 
@@ -164,7 +178,14 @@
           {% endfor %}
         {% endset %}
 
-        {% if user.profile.roles and user.profile.phases and user.profile.workingPatterns %}
+        {% if user.profile.roles %}
+
+          {% set incomplete = not user.profile.phases or not user.profile.keyStages or not user.profile.workingPatterns or not user.profile.locations %}
+
+          {% if incomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section">
+          {% endif %}
+
           {{ govukSummaryList({
           rows: [
             {
@@ -183,7 +204,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.roles,
             {
               key: {
                 text: "Phases"
@@ -251,7 +272,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.workingPatterns,
             {
               key: {
                 text: "Locations"
@@ -268,15 +289,34 @@
                   }
                 ]
               }
-            }
+            } if user.profile.locations | length
           ]
         }) }}
+
+        {% if incomplete %}
+          <p>You have not completed this section of your profile.</p>
+
+          {% set url = '' %}
+          {% if not user.profile.phases %}
+            {% set url = '/profile/job-preferences/education-phases' %}
+          {% elseif not user.profile.keyStages %}
+            {% set url = '/profile/job-preferences/key-stages' %}
+          {% elseif not user.profile.workingPatterns %}
+            {% set url = '/profile/job-preferences/working-patterns' %}
+          {% elseif not user.profile.locations %}
+            {% set url = '/profile/job-preferences/locations' %}
+          {% endif %}
+
+          {{ govukButton({
+            text: "Complete job preferences",
+            href: url
+          }) }}
+        {% endif %}
+
+        {% if incomplete %}
+          </div>
+        {% endif %}
       {% else %}
-        {# {{ govukButton({
-          text: "Add job preferences",
-          classes: 'govuk-button--secondar govuk-!-margin-bottom-2',
-          href: '/profile/job-preferences/roles'
-        }) }} #}
         <p><a href="/profile/job-preferences/roles">Add job preferences</a></p>
       {% endif %}
       </div>
@@ -339,13 +379,13 @@
 
         <p><a href="/profile/qualifications/type">Add qualifications</a></p>
 
-        {% for id, qualification in user.profile.qualifications %}
+        {% for id, qualification in user.profile.qualifications  %}
 
           {{appPageHeader({
-            classes: 'govuk-!-margin-bottom-1',
+            classes: 'govuk-!-margin-bottom-1 govuk-!-margin-top-7',
             heading: {
               level: 2,
-              text: qualification.subject,
+              text: qualification.subject or ('Qualification ' + user.profile.qualifications | length),
               classes: 'govuk-heading-m'
             },
             items: [{
@@ -354,6 +394,12 @@
               type: 'link'
             }]
           })}}
+
+          {% set incomplete = not qualification.subject or not qualification.grade or not qualification.year %}
+
+          {% if incomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section govuk-!-margin-top-2">
+          {% endif %}
 
           {{ govukSummaryList({
             rows: [
@@ -390,13 +436,13 @@
                     }
                   ]
                 }
-              },
+              } if qualification.subject,
               {
                 key: {
                   text: "Grade (optional)"
                 },
                 value: {
-                  text: qualification.grade or 'Not entered'
+                  text: qualification.grade
                 },
                 actions: {
                   items: [
@@ -407,13 +453,13 @@
                     }
                   ]
                 }
-              },
+              } if qualification.grade,
               {
                 key: {
                   text: "Year awarded"
                 },
                 value: {
-                  text: qualification.year or 'Not entered'
+                  text: qualification.year
                 },
                 actions: {
                   items: [
@@ -424,7 +470,7 @@
                     }
                   ]
                 }
-              },
+              } if qualification.year,
               {
                 key: {
                   text: "Organisation"
@@ -441,9 +487,23 @@
                     }
                   ]
                 }
-              }
+              } if qualification.organisation
             ]
           }) }}
+
+          {% if incomplete %}
+            <p>You have not completed this qualification.</p>
+            {{ govukButton({
+              text: "Complete qualification"
+            }) }}
+          {% endif %}
+
+          {% if incomplete %}
+            </div>
+          {% endif %}
+
+
+
         {% endfor %}
       </div>
       <div class="app-profile__section">

@@ -26,8 +26,6 @@
         {{title}}
       </h1>
 
-      {{profile | log}}
-
       {{ govukButton({
         text: "Add qualification",
         classes: 'govuk-button--secondary',
@@ -37,10 +35,10 @@
       {% for id, qualification in profile.qualifications %}
 
         {{appPageHeader({
-          classes: 'govuk-!-margin-bottom-1',
+          classes: 'govuk-!-margin-bottom-1 govuk-!-margin-top-7',
           heading: {
             level: 2,
-            text: qualification.subject,
+            text: qualification.subject or ('Qualification ' + user.profile.qualifications | length),
             classes: 'govuk-heading-m'
           },
           items: [{
@@ -49,6 +47,12 @@
             type: 'link'
           }]
         })}}
+
+        {% set incomplete = not qualification.subject or not qualification.grade or not qualification.year %}
+
+        {% if incomplete %}
+          <div class="govuk-inset-text app-inset-text--incomplete-section govuk-!-margin-top-2">
+        {% endif %}
 
         {{ govukSummaryList({
           rows: [
@@ -85,7 +89,7 @@
                   }
                 ]
               }
-            },
+            } if qualification.subject,
             {
               key: {
                 text: "Country where you studied"
@@ -119,13 +123,13 @@
                   }
                 ]
               }
-            },
+            } if qualification.grade,
             {
               key: {
                 text: "Year awarded"
               },
               value: {
-                text: qualification.year or 'Not entered'
+                text: qualification.year
               },
               actions: {
                 items: [
@@ -136,10 +140,22 @@
                   }
                 ]
               }
-            }
+            } if qualification.year
           ]
         }) }}
+        {% if incomplete %}
+          <p>You have not completed this qualification.</p>
+          {{ govukButton({
+            text: "Complete qualification"
+          }) }}
+        {% endif %}
+
+        {% if incomplete %}
+          </div>
+        {% endif %}
       {% endfor %}
+
+
 
       {{ govukButton({
         text: "Return to profile",
