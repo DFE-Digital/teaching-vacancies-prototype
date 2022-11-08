@@ -5,20 +5,25 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <div class="app-school-title">
-        {% if job.organisation.logo != 'Not entered' %}
+    <div class="app-school-title">
+      {% if job.organisation.logo != 'Not entered' %}
+        <div class="app-school-title__image">
           <img src="{{job.organisation.logo}}">
-        {% endif %}
+        </div>
+      {% endif %}
+      <div class="app-school-title__text">
+        <span class="govuk-caption-l">
+          {{job.organisation.name}}
+        </span>
         <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
           {{job.title}}
         </h1>
-        <p>{{job.organisation.name}}</p>
+        {# <p>{{job.organisation.name}}</p> #}
       </div>
+
     </div>
-  </div>
+
 
   {% set inset %}
     <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>

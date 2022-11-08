@@ -1,10 +1,27 @@
 .app-school-title {
 
-  margin-bottom: govuk-spacing(7);
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(7);
+    overflow: hidden;
+  }
 
-  img {
-    float: left;
-    margin-right: govuk-spacing(3);
+  .app-school-title__image {
     width: 70px;
+    margin-bottom: govuk-spacing(1);
+
+    img {
+      width: 70px;
+    }
+    @include govuk-media-query($from: tablet) {
+      float: left;
+      margin-right: govuk-spacing(3);
+    }
+  }
+
+  .app-school-title__text {
+    @include govuk-media-query($from: tablet) {
+      float: left;
+      max-width: calc(66.6666% - 85px);
+    }
   }
 }
