@@ -1,0 +1,439 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Name of school or employer' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Hide your profile from schools or organisations
+      </span>
+
+      <form method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="hide-school">
+              Name of school or organisation
+            </label>
+          </h1>
+
+          {{ govukInput({
+            id: "profile[hiddenPlace]",
+            name: "profile[hiddenPlace]",
+            label: {
+              text: 'Name of school or employer',
+              classes: 'govuk-label--m'
+            },
+            value: hiddenPlace
+          }) }}
+
+          <div class="autocomplete-wrapper govuk-!-margin-top-3">
+            <select name="hide-school" id="hide-school" value="{{ data['hide-school'] }}">
+              <option value="">Select a school or organisation</option>
+              <option value="Aberdeen North">Aberdeen North</option>
+              <option value="Aberdeen South (Cove)">Aberdeen South (Cove)</option>
+              <option value="Aberfeldy">Aberfeldy</option>
+              <option value="Abergavenny">Abergavenny</option>
+              <option value="Aberystwyth (Park Avenue)">Aberystwyth (Park Avenue)</option>
+              <option value="Airdrie">Airdrie</option>
+              <option value="Alness">Alness</option>
+              <option value="Alnwick">Alnwick</option>
+              <option value="Arbroath">Arbroath</option>
+              <option value="Ashfield ">Ashfield </option>
+              <option value="Ashford (Kent)">Ashford (Kent)</option>
+              <option value="Ashford (London Middlesex)">Ashford (London Middlesex)</option>
+              <option value="Atherton (Manchester)">Atherton (Manchester)</option>
+              <option value="Aylesbury">Aylesbury</option>
+              <option value="Ayr ">Ayr </option>
+              <option value="Bala">Bala</option>
+              <option value="Ballachulish">Ballachulish</option>
+              <option value="Ballater">Ballater</option>
+              <option value="Banbury">Banbury</option>
+              <option value="Banff">Banff</option>
+              <option value="Bangor ">Bangor </option>
+              <option value="Barking (Tanner Street)">Barking (Tanner Street)</option>
+              <option value="Barnet (London)">Barnet (London)</option>
+              <option value="Barnsley">Barnsley</option>
+              <option value="Barnstaple">Barnstaple</option>
+              <option value="Barra ">Barra </option>
+              <option value="Barrow In Furness">Barrow In Furness</option>
+              <option value="Barry">Barry</option>
+              <option value="Basildon ">Basildon </option>
+              <option value="Basingstoke">Basingstoke</option>
+              <option value="Belvedere (London)">Belvedere (London)</option>
+              <option value="Benbecula Island">Benbecula Island</option>
+              <option value="Berwick-On-Tweed">Berwick-On-Tweed</option>
+              <option value="Beverley LGV">Beverley LGV</option>
+              <option value="Birmingham (Cocks Moors Woods)">Birmingham (Cocks Moors Woods)</option>
+              <option value="Birmingham (Garretts Green) ">Birmingham (Garretts Green) </option>
+              <option value="Birmingham (Kings Heath)">Birmingham (Kings Heath)</option>
+              <option value="Birmingham (Kingstanding)">Birmingham (Kingstanding)</option>
+              <option value="Birmingham (Shirley)">Birmingham (Shirley)</option>
+              <option value="Birmingham (South Yardley)">Birmingham (South Yardley)</option>
+              <option value="Birmingham (Sutton Coldfield)">Birmingham (Sutton Coldfield)</option>
+              <option value="Bishops Stortford">Bishops Stortford</option>
+              <option value="Bishopbriggs">Bishopbriggs</option>
+              <option value="Blackburn with Darwen ">Blackburn with Darwen </option>
+              <option value="Blackpool">Blackpool</option>
+              <option value="Bletchley">Bletchley</option>
+              <option value="Blyth">Blyth</option>
+              <option value="Bodmin">Bodmin</option>
+              <option value="Bolton (Manchester)">Bolton (Manchester)</option>
+              <option value="Borehamwood (London)">Borehamwood (London)</option>
+              <option value="Boston">Boston</option>
+              <option value="Bradford (Heaton) ">Bradford (Heaton) </option>
+              <option value="Bradford (Manningham)">Bradford (Manningham)</option>
+              <option value="Bradford (Thornbury)">Bradford (Thornbury)</option>
+              <option value="Brecon">Brecon</option>
+              <option value="Bredbury (Manchester)">Bredbury (Manchester)</option>
+              <option value="Brentwood (London)">Brentwood (London)</option>
+              <option value="Bridgend">Bridgend</option>
+              <option value="Bridlington">Bridlington</option>
+              <option value="Bristol (Avonmouth)">Bristol (Avonmouth)</option>
+              <option value="Bristol (Brislington)">Bristol (Brislington)</option>
+              <option value="Bristol (Kingswood)">Bristol (Kingswood)</option>
+              <option value="Brodick (Isle of Arran)">Brodick (Isle of Arran)</option>
+              <option value="Bromley (London)">Bromley (London)</option>
+              <option value="Bromsgrove">Bromsgrove</option>
+              <option value="Buckie">Buckie</option>
+              <option value="Burgess Hill ">Burgess Hill </option>
+              <option value="Burton on Trent">Burton on Trent</option>
+              <option value="Bury (Manchester)">Bury (Manchester)</option>
+              <option value="Bury St Edmunds">Bury St Edmunds</option>
+              <option value="Buxton">Buxton</option>
+              <option value="Caernarfon LGV">Caernarfon LGV</option>
+              <option value="Callander">Callander</option>
+              <option value="Camborne ">Camborne </option>
+              <option value="Cambridge (Brookmount Court)">Cambridge (Brookmount Court)</option>
+              <option value="Cambridge (Hardwick)">Cambridge (Hardwick)</option>
+              <option value="Campbeltown">Campbeltown</option>
+              <option value="Canterbury">Canterbury</option>
+              <option value="Canterbury LGV">Canterbury LGV</option>
+              <option value="Cardiff (Llanishen)">Cardiff (Llanishen)</option>
+              <option value="Cardigan">Cardigan</option>
+              <option value="Cardington ">Cardington </option>
+              <option value="Carlisle ">Carlisle </option>
+              <option value="Carlisle LGV">Carlisle LGV</option>
+              <option value="Carmarthen">Carmarthen</option>
+              <option value="Castle Douglas">Castle Douglas</option>
+              <option value="Chadderton">Chadderton</option>
+              <option value="Cheadle (Fire Station)">Cheadle (Fire Station)</option>
+              <option value="Cheetham Hill (Manchester)">Cheetham Hill (Manchester)</option>
+              <option value="Chelmsford (Hanbury Road)">Chelmsford (Hanbury Road)</option>
+              <option value="Cheltenham">Cheltenham</option>
+              <option value="Chertsey (London)">Chertsey (London)</option>
+              <option value="Chester ">Chester </option>
+              <option value="Chesterfield">Chesterfield</option>
+              <option value="Chichester">Chichester</option>
+              <option value="Chingford (London)">Chingford (London)</option>
+              <option value="Chippenham">Chippenham</option>
+              <option value="Chorley">Chorley</option>
+              <option value="Clacton-on- Sea">Clacton-on- Sea</option>
+              <option value="Colchester">Colchester</option>
+              <option value="Coventry ">Coventry </option>
+              <option value="Crawley">Crawley</option>
+              <option value="Crewe">Crewe</option>
+              <option value="Crieff">Crieff</option>
+              <option value="Croydon (London)">Croydon (London)</option>
+              <option value="Culham LGV">Culham LGV</option>
+              <option value="Cumnock">Cumnock</option>
+              <option value="Darlington ">Darlington </option>
+              <option value="Darlington LGV">Darlington LGV</option>
+              <option value="Derby (Alvaston)">Derby (Alvaston)</option>
+              <option value="Doncaster">Doncaster</option>
+              <option value="Dorchester ">Dorchester </option>
+              <option value="Dudley">Dudley</option>
+              <option value="Dumbarton">Dumbarton</option>
+              <option value="Dumfries">Dumfries</option>
+              <option value="Dumfries LGV ">Dumfries LGV </option>
+              <option value="Dundee ">Dundee </option>
+              <option value="Dunfermline">Dunfermline</option>
+              <option value="Dunoon">Dunoon</option>
+              <option value="Duns">Duns</option>
+              <option value="Durham ">Durham </option>
+              <option value="East Kilbride">East Kilbride</option>
+              <option value="Eastbourne">Eastbourne</option>
+              <option value="Edinburgh (Currie)">Edinburgh (Currie)</option>
+              <option value="Edinburgh (Musselburgh)">Edinburgh (Musselburgh)</option>
+              <option value="Elgin">Elgin</option>
+              <option value="Elgin LGV">Elgin LGV</option>
+              <option value="Elswick">Elswick</option>
+              <option value="Enfield (Innova Business Park)">Enfield (Innova Business Park)</option>
+              <option value="Enfield (Brancroft Way)">Enfield (Brancroft Way)</option>
+              <option value="Erith (London)">Erith (London)</option>
+              <option value="Exeter ">Exeter </option>
+              <option value="Exeter LGV">Exeter LGV</option>
+              <option value="Farnborough ">Farnborough </option>
+              <option value="Featherstone ">Featherstone </option>
+              <option value="Folkestone">Folkestone</option>
+              <option value="Forfar">Forfar</option>
+              <option value="Fort William">Fort William</option>
+              <option value="Fraserburgh">Fraserburgh</option>
+              <option value="Gairloch">Gairloch</option>
+              <option value="Galashiels ">Galashiels </option>
+              <option value="Gateshead ">Gateshead </option>
+              <option value="Gillingham ">Gillingham </option>
+              <option value="Gillingham LGV">Gillingham LGV</option>
+              <option value="Girvan">Girvan</option>
+              <option value="Glasgow (Anniesland)">Glasgow (Anniesland)</option>
+              <option value="Glasgow (Baillieston)">Glasgow (Baillieston)</option>
+              <option value="Glasgow (Shieldhall)">Glasgow (Shieldhall)</option>
+              <option value="Glasgow LGV">Glasgow LGV</option>
+              <option value="Gloucester ">Gloucester </option>
+              <option value="Golspie">Golspie</option>
+              <option value="Goodmayes (London)">Goodmayes (London)</option>
+              <option value="Gosforth ">Gosforth </option>
+              <option value="Grangemouth">Grangemouth</option>
+              <option value="Grantham (Somerby)">Grantham (Somerby)</option>
+              <option value="Grantown-On-Spey">Grantown-On-Spey</option>
+              <option value="Greenford (London)">Greenford (London)</option>
+              <option value="Greenford (Whitton Ave East)">Greenford (Whitton Ave East)</option>
+              <option value="Greenham">Greenham</option>
+              <option value="Greenock">Greenock</option>
+              <option value="Grimsby Coldwater">Grimsby Coldwater</option>
+              <option value="Guildford ">Guildford </option>
+              <option value="Haddington">Haddington</option>
+              <option value="Halifax">Halifax</option>
+              <option value="Hamilton">Hamilton</option>
+              <option value="Harlescott LGV">Harlescott LGV</option>
+              <option value="Hartlepool">Hartlepool</option>
+              <option value="Hastings (Ore) ">Hastings (Ore) </option>
+              <option value="Hawick">Hawick</option>
+              <option value="Heckmondwike">Heckmondwike</option>
+              <option value="Hendon (London)">Hendon (London)</option>
+              <option value="Hereford">Hereford</option>
+              <option value="Herne Bay ">Herne Bay </option>
+              <option value="Hexham">Hexham</option>
+              <option value="Heysham">Heysham</option>
+              <option value="High Wycombe">High Wycombe</option>
+              <option value="Hinckley">Hinckley</option>
+              <option value="Hither Green (London)">Hither Green (London)</option>
+              <option value="Hornchurch (London)">Hornchurch (London)</option>
+              <option value="Horsforth">Horsforth</option>
+              <option value="Huddersfield">Huddersfield</option>
+              <option value="Hull ">Hull </option>
+              <option value="Huntly">Huntly</option>
+              <option value="Hyde (Manchester)">Hyde (Manchester)</option>
+              <option value="Inveraray">Inveraray</option>
+              <option value="Inverness (Seafield Road)">Inverness (Seafield Road)</option>
+              <option value="Inverurie ">Inverurie </option>
+              <option value="Ipswich ">Ipswich </option>
+              <option value="Irvine ">Irvine </option>
+              <option value="Isle of Mull">Isle of Mull</option>
+              <option value="Islay Island">Islay Island</option>
+              <option value="Isle of Skye (Broadford)">Isle of Skye (Broadford)</option>
+              <option value="Isle of Skye (Portree)">Isle of Skye (Portree)</option>
+              <option value="Isle of Tiree">Isle of Tiree</option>
+              <option value="Isles of Scilly">Isles of Scilly</option>
+              <option value="Isleworth (Fleming Way)">Isleworth (Fleming Way)</option>
+              <option value="Kelso">Kelso</option>
+              <option value="Kendal (Oxenholme Road)">Kendal (Oxenholme Road)</option>
+              <option value="Kettering ">Kettering </option>
+              <option value="Kilmarnock LGV">Kilmarnock LGV</option>
+              <option value="Kings Lynn ">Kings Lynn </option>
+              <option value="Kingussie">Kingussie</option>
+              <option value="Kirkcaldy ">Kirkcaldy </option>
+              <option value="Kirkham LGV">Kirkham LGV</option>
+              <option value="Knaresborough">Knaresborough</option>
+              <option value="Kyle of Lochalsh">Kyle of Lochalsh</option>
+              <option value="Lairg">Lairg</option>
+              <option value="Lanark">Lanark</option>
+              <option value="Lancing ">Lancing </option>
+              <option value="Launceston">Launceston</option>
+              <option value="Lee On The Solent ">Lee On The Solent </option>
+              <option value="Leeds ">Leeds </option>
+              <option value="Leicester (Wigston) ">Leicester (Wigston) </option>
+              <option value="Leicester (Cannock Street)">Leicester (Cannock Street)</option>
+              <option value="Leighton Buzzard (Stanbridge Road)">Leighton Buzzard (Stanbridge Road)</option>
+              <option value="Lerwick ">Lerwick </option>
+              <option value="Letchworth">Letchworth</option>
+              <option value="Lichfield">Lichfield</option>
+              <option value="Lincoln ">Lincoln </option>
+              <option value="Liverpool LGV (System)">Liverpool LGV (System)</option>
+              <option value="Livingston">Livingston</option>
+              <option value="Llandrindod Wells">Llandrindod Wells</option>
+              <option value="Llanelli">Llanelli</option>
+              <option value="Llantrisant ">Llantrisant </option>
+              <option value="Lochgilphead">Lochgilphead</option>
+              <option value="Loughborough">Loughborough</option>
+              <option value="Loughton (London)">Loughton (London)</option>
+              <option value="Louth">Louth</option>
+              <option value="Lowestoft(Mobbs Way)">Lowestoft(Mobbs Way)</option>
+              <option value="Ludlow">Ludlow</option>
+              <option value="Luton">Luton</option>
+              <option value="Macclesfield ">Macclesfield </option>
+              <option value="Macclesfield (RUFC)">Macclesfield (RUFC)</option>
+              <option value="Machrihanish LGV">Machrihanish LGV</option>
+              <option value="Maidstone">Maidstone</option>
+              <option value="Mallaig">Mallaig</option>
+              <option value="Malton">Malton</option>
+              <option value="Melton Mowbray">Melton Mowbray</option>
+              <option value="Merthyr Tydfil ">Merthyr Tydfil </option>
+              <option value="Middlesbrough">Middlesbrough</option>
+              <option value="Mill Hill (London)">Mill Hill (London)</option>
+              <option value="Mitcham (London)">Mitcham (London)</option>
+              <option value="Monmouth">Monmouth</option>
+              <option value="Montrose ">Montrose </option>
+              <option value="Morden (London)">Morden (London)</option>
+              <option value="Nelson">Nelson</option>
+              <option value="Newbury (Hambridge Lane)">Newbury (Hambridge Lane)</option>
+              <option value="Newport (Gwent) ">Newport (Gwent) </option>
+              <option value="Newport (Gwent) LGV">Newport (Gwent) LGV</option>
+              <option value="Newport (Isle Of Wight)">Newport (Isle Of Wight)</option>
+              <option value="Newton Abbot">Newton Abbot</option>
+              <option value="Newton Stewart">Newton Stewart</option>
+              <option value="Newtown">Newtown</option>
+              <option value="Norris Green (Liverpool)">Norris Green (Liverpool)</option>
+              <option value="Northallerton">Northallerton</option>
+              <option value="Northampton">Northampton</option>
+              <option value="Northwich">Northwich</option>
+              <option value="Norwich (Peachman Way) ">Norwich (Peachman Way) </option>
+              <option value="Norwich (Jupiter Road) ">Norwich (Jupiter Road) </option>
+              <option value="Nottingham (Chilwell) ">Nottingham (Chilwell) </option>
+              <option value="Nottingham (Colwick )">Nottingham (Colwick )</option>
+              <option value="Nuneaton">Nuneaton</option>
+              <option value="Oban">Oban</option>
+              <option value="Orkney ">Orkney </option>
+              <option value="Oswestry">Oswestry</option>
+              <option value="Oxford (Cowley)">Oxford (Cowley)</option>
+              <option value="Oxford (Kassam Stadium)">Oxford (Kassam Stadium)</option>
+              <option value="Paisley">Paisley</option>
+              <option value="Patrick Green LGV">Patrick Green LGV</option>
+              <option value="Peebles">Peebles</option>
+              <option value="Pembroke Dock">Pembroke Dock</option>
+              <option value="Penzance">Penzance</option>
+              <option value="Perth (Arran Road)">Perth (Arran Road)</option>
+              <option value="Peterborough">Peterborough</option>
+              <option value="Peterborough LGV">Peterborough LGV</option>
+              <option value="Peterhead">Peterhead</option>
+              <option value="Pinner (London)">Pinner (London)</option>
+              <option value="Pitlochry">Pitlochry</option>
+              <option value="Plymouth ">Plymouth </option>
+              <option value="Plymouth LGV">Plymouth LGV</option>
+              <option value="Pontefract">Pontefract</option>
+              <option value="Poole">Poole</option>
+              <option value="Portsmouth">Portsmouth</option>
+              <option value="Preston">Preston</option>
+              <option value="Pwllheli">Pwllheli</option>
+              <option value="Reading">Reading</option>
+              <option value="Redditch ">Redditch </option>
+              <option value="Redhill Aerodrome">Redhill Aerodrome</option>
+              <option value="Rhyl">Rhyl</option>
+              <option value="Rochdale (Manchester)">Rochdale (Manchester)</option>
+              <option value="Rookley LGV ">Rookley LGV </option>
+              <option value="Rotherham ">Rotherham </option>
+              <option value="Rothesay">Rothesay</option>
+              <option value="Rugby">Rugby</option>
+              <option value="Sale (Manchester)">Sale (Manchester)</option>
+              <option value="Salisbury">Salisbury</option>
+              <option value="Scarborough">Scarborough</option>
+              <option value="Scunthorpe ">Scunthorpe </option>
+              <option value="Sevenoaks">Sevenoaks</option>
+              <option value="Sheffield (Handsworth)">Sheffield (Handsworth)</option>
+              <option value="Sheffield (Middlewood Road)">Sheffield (Middlewood Road)</option>
+              <option value="Shrewsbury ">Shrewsbury </option>
+              <option value="Sidcup (London)">Sidcup (London)</option>
+              <option value="Skegness">Skegness</option>
+              <option value="Skipton">Skipton</option>
+              <option value="Slough (London)">Slough (London)</option>
+              <option value="South Shields">South Shields</option>
+              <option value="South Uist">South Uist</option>
+              <option value="Southall (London)">Southall (London)</option>
+              <option value="Southampton (Forest Hills)">Southampton (Forest Hills)</option>
+              <option value="Southampton (Maybush)">Southampton (Maybush)</option>
+              <option value="Southampton LGV">Southampton LGV</option>
+              <option value="Southend-on-Sea">Southend-on-Sea</option>
+              <option value="Southport  (Liverpool)">Southport  (Liverpool)</option>
+              <option value="Speke  (Liverpool)">Speke  (Liverpool)</option>
+              <option value="St Albans">St Albans</option>
+              <option value="St Helens  (Liverpool)">St Helens  (Liverpool)</option>
+              <option value="Stafford">Stafford</option>
+              <option value="Steeton">Steeton</option>
+              <option value="Stevenage">Stevenage</option>
+              <option value="Stirling">Stirling</option>
+              <option value="Stoke on Trent (Cobridge)">Stoke on Trent (Cobridge)</option>
+              <option value="Stoke on Trent (Newcastle under Lyme)">Stoke on Trent (Newcastle under Lyme)</option>
+              <option value="Stornoway ">Stornoway </option>
+              <option value="Stornoway LGV">Stornoway LGV</option>
+              <option value="Stranraer">Stranraer</option>
+              <option value="Sunderland">Sunderland</option>
+              <option value="Swansea ">Swansea </option>
+              <option value="Swindon ">Swindon </option>
+              <option value="Swindon LGV">Swindon LGV</option>
+              <option value="Taunton ">Taunton </option>
+              <option value="Telford">Telford</option>
+              <option value="Thurrock LGV (London)">Thurrock LGV (London)</option>
+              <option value="Thurso">Thurso</option>
+              <option value="Tilbury">Tilbury</option>
+              <option value="Tottenham">Tottenham</option>
+              <option value="Tolworth (London)">Tolworth (London)</option>
+              <option value="Trowbridge">Trowbridge</option>
+              <option value="Tunbridge Wells">Tunbridge Wells</option>
+              <option value="Ullapool">Ullapool</option>
+              <option value="Upton">Upton</option>
+              <option value="Uxbridge (London)">Uxbridge (London)</option>
+              <option value="Wakefield ">Wakefield </option>
+              <option value="Wallasey">Wallasey</option>
+              <option value="Walton LGV">Walton LGV</option>
+              <option value="Wanstead (London)">Wanstead (London)</option>
+              <option value="Warrington">Warrington</option>
+              <option value="Warwick (Wedgenock House)">Warwick (Wedgenock House)</option>
+              <option value="Watford">Watford</option>
+              <option value="Watnall ">Watnall </option>
+              <option value="Wednesbury">Wednesbury</option>
+              <option value="Weedon LGV">Weedon LGV</option>
+              <option value="Wellingborough ">Wellingborough </option>
+              <option value="West Didsbury (Manchester)">West Didsbury (Manchester)</option>
+              <option value="West Wickham (London)">West Wickham (London)</option>
+              <option value="Westbury">Westbury</option>
+              <option value="Weston-super-Mare">Weston-super-Mare</option>
+              <option value="Whitby">Whitby</option>
+              <option value="Whitchurch">Whitchurch</option>
+              <option value="Wick">Wick</option>
+              <option value="Widnes (Liverpool)">Widnes (Liverpool)</option>
+              <option value="Winchester">Winchester</option>
+              <option value="Wolverhampton ">Wolverhampton </option>
+              <option value="Wood Green (London)">Wood Green (London)</option>
+              <option value="Worcester">Worcester</option>
+              <option value="Workington">Workington</option>
+              <option value="Worksop">Worksop</option>
+              <option value="Wrexham ">Wrexham </option>
+              <option value="Wrexham LGV">Wrexham LGV</option>
+              <option value="Yeading (London)">Yeading (London)</option>
+              <option value="Yeovil">Yeovil</option>
+              <option value="York">York</option>
+            </select>
+          </div>
+
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
+{% endblock %}

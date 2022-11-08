@@ -1,0 +1,70 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Hidden schools and organisations' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukButton({
+        text: "Add school or organisation",
+        classes: 'govuk-button--secondary',
+        href: '/profile/hide-profile'
+      }) }}
+
+      <div class="app-list">
+
+        {% for id, hiddenPlace in profile.hiddenPlaces %}
+          <div class="app-list__item">
+
+            {{appPageHeader({
+              classes: 'govuk-!-margin-bottom-0',
+              heading: {
+                level: 2,
+                text: hiddenPlace.hiddenPlace,
+                classes: 'govuk-heading-s'
+              },
+              items: [{
+                text: 'Change',
+                href: "/profile/hide-profile/"+id+"/edit",
+                type: 'link'
+              }, {
+                text: 'Delete',
+                href: "/profile/hide-profile/"+id+"/delete",
+                type: 'link'
+              }]
+            })}}
+
+          </div>
+        {% endfor %}
+      </div>
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
