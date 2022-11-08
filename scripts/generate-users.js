@@ -66,8 +66,8 @@ const generateUsers = () => {
 
   let rachaelQualifications = {}
 
-  let rachaelQual1 = { id: uuidv4(), type: 'A level' }
-  let rachaelQual2 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2015', organisation: 'Bushey Meads School' }
+  let rachaelQual1 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2015', organisation: 'Bushey Meads School' }
+  let rachaelQual2 = { id: uuidv4(), type: 'A level' }
   let rachaelQual3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2013', organisation: 'Aldenham College' }
 
   rachaelQualifications[rachaelQual1.id] = rachaelQual1
