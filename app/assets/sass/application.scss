@@ -224,3 +224,11 @@ hr {
   border-top: 1px solid govuk-colour('mid-grey');
   margin-bottom: govuk-spacing(6);
 }
+
+.app-inset-text--incomplete-section {
+  border-left: 10px solid govuk-colour('blue');
+  padding-right: 0;
+  .govuk-summary-list {
+    margin-bottom: govuk-spacing(3);
+  }
+}
