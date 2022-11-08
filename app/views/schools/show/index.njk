@@ -15,19 +15,24 @@
 {% endif %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  {% set h1 %}
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+      {{title}}
+    </h1>
+    <p>{{address}}</p>
+  {% endset %}
 
-      <div class="app-school-title">
-        {% if organisation.logo != 'Not entered' %}
-          <img src="{{organisation.logo}}">
-        {% endif %}
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
-          {{title}}
-        </h1>
-        <p>{{address}}</p>
+  <div class="app-logo-title">
+    {% if organisation.logo != 'Not entered' %}
+      <div class="app-logo-title__image">
+        <img src="{{organisation.logo}}">
       </div>
-    </div>
+      <div class="app-logo-title__text">
+        {{h1 | safe}}
+      </div>
+    {% else %}
+      {{h1 | safe}}
+    {% endif %}
   </div>
 
   {% if organisation.schools %}

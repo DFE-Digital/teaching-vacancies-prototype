@@ -179,7 +179,7 @@ const generateJobs = () => {
 
   jobs.push(generateJob({
     status: 'Active',
-    title: 'Teacher of Geography',
+    title: 'Temporary teacher of modern foreign languages (German)',
     organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust'),
     isUsingApplicationForm: 'Yes',
     hasSafeguardingCommitment: 'Yes',

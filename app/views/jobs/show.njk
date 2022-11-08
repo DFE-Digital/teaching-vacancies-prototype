@@ -5,20 +5,28 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  {% set h1 %}
+    <span class="govuk-caption-l">
+      {{job.organisation.name}}
+    </span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+      {{job.title}}
+    </h1>
+  {% endset %}
 
-      <div class="app-school-title">
-        {% if job.organisation.logo != 'Not entered' %}
-          <img src="{{job.organisation.logo}}">
-        {% endif %}
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
-          {{job.title}}
-        </h1>
-        <p>{{job.organisation.name}}</p>
+  <div class="app-logo-title">
+    {% if job.organisation.logo != 'Not entered' %}
+      <div class="app-logo-title__image">
+        <img src="{{job.organisation.logo}}">
       </div>
-    </div>
+      <div class="app-logo-title__text">
+        {{h1 | safe}}
+      </div>
+    {% else %}
+      {{h1 | safe}}
+    {% endif %}
   </div>
+
 
   {% set inset %}
     <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>
@@ -43,7 +51,7 @@
   {% endset %}
   {{ govukInsetText({
     html: inset,
-    classes: 'govuk-!-margin-top-4 govuk-!-padding-bottom-4'
+    classes: 'govuk-!-margin-top-5 govuk-!-padding-bottom-4'
   }) }}
 
   <div class="govuk-grid-row">
