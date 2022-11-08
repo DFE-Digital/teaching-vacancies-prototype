@@ -64,6 +64,38 @@ const generateUsers = () => {
     emailAddress: 'anne.smith@example.com'
   }))
 
+  let rachaelQualifications = {}
+
+  let rachaelQual1 = { id: uuidv4(), type: 'A level' }
+  let rachaelQual2 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2015', organisation: 'Bushey Meads School' }
+  let rachaelQual3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2013', organisation: 'Aldenham College' }
+
+  rachaelQualifications[rachaelQual1.id] = rachaelQual1
+  rachaelQualifications[rachaelQual2.id] = rachaelQual2
+  rachaelQualifications[rachaelQual3.id] = rachaelQual3
+
+  users.push(generateUser({
+    emailAddress: 'rachael@example.com',
+    profile: {
+      status: null,
+      firstName: 'Adam',
+      lastName: 'Silver',
+      providePhoneNumber: null,
+      roles: ['Teacher'],
+      phases: null,
+      keyStages: null,
+      workingPatterns: null,
+      subjects: null,
+      locations: null,
+      qts: 'Yes',
+      qtsAwardedYear: '2022',
+      qualifications: rachaelQualifications,
+      workHistory: null,
+      about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.'
+    }
+  }))
+
+
   let qualifications = {}
 
   let g1 = { id: uuidv4(), type: 'GCSE', subject: 'Maths', grade: 'A', year: '2013', organisation: 'Bushey Meads School' }
