@@ -1,7 +1,7 @@
 .app-school-title {
+  margin-bottom: govuk-spacing(6);
 
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(6);
+  @include govuk-media-query($from: desktop) {
     overflow: hidden;
   }
 
@@ -12,14 +12,14 @@
     img {
       width: 70px;
     }
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: desktop) {
       float: left;
       margin-right: govuk-spacing(3);
     }
   }
 
   .app-school-title__text {
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: desktop) {
       float: left;
       max-width: calc(66.6666% - 85px);
     }

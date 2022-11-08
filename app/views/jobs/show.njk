@@ -14,19 +14,18 @@
     </h1>
   {% endset %}
 
-
-  {% if job.organisation.logo != 'Not entered' %}
-    <div class="app-school-title">
+  <div class="app-school-title">
+    {% if job.organisation.logo != 'Not entered' %}
       <div class="app-school-title__image">
         <img src="{{job.organisation.logo}}">
       </div>
       <div class="app-school-title__text">
         {{h1 | safe}}
       </div>
-    </div>
-  {% else %}
-    {{h1 | safe}}
-  {% endif %}
+    {% else %}
+      {{h1 | safe}}
+    {% endif %}
+  </div>
 
 
   {% set inset %}
