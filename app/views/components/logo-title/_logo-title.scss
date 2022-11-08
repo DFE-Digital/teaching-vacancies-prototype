@@ -1,11 +1,11 @@
-.app-school-title {
+.app-logo-title {
   margin-bottom: govuk-spacing(6);
 
   @include govuk-media-query($from: desktop) {
     overflow: hidden;
   }
 
-  .app-school-title__image {
+  .app-logo-title__image {
     width: 70px;
     margin-bottom: govuk-spacing(1);
 
@@ -18,7 +18,7 @@
     }
   }
 
-  .app-school-title__text {
+  .app-logo-title__text {
     @include govuk-media-query($from: desktop) {
       float: left;
       max-width: calc(66.6666% - 85px);
