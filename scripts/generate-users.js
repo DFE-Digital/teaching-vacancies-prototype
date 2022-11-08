@@ -163,7 +163,7 @@ const generateUsers = () => {
 
   locations[l1.id] = l1
 
-  let hiddenPlaces = {}
+  let hiddenPlaces = {} 
 
   let h1 = {
     id: uuidv4(),

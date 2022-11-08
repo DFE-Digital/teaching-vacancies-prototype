@@ -27,13 +27,12 @@ module.exports = router => {
 
   //edit
 
-
   router.get('/profile/hide-profile/:id/edit', (req, res) => {
 
     let id = req.params.id
     let profile = req.session.user.profile
 
-    let item = profile.hideAll[id]
+    let item = profile.hiddenPlaces[id]
 
     let hiddenPlace = item.hiddenPlace
 
@@ -46,7 +45,7 @@ module.exports = router => {
   router.post('/profile/hide-profile/:id/edit', (req, res) => {
 
     let id = req.params.id
-    var item = req.session.user.profile.hideAll[id]
+    var item = req.session.user.profile.hiddenPlaces[id]
     item.hiddenPlace = req.body.profile.hiddenPlace
 
     res.redirect(`/profile/hide-profile/review`)
