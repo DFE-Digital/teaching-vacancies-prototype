@@ -1,7 +1,7 @@
 .app-school-title {
 
   @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(7);
+    margin-bottom: govuk-spacing(6);
     overflow: hidden;
   }
 

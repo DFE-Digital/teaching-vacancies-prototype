@@ -5,24 +5,28 @@
 
 {% block content %}
 
+  {% set h1 %}
+    <span class="govuk-caption-l">
+      {{job.organisation.name}}
+    </span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+      {{job.title}}
+    </h1>
+  {% endset %}
 
+
+  {% if job.organisation.logo != 'Not entered' %}
     <div class="app-school-title">
-      {% if job.organisation.logo != 'Not entered' %}
-        <div class="app-school-title__image">
-          <img src="{{job.organisation.logo}}">
-        </div>
-      {% endif %}
-      <div class="app-school-title__text">
-        <span class="govuk-caption-l">
-          {{job.organisation.name}}
-        </span>
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
-          {{job.title}}
-        </h1>
-        {# <p>{{job.organisation.name}}</p> #}
+      <div class="app-school-title__image">
+        <img src="{{job.organisation.logo}}">
       </div>
-
+      <div class="app-school-title__text">
+        {{h1 | safe}}
+      </div>
     </div>
+  {% else %}
+    {{h1 | safe}}
+  {% endif %}
 
 
   {% set inset %}
@@ -48,7 +52,7 @@
   {% endset %}
   {{ govukInsetText({
     html: inset,
-    classes: 'govuk-!-margin-top-4 govuk-!-padding-bottom-4'
+    classes: 'govuk-!-margin-top-5 govuk-!-padding-bottom-4'
   }) }}
 
   <div class="govuk-grid-row">
