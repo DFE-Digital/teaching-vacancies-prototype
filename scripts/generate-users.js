@@ -102,7 +102,7 @@ const generateUsers = () => {
   let g2 = { id: uuidv4(), type: 'GCSE', subject: 'English', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
   let g3 = { id: uuidv4(), type: 'GCSE', subject: 'Science', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
   let g4 = { id: uuidv4(), type: 'GCSE', subject: 'Geography', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
-  let g5 = { id: uuidv4(), type: 'GCSE', subject: 'History', year: '2013', organisation: 'Bushey Meads School' }
+  let g5 = { id: uuidv4(), type: 'GCSE', subject: 'History', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
   let g6 = { id: uuidv4(), type: 'GCSE', subject: 'Statistics', grade: 'A', year: '2013', organisation: 'Bushey Meads School' }
   let g7 = { id: uuidv4(), type: 'GCSE', subject: 'French', grade: 'B', year: '2013', organisation: 'Bushey Meads School' }
 

@@ -385,7 +385,7 @@
             classes: 'govuk-!-margin-bottom-1 govuk-!-margin-top-7',
             heading: {
               level: 2,
-              text: qualification.subject or ('Qualification ' + user.profile.qualifications | length),
+              text: qualification.subject or ('Qualification ' + loop.index),
               classes: 'govuk-heading-m'
             },
             items: [{
@@ -453,7 +453,7 @@
                     }
                   ]
                 }
-              } if qualification.grade,
+              },
               {
                 key: {
                   text: "Year awarded"
