@@ -4,6 +4,32 @@ const _ = require('lodash');
 
 module.exports = router => {
 
+  //add school/organisation
+
+  router.get('/profile/hide-profile/add', (req, res) => {
+    let profile = req.session.user.profile
+    let organisations = req.session.data.organisations
+
+    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
+
+    res.render('profile/hide-profile/index', {
+      organisations
+    })
+  })
+
+  router.post('/profile/hide-profile/add', (req, res) => {
+
+    let hiddenPlace = {}
+    hiddenPlace.id = uuidv4()
+    hiddenPlace.hiddenPlace = req.body.profile.hiddenPlace
+
+    req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
+
+    res.redirect('/profile/hide-profile/review')
+  })
+
+  //index
+
   router.get('/profile/hide-profile', (req, res) => {
     let profile = req.session.user.profile
     let organisations = req.session.data.organisations
