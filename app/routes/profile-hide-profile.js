@@ -62,23 +62,25 @@ module.exports = router => {
     })
   })
 
-  router.get('/profile/hide-profile/delete', (req, res) => {
+  //delete
+
+  router.get('/profile/hide-profile/:id/delete', (req, res) => {
 
     let id = req.params.id
     let profile = req.session.user.profile
-    let hide = profile.hideAll[id]
+    let hiddenPlace = profile.hiddenPlaces[id]
 
     res.render('profile/hide-profile/delete', {
-      hide
+      hiddenPlace
     })
   })
 
-  router.post('/profile/hide-profile/delete', (req, res) => {
+  router.post('/profile/hide-profile/:id/delete', (req, res) => {
 
     let id = req.params.id
     let profile = req.session.user.profile
 
-    delete profile.hideAll[id]
+    delete profile.hiddenPlaces[id]
 
     req.flash('success', 'School deleted')
     res.redirect('/profile/hide-profile/review')
