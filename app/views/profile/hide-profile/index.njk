@@ -23,25 +23,16 @@
 
       <form method="post" novalidate>
 
+
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="hide-school">
+            <label class="govuk-label govuk-label--l" for="hideSelect">
               Name of school or organisation
             </label>
           </h1>
 
-          {{ govukInput({
-            id: "profile[hiddenPlace]",
-            name: "profile[hiddenPlace]",
-            label: {
-              text: 'Name of school or employer',
-              classes: 'govuk-label--m'
-            },
-            value: hiddenPlace
-          }) }}
-
-          <div class="autocomplete-wrapper govuk-!-margin-top-3">
-            <select name="hide-school" id="hide-school" value="{{ data['hide-school'] }}">
+          <div class="autocomplete-wrapper govuk-!-margin-top-3" data-chosen="{% if user.profile.hiddenPlaces | length %}{{hiddenPlace}}{% endif %}">
+            <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]">
               <option value="">Select a school or organisation</option>
               <option value="Aberdeen North">Aberdeen North</option>
               <option value="Aberdeen South (Cove)">Aberdeen South (Cove)</option>
@@ -436,4 +427,21 @@
 
 {% block pageScripts %}
   <script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      var theSchool = $('.autocomplete-wrapper').data("chosen");
+      $('.autocomplete__input').val(theSchool);
+
+      setTimeout(
+      function()
+      {
+        $('.autocomplete__menu').blur();
+        $('.autocomplete__menu').removeClass('autocomplete__menu--visible');
+        $('.autocomplete__menu').addClass('autocomplete__menu--hidden');
+
+      }, 100);
+
+    })
+  </script>
 {% endblock %}

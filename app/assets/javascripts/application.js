@@ -9,9 +9,10 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 
 
-  if ($("#hide-school")[0]){
 
-      var selectEl = document.querySelector('#hide-school')
+  if ($(".schoolSelecter")[0]){
+
+      var selectEl = document.querySelector('.schoolSelecter')
       accessibleAutocomplete.enhanceSelectElement({
         autoselect: true,
         confirmOnBlur: true,
