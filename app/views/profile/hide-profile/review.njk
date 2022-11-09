@@ -34,6 +34,8 @@
 
       {% if user.profile.hiddenPlaces | length %}
 
+        <p>You will not appear in search results from these schools and organisations.</p>
+
         <div class="app-list">
 
           {% for id, hiddenPlace in profile.hiddenPlaces %}
@@ -49,10 +51,12 @@
                 items: [{
                   text: 'Change',
                   href: "/profile/hide-profile/"+id+"/edit",
+                  visuallyHiddenText: hiddenPlace.hiddenPlace,
                   type: 'link'
                 }, {
                   text: 'Delete',
                   href: "/profile/hide-profile/"+id+"/delete",
+                  visuallyHiddenText: hiddenPlace.hiddenPlace,
                   type: 'link'
                 }]
               })}}

@@ -3,7 +3,17 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Confirm that you want to delete this school' %}
+{% if 'School' in hiddenPlace.hiddenPlace %}
+  {% set typeofPlace = 'school' %}
+{% else %}
+{% set typeofPlace = 'organisation' %}
+{% endif %}
+
+{% if organisation.website != 'Not entered' %}
+  {% set website %}
+    <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
+  {% endset %}
+{% endif %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -18,10 +28,11 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-xl">
-        Delete school
+        Delete {{typeofPlace}}
       </span>
+
       <h1 class="govuk-heading-xl">
-        {{title}}
+        Confirm that you want to delete this {{typeofPlace}}
       </h1>
 
       {{ govukSummaryList({
@@ -40,7 +51,7 @@
       <form method="post" novalidate>
 
         {{ govukButton({
-          text: "Delete school"
+          text: "Delete " + typeofPlace
         }) }}
 
         <p><a href="/profile">Cancel</a></p>

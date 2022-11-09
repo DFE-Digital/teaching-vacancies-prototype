@@ -593,6 +593,7 @@
 
         <p><a href="/profile/hide-profile">Add school or organisation</a></p>
 
+        <p>Hide your profile from hiring staff searching at specific schools and organisations.</p>
 
         {% if user.profile.hiddenPlaces | length %}
 
@@ -612,10 +613,12 @@
                   items: [{
                     text: 'Change',
                     href: "/profile/hide-profile/"+id+"/edit",
+                    visuallyHiddenText: hiddenPlace.hiddenPlace,
                     type: 'link'
                   }, {
                     text: 'Delete',
                     href: "/profile/hide-profile/"+id+"/delete",
+                    visuallyHiddenText: hiddenPlace.hiddenPlace,
                     type: 'link'
                   }]
                 })}}
@@ -652,5 +655,7 @@
 
     </div>
   </div>
+
+
 
 {% endblock %}

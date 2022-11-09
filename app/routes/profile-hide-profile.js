@@ -6,11 +6,13 @@ module.exports = router => {
 
   router.get('/profile/hide-profile', (req, res) => {
     let profile = req.session.user.profile
+    let organisations = req.session.data.organisations
 
     let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
 
     res.render('profile/hide-profile/index', {
-      hiddenPlace
+      hiddenPlace,
+      organisations
     })
   })
 
@@ -31,13 +33,15 @@ module.exports = router => {
 
     let id = req.params.id
     let profile = req.session.user.profile
+    let organisations = req.session.data.organisations
 
     let item = profile.hiddenPlaces[id]
 
     let hiddenPlace = item.hiddenPlace
 
     res.render('profile/hide-profile/index', {
-      hiddenPlace
+      hiddenPlace,
+      organisations
     })
 
   })
