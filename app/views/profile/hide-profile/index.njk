@@ -18,7 +18,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-xl">
-        Hide your profile from schools or organisations
+        Hide profile from schools
       </span>
 
       <form method="post" novalidate>
@@ -27,13 +27,13 @@
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper">
             <label class="govuk-label govuk-label--l" for="hideSelect">
-              Name of school or organisation
+              Name of school
             </label>
           </h1>
 
           <div class="autocomplete-wrapper govuk-!-margin-top-3" data-chosen="{% if user.profile.hiddenPlaces | length %}{{hiddenPlace}}{% endif %}">
             <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]">
-              <option value="">Select a school or organisation</option>
+              <option value="">Select a school</option>
 
               {% for organisation in organisations %}
 
