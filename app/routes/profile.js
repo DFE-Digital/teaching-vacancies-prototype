@@ -52,4 +52,18 @@ module.exports = router => {
       qualificationsGroup
     })
   })
+
+  //populate profile
+
+  router.get('/profile/populate-your-profile', (req, res) => {
+
+    res.render('account/new/populate', {
+
+    })
+  })
+
+  router.post('/profile/populate-your-profile', (req, res) => {
+    res.redirect('/profile')
+  })
+
 }
