@@ -4,6 +4,26 @@ const _ = require('lodash');
 
 module.exports = router => {
 
+  //preference on hiding
+
+  router.get('/profile/hide-profile/preference', (req, res) => {
+
+    res.render('profile/hide-profile/hide-preference', {
+    })
+  })
+
+  router.post('/profile/hide-profile/preference', (req, res) => {
+
+    var answer = req.session.data['hide-preference']
+
+    if (answer == "yes"){
+      res.redirect('add')
+    } else {
+      res.redirect('review')
+    }
+
+  })
+
   //add school/organisation
 
   router.get('/profile/hide-profile/add', (req, res) => {

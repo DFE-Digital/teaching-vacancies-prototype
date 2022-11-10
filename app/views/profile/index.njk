@@ -585,7 +585,53 @@
           <p><a href="/profile/about/about">Add details about you</a></p>
         {% endif %}
       </div>
-      
+
+      <div class="app-profile__section">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Hide profile from schools {{data ['hide-preference']}}
+        </h2>
+
+        <p>
+          {% if data ['hide-preference'] | length %}
+            <a href="/profile/hide-profile/add">Add a school</a>
+          {% else %}
+            <a href="/profile/hide-profile/preference">Set up who cannot view your profile</a>
+          {% endif %}
+        </p>
+
+
+        {% if user.profile.hiddenPlaces | length %}
+
+          <dl class="govuk-summary-list good-one">
+
+            {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{hiddenPlace.hiddenPlace}}
+              </dt>
+              <dd class="govuk-summary-list__actions">
+
+                <div class="app-button-menu">
+                  <div class="app-button-menu__wrapper">
+                    <a class="app-button-menu__item govuk-link" href="/profile/hide-profile/{{id}}/edit">Change <span class="govuk-visually-hidden">{{hiddenPlace.hiddenPlace}}</a>
+                    <a class="app-button-menu__item govuk-link" href="/profile/hide-profile/{{id}}/delete">Delete <span class="govuk-visually-hidden">{{hiddenPlace.hiddenPlace}}</a>
+                  </div>
+                </div>
+
+              </dd>
+            </div>
+
+            {% endfor %}
+
+          </dl>
+        {% else %}
+          {% if data ['hide-preference'] == 'no' %}
+            <p>You do not want to hide your profile from any schools.</p>
+          {% endif %}
+        {% endif %}
+
+      </div>
 
       {% if not user.profile.status %}
         <div class="app-profile__section">
