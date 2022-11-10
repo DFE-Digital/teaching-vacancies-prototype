@@ -5,8 +5,10 @@
 
 {% if 'School' in hiddenPlace.hiddenPlace %}
   {% set typeofPlace = 'school' %}
+  {% set typeofPlaceC = 'School' %}
 {% else %}
-{% set typeofPlace = 'organisation' %}
+  {% set typeofPlace = 'organisation' %}
+  {% set typeofPlaceC = 'Organisation' %}
 {% endif %}
 
 {% if organisation.website != 'Not entered' %}
@@ -39,7 +41,7 @@
         rows: [
           {
             key: {
-              text: "School"
+              text: typeofPlaceC
             },
             value: {
               text: hiddenPlace.hiddenPlace
