@@ -1,6 +1,8 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
+{% set protoFooter = false %}
+
 {% extends "govuk/template.njk" %}
 
 {% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
@@ -65,25 +67,7 @@
 
 {% if useAutoStoreData %}
   {% block footer %}
-    {{ govukFooter({
-      meta: {
-        items: [
-          {
-            href: "https://govuk-prototype-kit.herokuapp.com/",
-            text: "GOV.UK Prototype Kit " + releaseVersion
-          },
-          {
-            href: '/account/sign-in-as-profile',
-            text: 'Sign in as profile'
-          },
-          {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
-          }
-        ],
-        visuallyHiddenTitle: "Footer links"
-      }
-    }) }}
+    {% include "includes/footer.njk" %}
   {% endblock %}
 {% endif %}
 

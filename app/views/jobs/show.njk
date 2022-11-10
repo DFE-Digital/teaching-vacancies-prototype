@@ -91,6 +91,8 @@
         {% endif %}
       {% endset %}
 
+      {{job | log}}
+
        {{ govukSummaryList({
         rows: [
           {
@@ -124,7 +126,7 @@
             value: {
               text: job.subjects | join(', ')
             }
-          } if job.subjects,
+          } if job.subjects.length > 0,
           {
             key: {
               text: "Working pattern"
