@@ -46,11 +46,13 @@
 
         </div>
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
 
-        <p><a href="review">I can't find a school I want to block my profile from</a></p>
+          <a href="review">I can't find a school I want to block my profile from</a>
+        </div>
 
         <p><a href="/profile">Cancel</a></p>
 
