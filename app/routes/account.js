@@ -50,7 +50,8 @@ module.exports = router => {
       profile: {
         locations: {},
         qualifications: {},
-        workHistory: {}
+        workHistory: {},
+        hiddenPlaces: {}
       }
     }
     res.redirect('/account/new/confirmation')

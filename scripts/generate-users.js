@@ -51,6 +51,9 @@ const generateUser = (params = {}) => {
   // Work history
   user.profile.workHistory = _.get(params, 'profile.workHistory') || {}
 
+  // Hidden Places
+  user.profile.hiddenPlaces = _.get(params, 'profile.hiddenPlaces') || {}
+
   // About
   user.profile.about = _.get(params, 'profile.about')
 
@@ -159,6 +162,15 @@ const generateUsers = () => {
   }
 
   locations[l1.id] = l1
+
+  let hiddenPlaces = {} 
+
+  let h1 = {
+    id: uuidv4(),
+    hiddenPlace: 'Sawley school',
+  }
+
+  hiddenPlaces[h1.id] = h1
 
   users.push(generateUser({
     emailAddress: 'adam@example.com',

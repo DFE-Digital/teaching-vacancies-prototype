@@ -22,6 +22,7 @@ require('./routes/profile-teaching-status')(router)
 require('./routes/profile-qualifications')(router)
 require('./routes/profile-work-history')(router)
 require('./routes/profile-about')(router)
+require('./routes/profile-hide-profile')(router)
 
 require('./routes/jobs')(router)
 require('./routes/schools')(router)
