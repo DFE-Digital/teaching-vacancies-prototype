@@ -1,31 +1,39 @@
+{% if data.realFooter == '1' %}
+  {% set items = [{
+    href: "/jobs-by-type-of-school-and-role",
+    text: "Jobs by type of school and role"
+  },
+  {
+    href: "/landing",
+    text: "School and teaching jobs by location"
+  },
+  {
+    href: "/landing",
+    text: "Teaching jobs by subject"
+  }] %}
+{% else %}
+  {% set items = [{
+    href: "https://govuk-prototype-kit.herokuapp.com/",
+    text: "GOV.UK Prototype Kit " + releaseVersion
+  },
+  {
+    href: '/account/sign-in-as-profile',
+    text: 'Sign in as profile'
+  },
+  {
+    href: "/prototype-admin/clear-data",
+    text: "Clear data"
+  },
+  {
+    href: "?realFooter=1",
+    text: "Turn on real footer"
+  }] %}
+{% endif %}
+
+
 {{ govukFooter({
   meta: {
-    items: [
-      {
-        href: "/jobs-by-type-of-school-and-role",
-        text: "Jobs by type of school and role"
-      } if not protoFooter,
-      {
-        href: "/landing",
-        text: "School and teaching jobs by location"
-      } if not protoFooter,
-      {
-        href: "/landing",
-        text: "Teaching jobs by subject"
-      } if not protoFooter,
-      {
-        href: "https://govuk-prototype-kit.herokuapp.com/",
-        text: "GOV.UK Prototype Kit " + releaseVersion
-      } if protoFooter,
-      {
-        href: '/account/sign-in-as-profile',
-        text: 'Sign in as profile'
-      } if protoFooter,
-      {
-        href: "/prototype-admin/clear-data",
-        text: "Clear data"
-      } if protoFooter
-    ],
+    items: items,
     visuallyHiddenTitle: "Footer links"
   }
 }) }}
