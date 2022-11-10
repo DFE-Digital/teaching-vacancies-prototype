@@ -110,9 +110,16 @@ module.exports = router => {
     let id = req.params.id
     let profile = req.session.user.profile
 
+    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
+
+    if (hiddenPlace.indexOf("School") >= 0) {
+      req.flash('success', 'School deleted')
+    }else{
+      req.flash('success', 'Organisation deleted')
+    }
+
     delete profile.hiddenPlaces[id]
 
-    req.flash('success', 'School deleted')
     res.redirect('/profile/hide-profile/review')
   })
 
