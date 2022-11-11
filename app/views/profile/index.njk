@@ -7,6 +7,11 @@
 
 {% block content %}
 
+  {{ govukErrorSummary({
+    titleText: "There’s a problem",
+    errorList: errorList
+  }) if errorList.length }}
+
   {{ govukNotificationBanner({
     html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
     type: "success",
@@ -37,9 +42,7 @@
       {% endif %}
       <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
 
-
-
-      <div class="app-profile__section app-profile__section--first">
+      <div id="app-personal-details" class="app-profile__section app-profile__section--first">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Personal details
@@ -47,8 +50,7 @@
 
         {% if user.profile.firstName %}
 
-          {% set incomplete = not user.profile.providePhoneNumber %}
-
+          {% set personalDetailsIncomplete = not user.profile.providePhoneNumber %}
 
           {% set emailAddress %}
             <p>{{user.emailAddress}}</p>
@@ -60,8 +62,8 @@
 
           {% endset %}
 
-          {% if incomplete %}
-            <div class="govuk-inset-text app-inset-text--incomplete-section">
+          {% if personalDetailsIncomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsPersonalDetailsIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
 
           {{ govukSummaryList({
@@ -146,24 +148,32 @@
           }) }}
 
 
-          {% if incomplete %}
-            <p>You have not completed this section of your profile.</p>
+          {% if personalDetailsIncomplete %}
+            <p class="app-instruction-text">You must complete your personal details before you turn on your profile.</p>
             {{ govukButton({
               text: "Complete personal details",
               href: '/profile/personal-details/phone-number'
             }) }}
           {% endif %}
 
-          {% if incomplete %}
+          {% if personalDetailsIncomplete %}
             </div>
           {% endif %}
         {% else %}
-          <p><a href="/profile/personal-details/name">Add personal details</a></p>
+          {% if errorIsPersonalDetailsIncomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
+              <p class="app-instruction-text">You must complete your personal details before you turn on your profile.</p>
+          {% endif %}
+            <p><a class="govuk-link--no-visited-state" href="/profile/personal-details/name">Add personal details</a></p>
+          {% if isPersonalDetailsIncomplete %}
+            </div>
+          {% endif %}
+
         {% endif %}
 
 
       </div>
-      <div class="app-profile__section">
+      <div id="app-job-preferences" class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Job preferences
@@ -180,10 +190,10 @@
 
         {% if user.profile.roles %}
 
-          {% set incomplete = not user.profile.phases or not user.profile.keyStages or not user.profile.workingPatterns or not user.profile.locations %}
+          {% set jobPreferencesIncomplete = not user.profile.phases or not user.profile.keyStages or not user.profile.workingPatterns or not user.profile.locations %}
 
-          {% if incomplete %}
-            <div class="govuk-inset-text app-inset-text--incomplete-section">
+          {% if jobPreferencesIncomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsJobPreferencesIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
 
           {{ govukSummaryList({
@@ -293,8 +303,8 @@
           ]
         }) }}
 
-        {% if incomplete %}
-          <p>You have not completed this section of your profile.</p>
+        {% if jobPreferencesIncomplete %}
+          <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
 
           {% set url = '' %}
           {% if not user.profile.phases %}
@@ -317,7 +327,14 @@
           </div>
         {% endif %}
       {% else %}
-        <p><a href="/profile/job-preferences/roles">Add job preferences</a></p>
+        {% if errorIsJobPreferencesIncomplete %}
+          <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
+            <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
+        {% endif %}
+          <p><a class="govuk-link--no-visited-state" href="/profile/job-preferences/roles">Add job preferences</a></p>
+        {% if jobPreferencesIncomplete %}
+          </div>
+        {% endif %}
       {% endif %}
       </div>
 
@@ -368,7 +385,7 @@
           ]
         }) }}
         {% else %}
-          <p><a href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
+          <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
         {% endif %}
       </div>
       <div class="app-profile__section">
@@ -377,7 +394,7 @@
           Qualifications
         </h2>
 
-        <p><a href="/profile/qualifications/type">Add qualifications</a></p>
+        <p><a class="govuk-link--no-visited-state" href="/profile/qualifications/type">Add qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications  %}
 
@@ -395,9 +412,9 @@
             }]
           })}}
 
-          {% set incomplete = not qualification.subject or not qualification.grade or not qualification.year %}
+          {% set qualificationIncomplete = not qualification.subject or not qualification.grade or not qualification.year %}
 
-          {% if incomplete %}
+          {% if qualificationIncomplete %}
             <div class="govuk-inset-text app-inset-text--incomplete-section govuk-!-margin-top-2">
           {% endif %}
 
@@ -491,20 +508,17 @@
             ]
           }) }}
 
-          {% if incomplete %}
-            <p>You have not completed this qualification.</p>
+          {% if qualificationIncomplete %}
+            <p class="app-instruction-text">You must complete this qualification before it’s included in your profile.</p>
             {{ govukButton({
               text: "Complete qualification",
               href: "/profile/qualifications/"+id+"/details"
             }) }}
           {% endif %}
 
-          {% if incomplete %}
+          {% if qualificationIncomplete %}
             </div>
           {% endif %}
-
-
-
         {% endfor %}
       </div>
       <div class="app-profile__section">
@@ -512,7 +526,7 @@
           Work history
         </h2>
 
-        <p><a href="/profile/work-history">Add roles</a></p>
+        <p><a class="govuk-link--no-visited-state" href="/profile/work-history">Add roles</a></p>
 
         {% if user.profile.workHistory | length %}
           <div class="app-list">
@@ -582,80 +596,25 @@
             ]
           }) }}
         {% else %}
-          <p><a href="/profile/about/about">Add details about you</a></p>
+          <p><a class="govuk-link--no-visited-state" href="/profile/about/about">Add details about you</a></p>
         {% endif %}
       </div>
 
-      <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Hide profile from schools
-        </h2>
-
-        {% if data ['hide-preference'] | length %}
-        
-        {% else %}
-          <p>
-            <a href="/profile/hide-profile/preference">Set up who cannot view your profile</a>
-          </p>
-        {% endif %}
-
-        {% if data ['hide-preference'] | length %}
-        <dl class="govuk-summary-list">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to hide your profile from a school?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data ['hide-preference']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/profile/hide-profile/preference">
-                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-          {% for id, hiddenPlace in user.profile.hiddenPlaces %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              School
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{hiddenPlace.hiddenPlace}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-
-              <a class="govuk-link" href="/profile/hide-profile/review">
-                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
-              </a>
-
-            </dd>
-          </div>
-
-          {% endfor %}
-        {% if data ['hide-preference'] | length %}
-        </dl>
-        {% endif %}
-      </div>
 
       {% if not user.profile.status %}
+
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Preview and turn on profile
           </h2>
 
+
           <p><a href="/profile/preview">Preview profile</a></p>
-
           <p>When you turn on your profile, it’ll be visible to hiring staff.</p>
-
           <form method="post">
-
-            {{ govukButton({
-              text: "Turn on profile"
-            }) }}
+            {{ govukButton({ text: "Turn on profile" }) }}
           </form>
+
         </div>
 
       {% endif %}
