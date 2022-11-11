@@ -149,7 +149,7 @@
 
 
           {% if personalDetailsIncomplete %}
-            <p>You have not completed this section of your profile.</p>
+            <p class="app-instruction-text">You must complete your personal details before you turn on your profile.</p>
             {{ govukButton({
               text: "Complete personal details",
               href: '/profile/personal-details/phone-number'
@@ -160,7 +160,15 @@
             </div>
           {% endif %}
         {% else %}
-          <p><a href="/profile/personal-details/name">Add personal details</a></p>
+          {% if errorIsPersonalDetailsIncomplete %}
+            <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
+              <p class="app-instruction-text">You must complete your personal details before you turn on your profile.</p>
+          {% endif %}
+            <p><a class="govuk-link--no-visited-state" href="/profile/personal-details/name">Add personal details</a></p>
+          {% if isPersonalDetailsIncomplete %}
+            </div>
+          {% endif %}
+
         {% endif %}
 
 
@@ -296,7 +304,7 @@
         }) }}
 
         {% if jobPreferencesIncomplete %}
-          <p>You have not completed this section of your profile.</p>
+          <p>You must complete your job preferences before you turn on your profile.</p>
 
           {% set url = '' %}
           {% if not user.profile.phases %}
@@ -319,7 +327,14 @@
           </div>
         {% endif %}
       {% else %}
-        <p><a href="/profile/job-preferences/roles">Add job preferences</a></p>
+        {% if errorIsJobPreferencesIncomplete %}
+          <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
+            <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
+        {% endif %}
+          <p><a class="govuk-link--no-visited-state" href="/profile/job-preferences/roles">Add job preferences</a></p>
+        {% if jobPreferencesIncomplete %}
+          </div>
+        {% endif %}
       {% endif %}
       </div>
 
@@ -370,7 +385,7 @@
           ]
         }) }}
         {% else %}
-          <p><a href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
+          <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
         {% endif %}
       </div>
       <div class="app-profile__section">
@@ -379,7 +394,7 @@
           Qualifications
         </h2>
 
-        <p><a href="/profile/qualifications/type">Add qualifications</a></p>
+        <p><a class="govuk-link--no-visited-state" href="/profile/qualifications/type">Add qualifications</a></p>
 
         {% for id, qualification in user.profile.qualifications  %}
 
@@ -511,7 +526,7 @@
           Work history
         </h2>
 
-        <p><a href="/profile/work-history">Add roles</a></p>
+        <p><a class="govuk-link--no-visited-state" href="/profile/work-history">Add roles</a></p>
 
         {% if user.profile.workHistory | length %}
           <div class="app-list">
@@ -581,7 +596,7 @@
             ]
           }) }}
         {% else %}
-          <p><a href="/profile/about/about">Add details about you</a></p>
+          <p><a class="govuk-link--no-visited-state" href="/profile/about/about">Add details about you</a></p>
         {% endif %}
       </div>
 
