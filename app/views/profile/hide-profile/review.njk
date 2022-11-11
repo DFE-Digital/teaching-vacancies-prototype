@@ -2,7 +2,14 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Hidden schools and organisations' %}
+{% if user.profile.hiddenPlaces | length %}
+  {% set question = 'Do you want to add another school?' %}
+{% else %}
+  {% set question = 'Do you want to add a school?' %}
+{% endif %}
+
+
+{% set title = 'Hide profile from schools' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -26,13 +33,11 @@
         {{title}}
       </h1>
 
-      {{ govukButton({
-        text: "Add school or organisation",
-        classes: 'govuk-button--secondary',
-        href: '/profile/hide-profile/add'
-      }) }}
-
       {% if user.profile.hiddenPlaces | length %}
+
+      <h2 class="govuk-heading-m">
+        Schools added
+      </h2>
 
         <div class="app-list">
 
@@ -46,12 +51,7 @@
                   text: hiddenPlace.hiddenPlace,
                   classes: 'govuk-heading-s'
                 },
-                items: [{
-                  text: 'Change',
-                  href: "/profile/hide-profile/"+id+"/edit",
-                  visuallyHiddenText: hiddenPlace.hiddenPlace,
-                  type: 'link'
-                }, {
+                items: [ {
                   text: 'Delete',
                   href: "/profile/hide-profile/"+id+"/delete",
                   visuallyHiddenText: hiddenPlace.hiddenPlace,
@@ -65,10 +65,33 @@
 
       {% endif %}
 
-      {{ govukButton({
-        text: "Return to profile",
-        href: '/profile'
-      }) }}
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "more-schools",
+          fieldset: {
+            legend: {
+              text: question,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
 
     </div>
   </div>

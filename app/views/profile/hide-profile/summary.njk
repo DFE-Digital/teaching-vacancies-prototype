@@ -1,0 +1,75 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Hide profile from schools' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you want to hide your profile from a school?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data ['hide-preference']}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="preference">
+              Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
+            </a>
+          </dd>
+        </div>
+
+        {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            School
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{hiddenPlace.hiddenPlace}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+            <a class="govuk-link" href="/profile/hide-profile/review">
+              Change<span class="govuk-visually-hidden"> {{hiddenPlace.hiddenPlace}}</span>
+            </a>
+
+          </dd>
+        </div>
+
+        {% endfor %}
+
+      </dl>
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

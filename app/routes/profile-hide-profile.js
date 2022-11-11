@@ -16,10 +16,16 @@ module.exports = router => {
 
     var answer = req.session.data['hide-preference']
 
+    let id = req.params.id
+    let profile = req.session.user.profile
+
+    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
+
     if (answer == "yes"){
       res.redirect('add')
     } else {
-      res.redirect('review')
+      delete profile.hiddenPlaces
+      res.redirect('summary')
     }
 
   })
@@ -108,6 +114,31 @@ module.exports = router => {
     let profile = req.session.user.profile
 
     res.render('profile/hide-profile/review', {
+      profile
+    })
+  })
+
+  router.post('/profile/hide-profile/review', (req, res) => {
+
+    var answer = req.session.data['more-schools']
+
+    if (answer == "yes"){
+      res.redirect('add')
+    } else {
+      res.redirect('summary')
+    }
+
+
+    res.redirect(`/profile/hide-profile/review`)
+  })
+
+  //summary
+
+  router.get('/profile/hide-profile/summary', (req, res) => {
+
+    let profile = req.session.user.profile
+
+    res.render('profile/hide-profile/summary', {
       profile
     })
   })

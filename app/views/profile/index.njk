@@ -591,43 +591,53 @@
           Hide profile from schools
         </h2>
 
-        <p>
-          {% if data ['hide-preference'] | length %}
-            <a href="/profile/hide-profile/add">Add a school</a>
-          {% else %}
-            <a href="/profile/hide-profile/preference">Set up who cannot view your profile</a>
-          {% endif %}
-        </p>
-
-
-        {% if user.profile.hiddenPlaces | length %}
-
-          <dl class="govuk-summary-list good-one">
-
-            {% for id, hiddenPlace in user.profile.hiddenPlaces %}
-
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                {{hiddenPlace.hiddenPlace}}
-              </dt>
-              <dd class="govuk-summary-list__actions">
-
-                <div class="app-button-menu">
-                  <div class="app-button-menu__wrapper">
-                    <a class="app-button-menu__item govuk-link" href="/profile/hide-profile/{{id}}/edit">Change <span class="govuk-visually-hidden">{{hiddenPlace.hiddenPlace}}</a>
-                    <a class="app-button-menu__item govuk-link" href="/profile/hide-profile/{{id}}/delete">Delete <span class="govuk-visually-hidden">{{hiddenPlace.hiddenPlace}}</a>
-                  </div>
-                </div>
-
-              </dd>
-            </div>
-
-            {% endfor %}
-
-          </dl>
+        {% if data ['hide-preference'] | length %}
         
+        {% else %}
+          <p>
+            <a href="/profile/hide-profile/preference">Set up who cannot view your profile</a>
+          </p>
         {% endif %}
 
+        {% if data ['hide-preference'] | length %}
+        <dl class="govuk-summary-list">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to hide your profile from a school?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data ['hide-preference']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/profile/hide-profile/preference">
+                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+          {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{hiddenPlace.hiddenPlace}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              <a class="govuk-link" href="/profile/hide-profile/review">
+                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
+              </a>
+
+            </dd>
+          </div>
+
+          {% endfor %}
+        {% if data ['hide-preference'] | length %}
+        </dl>
+        {% endif %}
       </div>
 
       {% if not user.profile.status %}
