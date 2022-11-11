@@ -588,7 +588,7 @@
 
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Hide profile from schools {{data ['hide-preference']}}
+          Hide profile from schools
         </h2>
 
         <p>
@@ -625,10 +625,7 @@
             {% endfor %}
 
           </dl>
-        {% else %}
-          {% if data ['hide-preference'] == 'no' %}
-            <p>You do not want to hide your profile from any schools.</p>
-          {% endif %}
+        
         {% endif %}
 
       </div>
