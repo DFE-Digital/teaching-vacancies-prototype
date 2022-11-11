@@ -226,9 +226,13 @@ hr {
 }
 
 .app-inset-text--incomplete-section {
-  border-left: 10px solid govuk-colour('blue');
+  border-left: 5px solid govuk-colour('blue');
   padding-right: 0;
   .govuk-summary-list {
     margin-bottom: govuk-spacing(3);
   }
+}
+
+.app-inset-text--incomplete-section-error {
+  border-left: 5px solid govuk-colour('red');
 }

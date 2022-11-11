@@ -20,14 +20,14 @@ module.exports = router => {
 
     if(isPersonalDetailsIncomplete) {
       errorList.push({
-        href: '#1',
+        href: '#app-personal-details',
         text: 'You must complete your personal details before you turn on your profile'
       })
     }
 
     if(isJobPreferencesIncomplete) {
       errorList.push({
-        href: '#1',
+        href: '#app-job-preferences',
         text: 'You must complete your job preferences before you turn on your profile'
       })
     }
@@ -35,7 +35,9 @@ module.exports = router => {
     if(errorList.length) {
       res.render('profile/index', {
         user: req.session.user,
-        errorList
+        errorList,
+        errorIsPersonalDetailsIncomplete: isPersonalDetailsIncomplete,
+        errorIsJobPreferencesIncomplete: isJobPreferencesIncomplete
       })
     } else {
       req.session.user.profile.status = 'Active'

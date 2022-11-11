@@ -42,7 +42,7 @@
       {% endif %}
       <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
 
-      <div class="app-profile__section app-profile__section--first">
+      <div id="app-personal-details" class="app-profile__section app-profile__section--first">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Personal details
@@ -63,7 +63,7 @@
           {% endset %}
 
           {% if personalDetailsIncomplete %}
-            <div class="govuk-inset-text app-inset-text--incomplete-section">
+            <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsPersonalDetailsIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
 
           {{ govukSummaryList({
@@ -165,7 +165,7 @@
 
 
       </div>
-      <div class="app-profile__section">
+      <div id="app-job-preferences" class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Job preferences
@@ -185,7 +185,7 @@
           {% set jobPreferencesIncomplete = not user.profile.phases or not user.profile.keyStages or not user.profile.workingPatterns or not user.profile.locations %}
 
           {% if jobPreferencesIncomplete %}
-            <div class="govuk-inset-text app-inset-text--incomplete-section">
+            <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsJobPreferencesIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
 
           {{ govukSummaryList({
@@ -584,7 +584,7 @@
           <p><a href="/profile/about/about">Add details about you</a></p>
         {% endif %}
       </div>
-      
+
 
       {% if not user.profile.status %}
 
