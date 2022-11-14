@@ -1,16 +1,26 @@
 {% if data.realFooter == '1' %}
   {% set items = [{
-    href: "/jobs-by-type-of-school-and-role",
-    text: "Jobs by type of school and role"
-  },
-  {
-    href: "/landing",
-    text: "School and teaching jobs by location"
-  },
-  {
-    href: "/landing",
-    text: "Teaching jobs by subject"
-  }] %}
+      href: "#",
+      text: "Get help or report a problem"
+    },{
+      href: "#",
+      text: "Give feedback"
+    }, {
+      href: "#",
+      text: "Cookies"
+    },
+    {
+      href: "#",
+      text: "Privacy policy"
+    },
+    {
+      href: "#",
+      text: "Terms and conditions"
+    },
+    {
+      href: "#",
+      text: "Accessibililtiy"
+    }] %}
 {% else %}
   {% set items = [{
     href: "https://govuk-prototype-kit.herokuapp.com/",
@@ -30,9 +40,56 @@
   }] %}
 {% endif %}
 
-{{ govukFooter({
+{# {{ govukFooter({
   meta: {
     items: items,
     visuallyHiddenTitle: "Footer links"
+  }
+}) }} #}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{{ govukFooter({
+  navigation: [
+    {
+      title: "Jobs by category",
+      width: "one-third",
+      items: [{
+        href: "/jobs-by-type-of-school-and-role",
+        text: "Jobs by type of school and role"
+      },
+      {
+        href: "/landing",
+        text: "School and teaching jobs by location"
+      },
+      {
+        href: "/landing",
+        text: "Teaching jobs by subject"
+      }]
+    },
+    {
+      title: "Guides",
+      width: "one-third",
+      items: [
+        {
+          href: "#",
+          text: "Writing a personal statement"
+        }
+      ]
+    },
+    {
+      title: "Hiring staff",
+      width: "one-third",
+      items: [{
+        href: "#",
+        text: "Sign in"
+      },
+      {
+        href: "#",
+        text: "School hiring guides"
+      }]
+    }
+  ],
+  meta: {
+    items: items
   }
 }) }}
