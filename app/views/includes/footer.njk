@@ -21,6 +21,7 @@
       href: "#",
       text: "Accessibililtiy"
     }] %}
+  {% set html = '<a href="?realFooter=0">Turn off real footer</a>' %}
 {% else %}
   {% set items = [{
     href: "https://govuk-prototype-kit.herokuapp.com/",
@@ -33,11 +34,8 @@
   {
     href: "/prototype-admin/clear-data",
     text: "Clear data"
-  },
-  {
-    href: "?realFooter=1",
-    text: "Turn on real footer"
   }] %}
+  {% set html = '<a href="?realFooter=1">Turn on real footer</a>' %}
 {% endif %}
 
 {# {{ govukFooter({
@@ -67,9 +65,13 @@
       }]
     },
     {
-      title: "Guides",
+      title: "Job seekers",
       width: "one-third",
       items: [
+        {
+          href: "/account/sign-in",
+          text: "Sign in"
+        },
         {
           href: "#",
           text: "Writing a personal statement"
@@ -90,6 +92,7 @@
     }
   ],
   meta: {
-    items: items
+    items: items,
+    html:  html
   }
 }) }}
