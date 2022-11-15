@@ -8,7 +8,7 @@
 {% if user.profile.provideSchoolsToHideFrom == 'Yes' %}
   {% set itsYes = 'true' %}
   {% set itsNo = '' %}
-{% else %}
+{% elseif user.profile.provideSchoolsToHideFrom == 'No' %}
   {% set itsYes = '' %}
   {% set itsNo = 'true' %}
 {% endif %}
