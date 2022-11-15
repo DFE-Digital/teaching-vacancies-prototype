@@ -33,7 +33,7 @@
         {{title}}
       </h1>
 
-      {% if user.profile.hiddenPlaces | length %}
+      {% if profile.provideSchoolsToHideFrom == 'Yes' %}
 
       <h2 class="govuk-heading-m">
         Schools added
@@ -41,7 +41,8 @@
 
         <div class="app-list">
 
-          {% for id, hiddenPlace in profile.hiddenPlaces %}
+          {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+
             <div class="app-list__item">
 
               {{appPageHeader({
@@ -77,11 +78,11 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             }
           ]

@@ -10,13 +10,16 @@ module.exports = router => {
   })
 
   router.post('/profile/hide-profile/preference', (req, res) => {
+
     let answer = req.body.profile.provideSchoolsToHideFrom
 
     req.session.user.profile.provideSchoolsToHideFrom = answer
+
     if (answer == "Yes"){
       res.redirect('/profile/hide-profile/add')
     } else {
       delete req.session.user.profile.hiddenPlaces
+      req.session.user.profile.hiddenPlaces = {}
       res.redirect('/profile/hide-profile/summary')
     }
 
@@ -32,10 +35,12 @@ module.exports = router => {
   })
 
   router.post('/profile/hide-profile/add', (req, res) => {
-    let hiddenPlace = {}
-    hiddenPlace.id = uuidv4()
-    hiddenPlace.hiddenPlace = req.body.profile.hiddenPlace
-    req.session.user.profile.hiddenPlaces = {}
+
+    let hiddenPlace = {
+      id: uuidv4(),
+      hiddenPlace: req.body.profile.hiddenPlace
+    }
+
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
     res.redirect('/profile/hide-profile/review')
   })
