@@ -1,4 +1,3 @@
-const { DateTime } = require('luxon')
 const { v4: uuidv4 } = require('uuid');
 const _ = require('lodash');
 
@@ -7,36 +6,25 @@ module.exports = router => {
   //preference on hiding
 
   router.get('/profile/hide-profile/preference', (req, res) => {
-
-    res.render('profile/hide-profile/hide-preference', {
-    })
+    res.render('profile/hide-profile/hide-preference')
   })
 
   router.post('/profile/hide-profile/preference', (req, res) => {
+    let answer = req.body.profile.provideSchoolsToHideFrom
 
-    var answer = req.session.data['hide-preference']
-
-    let id = req.params.id
-    let profile = req.session.user.profile
-
-    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
-
-    if (answer == "yes"){
-      res.redirect('add')
+    req.session.user.profile.provideSchoolsToHideFrom = answer
+    if (answer == "Yes"){
+      res.redirect('/profile/hide-profile/add')
     } else {
-      delete profile.hiddenPlaces
-      res.redirect('summary')
+      delete req.session.user.profile.hiddenPlaces
+      res.redirect('/profile/hide-profile/summary')
     }
 
   })
 
   //add school/organisation
-
   router.get('/profile/hide-profile/add', (req, res) => {
-    let profile = req.session.user.profile
     let organisations = req.session.data.organisations
-
-    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
 
     res.render('profile/hide-profile/index', {
       organisations
@@ -44,20 +32,17 @@ module.exports = router => {
   })
 
   router.post('/profile/hide-profile/add', (req, res) => {
-
     let hiddenPlace = {}
     hiddenPlace.id = uuidv4()
     hiddenPlace.hiddenPlace = req.body.profile.hiddenPlace
-
+    req.session.user.profile.hiddenPlaces = {}
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
-
     res.redirect('/profile/hide-profile/review')
   })
 
   //index
 
   router.get('/profile/hide-profile', (req, res) => {
-    let profile = req.session.user.profile
     let organisations = req.session.data.organisations
 
     let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
@@ -122,7 +107,7 @@ module.exports = router => {
 
     var answer = req.session.data['more-schools']
 
-    if (answer == "yes"){
+    if (answer == "Yes"){
       res.redirect('add')
     } else {
       res.redirect('summary')

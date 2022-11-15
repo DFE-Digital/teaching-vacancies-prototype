@@ -20,7 +20,7 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          name: "hide-preference",
+          name: "profile[provideSchoolsToHideFrom]",
           fieldset: {
             legend: {
               text: title,
@@ -30,11 +30,11 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             }
           ]
