@@ -2,13 +2,6 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% if user.profile.hiddenPlaces | length %}
-  {% set question = 'Do you want to add another school?' %}
-{% else %}
-  {% set question = 'Do you want to add a school?' %}
-{% endif %}
-
-
 {% set title = 'Hide profile from schools' %}
 
 {% block beforeContent %}
@@ -33,66 +26,52 @@
         {{title}}
       </h1>
 
-      {% if profile.provideSchoolsToHideFrom == 'Yes' %}
+      <dl class="govuk-summary-list">
 
-      <h2 class="govuk-heading-m">
-        Schools added
-      </h2>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you want to hide your profile from a school?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{profile.provideSchoolsToHideFrom}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/profile/hide-profile/">
+              Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
+            </a>
+          </dd>
+        </div>
 
-        <div class="app-list">
+        {% if profile.provideSchoolsToHideFrom == 'Yes' %}
+
 
           {% for id, hiddenPlace in user.profile.hiddenPlaces %}
 
-            <div class="app-list__item">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{hiddenPlace.hiddenPlace}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
 
-              {{appPageHeader({
-                classes: 'govuk-!-margin-bottom-0',
-                heading: {
-                  level: 2,
-                  text: hiddenPlace.hiddenPlace,
-                  classes: 'govuk-heading-s'
-                },
-                items: [ {
-                  text: 'Delete',
-                  href: "/profile/hide-profile/"+id+"/delete",
-                  visuallyHiddenText: hiddenPlace.hiddenPlace,
-                  type: 'link'
-                }]
-              })}}
+              <a class="govuk-link" href="/profile/hide-profile/schools">
+                Change<span class="govuk-visually-hidden"> {{hiddenPlace.hiddenPlace}}</span>
+              </a>
 
-            </div>
+            </dd>
+          </div>
+
           {% endfor %}
-        </div>
+        {% endif %}
 
-      {% endif %}
+      </dl>
 
-      <form method="post" novalidate>
-
-        {{ govukRadios({
-          name: "more-schools",
-          fieldset: {
-            legend: {
-              text: question,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
-      </form>
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
 
     </div>
   </div>

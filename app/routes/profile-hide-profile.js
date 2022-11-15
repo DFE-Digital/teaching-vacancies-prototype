@@ -5,11 +5,11 @@ module.exports = router => {
 
   //preference on hiding
 
-  router.get('/profile/hide-profile/preference', (req, res) => {
-    res.render('profile/hide-profile/hide-preference')
+  router.get('/profile/hide-profile/', (req, res) => {
+    res.render('profile/hide-profile/index')
   })
 
-  router.post('/profile/hide-profile/preference', (req, res) => {
+  router.post('/profile/hide-profile/', (req, res) => {
 
     let answer = req.body.profile.provideSchoolsToHideFrom
 
@@ -20,7 +20,7 @@ module.exports = router => {
     } else {
       delete req.session.user.profile.hiddenPlaces
       req.session.user.profile.hiddenPlaces = {}
-      res.redirect('/profile/hide-profile/summary')
+      res.redirect('/profile/hide-profile/review')
     }
 
   })
@@ -29,7 +29,7 @@ module.exports = router => {
   router.get('/profile/hide-profile/add', (req, res) => {
     let organisations = req.session.data.organisations
 
-    res.render('profile/hide-profile/index', {
+    res.render('profile/hide-profile/add', {
       organisations
     })
   })
@@ -42,7 +42,7 @@ module.exports = router => {
     }
 
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
-    res.redirect('/profile/hide-profile/review')
+    res.redirect('/profile/hide-profile/schools')
   })
 
   //index
@@ -52,7 +52,7 @@ module.exports = router => {
 
     let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
 
-    res.render('profile/hide-profile/index', {
+    res.render('profile/hide-profile/add', {
       hiddenPlace,
       organisations
     })
@@ -66,7 +66,7 @@ module.exports = router => {
 
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
 
-    res.redirect('/profile/hide-profile/review')
+    res.redirect('/profile/hide-profile/schools')
   })
 
   //edit
@@ -81,7 +81,7 @@ module.exports = router => {
 
     let hiddenPlace = item.hiddenPlace
 
-    res.render('profile/hide-profile/index', {
+    res.render('profile/hide-profile/add', {
       hiddenPlace,
       organisations
     })
@@ -94,7 +94,32 @@ module.exports = router => {
     var item = req.session.user.profile.hiddenPlaces[id]
     item.hiddenPlace = req.body.profile.hiddenPlace
 
-    res.redirect(`/profile/hide-profile/review`)
+    res.redirect(`/profile/hide-profile/schools`)
+  })
+
+  //schools
+
+  router.get('/profile/hide-profile/schools', (req, res) => {
+
+    let profile = req.session.user.profile
+
+    res.render('profile/hide-profile/schools', {
+      profile
+    })
+  })
+
+  router.post('/profile/hide-profile/schools', (req, res) => {
+
+    var answer = req.session.data['more-schools']
+
+    if (answer == "Yes"){
+      res.redirect('add')
+    } else {
+      res.redirect('review')
+    }
+
+
+    res.redirect(`/profile/hide-profile/schools`)
   })
 
   //review
@@ -104,31 +129,6 @@ module.exports = router => {
     let profile = req.session.user.profile
 
     res.render('profile/hide-profile/review', {
-      profile
-    })
-  })
-
-  router.post('/profile/hide-profile/review', (req, res) => {
-
-    var answer = req.session.data['more-schools']
-
-    if (answer == "Yes"){
-      res.redirect('add')
-    } else {
-      res.redirect('summary')
-    }
-
-
-    res.redirect(`/profile/hide-profile/review`)
-  })
-
-  //summary
-
-  router.get('/profile/hide-profile/summary', (req, res) => {
-
-    let profile = req.session.user.profile
-
-    res.render('profile/hide-profile/summary', {
       profile
     })
   })
@@ -161,7 +161,7 @@ module.exports = router => {
 
     delete profile.hiddenPlaces[id]
 
-    res.redirect('/profile/hide-profile/review')
+    res.redirect('/profile/hide-profile/schools')
   })
 
 }

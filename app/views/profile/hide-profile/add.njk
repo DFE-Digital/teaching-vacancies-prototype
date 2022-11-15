@@ -1,0 +1,90 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Name of school or employer' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Hide profile from schools
+      </span>
+
+      <form method="post" novalidate>
+
+
+        <div class="govuk-form-group">
+
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="hideSelect">
+              Name of school
+            </label>
+          </h1>
+
+          <div class="autocomplete-wrapper govuk-!-margin-top-3" data-chosen="{% if user.profile.hiddenPlaces | length %}{{hiddenPlace}}{% endif %}">
+            <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]">
+              <option value="">Select a school</option>
+
+              {% for organisation in organisations %}
+
+                <option value="{{organisation.name}}, {{organisation.address.address1}} {{organisation.address.postcode}}">{{organisation.name}}, {{organisation.address.address1}} {{organisation.address.postcode}}</option>
+
+              {% endfor %}
+
+            </select>
+          </div>
+
+        </div>
+        <p>
+          <a href="/profile/hide-profile/review">I cannot find the school I'm looking for</a>
+        </p>
+
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+        </div>
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      var theSchool = $('.autocomplete-wrapper').data("chosen");
+      $('.autocomplete__input').val(theSchool);
+
+      setTimeout(
+      function()
+      {
+        $('.autocomplete__menu').blur();
+        $('.autocomplete__menu').removeClass('autocomplete__menu--visible');
+        $('.autocomplete__menu').addClass('autocomplete__menu--hidden');
+
+      }, 100);
+
+    })
+  </script>
+{% endblock %}
