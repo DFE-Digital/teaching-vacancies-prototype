@@ -9,10 +9,6 @@ router.all('*', (req, res, next) => {
   next()
 })
 
-router.get('/', (req, res) => {
-  res.redirect('/jobs')
-})
-
 require('./routes/account')(router)
 
 require('./routes/profile')(router)

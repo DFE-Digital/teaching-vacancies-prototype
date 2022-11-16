@@ -226,9 +226,24 @@ hr {
 }
 
 .app-inset-text--incomplete-section {
-  border-left: 10px solid govuk-colour('blue');
+  border-left: 5px solid govuk-colour('blue');
   padding-right: 0;
+
+  .app-instruction-text {
+    color: govuk-colour('blue');
+    font-weight: bold;
+  }
+
   .govuk-summary-list {
     margin-bottom: govuk-spacing(3);
+  }
+}
+
+.app-inset-text--incomplete-section-error {
+  border-left: 5px solid govuk-colour('red');
+
+  .app-instruction-text {
+    color: govuk-colour('red');
+    font-weight: bold;
   }
 }

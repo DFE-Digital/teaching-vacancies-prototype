@@ -1,5 +1,6 @@
 const authenticaton = require('../middleware/authenticaton')
 const _ = require('lodash')
+const profileTeachingStatus = require('./profile-teaching-status')
 
 module.exports = router => {
 
@@ -10,9 +11,40 @@ module.exports = router => {
   })
 
   router.post('/profile', (req, res) => {
-    req.session.user.profile.status = 'Active'
-    req.flash('success', 'Profile turned on')
-    res.redirect('/profile')
+    let profile = req.session.user.profile
+
+    let isPersonalDetailsIncomplete = !profile || !profile.firstName || !profile.providePhoneNumber
+    let isJobPreferencesIncomplete = !profile || !profile.roles || !profile.phases || !profile.keyStages || !profile.subjects || !profile.workingPatterns || !profile.locations
+
+    let errorList = []
+
+    if(isPersonalDetailsIncomplete) {
+      errorList.push({
+        href: '#app-personal-details',
+        text: 'You must complete your personal details before you turn on your profile'
+      })
+    }
+
+    if(isJobPreferencesIncomplete) {
+      errorList.push({
+        href: '#app-job-preferences',
+        text: 'You must complete your job preferences before you turn on your profile'
+      })
+    }
+
+    if(errorList.length) {
+      res.render('profile/index', {
+        user: req.session.user,
+        errorList,
+        errorIsPersonalDetailsIncomplete: isPersonalDetailsIncomplete,
+        errorIsJobPreferencesIncomplete: isJobPreferencesIncomplete
+      })
+    } else {
+      req.session.user.profile.status = 'Active'
+      req.flash('success', 'Profile turned on')
+      res.redirect('/profile')
+    }
+
   })
 
   router.post('/profile/activate', (req, res) => {
