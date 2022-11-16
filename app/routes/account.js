@@ -34,7 +34,12 @@ module.exports = router => {
     if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
     } else {
-      res.redirect('/jobs')
+
+      if(req.session.user.profile.previousApplication == 'Yes'){
+        res.redirect('/account/new/confirmation')
+      }else{
+        res.redirect('/jobs')
+      }
     }
   })
 
@@ -55,6 +60,13 @@ module.exports = router => {
       }
     }
     res.redirect('/account/new/confirmation')
+  })
+
+  router.get('/account/new/confirmation', (req, res) => {
+
+    res.render('account/new/confirmation', {
+      user: req.session.user
+    })
   })
 
 }

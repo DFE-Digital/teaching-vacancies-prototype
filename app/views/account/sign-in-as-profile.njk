@@ -12,40 +12,39 @@
 
       {% for user in users %}
 
-        <form method="post" action="/account/sign-in">
+          <form method="post" action="/account/sign-in">
 
-          {% if returnUrl %}
-            <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
-          {% endif %}
-
-          <input type="hidden" name="emailAddress" value="{{user.emailAddress}}">
-
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
-            {{user.emailAddress}}
-          </h2>
-
-          <div class="govuk-!-margin-bottom-3">
-            {% if user.profile.status %}
-              {{ govukTag({
-                text: user.profile.status,
-                classes: 'govuk-tag--blue'
-              }) }}
-            {% else %}
-              {{ govukTag({
-                text: 'Not activated yet',
-                classes: 'govuk-tag--red'
-              }) }}
-
+            {% if returnUrl %}
+              <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
             {% endif %}
-          </div>
 
-          {{ govukButton({
-            text: 'Sign in'
-          }) }}
-        </form>
+            <input type="hidden" name="emailAddress" value="{{user.emailAddress}}">
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+              {{user.emailAddress}}
+            </h2>
+
+            <div class="govuk-!-margin-bottom-3">
+              {% if user.profile.status %}
+                {{ govukTag({
+                  text: user.profile.status,
+                  classes: 'govuk-tag--blue'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  text: 'Not activated yet',
+                  classes: 'govuk-tag--red'
+                }) }}
+
+              {% endif %}
+            </div>
+
+            {{ govukButton({
+              text: 'Sign in'
+            }) }}
+          </form>
+
       {% endfor %}
-
-
 
     </div>
   </div>

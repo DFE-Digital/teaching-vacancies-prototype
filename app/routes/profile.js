@@ -89,8 +89,8 @@ module.exports = router => {
 
   router.get('/profile/populate-your-profile', (req, res) => {
 
-    res.render('account/new/populate', {
-
+    res.render('profile/populate', {
+      user: req.session.user
     })
   })
 
