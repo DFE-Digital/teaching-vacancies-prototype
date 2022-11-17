@@ -99,4 +99,29 @@ module.exports = router => {
     res.redirect('/profile')
   })
 
+  router.get('/profile/profile-manual', (req, res) => {
+
+    delete req.session.user.profile.firstName
+    delete req.session.user.profile.lastName
+    delete req.session.user.profile.providePhoneNumber
+    delete req.session.user.profile.phoneNumber
+    delete req.session.user.profile.roles
+    delete req.session.user.profile.phases
+    delete req.session.user.profile.keyStages
+    delete req.session.user.profile.workingPatterns
+    delete req.session.user.profile.subjects
+    delete req.session.user.profile.locations
+    delete req.session.user.profile.qts
+    delete req.session.user.profile.qtsAwardedYear
+    delete req.session.user.profile.qualifications
+    delete req.session.user.profile.workHistory
+    delete req.session.user.profile.about
+    delete req.session.user.profile.hiddenPlaces
+    delete req.session.user.profile.previousApplication
+
+    res.render('profile/index', {
+      //user: req.session.user
+    })
+  })
+
 }
