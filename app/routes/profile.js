@@ -95,6 +95,7 @@ module.exports = router => {
   })
 
   router.post('/profile/populate-your-profile', (req, res) => {
+    req.flash('success', 'Profile has been populated with previous application details')
     res.redirect('/profile')
   })
 

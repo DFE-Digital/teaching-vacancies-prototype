@@ -11,10 +11,13 @@
         As you have made an application on the Teacher Vacancies service already with the email {{user.emailAddress}}, your information can be used to populate your profile automatically.
       </p>
 
-      {{ govukButton({
-        text: "Populate profile",
-        href: "/profile"
-      }) }}
+      <form method="post" action="">
+
+        {{ govukButton({
+          text: "Populate profile"
+        }) }}
+
+      </form>
 
       <p class="govuk-body">
         <a href="/profile">Create profile manually</a>
