@@ -33,7 +33,7 @@
             {% endfor %}
           {% endset %}
 
-          <div class="app-schools__item">
+          <div class="app-jobs__item">
             {% if job.organisation.logo != 'Not entered' %}
               <img src="{{job.organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
             {% endif %}
@@ -49,7 +49,7 @@
             </h2>
 
 
-            <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{job.organisation.name}},{{address}}</p>
+            <p class="app-jobs__address">{{job.organisation.name}},{{address}}</p>
 
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
