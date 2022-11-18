@@ -17,6 +17,12 @@
   {% endset %}
 {% endif %}
 
+{% set place = hiddenPlace.hiddenPlace  %}
+
+{% set justSchoolName = place.slice(',')  %}
+
+{% set justSchoolName = place.split('_,')[0]  %}
+
 {% block beforeContent %}
    {{ govukBackLink({
     text: "Back",
@@ -34,21 +40,8 @@
       </span>
 
       <h1 class="govuk-heading-xl">
-        Confirm that you want to delete this {{typeofPlace}}
+        Confirm that you no longer want to hide your profile from {{hiddenPlace.hiddenPlace}}
       </h1>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: typeofPlaceC
-            },
-            value: {
-              text: hiddenPlace.hiddenPlace
-            }
-          }
-        ]
-      }) }}
 
       <form method="post" novalidate>
 

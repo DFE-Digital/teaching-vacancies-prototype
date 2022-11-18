@@ -634,9 +634,11 @@
 
         {% for id, hiddenPlace in user.profile.hiddenPlaces %}
 
+          {% set rowloop = loop %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              School
+              School {{ loop.index }}
             </dt>
             <dd class="govuk-summary-list__value">
               {{hiddenPlace.hiddenPlace}}
@@ -650,7 +652,7 @@
             </dd>
           </div>
 
-          {% endfor %}
+        {% endfor %}
 
         {% if user.profile.provideSchoolsToHideFrom | length %}
           </dl>

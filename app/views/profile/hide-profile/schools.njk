@@ -11,6 +11,8 @@
 
 {% set title = 'Hide profile from schools' %}
 
+{% set countOfSchool = 1 %}
+
 {% block beforeContent %}
    {{ govukBackLink({
     text: "Back",
@@ -33,38 +35,31 @@
         {{title}}
       </h1>
 
-      {% if user.profile.hiddenPlaces | length %}
+      <dl class="govuk-summary-list">
 
-      <h2 class="govuk-heading-m">
-        Schools added
-      </h2>
+      {% for id, hiddenPlace in user.profile.hiddenPlaces %}
 
-        <div class="app-list">
+        {% set rowloop = loop %}
 
-          {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School {{ loop.index }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{hiddenPlace.hiddenPlace}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
 
-            <div class="app-list__item">
+              <a class="govuk-link" href="/profile/hide-profile/{{id}}/delete">
+                Delete<span class="govuk-visually-hidden"> {{hiddenPlace.hiddenPlace}}</span>
+              </a>
 
-              {{appPageHeader({
-                classes: 'govuk-!-margin-bottom-0',
-                heading: {
-                  level: 2,
-                  text: hiddenPlace.hiddenPlace,
-                  classes: 'govuk-heading-s'
-                },
-                items: [ {
-                  text: 'Delete',
-                  href: "/profile/hide-profile/"+id+"/delete",
-                  visuallyHiddenText: hiddenPlace.hiddenPlace,
-                  type: 'link'
-                }]
-              })}}
+            </dd>
+          </div>
 
-            </div>
-          {% endfor %}
-        </div>
+      {% endfor %}
 
-      {% endif %}
+      </dl>
 
       <form method="post" novalidate>
 
