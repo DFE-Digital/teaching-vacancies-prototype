@@ -17,7 +17,7 @@ $(document).ready(function () {
         autoselect: true,
         confirmOnBlur: true,
         defaultValue: "",
-        minLength: 4,
+        minLength: 3,
         selectElement: selectEl
       })
 

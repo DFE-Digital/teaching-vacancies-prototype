@@ -658,6 +658,32 @@
 
         {% endfor %}
 
+        {% if user.profile.provideSchoolsToHideFrom == 'Yes' %}
+
+          {% if user.profile.hiddenPlaces | length %}
+
+          {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not found
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              <a class="govuk-link" href="/profile/hide-profile/schools">
+                Change<span class="govuk-visually-hidden"></span>
+              </a>
+
+            </dd>
+          </div>
+
+          {% endif %}
+
+        {% endif %}
+
         {% if user.profile.provideSchoolsToHideFrom | length %}
           </dl>
         {% endif %}
