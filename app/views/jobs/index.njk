@@ -5,9 +5,11 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-xl">
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
     Jobs (240)
   </h1>
+
+  <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -33,7 +35,7 @@
             {% endfor %}
           {% endset %}
 
-          <div class="app-schools__item">
+          <div class="app-jobs__item">
             {% if job.organisation.logo != 'Not entered' %}
               <img src="{{job.organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
             {% endif %}
@@ -49,7 +51,7 @@
             </h2>
 
 
-            <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{job.organisation.name}},{{address}}</p>
+            <p class="app-jobs__address">{{job.organisation.name}},{{address}}</p>
 
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',

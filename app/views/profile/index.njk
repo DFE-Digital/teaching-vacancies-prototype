@@ -459,7 +459,7 @@
                   text: "Grade (optional)"
                 },
                 value: {
-                  text: qualification.grade
+                  text: qualification.grade or 'Not entered'
                 },
                 actions: {
                   items: [
@@ -470,7 +470,7 @@
                     }
                   ]
                 }
-              },
+              } if qualification.subject,
               {
                 key: {
                   text: "Year awarded"
