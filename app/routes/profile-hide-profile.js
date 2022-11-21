@@ -136,4 +136,30 @@ module.exports = router => {
     res.redirect('/profile/hide-profile/schools')
   })
 
+  //cant find school
+  router.get('/profile/hide-profile/cant-find-school', (req, res) => {
+
+    let id = req.params.id
+    let profile = req.session.user.profile
+    let hiddenPlace = profile.hiddenPlaces[id]
+
+    res.render('profile/hide-profile/cantfindschool', {
+      hiddenPlace
+    })
+  })
+
+  router.post('/profile/hide-profile/cant-find-school', (req, res) => {
+
+    var answer = req.session.data['more-schools']
+
+    if (answer == "Yes"){
+      res.redirect('/profile/hide-profile/add')
+    } else {
+      res.redirect('/profile/hide-profile/review')
+    }
+
+
+    res.redirect(`/profile/hide-profile/schools`)
+  })
+
 }

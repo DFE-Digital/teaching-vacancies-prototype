@@ -1,0 +1,77 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% if user.profile.hiddenPlaces | length %}
+  {% set question = 'Do you want to add another school?' %}
+{% else %}
+  {% set question = 'Do you want to add a school?' %}
+{% endif %}
+
+
+{% set title = "I cannot find the school I'm looking for" %}
+
+{% set countOfSchool = 1 %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>
+        If you cannot find a school to hide your profile from, it may be because:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>it is a private school</li>
+        <li>the school is not registered on our system</li>
+        <li>another reason</li>
+      </ul>
+
+      <p>
+        You do not need to do anything if you cannot find a school to hide your profile from.
+      </p>
+      
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "more-schools",
+          fieldset: {
+            legend: {
+              text: question,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

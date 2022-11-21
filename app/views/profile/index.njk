@@ -602,10 +602,14 @@
 
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Hide profile from schools {{profile.provideSchoolsToHideFrom}}
+          Hide profile from schools
         </h2>
 
-        {% if user.profile.provideSchoolsToHideFrom %}
+        {% if user.profile.provideSchoolsToHideFrom == 'Yes'  %}
+          <p>
+            <a href="/profile/hide-profile/">Add a school</a>
+          </p>
+        {% elseif user.profile.provideSchoolsToHideFrom %}
 
         {% else %}
           <p>
