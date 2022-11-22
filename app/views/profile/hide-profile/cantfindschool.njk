@@ -9,7 +9,7 @@
 {% endif %}
 
 
-{% set title = "I cannot find the school I'm looking for" %}
+{% set title = "Your school cannot be found" %}
 
 {% set countOfSchool = 1 %}
 
@@ -35,41 +35,30 @@
 
       <ul class="govuk-list govuk-list--bullet">
         <li>it is a private school</li>
-        <li>the school is not registered on our system</li>
+        <li>the school is not registered in the UK</li>
         <li>Lorem ipsum dolor sit amet</li>
         <li>Lorem ipsum dolor sit amet</li>
         <li>Lorem ipsum dolor sit amet</li>
       </ul>
 
       <p>
-        You do not need to do anything if you cannot find a school to hide your profile from.
+       This means they cannot view your profile on this service.
       </p>
 
       <form method="post" novalidate>
 
-        {{ govukRadios({
-          name: "more-schools",
-          fieldset: {
-            legend: {
-              text: question,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Search for another school",
+            classes: "govuk-button--secondary",
+            href: '/profile/hide-profile/add'
+          }) }}
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+          {{ govukButton({
+            text: "Return to profile",
+            href: '/profile'
+          }) }}
+        </div>
 
       </form>
 
