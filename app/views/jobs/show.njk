@@ -185,9 +185,7 @@
       </h2>
 
       <div class="app-prose govuk-!-margin-bottom-6">
-        {% markdown %}
-          {{job.skillsAndExperience}}
-        {% endmarkdown %}
+        {{job.skillsAndExperience | markdown | safe}}
       </div>
 
       <h2 class="govuk-heading-m">
@@ -195,9 +193,7 @@
       </h2>
 
       <div class="app-prose govuk-!-margin-bottom-6">
-        {% markdown %}
-          {{job.whatSchoolOffers}}
-        {% endmarkdown %}
+        {{job.whatSchoolOffers | markdown | safe}}
       </div>
 
       {% if job.offersSchoolVisits == 'Yes' %}
@@ -215,9 +211,7 @@
         </h2>
 
         <div class="app-prose">
-          {% markdown %}
-            {{job.furtherDetailsAboutTheRole}}
-          {% endmarkdown %}
+          {{job.furtherDetailsAboutTheRole | markdown | safe}}
         </div>
       {% endif %}
 
@@ -380,9 +374,7 @@
 
         {% if job.organisation.about != 'Not entered' %}
           <div class="app-prose govuk-!-margin-bottom-6">
-            {% markdown %}
-              {{job.organisation.about}}
-            {% endmarkdown %}
+            {{job.organisation.about | markdown | safe}}
           </div>
         {% endif %}
 
@@ -414,9 +406,7 @@
         </h2>
 
         <div class="app-prose govuk-!-margin-bottom-6">
-          {% markdown %}
-            {{job.safeguardingCommitment}}
-          {% endmarkdown %}
+          {{job.safeguardingCommitment | markdown | safe}}
         </div>
       {% endif %}
 
