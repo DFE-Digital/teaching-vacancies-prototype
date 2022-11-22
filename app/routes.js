@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const flash = require('connect-flash')
+router.use(flash())
 
 router.all('*', (req, res, next) => {
   res.locals.referrer = req.query.referrer

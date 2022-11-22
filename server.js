@@ -12,14 +12,6 @@ const nunjucks = require('nunjucks')
 const sessionInCookie = require('client-sessions')
 const sessionInMemory = require('express-session')
 
-// Added dependencies
-const flash = require('connect-flash')
-const markdown = require('nunjucks-markdown')
-const { marked } = require('marked')
-// const passport = require('passport')
-// const LocalStrategy = require('passport-local').Strategy
-// const authenticationModel = require('./app/models/authentication')
-
 // Run before other code to make sure variables from .env are available
 dotenv.config()
 
@@ -144,8 +136,6 @@ nunjucksConfig.express = app
 
 var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 
-markdown.register(nunjucksAppEnv, marked)
-
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
 
@@ -234,8 +224,6 @@ if (useAutoStoreData === 'true') {
 // ))
 // app.use(passport.initialize())
 // app.use(passport.session())
-
-app.use(flash())
 
 // Load prototype admin routes
 app.use('/prototype-admin', prototypeAdminRoutes)
