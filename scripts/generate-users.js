@@ -171,7 +171,7 @@ const generateUsers = () => {
 
   let h1 = {
     id: uuidv4(),
-    hiddenPlace: 'Sawley school',
+    hiddenPlace: 'Courtland Primary School, 10 Seed Street N19 4PT',
   }
 
   hiddenPlaces[h1.id] = h1
@@ -199,7 +199,9 @@ const generateUsers = () => {
       hasExperienceWithSubjects: 'Yes',
       experiencedSubjects: ['Mathematics'],
       about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.',
-      previousApplication: 'No'
+      previousApplication: 'No',
+      provideSchoolsToHideFrom: 'Yes',
+      hiddenPlaces
     }
   }))
 
@@ -221,7 +223,7 @@ const generateUsers = () => {
       qtsAwardedYear: '2020',
       qualifications: rachaelQualifications,
       workHistory,
-      about: null,
+      about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.',
       previousApplication: 'Yes'
     }
   }))
