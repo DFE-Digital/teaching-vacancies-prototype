@@ -204,11 +204,11 @@ const generateUsers = () => {
   }))
 
   users.push(generateUser({
-    emailAddress: 'rosie_lee@hotmail.com',
+    emailAddress: 'ernest.hemingway@hotmail.com',
     profile: {
       status: null,
-      firstName: 'Rosie',
-      lastName: 'Lee',
+      firstName: 'Ernest',
+      lastName: 'Hemingway',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
       roles: null,
