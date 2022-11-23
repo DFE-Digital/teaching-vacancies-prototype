@@ -16,6 +16,42 @@
 
       <h2 class="govuk-heading-m">Create a profile</h2>
 
+      {% for user in users %}
+
+          <form method="post" action="/account/sign-in">
+
+            {% if returnUrl %}
+              <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
+            {% endif %}
+
+            <input type="hidden" name="emailAddress" value="{{user.emailAddress}}">
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+              {{user.emailAddress}}
+            </h2>
+
+            <div class="govuk-!-margin-bottom-3">
+              {% if user.profile.status %}
+                {{ govukTag({
+                  text: user.profile.status,
+                  classes: 'govuk-tag--blue'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  text: 'Not activated yet',
+                  classes: 'govuk-tag--red'
+                }) }}
+
+              {% endif %}
+            </div>
+
+            {{ govukButton({
+              text: 'Sign in'
+            }) }}
+          </form>
+
+      {% endfor %}
+
       <p class="govuk-body">
         With a profile, you can:
       </p>
@@ -33,10 +69,21 @@
         When you turn on your profile, schools can contact you about relevant jobs.
       </p>
 
-      {{ govukButton({
-        text: "Create a profile",
-        href: "/profile"
-      }) }}
+      {% if user.profile.previousApplication == 'Yes' %}
+
+        {{ govukButton({
+          text: "Create a profile",
+          href: "/profile/populate-your-profile"
+        }) }}
+
+      {% else %}
+
+        {{ govukButton({
+          text: "Create a profile",
+          href: "/profile"
+        }) }}
+
+      {% endif %}
 
 
     </div>

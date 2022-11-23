@@ -1,0 +1,29 @@
+
+{% extends "layout.njk" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Complete your profile</h1>
+
+      <p class="govuk-body">
+        Because you have already submitted an application, some of your information can be used to automatically complete your profile.
+      </p>
+
+      <form method="post" action="">
+
+        {{ govukButton({
+          text: "Populate profile"
+        }) }}
+
+      </form>
+
+      <p class="govuk-body">
+        <a href="/profile/profile-manual">Create profile manually</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
