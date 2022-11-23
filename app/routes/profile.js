@@ -14,7 +14,7 @@ module.exports = router => {
     let profile = req.session.user.profile
 
     let isPersonalDetailsIncomplete = !profile || !profile.firstName || !profile.providePhoneNumber
-    let isJobPreferencesIncomplete = !profile || !profile.roles || !profile.phases || !profile.keyStages || !profile.subjects || !profile.workingPatterns || !profile.locations
+    let isJobPreferencesIncomplete = !profile || !profile.roles || !profile.phases || !profile.keyStages || !profile.workingPatterns || !profile.locations
 
     let errorList = []
 

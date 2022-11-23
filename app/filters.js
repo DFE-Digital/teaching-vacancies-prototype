@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const individualFiltersFolder = path.join(__dirname, './filters')
+const { marked } = require('marked')
 
 module.exports = function (env) {
   /**
@@ -59,6 +60,17 @@ module.exports = function (env) {
   filters.tag = function(status) {
     if(status == 'Incomplete') {
       return 'govuk-tag--grey'
+    }
+  }
+
+  filters.markdown = function(value) {
+    var result;
+    try {
+      result = marked(value).trim();
+      return result;
+    } catch (e) {
+      console.error('Error processing markdown:', e);
+      return value;
     }
   }
 

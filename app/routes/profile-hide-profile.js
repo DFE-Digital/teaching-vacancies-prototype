@@ -1,42 +1,58 @@
-const { DateTime } = require('luxon')
 const { v4: uuidv4 } = require('uuid');
 const _ = require('lodash');
 
 module.exports = router => {
 
-  //add school/organisation
+  //preference on hiding
 
+  router.get('/profile/hide-profile/', (req, res) => {
+    res.render('profile/hide-profile/index')
+  })
+
+  router.post('/profile/hide-profile/', (req, res) => {
+
+    let answer = req.body.profile.provideSchoolsToHideFrom
+
+    req.session.user.profile.provideSchoolsToHideFrom = answer
+
+    if (answer == "Yes"){
+      res.redirect('/profile/hide-profile/add')
+    } else {
+      delete req.session.user.profile.hiddenPlaces
+      req.session.user.profile.hiddenPlaces = {}
+      res.redirect('/profile/hide-profile/review')
+    }
+
+  })
+
+  //add school/organisation
   router.get('/profile/hide-profile/add', (req, res) => {
-    let profile = req.session.user.profile
     let organisations = req.session.data.organisations
 
-    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
-
-    res.render('profile/hide-profile/index', {
+    res.render('profile/hide-profile/add', {
       organisations
     })
   })
 
   router.post('/profile/hide-profile/add', (req, res) => {
 
-    let hiddenPlace = {}
-    hiddenPlace.id = uuidv4()
-    hiddenPlace.hiddenPlace = req.body.profile.hiddenPlace
+    let hiddenPlace = {
+      id: uuidv4(),
+      hiddenPlace: req.body.profile.hiddenPlace
+    }
 
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
-
-    res.redirect('/profile/hide-profile/review')
+    res.redirect('/profile/hide-profile/schools')
   })
 
   //index
 
   router.get('/profile/hide-profile', (req, res) => {
-    let profile = req.session.user.profile
     let organisations = req.session.data.organisations
 
     let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
 
-    res.render('profile/hide-profile/index', {
+    res.render('profile/hide-profile/add', {
       hiddenPlace,
       organisations
     })
@@ -50,35 +66,32 @@ module.exports = router => {
 
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
 
-    res.redirect('/profile/hide-profile/review')
+    res.redirect('/profile/hide-profile/schools')
   })
 
-  //edit
+  //schools
 
-  router.get('/profile/hide-profile/:id/edit', (req, res) => {
+  router.get('/profile/hide-profile/schools', (req, res) => {
 
-    let id = req.params.id
     let profile = req.session.user.profile
-    let organisations = req.session.data.organisations
 
-    let item = profile.hiddenPlaces[id]
-
-    let hiddenPlace = item.hiddenPlace
-
-    res.render('profile/hide-profile/index', {
-      hiddenPlace,
-      organisations
+    res.render('profile/hide-profile/schools', {
+      profile
     })
-
   })
 
-  router.post('/profile/hide-profile/:id/edit', (req, res) => {
+  router.post('/profile/hide-profile/schools', (req, res) => {
 
-    let id = req.params.id
-    var item = req.session.user.profile.hiddenPlaces[id]
-    item.hiddenPlace = req.body.profile.hiddenPlace
+    var answer = req.session.data['more-schools']
 
-    res.redirect(`/profile/hide-profile/review`)
+    if (answer == "Yes"){
+      res.redirect('/profile/hide-profile/add')
+    } else {
+      res.redirect('/profile/hide-profile/review')
+    }
+
+
+    res.redirect(`/profile/hide-profile/schools`)
   })
 
   //review
@@ -120,7 +133,33 @@ module.exports = router => {
 
     delete profile.hiddenPlaces[id]
 
-    res.redirect('/profile/hide-profile/review')
+    res.redirect('/profile/hide-profile/schools')
+  })
+
+  //cant find school
+  router.get('/profile/hide-profile/cant-find-school', (req, res) => {
+
+    let id = req.params.id
+    let profile = req.session.user.profile
+    let hiddenPlace = profile.hiddenPlaces[id]
+
+    res.render('profile/hide-profile/cantfindschool', {
+      hiddenPlace
+    })
+  })
+
+  router.post('/profile/hide-profile/cant-find-school', (req, res) => {
+
+    var answer = req.session.data['more-schools']
+
+    if (answer == "Yes"){
+      res.redirect('/profile/hide-profile/add')
+    } else {
+      res.redirect('/profile/hide-profile/review')
+    }
+
+
+    res.redirect(`/profile/hide-profile/schools`)
   })
 
 }
