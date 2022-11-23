@@ -33,7 +33,10 @@
           </h1>
 
           <div class="autocomplete-wrapper govuk-!-margin-top-3" data-chosen="{% if user.profile.hiddenPlaces | length %}{{hiddenPlace}}{% endif %}">
-            <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]">
+            <div id="school-hint" class="govuk-hint">
+             Enter the name or address of the school
+            </div>
+            <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]" aria-describedby="school-hint">
               <option value="">Select a school</option>
 
               {% for organisation in organisations %}
