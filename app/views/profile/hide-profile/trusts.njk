@@ -3,15 +3,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Do you want to hide your profile from a school or trust? ' %}
-
-{% if user.profile.provideSchoolsToHideFrom == 'Yes' %}
-  {% set itsYes = 'true' %}
-  {% set itsNo = '' %}
-{% elseif user.profile.provideSchoolsToHideFrom == 'No' %}
-  {% set itsYes = '' %}
-  {% set itsNo = 'true' %}
-{% endif %}
+{% set title = 'Do you want to hide your profile from all schools within Royal Academy Trust, 50 Lawrence Street NW7 4YK?' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -28,7 +20,7 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          name: "profile[provideSchoolsToHideFrom]",
+          name: "profile[hideFromTrusts]",
           fieldset: {
             legend: {
               text: title,
@@ -39,13 +31,11 @@
           items: [
             {
               value: "Yes",
-              text: "Yes",
-              checked: itsYes
+              text: "Yes"
             },
             {
-              value: "No",
-              text: "No",
-              checked: itsNo
+              value: "No, just the trust head office",
+              text: "No, just the trust head office"
             }
           ]
         }) }}

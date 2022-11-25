@@ -3,13 +3,12 @@
 {% set primaryNavId = 'profile' %}
 
 {% if user.profile.hiddenPlaces | length %}
-  {% set question = 'Do you want to add another school?' %}
+  {% set question = 'Do you want to add another school or trust?' %}
 {% else %}
-  {% set question = 'Do you want to add a school?' %}
+  {% set question = 'Do you want to add a school or trust?' %}
 {% endif %}
 
-
-{% set title = 'Hide profile from schools' %}
+{% set title = 'Hide profile from schools or trusts' %}
 
 {% set countOfSchool = 1 %}
 

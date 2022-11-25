@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Hide profile from schools' %}
+{% set title = 'Hide profile from schools and trusts' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -30,14 +30,14 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Do you want to hide your profile from a school?
+            Do you want to hide your profile from a school or trust?
           </dt>
           <dd class="govuk-summary-list__value">
             {{profile.provideSchoolsToHideFrom}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/profile/hide-profile/">
-              Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
+              Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school or trust?</span>
             </a>
           </dd>
         </div>

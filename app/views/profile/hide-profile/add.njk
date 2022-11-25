@@ -18,23 +18,22 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-xl">
-        Hide profile from schools
+        Hide profile from schools or trusts
       </span>
 
       <form method="post" novalidate>
-
 
         <div class="govuk-form-group">
 
           <h1 class="govuk-label-wrapper">
             <label class="govuk-label govuk-label--l" for="hideSelect">
-              Name of school
+              Name of school or trust
             </label>
           </h1>
 
           <div class="autocomplete-wrapper govuk-!-margin-top-3" data-chosen="{% if user.profile.hiddenPlaces | length %}{{hiddenPlace}}{% endif %}">
             <div id="school-hint" class="govuk-hint">
-             Enter the name or address of the school
+              Enter the name or address of the school or trust
             </div>
             <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]" aria-describedby="school-hint">
               <option value="">Select a school</option>

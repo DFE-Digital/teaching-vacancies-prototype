@@ -32,6 +32,7 @@ module.exports = router => {
     res.render('profile/hide-profile/add', {
       organisations
     })
+
   })
 
   router.post('/profile/hide-profile/add', (req, res) => {
@@ -42,7 +43,15 @@ module.exports = router => {
     }
 
     req.session.user.profile.hiddenPlaces[hiddenPlace.id] = hiddenPlace
-    res.redirect('/profile/hide-profile/schools')
+
+    let typeOfSchool = req.body.profile.hiddenPlace
+
+    if(typeOfSchool.indexOf("Trust") >= 0){
+      res.redirect('/profile/hide-profile/trusts')
+    }else{
+      res.redirect('/profile/hide-profile/schools')
+    }
+
   })
 
   //index
@@ -160,6 +169,24 @@ module.exports = router => {
 
 
     res.redirect(`/profile/hide-profile/schools`)
+  })
+
+  //trusts
+
+  router.get('/profile/hide-profile/trusts', (req, res) => {
+    let organisations = req.session.data.organisations
+
+    let hiddenPlace = _.get(req, 'session.data.profile.hiddenPlace')
+
+    res.render('profile/hide-profile/trusts', {
+      hiddenPlace,
+      organisations
+    })
+  })
+
+  router.post('/profile/hide-profile/trusts', (req, res) => {
+
+    res.redirect('/profile/hide-profile/schools')
   })
 
 }

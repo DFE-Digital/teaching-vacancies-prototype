@@ -602,12 +602,12 @@
 
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Hide profile from schools
+          Hide profile from schools or trusts
         </h2>
 
         {% if user.profile.provideSchoolsToHideFrom == 'Yes'  %}
           <p>
-            <a href="/profile/hide-profile/">Add a school</a>
+            <a href="/profile/hide-profile/">Add a school or trust</a>
           </p>
         {% elseif user.profile.provideSchoolsToHideFrom %}
 
@@ -623,14 +623,14 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want to hide your profile from a school?
+              Do you want to hide your profile from a school or trust?
             </dt>
             <dd class="govuk-summary-list__value">
               {{user.profile.provideSchoolsToHideFrom}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/profile/hide-profile/">
-                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school?</span>
+                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school or trust?</span>
               </a>
             </dd>
           </div>
