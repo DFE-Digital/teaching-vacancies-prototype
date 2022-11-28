@@ -205,6 +205,16 @@ const generateUsers = () => {
     }
   }))
 
+  let ernestQualifications = {}
+
+  let ernestQual1 = { id: uuidv4(), type: 'A level', subject: 'Maths', grade: 'C', year: '2015', organisation: 'Bushey Meads School' }
+  let ernestQual2 = { id: uuidv4(), type: 'A level', subject: 'English', grade: 'A', year: '2015', organisation: 'Bushey Meads School' }
+  let ernestQual3 = { id: uuidv4(), type: 'A level', subject: 'Science', grade: 'B', year: '2013', organisation: 'Aldenham College' }
+
+  ernestQualifications[ernestQual1.id] = ernestQual1
+  ernestQualifications[ernestQual2.id] = ernestQual2
+  ernestQualifications[ernestQual3.id] = ernestQual3
+
   users.push(generateUser({
     emailAddress: 'ernest.hemingway@hotmail.com',
     profile: {
@@ -221,9 +231,9 @@ const generateUsers = () => {
       locations: null,
       qts: 'Yes',
       qtsAwardedYear: '2020',
-      qualifications: rachaelQualifications,
+      qualifications: ernestQualifications,
       workHistory,
-      about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.',
+      about: null,
       previousApplication: 'Yes'
     }
   }))
