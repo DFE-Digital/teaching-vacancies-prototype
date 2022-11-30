@@ -62,6 +62,47 @@
 
           {% endset %}
 
+          {% set fullAddress %}
+
+            <p>
+              {% if user.profile.address1 | length %}{{user.profile.address1}}, {% endif %}
+              {% if user.profile.address2 | length %}{{user.profile.address2}}, {% endif %}
+              {% if user.profile.addressTown | length %}{{user.profile.addressTown}}, {% endif %}
+              {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}}, {% endif %}
+              {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}}{% endif %}
+            </p>
+
+            {{govukTag({
+              text: "only visible to you",
+              classes: "govuk-tag--grey"
+            })}}
+
+          {% endset %}
+
+          {% set fullTRN %}
+
+            <p>
+              {{user.profile.TRN}}
+            </p>
+            {{govukTag({
+              text: "only visible to you",
+              classes: "govuk-tag--grey"
+            })}}
+
+          {% endset %}
+
+          {% set fullNI %}
+
+            <p>
+              {{user.profile.NI}}
+            </p>
+            {{govukTag({
+              text: "only visible to you",
+              classes: "govuk-tag--grey"
+            })}}
+
+          {% endset %}
+
           {% if personalDetailsIncomplete %}
             <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsPersonalDetailsIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
@@ -143,7 +184,109 @@
                     }
                   ]
                 }
-              } if user.profile.providePhoneNumber == 'Yes'
+              } if user.profile.providePhoneNumber == 'Yes',
+              {
+                key: {
+                  text: "Do you want to provide an address?"
+                },
+                value: {
+                  text: user.profile.provideAddress
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/address",
+                      text: "Change",
+                      visuallyHiddenText: "if you want to provide an address"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Address"
+                },
+                value: {
+                  html: fullAddress
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/address-details",
+                      text: "Change",
+                      visuallyHiddenText: "Address"
+                    }
+                  ]
+                }
+              } if user.profile.provideAddress == 'Yes',
+              {
+                key: {
+                  text: "Do you want to provide your Teacher reference number (TRN)?"
+                },
+                value: {
+                  text: user.profile.provideTRN
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/trn",
+                      text: "Change",
+                      visuallyHiddenText: "if you want to provide your TRN"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Teacher reference number (TRN)"
+                },
+                value: {
+                  html: fullTRN
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/trn",
+                      text: "Change",
+                      visuallyHiddenText: "Teacher reference number (TRN)"
+                    }
+                  ]
+                }
+              } if user.profile.provideTRN == 'Yes',
+              {
+                key: {
+                  text: "Do you want to provide your National Insurance number?"
+                },
+                value: {
+                  text: user.profile.provideNI
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/ni",
+                      text: "Change",
+                      visuallyHiddenText: "if you want to provide your National Insurance number?"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "National Insurance number"
+                },
+                value: {
+                  html: fullNI
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/ni",
+                      text: "Change",
+                      visuallyHiddenText: "National Insurance number"
+                    }
+                  ]
+                }
+              } if user.profile.provideNI == 'Yes'
             ]
           }) }}
 

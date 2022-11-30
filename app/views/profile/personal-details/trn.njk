@@ -1,0 +1,86 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to provide your Teacher reference number (TRN)?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{title}}
+              </h1>
+            </legend>
+
+            {{ govukInsetText({
+              text: "Your Teacher reference number (TRN) will not be visible on your profile. It will only be used when applying for roles."
+            }) }}
+
+            <div class="govuk-radios" data-module="govuk-radios">
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="profile[provideTRN]" name="profile[provideTRN]" type="radio" value="Yes" data-aria-controls="conditional-trn">
+                <label class="govuk-label govuk-radios__label" for="profile[provideTRN]">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-trn">
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="profile[TRN]">
+                    Teacher reference number (TRN)
+                  </label>
+                  <div class="govuk-hint" id="teacher-reference-number-hint">
+                    You can <a href="https://find-a-lost-trn.education.gov.uk/start" target="_blank">find your TRN (opens in new tab)</a> if you cannot remember it, or want to check it.
+                  </div>
+                  <input class="govuk-input govuk-input--width-20" id="profile[TRN]" name="profile[TRN]" type="text" aria-describedby="teacher-reference-number-hint">
+                </div>
+
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="profile[provideTRN]-2" name="profile[provideTRN]" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="profile[provideTRN]-2">
+                  No
+                </label>
+              </div>
+
+
+            </div>
+          </fieldset>
+        </div>
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

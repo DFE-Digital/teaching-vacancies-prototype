@@ -1,0 +1,86 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to provide your National Insurance number?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{title}}
+              </h1>
+            </legend>
+
+            {{ govukInsetText({
+              text: "Your National Insurance number will not be visible on your profile. It will only be used when applying for roles."
+            }) }}
+
+            <div class="govuk-radios" data-module="govuk-radios">
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="profile[provideNI]" name="profile[provideNI]" type="radio" value="Yes" data-aria-controls="conditional-ni">
+                <label class="govuk-label govuk-radios__label" for="profile[provideNI]">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ni">
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label--s" for="profile[NI]">
+                    National Insurance number
+                  </label>
+                  <div class="govuk-hint" id="ni-hint">
+                    If you have a National Insurance number you should enter it here. It's on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+                  </div>
+                  <input class="govuk-input govuk-input--width-20" id="profile[NI]" name="profile[NI]" type="text" aria-describedby="ni-hint">
+                </div>
+
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="profile[provideNI]-2" name="profile[provideNI]" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="profile[provideNI]-2">
+                  No
+                </label>
+              </div>
+
+
+            </div>
+          </fieldset>
+        </div>
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
