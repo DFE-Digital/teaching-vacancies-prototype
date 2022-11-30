@@ -79,18 +79,6 @@
 
           {% endset %}
 
-          {% set fullTRN %}
-
-            <p>
-              {{user.profile.TRN}}
-            </p>
-            {{govukTag({
-              text: "only visible to you",
-              classes: "govuk-tag--grey"
-            })}}
-
-          {% endset %}
-
           {% set fullNI %}
 
             <p>
@@ -215,57 +203,6 @@
                       href: "/profile/personal-details/address-details",
                       text: "Change",
                       visuallyHiddenText: "Address"
-                    }
-                  ]
-                }
-              } if user.profile.provideAddress == 'Yes',
-              {
-                key: {
-                  text: "Do you want to provide your Teacher reference number (TRN)?"
-                },
-                value: {
-                  text: user.profile.provideTRN
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/personal-details/trn",
-                      text: "Change",
-                      visuallyHiddenText: "if you want to provide your TRN"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Teacher reference number (TRN)"
-                },
-                value: {
-                  html: fullTRN
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/personal-details/trn",
-                      text: "Change",
-                      visuallyHiddenText: "Teacher reference number (TRN)"
-                    }
-                  ]
-                }
-              } if user.profile.provideTRN == 'Yes',
-              {
-                key: {
-                  text: "Do you want to provide your National Insurance number?"
-                },
-                value: {
-                  text: user.profile.provideNI
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/personal-details/ni",
-                      text: "Change",
-                      visuallyHiddenText: "if you want to provide your National Insurance number?"
                     }
                   ]
                 }
@@ -488,7 +425,21 @@
           Qualified teaching status (QTS)
         </h2>
 
+        {% set fullTRN %}
+
+          <p>
+            {{user.profile.TRN}}
+          </p>
+          {{govukTag({
+            text: "only visible to you",
+            classes: "govuk-tag--grey"
+          })}}
+
+        {% endset %}
+
+
         {% if user.profile.qts %}
+
           {{ govukSummaryList({
           rows: [
             {
@@ -524,7 +475,41 @@
                   }
                 ]
               }
-            } if user.profile.qtsAwardedYear
+            } if user.profile.qtsAwardedYear,
+            {
+              key: {
+                text: "Do you want to provide your Teacher reference number (TRN)?"
+              },
+              value: {
+                text: user.profile.provideTRN
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/trn",
+                    text: "Change",
+                    visuallyHiddenText: "if you want to provide your TRN"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                html: fullTRN
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/trn",
+                    text: "Change",
+                    visuallyHiddenText: "Teacher reference number (TRN)"
+                  }
+                ]
+              }
+            } if user.profile.provideTRN == 'Yes'
           ]
         }) }}
         {% else %}

@@ -102,33 +102,6 @@ module.exports = router => {
     req.session.user.profile.addressTown = req.body.profile.addressTown
     req.session.user.profile.addressCounty = req.body.profile.addressCounty
     req.session.user.profile.addressPostcode = req.body.profile.addressPostcode
-    res.redirect('/profile/personal-details/trn')
-  })
-
-  //TRN details
-
-  router.get('/profile/personal-details/trn', (req, res) => {
-    let trnNumber = req.session.user.profile.TRN
-
-    let options = [{
-      value: 'Yes',
-      text: 'Yes',
-      checked: req.session.user.profile.provideTRN == 'Yes'
-    }, {
-      value: 'No',
-      text: 'No',
-      checked: req.session.user.profile.provideTRN == 'No'
-    }]
-
-    res.render('profile/personal-details/trn', {
-      options,
-      trnNumber
-    })
-  })
-
-  router.post('/profile/personal-details/trn', (req, res) => {
-    req.session.user.profile.provideTRN = req.body.profile.provideTRN
-    req.session.user.profile.TRN = req.body.profile.TRN
     res.redirect('/profile/personal-details/ni')
   })
 

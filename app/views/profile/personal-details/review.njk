@@ -157,40 +157,6 @@
           } if profile.provideAddress == 'Yes',
           {
             key: {
-              text: "Do you want to provide your Teacher reference number (TRN)?"
-            },
-            value: {
-              text: profile.provideTRN
-            },
-            actions: {
-              items: [
-                {
-                  href: "/profile/personal-details/trn",
-                  text: "Change",
-                  visuallyHiddenText: "if you want to provide your TRN"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Teacher reference number (TRN)"
-            },
-            value: {
-              text: profile.TRN
-            },
-            actions: {
-              items: [
-                {
-                  href: "/profile/personal-details/trn",
-                  text: "Change",
-                  visuallyHiddenText: "Teacher reference number (TRN)"
-                }
-              ]
-            }
-          } if profile.provideTRN == 'Yes',
-          {
-            key: {
               text: "Do you want to provide your National Insurance number?"
             },
             value: {
