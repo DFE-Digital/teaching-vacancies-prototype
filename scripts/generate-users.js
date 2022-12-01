@@ -60,6 +60,9 @@ const generateUser = (params = {}) => {
   // Previous Application
   user.profile.previousApplication = _.get(params, 'profile.previousApplication') || {}
 
+  // References
+  user.profile.references = _.get(params, 'profile.references') || {}
+
   return user
 }
 
@@ -176,6 +179,19 @@ const generateUsers = () => {
 
   hiddenPlaces[h1.id] = h1
 
+  let references = {}
+
+  let ref1 = {
+    id: uuidv4(),
+    referenceName: 'Agatha Trunchbull',
+    referenceTitle: 'Headmaster',
+    referenceOrganisation: 'Crunchem Hall Primary School ',
+    referenceEmail: 'agatha.trunchball@crunchemschool.com',
+    referenceNumber: '0115 918385939',
+  }
+
+  references[ref1.id] = ref1
+
   users.push(generateUser({
     emailAddress: 'adam@example.com',
     profile: {
@@ -201,7 +217,8 @@ const generateUsers = () => {
       about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.',
       previousApplication: 'No',
       provideSchoolsToHideFrom: 'Yes',
-      hiddenPlaces
+      hiddenPlaces,
+      references
     }
   }))
 
