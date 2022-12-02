@@ -25,6 +25,21 @@
 
       <form method="post" novalidate>
 
+        {% set trn_container %}
+          {{ govukInput({
+            id: "profile[TRN]",
+            name: "profile[TRN]",
+            label: {
+              text: "Teacher reference number (TRN)",
+              classes: 'govuk-label--s'
+            },
+            type: number,
+            classes: "govuk-input--width-20",
+            value: user.profile.TRN
+          }) }}
+        {% endset %}
+
+
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -37,34 +52,23 @@
               Your Teacher reference number (TRN) will not be visible on your profile. Schools can only see it if you apply for a role. You can locate a lost TRN using the <a href="#">Find a lost TRN</a> service.
             </div>
 
-            <div class="govuk-radios" data-module="govuk-radios">
+            {{ govukRadios({
+              idPrefix: "profile[provideTRN]",
+              name: "profile[provideTRN]",
+              items: [{
+                value: options[0].value,
+                text: options[0].text,
+                checked: options[0].checked,
+                conditional: {
+                  html: trn_container
+                }
+              }, {
+                value: options[1].value,
+                text: options[1].text,
+                checked: options[1].checked
+              }]
+            }) }}
 
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="profile[provideTRN]" name="profile[provideTRN]" type="radio" value="Yes" data-aria-controls="conditional-trn">
-                <label class="govuk-label govuk-radios__label" for="profile[provideTRN]">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-trn">
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-label--s" for="profile[TRN]">
-                    Teacher reference number (TRN)
-                  </label>
-                  <input class="govuk-input govuk-input--width-20" id="profile[TRN]" name="profile[TRN]" type="text" >
-                </div>
-
-              </div>
-
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="profile[provideTRN]-2" name="profile[provideTRN]" type="radio" value="No">
-                <label class="govuk-label govuk-radios__label" for="profile[provideTRN]-2">
-                  No
-                </label>
-              </div>
-
-
-            </div>
           </fieldset>
         </div>
 

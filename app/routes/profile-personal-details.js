@@ -49,6 +49,7 @@ module.exports = router => {
   //address
 
   router.get('/profile/personal-details/address', (req, res) => {
+    let provideAddress = req.session.user.profile.provideAddress
 
     let options = [{
       value: 'Yes',
@@ -61,6 +62,7 @@ module.exports = router => {
     }]
 
     res.render('profile/personal-details/address', {
+      provideAddress,
       options
     })
   })

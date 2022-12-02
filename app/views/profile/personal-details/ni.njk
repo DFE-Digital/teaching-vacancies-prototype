@@ -25,6 +25,26 @@
 
       <form method="post" novalidate>
 
+        {% set ni_container %}
+          {{ govukInput({
+            id: "profile[NI]",
+            name: "profile[NI]",
+            label: {
+              text: "National Insurance number",
+              classes: 'govuk-label--s'
+            },
+            type: "number",
+            classes: "govuk-input--width-20",
+            value: user.profile.NI
+          }) }}
+        {% endset %}
+
+        {% set ni_hint_container %}
+          <div class="govuk-hint" id="ni-hint">
+            If you have a National Insurance number you should enter it here. It's on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+          </div>
+        {% endset %}
+
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -37,37 +57,28 @@
               text: "Your National Insurance number will not be visible on your profile. Schools can only see it if you apply for a role."
             }) }}
 
-            <div class="govuk-radios" data-module="govuk-radios">
-
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="profile[provideNI]" name="profile[provideNI]" type="radio" value="Yes" data-aria-controls="conditional-ni">
-                <label class="govuk-label govuk-radios__label" for="profile[provideNI]">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ni">
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-label--s" for="profile[NI]">
-                    National Insurance number
-                  </label>
-                  <div class="govuk-hint" id="ni-hint">
-                    If you have a National Insurance number you should enter it here. It's on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-                  </div>
-                  <input class="govuk-input govuk-input--width-20" id="profile[NI]" name="profile[NI]" type="text" aria-describedby="ni-hint">
-                </div>
-
-              </div>
-
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="profile[provideNI]-2" name="profile[provideNI]" type="radio" value="No">
-                <label class="govuk-label govuk-radios__label" for="profile[provideNI]-2">
-                  No
-                </label>
-              </div>
+            {{ govukRadios({
+              idPrefix: "profile[provideNI]",
+              name: "profile[provideNI]",
+              hint: {
+                html: ni_hint_container
+              },
+              items: [{
+                value: options[0].value,
+                text: options[0].text,
+                checked: options[0].checked,
+                conditional: {
+                  html: ni_container
+                }
+              }, {
+                value: options[1].value,
+                text: options[1].text,
+                checked: options[1].checked
+              }]
+            }) }}
 
 
-            </div>
+
           </fieldset>
         </div>
 

@@ -37,25 +37,22 @@
               text: "Your address will not be visible on your profile. Schools can only see it if you apply for a role."
             }) }}
 
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="profile[provideAddress]" name="profile[provideAddress]" type="radio" value="Yes">
-                <label class="govuk-label govuk-radios__label" for="profile[provideAddress]">
-                  Yes
-                </label>
-              </div>
+            {{ govukRadios({
+              idPrefix: "profile[provideAddress]",
+              name: "profile[provideAddress]",
+              items: [{
+                value: options[0].value,
+                text: options[0].text,
+                checked: options[0].checked
+              }, {
+                value: options[1].value,
+                text: options[1].text,
+                checked: options[1].checked
+              }]
+            }) }}
 
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="profile[provideAddress]-2" name="profile[provideAddress]" type="radio" value="No">
-                <label class="govuk-label govuk-radios__label" for="profile[provideAddress]-2">
-                  No
-                </label>
-              </div>
-
-            </div>
           </fieldset>
         </div>
-
 
         {{ govukButton({
           text: "Save and continue"
