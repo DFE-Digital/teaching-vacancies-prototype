@@ -266,7 +266,13 @@ const generateUsers = () => {
       previousApplication: 'No',
       provideSchoolsToHideFrom: 'Yes',
       hiddenPlaces,
-      references
+      references,
+      disability: 'No',
+      age: '30 to 39',
+      gender: 'Man',
+      orientation: '30 to 39',
+      ethnicGroup: 'Mixed or multiple ethnic group',
+      religion: 'Buddhist'
     }
   }))
 
@@ -310,7 +316,13 @@ const generateUsers = () => {
       workHistory,
       about: null,
       previousApplication: 'Yes',
-      references
+      references,
+      disability: 'No',
+      age: '30 to 39',
+      gender: 'Man',
+      orientation: '30 to 39',
+      ethnicGroup: 'Mixed or multiple ethnic group',
+      religion: 'Buddhist'
     }
   }))
 

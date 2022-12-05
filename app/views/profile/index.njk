@@ -189,7 +189,7 @@
                     }
                   ]
                 }
-              },
+              } if user.profile.provideAddress == 'Yes',
               {
                 key: {
                   text: "Address"
@@ -903,17 +903,6 @@
 
         {% if user.profile.disability %}
 
-        {% else %}
-
-          <p>
-            This will not be visible on your profile or be used as part of applications. It will only be used anonymously to monitor the inclusivity of the shortlisting process.
-          </p>
-
-          <p><a class="govuk-link--no-visited-state" href="/profile/equal-opportunities/disability">Add identity information</a></p>
-
-        {% endif %}
-
-
         {{ govukSummaryList({
           rows: [
             {
@@ -932,7 +921,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.disability,
             {
               key: {
                 text: "How old are you?"
@@ -949,7 +938,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.age,
             {
               key: {
                 text: "How would you describe your gender?"
@@ -966,7 +955,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.gender,
             {
               key: {
                 text: "How would you describe your sexual orientation?"
@@ -983,7 +972,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.orientation,
             {
               key: {
                 text: "What is your ethnic group?"
@@ -1000,7 +989,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.ethnicGroup,
             {
               key: {
                 text: "What is your religion or belief?"
@@ -1017,9 +1006,22 @@
                   }
                 ]
               }
-            }
+            } if user.profile.religion
           ]
         }) }}
+
+        {% else %}
+
+          <p>
+            This will not be visible on your profile or be used as part of applications. It will only be used anonymously to monitor the inclusivity of the shortlisting process.
+          </p>
+
+          <p><a class="govuk-link--no-visited-state" href="/profile/equal-opportunities/disability">Add identity information</a></p>
+
+        {% endif %}
+
+
+
 
 
       </div>
