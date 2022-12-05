@@ -11,6 +11,19 @@
 
 {% block content %}
 
+  <div id="govuk-error-summary" style="display:none;" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="#error">Select yes if you consider yourself to have a disability as defined by the Equality Act 2010</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -18,7 +31,7 @@
         Equal opportunities and recruitment monitoring
       </span>
 
-      <form method="post" novalidate>
+      <form id="data-form" method="post" novalidate>
 
         {{ govukRadios({
           id: "profile[disability]",
