@@ -73,6 +73,14 @@ const generateUser = (params = {}) => {
   // References
   user.profile.references = _.get(params, 'profile.references') || {}
 
+  // Equal opportunities
+  user.profile.disability = _.get(params, 'profile.disability')
+  user.profile.age = _.get(params, 'profile.age')
+  user.profile.gender = _.get(params, 'profile.gender')
+  user.profile.orientation = _.get(params, 'profile.orientation')
+  user.profile.ethnicGroup = _.get(params, 'profile.ethnicGroup')
+  user.profile.religion = _.get(params, 'profile.religion')
+
   return user
 }
 

@@ -1,0 +1,65 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Equal opportunities and recruitment monitoring
+      </span>
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          id: "profile[disability]",
+          name: "profile[disability]",
+          fieldset: {
+            legend: {
+              text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [{
+            value: options[0].value,
+            text: options[0].text,
+            checked: options[0].checked
+          },
+          {
+            value: options[1].value,
+            text: options[1].text,
+            checked: options[1].checked
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: options[2].value,
+            text: options[2].text,
+            checked: options[2].checked
+          }]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

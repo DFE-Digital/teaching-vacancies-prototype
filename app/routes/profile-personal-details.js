@@ -74,7 +74,7 @@ module.exports = router => {
     if(addressChoice == 'Yes'){
       res.redirect('/profile/personal-details/address-details')
     }else{
-      res.redirect('/profile/personal-details/trn')
+      res.redirect('/profile/personal-details/ni')
     }
 
   })

@@ -206,7 +206,7 @@
                     }
                   ]
                 }
-              },
+              } if user.profile.provideAddress == 'Yes',
               {
                 key: {
                   text: "National Insurance number"
@@ -516,6 +516,10 @@
           <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
         {% endif %}
       </div>
+
+
+
+
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
@@ -879,6 +883,149 @@
           </dl>
         {% endif %}
       </div>
+
+
+
+
+
+
+      <div class="app-profile__section">
+
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Equal opportunities and recruitment monitoring
+
+          {{govukTag({
+            text: "only visible to you",
+            classes: "govuk-tag--grey"
+          })}}
+        </h2>
+
+        {% if user.profile.disability %}
+
+        {% else %}
+
+          <p>
+            This will not be visible on your profile or be used as part of applications. It will only be used anonymously to monitor the inclusivity of the shortlisting process.
+          </p>
+
+          <p><a class="govuk-link--no-visited-state" href="/profile/equal-opportunities/disability">Add identity information</a></p>
+
+        {% endif %}
+
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?"
+              },
+              value: {
+                text: user.profile.disability
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/disability",
+                    text: "Change",
+                    visuallyHiddenText: "disability preference"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How old are you?"
+              },
+              value: {
+                text: user.profile.age
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/age",
+                    text: "Change",
+                    visuallyHiddenText: "age"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How would you describe your gender?"
+              },
+              value: {
+                text: user.profile.gender
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/gender",
+                    text: "Change",
+                    visuallyHiddenText: "gender"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How would you describe your sexual orientation?"
+              },
+              value: {
+                text: user.profile.orientation
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/orientation",
+                    text: "Change",
+                    visuallyHiddenText: "sexual orientation"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "What is your ethnic group?"
+              },
+              value: {
+                text: user.profile.ethnicGroup
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/ethnic-group",
+                    text: "Change",
+                    visuallyHiddenText: "ethnic group"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "What is your religion or belief?"
+              },
+              value: {
+                text: user.profile.religion
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/religion",
+                    text: "Change",
+                    visuallyHiddenText: "religion"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+
+      </div>
+
+
+
 
 
 
