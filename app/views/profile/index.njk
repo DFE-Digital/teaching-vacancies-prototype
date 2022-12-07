@@ -795,96 +795,6 @@
         {% endif %}
       </div>
 
-      <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Hide profile from schools or trusts
-        </h2>
-
-        {% if user.profile.provideSchoolsToHideFrom == 'Yes'  %}
-          <p>
-            <a href="/profile/hide-profile/add">Add a school or trust</a>
-          </p>
-        {% elseif user.profile.provideSchoolsToHideFrom %}
-
-        {% else %}
-          <p>
-            <a href="/profile/hide-profile/">Set up who cannot view your profile</a>
-          </p>
-        {% endif %}
-
-        {% if user.profile.provideSchoolsToHideFrom | length %}
-
-        <dl class="govuk-summary-list">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to hide your profile from a school or trust?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{user.profile.provideSchoolsToHideFrom}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/profile/hide-profile/">
-                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school or trust?</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
-        {% for id, hiddenPlace in user.profile.hiddenPlaces %}
-
-          {% set rowloop = loop %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              School {{ loop.index }}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{hiddenPlace.hiddenPlace}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-
-              <a class="govuk-link" href="/profile/hide-profile/schools">
-                Change<span class="govuk-visually-hidden"> {{hiddenPlace.hiddenPlace}}</span>
-              </a>
-
-            </dd>
-          </div>
-
-        {% endfor %}
-
-        {% if user.profile.provideSchoolsToHideFrom == 'Yes' %}
-
-          {% if user.profile.hiddenPlaces | length %}
-
-          {% else %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              School
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Not found
-            </dd>
-            <dd class="govuk-summary-list__actions">
-
-              <a class="govuk-link" href="/profile/hide-profile/schools">
-                Change<span class="govuk-visually-hidden"></span>
-              </a>
-
-            </dd>
-          </div>
-
-          {% endif %}
-
-        {% endif %}
-
-        {% if user.profile.provideSchoolsToHideFrom | length %}
-          </dl>
-        {% endif %}
-      </div>
-
-
 
 
 
@@ -1025,6 +935,106 @@
 
 
       </div>
+
+
+
+
+
+
+      
+
+      <div class="app-profile__section">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Hide profile from schools or trusts
+        </h2>
+
+        {% if user.profile.provideSchoolsToHideFrom == 'Yes'  %}
+          <p>
+            <a href="/profile/hide-profile/add">Add a school or trust</a>
+          </p>
+        {% elseif user.profile.provideSchoolsToHideFrom %}
+
+        {% else %}
+          <p>
+            <a href="/profile/hide-profile/">Set up who cannot view your profile</a>
+          </p>
+        {% endif %}
+
+        {% if user.profile.provideSchoolsToHideFrom | length %}
+
+        <dl class="govuk-summary-list">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to hide your profile from a school or trust?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{user.profile.provideSchoolsToHideFrom}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/profile/hide-profile/">
+                Change<span class="govuk-visually-hidden"> do you want to hide your profile from a school or trust?</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+
+          {% set rowloop = loop %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School {{ loop.index }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{hiddenPlace.hiddenPlace}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              <a class="govuk-link" href="/profile/hide-profile/schools">
+                Change<span class="govuk-visually-hidden"> {{hiddenPlace.hiddenPlace}}</span>
+              </a>
+
+            </dd>
+          </div>
+
+        {% endfor %}
+
+        {% if user.profile.provideSchoolsToHideFrom == 'Yes' %}
+
+          {% if user.profile.hiddenPlaces | length %}
+
+          {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not found
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              <a class="govuk-link" href="/profile/hide-profile/schools">
+                Change<span class="govuk-visually-hidden"></span>
+              </a>
+
+            </dd>
+          </div>
+
+          {% endif %}
+
+        {% endif %}
+
+        {% if user.profile.provideSchoolsToHideFrom | length %}
+          </dl>
+        {% endif %}
+      </div>
+
+
+
+
 
 
 
