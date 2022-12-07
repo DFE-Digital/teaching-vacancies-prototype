@@ -318,11 +318,11 @@ const generateUsers = () => {
       previousApplication: 'Yes',
       references,
       disability: 'No',
-      age: '30 to 39',
+      age: '60 and over',
       gender: 'Man',
-      orientation: '30 to 39',
-      ethnicGroup: 'Mixed or multiple ethnic group',
-      religion: 'Buddhist'
+      orientation: 'Prefer not to say',
+      ethnicGroup: 'Prefer not to say',
+      religion: 'Prefer not to say'
     }
   }))
 
