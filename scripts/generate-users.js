@@ -270,7 +270,7 @@ const generateUsers = () => {
       disability: 'No',
       age: '30 to 39',
       gender: 'Man',
-      orientation: '30 to 39',
+      orientation: 'Prefer not to say',
       ethnicGroup: 'Mixed or multiple ethnic group',
       religion: 'Buddhist'
     }
