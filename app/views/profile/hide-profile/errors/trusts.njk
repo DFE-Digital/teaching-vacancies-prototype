@@ -1,0 +1,66 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to hide your profile from all schools within Royal Academy Trust?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukErrorSummary({
+titleText: "There is a problem",
+errorList: [
+  {
+    text: "Select Yes if you want to hide your profile from all schools within Royal Academy Trust",
+    href: "#profile[firstName]"
+  }
+]
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "profile[hideFromTrusts]",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          errorMessage: {
+            text: "Select Yes if you want to hide your profile from all schools within Royal Academy Trust"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No, just the trust head office",
+              text: "No, just the trust head office"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
