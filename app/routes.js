@@ -21,8 +21,12 @@ require('./routes/profile-qualifications')(router)
 require('./routes/profile-work-history')(router)
 require('./routes/profile-about')(router)
 require('./routes/profile-hide-profile')(router)
+<<<<<<< HEAD
 require('./routes/profile-references')(router)
 require('./routes/profile-equality')(router)
+=======
+require('./routes/profile-errors')(router)
+>>>>>>> main
 
 require('./routes/jobs')(router)
 require('./routes/schools')(router)

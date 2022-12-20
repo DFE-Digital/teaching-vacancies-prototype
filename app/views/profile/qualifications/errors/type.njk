@@ -14,6 +14,17 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+titleText: "There is a problem",
+errorList: [
+  {
+    text: "Select a type of qualification",
+    href: "#profile[qualifications]"
+  }
+]
+}) }}
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
