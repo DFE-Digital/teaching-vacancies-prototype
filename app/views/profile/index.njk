@@ -713,16 +713,10 @@
         </h2>
 
         <p>
-          You do not need to provide more than two references.
+          Your references will not be visible on your profile. Your references will only be used when you apply for a role.
         </p>
 
-        {% if (user.profile.references | length) >= 2 %}
-
-        {% else %}
-
-          <p><a class="govuk-link--no-visited-state" href="/profile/references/index">Add reference</a></p>
-
-        {% endif %}
+        <p><a class="govuk-link--no-visited-state" href="/profile/references/index">Add reference</a></p>
 
         {% if user.profile.references | length %}
           <div class="app-list">
@@ -941,7 +935,7 @@
 
 
 
-      
+
 
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">

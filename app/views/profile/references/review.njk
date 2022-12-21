@@ -30,17 +30,11 @@
         References must include your current or recent employer. If you have recently left school or further education, this must be your headteacher or course leader. You do not need to provide more than two references.
       </p>
 
-      {% if (user.profile.references | length) >= 2 %}
-
-      {% else %}
-
-        {{ govukButton({
-          text: "Add reference",
-          classes: 'govuk-button--secondary',
-          href: '/profile/references/second-reference'
-        }) }}
-
-      {% endif %}
+      {{ govukButton({
+        text: "Add reference",
+        classes: 'govuk-button--secondary',
+        href: '/profile/references/second-reference'
+      }) }}
 
       <div class="app-list">
 
