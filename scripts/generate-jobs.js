@@ -194,7 +194,6 @@ const generateJobs = () => {
     phase: 'Secondary school',
     keyStages: keyStages = ['Key stage 3','Key stage 4'],
     subjects: subjects = ['Biology','Chemistry'],
-    organisation: organisations.find(school => school.name == 'Courtland Primary School'),
     isUsingApplicationForm: 'Yes',
     hasSafeguardingCommitment: 'Yes',
     hasFurtherDetailsAboutTheRole: 'Yes'
