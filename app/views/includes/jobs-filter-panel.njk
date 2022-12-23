@@ -34,6 +34,7 @@
 
   {% if user.profile.subjects %}
     {% set userSubjects =  user.profile.subjects %}
+    {% set userSubjects = userSubjects | string %}
   {% else %}
     {% set userSubjects = '' %}
   {% endif %}
@@ -366,22 +367,94 @@
     </div>
   </div>
   <div class="app-filter__content">
-    {% if selectedFilters %}
+    {% if user %}
       <div class="app-filter__selected">
-        <div class="app-filter__selected-heading">
-          <div class="app-filter__heading-title">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
-            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/applications/remove-all-filters">Clear filters</a></p>
-          </div>
-        </div>
-        {% for category in selectedFilters.categories %}
-          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
-          <ul class="app-filter-tags">
-            {% for item in category.items %}
-              <li><a class="app-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
-            {% endfor %}
-          </ul>
-        {% endfor %}
+
+
+        <div class="filters-component__remove">
+
+      		<div class="filters-component__remove__heading">
+      			<div class="govuk-body filters-component__remove__heading-title govuk-!-margin-bottom-0">
+      				Selected filters
+      			</div><a class="govuk-link" href="/jobs?skip_strip_checkboxes=true">Clear filters</a>
+      		</div>
+
+      		<div class="filters-component__remove-groups">
+
+            {% if user.profile.roles %}
+            <div class="filters-component__remove-group">
+              <h4 class="govuk-heading-s">Job role</h4>
+              <ul class="filters-component__remove-tags">
+
+                {% for role in user.profile.roles %}
+        					<li>
+        						<a class="govuk-link govuk-link--no-underline govuk-link--text-colour filters-component__remove-tags__tag icon icon--left icon--cross" href="#"><span class="govuk-visually-hidden">Remove this filter</span>{{role}}</a>
+        					</li>
+                {% endfor %}
+
+              </ul>
+            </div>
+            {% endif %}
+
+              <!-- // roles -->
+
+            {% if user.profile.subjects %}
+              {% set userSubjects =  user.profile.subjects %}
+              {% set userSubjects = userSubjects | string %}
+
+              <div class="filters-component__remove-group">
+                <h4 class="govuk-heading-s">Subjects</h4>
+                <ul class="filters-component__remove-tags">
+
+                {% set list1 = userSubjects.split(',') %}
+
+                {% for item in list1 %}
+        					<li>
+        						<a class="govuk-link govuk-link--no-underline govuk-link--text-colour filters-component__remove-tags__tag icon icon--left icon--cross" href="#"><span class="govuk-visually-hidden">Remove this filter</span>{{item}}</a>
+        					</li>
+                {% endfor %}
+
+                </ul>
+              </div>
+            {% endif %}
+
+            <!-- // subjects -->
+
+            {% if user.profile.phases %}
+            <div class="filters-component__remove-group">
+              <h4 class="govuk-heading-s">Education phase</h4>
+              <ul class="filters-component__remove-tags">
+
+                {% for role in user.profile.phases %}
+        					<li>
+        						<a class="govuk-link govuk-link--no-underline govuk-link--text-colour filters-component__remove-tags__tag icon icon--left icon--cross" href="#"><span class="govuk-visually-hidden">Remove this filter</span>{{role}}</a>
+        					</li>
+                {% endfor %}
+
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if user.profile.workingPatterns %}
+            <div class="filters-component__remove-group">
+              <h4 class="govuk-heading-s">Working pattern</h4>
+              <ul class="filters-component__remove-tags">
+
+                {% for role in user.profile.workingPatterns %}
+        					<li>
+        						<a class="govuk-link govuk-link--no-underline govuk-link--text-colour filters-component__remove-tags__tag icon icon--left icon--cross" href="#"><span class="govuk-visually-hidden">Remove this filter</span>{{role}}</a>
+        					</li>
+                {% endfor %}
+
+              </ul>
+            </div>
+            {% endif %}
+
+
+      	   </div>
+
+         </div>
+
       </div>
     {% endif %}
     <div class="app-filter__options">
