@@ -185,6 +185,19 @@ const generateJobs = () => {
     hasSafeguardingCommitment: 'Yes',
     hasFurtherDetailsAboutTheRole: 'Yes'
   }))
+  //filter example
+  jobs.push(generateJob({
+    status: 'Active',
+    title: 'Science Teacher',
+    role: 'Teacher',
+    workingPatterns: workingPatterns = ['Full time','Part time'],
+    phase: 'Secondary school',
+    keyStages: keyStages = ['Key stage 3','Key stage 4'],
+    subjects: subjects = ['Biology','Chemistry'],
+    isUsingApplicationForm: 'Yes',
+    hasSafeguardingCommitment: 'Yes',
+    hasFurtherDetailsAboutTheRole: 'Yes'
+  }))
   jobs.push(generateJob({
     status: 'Active',
     isUsingApplicationForm: 'No',
@@ -207,7 +220,6 @@ const generateJobs = () => {
   jobs.push(generateJob({ status: 'Active' }))
   jobs.push(generateJob({ status: 'Active' }))
   jobs.push(generateJob({ status: 'Active' }))
-  jobs.push(generateJob())
   jobs.push(generateJob())
   jobs.push(generateJob())
   jobs.push(generateJob())

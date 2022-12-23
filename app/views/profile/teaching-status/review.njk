@@ -57,21 +57,38 @@
             } if profile.qtsAwardedYear,
             {
               key: {
-                text: "Are you an early career teacher (ECT)?"
+                text: "Do you want to provide your Teacher reference number (TRN)?"
               },
               value: {
-                text: profile.ect
+                text: profile.provideTRN
               },
               actions: {
                 items: [
                   {
-                    href: "/profile/teaching-status/ect",
+                    href: "/profile/personal-details/trn",
                     text: "Change",
-                    visuallyHiddenText: "if you are an early career teacher (ECT)"
+                    visuallyHiddenText: "if you want to provide your TRN"
                   }
                 ]
               }
-            } if profile.ect
+            } if profile.qts !== 'No',
+            {
+              key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                text: profile.TRN
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/personal-details/trn",
+                    text: "Change",
+                    visuallyHiddenText: "Teacher reference number (TRN)"
+                  }
+                ]
+              }
+            } if profile.provideTRN == 'Yes'
           ]
         }) }}
 

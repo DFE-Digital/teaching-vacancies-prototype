@@ -13,6 +13,8 @@
   {% set title = 'Another UK qualification' %}
 {% elseif type == 'A qualification not from the UK' %}
   {% set title = 'A qualification not from the UK' %}
+{% elseif type == 'Degree' %}
+{% set title = 'Degree' %}
 {% endif %}
 
 {% block beforeContent %}

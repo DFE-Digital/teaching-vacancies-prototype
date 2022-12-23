@@ -1,0 +1,99 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to provide an address?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "What is your address?",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+          {{ govukInput({
+            label: {
+              text: 'Address line 1'
+            },
+            id: "profile[address1]",
+            name: "profile[address1]",
+            autocomplete: "address-line1",
+            value: address1
+          }) }}
+          {{ govukInput({
+            label: {
+              text: 'Address line 2 (optional)'
+            },
+            id: "profile[address2]",
+            name: "profile[address2]",
+            autocomplete: "address-line2",
+            value: address2
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "profile[addressTown]",
+            name: "profile[addressTown]",
+            autocomplete: "address-level2",
+            value: addressTown
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "County (optional)"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "profile[addressCounty]",
+            name: "profile[addressCounty]",
+            value: addressCounty
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "profile[addressPostcode]",
+            name: "profile[addressPostcode]",
+            autocomplete: "postal-code",
+            value: addressPostcode
+          }) }}
+        {% endcall %}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

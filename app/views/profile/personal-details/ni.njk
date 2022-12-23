@@ -1,0 +1,97 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to provide your National Insurance number?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate>
+
+        {% set ni_container %}
+          {{ govukInput({
+            id: "profile[NI]",
+            name: "profile[NI]",
+            label: {
+              text: "National Insurance number",
+              classes: 'govuk-label--s'
+            },
+            type: "text",
+            classes: "govuk-input--width-20",
+            value: user.profile.NI
+          }) }}
+        {% endset %}
+
+        {% set ni_hint_container %}
+          <div class="govuk-hint" id="ni-hint">
+            If you have a National Insurance number you should enter it here. It's on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+          </div>
+        {% endset %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{title}}
+              </h1>
+            </legend>
+
+            {{ govukInsetText({
+              text: "Your National Insurance number will not be visible on your profile. Schools can only see it if you apply for a role."
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: "profile[provideNI]",
+              name: "profile[provideNI]",
+              hint: {
+                html: ni_hint_container
+              },
+              items: [{
+                value: options[0].value,
+                text: options[0].text,
+                checked: options[0].checked,
+                conditional: {
+                  html: ni_container
+                }
+              }, {
+                value: options[1].value,
+                text: options[1].text,
+                checked: options[1].checked
+              }]
+            }) }}
+
+
+
+          </fieldset>
+        </div>
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

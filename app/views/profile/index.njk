@@ -62,6 +62,35 @@
 
           {% endset %}
 
+          {% set fullAddress %}
+
+            <p>
+              {% if user.profile.address1 | length %}{{user.profile.address1}}, {% endif %}
+              {% if user.profile.address2 | length %}{{user.profile.address2}}, {% endif %}
+              {% if user.profile.addressTown | length %}{{user.profile.addressTown}}, {% endif %}
+              {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}}, {% endif %}
+              {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}}{% endif %}
+            </p>
+
+            {{govukTag({
+              text: "only visible to you",
+              classes: "govuk-tag--grey"
+            })}}
+
+          {% endset %}
+
+          {% set fullNI %}
+
+            <p>
+              {{user.profile.NI}}
+            </p>
+            {{govukTag({
+              text: "only visible to you",
+              classes: "govuk-tag--grey"
+            })}}
+
+          {% endset %}
+
           {% if personalDetailsIncomplete %}
             <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsPersonalDetailsIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
@@ -143,7 +172,58 @@
                     }
                   ]
                 }
-              } if user.profile.providePhoneNumber == 'Yes'
+              } if user.profile.providePhoneNumber == 'Yes',
+              {
+                key: {
+                  text: "Do you want to provide an address?"
+                },
+                value: {
+                  text: user.profile.provideAddress
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/address",
+                      text: "Change",
+                      visuallyHiddenText: "if you want to provide an address"
+                    }
+                  ]
+                }
+              } if user.profile.provideAddress == 'Yes',
+              {
+                key: {
+                  text: "Address"
+                },
+                value: {
+                  html: fullAddress
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/address-details",
+                      text: "Change",
+                      visuallyHiddenText: "Address"
+                    }
+                  ]
+                }
+              } if user.profile.provideAddress == 'Yes',
+              {
+                key: {
+                  text: "National Insurance number"
+                },
+                value: {
+                  html: fullNI
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/ni",
+                      text: "Change",
+                      visuallyHiddenText: "National Insurance number"
+                    }
+                  ]
+                }
+              } if user.profile.provideNI == 'Yes'
             ]
           }) }}
 
@@ -345,7 +425,21 @@
           Qualified teaching status (QTS)
         </h2>
 
+        {% set fullTRN %}
+
+          <p>
+            {{user.profile.TRN}}
+          </p>
+          {{govukTag({
+            text: "only visible to you",
+            classes: "govuk-tag--grey"
+          })}}
+
+        {% endset %}
+
+
         {% if user.profile.qts %}
+
           {{ govukSummaryList({
           rows: [
             {
@@ -381,13 +475,51 @@
                   }
                 ]
               }
-            } if user.profile.qtsAwardedYear
+            } if user.profile.qtsAwardedYear,
+            {
+              key: {
+                text: "Do you want to provide your Teacher reference number (TRN)?"
+              },
+              value: {
+                text: user.profile.provideTRN
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/trn",
+                    text: "Change",
+                    visuallyHiddenText: "if you want to provide your TRN"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                html: fullTRN
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/trn",
+                    text: "Change",
+                    visuallyHiddenText: "Teacher reference number (TRN)"
+                  }
+                ]
+              }
+            } if user.profile.provideTRN == 'Yes'
           ]
         }) }}
         {% else %}
           <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
         {% endif %}
       </div>
+
+
+
+
       <div class="app-profile__section">
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
@@ -568,6 +700,63 @@
           </div>
         {% endif %}
       </div>
+
+      <div class="app-profile__section">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          References
+
+          {{govukTag({
+            text: "only visible to you",
+            classes: "govuk-tag--grey"
+          })}}
+
+        </h2>
+
+        <p>
+          Your references will not be visible on your profile. Your references will only be used when you apply for a role.
+        </p>
+
+        <p><a class="govuk-link--no-visited-state" href="/profile/references/index">Add reference</a></p>
+
+        {% if user.profile.references | length %}
+          <div class="app-list">
+
+            {% for id, reference in user.profile.references %}
+
+              {% set rowloop = loop %}
+
+              <div class="app-list__item">
+
+                {{appPageHeader({
+                  classes: 'govuk-!-margin-bottom-0',
+                  heading: {
+                    level: 2,
+                    text: reference.referenceName,
+                    classes: 'govuk-heading-s'
+                  },
+                  items: [{
+                    text: 'Change',
+                    href: "/profile/references/"+id+"/edit"+loop.index,
+                    type: 'link'
+                  }, {
+                    text: 'Delete',
+                    href: "/profile/references/"+id+"/delete",
+                    type: 'link'
+                  }]
+                })}}
+
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{reference.referenceTitle}}</p>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{reference.referenceOrganisation}}</p>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{reference.referenceEmail}}</p>
+                {% if reference.referenceNumber | length %} <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{reference.referenceNumber}}</p> {% endif %}
+              </div>
+            {% endfor %}
+
+          </div>
+        {% endif %}
+
+      </div>
+
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           About you
@@ -599,6 +788,154 @@
           <p><a class="govuk-link--no-visited-state" href="/profile/about/about">Add details about you</a></p>
         {% endif %}
       </div>
+
+
+
+
+
+      <div class="app-profile__section">
+
+
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Equal opportunities and recruitment monitoring
+
+          {{govukTag({
+            text: "only visible to you",
+            classes: "govuk-tag--grey"
+          })}}
+        </h2>
+
+        {% if user.profile.disability %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?"
+              },
+              value: {
+                text: user.profile.disability
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/disability",
+                    text: "Change",
+                    visuallyHiddenText: "disability preference"
+                  }
+                ]
+              }
+            } if user.profile.disability,
+            {
+              key: {
+                text: "How old are you?"
+              },
+              value: {
+                text: user.profile.age
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/age",
+                    text: "Change",
+                    visuallyHiddenText: "age"
+                  }
+                ]
+              }
+            } if user.profile.age,
+            {
+              key: {
+                text: "How would you describe your gender?"
+              },
+              value: {
+                text: user.profile.gender
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/gender",
+                    text: "Change",
+                    visuallyHiddenText: "gender"
+                  }
+                ]
+              }
+            } if user.profile.gender,
+            {
+              key: {
+                text: "How would you describe your sexual orientation?"
+              },
+              value: {
+                text: user.profile.orientation
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/orientation",
+                    text: "Change",
+                    visuallyHiddenText: "sexual orientation"
+                  }
+                ]
+              }
+            } if user.profile.orientation,
+            {
+              key: {
+                text: "What is your ethnic group?"
+              },
+              value: {
+                text: user.profile.ethnicGroup
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/ethnic-group",
+                    text: "Change",
+                    visuallyHiddenText: "ethnic group"
+                  }
+                ]
+              }
+            } if user.profile.ethnicGroup,
+            {
+              key: {
+                text: "What is your religion or belief?"
+              },
+              value: {
+                text: user.profile.religion
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/equal-opportunities/religion",
+                    text: "Change",
+                    visuallyHiddenText: "religion"
+                  }
+                ]
+              }
+            } if user.profile.religion
+          ]
+        }) }}
+
+        {% else %}
+
+          <p>
+            This will not be visible on your profile or be used as part of applications. It will only be used anonymously to monitor the inclusivity of the shortlisting process.
+          </p>
+
+          <p><a class="govuk-link--no-visited-state" href="/profile/equal-opportunities/disability">Add equal opportunities and recruitment monitoring information</a></p>
+
+        {% endif %}
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
 
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
@@ -688,6 +1025,10 @@
           </dl>
         {% endif %}
       </div>
+
+
+
+
 
 
 

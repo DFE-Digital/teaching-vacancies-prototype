@@ -5,13 +5,14 @@
 
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
-    Jobs (240)
+    Jobs (<b id="numberOfJobs">24</b>)
   </h1>
 
   <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
+
       {% include "includes/jobs-filter-panel.njk" %}
     </div>
 
@@ -25,8 +26,49 @@
       <div>
         <div class="app-jobs">
 
+        {% if user.profile.roles %}  {% set userRoles =  user.profile.roles %}  {% else %}  {% set userRoles = '' %}  {% endif %}
+        {% if user.profile.subjects %}  {% set userSubjects =  user.profile.subjects %}{% else %}  {% set userSubjects = '' %}{% endif %}
+        {% if user.profile.phases %}  {% set userPhases =  user.profile.phases %}{% else %}  {% set userPhases = '' %}{% endif %}
+        {% if user.profile.keyStages %}  {% set userStage =  user.profile.keyStages %}{% else %}  {% set userStage = '' %}{% endif %}
+        {% if user.profile.workingPatterns %}  {% set userPattern =  user.profile.workingPatterns %}{% else %}  {% set userPattern = '' %}{% endif %}
+
+        {% set userRoles = userRoles | string %}
+        {% set userSubjects = userSubjects | string %}
+        {% set userPhases = userPhases | string %}
+        {% set userStage = userStage | string %}
+        {% set userPattern = userPattern | string %}
 
         {% for job in jobs %}
+        <!--
+                {% if job.role in userRoles %}
+                  YES IT'S A MATCH ROLE
+                {% endif %}
+
+                {% if job.subjects in userSubjects %}
+                  YES IT'S A MATCH SUBJECTS
+                {% endif %}
+
+                {% if job.phase in userPhases %}
+                  YES IT'S A MATCH PHASE
+                {% endif %}
+
+                {% if job.keyStages in userStage %}
+                  YES IT'S A MATCH STAGE
+                {% endif %}
+
+                {% if userPattern in job.workingPatterns %}
+                  YES IT'S A MATCH PATTERN
+                {% endif %}
+
+                <p>Role:{{userRoles}}: {{job.role}}</p>
+                <p>Subject:{{userSubjects}}: {{job.subjects}}</p>
+                <p>Phase:{{userPhases}}: {{job.phase}}</p>
+                <p>Stage:{{userStage}}: {{job.keyStages}}</p>
+                <p>Pattern:{{userPattern}}: {{job.workingPatterns}}</p>
+        -->
+
+          {% if ((job.role in userRoles) or (userRoles == '')) and ((job.subjects in userSubjects) or (userSubjects == '')) and ((job.phase in userPhases) or (userPhases == '')) and ((job.keyStages in userStage) or (userStage == '')) and ((userPattern in job.workingPatterns) or (userPattern == '')) %}
+
 
           {% set address %}
             {% for part, value in job.organisation.address %}
@@ -48,7 +90,6 @@
               }) }}
               {% endif %}
             </h2>
-
 
             <p class="app-jobs__address">{{job.organisation.name}},{{address}}</p>
 
@@ -115,6 +156,13 @@
               ]
             }) }}
           </div>
+
+
+
+          {% else %}
+
+          {% endif %}
+
         {% endfor %}
       </div>
 
@@ -176,5 +224,11 @@
         label: 'Search for subject'
       }
     })
+
+
+    var theCount = document.getElementsByClassName('app-jobs__item').length
+    $("#numberOfJobs").html(theCount);
+
+
   </script>
 {% endblock %}

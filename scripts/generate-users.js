@@ -21,6 +21,15 @@ const generateUser = (params = {}) => {
   user.profile.lastName = _.get(params, 'profile.lastName')
   user.profile.providePhoneNumber = _.get(params, 'profile.providePhoneNumber')
   user.profile.phoneNumber = _.get(params, 'profile.phoneNumber')
+  user.profile.provideNI = _.get(params, 'profile.provideNI')
+  user.profile.NI = _.get(params, 'profile.NI')
+  // address
+  user.profile.provideAddress = _.get(params, 'profile.provideAddress')
+  user.profile.address1 = _.get(params, 'profile.address1')
+  user.profile.address2 = _.get(params, 'profile.address2')
+  user.profile.addressTown = _.get(params, 'profile.addressTown')
+  user.profile.addressCounty = _.get(params, 'profile.addressCounty')
+  user.profile.addressPostcode = _.get(params, 'profile.addressPostcode')
 
   // Roles
   user.profile.roles = _.get(params, 'profile.roles')
@@ -42,8 +51,9 @@ const generateUser = (params = {}) => {
 
   // QTS
   user.profile.qts = _.get(params, 'profile.qts')
-
   user.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear')
+  user.profile.provideTRN = _.get(params, 'profile.provideTRN')
+  user.profile.TRN = _.get(params, 'profile.TRN')
 
   // Qualifications
   user.profile.qualifications = _.get(params, 'profile.qualifications') || {}
@@ -59,6 +69,17 @@ const generateUser = (params = {}) => {
 
   // Previous Application
   user.profile.previousApplication = _.get(params, 'profile.previousApplication') || {}
+
+  // References
+  user.profile.references = _.get(params, 'profile.references') || {}
+
+  // Equal opportunities
+  user.profile.disability = _.get(params, 'profile.disability')
+  user.profile.age = _.get(params, 'profile.age')
+  user.profile.gender = _.get(params, 'profile.gender')
+  user.profile.orientation = _.get(params, 'profile.orientation')
+  user.profile.ethnicGroup = _.get(params, 'profile.ethnicGroup')
+  user.profile.religion = _.get(params, 'profile.religion')
 
   return user
 }
@@ -87,6 +108,14 @@ const generateUsers = () => {
       firstName: 'Adam',
       lastName: 'Silver',
       providePhoneNumber: null,
+      provideNI: 'Yes',
+      NI: 'GB GB GB 123',
+      provideAddress: 'Yes',
+      address1:'7',
+      address2:'Savile Row',
+      addressTown:'Burlington Gardens',
+      addressCounty:'London',
+      addressPostcode:'SE1 123',
       roles: ['Teacher'],
       phases: null,
       keyStages: null,
@@ -95,6 +124,8 @@ const generateUsers = () => {
       locations: null,
       qts: 'Yes',
       qtsAwardedYear: '2022',
+      provideTRN: 'Yes',
+      TRN: '89438689',
       qualifications: rachaelQualifications,
       workHistory: null,
       about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.',
@@ -176,6 +207,29 @@ const generateUsers = () => {
 
   hiddenPlaces[h1.id] = h1
 
+  let references = {}
+
+  let ref1 = {
+    id: uuidv4(),
+    referenceName: 'Agatha Trunchbull',
+    referenceTitle: 'Headmaster',
+    referenceOrganisation: 'Crunchem Hall Primary School ',
+    referenceEmail: 'agatha.trunchball@crunchemschool.com',
+    referenceNumber: '0115 918385939',
+  }
+
+  let ref2 = {
+    id: uuidv4(),
+    referenceName: 'Albert Einstein',
+    referenceTitle: 'Physics Lead',
+    referenceOrganisation: 'Ulm Academy',
+    referenceEmail: 'al.einstein@ulmacademy.com',
+    referenceNumber: '197819051915',
+  }
+
+  references[ref1.id] = ref1
+  references[ref2.id] = ref2
+
   users.push(generateUser({
     emailAddress: 'adam@example.com',
     profile: {
@@ -184,14 +238,24 @@ const generateUsers = () => {
       lastName: 'Silver',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
+      provideNI: 'Yes',
+      NI: 'GB GB GB 123',
+      provideAddress: 'Yes',
+      address1:'7',
+      address2:'Savile Row',
+      addressTown:'Burlington Gardens',
+      addressCounty:'London',
+      addressPostcode:'SE1 123',
       roles: ['Teacher'],
       phases: ['Primary school', 'Secondary school'],
       keyStages: ['Key stage 2', 'Key stage 3', 'Key stage 4'],
       workingPatterns: ['Full time'],
-      subjects: ['Biology'],
+      subjects: ['Biology,Chemistry'],
       locations,
       qts: 'Yes',
       qtsAwardedYear: '2022',
+      provideTRN: 'Yes',
+      TRN: '89438689',
       qualifications,
       workHistory,
       hasExperienceWithKeyStages: 'Yes',
@@ -201,7 +265,14 @@ const generateUsers = () => {
       about: 'Fusce non nisl sapien. Fusce nulla lorem, elementum in rutrum eu, feugiat eu lectus. Integer sit amet sagittis risus. Cras sollicitudin volutpat felis, quis faucibus nisi tempus gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;\n\nDuis id congue ligula. Nullam blandit iaculis est, vitae lacinia ex aliquam sed. Duis nec turpis eu mauris suscipit congue. Praesent non accumsan sem, et bibendum nibh. Duis nec ante justo. Etiam vestibulum ac dolor ac efficitur. Sed a egestas purus.',
       previousApplication: 'No',
       provideSchoolsToHideFrom: 'Yes',
-      hiddenPlaces
+      hiddenPlaces,
+      references,
+      disability: 'No',
+      age: '30 to 39',
+      gender: 'Man',
+      orientation: 'Prefer not to say',
+      ethnicGroup: 'Mixed or multiple ethnic group',
+      religion: 'Buddhist'
     }
   }))
 
@@ -223,6 +294,14 @@ const generateUsers = () => {
       lastName: 'Hemingway',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
+      provideNI: 'Yes',
+      NI: 'GB GB GB 123',
+      provideAddress: 'Yes',
+      address1:'7',
+      address2:'Savile Row',
+      addressTown:'Burlington Gardens',
+      addressCounty:'London',
+      addressPostcode:'SE1 123',
       roles: null,
       phases: null,
       keyStages: null,
@@ -231,10 +310,19 @@ const generateUsers = () => {
       locations: null,
       qts: 'Yes',
       qtsAwardedYear: '2020',
+      provideTRN: 'Yes',
+      TRN: '89438689',
       qualifications: ernestQualifications,
       workHistory,
       about: null,
-      previousApplication: 'Yes'
+      previousApplication: 'Yes',
+      references,
+      disability: 'No',
+      age: '60 and over',
+      gender: 'Man',
+      orientation: 'Prefer not to say',
+      ethnicGroup: 'Prefer not to say',
+      religion: 'Prefer not to say'
     }
   }))
 
