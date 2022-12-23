@@ -250,7 +250,7 @@ const generateUsers = () => {
       phases: ['Primary school', 'Secondary school'],
       keyStages: ['Key stage 2', 'Key stage 3', 'Key stage 4'],
       workingPatterns: ['Full time'],
-      subjects: ['Biology'],
+      subjects: ['Biology,Chemistry'],
       locations,
       qts: 'Yes',
       qtsAwardedYear: '2022',

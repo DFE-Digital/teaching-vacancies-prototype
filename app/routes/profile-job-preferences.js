@@ -44,15 +44,15 @@ module.exports = router => {
     let profile = req.session.user.profile
 
     let options = [{
-      value: 'Primary',
+      value: 'Primary school',
       text: 'Primary',
       checked: profile.phases && profile.phases.includes('Primary')
     }, {
-      value: 'Middle',
+      value: 'Middle school',
       text: 'Middle',
       checked: profile.phases && profile.phases.includes('Middle')
     }, {
-      value: 'Secondary',
+      value: 'Secondary school',
       text: 'Secondary',
       checked: profile.phases && profile.phases.includes('Secondary')
     }, {
