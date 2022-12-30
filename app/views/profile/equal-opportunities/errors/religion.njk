@@ -11,6 +11,16 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select your religion or prefer not to say",
+      href: "#profile[disability]"
+    }
+  ]
+}) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -21,21 +31,27 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          id: "profile[orientation]",
-          name: "profile[orientation]",
+          id: "profile[religion]",
+          name: "profile[religion]",
           fieldset: {
             legend: {
-              text: "How would you describe your sexual orientation?",
+              text: "What is your religion or belief?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
+          errorMessage: {
+            text: "Select your religion or prefer not to say"
+          },
           hint: {
-            text: "If the options  do not reflect how you identify, select ‘Other sexual orientation’."
+            text: "You can select ‘Other religion or belief’ if your beliefs are not represented by one of the given options."
           },
           items: [{
             value: options[0].value,
             text: options[0].text,
+            hint: {
+              text: options[0].hint
+            },
             checked: options[0].checked
           },
           {
@@ -46,23 +62,48 @@
           {
             value: options[2].value,
             text: options[2].text,
+            hint: {
+              text: options[2].hint
+            },
             checked: options[2].checked
           },
           {
             value: options[3].value,
             text: options[3].text,
+            hint: {
+              text: options[3].hint
+            },
             checked: options[3].checked
-          },
-          {
-            divider: "or"
           },
           {
             value: options[4].value,
             text: options[4].text,
             checked: options[4].checked
+          },
+          {
+            value: options[5].value,
+            text: options[5].text,
+            checked: options[5].checked
+          },
+          {
+            value: options[6].value,
+            text: options[6].text,
+            checked: options[6].checked
+          },
+          {
+            value: options[7].value,
+            text: options[7].text,
+            checked: options[7].checked
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: options[8].value,
+            text: options[8].text,
+            checked: options[8].checked
           }]
         }) }}
-
 
         {{ govukButton({
           text: "Save and continue"

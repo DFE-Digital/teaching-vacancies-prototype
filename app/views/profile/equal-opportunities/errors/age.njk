@@ -11,6 +11,16 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select how old you are or prefer not to say",
+      href: "#profile[disability]"
+    }
+  ]
+}) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -21,17 +31,17 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          id: "profile[gender]",
-          name: "profile[gender]",
+          id: "profile[age]",
+          name: "profile[age]",
           fieldset: {
             legend: {
-              text: "How would you describe your gender?",
+              text: "How old are you?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            text: "If the options  do not reflect how you identify, select ‘Other gender identity’."
+          errorMessage: {
+            text: "Select how old you are or prefer not to say"
           },
           items: [{
             value: options[0].value,
@@ -49,12 +59,27 @@
             checked: options[2].checked
           },
           {
-            divider: "or"
-          },
-          {
             value: options[3].value,
             text: options[3].text,
             checked: options[3].checked
+          },
+          {
+            value: options[4].value,
+            text: options[4].text,
+            checked: options[4].checked
+          },
+          {
+            value: options[5].value,
+            text: options[5].text,
+            checked: options[5].checked
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: options[6].value,
+            text: options[6].text,
+            checked: options[6].checked
           }]
         }) }}
 

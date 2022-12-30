@@ -11,6 +11,17 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select your gender or prefer not to say",
+      href: "#profile[disability]"
+    }
+  ]
+}) }}
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -29,6 +40,9 @@
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
+          },
+          errorMessage: {
+            text: "Select your gender or prefer not to say"
           },
           hint: {
             text: "If the options  do not reflect how you identify, select ‘Other gender identity’."

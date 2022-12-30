@@ -11,6 +11,16 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select your ethnic group or prefer not to say",
+      href: "#profile[disability]"
+    }
+  ]
+}) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -21,21 +31,27 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          id: "profile[gender]",
-          name: "profile[gender]",
+          id: "profile[ethnicGroup]",
+          name: "profile[ethnicGroup]",
           fieldset: {
             legend: {
-              text: "How would you describe your gender?",
+              text: "What is your ethnic group?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "If the options  do not reflect how you identify, select ‘Other gender identity’."
+            text: "If the options do not reflect how you identify, select ‘Other ethnic group’."
+          },
+          errorMessage: {
+            text: "Select your ethnic group or prefer not to say"
           },
           items: [{
             value: options[0].value,
             text: options[0].text,
+            hint: {
+              text: options[0].hint
+            },
             checked: options[0].checked
           },
           {
@@ -46,18 +62,33 @@
           {
             value: options[2].value,
             text: options[2].text,
+            hint: {
+              text: options[2].hint
+            },
             checked: options[2].checked
+          },
+          {
+            value: options[3].value,
+            text: options[3].text,
+            hint: {
+              text: options[3].hint
+            },
+            checked: options[3].checked
+          },
+          {
+            value: options[4].value,
+            text: options[4].text,
+            checked: options[4].checked
           },
           {
             divider: "or"
           },
           {
-            value: options[3].value,
-            text: options[3].text,
-            checked: options[3].checked
+            value: options[5].value,
+            text: options[5].text,
+            checked: options[5].checked
           }]
         }) }}
-
 
         {{ govukButton({
           text: "Save and continue"

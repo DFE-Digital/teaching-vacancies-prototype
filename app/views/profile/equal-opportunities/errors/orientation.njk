@@ -11,6 +11,16 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select your orientation or prefer not to say",
+      href: "#profile[disability]"
+    }
+  ]
+}) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -21,17 +31,20 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          id: "profile[gender]",
-          name: "profile[gender]",
+          id: "profile[orientation]",
+          name: "profile[orientation]",
           fieldset: {
             legend: {
-              text: "How would you describe your gender?",
+              text: "How would you describe your sexual orientation?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "If the options  do not reflect how you identify, select ‘Other gender identity’."
+            text: "If the options  do not reflect how you identify, select ‘Other sexual orientation’."
+          },
+          errorMessage: {
+            text: "Select your orientation or prefer not to say"
           },
           items: [{
             value: options[0].value,
@@ -49,12 +62,17 @@
             checked: options[2].checked
           },
           {
-            divider: "or"
-          },
-          {
             value: options[3].value,
             text: options[3].text,
             checked: options[3].checked
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: options[4].value,
+            text: options[4].text,
+            checked: options[4].checked
           }]
         }) }}
 

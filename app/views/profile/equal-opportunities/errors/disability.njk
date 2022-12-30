@@ -11,6 +11,16 @@
 
 {% block content %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select yes if you consider yourself to have a disability as defined by the Equality Act 2010",
+      href: "#profile[disability]"
+    }
+  ]
+}) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -21,17 +31,17 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          id: "profile[gender]",
-          name: "profile[gender]",
+          id: "profile[disability]",
+          name: "profile[disability]",
           fieldset: {
             legend: {
-              text: "How would you describe your gender?",
+              text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            text: "If the options  do not reflect how you identify, select ‘Other gender identity’."
+          errorMessage: {
+            text: "Select yes if you consider yourself to have a disability as defined by the Equality Act 2010"
           },
           items: [{
             value: options[0].value,
@@ -44,17 +54,12 @@
             checked: options[1].checked
           },
           {
-            value: options[2].value,
-            text: options[2].text,
-            checked: options[2].checked
-          },
-          {
             divider: "or"
           },
           {
-            value: options[3].value,
-            text: options[3].text,
-            checked: options[3].checked
+            value: options[2].value,
+            text: options[2].text,
+            checked: options[2].checked
           }]
         }) }}
 
