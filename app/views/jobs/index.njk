@@ -3,6 +3,29 @@
 
 {% set primaryNavId = 'jobs' %}
 
+
+<style>
+  .square {
+     position: relative;
+     width: 300px;
+     height: 300px;
+     overflow: hidden;
+  }
+  img {
+     position: absolute;
+     max-width: 100%;
+     width: 100%;
+     height: auto;
+     top: 50%;
+     left: 50%;
+     transform: translate( -50%, -50%);
+ }
+  img.landscape {
+    height: 100%;
+    width: auto;
+}
+</style>
+
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
     Jobs (240)
@@ -36,7 +59,15 @@
 
           <div class="app-jobs__item">
             {% if job.organisation.logo != 'Not entered' %}
-              <img src="{{job.organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
+            <div class="square" style="position: relative; width: 60px; height: 60px; overflow: hidden; float:left; margin-right:15px;">
+              <img src="{{job.organisation.logo}}" style="position: absolute;
+              max-width: 100%;
+              width: 100%;
+              height: auto;
+              top: 50%;
+              left: 50%;
+              transform: translate( -50%, -50%);">
+            </div>
             {% endif %}
             <h2 class="govuk-heading-m">
               <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
