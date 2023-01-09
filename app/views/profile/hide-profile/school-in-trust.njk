@@ -1,0 +1,63 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'This school is in a trust. Do you want to hide your profile from all schools within Royal Academy Trust?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "profile[schoolInTrust]",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: 'Multi-Academy Trust (MAT) or school trust is an academy trust that might run a single academy or multiple academies.'
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes, hide from all schools within the trust"
+            },
+            {
+              value: "No, just Bushey Meads Primary School",
+              text: "No, just Bushey Meads Primary School"
+            },
+            {
+              value: "No, just the trust head office",
+              text: "No, just the trust head office",
+              hint: {
+                text: 'a Multi-Academy Trust (MAT) may only advertise roles from their head office address.'
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
