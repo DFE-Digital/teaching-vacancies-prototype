@@ -19,6 +19,7 @@
 
       <form method="post" novalidate>
 
+
         {{ govukRadios({
           name: "profile[schoolInTrust]",
           fieldset: {
@@ -29,23 +30,19 @@
             }
           },
           hint: {
-            text: 'A trust is an organisation that runs a single or multiple academies.'
+            text: 'A trust is an organisation that runs an academy.'
           },
           items: [
             {
               value: "Yes",
-              text: "Yes, hide from all schools within the trust"
+              text: "Yes, hide from all schools within the trust",
+              hint: {
+                text: 'This will include the head office of the trust.'
+              }
             },
             {
               value: "No, just Bushey Meads Primary School",
               text: "No, just Bushey Meads Primary School"
-            },
-            {
-              value: "No, just the trust head office",
-              text: "No, just the trust head office",
-              hint: {
-                text: 'a Multi-Academy Trust (MAT) may only advertise roles from their head office address.'
-              }
             }
           ]
         }) }}
@@ -53,6 +50,14 @@
         {{ govukButton({
           text: "Save and continue"
         }) }}
+
+
+
+
+
+
+
+
 
       </form>
 
