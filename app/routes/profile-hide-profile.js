@@ -49,7 +49,7 @@ module.exports = router => {
     let schoolName = req.body.profile.hiddenPlace
 
     if(typeOfSchool.indexOf("Trust") >= 0){
-      res.redirect('/profile/hide-profile/trusts')
+      res.redirect('/profile/hide-profile/schools')
     }else if(schoolName.indexOf("Bushey Meads") >= 0){
       res.redirect('/profile/hide-profile/school-in-trust')
     }else{
