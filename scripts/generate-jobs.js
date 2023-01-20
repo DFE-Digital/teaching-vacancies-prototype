@@ -29,7 +29,6 @@ const generateJob = (params = {}) => {
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
-
   if(job.organisation.schools == 'School') {
     job.phase = job.organisation.schools[0].phase
   } else {
@@ -39,6 +38,10 @@ const generateJob = (params = {}) => {
     job.phase = 'Primary school'
   }
 
+  job.schoolType = params.schoolType || faker.helpers.arrayElement([
+    'Local authority maintained school, ages 11 to 18' || job.organisation.name,
+    'Academy, ages 11 to 18' || job.organisation.name
+  ])
 
   job.keyStages = params.keyStages || generateKeyStages({phase: job.phase})
 
@@ -183,7 +186,8 @@ const generateJobs = () => {
     organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust'),
     isUsingApplicationForm: 'Yes',
     hasSafeguardingCommitment: 'Yes',
-    hasFurtherDetailsAboutTheRole: 'Yes'
+    hasFurtherDetailsAboutTheRole: 'Yes',
+    schoolType: 'Academy, ages 11 to 18'
   }))
   jobs.push(generateJob({
     status: 'Active',
