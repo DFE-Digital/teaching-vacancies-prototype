@@ -9,6 +9,7 @@ module.exports = router => {
 
     let employer = _.get(req, 'session.data.profile.employer')
     let role = _.get(req, 'session.data.profile.role')
+    let mainduties = _.get(req, 'session.data.profile.mainduties')
 
     let currentRoleOptions = [
       {
@@ -41,7 +42,8 @@ module.exports = router => {
       currentRoleOptions,
       currentRole,
       endDate,
-      description
+      description,
+      mainduties
     })
   })
 
@@ -62,6 +64,7 @@ module.exports = router => {
       }).toISO()
     }
     role.description = req.body.profile.description
+    role.mainduties = req.body.profile.mainduties
 
     req.session.user.profile.workHistory[role.id] = role
     res.redirect(`/profile/work-history/review`)
@@ -86,6 +89,7 @@ module.exports = router => {
     }
 
     let description = item.description
+    let mainduties = item.mainduties
 
     let currentRoleOptions = [
       {
@@ -108,7 +112,8 @@ module.exports = router => {
       currentRoleOptions,
       currentRole,
       endDate,
-      description
+      description,
+      mainduties
     })
   })
 
@@ -129,6 +134,7 @@ module.exports = router => {
       }).toISO()
     }
     item.description = req.body.profile.description
+    item.mainduties = req.body.profile.mainduties
 
     res.redirect(`/profile/work-history/review`)
   })
