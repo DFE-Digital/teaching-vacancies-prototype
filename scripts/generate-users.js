@@ -141,6 +141,7 @@ const generateUsers = () => {
     id: uuidv4(),
     employer: 'Colindale Primary School',
     role: 'Teacher',
+    mainduties:"Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
     startDate: DateTime.fromObject({ year: 2018, month: 1 }).toISO(),
     endDate: DateTime.fromObject({ year: 2019, month: 12 }).toISO(),
     currentRole: 'No'
@@ -150,6 +151,7 @@ const generateUsers = () => {
     id: uuidv4(),
     employer: 'Courtland Primary School',
     role: 'Teacher',
+    mainduties:"Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
     startDate: DateTime.fromObject({ year: 2020, month: 1 }).toISO(),
     currentRole: 'Yes'
   }

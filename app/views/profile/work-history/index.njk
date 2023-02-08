@@ -126,8 +126,8 @@
         }) }}
 
         {{ govukTextarea({
-          name: "more-detail",
-          id: "more-detail",
+          id: "profile[mainduties]",
+          name: "profile[mainduties]",
           rows: "8",
           label: {
             text: "Main duties",
@@ -136,7 +136,8 @@
           },
           hint: {
             text: "Provide the responsibilities you undertook in this role"
-          }
+          },
+          value: mainduties
         }) }}
 
         {{ govukButton({

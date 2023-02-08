@@ -553,7 +553,7 @@
                 })}}
 
                 <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
-                <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                <p class="govuk-!-margin-bottom-0">
                   {{role.startDate | monthYear}}
                   to
                   {% if role.endDate %}
@@ -562,6 +562,7 @@
                     present
                   {% endif %}
                 </p>
+                <p class="govuk-caption-m  govuk-!-margin-bottom-0 govuk-!-margin-top-2">{{role.mainduties}}</p>
                 {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
               </div>
             {% endfor %}
