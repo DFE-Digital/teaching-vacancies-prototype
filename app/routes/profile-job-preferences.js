@@ -462,4 +462,23 @@ module.exports = router => {
     })
   })
 
+
+  //location delete
+
+  router.get('/profile/job-preferences/location-delete', (req, res) => {
+    let profile = req.session.user.profile
+
+    res.render('profile/job-preferences/location-delete', {
+      profile
+    })
+  })
+
+  router.post('/profile/job-preferences/location-delete', (req, res) => {
+    let id = req.params.id
+    let profile = req.session.user.profile
+
+    req.flash('success', 'Location deleted')
+    res.redirect('/profile/job-preferences/location-check')
+  })
+
 }
