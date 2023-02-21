@@ -69,22 +69,13 @@
         When you turn on your profile, schools can contact you about relevant jobs.
       </p>
 
-      {% if user.profile.previousApplication == 'Yes' %}
+      <form method="post" novalidate>
 
         {{ govukButton({
-          text: "Create a profile",
-          href: "/profile/populate-your-profile"
+          text: "Create a profile"
         }) }}
 
-      {% else %}
-
-        {{ govukButton({
-          text: "Create a profile",
-          href: "/profile"
-        }) }}
-
-      {% endif %}
-
+      </form>
 
     </div>
   </div>
