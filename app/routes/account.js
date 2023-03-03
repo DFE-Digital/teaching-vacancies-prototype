@@ -75,7 +75,7 @@ module.exports = router => {
     var previousApplication = req.session.user.profile.previousApplication
 
     if (previousApplication == "Yes"){
-      req.flash('success', 'Because you have already submitted an application, some of your details have been imported into your profile')
+      req.flash('success', 'You have recently submitted a job application, so some of your details have been imported into your profile.')
     } else {
 
     }
