@@ -16,6 +16,9 @@
       <h1 class="govuk-heading-xl">
         {{title}}
       </h1>
+      <p>
+        If you have had more than one role at the same school, add them all separately.
+      </p>
       <form method="post" novalidate>
         {{ govukInput({
           id: "profile[employer]",
@@ -34,9 +37,6 @@
           label: {
             text: 'Role',
             classes: 'govuk-label--m'
-          },
-          hint: {
-            text: "If you had more than one role with this employer, enter your last role"
           }
         }) }}
         {{ govukDateInput({
@@ -114,7 +114,7 @@
             isPageHeading: true
           },
           hint: {
-            text: "Provide the responsibilities you undertook in this role"
+            text: "List all the responsibilities this role involved"
           }
         }) }}
         {{ govukButton({
