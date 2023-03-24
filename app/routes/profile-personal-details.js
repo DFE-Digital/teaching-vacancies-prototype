@@ -39,7 +39,7 @@ module.exports = router => {
   router.post('/profile/personal-details/phone-number', (req, res) => {
     req.session.user.profile.providePhoneNumber = req.body.profile.providePhoneNumber
     req.session.user.profile.phoneNumber = req.body.profile.phoneNumber
-    res.redirect('/profile/personal-details/review')
+    res.redirect('/profile/personal-details/work')
   })
 
   //right to work
