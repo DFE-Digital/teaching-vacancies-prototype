@@ -1,0 +1,74 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you have the right to work in the UK?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+
+      <form method="post" novalidate>
+
+        {% set hintCode %}
+        
+
+            <div id="right-to-work-hint" class="govuk-hint">
+                There is <a href="https://www.gov.uk/government/publications/teach-in-england-if-you-qualified-outside-the-uk/teach-in-england-if-you-qualified-outside-the-uk">guidance for working as a teacher in England (link opens in a new tab)</a> if you qualified outside the UK.
+            </div>
+         
+        {% endset %}
+        
+
+        {{ govukRadios({
+          idPrefix: "profile[provideWork]",
+          name: "profile[provideWork]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: hintCode
+          },
+          items: [{
+            value: options[0].value,
+            text: options[0].text,
+            checked: options[0].checked
+          }, {
+            value: options[1].value,
+            text: options[1].text,
+            checked: options[1].checked
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

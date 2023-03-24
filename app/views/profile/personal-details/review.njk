@@ -108,7 +108,24 @@
                 }
               ]
             }
-          } if profile.providePhoneNumber == 'Yes'
+          } if profile.providePhoneNumber == 'Yes',
+          {
+            key: {
+              text: "Do you want have the right to work in the UK?"
+            },
+            value: {
+              text: profile.provideWork
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/work",
+                  text: "Change",
+                  visuallyHiddenText: "if you have the right to work in the UK"
+                }
+              ]
+            }
+          }
         ]
       }) }}
 

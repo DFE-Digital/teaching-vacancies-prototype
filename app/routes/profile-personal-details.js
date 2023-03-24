@@ -42,6 +42,32 @@ module.exports = router => {
     res.redirect('/profile/personal-details/review')
   })
 
+  //right to work
+
+  router.get('/profile/personal-details/work', (req, res) => {
+    let work = req.session.user.profile.work
+
+    let options = [{
+      value: 'Yes',
+      text: 'Yes',
+      checked: req.session.user.profile.provideWork == 'Yes'
+    }, {
+      value: 'No',
+      text: 'No',
+      checked: req.session.user.profile.provideWork == 'No'
+    }]
+
+    res.render('profile/personal-details/work', {
+      options,
+      work
+    })
+  })
+
+  router.post('/profile/personal-details/work', (req, res) => {
+    req.session.user.profile.provideWork = req.body.profile.provideWork
+    res.redirect('/profile/personal-details/review')
+  })
+
   router.get('/profile/personal-details/review', (req, res) => {
     const profile = req.session.user.profile
 

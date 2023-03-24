@@ -21,6 +21,7 @@ const generateUser = (params = {}) => {
   user.profile.lastName = _.get(params, 'profile.lastName')
   user.profile.providePhoneNumber = _.get(params, 'profile.providePhoneNumber')
   user.profile.phoneNumber = _.get(params, 'profile.phoneNumber')
+  user.profile.provideWork = _.get(params, 'profile.provideWork')
 
   // Roles
   user.profile.roles = _.get(params, 'profile.roles')
@@ -87,6 +88,7 @@ const generateUsers = () => {
       firstName: 'Adam',
       lastName: 'Silver',
       providePhoneNumber: null,
+      provideWork: 'Yes',
       roles: ['Teacher'],
       phases: null,
       keyStages: null,
@@ -186,6 +188,7 @@ const generateUsers = () => {
       lastName: 'Silver',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
+      provideWork: 'Yes',
       roles: ['Teacher'],
       phases: ['Primary school', 'Secondary school'],
       keyStages: ['Key stage 2', 'Key stage 3', 'Key stage 4'],
@@ -225,6 +228,7 @@ const generateUsers = () => {
       lastName: 'Hemingway',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
+      provideWork: 'Yes',
       roles: null,
       phases: null,
       keyStages: null,
