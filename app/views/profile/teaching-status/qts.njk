@@ -39,6 +39,14 @@
 
         {% endset %}
 
+        {% set noqts %}
+          
+          <p> You are unlikely to be given a teaching job in England unless you have qualified teacher status. </p>
+
+          <p>If you're interested in teaching or training to teach in England as an international citizen, we can <a target="_blank" href="https://getintoteaching.education.gov.uk/non-uk-teachers">help you understand your next steps (link opens in new tab)</a>.</p>
+          
+        {% endset %}
+
 
         {{ govukRadios({
           idPrefix: "profile[qts]",
@@ -49,6 +57,9 @@
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
+          },
+           hint: {
+            text: "Qualified teacher status (QTS) is a legal requirement to teach in many English schools and is considered desirable for teachers in the majority of schools in England."
           },
           items: [
             {
@@ -62,7 +73,10 @@
             {
               value: options[1].value,
               text: options[1].text,
-              checked: options[1].checked
+              checked: options[1].checked,
+              conditional: {
+                html: noqts
+              }
             },
             {
               value: options[2].value,
