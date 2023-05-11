@@ -146,7 +146,7 @@
               } if user.profile.providePhoneNumber == 'Yes',
               {
                 key: {
-                  text: "Do you have the right to work in the UK?"
+                  text: "Are you searching for a job that will sponsor you with a skilled worker visa?"
                 },
                 value: {
                   text: user.profile.provideWork
@@ -156,11 +156,11 @@
                     {
                       href: "/profile/personal-details/work",
                       text: "Change",
-                      visuallyHiddenText: "if you have the right to work in the UK?"
+                      visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
                     }
                   ]
                 }
-              }
+              } if user.profile.provideWork
             ]
           }) }}
 
@@ -181,7 +181,7 @@
             <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
               <p class="app-instruction-text">You must complete your personal details before you turn on your profile.</p>
           {% endif %}
-            <p><a class="govuk-link--no-visited-state" href="/profile/personal-details/name">Add personal details</a></p>
+            <p><a class="govuk-link--no-visited-state next-location-3" href="/profile/personal-details/name">Add personal details</a></p>
           {% if isPersonalDetailsIncomplete %}
             </div>
           {% endif %}
@@ -348,7 +348,7 @@
           <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
             <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
         {% endif %}
-          <p><a class="govuk-link--no-visited-state" href="/profile/job-preferences/roles">Add job preferences</a></p>
+          <p><a class="govuk-link--no-visited-state next-location-8" href="/profile/job-preferences/roles">Add job preferences</a></p>
         {% if jobPreferencesIncomplete %}
           </div>
         {% endif %}
@@ -707,8 +707,6 @@
         {% endif %}
       </div>
 
-    
-      {% if user.profile.status %}
        
           {% if user.profile.status == 'Active' %}
 
@@ -738,9 +736,14 @@
               <p><a href="/profile/preview">Preview profile</a></p>
               <p>When you turn on your profile it will be only be visible to hiring staff in schools and trusts. They can get in touch by email to invite you apply for roles.</p>
 
-              <a href="/profile/activate" class="govuk-button" data-module="govuk-button">
-                Turn on profile
-              </a>
+              <form method="post" novalidate>
+
+                {{ govukButton({
+                  text: "Turn on profile",
+                  classes:"next-location-4"
+                }) }}
+
+              </form>
 
             </div>
                 
@@ -748,9 +751,7 @@
           
           
         </p>
-      {% endif %}
-
-    
+     
 
     </div>
   </div>

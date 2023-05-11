@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Do you have the right to work in the UK?' %}
+{% set title = 'Are you searching for a job that will sponsor you with a skilled worker visa?' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -30,7 +30,7 @@
         
 
             <div id="right-to-work-hint" class="govuk-hint">
-                There is <a target="_blank" href="https://www.gov.uk/government/publications/teach-in-england-if-you-qualified-outside-the-uk/teach-in-england-if-you-qualified-outside-the-uk">guidance for working as a teacher in England (link opens in a new tab)</a> if you qualified outside the UK.
+                There is <a target="_blank" href="https://www.gov.uk/government/publications/teach-in-england-if-you-qualified-outside-the-uk/teach-in-england-if-you-qualified-outside-the-uk">guidance for what you'll need to teach in England (link opens in a new tab)</a> if you qualified outside the UK.
             </div>
          
         {% endset %}
@@ -59,8 +59,8 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            html: hintCode
+          hint:{
+            html:hintCode
           },
           items: [{
             value: options[0].value,
@@ -69,15 +69,14 @@
           }, {
             value: options[1].value,
             text: options[1].text,
-            checked: options[1].checked,
-            conditional: {
-              html: nocode
-            }
-          }]
+            checked: options[1].checked
+          }
+          ]
         }) }}
 
         {{ govukButton({
-          text: "Save and continue"
+          text: "Save and continue",
+          classes:"next-location-6"
         }) }}
 
         <p><a href="/profile">Cancel</a></p>

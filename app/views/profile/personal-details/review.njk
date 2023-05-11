@@ -111,7 +111,7 @@
           } if profile.providePhoneNumber == 'Yes',
           {
             key: {
-              text: "Do you want have the right to work in the UK?"
+              text: "Are you searching for a job that will sponsor you with a skilled worker visa?"
             },
             value: {
               text: profile.provideWork
@@ -121,7 +121,7 @@
                 {
                   href: "/profile/personal-details/work",
                   text: "Change",
-                  visuallyHiddenText: "if you have the right to work in the UK"
+                  visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
                 }
               ]
             }
@@ -131,7 +131,8 @@
 
       {{ govukButton({
         text: "Return to profile",
-        href: "/profile"
+        href: "/profile",
+        classes:"next-location-7"
       }) }}
 
 
