@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Are you searching for a job that will sponsor you with a skilled worker visa?' %}
+{% set title = 'Do you need a skilled worker visa to work in the UK?' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -27,26 +27,15 @@
       <form method="post" novalidate>
 
         {% set hintCode %}
-        
-
-            <div id="right-to-work-hint" class="govuk-hint">
-                There is <a target="_blank" href="https://www.gov.uk/government/publications/teach-in-england-if-you-qualified-outside-the-uk/teach-in-england-if-you-qualified-outside-the-uk">guidance for what you'll need to teach in England (link opens in a new tab)</a> if you qualified outside the UK.
-            </div>
-         
+          <div id="right-to-work-hint" class="govuk-hint">
+             If you need a skilled worker visa you will also need a job that can sponsor you.
+          </div>
         {% endset %}
 
-        {% set nocode %}
-        
-            <p>You are unlikely to be given a teaching job in England unless you have qualified teacher status. </p>
-
-            <p>Schools cannot give you advice about becoming a teacher in England. However, you can visit <a target="_blank" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas">Teach in England if you trained overseas (link opens in new tab)</a> to learn more about:</p>
-
-            <ul class="govuk-list govuk-list--bullet">
-                <li>the qualifications and experience you’ll need</li>
-                <li>visas and immigration</li>
-                <li>other routes to QTS</li>
-            </ul>
-           
+         {% set UKHintCode %}
+          <div id="right-to-work-hint" class="govuk-hint">
+            This includes a pre-existing right to work in the UK, such as settled or pre-settled status under the EU Settlement Scheme or indefinite leave to remain in the UK.
+          </div>
         {% endset %}
 
         {{ govukRadios({
@@ -63,13 +52,20 @@
             html:hintCode
           },
           items: [{
-            value: options[0].value,
-            text: options[0].text,
+            value: 'Yes, I am looking for a teaching sponsorship',
+            text: "Yes, I am looking for a teaching sponsorship",
             checked: options[0].checked
           }, {
-            value: options[1].value,
-            text: options[1].text,
-            checked: options[1].checked
+            value: 'no',
+            text: "No, I can already work in the UK without a visa",
+            checked: options[1].checked,
+            hint:{
+              html:UKHintCode
+            }
+          },{
+            value: 'other',
+            text: "No, I am eligible to work in the UK via another type of visa",
+            checked: options[2].checked
           }
           ]
         }) }}
