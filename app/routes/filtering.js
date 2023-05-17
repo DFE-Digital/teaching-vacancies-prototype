@@ -15,8 +15,11 @@ module.exports = router => {
         // Check if the variable contains any number using test()
         if (numberPattern.test(location)) {
             res.redirect('jobs/search/postcode')
-        } else {
+        } else if (location !== ''){
             res.redirect('jobs/search/location')
+        }
+        else {
+            res.redirect('jobs/search/relevance')
         }
 
 
@@ -34,10 +37,13 @@ module.exports = router => {
         var numberPattern = /\d+/;
 
         // Check if the variable contains any number using test()
-        if (numberPattern.test(location)) {
+         if (numberPattern.test(location)) {
             res.redirect('/jobs/search/postcode')
-        } else {
+        } else if (location !== ''){
             res.redirect('/jobs/search/location')
+        }
+        else {
+            res.redirect('/jobs/search/relevance')
         }
 
 
@@ -46,6 +52,20 @@ module.exports = router => {
     router.get('/jobs/search/postcode', (req, res) => {
         let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
         res.render('jobs/search/postcode', {
+        jobs
+        })
+    })
+
+    router.get('/jobs/search/location', (req, res) => {
+        let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+        res.render('jobs/search/location', {
+        jobs
+        })
+    })
+
+    router.get('/jobs/search/relevance', (req, res) => {
+        let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+        res.render('jobs/search/relevance', {
         jobs
         })
     })
