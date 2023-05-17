@@ -42,7 +42,7 @@
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Jobs (240)
+    Jobs (<span id="job-count">240</span>)
   </h1>
 
   <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
@@ -526,7 +526,6 @@
 
 
 
-
     </div>
 
     <div class="app-filter-layout__content">
@@ -834,6 +833,18 @@
           {% endif %}
           
         {% endfor %}
+      </div>
+
+      <div id="try-another-search" class="divider-bottom" style="display:none;">
+        <div class="govuk-heading-m">Try another search</div>
+        <p class="govuk-body">You may get more results if you:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>add more keywords, or try different ones</li>
+          <li>change the radius of your search</li>
+          <li>look at a wider geographical location, West Yorkshire instead of Leeds for example</li>
+          <li>remove some filters if you have used them</li>
+        </ul>
+        <p></p>
       </div>
 
       {{ govukPagination({
