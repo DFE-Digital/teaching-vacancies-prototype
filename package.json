@@ -8,7 +8,6 @@
   },
   "scripts": {
     "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-jobs.js && node ./scripts/generate-users.js",
-    "postinstall": "npm run generate-data",
     "start": "node start.js",
     "lint": "standard",
     "rapidtest": "jest --bail",
