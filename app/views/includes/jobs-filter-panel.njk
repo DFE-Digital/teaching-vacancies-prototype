@@ -6,7 +6,7 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Role",
+        text: "Job role",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -28,6 +28,37 @@
     }, {
       value: 'SENDCo (special educational needs and disabilities coordinator)',
       text: 'SENDCo (special educational needs and disabilities coordinator)'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[phase]",
+    name: "filters[phase]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Education phase",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Nursery school',
+      text: 'Nursery school'
+    }, {
+      value: 'Primary school',
+      text: 'Primary school'
+    }, {
+      value: 'Middle school',
+      text: 'Middle school'
+    }, {
+      value: 'Secondary school',
+      text: 'Secondary school'
+    }, {
+      value: 'Sixth form or college',
+      text: 'Sixth form or college'
+    }, {
+      value: 'Through school',
+      text: 'Through school'
     }]
   }) }}
 
@@ -278,37 +309,6 @@
     }, {
       value: 'Not suitable for ECTs',
       text: 'Not suitable for ECTs'
-    }]
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filters[phase]",
-    name: "filters[phase]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Phase of education",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Nursery school',
-      text: 'Nursery school'
-    }, {
-      value: 'Primary school',
-      text: 'Primary school'
-    }, {
-      value: 'Middle school',
-      text: 'Middle school'
-    }, {
-      value: 'Secondary school',
-      text: 'Secondary school'
-    }, {
-      value: 'Sixth form or college',
-      text: 'Sixth form or college'
-    }, {
-      value: 'Through school',
-      text: 'Through school'
     }]
   }) }}
 

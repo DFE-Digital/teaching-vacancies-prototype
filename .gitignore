@@ -10,5 +10,3 @@ lib/extensions/_extensions.scss
 /public
 node_modules/*
 .tmuxp.*
-app/data/jobs.json
-app/data/organisations.json

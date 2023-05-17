@@ -41,11 +41,9 @@
 </style>
 
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     Jobs (240)
   </h1>
-
-  <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -57,6 +55,10 @@
 
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div class="govuk-inset-text">
+        If you're interested in teaching or training to teach in England as an international citizen, we can <a data-controller="tracked-link" data-action="click->tracked-link#track auxclick->tracked-link#track contextmenu->tracked-link#track" data-tracked-link-target="link" data-link-type="international_teacher_advice_link_search_results" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers">help you understand your next steps</a>.
       </div>
 
       <div>
@@ -87,14 +89,6 @@
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
-                {
-                  key: {
-                    text: "Role"
-                  },
-                  value: {
-                    text: job.role
-                  }
-                },
                 {
                   key: {
                     text: "Full-time equivalent salary"

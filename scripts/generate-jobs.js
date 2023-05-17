@@ -38,14 +38,24 @@ const generateJob = (params = {}) => {
     job.phase = 'Primary school'
   }
 
-  job.schoolType = params.schoolType || faker.helpers.arrayElement([
-    'Local authority maintained school, ages 11 to 18' || job.organisation.name,
-    'Academy, ages 11 to 18' || job.organisation.name
-  ])
+  if(job.phase == 'Nursery school') {
 
+    job.schoolType = params.schoolType || faker.helpers.arrayElement([
+      'Local authority maintained school, ages 3 to 11',
+      'Local authority maintained school, ages 3 to 5'
+    ])
+
+    
+    job.subjects = ''
+  }
+  
   job.keyStages = params.keyStages || generateKeyStages({phase: job.phase})
 
   job.subjects = params.subjects || generateSubjects()
+
+  if(job.phase == 'Nursery school') {
+    job.subjects = ''
+  }
 
   job.contractType = params.contractType || faker.helpers.arrayElement([
     'Permanent',
@@ -174,6 +184,8 @@ const generateJob = (params = {}) => {
 
   job.startDate = params.startDate || faker.date.future(0, job.closingDate)
 
+  job.distance = params.distance || faker.datatype.number({ min: 1, max: 30 })
+
   return job
 }
 
@@ -183,18 +195,28 @@ const generateJobs = () => {
   jobs.push(generateJob({
     status: 'Active',
     title: 'Temporary teacher of modern foreign languages (German)',
-    organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust'),
     isUsingApplicationForm: 'Yes',
     hasSafeguardingCommitment: 'Yes',
     hasFurtherDetailsAboutTheRole: 'Yes',
-    schoolType: 'Academy, ages 11 to 18'
+    schoolType: 'Academy, ages 11 to 18',
+    phase: 'Secondary school',
+  }))
+  jobs.push(generateJob({
+    status: 'Active',
+    title: 'Early years educator',
+    isUsingApplicationForm: 'Yes',
+    hasSafeguardingCommitment: 'Yes',
+    hasFurtherDetailsAboutTheRole: 'Yes',
+    schoolType: 'Local authority maintained school, ages 3 to 11',
+    phase: 'Nursery school'
   }))
   jobs.push(generateJob({
     status: 'Active',
     isUsingApplicationForm: 'No',
     applicationMethod: 'Through a website',
     hasSafeguardingCommitment: 'Yes',
-    hasFurtherDetailsAboutTheRole: 'Yes'
+    hasFurtherDetailsAboutTheRole: 'Yes',
+    phase: 'Nursery school'
   }))
   jobs.push(generateJob({
     status: 'Active',
@@ -211,8 +233,6 @@ const generateJobs = () => {
   jobs.push(generateJob({ status: 'Active' }))
   jobs.push(generateJob({ status: 'Active' }))
   jobs.push(generateJob({ status: 'Active' }))
-  jobs.push(generateJob())
-  jobs.push(generateJob())
   jobs.push(generateJob())
   jobs.push(generateJob())
   jobs.push(generateJob())

@@ -1,5 +1,6 @@
 <div class="app-search-form">
-  <form>
+   <form method="post" novalidate>
+
     {{ govukInput({
       id: "keywords",
       name: "keywords",
@@ -29,13 +30,48 @@
         {
           value: "updated",
           text: "This area only"
+        },
+        {
+          value: "1",
+          text: "1 mile"
+        },
+        {
+          value: "5",
+          text: "5 miles"
+        },
+        {
+          value: "10",
+          text: "10 miles"
+        },
+        {
+          value: "15",
+          text: "15 miles"
+        },
+        {
+          value: "20",
+          text: "20 miles"
+        },
+        {
+          value: "25",
+          text: "25 miles"
+        },
+        {
+          value: "50",
+          text: "50 miles"
+        },
+        {
+          value: "100",
+          text: "100 miles"
+        },
+        {
+          value: "200",
+          text: "200 miles"
         }
       ]
     }) }}
 
     {{ govukButton({
-      text: 'Search',
-      href: '/jobs'
+      text: 'Search'
     }) }}
   </form>
 </div>

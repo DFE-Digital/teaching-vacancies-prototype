@@ -26,4 +26,8 @@ require('./routes/profile-errors')(router)
 require('./routes/jobs')(router)
 require('./routes/schools')(router)
 
+//routing for filters
+require('./routes/filtering')(router)
+
+
 module.exports = router
