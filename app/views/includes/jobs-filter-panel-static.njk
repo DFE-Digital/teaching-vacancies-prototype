@@ -483,17 +483,17 @@
               <div class="app-filter__selected-heading">
                 <div class="app-filter__heading-title" style="width:100%; ">
                   <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
-                  <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/applications/remove-all-filters">Clear filters</a></p>
+                  <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/jobs">Clear filters</a></p>
                 </div>
               </div>
                   {% if data['keywords'] in ['early years','reception','Early years','Reception','ks1','KS1','ks2','KS2','Nursery','nursery','Primary','primary', 'Middle','middle', 'Secondary', 'secondary', 'Sixth form', 'sixth form', 'College', 'college', 'Through'] %}
                   
                   <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h3>
                     <ul class="app-filter-tags">
-                      {% if data['keywords'] in ['ks1','KS1','ks2','KS2','primary', 'Primary', 'Primary school', 'primary school'] %}
+                      {% if data['keywords'] in ['early years','Early years','reception','Reception','ks1','KS1','ks2','KS2','primary', 'Primary', 'Primary school', 'primary school'] %}
                         <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>Primary school</a></li>
                       {% endif %}
-                      {% if data['keywords'] in ['early years', 'reception', 'Early years', 'Reception','nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
+                      {% if data['keywords'] in ['early years','Early years','nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
                         <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>Nursery</a></li>
                       {% endif %}
                        {% if data['keywords'] in ['secondary', 'Secondary', 'Secondary school', 'secondary school'] %}

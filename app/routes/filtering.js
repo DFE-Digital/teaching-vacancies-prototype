@@ -15,7 +15,7 @@ module.exports = router => {
             res.redirect('jobs/search/location')
         }
         else {
-            res.redirect('jobs/search/relevance')
+            res.redirect('jobs/search/relevant')
         }
     })
 
@@ -32,7 +32,7 @@ module.exports = router => {
             res.redirect('/jobs/search/location')
         }
         else {
-            res.redirect('/jobs/search/relevance')
+            res.redirect('/jobs/search/relevant')
         }
     })
 
@@ -49,11 +49,11 @@ module.exports = router => {
             res.redirect('/jobs/search/location')
         }
         else {
-            res.redirect('/jobs/search/relevance')
+            res.redirect('/jobs/search/relevant')
         }
     })
 
-    router.post('/jobs/search/relevance', (req, res) => {
+    router.post('/jobs/search/relevant', (req, res) => {
         //get location so we know if we should sort by postcode or city/other
         var location = req.session.data['location']
         //detect if the location field has a number in, to determine if it does include a postcode      
@@ -66,7 +66,7 @@ module.exports = router => {
             res.redirect('/jobs/search/location')
         }
         else {
-            res.redirect('/jobs/search/relevance')
+            res.redirect('/jobs/search/relevant')
         }
     })
 
@@ -83,7 +83,7 @@ module.exports = router => {
             res.redirect('/jobs/search/location')
         }
         else {
-            res.redirect('/jobs/search/relevance')
+            res.redirect('/jobs/search/relevant')
         }
     })
 
@@ -101,9 +101,9 @@ module.exports = router => {
         })
     })
 
-    router.get('/jobs/search/relevance', (req, res) => {
+    router.get('/jobs/search/relevant', (req, res) => {
         let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
-        res.render('jobs/search/relevance', {
+        res.render('jobs/search/relevant', {
         jobs
         })
     })
