@@ -164,7 +164,7 @@
           </nav>
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Distance from <span style="text-transform: uppercase;">{{data['location']}}</span> </h2>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Distance from {{data['location'] | capitalize }}</h2>
 
         {% for job in jobs|sort(attribute='distance', reverse=false) %}
 
