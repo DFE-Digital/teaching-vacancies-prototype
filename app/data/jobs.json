@@ -983,7 +983,7 @@
     "closingDate": "2024-02-18T04:54:02.573Z",
     "closingTime": "5pm",
     "startDate": "2024-08-27T16:06:31.488Z",
-    "distance": 3
+    "distance": 0.7
   },
   {
     "id": "808196",
@@ -1305,7 +1305,7 @@
 
 
   {
-    "id": "243286",
+    "id": "243266",
     "status": "Active",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
@@ -1378,12 +1378,178 @@
     "closingDate": "2024-05-25T16:27:23.390Z",
     "closingTime": "5pm",
     "startDate": "2024-07-04T12:09:17.318Z",
-    "distance": 2
+    "distance": 0.5
   },
 
 
+
+
+
   {
-    "id": "243286",
+    "id": "243255",
+    "status": "Active",
+    "organisation": {
+      "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
+      "name": "Lee Green Primary School",
+      "address": {
+        "address1": "2 Curzon Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      },
+      "type": "Academy",
+      "phase": "Primary school",
+      "ageGroup": "11 to 16",
+      "size": "100",
+      "website": "http://leegreen.org.uk",
+      "emailAddress": "email@leegreen.org.uk",
+      "about": "Quibusdam iusto sunt asperiores. Modi numquam similique tempora. Iure error eveniet atque harum molestiae. Dolor nam facere consequatur facilis quos. Vel numquam minima ullam. Voluptatibus corrupti quae ratione quo nobis.\n\nEum eveniet voluptas nostrum maiores alias est nihil laudantium ratione. Ducimus nobis omnis quasi quaerat officiis deserunt vitae. Laboriosam veniam impedit minus. Nobis veritatis aperiam dignissimos earum cupiditate aliquam. Fuga quaerat natus necessitatibus ipsum.",
+      "safeguardingCommitment": "Corporis veniam nesciunt labore laborum quos inventore provident aspernatur. Voluptatem deserunt qui. Consectetur minima fugiat amet distinctio necessitatibus iste temporibus.\n\nAutem autem amet sapiente. Atque molestiae quia. Deleniti mollitia perspiciatis harum voluptas. Eius officia iure illo aliquam.",
+      "logo": "/public/images/logos/leegreen.png",
+      "photo": "https://loremflickr.com/640/320/abstract"
+    },
+    "locations": [
+      {
+        "name": "Lee Green Primary School",
+        "address": {
+          "address1": "2 Curzon Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      }
+    ],
+    "role": "Teacher of KS1 or KS2",
+    "title": "Teacher of KS1 or KS2",
+    "phase": "Primary school",
+    "schoolType": "Local authority maintained school, ages 4 to 11",
+    "subjects": "",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£25,578 - £27,584 (PRO RATA)",
+    "payScaleDetails": "Main Pay scale",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "email@lakesidenursery.org.uk",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "- Passion for learning and teaching and be committed to raising standards \n- Up to date with current pedagogical thinking \n- Able to inspire others to ensure the delivery of high-quality learning experiences for our students \n- Fantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject. \n- High expectations of themselves and others Ambitious and committed to ongoing professional development",
+    "whatSchoolOffers": "- A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science \n- A full extra-curricular programme with opportunities for enrichment activities for all \n- An excellent opportunity for continued personal development through our Talent Pathway \n- A wide range of staff benefits \n- Excellent resources and facilities \n- A wonderful community that is involved within school life.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "This school is committed to safeguarding and promoting the welfare of children and young people and for ensuring that they are protected from harm.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-25T00:28:53.864Z",
+    "closingDate": "2024-05-25T16:27:23.390Z",
+    "closingTime": "5pm",
+    "startDate": "2024-07-04T12:09:17.318Z",
+    "distance": 2.3
+  },
+
+
+
+
+
+  {
+    "id": "243244",
+    "status": "Active",
+    "organisation": {
+      "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
+      "name": "Long Caledwood primary school",
+      "address": {
+        "address1": "2 Curzon Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      },
+      "type": "Academy",
+      "phase": "Primary school",
+      "ageGroup": "11 to 16",
+      "size": "100",
+      "website": "http://leegreen.org.uk",
+      "emailAddress": "email@leegreen.org.uk",
+      "about": "Quibusdam iusto sunt asperiores. Modi numquam similique tempora. Iure error eveniet atque harum molestiae. Dolor nam facere consequatur facilis quos. Vel numquam minima ullam. Voluptatibus corrupti quae ratione quo nobis.\n\nEum eveniet voluptas nostrum maiores alias est nihil laudantium ratione. Ducimus nobis omnis quasi quaerat officiis deserunt vitae. Laboriosam veniam impedit minus. Nobis veritatis aperiam dignissimos earum cupiditate aliquam. Fuga quaerat natus necessitatibus ipsum.",
+      "safeguardingCommitment": "Corporis veniam nesciunt labore laborum quos inventore provident aspernatur. Voluptatem deserunt qui. Consectetur minima fugiat amet distinctio necessitatibus iste temporibus.\n\nAutem autem amet sapiente. Atque molestiae quia. Deleniti mollitia perspiciatis harum voluptas. Eius officia iure illo aliquam.",
+      "logo": "/public/images/logos/long.jpeg",
+      "photo": "https://loremflickr.com/640/320/abstract"
+    },
+    "locations": [
+      {
+        "name": "Long Caledwood primary school",
+        "address": {
+          "address1": "2 caledwood road",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      }
+    ],
+    "role": "KS1 or KS2 teacher",
+    "title": "KS1 or KS2 teacher",
+    "phase": "Primary school",
+    "schoolType": "Local authority maintained school, ages 4 to 11",
+    "subjects": "",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£25,578 - £27,584 (PRO RATA)",
+    "payScaleDetails": "Main Pay scale",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "email@lakesidenursery.org.uk",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "- Passion for learning and teaching and be committed to raising standards \n- Up to date with current pedagogical thinking \n- Able to inspire others to ensure the delivery of high-quality learning experiences for our students \n- Fantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject. \n- High expectations of themselves and others Ambitious and committed to ongoing professional development",
+    "whatSchoolOffers": "- A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science \n- A full extra-curricular programme with opportunities for enrichment activities for all \n- An excellent opportunity for continued personal development through our Talent Pathway \n- A wide range of staff benefits \n- Excellent resources and facilities \n- A wonderful community that is involved within school life.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "This school is committed to safeguarding and promoting the welfare of children and young people and for ensuring that they are protected from harm.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-25T00:28:53.864Z",
+    "closingDate": "2024-05-25T16:27:23.390Z",
+    "closingTime": "5pm",
+    "startDate": "2024-07-04T12:09:17.318Z",
+    "distance": 4.7
+  },
+
+
+
+
+
+
+  {
+    "id": "243233",
     "status": "Active",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
@@ -1456,8 +1622,178 @@
     "closingDate": "2024-05-25T16:27:23.390Z",
     "closingTime": "5pm",
     "startDate": "2024-07-04T12:09:17.318Z",
-    "distance": 7
+    "distance": 3
   },
+
+
+  {
+    "id": "243222",
+    "status": "Active",
+    "organisation": {
+      "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
+      "name": "Sunny Fields Nursery School",
+      "address": {
+        "address1": "20 Broaden Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      },
+      "type": "Academy",
+      "phase": "Nursery school",
+      "ageGroup": "11 to 16",
+      "size": "100",
+      "website": "http://tart-manor.me.uk",
+      "emailAddress": "email@lakesidenursery.org.uk",
+      "about": "Quibusdam iusto sunt asperiores. Modi numquam similique tempora. Iure error eveniet atque harum molestiae. Dolor nam facere consequatur facilis quos. Vel numquam minima ullam. Voluptatibus corrupti quae ratione quo nobis.\n\nEum eveniet voluptas nostrum maiores alias est nihil laudantium ratione. Ducimus nobis omnis quasi quaerat officiis deserunt vitae. Laboriosam veniam impedit minus. Nobis veritatis aperiam dignissimos earum cupiditate aliquam. Fuga quaerat natus necessitatibus ipsum.",
+      "safeguardingCommitment": "Corporis veniam nesciunt labore laborum quos inventore provident aspernatur. Voluptatem deserunt qui. Consectetur minima fugiat amet distinctio necessitatibus iste temporibus.\n\nAutem autem amet sapiente. Atque molestiae quia. Deleniti mollitia perspiciatis harum voluptas. Eius officia iure illo aliquam.",
+      "logo": "/public/images/logos/sunnyfields.png",
+      "photo": "https://loremflickr.com/640/320/abstract"
+    },
+    "locations": [
+      {
+        "name": "Sunny Fields Nursery School",
+        "address": {
+          "address1": "20 Broaden Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      }
+    ],
+    "role": "Class teacher",
+    "title": "Class teacher",
+    "phase": "Nursery school",
+    "schoolType": "Local authority maintained school, ages 3 to 5",
+    "subjects": "",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£27,578 - £29,584 (PRO RATA)",
+    "payScaleDetails": "Main Pay scale",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "email@lakesidenursery.org.uk",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "- Passion for learning and teaching and be committed to raising standards \n- Up to date with current pedagogical thinking \n- Able to inspire others to ensure the delivery of high-quality learning experiences for our students \n- Fantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject. \n- High expectations of themselves and others Ambitious and committed to ongoing professional development",
+    "whatSchoolOffers": "- A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science \n- A full extra-curricular programme with opportunities for enrichment activities for all \n- An excellent opportunity for continued personal development through our Talent Pathway \n- A wide range of staff benefits \n- Excellent resources and facilities \n- A wonderful community that is involved within school life.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "This school is committed to safeguarding and promoting the welfare of children and young people and for ensuring that they are protected from harm.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-25T00:28:53.864Z",
+    "closingDate": "2024-05-25T16:27:23.390Z",
+    "closingTime": "5pm",
+    "startDate": "2024-07-04T12:09:17.318Z",
+    "distance": 1.5
+  },
+
+
+
+
+
+
+  {
+    "id": "243211",
+    "status": "Active",
+    "organisation": {
+      "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
+      "name": "Albion Nursery School",
+      "address": {
+        "address1": "20 Broaden Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      },
+      "type": "Academy",
+      "phase": "Nursery school",
+      "ageGroup": "11 to 16",
+      "size": "100",
+      "website": "http://tart-manor.me.uk",
+      "emailAddress": "email@lakesidenursery.org.uk",
+      "about": "Quibusdam iusto sunt asperiores. Modi numquam similique tempora. Iure error eveniet atque harum molestiae. Dolor nam facere consequatur facilis quos. Vel numquam minima ullam. Voluptatibus corrupti quae ratione quo nobis.\n\nEum eveniet voluptas nostrum maiores alias est nihil laudantium ratione. Ducimus nobis omnis quasi quaerat officiis deserunt vitae. Laboriosam veniam impedit minus. Nobis veritatis aperiam dignissimos earum cupiditate aliquam. Fuga quaerat natus necessitatibus ipsum.",
+      "safeguardingCommitment": "Corporis veniam nesciunt labore laborum quos inventore provident aspernatur. Voluptatem deserunt qui. Consectetur minima fugiat amet distinctio necessitatibus iste temporibus.\n\nAutem autem amet sapiente. Atque molestiae quia. Deleniti mollitia perspiciatis harum voluptas. Eius officia iure illo aliquam.",
+      "logo": "/public/images/logos/albion.jpeg",
+      "photo": "https://loremflickr.com/640/320/abstract"
+    },
+    "locations": [
+      {
+        "name": "Albion Nursery School",
+        "address": {
+          "address1": "20 Broaden Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher",
+    "phase": "Nursery school",
+    "schoolType": "Local authority maintained school, ages 3 to 5",
+    "subjects": "",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£27,578 - £29,584 (PRO RATA)",
+    "payScaleDetails": "Main Pay scale",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "email@lakesidenursery.org.uk",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "- Passion for learning and teaching and be committed to raising standards \n- Up to date with current pedagogical thinking \n- Able to inspire others to ensure the delivery of high-quality learning experiences for our students \n- Fantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject. \n- High expectations of themselves and others Ambitious and committed to ongoing professional development",
+    "whatSchoolOffers": "- A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science \n- A full extra-curricular programme with opportunities for enrichment activities for all \n- An excellent opportunity for continued personal development through our Talent Pathway \n- A wide range of staff benefits \n- Excellent resources and facilities \n- A wonderful community that is involved within school life.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "This school is committed to safeguarding and promoting the welfare of children and young people and for ensuring that they are protected from harm.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-25T00:28:53.864Z",
+    "closingDate": "2024-05-25T16:27:23.390Z",
+    "closingTime": "5pm",
+    "startDate": "2024-07-04T12:09:17.318Z",
+    "distance": 1.3
+  },
+
+
+
+
+
+
+
+
+
+
   {
     "id": "281523",
     "status": "Closed",
