@@ -1,0 +1,871 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+
+
+<style>
+  .square {
+      position: relative;
+      display: inline-block;
+      vertical-align: top; /*not required*/
+      border: 1px solid black; /*not required*/
+      position: relative;
+  }
+
+  .square span {
+    font-family: arial, sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    font-size: 12px;
+  }
+
+  img {
+    max-height: 100%;
+   max-width: 100%;
+   width: auto;
+   height: auto;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+ }
+
+</style>
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Jobs (<span id="job-count">240</span>)
+  </h1>
+
+  <p>details</p>
+  <ul>
+    <li>{{ data['filter-role'] }}</li>
+    <li>{{ data['filter-phase'] }}</li>
+    <li>{{ data['filter-subjects'] }}</li>
+    <li>{{ data['filter-suitability'] }}</li>
+    <li>{{ data['filter-keyStages'] }}</li>
+    <li>{{ data['filter-workingPatterns'] }}</li>
+  </ul>
+
+  <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
+
+  <div class="app-filter-layout">
+
+
+    <div class="app-filter-layout__filter">
+      
+      {% set filterOptionsHtml %}
+
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Job role</legend>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[role]" name="filters[role]" type="checkbox" value="Teacher" {% if 'Teacher' in data['filter-role']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[role]">Teacher</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[role]-2" name="filters[role]" type="checkbox" value="Headteacher, deputy or assistant headteacher" {% if 'Headteacher, deputy or assistant headteacher' in data['filter-role']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[role]-2">Headteacher, deputy or assistant headteacher</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[role]-3" name="filters[role]" type="checkbox" value="Head of year, department, curriculum or phase" {% if 'Head of year, department, curriculum or phase' in data['filter-role']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[role]-3">Head of year, department, curriculum or phase</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[role]-4" name="filters[role]" type="checkbox" value="Teaching assistant" {% if 'Teaching assistant' in data['filter-role']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[role]-4">Teaching assistant</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[role]-5" name="filters[role]" type="checkbox" value="Learning support, cover supervisor or tutor" {% if 'Learning support, cover supervisor or tutor' in data['filter-role']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[role]-5">Learning support, cover supervisor or tutor</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[role]-6" name="filters[role]" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)" {% if 'SENDCo (special educational needs and disabilities coordinator)' in data['filter-role']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[role]-6">SENDCo (special educational needs and disabilities coordinator)</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Education phase
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]" name="filters[phase]" type="checkbox" value="Nursery school" {% if 'Nursery school' in data['filter-phase']  %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]">
+                  Nursery school
+                </label>
+              </div>
+              
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-2" name="filters[phase]" type="checkbox" value="Primary school" {% if 'Primary school' in data['filter-phase']  %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-2">
+                  Primary school
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-3" name="filters[phase]" type="checkbox" value="Middle school" {% if 'Middle school' in data['filter-phase']  %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-3">
+                  Middle school
+                </label>
+              </div>
+            
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-4" name="filters[phase]" type="checkbox" value="Secondary school" {% if 'Secondary school' in data['filter-phase']  %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-4">
+                  Secondary school
+                </label>
+              </div>
+              
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-5" name="filters[phase]" type="checkbox" value="Sixth form or college" {% if 'Sixth form or college' in data['filter-phase']  %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-5">
+                  Sixth form or college
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-6" name="filters[phase]" type="checkbox" value="Through school" {% if 'Through school' in data['filter-phase']  %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-6">
+                  Through school
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+       
+        {{ appCheckboxFilter({
+          idPrefix: "subjects",
+          name: "filters[subjects]",
+          classes: "govuk-checkboxes--small",
+          legend: {
+            text: "Subject",
+            classes: "govuk-fieldset__legend--s"
+          },
+          items: [
+            {
+              value: "Accounting",
+              text: "Accounting",
+              hint: {
+                text: 'Includes Finance and accounting'
+              },
+              checked: checked("['filters']['subjects']", "Accounting")
+            },
+            {
+              value: "Art and design",
+              text: "Art and design",
+              checked: checked("['filters']['subjects']", "Art and design")
+            },
+            {
+              value: "Biology",
+              text: "Biology",
+              checked: checked("['filters']['subjects']", "Biology")
+            },
+            {
+              value: "Business studies",
+              text: "Business studies",
+              checked: checked("['filters']['subjects']", "Business studies")
+            },
+            {
+              value: "Chemistry",
+              text: "Chemistry",
+              checked: checked("['filters']['subjects']", "Chemistry")
+            },
+            {
+              value: "Citizenship",
+              text: "Citizenship",
+              checked: checked("['filters']['subjects']", "Citizenship")
+            },
+            {
+              value: "Classics",
+              text: "Classics",
+              hint: {
+                text: 'Includes Latin'
+              },
+              checked: checked("['filters']['subjects']", "Classics")
+            },
+            {
+              value: "Computing",
+              text: "Computing",
+              hint: {
+                text: 'Includes Computer science, Information technology, and ICT'
+              },
+              checked: checked("['filters']['subjects']", "Computing")
+            },
+            {
+              value: "Dance",
+              text: "Dance",
+              checked: checked("['filters']['subjects']", "Dance")
+            },
+            {
+              value: "Design and technology",
+              text: "Design and technology",
+              hint: {
+                text: 'Includes Product design, Textiles and Systems and control'
+              },
+              checked: checked("['filters']['subjects']", "Design and technology")
+            },
+            {
+              value: "Drama",
+              text: "Drama",
+              hint: {
+                text: 'Includes Theatre studies and Performing arts'
+              },
+              checked: checked("['filters']['subjects']", "Drama")
+            },
+            {
+              value: "Economics",
+              text: "Economics",
+              checked: checked("['filters']['subjects']", "Economics")
+            },
+            {
+              value: "Engineering",
+              text: "Engineering",
+              checked: checked("['filters']['subjects']", "Engineering")
+            },
+            {
+              value: "English",
+              text: "English",
+              hint: {
+                text: 'Includes English language and literature'
+              },
+              checked: checked("['filters']['subjects']", "English")
+            },
+            {
+              value: "Food Technology",
+              text: "Food Technology",
+              hint: {
+                text: 'Includes Hospitality and catering'
+              },
+              checked: checked("['filters']['subjects']", "Food Technology")
+            },
+            {
+              value: "French",
+              text: "French",
+              checked: checked("['filters']['subjects']", "French")
+            },
+            {
+              value: "Geography",
+              text: "Geography",
+              checked: checked("['filters']['subjects']", "Geography")
+            },
+            {
+              value: "German",
+              text: "German",
+              checked: checked("['filters']['subjects']", "German")
+            },
+            {
+              value: "Health and social care",
+              text: "Health and social care",
+              checked: checked("['filters']['subjects']", "Health and social care")
+            },
+            {
+              value: "History",
+              text: "History",
+              checked: checked("['filters']['subjects']", "History")
+            },
+            {
+              value: "Humanities",
+              text: "Humanities",
+              checked: checked("['filters']['subjects']", "Humanities")
+            },
+            {
+              value: "ICT",
+              text: "ICT",
+              checked: checked("['filters']['subjects']", "ICT")
+            },
+            {
+              value: "Law",
+              text: "Law",
+              checked: checked("['filters']['subjects']", "Law")
+            },
+            {
+              value: "Mandarin",
+              text: "Mandarin",
+              checked: checked("['filters']['subjects']", "Mandarin")
+            },
+            {
+              value: "Mathematics",
+              text: "Mathematics",
+              checked: checked("['filters']['subjects']", "Mathematics")
+            },
+            {
+              value: "Media studies",
+              text: "Media studies",
+              checked: checked("['filters']['subjects']", "Media studies")
+            },
+            {
+              value: "Music",
+              text: "Music",
+              checked: checked("['filters']['subjects']", "Music")
+            },
+            {
+              value: "Philosophy",
+              text: "Philosophy",
+              checked: checked("['filters']['subjects']", "Philosophy")
+            },
+            {
+              value: "Physical education",
+              text: "Physical education",
+              checked: checked("['filters']['subjects']", "Physical education")
+            },
+            {
+              value: "Physics",
+              text: "Physics",
+              checked: checked("['filters']['subjects']", "Physics")
+            },
+            {
+              value: "Politics",
+              text: "Politics",
+              checked: checked("['filters']['subjects']", "Politics")
+            },
+            {
+              value: "Psychology",
+              text: "Psychology",
+              checked: checked("['filters']['subjects']", "Psychology")
+            },
+            {
+              value: "Religious education",
+              text: "Religious education",
+              hint: {
+                text: 'Includes religious studies'
+              },
+              checked: checked("['filters']['subjects']", "Religious education")
+            },
+            {
+              value: "Relationships and sex education",
+              text: "Relationships and sex education",
+              checked: checked("['filters']['subjects']", "Relationships and sex education")
+            },
+            {
+              value: "Science",
+              text: "Science",
+              checked: checked("['filters']['subjects']", "Science")
+            },
+            {
+              value: "Social sciences",
+              text: "Social sciences",
+              checked: checked("['filters']['subjects']", "Social sciences")
+            },
+            {
+              value: "Sociology",
+              text: "Sociology",
+              checked: checked("['filters']['subjects']", "Sociology")
+            },
+            {
+              value: "Spanish",
+              text: "Spanish",
+              checked: checked("['filters']['subjects']", "Spanish")
+            },
+            {
+              value: "Statistics",
+              text: "Statistics",
+              checked: checked("['filters']['subjects']", "Statistics")
+            }
+          ]
+        }) }}
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitability for early career teachers (ECT)</legend>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[suitability]" name="filters[suitability]" type="checkbox" value="Suitable for ECTs" {% if 'Suitable for ECTs' in data['filter-suitability']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[suitability]">Suitable for ECTs</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[suitability]-2" name="filters[suitability]" type="checkbox" value="Not suitable for ECTs" {% if 'Not suitable for ECTs' in data['filter-suitability']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[suitability]-2">Not suitable for ECTs</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Key stage</legend>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]" name="filters[keyStages]" type="checkbox" value="Early years" {% if 'Early years' in data['filter-keyStages']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]">Early years</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-2" name="filters[keyStages]" type="checkbox" value="KS1" {% if 'KS1' in data['filter-keyStages']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-2">KS1</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-3" name="filters[keyStages]" type="checkbox" value="KS2" {% if 'KS2' in data['filter-keyStages']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-3">KS2</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-4" name="filters[keyStages]" type="checkbox" value="KS3" {% if 'KS3' in data['filter-keyStages']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-4">KS3</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-5" name="filters[keyStages]" type="checkbox" value="KS4" {% if 'KS4' in data['filter-keyStages']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-5">KS4</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-6" name="filters[keyStages]" type="checkbox" value="KS5" {% if 'KS5' in data['filter-keyStages']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-6">KS5</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Working pattern</legend>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[workingPatterns]" name="filters[workingPatterns]" type="checkbox" value="Full time" {% if 'Full time' in data['filter-workingPatterns']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[workingPatterns]">Full time</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[workingPatterns]-2" name="filters[workingPatterns]" type="checkbox" value="Part time"  {% if 'Part time' in data['filter-workingPatterns']  %} checked {% endif %}> 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[workingPatterns]-2">Part time</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+
+      {% endset %}
+
+      <div class="app-filter">
+        <div class="app-filter__header">
+          <div class="app-filter__header-title">
+            <h2 class="govuk-heading-m">Filter</h2>
+          </div>
+          <div class="app-filter__header-action">
+
+          </div>
+        </div>
+        <div class="app-filter__content">
+
+            {% if data['filter-role'] !== '' or data['filter-phase'] !== '' or data['filter-suitability'] !== '' or data['filter-keyStages'] !== '' or data['filter-workingPatterns'] !== ''  %} 
+
+                <div class="app-filter__selected">
+                <div class="app-filter__selected-heading">
+                    <div class="app-filter__heading-title" style="width:100%; ">
+                    <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
+                    <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/jobs">Clear filters</a></p>
+                    </div>
+                </div>
+
+                    {% if data['filter-role'] !== '' %} 
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Job role</h3>
+                        <ul class="app-filter-tags">
+                        {% if data['filter-role'] !== 'Teacher' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher</a></li>
+                        {% endif %}
+                        {% if data['filter-role'] !== 'Headteacher, deputy or assistant headteacher' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Headteacher, deputy or assistant headteacher</a></li>
+                        {% endif %}
+                        {% if data['filter-role'] !== 'Head of year, department, curriculum or phase' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Head of year, department, curriculum or phase</a></li>
+                        {% endif %}
+                        {% if data['filter-role'] !== 'Teaching assistant' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teaching assistant</a></li>
+                        {% endif %}
+                        {% if data['filter-role'] !== 'Learning support, cover supervisor or tutor' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Learning support, cover supervisor or tutor</a></li>
+                        {% endif %}
+                        {% if data['filter-role'] !== 'SENDCo (special educational needs and disabilities coordinator)' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>SENDCo (special educational needs and disabilities coordinator)</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+                    {% if data['filter-phase'] !== '' %} 
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h3>
+                        <ul class="app-filter-tags">
+                        {% if data['filter-phase'] !== 'Nursery school' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Nursery school</a></li>
+                        {% endif %}
+                        {% if data['filter-phase'] !== 'Primary school' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Primary school</a></li>
+                        {% endif %}
+                        {% if data['filter-phase'] !== 'Middle school' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Middle school</a></li>
+                        {% endif %}
+                        {% if data['filter-phase'] !== 'Secondary school' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Secondary school</a></li>
+                        {% endif %}
+                        {% if data['filter-phase'] !== 'Sixth form or college' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Sixth form or college</a></li>
+                        {% endif %}
+                        {% if data['filter-phase'] !== 'Through school' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Through school</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+                    
+                    {% if data['filter-suitability'] !== '' %} 
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Suitability for early career teachers (ECT)</h3>
+                        <ul class="app-filter-tags">
+                        {% if data['filter-suitability'] !== 'Suitable for ECTs' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Suitable for ECTs</a></li>
+                        {% endif %}
+                        {% if data['filter-suitability'] !== 'Not suitable for ECTs' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Not suitable for ECTs</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+                    {% if data['filter-keyStage'] !== '' %} 
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Key stage</h3>
+                        <ul class="app-filter-tags">
+                        {% if data['filter-keyStage'] !== 'Early years' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Early years</a></li>
+                        {% endif %}
+                        {% if data['filter-keyStage'] !== 'KS1' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS1</a></li>
+                        {% endif %}
+                        {% if data['filter-keyStage'] !== 'KS2' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS2</a></li>
+                        {% endif %}
+                        {% if data['filter-keyStage'] !== 'KS3' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS3</a></li>
+                        {% endif %}
+                        {% if data['filter-keyStage'] !== 'KS4' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS4</a></li>
+                        {% endif %}
+                        {% if data['filter-keyStage'] !== 'KS5' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS5</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+                    {% if data['filter-workingPatterns'] !== '' %} 
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Working patterns</h3>
+                        <ul class="app-filter-tags">
+                        {% if data['filter-workingPatterns'] !== 'Full time' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Full time</a></li>
+                        {% endif %}
+                        {% if data['filter-workingPatterns'] !== 'Part time' %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Part time</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+
+                </div>
+
+            {% endif %}
+
+          <div class="app-filter__options">
+            <form method="get" action="/applications" novalidate>
+              <button class="govuk-button" data-module="govuk-button">
+                Apply filters
+              </button>
+              {{filterOptionsHtml | safe}}
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="app-filter-layout__content">
+      <div class="app-search-form">
+        <form method="post" novalidate>
+
+          {{ govukInput({
+            id: "keywords",
+            name: "keywords",
+            label: {
+              text: "Search for job title or description",
+              classes: "govuk-label--s"
+            },
+            value: data['keywords']
+          }) }}
+
+          {{ govukInput({
+            id: "location",
+            name: "location",
+            label: {
+              text: "City, county or postcode (in England)",
+              classes: "govuk-label--s"
+            },
+            value: data['location']
+          }) }}
+
+          {{ govukSelect({
+            id: "radius",
+            name: "radius",
+            label: {
+              text: "Search radius",
+              classes: "govuk-label--s"
+            },
+            value: data['radius'],
+            items: [
+            {
+              value: "updated",
+              text: "This area only"
+            },
+            {
+              value: "1",
+              text: "1 mile"
+            },
+            {
+              value: "5",
+              text: "5 miles"
+            },
+            {
+              value: "10",
+              text: "10 miles"
+            },
+            {
+              value: "15",
+              text: "15 miles"
+            },
+            {
+              value: "20",
+              text: "20 miles"
+            },
+            {
+              value: "25",
+              text: "25 miles"
+            },
+            {
+              value: "50",
+              text: "50 miles"
+            },
+            {
+              value: "100",
+              text: "100 miles"
+            },
+            {
+              value: "200",
+              text: "200 miles"
+            }
+          ]
+          }) }}
+
+          {{ govukButton({
+            text: 'Search'
+          }) }}
+        </form>
+      </div>
+
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div>
+        <div class="app-jobs">
+            
+
+        {% for job in jobs %}
+
+            
+            {% set suitableForECTs %}
+                {% if  job.isRoleSuitableForEarlyCareeerTeachers == 'Yes' %}
+                    Suitable for ECTs
+                {% else %}
+                    Not suitable for ECTs
+                {% endif %}
+            {% endset %}
+
+           <!--//currently mising key stages and subjects as hard to match -->
+
+           {% if 
+           job.role in data['filter-role'] or
+           job.phase in data['filter-phase'] or
+           suitableForECTs in data['filter-suitability'] or
+           job.workingPatterns in data['filter-workingPatterns'] 
+           %}  
+
+           <!--//currently mising key stages and subjects as hard to match -->
+
+           <div class="app-jobs__item">
+                
+                {% if job.organisation.logo != 'Not entered' %}
+                <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
+                <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
+                <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
+                </div>
+                {% endif %}
+                <h2 class="govuk-heading-m">
+                <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+
+                <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+
+                {{ govukSummaryList({
+                classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                rows: [
+                    {
+                    key: {
+                        text: "Full-time equivalent salary"
+                    },
+                    value: {
+                        html: job.fullTimeEquivalentSalaryDetails
+                    }
+                    } if job.fullTimeEquivalentSalaryDetails,
+                    {
+                    key: {
+                        text: "Actual salary"
+                    },
+                    value: {
+                        html: job.actualSalaryDetails
+                    }
+                    } if job.actualSalaryDetails,
+                    {
+                    key: {
+                        text: "Pay scale"
+                    },
+                    value: {
+                        html: job.payScaleDetails
+                    }
+                    } if job.payScaleDetails,
+                    {
+                    key: {
+                        text: "School type"
+                    },
+                    value: {
+                        html: job.schoolType
+                    }
+                    } if job.schoolType,
+                    {
+                    key: {
+                        text: "Education phase"
+                    },
+                    value: {
+                        text: job.phase | capitalize
+                    }
+                    } if job.phase,
+                    {
+                    key: {
+                        text: "Working pattern"
+                    },
+                    value: {
+                        text: job.workingPatterns | join(', ') | capitalize
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Distance from postcode"
+                    },
+                    value: {
+                        text: job.distance + ' miles'
+                    }
+                    } if job.distance
+                ]
+                }) }}
+
+            </div>
+           
+           {% else %}
+           
+           {% endif %}
+
+            
+          
+        {% endfor %}
+        
+      </div>
+
+      <div id="try-another-search" class="divider-bottom" style="display:none;">
+        <div class="govuk-heading-m">Try another search</div>
+        <p class="govuk-body">You may get more results if you:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>add more keywords, or try different ones</li>
+          <li>change the radius of your search</li>
+          <li>look at a wider geographical location, West Yorkshire instead of Leeds for example</li>
+          <li>remove some filters if you have used them</li>
+        </ul>
+        <p></p>
+      </div>
+
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+    </div>
+  </div>
+
+  {# {{ govukDetails({
+    summaryText: "Jobs by school, role, location and subject",
+    text: "Text",
+    classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
+  }) }} #}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

@@ -1,8 +1,8 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[role]",
-    name: "filters[role]",
+    idPrefix: "filter-role",
+    name: "filter-role",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -32,8 +32,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[phase]",
-    name: "filters[phase]",
+    idPrefix: "filter-phase",
+    name: "filter-phase",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -63,8 +63,8 @@
   }) }}
 
   {{ appCheckboxFilter({
-    idPrefix: "subjects",
-    name: "filters[subjects]",
+    idPrefix: "filter-subjects",
+    name: "filter-subjects",
     classes: "govuk-checkboxes--small",
     legend: {
       text: "Subject",
@@ -294,8 +294,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[suitability]",
-    name: "filters[suitability]",
+    idPrefix: "filter-suitability",
+    name: "filter-suitability",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -313,8 +313,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[keyStages]",
-    name: "filters[keyStages]",
+    idPrefix: "filter-keyStages",
+    name: "filter-keyStages",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -344,8 +344,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[workingPatterns]",
-    name: "filters[workingPatterns]",
+    idPrefix: "filter-workingPatterns",
+    name: "filter-workingPatterns",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -394,7 +394,7 @@
       </div>
     {% endif %}
     <div class="app-filter__options">
-      <form method="get" action="/applications" novalidate>
+      <form id="filter" method="get" action="/applications" novalidate>
         <button class="govuk-button" data-module="govuk-button">
           Apply filters
         </button>

@@ -1,4 +1,5 @@
 
+
 module.exports = router => {
 
 
@@ -112,6 +113,16 @@ module.exports = router => {
         let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
         res.render('jobs/search/newest', {
         jobs
+        })
+    })
+
+
+    router.get('/applications', (req, res) => {
+        let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+
+        
+        res.render('jobs/search/filter', {
+            jobs
         })
     })
 
