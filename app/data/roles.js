@@ -1,6 +1,7 @@
 const roles = [
   'Teacher',
-  'Headteacher, deputy or assistant headteacher',
+  'Deputy or assistant headteacher',
+  'Headteacher',
   'Head of year, department, curriculum or phase',
   'Teaching assistant',
   'HLTA (higher level teaching assistant)',

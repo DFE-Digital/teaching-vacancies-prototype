@@ -42,13 +42,13 @@ module.exports = router => {
       text: 'Teacher',
       checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Teacher')
     }, {
-      value: 'Headteacher, deputy or assistant headteacher',
-      text: 'Headteacher, deputy or assistant headteacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Headteacher, deputy or assistant headteacher')
+      value: 'Deputy or assistant headteacher',
+      text: 'Deputy or assistant headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Deputy or assistant headteacher')
     }, {
-      value: 'Head of year, department, curriculum or phase',
-      text: 'Head of year, department, curriculum or phase',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of year, department, curriculum or phase')
+      value: 'Headteacher',
+      text: 'Headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Headteacher')
     }, {
       value: 'Teaching assistant',
       text: 'Teaching assistant',

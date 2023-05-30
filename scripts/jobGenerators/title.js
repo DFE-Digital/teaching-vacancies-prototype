@@ -13,11 +13,16 @@ module.exports = ({organisation, role}) => {
     ])
   }
 
-  if(role == 'Headteacher, deputy or assistant headteacher') {
+  if(role == 'Deputy or assistant headteacher') {
     return faker.helpers.arrayElement([
-      'Head teacher',
       'Deputy headteacher',
       'Assistant headteacher'
+    ])
+  }
+
+  if(role == 'Headteacher') {
+    return faker.helpers.arrayElement([
+      'Head teacher',
     ])
   }
 
