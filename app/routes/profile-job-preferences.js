@@ -9,17 +9,27 @@ module.exports = router => {
       text: 'Teacher',
       checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Teacher')
     }, {
-      value: 'Deputy or assistant headteacher',
-      text: 'Deputy or assistant headteacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Deputy or assistant headteacher')
+      value: 'Head of year or phase',
+      text: 'Head of year or phase',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of year or phase')
+    }
+    , {
+      value: 'Head of department or curriculum',
+      text: 'Head of department or curriculum',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of department or curriculum')
+    }
+    , {
+      value: 'Assistant headteacher',
+      text: 'Assistant headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Assistant headteacher')
+    },{
+      value: 'Deputy headteacher',
+      text: 'Deputy headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Deputy headteacher')
     }, {
       value: 'Headteacher',
       text: 'Headteacher',
       checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Headteacher')
-    }, {
-      value: 'Head of year, department, curriculum or phase',
-      text: 'Head of year, department, curriculum or phase',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of year, department, curriculum or phase')
     }, {
       value: 'Teaching assistant',
       text: 'Teaching assistant',

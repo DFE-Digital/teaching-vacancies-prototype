@@ -365,7 +365,7 @@
         "photo": "https://loremflickr.com/640/320/abstract"
       }
     ],
-    "role": "Head of year, department, curriculum or phase",
+    "role": "Head of year or phase",
     "title": "KS2 Phase leader",
     "phase": "Primary school",
     "keyStages": [
@@ -671,7 +671,7 @@
         }
       }
     ],
-    "role": "Head of year, department, curriculum or phase",
+    "role": "Head of department or curriculum",
     "title": "Head of modern foreign languages",
     "phase": "Secondary school",
     "keyStages": [
@@ -1187,8 +1187,8 @@
         }
       }
     ],
-    "role": "Deputy or assistant headteacher",
-    "title": "Head teacher",
+    "role": "Assistant headteacher",
+    "title": "Assistant headteacher",
     "phase": "Sixth form or college",
     "keyStages": [
       "Key stage 5"
@@ -1902,7 +1902,7 @@
         }
       }
     ],
-    "role": "Head of year, department, curriculum or phase",
+    "role": "Head of year or phase",
     "title": "KS2 Phase leader",
     "phase": "Middle school",
     "keyStages": [
