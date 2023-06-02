@@ -5,39 +5,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
-        Find teaching jobs
+        Teaching Vacancies job seeker prototype 
       </h1>
 
-      <form>
+      <p>Index page for all prototypes designed for job seeker users.</p>
 
-        {{ govukInput({
-          id: "keywords",
-          name: "keywords",
-          label: {
-            text: "Keywords",
-            classes: "govuk-label--m"
-          }
-        }) }}
+      <h2 class="govuk-heading-m">
+        Searching for a job
+      </h2>
 
-        {{ govukInput({
-          id: "location",
-          name: "location",
-          label: {
-            text: "City, county or postcode",
-            classes: "govuk-label--m"
-          }
-        }) }}
-
-        {{ govukButton({
-          text: 'Search',
-          href: '/jobs'
-        }) }}
-      </form>
+      <p>Testing designs for allowing teachers to search for jobs.</p>
 
       <p><a href="/jobs">Browse all teaching jobs</a></p>
 
+      <h2 class="govuk-heading-m">
+        Candidate profiles
+      </h2>
 
+      <p>Testing designs for allowing teachers to create a profile.</p>
 
+      <p><a href="/account/new">Create a new account</a></p>
+      <p><a href="/account/sign-in-as-profile">Sign in as a specfic user for testing</a></p>
 
 
     </div>
