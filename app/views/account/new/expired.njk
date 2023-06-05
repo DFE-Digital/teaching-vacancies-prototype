@@ -1,0 +1,38 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'The link in the email has expired' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ govukNotificationBanner({
+                html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+                type: "success",
+                icon: false
+            }) if flash and flash.length }}
+
+            <h1 class="govuk-heading-xl">
+                {{title}}
+            </h1>
+
+            <h2 class="govuk-heading-m">
+               How to activate your account
+            </h2>
+
+            <p>You will need to resend the email to the email address alex.lee@education.gov.uk to activate your account.</p>
+
+            <form method="post" novalidate>
+
+                <button class="govuk-button" data-module="govuk-button">
+                    Resend email
+                </button>
+
+            </form>
+
+        </div>
+  </div>
+
+{% endblock %}
+
