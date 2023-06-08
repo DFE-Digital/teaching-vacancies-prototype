@@ -117,7 +117,7 @@ module.exports = router => {
     })
 
 
-    router.get('/applications', (req, res) => {
+    router.get('/search/applications', (req, res) => {
         let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
 
         
