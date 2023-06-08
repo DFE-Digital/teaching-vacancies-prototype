@@ -59,7 +59,10 @@ module.exports = router => {
         hiddenPlaces: {}
       }
     }
-    res.redirect('/account/new/confirmation')
+
+    req.flash('success', 'An email has just been sent to your email address. Click the link in the email within 24 hours to activate your account.')
+
+    res.redirect('/account/new/activate')
   })
 
   router.get('/account/new/confirmation', (req, res) => {
@@ -83,5 +86,34 @@ module.exports = router => {
 
     res.redirect('/profile')
   })
+
+  router.get('/account/new/activate', (req, res) => {
+
+    res.render('account/new/activate', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/new/activate', (req, res) => {
+
+    req.flash('success', 'An email has just been sent to your email address. Click the link in the email within 24 hours to activate your account.')
+   
+    res.redirect('/account/new/activate')
+  })
+
+  router.get('/account/new/expired', (req, res) => {
+
+    res.render('account/new/expired', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/new/expired', (req, res) => {
+
+    req.flash('success', 'An email has just been sent to your email address. Click the link in the email within 24 hours to activate your account.')
+   
+    res.redirect('/account/new/expired')
+  })
+
 
 }
