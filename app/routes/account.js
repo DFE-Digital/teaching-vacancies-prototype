@@ -60,7 +60,7 @@ module.exports = router => {
       }
     }
 
-    req.flash('success', 'An email has just been sent to your email address. Click the link in the email within 24 hours to activate your account.')
+    req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
 
     res.redirect('/account/new/activate')
   })
@@ -96,7 +96,7 @@ module.exports = router => {
 
   router.post('/account/new/activate', (req, res) => {
 
-    req.flash('success', 'An email has just been sent to your email address. Click the link in the email within 24 hours to activate your account.')
+    req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
    
     res.redirect('/account/new/activate')
   })
@@ -110,7 +110,7 @@ module.exports = router => {
 
   router.post('/account/new/expired', (req, res) => {
 
-    req.flash('success', 'An email has just been sent to your email address. Click the link in the email within 24 hours to activate your account.')
+    req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
    
     res.redirect('/account/new/expired')
   })
