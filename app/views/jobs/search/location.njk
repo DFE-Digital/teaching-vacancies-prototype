@@ -146,12 +146,6 @@
             <span class="govuk-!-font-weight-bold">Sort by:</span>
             <ul class="sort-component__list" style="display: inline-block; list-style:none; padding:0px; font-size:18px;">
               <li class="sort-component__list-item" style="display: inline-block;">
-                <a class="govuk-link" href="relevant">
-                  <span class="govuk-visually-hidden">Sort by </span>Most relevant first
-                </a>
-              </li>
-              <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
-              <li class="sort-component__list-item" style="display: inline-block;">
                 <a class="govuk-link" href="newest">
                   <span class="govuk-visually-hidden">Sort by </span>Newest job listing
                 </a>
@@ -164,9 +158,12 @@
           </nav>
         </div>
 
+
         <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Distance from {{data['location'] | capitalize }}</h2>
 
         {% for job in jobs|sort(attribute='distance', reverse=false) %}
+
+         {% if loop.index0 < 10 %} 
 
           {% if job.distance <= data['radius'] %}
 
@@ -350,6 +347,8 @@
             {% else %}
 
             {% endif %}
+
+          {% endif %}
 
           {% endif %}
           

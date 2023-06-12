@@ -713,9 +713,35 @@
 
       <div>
         <div class="app-jobs">
+
+          {% if data['radius'] %}
+
+            <div class="sort-component">
+              <nav class="govuk-body" style="margin:0px;">
+                <span class="govuk-!-font-weight-bold">Sort by:</span>
+                <ul class="sort-component__list" style="display: inline-block; list-style:none; padding:0px; font-size:18px;">
+                  <li class="sort-component__list-item" style="display: inline-block;">
+                    <a class="govuk-link" href="#">
+                      <span class="govuk-visually-hidden">Sort by </span>Newest job listing
+                    </a>
+                  </li>
+                  <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
+                  <li class="sort-component__list-item" style="display: inline-block;">
+                    <span class="govuk-visually-hidden">Sort by </span>Distance from city, county or postcode 
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Distance from {{data['location'] | capitalize }}</h2>
+
+          {% endif %}
+
             
 
         {% for job in jobs %}
+
+        {% if loop.index0 < 10 %} 
 
           {% if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" %}  {% set jobECT %} Suitable for ECTs {% endset %} {% elseif job.isRoleSuitableForEarlyCareeerTeachers == "No"  %} {% set jobECT %} Not suitable for ECTs {% endset %} {% else %} {% set jobECT %} {% endset %} {% endif %}
 
@@ -815,7 +841,7 @@
            
            {% endif %}
 
-            
+           {% endif %}
           
         {% endfor %}
         
