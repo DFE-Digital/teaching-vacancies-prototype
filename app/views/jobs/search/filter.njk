@@ -54,6 +54,7 @@
   {% if data['filter-suitability'] %}  {% set filterSuitability %} {{ data['filter-suitability'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %}  {% set filterSuitability %}{% endset %} {% endif %}
   {% if data['filter-workingPatterns'] %}  {% set filterPatterns %} {{data['filter-workingPatterns'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPatterns %}{% endset %} {% endif %}
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
+  {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
 
   <!-- each time there is a match, we plus 1 -->
 
@@ -462,6 +463,20 @@
             </fieldset>
         </div>
 
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Application method</legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input aria-describedby="filter-quick-item-hint" {% if 'Apply directly online' in filterQuick %} checked {% endif %} class="govuk-checkboxes__input" id="filter-quick" name="filter-quick" type="checkbox" value="Apply directly online"> <label class="govuk-label govuk-checkboxes__label" for="filter-quick">Apply directly online</label>
+                <div class="govuk-hint govuk-checkboxes__hint" id="filter-quick-item-hint">
+                  Saves your information to make further applications quicker
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
 
       {% endset %}
 
@@ -476,7 +491,7 @@
         </div>
         <div class="app-filter__content">
 
-            {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length %} 
+            {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length %} 
 
                 <div class="app-filter__selected">
                 <div class="app-filter__selected-heading">
@@ -599,6 +614,17 @@
                         {% endif %}
                         {% if 'Part time' in filterPatterns %} 
                             <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Part time</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+                    {% if filterQuick.length %}
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Application method</h3>
+                        <ul class="app-filter-tags">
+                        {% if 'Apply directly online' in filterQuick %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Apply directly online</a></li>
                         {% endif %}
                         </ul>
 
@@ -744,6 +770,7 @@
         {% if loop.index0 < 10 %} 
 
           {% if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" %}  {% set jobECT %} Suitable for ECTs {% endset %} {% elseif job.isRoleSuitableForEarlyCareeerTeachers == "No"  %} {% set jobECT %} Not suitable for ECTs {% endset %} {% else %} {% set jobECT %} {% endset %} {% endif %}
+          {% if job.isUsingApplicationForm == 'Yes' %}  {% set jobQuick %} Apply directly online {% endset %} {% else %} {% set jobQuick %}No{% endset %} {% endif %}
 
           <!-- set a 0 that we can loop through and + 1 to -->
           {% set countOfJobMatch = 0 %}
@@ -753,6 +780,7 @@
           {% if jobECT in filterSuitability %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           {% if job.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           
           <!-- each time there is a match, we plus 1 -->
 
@@ -768,8 +796,16 @@
                 <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
                 </div>
                 {% endif %}
+
                 <h2 class="govuk-heading-m">
-                <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+                  <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+                  {% if job.isUsingApplicationForm == 'Yes' %}
+                    {{ govukTag({
+                      text: "Apply directly online",
+                      classes: 'govuk-tag--green'
+                    }) }}
+                  {% endif %}
+                </h2>
 
                 <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
 
