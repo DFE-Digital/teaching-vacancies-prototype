@@ -468,7 +468,7 @@
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Application method</legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input aria-describedby="filter-quick-item-hint" {% if 'Apply directly online' in filterQuick %} checked {% endif %} class="govuk-checkboxes__input" id="filter-quick" name="filter-quick" type="checkbox" value="Apply directly online"> <label class="govuk-label govuk-checkboxes__label" for="filter-quick">Apply directly online</label>
+                <input aria-describedby="filter-quick-item-hint" {% if 'Apply online' in filterQuick %} checked {% endif %} class="govuk-checkboxes__input" id="filter-quick" name="filter-quick" type="checkbox" value="Apply online"> <label class="govuk-label govuk-checkboxes__label" for="filter-quick">Quick apply</label>
                 <div class="govuk-hint govuk-checkboxes__hint" id="filter-quick-item-hint">
                   Saves your information to make further applications quicker
                 </div>
@@ -623,8 +623,8 @@
                     
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Application method</h3>
                         <ul class="app-filter-tags">
-                        {% if 'Apply directly online' in filterQuick %} 
-                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Apply directly online</a></li>
+                        {% if 'Apply online' in filterQuick %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Quick apply</a></li>
                         {% endif %}
                         </ul>
 
@@ -770,7 +770,7 @@
         {% if loop.index0 < 10 %} 
 
           {% if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" %}  {% set jobECT %} Suitable for ECTs {% endset %} {% elseif job.isRoleSuitableForEarlyCareeerTeachers == "No"  %} {% set jobECT %} Not suitable for ECTs {% endset %} {% else %} {% set jobECT %} {% endset %} {% endif %}
-          {% if job.isUsingApplicationForm == 'Yes' %}  {% set jobQuick %} Apply directly online {% endset %} {% else %} {% set jobQuick %}No{% endset %} {% endif %}
+          {% if job.isUsingApplicationForm == 'Yes' %}  {% set jobQuick %} Apply online {% endset %} {% else %} {% set jobQuick %}No{% endset %} {% endif %}
 
           <!-- set a 0 that we can loop through and + 1 to -->
           {% set countOfJobMatch = 0 %}
@@ -801,7 +801,7 @@
                   <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
                   {% if job.isUsingApplicationForm == 'Yes' %}
                     {{ govukTag({
-                      text: "Apply directly online",
+                      text: "Quick apply",
                       classes: 'govuk-tag--green'
                     }) }}
                   {% endif %}
