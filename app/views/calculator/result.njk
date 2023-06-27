@@ -1,0 +1,76 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Teacher pay calculator' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                It is estimated your current pay band will increase to £20,594 from 1 September 2023
+            </h1>
+            <div class="govuk-panel__body">
+                This is an increase of £1,231 baased on a 6.4% pay rise
+            </div>
+        </div>
+
+        <p>
+            If you successfully pass your current appraisal cycle from the pay grade UnQ1 to UnQ2, your pay is estimated to be £22,810. This is dependant on your schools' pay policy.
+        </p>
+
+        <h2 class="govuk-heading-m">Your answers</h2>
+
+        <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    What is your current pay band?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data['payband'] }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Do you expect your pay band to increase after the completion of your current appraisal cycle?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data['appraisal'] }}
+                </dd>
+            </div>
+            {% if data['appraisal'] == 'Yes' %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        What do you expect your new pay band to be?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['new-payband'] }}
+                    </dd>
+                </div>
+            
+            {% endif %}
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Where do you work?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data['where-do-you-work'] }}
+                </dd>
+            </div>
+            
+        </dl>
+
+        <form action="calculator">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Start again
+            </button>
+        </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
