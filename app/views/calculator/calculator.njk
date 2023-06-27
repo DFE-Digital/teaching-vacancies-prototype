@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = '' %}
+{% set title = 'Heading' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -96,6 +96,7 @@
                 <legend class="govuk-fieldset__legend govuk-label--s">
                     Where do you work?
                 </legend>
+                
                 <div class="govuk-radios" data-module="govuk-radios">
 
                     <div class="govuk-radios__item">
@@ -103,27 +104,20 @@
                         <label class="govuk-label govuk-radios__label" for="where-do-you-work">
                             Inner London
                         </label>
-                        <div id="innerlondon-hint" class="govuk-hint govuk-radios__hint">
-                           Explain inner here
-                        </div>
+                        
                     </div>
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="where-do-you-work-2" name="where-do-you-work" type="radio" value="Outer London" aria-describedby="outerlondon-hint">
                         <label class="govuk-label govuk-radios__label" for="where-do-you-work-2">
                             Outer London
                         </label>
-                        <div id="outerlondon-hint" class="govuk-hint govuk-radios__hint">
-                            Explain outer here
-                        </div>
+                        
                     </div>
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="where-do-you-work-3" name="where-do-you-work" type="radio" value="Fringe of London" aria-describedby="fringe-hint">
                         <label class="govuk-label govuk-radios__label" for="where-do-you-work-3">
                             Fringe of London
                         </label>
-                        <div id="fringe-hint" class="govuk-hint govuk-radios__hint">
-                            Explain fringe here
-                        </div>
                     </div>
                     <div class="govuk-radios__divider">or</div>
                     <div class="govuk-radios__item">
