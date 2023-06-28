@@ -3,6 +3,43 @@
 
 {% set title = 'Teacher pay calculator' %}
 
+
+    {% if data['payband'] == 'Unqualified Teacher 1 (UnQ1)' %}    {% set numberOne %}19,340{% endset %}      {% endif %}
+    {% if data['payband'] == 'Unqualified Teacher 2 (UnQ2)' %}    {% set numberOne %}21,559{% endset %}      {% endif %}
+    {% if data['payband'] == 'Unqualified Teacher 3 (UnQ3)' %}    {% set numberOne %}23,777{% endset %}      {% endif %}
+    {% if data['payband'] == 'Unqualified Teacher 1 (UnQ4)' %}    {% set numberOne %}25,733{% endset %}      {% endif %}
+    {% if data['payband'] == 'Unqualified Teacher 1 (UnQ5)' %}    {% set numberOne %}27,954{% endset %}      {% endif %}
+    {% if data['payband'] == 'Unqualified Teacher 1 (UnQ6)' %}    {% set numberOne %}30,172{% endset %}      {% endif %}
+    {% if data['payband'] == 'Main Pay Range 1 (M1)' %}    {% set numberOne %}28,000{% endset %}      {% endif %}
+    {% if data['payband'] == 'Main Pay Range 2 (M2)' %}    {% set numberOne %}29,800{% endset %}      {% endif %}
+    {% if data['payband'] == 'Main Pay Range 3 (M3)' %}    {% set numberOne %}31,750{% endset %}      {% endif %}
+    {% if data['payband'] == 'Main Pay Range 4 (M4)' %}    {% set numberOne %}33,850{% endset %}      {% endif %}
+    {% if data['payband'] == 'Main Pay Range 5 (M5)' %}    {% set numberOne %}35,990{% endset %}      {% endif %}
+    {% if data['payband'] == 'Main Pay Range 6 (M6)' %}    {% set numberOne %}38,810{% endset %}      {% endif %}
+    {% if data['payband'] == 'Upper Pay 1 (U1)' %}    {% set numberOne %}40,625{% endset %}      {% endif %}
+    {% if data['payband'] == 'Upper Pay 2 (U2)' %}    {% set numberOne %}42,131{% endset %}      {% endif %}
+    {% if data['payband'] == 'Upper Pay 3 (U3)' %}    {% set numberOne %}43,685{% endset %}      {% endif %}
+    {% if data['payband'] == 'Leading Practitioner' %}    {% set numberOne %}44,523{% endset %}      {% endif %}
+    {% if data['payband'] == 'Leadership' %}    {% set numberOne %}67,685{% endset %}      {% endif %}
+
+    {% if data['new-payband'] == 'Unqualified Teacher 1 (UnQ1)' %}    {% set numberTwo %}20,307{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Unqualified Teacher 2 (UnQ2)' %}    {% set numberTwo %}22,637{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Unqualified Teacher 3 (UnQ3)' %}    {% set numberTwo %}24,965{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Unqualified Teacher 1 (UnQ4)' %}    {% set numberTwo %}27,020{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Unqualified Teacher 1 (UnQ5)' %}    {% set numberTwo %}29,352{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Unqualified Teacher 1 (UnQ6)' %}    {% set numberTwo %}31,681{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Main Pay Range 1 (M1)' %}    {% set numberTwo %}29,400{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Main Pay Range 2 (M2)' %}    {% set numberTwo %}31,290{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Main Pay Range 3 (M3)' %}    {% set numberTwo %}33,337{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Main Pay Range 4 (M4)' %}    {% set numberTwo %}35,542{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Main Pay Range 5 (M5)' %}    {% set numberTwo %}37,789{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Main Pay Range 6 (M6)' %}    {% set numberTwo %}40,750{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Upper Pay 1 (U1)' %}    {% set numberTwo %}42,656{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Upper Pay 2 (U2)' %}    {% set numberTwo %}44,237{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Upper Pay 3 (U3)' %}    {% set numberTwo %}45,869{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Leading Practitioner' %}    {% set numberTwo %}46,749{% endset %}      {% endif %}
+    {% if data['new-payband'] == 'Leadership' %}    {% set numberTwo %}70,569{% endset %}      {% endif %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -11,18 +48,18 @@
         {% if data['payband'] == 'Leading Practitioner' or data['payband'] == 'Leadership' %} 
 
             <div class="govuk-panel govuk-panel--confirmation">
-                <h1 class="govuk-panel__title">It is estimated that your pay will increase to £20,594 from 1 September 2023</h1>
+                <h1 class="govuk-panel__title">It is estimated that your current pay range will increase to between £44,523 and £67,685 from 1 September 2023</h1>
                 <div class="govuk-panel__body">
-                    This is an increase of £1,231 and a 6.4% pay rise
+                    This is a minimum increase of £1,231 on a 5% pay rise
                 </div>
             </div>
 
         {% else %}
 
             <div class="govuk-panel govuk-panel--confirmation">
-                <h1 class="govuk-panel__title">It is estimated that your pay will increase to £20,594 from 1 September 2023</h1>
+                <h1 class="govuk-panel__title">It is estimated that your pay will increase to £{{numberOne}} from 1 September 2023</h1>
                 <div class="govuk-panel__body">
-                    This is an increase of £1,231 and a 6.4% pay rise
+                    This is an increase of £1,231 on a 5% pay rise
                 </div>
             </div>
 
@@ -30,13 +67,13 @@
 
         {% if data['appraisal'] == 'No' %} 
            
-        {% elseif data['new-payband'] == 'Leading Practitioner' or data['payband'] == 'Leadership' %}
+        {% elseif data['new-payband'] == 'Leading Practitioner' or data['new-payband'] == 'Leadership' %}
             <p>
-                If you successfully pass your current appraisal cycle from the pay grade UnQ1 to UnQ2, your pay is estimated to be £22,810.
+                If you successfully pass your current appraisal cycle from the pay grade {{data['payband']}} to {{data['new-payband']}}, your pay is estimated to be between £44,305 and £123,057.
             </p>
         {% else %}
             <p>
-                If you successfully pass your current appraisal cycle from the pay grade UnQ1 to UnQ2, your pay is estimated to be £22,810.
+                If you successfully pass your current appraisal cycle from the pay grade {{data['payband']}} to {{data['new-payband']}}, your pay is estimated to be £{{numberTwo}}.
             </p>
         {% endif %}
 
