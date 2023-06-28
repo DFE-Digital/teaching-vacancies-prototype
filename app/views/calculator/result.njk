@@ -6,19 +6,39 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      
-        <div class="govuk-panel govuk-panel--confirmation">
-            <h1 class="govuk-panel__title">
-                It is estimated your current pay band will increase to £20,594 from 1 September 2023
-            </h1>
-            <div class="govuk-panel__body">
-                This is an increase of £1,231 based on a 6.4% pay rise
-            </div>
-        </div>
 
-        <p>
-            If you successfully pass your current appraisal cycle from the pay grade UnQ1 to UnQ2, your pay is estimated to be £22,810. This is dependant on your schools' pay policy.
-        </p>
+
+        {% if data['payband'] == 'Leading Practitioner' or data['payband'] == 'Leadership' %} 
+
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">It is estimated that your pay will increase to £20,594 from 1 September 2023</h1>
+                <div class="govuk-panel__body">
+                    This is an increase of £1,231 and a 6.4% pay rise
+                </div>
+            </div>
+
+        {% else %}
+
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">It is estimated that your pay will increase to £20,594 from 1 September 2023</h1>
+                <div class="govuk-panel__body">
+                    This is an increase of £1,231 and a 6.4% pay rise
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if data['appraisal'] == 'No' %} 
+           
+        {% elseif data['new-payband'] == 'Leading Practitioner' or data['payband'] == 'Leadership' %}
+            <p>
+                If you successfully pass your current appraisal cycle from the pay grade UnQ1 to UnQ2, your pay is estimated to be £22,810.
+            </p>
+        {% else %}
+            <p>
+                If you successfully pass your current appraisal cycle from the pay grade UnQ1 to UnQ2, your pay is estimated to be £22,810.
+            </p>
+        {% endif %}
 
         <h2 class="govuk-heading-m">Your answers</h2>
 
