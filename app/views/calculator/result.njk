@@ -65,18 +65,6 @@
 
         {% endif %}
 
-        {% if data['appraisal'] == 'No' %} 
-           
-        {% elseif data['new-payband'] == 'Leading Practitioner' or data['new-payband'] == 'Leadership' %}
-            <p>
-                If you successfully pass your current appraisal cycle from the pay grade {{data['payband']}} to {{data['new-payband']}}, your pay is estimated to be between £44,305 and £123,057.
-            </p>
-        {% else %}
-            <p>
-                If you successfully pass your current appraisal cycle from the pay grade {{data['payband']}} to {{data['new-payband']}}, your pay is estimated to be £{{numberTwo}}.
-            </p>
-        {% endif %}
-
         <h2 class="govuk-heading-m">Your answers</h2>
 
         <dl class="govuk-summary-list">
