@@ -1,33 +1,53 @@
 
-{% extends "layout.njk" %}
+{% extends "layout_simple.njk" %}
 
 {% set title = 'Start page' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">
-            {{title}}
-        </h1>
 
-        <p>The government announced a <a href="#" class="govuk-link">pay award for school teachers and leaders on 30 June 2023</a>, following School Teachers’ Review Body’s pay recommendations.</p>
-
-        <p>If you're a school teacher or leader in England, use this service to see how salaries could change following the pay award.</p>
-
-        <p>The pay award takes effect from 1 September 2023.</p>
-
-        <p>You may start receiving your new salary after this date but it will be backdated.</p>
-
-        <p><a href="calculator" class="gem-c-button govuk-button" role="button" data-module="govuk-button" draggable="false" href="https://gov.uk/random" data-govuk-button-module-started="true">Calculate your pay</a></p>
-
-        
-        <div class="govuk-inset-text">
-            This calculator is indicative only. The new pay framework is subject to a statutory consultation period and your school can choose how to implement it.
+        <div class="gem-c-title govuk-!-margin-bottom-8">
+            <span class="govuk-caption-xl gem-c-title__context">
+                Guidance
+            </span>
+            <h1 class="gem-c-title__text govuk-heading-l">
+                Calculate teacher pay
+            </h1>
         </div>
-        
-        <p>Academies may choose to follow the pay framework.</p>
 
-        <p>The pay framework does not apply in further education or early years.</p>
+        <p class="govuk-body-l">School teachers and leaders in England can use this service to see how their salary could change following the 2023 pay award.</p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p class="govuk-body-s">From: <a class="govuk-link" href="#">Department for Education</a></p>
+
+        <section class="gem-c-devolved-nations" style="background: #f3f2f1; margin-bottom: 50px; margin-top: 50px; padding: 20px 30px;">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+                Applies to England
+            </h2>
+        </section>
+
+
+        <div class="govspeak">
+            <p>The government announced a <a href="link%20to%20PN" class="govuk-link">pay award for school teachers and leaders on 30 June 2023</a> following pay recommendations from the School Teacher’s Review Body.</p>
+
+            <p>You can use this service to see how your salary could change following the pay award.</p>
+
+            <p>The pay award takes effect from 1 September 2023.</p>
+
+            <p>You may start receiving your new salary after this date but it will be backdated.</p>
+
+            <p><a class="gem-c-button govuk-button" role="button" data-module="govuk-button" draggable="false" href="calculator" data-govuk-button-module-started="true">Start now</a></p>
+
+            <div class="govuk-inset-text">
+                <p>This calculator is indicative only. The new pay framework is subject to a statutory consultation period and your school can choose how to implement it.</p>
+            </div>
+
+            <p>Academies may choose to follow the pay framework.</p>
+
+            <p>The pay framework does not apply in further education or early years settings.</p>
+        </div>
 
 
 
