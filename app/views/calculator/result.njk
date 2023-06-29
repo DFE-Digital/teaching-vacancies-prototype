@@ -48,7 +48,7 @@
         {% if data['payband'] == 'Leading Practitioner' or data['payband'] == 'Leadership' %} 
 
             <div class="govuk-panel govuk-panel--confirmation">
-                <h1 class="govuk-panel__title">Your current pay range is £43,523 to £65,685. It is estimated that your current pay range will increase to between £44,523 and £67,685 from 1 September 2023</h1>
+                <h1 class="govuk-panel__title">Your current pay range is £43,523 to £65,685. It is estimated that it will be £44,523 to £67,685 from 1 September 2023</h1>
                 <div class="govuk-panel__body">
                     This is a minimum increase of £1,231 on a 5% pay rise
                 </div>
@@ -65,12 +65,16 @@
 
         {% endif %}
 
+        <div class="govuk-inset-text">
+            This calculator is indicative only. The new pay framework is subject to a statutory consultation period and your school can choose how to implement it.
+        </div>
+
         <h2 class="govuk-heading-m">Your answers</h2>
 
         <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    What is your current pay band?
+                    What is your pay band?
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{data['payband'] }}
@@ -100,7 +104,10 @@
             
         </dl>
 
-        <form action="calculator">
+        <!-- <p>You can also try this calculator with a different salary, if you're already expecting a salary increase soon.</p>-->
+        <p>Select start again if you want to try this calculator with a different pay band.</p>
+
+        <form action="start">
             <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
                 Start again
             </button>
