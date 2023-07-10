@@ -60,9 +60,7 @@ module.exports = router => {
       }
     }
 
-    req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
-
-    res.redirect('/account/new/activate')
+    res.redirect('/account/new/create')
   })
 
   router.get('/account/new/confirmation', (req, res) => {

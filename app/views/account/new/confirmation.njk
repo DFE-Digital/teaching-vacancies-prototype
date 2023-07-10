@@ -6,17 +6,16 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {{ govukPanel({
-        titleText: title
-      }) }}
-
-      <h2 class="govuk-heading-m">What you can do next</h2>
+   
+      <h1 class="govuk-heading-xl">
+          {{title}}
+      </h1>
 
       <p class="govuk-body">
-        You can <a href="/jobs">search and apply for teaching jobs</a>.
+        You can now <a href="/jobs">search and apply for teaching jobs</a> or <a href="#">create a profile</a>.
       </p>
 
-      <h2 class="govuk-heading-m">Create a profile so you can:</h2>
+      <p>A profile will let you:</p>
 
       {% for user in users %}
 
