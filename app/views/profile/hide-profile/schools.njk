@@ -40,12 +40,23 @@
 
         {% set rowloop = loop %}
 
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               School {{ loop.index }}
             </dt>
             <dd class="govuk-summary-list__value">
               {{hiddenPlace.hiddenPlace}}
+
+              {% if 'Trust' in hiddenPlace.hiddenPlace %}
+
+                {{ govukInsetText({
+                  text: "Your profile will be hidden from all schools within this Trust."
+                }) }}
+
+              {% endif %}
+
             </dd>
             <dd class="govuk-summary-list__actions">
 

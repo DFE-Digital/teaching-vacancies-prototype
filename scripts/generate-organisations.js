@@ -141,13 +141,32 @@ const generateOrgs = () => {
   const orgs = []
 
   /*************************************************
+   * Nursery school
+   *************************************************/
+
+  orgs.push(generateSchool({
+    name: 'Nightinghale Nursery',
+    phase: 'Nursery school',
+  }))
+
+  orgs.push(generateSchool({
+    name: 'Shardlow Nursery',
+    phase: 'Nursery school',
+  }))
+
+  orgs.push(generateSchool({
+    name: 'Lakeside Nursery',
+    phase: 'Nursery school',
+  }))
+
+  /*************************************************
    * Primary school
    *************************************************/
 
   orgs.push(generateSchool({
     name: 'Courtland Primary School',
     phase: 'Primary school',
-    logo: '/public/images/logos/courtland.png'
+    logo: '/public/images/logos/courtland.jpg'
   }))
 
   /*************************************************
@@ -161,7 +180,7 @@ const generateOrgs = () => {
     emailAddress: 'Not entered',
     about: 'Not entered',
     safeguardingCommitment: 'Not entered',
-    logo: 'Not entered',
+    logo: '/public/images/logos/Bushey_Meads_School.png',
     photo: 'Not entered'
   }))
 
@@ -186,7 +205,7 @@ const generateOrgs = () => {
     emailAddress: 'Not entered',
     about: 'Not entered',
     safeguardingCommitment: 'Not entered',
-    logo: 'Not entered',
+    logo: '/public/images/logos/courtland.jpg',
     photo: 'Not entered'
   }))
 
@@ -194,11 +213,11 @@ const generateOrgs = () => {
    * MAT with primary schools
    *************************************************/
 
-  let matSchool1 = generateSchool({ phase: 'Primary school', name: 'Thor Primary School' })
-  let matSchool2 = generateSchool({ phase: 'Secondary school', name: 'Ragnarok School' })
-  let matSchool3 = generateSchool({ phase: 'Middle school', name: 'Ultron School' })
-  let matSchool4 = generateSchool({ phase: 'Sixth form or college', name: 'Endgame School' })
-  let matSchool5 = generateSchool({ phase: 'Primary school', name: 'Stark Primary School' })
+  let matSchool1 = generateSchool({ phase: 'Primary school', name: 'Draycott Primary School' })
+  let matSchool2 = generateSchool({ phase: 'Secondary school', name: 'Erewash School' })
+  let matSchool3 = generateSchool({ phase: 'Middle school', name: 'Sawley School' })
+  let matSchool4 = generateSchool({ phase: 'Sixth form or college', name: 'Trent School' })
+  let matSchool5 = generateSchool({ phase: 'Primary school', name: 'Applewood Primary School' })
 
   orgs.push(matSchool1)
   orgs.push(matSchool2)
@@ -230,7 +249,7 @@ const generateOrgs = () => {
     emailAddress: 'Not entered',
     about: 'Not entered',
     safeguardingCommitment: 'Not entered',
-    logo: 'Not entered',
+    logo: '/public/images/logos/Bushey_Meads_School.png',
     photo: 'Not entered',
     schools: [
       matSchool1,

@@ -1,31 +1,25 @@
-
 {% extends "layout.njk" %}
-
 {% set primaryNavId = 'profile' %}
-
 {% set title = 'Role' %}
-
 {% block beforeContent %}
    {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back();"
   }) }}
 {% endblock %}
-
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <span class="govuk-caption-xl">
         Work history
       </span>
       <h1 class="govuk-heading-xl">
         {{title}}
       </h1>
-
+      <p>
+        If you have had more than one role at the same school, add them all separately.
+      </p>
       <form method="post" novalidate>
-
         {{ govukInput({
           id: "profile[employer]",
           name: "profile[employer]",
@@ -35,23 +29,16 @@
           },
           hint: {
             text: "If you worked for yourself, enter ‘self-employed’"
-          },
-          value: employer
+          }
         }) }}
-
         {{ govukInput({
           id: "profile[role]",
           name: "profile[role]",
           label: {
             text: 'Role',
             classes: 'govuk-label--m'
-          },
-          hint: {
-            text: "If you had more than one role with this employer, enter your last role"
-          },
-          value: role
+          }
         }) }}
-
         {{ govukDateInput({
           id: "profile[startDate]",
           name: "profile[startDate]",
@@ -67,16 +54,13 @@
           items: [{
             name: "profile[startDate][month]",
             label: "Month",
-            classes: "govuk-input--width-2",
-            value: startDate.month
+            classes: "govuk-input--width-2"
           }, {
             name: "profile[startDate][year]",
             label: "Year",
-            classes: "govuk-input--width-4",
-            value: startDate.year
+            classes: "govuk-input--width-4"
           }]
         }) }}
-
         {% set endDate %}
           {{ govukDateInput({
             id: "profile[endDate]",
@@ -93,13 +77,11 @@
             items: [{
               name: "profile[endDate][month]",
               label: "Month",
-              classes: "govuk-input--width-2",
-              value: endDate.month if endDate
+              classes: "govuk-input--width-2"
             }, {
               name: "profile[endDate][year]",
               label: "Year",
-              classes: "govuk-input--width-4",
-              value: endDate.year if endDate
+              classes: "govuk-input--width-4"
             }]
           }) }}
         {% endset %}
@@ -114,25 +96,32 @@
           },
           value: currentRole,
           items: [{
-            value: currentRoleOptions[0].value,
             text: currentRoleOptions[0].text
           }, {
-            value: currentRoleOptions[1].value,
             text: currentRoleOptions[1].text,
             conditional: {
               html: endDate
             }
           }]
         }) }}
-
+        {{ govukTextarea({
+          id: "profile[mainduties]",
+          name: "profile[mainduties]",
+          rows: "8",
+          label: {
+            text: "Main duties",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          hint: {
+            text: "List all the responsibilities this role involved"
+          }
+        }) }}
         {{ govukButton({
           text: "Save and continue"
         }) }}
-
         <p><a href="/profile">Cancel</a></p>
       </form>
-
     </div>
   </div>
-
 {% endblock %}

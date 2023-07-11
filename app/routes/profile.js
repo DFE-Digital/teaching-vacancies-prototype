@@ -47,6 +47,13 @@ module.exports = router => {
 
   })
 
+  router.get('/profile/activate', (req, res) => {
+
+    res.render('profile/activate', {
+      user: req.session.user
+    })
+  })
+
   router.post('/profile/activate', (req, res) => {
     req.session.user.profile.status = 'Active'
     req.flash('success', 'Profile turned on')

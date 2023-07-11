@@ -1,0 +1,110 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'How are you looking to teach in the UK?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+
+      <form method="post" novalidate>
+
+        {% set hintCode %}
+          <div id="right-to-work-hint" class="govuk-hint">
+             If you need a skilled worker visa you will also need a job that can sponsor you.
+          </div>
+        {% endset %}
+
+         {% set otherVisa %}
+          <div id="right-to-work-hint" class="govuk-hint">
+            This includes a Family visa, a UK Ancestry visa or, if you’re from Hong Kong, a British National overseas visa.
+          </div>
+        {% endset %}
+
+        {% set dependentVisa %}
+          <div id="right-to-work-hint" class="govuk-hint">
+            People who have permission to live in the UK as a dependent (usually partner or child) of someone on a student visa or a skilled worker visa will not need to be sponsored. They can work without a sponsor for the duration of their partner’s or parent’s visa.
+          </div>
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "profile[provideWork]",
+          name: "profile[provideWork]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint:{
+            html:hintCode
+          },
+          items: [{
+            value: 'I am looking for a school that can sponsor me with a skilled worker visa',
+            text: "I am looking for a school that can sponsor me with a skilled worker visa",
+            checked: options[0].checked
+          }, {
+            value: 'I am applying for a graduate visa',
+            text: "I am applying for a graduate visa",
+            checked: options[1].checked
+          }, {
+            value: 'I am applying for a high potential individual visa',
+            text: "I am applying for a high potential individual visa",
+            checked: options[2].checked
+          },{
+            value: 'I am applying for a youth Mobility Scheme visa',
+            text: "I am applying for a youth Mobility Scheme visa",
+            checked: options[3].checked
+          },{
+            value: 'I can work in the UK as a dependent of someone with a visa',
+            text: "I can work in the UK as a dependent of someone with a visa",
+            checked: options[4].checked,
+            hint:{
+              html:dependentVisa
+            }
+          },{
+            value: 'I am applying for the EU Settlement Scheme to continue living, working and studying in the UK without applying for a visa',
+            text: "I am applying for the EU Settlement Scheme to continue living, working and studying in the UK without applying for a visa",
+            checked: options[5].checked
+          },{
+            value: 'other',
+            text: "I am planning to work in the UK via another type of visa",
+            checked: options[6].checked,
+            hint:{
+              html:otherVisa
+            }
+          }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue",
+          classes:"next-location-6"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

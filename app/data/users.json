@@ -19,6 +19,7 @@
       "firstName": "Adam",
       "lastName": "Silver",
       "providePhoneNumber": null,
+<<<<<<< HEAD
       "provideNI": "Yes",
       "NI": "GB GB GB 123",
       "provideAddress": "Yes",
@@ -27,6 +28,9 @@
       "addressTown": "Burlington Gardens",
       "addressCounty": "London",
       "addressPostcode": "SE1 123",
+=======
+      "provideWork": "Yes",
+>>>>>>> main
       "roles": [
         "Teacher"
       ],
@@ -40,20 +44,34 @@
       "provideTRN": "Yes",
       "TRN": "89438689",
       "qualifications": {
+<<<<<<< HEAD
         "5b69b892-13c6-4a1a-86e5-502923211acf": {
           "id": "5b69b892-13c6-4a1a-86e5-502923211acf",
+=======
+        "05e4363e-6e12-4530-8328-8617f52f5a95": {
+          "id": "05e4363e-6e12-4530-8328-8617f52f5a95",
+>>>>>>> main
           "type": "A level",
           "subject": "Maths",
           "grade": "C",
           "year": "2015",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "f74a22dc-c01c-4966-a109-a6e726cfc695": {
           "id": "f74a22dc-c01c-4966-a109-a6e726cfc695",
           "type": "A level"
         },
         "1d6f75a9-3660-4d8c-b4d4-286b7280dade": {
           "id": "1d6f75a9-3660-4d8c-b4d4-286b7280dade",
+=======
+        "0482e3ba-4351-4f00-9b21-484d860375ea": {
+          "id": "0482e3ba-4351-4f00-9b21-484d860375ea",
+          "type": "A level"
+        },
+        "1a1544aa-df0b-4b27-801c-324492bd4c68": {
+          "id": "1a1544aa-df0b-4b27-801c-324492bd4c68",
+>>>>>>> main
           "type": "A level",
           "subject": "Science",
           "grade": "B",
@@ -77,6 +95,7 @@
       "lastName": "Silver",
       "providePhoneNumber": "Yes",
       "phoneNumber": "01928 376 453",
+<<<<<<< HEAD
       "provideNI": "Yes",
       "NI": "GB GB GB 123",
       "provideAddress": "Yes",
@@ -85,6 +104,9 @@
       "addressTown": "Burlington Gardens",
       "addressCounty": "London",
       "addressPostcode": "SE1 123",
+=======
+      "provideWork": "Yes",
+>>>>>>> main
       "roles": [
         "Teacher"
       ],
@@ -104,8 +126,13 @@
         "Biology"
       ],
       "locations": {
+<<<<<<< HEAD
         "2c67bfa3-6085-436a-92c6-5fa898a32bd1": {
           "id": "2c67bfa3-6085-436a-92c6-5fa898a32bd1",
+=======
+        "e7552d2f-781d-4ef1-84d0-628aa6344981": {
+          "id": "e7552d2f-781d-4ef1-84d0-628aa6344981",
+>>>>>>> main
           "location": "London",
           "radius": "5 miles"
         }
@@ -115,114 +142,186 @@
       "provideTRN": "Yes",
       "TRN": "89438689",
       "qualifications": {
+<<<<<<< HEAD
         "fc3ae353-86e4-4fc0-88bb-20d57e32ddd4": {
           "id": "fc3ae353-86e4-4fc0-88bb-20d57e32ddd4",
+=======
+        "bcffa9f7-4b85-42cd-a95d-3d6a2886d51c": {
+          "id": "bcffa9f7-4b85-42cd-a95d-3d6a2886d51c",
+>>>>>>> main
           "type": "GCSE",
           "subject": "Maths",
           "grade": "A",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "265d5318-7aaf-41d6-8974-295bf6d6fb57": {
           "id": "265d5318-7aaf-41d6-8974-295bf6d6fb57",
+=======
+        "d21f064a-76f6-4e62-a9a5-d69fdf7d3152": {
+          "id": "d21f064a-76f6-4e62-a9a5-d69fdf7d3152",
+>>>>>>> main
           "type": "GCSE",
           "subject": "English",
           "grade": "B",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "0f5c8ac0-052d-4d6e-9bd0-7fefa72e7e5d": {
           "id": "0f5c8ac0-052d-4d6e-9bd0-7fefa72e7e5d",
+=======
+        "668e30b9-329e-4651-8e61-2dc0b17097f1": {
+          "id": "668e30b9-329e-4651-8e61-2dc0b17097f1",
+>>>>>>> main
           "type": "GCSE",
           "subject": "Science",
           "grade": "B",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "3d442de7-7d52-4d80-81b8-eb169e514552": {
           "id": "3d442de7-7d52-4d80-81b8-eb169e514552",
+=======
+        "c739ead9-5efb-428a-9486-950c3da841bf": {
+          "id": "c739ead9-5efb-428a-9486-950c3da841bf",
+>>>>>>> main
           "type": "GCSE",
           "subject": "Geography",
           "grade": "B",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "0d5d1287-2dde-4a5e-b493-53c85b2f30f1": {
           "id": "0d5d1287-2dde-4a5e-b493-53c85b2f30f1",
+=======
+        "6d47a6ff-8d79-4774-910f-c98227e44b8d": {
+          "id": "6d47a6ff-8d79-4774-910f-c98227e44b8d",
+>>>>>>> main
           "type": "GCSE",
           "subject": "History",
           "grade": "B",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "a1eadaa8-e06b-4498-a603-e057c5c4b30f": {
           "id": "a1eadaa8-e06b-4498-a603-e057c5c4b30f",
+=======
+        "72d309a2-45e0-44e3-95b7-3728e6cb2bdf": {
+          "id": "72d309a2-45e0-44e3-95b7-3728e6cb2bdf",
+>>>>>>> main
           "type": "GCSE",
           "subject": "Statistics",
           "grade": "A",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "3cb7b652-7c6a-4b66-bcfc-a009b88151a5": {
           "id": "3cb7b652-7c6a-4b66-bcfc-a009b88151a5",
+=======
+        "747e5a65-9abf-4004-824d-7967eae36278": {
+          "id": "747e5a65-9abf-4004-824d-7967eae36278",
+>>>>>>> main
           "type": "GCSE",
           "subject": "French",
           "grade": "B",
           "year": "2013",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "3fd093ca-64a5-4e2f-bf1a-d7ecf8b08633": {
           "id": "3fd093ca-64a5-4e2f-bf1a-d7ecf8b08633",
+=======
+        "0f5e30f8-446c-47c8-a13e-c4da87bff841": {
+          "id": "0f5e30f8-446c-47c8-a13e-c4da87bff841",
+>>>>>>> main
           "type": "A level",
           "subject": "English",
           "grade": "A",
           "year": "2015",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "bbcd70b1-3bb4-4f9f-a99b-13efc86fb652": {
           "id": "bbcd70b1-3bb4-4f9f-a99b-13efc86fb652",
+=======
+        "6798730f-c424-4c51-b95d-efe59b18fa52": {
+          "id": "6798730f-c424-4c51-b95d-efe59b18fa52",
+>>>>>>> main
           "type": "A level",
           "subject": "Maths",
           "grade": "C",
           "year": "2015",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "87a112a6-5b39-466f-9c28-6650c823a964": {
           "id": "87a112a6-5b39-466f-9c28-6650c823a964",
+=======
+        "e556ce26-f26f-473d-8578-0caacaae94a6": {
+          "id": "e556ce26-f26f-473d-8578-0caacaae94a6",
+>>>>>>> main
           "type": "A level",
           "subject": "Science",
           "grade": "B",
           "year": "2013",
           "organisation": "Aldenham College"
         },
+<<<<<<< HEAD
         "fa9bdb9b-5c3a-41a4-8d9b-9f21b170dc40": {
           "id": "fa9bdb9b-5c3a-41a4-8d9b-9f21b170dc40",
+=======
+        "7f85317f-09f6-45ed-983e-46e9924c3b26": {
+          "id": "7f85317f-09f6-45ed-983e-46e9924c3b26",
+>>>>>>> main
           "type": "Degree",
           "subject": "Multimedia Technology BSc",
           "grade": "1st",
           "year": "2019",
           "organisation": "University of Hertfordshire"
         },
+<<<<<<< HEAD
         "789457ab-bec5-4eb5-9bea-67f7bd0214c2": {
           "id": "789457ab-bec5-4eb5-9bea-67f7bd0214c2",
+=======
+        "7fcbd217-f890-4b96-8f66-d77e03e67ad0": {
+          "id": "7fcbd217-f890-4b96-8f66-d77e03e67ad0",
+>>>>>>> main
           "type": "Degree",
           "subject": "Social science PhD",
           "organisation": "UCL"
         }
       },
       "workHistory": {
+<<<<<<< HEAD
         "773df63e-fb5c-4b77-b5a8-962d53441ac3": {
           "id": "773df63e-fb5c-4b77-b5a8-962d53441ac3",
+=======
+        "37784d5c-62c8-4fbd-9a43-0cb13ff053d6": {
+          "id": "37784d5c-62c8-4fbd-9a43-0cb13ff053d6",
+>>>>>>> main
           "employer": "Colindale Primary School",
           "role": "Teacher",
+          "mainduties": "Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
           "startDate": "2018-01-01T00:00:00.000+00:00",
           "endDate": "2019-12-01T00:00:00.000+00:00",
           "currentRole": "No"
         },
+<<<<<<< HEAD
         "8fd20287-8002-460b-af30-584e2c20d55d": {
           "id": "8fd20287-8002-460b-af30-584e2c20d55d",
+=======
+        "83ece648-1b9b-4361-8f4a-4c2592030141": {
+          "id": "83ece648-1b9b-4361-8f4a-4c2592030141",
+>>>>>>> main
           "employer": "Courtland Primary School",
           "role": "Teacher",
+          "mainduties": "Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
           "startDate": "2020-01-01T00:00:00.000+00:00",
           "currentRole": "Yes"
         }
@@ -240,8 +339,13 @@
       "previousApplication": "No",
       "provideSchoolsToHideFrom": "Yes",
       "hiddenPlaces": {
+<<<<<<< HEAD
         "9b10e3f9-dda7-455b-a96a-c0733ec07d25": {
           "id": "9b10e3f9-dda7-455b-a96a-c0733ec07d25",
+=======
+        "e22f2890-c7b9-416d-a9a9-88e8911768c2": {
+          "id": "e22f2890-c7b9-416d-a9a9-88e8911768c2",
+>>>>>>> main
           "hiddenPlace": "Courtland Primary School, 10 Seed Street N19 4PT"
         }
       },
@@ -280,6 +384,7 @@
       "lastName": "Hemingway",
       "providePhoneNumber": "Yes",
       "phoneNumber": "01928 376 453",
+<<<<<<< HEAD
       "provideNI": "Yes",
       "NI": "GB GB GB 123",
       "provideAddress": "Yes",
@@ -288,6 +393,9 @@
       "addressTown": "Burlington Gardens",
       "addressCounty": "London",
       "addressPostcode": "SE1 123",
+=======
+      "provideWork": "Yes",
+>>>>>>> main
       "roles": null,
       "phases": null,
       "keyStages": null,
@@ -299,24 +407,39 @@
       "provideTRN": "Yes",
       "TRN": "89438689",
       "qualifications": {
+<<<<<<< HEAD
         "256ef2d3-22be-47b4-8f26-91284e56a36f": {
           "id": "256ef2d3-22be-47b4-8f26-91284e56a36f",
+=======
+        "635ac57e-c45e-4501-b308-2860c6ebc342": {
+          "id": "635ac57e-c45e-4501-b308-2860c6ebc342",
+>>>>>>> main
           "type": "A level",
           "subject": "Maths",
           "grade": "C",
           "year": "2015",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "da35446c-4dcb-4cac-ac9b-44d9c46f0ef7": {
           "id": "da35446c-4dcb-4cac-ac9b-44d9c46f0ef7",
+=======
+        "2d9a3596-196e-47d0-85b2-ee331bd379a3": {
+          "id": "2d9a3596-196e-47d0-85b2-ee331bd379a3",
+>>>>>>> main
           "type": "A level",
           "subject": "English",
           "grade": "A",
           "year": "2015",
           "organisation": "Bushey Meads School"
         },
+<<<<<<< HEAD
         "744404e0-5121-412f-87fa-bc69b6ec64fc": {
           "id": "744404e0-5121-412f-87fa-bc69b6ec64fc",
+=======
+        "c2093b32-4a30-4026-82c2-ed77aebda757": {
+          "id": "c2093b32-4a30-4026-82c2-ed77aebda757",
+>>>>>>> main
           "type": "A level",
           "subject": "Science",
           "grade": "B",
@@ -325,18 +448,30 @@
         }
       },
       "workHistory": {
+<<<<<<< HEAD
         "773df63e-fb5c-4b77-b5a8-962d53441ac3": {
           "id": "773df63e-fb5c-4b77-b5a8-962d53441ac3",
+=======
+        "37784d5c-62c8-4fbd-9a43-0cb13ff053d6": {
+          "id": "37784d5c-62c8-4fbd-9a43-0cb13ff053d6",
+>>>>>>> main
           "employer": "Colindale Primary School",
           "role": "Teacher",
+          "mainduties": "Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
           "startDate": "2018-01-01T00:00:00.000+00:00",
           "endDate": "2019-12-01T00:00:00.000+00:00",
           "currentRole": "No"
         },
+<<<<<<< HEAD
         "8fd20287-8002-460b-af30-584e2c20d55d": {
           "id": "8fd20287-8002-460b-af30-584e2c20d55d",
+=======
+        "83ece648-1b9b-4361-8f4a-4c2592030141": {
+          "id": "83ece648-1b9b-4361-8f4a-4c2592030141",
+>>>>>>> main
           "employer": "Courtland Primary School",
           "role": "Teacher",
+          "mainduties": "Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
           "startDate": "2020-01-01T00:00:00.000+00:00",
           "currentRole": "Yes"
         }

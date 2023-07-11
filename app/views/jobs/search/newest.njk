@@ -1,0 +1,522 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+
+
+<style>
+  .square {
+      position: relative;
+      display: inline-block;
+      vertical-align: top; /*not required*/
+      border: 1px solid black; /*not required*/
+      position: relative;
+  }
+
+  .square span {
+    font-family: arial, sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    font-size: 12px;
+  }
+
+  img {
+    max-height: 100%;
+   max-width: 100%;
+   width: auto;
+   height: auto;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+ }
+
+</style>
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Jobs (<span id="job-count">240</span>)
+  </h1>
+
+  <p>details</p>
+  <ul>
+    <li>{{ data['filter-role'] }}</li>
+    <li>{{ data['filter-phase'] }}</li>
+    <li>{{ data['filter-subjects'] }}</li>
+    <li>{{ data['filter-suitability'] }}</li>
+    <li>{{ data['filter-keyStages'] }}</li>
+    <li>{{ data['filter-workingPatterns'] }}</li>
+  </ul>
+
+  <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
+
+  <div class="app-filter-layout">
+
+
+    {% include "includes/jobs-filter-panel-static.njk" %}
+
+    <div class="app-filter-layout__content">
+      <div class="app-search-form">
+        <form method="post" novalidate>
+
+          {{ govukInput({
+            id: "keywords",
+            name: "keywords",
+            label: {
+              text: "Search for job title or description",
+              classes: "govuk-label--s"
+            },
+            value: data['keywords']
+          }) }}
+
+          {{ govukInput({
+            id: "location",
+            name: "location",
+            label: {
+              text: "City, county or postcode (in England)",
+              classes: "govuk-label--s"
+            },
+            value: data['location']
+          }) }}
+
+          {{ govukSelect({
+            id: "radius",
+            name: "radius",
+            label: {
+              text: "Search radius",
+              classes: "govuk-label--s"
+            },
+            value: data['radius'],
+            items: [
+            {
+              value: "1",
+              text: "1 mile"
+            },
+            {
+              value: "5",
+              text: "5 miles"
+            },
+            {
+              value: "10",
+              text: "10 miles"
+            },
+            {
+              value: "15",
+              text: "15 miles"
+            },
+            {
+              value: "20",
+              text: "20 miles"
+            },
+            {
+              value: "25",
+              text: "25 miles"
+            },
+            {
+              value: "50",
+              text: "50 miles"
+            },
+            {
+              value: "100",
+              text: "100 miles"
+            },
+            {
+              value: "200",
+              text: "200 miles"
+            }
+          ]
+          }) }}
+
+          {{ govukButton({
+            text: 'Search'
+          }) }}
+        </form>
+      </div>
+
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div>
+        <div class="app-jobs">
+
+        <div class="sort-component">
+          <nav class="govuk-body" style="margin:0px;">
+            <span class="govuk-!-font-weight-bold">Sort by:</span>
+            <ul class="sort-component__list" style="display: inline-block; list-style:none; padding:0px; font-size:18px;">
+              <li class="sort-component__list-item" style="display: inline-block;">
+                <a class="govuk-link" href="relevant">
+                  <span class="govuk-visually-hidden">Sort by </span>Most relevant
+                </a>
+              </li>
+              <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
+              <li class="sort-component__list-item" style="display: inline-block;">
+                <a class="govuk-link" {% if job.distance %} href="" {% else %} href="location" {% endif %}>
+                  <span class="govuk-visually-hidden">Sort by </span>Distance from city, county or postcode
+                </a>
+              </li>
+              <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
+              <li class="sort-component__list-item" style="display: inline-block;">
+                <span class="govuk-visually-hidden">Sort by </span>Newest job
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Newest job</h2>
+
+        {% for job in jobs %}
+
+          {% if job.distance <= data['radius'] %}
+
+            {% if data['keywords'] in ['early years','Early years','ks1','KS1','ks2','KS2','primary', 'Primary', 'Primary school', 'primary school'] %}
+
+              {% if data['keywords'] in ['early years', 'Early years'] %}
+
+                {% if job.phase == 'Primary school' or 'Nursery school' %}
+
+                  <div class="app-jobs__item">
+                      {% if job.organisation.logo != 'Not entered' %}
+                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
+                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
+                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
+                      </div>
+                      {% endif %}
+                      <h2 class="govuk-heading-m">
+                        <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+
+                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+
+                      {{ govukSummaryList({
+                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                        rows: [
+                          {
+                            key: {
+                              text: "Full-time equivalent salary"
+                            },
+                            value: {
+                              html: job.fullTimeEquivalentSalaryDetails
+                            }
+                          } if job.fullTimeEquivalentSalaryDetails,
+                          {
+                            key: {
+                              text: "Actual salary"
+                            },
+                            value: {
+                              html: job.actualSalaryDetails
+                            }
+                          } if job.actualSalaryDetails,
+                          {
+                            key: {
+                              text: "Pay scale"
+                            },
+                            value: {
+                              html: job.payScaleDetails
+                            }
+                          } if job.payScaleDetails,
+                          {
+                            key: {
+                              text: "School type"
+                            },
+                            value: {
+                              html: job.schoolType
+                            }
+                          } if job.schoolType,
+                          {
+                            key: {
+                              text: "Education phase"
+                            },
+                            value: {
+                              text: job.phase | capitalize
+                            }
+                          } if job.phase,
+                          {
+                            key: {
+                              text: "Working pattern"
+                            },
+                            value: {
+                              text: job.workingPatterns | join(', ') | capitalize
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Distance from postcode"
+                            },
+                            value: {
+                              text: job.distance + ' miles'
+                            }
+                          } if job.distance
+                        ]
+                      }) }}
+                    </div>
+
+                  {% endif %}
+              
+              {% endif %}
+
+                {% if job.phase == 'Primary school' %}
+
+                    <div class="app-jobs__item">
+                      {% if job.organisation.logo != 'Not entered' %}
+                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
+                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
+                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
+                      </div>
+                      {% endif %}
+                      <h2 class="govuk-heading-m">
+                        <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+
+                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+
+                      {{ govukSummaryList({
+                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                        rows: [
+                          {
+                            key: {
+                              text: "Full-time equivalent salary"
+                            },
+                            value: {
+                              html: job.fullTimeEquivalentSalaryDetails
+                            }
+                          } if job.fullTimeEquivalentSalaryDetails,
+                          {
+                            key: {
+                              text: "Actual salary"
+                            },
+                            value: {
+                              html: job.actualSalaryDetails
+                            }
+                          } if job.actualSalaryDetails,
+                          {
+                            key: {
+                              text: "Pay scale"
+                            },
+                            value: {
+                              html: job.payScaleDetails
+                            }
+                          } if job.payScaleDetails,
+                          {
+                            key: {
+                              text: "School type"
+                            },
+                            value: {
+                              html: job.schoolType
+                            }
+                          } if job.schoolType,
+                          {
+                            key: {
+                              text: "Education phase"
+                            },
+                            value: {
+                              text: job.phase | capitalize
+                            }
+                          } if job.phase,
+                          {
+                            key: {
+                              text: "Working pattern"
+                            },
+                            value: {
+                              text: job.workingPatterns | join(', ') | capitalize
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Distance from postcode"
+                            },
+                            value: {
+                              text: job.distance + ' miles'
+                            }
+                          } if job.distance
+                        ]
+                      }) }}
+                    </div>
+
+              {% endif %}
+
+
+
+              
+            {% elif data['keywords'] in ['nursery', 'Nursery', 'Nursery school', 'nursery school']  %}
+
+
+
+              {% if job.phase == 'Nursery school' %}
+
+
+                    
+                    <div class="app-jobs__item">
+                      {% if job.organisation.logo != 'Not entered' %}
+                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
+                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
+                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
+                      </div>
+                      {% endif %}
+                      <h2 class="govuk-heading-m">
+                      <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+                      </h2>
+                      
+                      
+                      
+                    
+                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+
+                      {{ govukSummaryList({
+                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                        rows: [
+                          {
+                            key: {
+                              text: "Full-time equivalent salary"
+                            },
+                            value: {
+                              html: job.fullTimeEquivalentSalaryDetails
+                            }
+                          } if job.fullTimeEquivalentSalaryDetails,
+                          {
+                            key: {
+                              text: "Actual salary"
+                            },
+                            value: {
+                              html: job.actualSalaryDetails
+                            }
+                          } if job.actualSalaryDetails,
+                          {
+                            key: {
+                              text: "Pay scale"
+                            },
+                            value: {
+                              html: job.payScaleDetails
+                            }
+                          } if job.payScaleDetails,
+                          {
+                            key: {
+                              text: "School type"
+                            },
+                            value: {
+                              html: job.schoolType
+                            }
+                          } if job.schoolType,
+                          {
+                            key: {
+                              text: "Education phase"
+                            },
+                            value: {
+                              text: job.phase | capitalize
+                            }
+                          } if job.phase,
+                          {
+                            key: {
+                              text: "Working pattern"
+                            },
+                            value: {
+                              text: job.workingPatterns | join(', ') | capitalize
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Distance from postcode"
+                            },
+                            value: {
+                              text: job.distance + ' miles'
+                            }
+                          } if job.distance
+                        ]
+                      }) }}
+                    </div>
+
+
+
+
+              {% endif %}
+
+
+
+
+            {% else %}
+
+            {% endif %}
+
+          {% endif %}
+          
+        {% endfor %}
+      </div>
+
+      <div id="try-another-search" class="divider-bottom" style="display:none;">
+        <div class="govuk-heading-m">Try another search</div>
+        <p class="govuk-body">You may get more results if you:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>add more keywords, or try different ones</li>
+          <li>change the radius of your search</li>
+          <li>look at a wider geographical location, West Yorkshire instead of Leeds for example</li>
+          <li>remove some filters if you have used them</li>
+        </ul>
+        <p></p>
+      </div>
+
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+    </div>
+  </div>
+
+  {# {{ govukDetails({
+    summaryText: "Jobs by school, role, location and subject",
+    text: "Text",
+    classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
+  }) }} #}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

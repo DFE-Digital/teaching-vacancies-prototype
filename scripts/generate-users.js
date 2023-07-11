@@ -21,6 +21,7 @@ const generateUser = (params = {}) => {
   user.profile.lastName = _.get(params, 'profile.lastName')
   user.profile.providePhoneNumber = _.get(params, 'profile.providePhoneNumber')
   user.profile.phoneNumber = _.get(params, 'profile.phoneNumber')
+<<<<<<< HEAD
   user.profile.provideNI = _.get(params, 'profile.provideNI')
   user.profile.NI = _.get(params, 'profile.NI')
   // address
@@ -30,6 +31,9 @@ const generateUser = (params = {}) => {
   user.profile.addressTown = _.get(params, 'profile.addressTown')
   user.profile.addressCounty = _.get(params, 'profile.addressCounty')
   user.profile.addressPostcode = _.get(params, 'profile.addressPostcode')
+=======
+  user.profile.provideWork = _.get(params, 'profile.provideWork')
+>>>>>>> main
 
   // Roles
   user.profile.roles = _.get(params, 'profile.roles')
@@ -108,6 +112,7 @@ const generateUsers = () => {
       firstName: 'Adam',
       lastName: 'Silver',
       providePhoneNumber: null,
+<<<<<<< HEAD
       provideNI: 'Yes',
       NI: 'GB GB GB 123',
       provideAddress: 'Yes',
@@ -116,6 +121,9 @@ const generateUsers = () => {
       addressTown:'Burlington Gardens',
       addressCounty:'London',
       addressPostcode:'SE1 123',
+=======
+      provideWork: 'Yes',
+>>>>>>> main
       roles: ['Teacher'],
       phases: null,
       keyStages: null,
@@ -172,6 +180,7 @@ const generateUsers = () => {
     id: uuidv4(),
     employer: 'Colindale Primary School',
     role: 'Teacher',
+    mainduties:"Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
     startDate: DateTime.fromObject({ year: 2018, month: 1 }).toISO(),
     endDate: DateTime.fromObject({ year: 2019, month: 12 }).toISO(),
     currentRole: 'No'
@@ -181,6 +190,7 @@ const generateUsers = () => {
     id: uuidv4(),
     employer: 'Courtland Primary School',
     role: 'Teacher',
+    mainduties:"Planning, preparing and delivering lessons. Encouraging student participation in lessons and in other school-related activities. Supporting the leadership team to implement the school's development plan. Assessing and reporting on the behaviour of students.",
     startDate: DateTime.fromObject({ year: 2020, month: 1 }).toISO(),
     currentRole: 'Yes'
   }
@@ -238,6 +248,7 @@ const generateUsers = () => {
       lastName: 'Silver',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
+<<<<<<< HEAD
       provideNI: 'Yes',
       NI: 'GB GB GB 123',
       provideAddress: 'Yes',
@@ -246,6 +257,9 @@ const generateUsers = () => {
       addressTown:'Burlington Gardens',
       addressCounty:'London',
       addressPostcode:'SE1 123',
+=======
+      provideWork: 'Yes',
+>>>>>>> main
       roles: ['Teacher'],
       phases: ['Primary school', 'Secondary school'],
       keyStages: ['Key stage 2', 'Key stage 3', 'Key stage 4'],
@@ -294,6 +308,7 @@ const generateUsers = () => {
       lastName: 'Hemingway',
       providePhoneNumber: 'Yes',
       phoneNumber: '01928 376 453',
+<<<<<<< HEAD
       provideNI: 'Yes',
       NI: 'GB GB GB 123',
       provideAddress: 'Yes',
@@ -302,6 +317,9 @@ const generateUsers = () => {
       addressTown:'Burlington Gardens',
       addressCounty:'London',
       addressPostcode:'SE1 123',
+=======
+      provideWork: 'Yes',
+>>>>>>> main
       roles: null,
       phases: null,
       keyStages: null,

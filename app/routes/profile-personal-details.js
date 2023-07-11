@@ -43,6 +43,7 @@ module.exports = router => {
   router.post('/profile/personal-details/phone-number', (req, res) => {
     req.session.user.profile.providePhoneNumber = req.body.profile.providePhoneNumber
     req.session.user.profile.phoneNumber = req.body.profile.phoneNumber
+<<<<<<< HEAD
     res.redirect('/profile/personal-details/address')
   })
 
@@ -50,10 +51,20 @@ module.exports = router => {
 
   router.get('/profile/personal-details/address', (req, res) => {
     let provideAddress = req.session.user.profile.provideAddress
+=======
+    res.redirect('/profile/personal-details/work')
+  })
+
+  //right to work
+
+  router.get('/profile/personal-details/work', (req, res) => {
+    let work = req.session.user.profile.work
+>>>>>>> main
 
     let options = [{
       value: 'Yes',
       text: 'Yes',
+<<<<<<< HEAD
       checked: req.session.user.profile.provideAddress == 'Yes'
     }, {
       value: 'No',
@@ -131,6 +142,23 @@ module.exports = router => {
   router.post('/profile/personal-details/ni', (req, res) => {
     req.session.user.profile.provideNI = req.body.profile.provideNI
     req.session.user.profile.NI = req.body.profile.NI
+=======
+      checked: req.session.user.profile.provideWork == 'Yes'
+    }, {
+      value: 'No',
+      text: 'No',
+      checked: req.session.user.profile.provideWork == 'No'
+    }]
+
+    res.render('profile/personal-details/work', {
+      options,
+      work
+    })
+  })
+
+  router.post('/profile/personal-details/work', (req, res) => {
+    req.session.user.profile.provideWork = req.body.profile.provideWork
+>>>>>>> main
     res.redirect('/profile/personal-details/review')
   })
 

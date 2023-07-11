@@ -38,6 +38,14 @@
     {% endif %}
   {% endset %}
 
+  {% set rightToWork %}
+    {% if user.profile.provideWork == 'Yes' %}
+      Has the right to work in the UK.
+    {% else %}
+      Does not have the right to work in the UK.
+    {% endif %}
+  {% endset %}
+
   {% set locations %}
         {% for key, location in user.profile.locations %}
           {{location.location}} ({{location.radius}})
@@ -56,7 +64,7 @@
           classes: 'govuk-tag--green'
         }) if user.profile.status == 'Active' and 1 == 2}}
       </h1>
-      <p>{{teachingStatus}}</p>
+      <p>{{teachingStatus}}{{rightToWork}}</p>
 
       {% if user.profile.roles %}
         <div class="app-profile__section app-profile__section--first">

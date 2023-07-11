@@ -6,56 +6,87 @@
 {% block content %}
 
   {% set h1 %}
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+      {{job.title}}
+    </h1>
     <span class="govuk-caption-l">
       {{job.organisation.name}}
     </span>
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
-      {{job.title}}
-    </h1>
+    
   {% endset %}
 
-  <div class="app-logo-title">
-    {% if job.organisation.logo != 'Not entered' %}
-      <div class="app-logo-title__image">
-        <img src="{{job.organisation.logo}}">
-      </div>
-      <div class="app-logo-title__text">
-        {{h1 | safe}}
-      </div>
-    {% else %}
-      {{h1 | safe}}
-    {% endif %}
-  </div>
 
-
-  {% set inset %}
-    <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>
-
-    {% set href %}
-      {% if job.isUsingApplicationForm == 'No' %}
-        #apply
-      {% else %}
-        jobs/{{job.id}}/apply
+  <div class="govuk-grid-row old-design">
+    <div class="govuk-grid-column-full">
+      
+      {% if job.isUsingApplicationForm == 'Yes' %}
+        {{govukTag({
+          text: "QUICK APPLY",
+          classes: "govuk-tag--green govuk-!-margin-bottom-3"
+        })}}
       {% endif %}
-    {% endset %}
 
-    {{ govukButton({
-      text: "Apply for job",
-      href: href,
-      classes: "govuk-!-margin-bottom-0"
-    }) }}
-    {{ govukButton({
-      text: "Save job for later",
-      classes: "govuk-button--secondary govuk-!-margin-left-2 govuk-!-margin-bottom-0"
-    }) }}
-  {% endset %}
-  {{ govukInsetText({
-    html: inset,
-    classes: 'govuk-!-margin-top-5 govuk-!-padding-bottom-4'
-  }) }}
+      <div class="app-logo-title">
 
-  <div class="govuk-grid-row">
+        {% if job.organisation.logo != 'Not entered' %}
+          <div class="app-logo-title__image">
+            <img src="{{job.organisation.logo}}">
+          </div>
+          <div class="app-logo-title__tex">
+            {{h1 | safe}}
+          </div>
+        {% else %}
+          {{h1 | safe}}
+        {% endif %}
+      </div>
+
+
+      <div class="govuk-grid-row banner-buttons  govuk-!-margin-bottom-7">
+        <div class="govuk-grid-column-one-third">
+            <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <button class="banner-button-component__button icon icon--left icon--save" type="submit">Save this job for later</button>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      
+      <div class="timeline-component">
+
+      <h3 class="govuk-heading-s">16 days remaining to apply</h3>
+
+      <ul class="timeline-component__items">
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Closing date</h4>
+          <p class="timeline-component__value govuk-body">{{job.closingDate | date}} at {{job.closingTime}}</p>
+        </li>
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Date listed</h4>
+          <p class="timeline-component__value govuk-body">{{job.startDate | date}}</p>
+        </li>
+      </ul>
+
+      </div>
+
+
+    </div>
+
     <div class="govuk-grid-column-two-thirds">
+
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-5">
+        Job details
+        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-2">
+
+      </h2>
+
+
 
       {% set workingPatterns %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
@@ -168,14 +199,21 @@
             }
           } if job.actualSalaryDetails,
           {
-
             key: {
               text: "Pay scale"
             },
             value: {
               html: job.payScaleDetails
             }
-          } if job.payScaleDetails
+          } if job.payScaleDetails,
+          {
+            key: {
+              text: "Distance from you"
+            },
+            value: {
+              html: job.distance + ' miles'
+            }
+          } if job.distance
         ]
       }) }}
 
@@ -215,6 +253,36 @@
         </div>
       {% endif %}
 
+      {% if job.hasSafeguardingCommitment == 'Yes' %}
+        <h2 class="govuk-heading-m">
+          Commitment to safeguarding
+        </h2>
+
+        <div class="app-prose govuk-!-margin-bottom-6">
+          {{job.safeguardingCommitment | markdown | safe}}
+        </div>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Applying for the job
+      </h2>
+
+      <p class="govuk-body">If you're interested in teaching or training to teach in England as an international citizen, we can <a data-controller="tracked-link" data-action="click->tracked-link#track auxclick->tracked-link#track contextmenu->tracked-link#track" data-tracked-link-target="link" data-link-type="international_teacher_advice_link_job_listing" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers">help you understand your next steps</a>.</p>
+
+       {% set href %}
+          {% if job.isUsingApplicationForm == 'No' %}
+            #apply
+          {% else %}
+            jobs/{{job.id}}/apply
+          {% endif %}
+        {% endset %}
+
+        {{ govukButton({
+          text: "Apply for job",
+          href: href,
+          classes: "govuk-!-margin-bottom-7"
+        }) }}
+      
 
       {% if job.hasAdditionalDocuments == 'Yes' %}
         <h2 class="govuk-heading-m">
@@ -239,7 +307,7 @@
       {% endset %}
 
       {% if job.locations.length == 1 %}
-        <h2 class="govuk-heading-m">
+        <h2 class="govuk-heading-l ">
           About the school
         </h2>
 
@@ -258,7 +326,7 @@
                 text: "Address"
               },
               value: {
-                text: address
+                text: job.organisation.address.address1
               }
             },
             {
@@ -325,7 +393,7 @@
           Location and map
         </h2>
 
-        <p>{{address}}</p>
+        <p>{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
 
         <div class="app-map">
           <img src="/public/images/maps/single.png">
@@ -353,6 +421,14 @@
                 text: address
               }
             },
+            {
+              key: {
+                text: "School type"
+              },
+              value: {
+                html: job.schoolType
+              }
+            } if job.schoolType,
             {
               key: {
                 text: "Email address"
@@ -400,15 +476,6 @@
 
       {% endif %}
 
-      {% if job.hasSafeguardingCommitment == 'Yes' %}
-        <h2 class="govuk-heading-m">
-          Commitment to safeguarding
-        </h2>
-
-        <div class="app-prose govuk-!-margin-bottom-6">
-          {{job.safeguardingCommitment | markdown | safe}}
-        </div>
-      {% endif %}
 
       {% if job.isUsingApplicationForm == 'No' %}
           <h2 class="govuk-heading-m" id="apply">
@@ -441,11 +508,11 @@
 
       <hr>
 
-      <h2 class="govuk-heading-m">
-        Set up a job alert
-      </h2>
-
-      <p>Get a job alert whenever a {{job.role | lower}} role is listed near {{job.organisation.address.postcode}}.</p>
+      <section>
+        <p class="icon icon--left icon--alert-blue govuk-!-margin-top-7" style="background-repeat: no-repeat; padding-left:30px">
+          <a class="govuk-link" href="#">Get a job alert</a> when similar jobs are listed
+        </p>
+      </section>
 
       {# {{ govukSummaryList({
         rows: [
@@ -470,19 +537,11 @@
 
       {# <p><a href="#">Set up a job alert</a></p> #}
 
-      {{ govukButton({
-        text: "Set up job alert",
-        classes: 'govuk-button--secondary'
-      }) }}
-
+      
 
 
     </div>
-    <div class="govuk-grid-column-one-third">
-
-
-
-    </div>
+    
 
   </div>
 

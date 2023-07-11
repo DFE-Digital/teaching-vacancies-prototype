@@ -6,15 +6,16 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {{ govukPanel({
-        titleText: title
-      }) }}
+   
+      <h1 class="govuk-heading-xl">
+          {{title}}
+      </h1>
 
       <p class="govuk-body">
-        You can <a href="/jobs">search and apply for teaching jobs</a>.
+        You can now <a href="/jobs">search and apply for teaching jobs</a> or <a href="#">create a profile</a>.
       </p>
 
-      <h2 class="govuk-heading-m">Create a profile</h2>
+      <p>A profile will let you:</p>
 
       {% for user in users %}
 
@@ -52,39 +53,30 @@
 
       {% endfor %}
 
-      <p class="govuk-body">
-        With a profile, you can:
-      </p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          share your qualifications and experience with schools
+          share your qualifcations and experience with schools
         </li>
         <li>
-          specify the types of teaching jobs you’re looking for
+          specifiy the types of teaching jobs you're looking for
+        </li>
+         <li>
+          apply for roles more quickly by pre-filling your information
         </li>
       </ul>
 
 
       <p class="govuk-body">
-        When you turn on your profile, schools can contact you about relevant jobs.
+        When you turn on your profile it will only be visible to hiring staff in schools and trusts. They can contact you by email to invite you to apply for roles.
       </p>
 
-      {% if user.profile.previousApplication == 'Yes' %}
+      <form method="post" novalidate>
 
         {{ govukButton({
-          text: "Create a profile",
-          href: "/profile/populate-your-profile"
+          text: "Create a profile"
         }) }}
 
-      {% else %}
-
-        {{ govukButton({
-          text: "Create a profile",
-          href: "/profile"
-        }) }}
-
-      {% endif %}
-
+      </form>
 
     </div>
   </div>

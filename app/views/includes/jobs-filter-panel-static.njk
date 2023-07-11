@@ -1,0 +1,548 @@
+<div class="app-filter-layout__filter">
+      
+      {% set filterOptionsHtml %}
+
+        {{ govukCheckboxes({
+          idPrefix: "filters[role]",
+          name: "filters[role]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Job role",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            value: 'Teacher',
+            text: 'Teacher'
+          }, {
+            value: 'Head of year or phase',
+            text: 'Head of year or phase'
+          }, {
+            value: 'Head of department or curriculum',
+            text: 'Head of department or curriculum'
+          }, {
+            value: 'Assistant headteacher',
+            text: 'Assistant headteacher'
+          }, {
+            value: 'Deputy headteacher',
+            text: 'Deputy headteacher'
+          }, {
+            value: 'Headteacher',
+            text: 'Headteacher'
+          }, {
+            value: 'Teaching assistant',
+            text: 'Teaching assistant'
+          }, {
+            value: 'Learning support, cover supervisor or tutor',
+            text: 'Learning support, cover supervisor or tutor'
+          }, {
+            value: 'SENDCo (special educational needs and disabilities coordinator)',
+            text: 'SENDCo (special educational needs and disabilities coordinator)'
+          }]
+        }) }}
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Education phase
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]" name="filters[phase]" type="checkbox" value="Nursery school"
+
+                {% if data['keywords'] in ['nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
+                  checked
+                {% endif %}
+
+                >
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]">
+                  Nursery school
+                </label>
+              </div>
+              
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-2" name="filters[phase]" type="checkbox" value="Primary school"
+                
+                {% if data['keywords'] in ['ks1','KS1','ks2','KS2', 'primary', 'Primary', 'Primary school', 'primary school'] %}
+                  checked
+                {% endif %}
+                
+                >
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-2">
+                  Primary school
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-3" name="filters[phase]" type="checkbox" value="Middle school"
+                
+                {% if data['keywords'] in ['middle', 'Middle', 'Middle school', 'middle school'] %}
+                  checked
+                {% endif %}
+
+                >
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-3">
+                  Middle school
+                </label>
+              </div>
+            
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-4" name="filters[phase]" type="checkbox" value="Secondary school"
+
+                {% if data['keywords'] in ['secondary', 'Secondary', 'Secondary school', 'secondary school'] %}
+                  checked
+                {% endif %}
+                >
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-4">
+                  Secondary school
+                </label>
+              </div>
+              
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-5" name="filters[phase]" type="checkbox" value="Sixth form or college"
+                
+                {% if data['keywords'] in ['sixth form', 'Sixth form', 'College', 'college'] %}
+                  checked
+                {% endif %}
+
+                >
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-5">
+                  Sixth form or college
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters[phase]-6" name="filters[phase]" type="checkbox" value="Through school">
+                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-6">
+                  Through school
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {% if data['keywords'] in ['ks1', 'KS1','ks2', 'KS2','primary', 'Primary', 'Primary school', 'primary school', 'nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
+
+        {% else %}
+
+        {{ appCheckboxFilter({
+          idPrefix: "subjects",
+          name: "filters[subjects]",
+          classes: "govuk-checkboxes--small",
+          legend: {
+            text: "Subject",
+            classes: "govuk-fieldset__legend--s"
+          },
+          items: [
+            {
+              value: "Accounting",
+              text: "Accounting",
+              hint: {
+                text: 'Includes Finance and accounting'
+              },
+              checked: checked("['filters']['subjects']", "Accounting")
+            },
+            {
+              value: "Art and design",
+              text: "Art and design",
+              checked: checked("['filters']['subjects']", "Art and design")
+            },
+            {
+              value: "Biology",
+              text: "Biology",
+              checked: checked("['filters']['subjects']", "Biology")
+            },
+            {
+              value: "Business studies",
+              text: "Business studies",
+              checked: checked("['filters']['subjects']", "Business studies")
+            },
+            {
+              value: "Chemistry",
+              text: "Chemistry",
+              checked: checked("['filters']['subjects']", "Chemistry")
+            },
+            {
+              value: "Citizenship",
+              text: "Citizenship",
+              checked: checked("['filters']['subjects']", "Citizenship")
+            },
+            {
+              value: "Classics",
+              text: "Classics",
+              hint: {
+                text: 'Includes Latin'
+              },
+              checked: checked("['filters']['subjects']", "Classics")
+            },
+            {
+              value: "Computing",
+              text: "Computing",
+              hint: {
+                text: 'Includes Computer science, Information technology, and ICT'
+              },
+              checked: checked("['filters']['subjects']", "Computing")
+            },
+            {
+              value: "Dance",
+              text: "Dance",
+              checked: checked("['filters']['subjects']", "Dance")
+            },
+            {
+              value: "Design and technology",
+              text: "Design and technology",
+              hint: {
+                text: 'Includes Product design, Textiles and Systems and control'
+              },
+              checked: checked("['filters']['subjects']", "Design and technology")
+            },
+            {
+              value: "Drama",
+              text: "Drama",
+              hint: {
+                text: 'Includes Theatre studies and Performing arts'
+              },
+              checked: checked("['filters']['subjects']", "Drama")
+            },
+            {
+              value: "Economics",
+              text: "Economics",
+              checked: checked("['filters']['subjects']", "Economics")
+            },
+            {
+              value: "Engineering",
+              text: "Engineering",
+              checked: checked("['filters']['subjects']", "Engineering")
+            },
+            {
+              value: "English",
+              text: "English",
+              hint: {
+                text: 'Includes English language and literature'
+              },
+              checked: checked("['filters']['subjects']", "English")
+            },
+            {
+              value: "Food Technology",
+              text: "Food Technology",
+              hint: {
+                text: 'Includes Hospitality and catering'
+              },
+              checked: checked("['filters']['subjects']", "Food Technology")
+            },
+            {
+              value: "French",
+              text: "French",
+              checked: checked("['filters']['subjects']", "French")
+            },
+            {
+              value: "Geography",
+              text: "Geography",
+              checked: checked("['filters']['subjects']", "Geography")
+            },
+            {
+              value: "German",
+              text: "German",
+              checked: checked("['filters']['subjects']", "German")
+            },
+            {
+              value: "Health and social care",
+              text: "Health and social care",
+              checked: checked("['filters']['subjects']", "Health and social care")
+            },
+            {
+              value: "History",
+              text: "History",
+              checked: checked("['filters']['subjects']", "History")
+            },
+            {
+              value: "Humanities",
+              text: "Humanities",
+              checked: checked("['filters']['subjects']", "Humanities")
+            },
+            {
+              value: "ICT",
+              text: "ICT",
+              checked: checked("['filters']['subjects']", "ICT")
+            },
+            {
+              value: "Law",
+              text: "Law",
+              checked: checked("['filters']['subjects']", "Law")
+            },
+            {
+              value: "Mandarin",
+              text: "Mandarin",
+              checked: checked("['filters']['subjects']", "Mandarin")
+            },
+            {
+              value: "Mathematics",
+              text: "Mathematics",
+              checked: checked("['filters']['subjects']", "Mathematics")
+            },
+            {
+              value: "Media studies",
+              text: "Media studies",
+              checked: checked("['filters']['subjects']", "Media studies")
+            },
+            {
+              value: "Music",
+              text: "Music",
+              checked: checked("['filters']['subjects']", "Music")
+            },
+            {
+              value: "Philosophy",
+              text: "Philosophy",
+              checked: checked("['filters']['subjects']", "Philosophy")
+            },
+            {
+              value: "Physical education",
+              text: "Physical education",
+              checked: checked("['filters']['subjects']", "Physical education")
+            },
+            {
+              value: "Physics",
+              text: "Physics",
+              checked: checked("['filters']['subjects']", "Physics")
+            },
+            {
+              value: "Politics",
+              text: "Politics",
+              checked: checked("['filters']['subjects']", "Politics")
+            },
+            {
+              value: "Psychology",
+              text: "Psychology",
+              checked: checked("['filters']['subjects']", "Psychology")
+            },
+            {
+              value: "Religious education",
+              text: "Religious education",
+              hint: {
+                text: 'Includes religious studies'
+              },
+              checked: checked("['filters']['subjects']", "Religious education")
+            },
+            {
+              value: "Relationships and sex education",
+              text: "Relationships and sex education",
+              checked: checked("['filters']['subjects']", "Relationships and sex education")
+            },
+            {
+              value: "Science",
+              text: "Science",
+              checked: checked("['filters']['subjects']", "Science")
+            },
+            {
+              value: "Social sciences",
+              text: "Social sciences",
+              checked: checked("['filters']['subjects']", "Social sciences")
+            },
+            {
+              value: "Sociology",
+              text: "Sociology",
+              checked: checked("['filters']['subjects']", "Sociology")
+            },
+            {
+              value: "Spanish",
+              text: "Spanish",
+              checked: checked("['filters']['subjects']", "Spanish")
+            },
+            {
+              value: "Statistics",
+              text: "Statistics",
+              checked: checked("['filters']['subjects']", "Statistics")
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {{ govukCheckboxes({
+          idPrefix: "filters[suitability]",
+          name: "filters[suitability]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Suitability for early career teachers (ECT)",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            value: 'Suitable for ECTs',
+            text: 'Suitable for ECTs'
+          }, {
+            value: 'Not suitable for ECTs',
+            text: 'Not suitable for ECTs'
+          }]
+        }) }}
+
+        
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Key stage</legend>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]" name="filters[keyStages]" type="checkbox" value="Early years"
+                        {% if data['keywords'] in ['early years','reception','Early years','Reception'] %}
+                            checked
+                        {% endif %}
+                        > 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]">Early years</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-2" name="filters[keyStages]" type="checkbox" value="KS1"
+                        {% if data['keywords'] in ['ks1','KS1'] %}
+                            checked
+                        {% endif %}
+                        > 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-2">KS1</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-3" name="filters[keyStages]" type="checkbox" value="KS2"
+                        {% if data['keywords'] in ['ks2','KS2'] %}
+                            checked
+                        {% endif %}
+                        > 
+                        <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-3">KS2</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-4" name="filters[keyStages]" type="checkbox" value="KS3"> <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-4">KS3</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-5" name="filters[keyStages]" type="checkbox" value="KS4"> <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-5">KS4</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[keyStages]-6" name="filters[keyStages]" type="checkbox" value="KS5"> <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-6">KS5</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        
+
+        {{ govukCheckboxes({
+          idPrefix: "filters[keyStages]",
+          name: "filters[keyStages]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Key stage",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            value: 'Early years',
+            text: 'Early years'
+          }, {
+            value: 'KS1',
+            text: 'KS1'
+          }, {
+            value: 'KS2',
+            text: 'KS2'
+          }, {
+            value: 'KS3',
+            text: 'KS3'
+          }, {
+            value: 'KS4',
+            text: 'KS4'
+          }, {
+            value: 'KS5',
+            text: 'KS5'
+          }]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "filters[workingPatterns]",
+          name: "filters[workingPatterns]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Working pattern",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            value: 'Full time',
+            text: 'Full time'
+          }, {
+            value: 'Part time',
+            text: 'Part time'
+          }]
+        }) }}
+
+
+      {% endset %}
+
+      <div class="app-filter">
+        <div class="app-filter__header">
+          <div class="app-filter__header-title">
+            <h2 class="govuk-heading-m">Filter</h2>
+          </div>
+          <div class="app-filter__header-action">
+
+          </div>
+        </div>
+        <div class="app-filter__content">
+
+          {% if data['keywords'] in ['early years','reception','Early years','Reception','ks1','KS1','ks2','KS2','Nursery','nursery','Primary','primary', 'Middle','middle', 'Secondary', 'secondary', 'Sixth form', 'sixth form', 'College', 'college', 'Through'] %}
+
+            <div class="app-filter__selected">
+              <div class="app-filter__selected-heading">
+                <div class="app-filter__heading-title" style="width:100%; ">
+                  <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
+                  <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/jobs">Clear filters</a></p>
+                </div>
+              </div>
+                  {% if data['keywords'] in ['early years','reception','Early years','Reception','ks1','KS1','ks2','KS2','Nursery','nursery','Primary','primary', 'Middle','middle', 'Secondary', 'secondary', 'Sixth form', 'sixth form', 'College', 'college', 'Through'] %}
+                  
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h3>
+                    <ul class="app-filter-tags">
+                      {% if data['keywords'] in ['early years','Early years','reception','Reception','ks1','KS1','ks2','KS2','primary', 'Primary', 'Primary school', 'primary school'] %}
+                        <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>Primary school</a></li>
+                      {% endif %}
+                      {% if data['keywords'] in ['early years','Early years','nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
+                        <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>Nursery</a></li>
+                      {% endif %}
+                       {% if data['keywords'] in ['secondary', 'Secondary', 'Secondary school', 'secondary school'] %}
+                        <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>Secondary school</a></li>
+                      {% endif %}
+                    </ul>
+
+                  {% endif %}
+
+                   {% if data['keywords'] in ['early years', 'reception', 'Early years', 'Reception','ks1','KS1','ks2','KS2'] %}
+                  
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Key stage</h3>
+                    <ul class="app-filter-tags">
+                      {% if data['keywords'] in ['early years', 'reception', 'Early years', 'Reception'] %}
+                        <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>Early years</a></li>
+                      {% endif %}
+                      {% if data['keywords'] in ['ks1','KS1'] %}
+                        <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>KS1</a></li>
+                      {% endif %}
+                       {% if data['keywords'] in ['ks2','KS2'] %}
+                        <li><a class="app-filter__tag" href="/jobs"><span class="govuk-visually-hidden">Remove this filter</span>KS2</a></li>
+                      {% endif %}
+                    </ul>
+
+                  {% endif %}
+            </div>
+
+          {% endif %}
+
+          <div class="app-filter__options">
+            <form method="get" action="/search/applications" novalidate>
+              <button class="govuk-button" data-module="govuk-button">
+                Apply filters
+              </button>
+              {{filterOptionsHtml | safe}}
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>

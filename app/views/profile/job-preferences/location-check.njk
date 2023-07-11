@@ -14,6 +14,12 @@
 
 {% block content %}
 
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -27,29 +33,57 @@
 
        <h2 class="govuk-heading-m">Locations added</h2>
 
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Location 1"
-            },
-            value: {
-              html: 'London (10 miles)'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Delete",
-                  visuallyHiddenText: "file 1"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
       <form action="/profile/job-preferences/location-check" method="post">
+
+        <div class="app-list">
+
+          <div class="app-list__item">
+
+            {{appPageHeader({
+              classes: 'govuk-!-margin-bottom-0',
+              heading: {
+                level: 2,
+                text: "Location 1",
+                classes: 'govuk-heading-s'
+              },
+              items: [{
+                text: 'Change',
+                href: "location",
+                type: 'link'
+              }, {
+                text: 'Delete',
+                href: "location-delete-last",
+                type: 'link'
+              }]
+            })}}
+
+            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">London (10 miles)</p>
+
+          </div>
+          <div class="app-list__item">
+
+            {{appPageHeader({
+              classes: 'govuk-!-margin-bottom-0',
+              heading: {
+                level: 2,
+                text: "Location 2",
+                classes: 'govuk-heading-s'
+              },
+              items: [{
+                text: 'Change',
+                href: "location",
+                type: 'link'
+              }, {
+                text: 'Delete',
+                href: "location-delete",
+                type: 'link'
+              }]
+            })}}
+
+            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">Nottingham (10 miles)</p>
+
+          </div>
+        </div>
 
         {{ govukRadios({
           idPrefix: "profile[addAnotherLocation]",

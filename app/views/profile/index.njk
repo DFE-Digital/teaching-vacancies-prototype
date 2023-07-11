@@ -40,7 +40,7 @@
           <a href="/profile/preview">Preview profile</a></p>
         </p>
       {% endif %}
-      <p>Your profile allows schools to find and invite you to apply for their jobs.</p>
+      <p>Schools and trusts can find your profile and invite you to apply for roles.</p>
 
       <div id="app-personal-details" class="app-profile__section app-profile__section--first">
 
@@ -175,14 +175,22 @@
               } if user.profile.providePhoneNumber == 'Yes',
               {
                 key: {
+<<<<<<< HEAD
                   text: "Do you want to provide an address?"
                 },
                 value: {
                   text: user.profile.provideAddress
+=======
+                  text: "Do you have the right to work in the UK?"
+                },
+                value: {
+                  text: user.profile.provideWork
+>>>>>>> main
                 },
                 actions: {
                   items: [
                     {
+<<<<<<< HEAD
                       href: "/profile/personal-details/address",
                       text: "Change",
                       visuallyHiddenText: "if you want to provide an address"
@@ -224,6 +232,15 @@
                   ]
                 }
               } if user.profile.provideNI == 'Yes'
+=======
+                      href: "/profile/personal-details/work",
+                      text: "Change",
+                      visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
+                    }
+                  ]
+                }
+              } if user.profile.provideWork
+>>>>>>> main
             ]
           }) }}
 
@@ -244,7 +261,7 @@
             <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
               <p class="app-instruction-text">You must complete your personal details before you turn on your profile.</p>
           {% endif %}
-            <p><a class="govuk-link--no-visited-state" href="/profile/personal-details/name">Add personal details</a></p>
+            <p><a class="govuk-link--no-visited-state next-location-3" href="/profile/personal-details/name">Add personal details</a></p>
           {% if isPersonalDetailsIncomplete %}
             </div>
           {% endif %}
@@ -411,7 +428,7 @@
           <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
             <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
         {% endif %}
-          <p><a class="govuk-link--no-visited-state" href="/profile/job-preferences/roles">Add job preferences</a></p>
+          <p><a class="govuk-link--no-visited-state next-location-8" href="/profile/job-preferences/roles">Add job preferences</a></p>
         {% if jobPreferencesIncomplete %}
           </div>
         {% endif %}
@@ -685,7 +702,7 @@
                 })}}
 
                 <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
-                <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                <p class="govuk-!-margin-bottom-0">
                   {{role.startDate | monthYear}}
                   to
                   {% if role.endDate %}
@@ -694,6 +711,7 @@
                     present
                   {% endif %}
                 </p>
+                <p class="govuk-caption-m  govuk-!-margin-bottom-0 govuk-!-margin-top-2">{{role.mainduties}}</p>
                 {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
               </div>
             {% endfor %}
@@ -1026,31 +1044,59 @@
         {% endif %}
       </div>
 
+       
+          {% if user.profile.status == 'Active' %}
+
+            <div class="app-profile__section">
+              <h2 class="govuk-heading-m govuk-!-font-size-27">
+                Preview and turn off profile
+              </h2>
 
 
+<<<<<<< HEAD
 
 
 
 
       {% if not user.profile.status %}
+=======
+              <p><a href="/profile/preview">Preview profile</a></p>
+              <p>When you turn off your profile it will not be visible to hiring staff in schools and trusts.</p>
+>>>>>>> main
 
-        <div class="app-profile__section">
-          <h2 class="govuk-heading-m govuk-!-font-size-27">
-            Preview and turn on profile
-          </h2>
+              <a href="/profile/deactivate" class="govuk-button" data-module="govuk-button">
+                Turn off profile
+              </a>
+
+            </div>
+           
+          {% else %}
+            
+            <div class="app-profile__section">
+              <h2 class="govuk-heading-m govuk-!-font-size-27">
+                Preview and turn on profile
+              </h2>
 
 
-          <p><a href="/profile/preview">Preview profile</a></p>
-          <p>When you turn on your profile, it’ll be visible to hiring staff.</p>
-          <form method="post">
-            {{ govukButton({ text: "Turn on profile" }) }}
-          </form>
+              <p><a href="/profile/preview">Preview profile</a></p>
+              <p>When you turn on your profile it will be only be visible to hiring staff in schools and trusts. They can get in touch by email to invite you apply for roles.</p>
 
-        </div>
+              <form method="post" novalidate>
 
-      {% endif %}
+                {{ govukButton({
+                  text: "Turn on profile",
+                  classes:"next-location-4"
+                }) }}
 
+              </form>
 
+            </div>
+                
+          {% endif %}
+          
+          
+        </p>
+     
 
     </div>
   </div>

@@ -1,12 +1,12 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[role]",
-    name: "filters[role]",
+    idPrefix: "filter-role",
+    name: "filter-role",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Role",
+        text: "Job role",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -14,11 +14,20 @@
       value: 'Teacher',
       text: 'Teacher'
     }, {
-      value: 'Headteacher, deputy or assistant headteacher',
-      text: 'Headteacher, deputy or assistant headteacher'
+      value: 'Head of year or phase',
+      text: 'Head of year or phase'
     }, {
-      value: 'Head of year, department, curriculum or phase',
-      text: 'Head of year, department, curriculum or phase'
+      value: 'Head of department or curriculum',
+      text: 'Head of department or curriculum'
+    }, {
+      value: 'Assistant headteacher',
+      text: 'Assistant headteacher'
+    }, {
+      value: 'Deputy headteacher',
+      text: 'Deputy headteacher'
+    }, {
+      value: 'Headteacher',
+      text: 'Headteacher'
     }, {
       value: 'Teaching assistant',
       text: 'Teaching assistant'
@@ -31,9 +40,40 @@
     }]
   }) }}
 
+  {{ govukCheckboxes({
+    idPrefix: "filter-phase",
+    name: "filter-phase",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Education phase",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Nursery school',
+      text: 'Nursery school'
+    }, {
+      value: 'Primary school',
+      text: 'Primary school'
+    }, {
+      value: 'Middle school',
+      text: 'Middle school'
+    }, {
+      value: 'Secondary school',
+      text: 'Secondary school'
+    }, {
+      value: 'Sixth form or college',
+      text: 'Sixth form or college'
+    }, {
+      value: 'Through school',
+      text: 'Through school'
+    }]
+  }) }}
+
   {{ appCheckboxFilter({
-    idPrefix: "subjects",
-    name: "filters[subjects]",
+    idPrefix: "filter-subjects",
+    name: "filter-subjects",
     classes: "govuk-checkboxes--small",
     legend: {
       text: "Subject",
@@ -263,8 +303,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[suitability]",
-    name: "filters[suitability]",
+    idPrefix: "filter-suitability",
+    name: "filter-suitability",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -282,39 +322,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[phase]",
-    name: "filters[phase]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Phase of education",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Nursery school',
-      text: 'Nursery school'
-    }, {
-      value: 'Primary school',
-      text: 'Primary school'
-    }, {
-      value: 'Middle school',
-      text: 'Middle school'
-    }, {
-      value: 'Secondary school',
-      text: 'Secondary school'
-    }, {
-      value: 'Sixth form or college',
-      text: 'Sixth form or college'
-    }, {
-      value: 'Through school',
-      text: 'Through school'
-    }]
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filters[keyStages]",
-    name: "filters[keyStages]",
+    idPrefix: "filter-keyStages",
+    name: "filter-keyStages",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -326,26 +335,26 @@
       value: 'Early years',
       text: 'Early years'
     }, {
-      value: 'KS1',
+      value: 'Key stage 1',
       text: 'KS1'
     }, {
-      value: 'KS2',
+      value: 'Key stage 2',
       text: 'KS2'
     }, {
-      value: 'KS3',
+      value: 'Key stage 3',
       text: 'KS3'
     }, {
-      value: 'KS4',
+      value: 'Key stage 4',
       text: 'KS4'
     }, {
-      value: 'KS5',
+      value: 'Key stage 5',
       text: 'KS5'
     }]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[workingPatterns]",
-    name: "filters[workingPatterns]",
+    idPrefix: "filter-workingPatterns",
+    name: "filter-workingPatterns",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -363,8 +372,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[quick]",
-    name: "filters[quick]",
+    idPrefix: "filter-quick",
+    name: "filter-quick",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -373,10 +382,10 @@
       }
     },
     items: [{
-      value: 'Apply directly online',
-      text: 'Apply directly online',
+      value: 'Apply online',
+      text: 'Only show quick apply jobs',
       hint: {
-        text: 'Saves your information to make further applications quicker'
+        text: 'Apply for jobs simply and quickly using your profile'
       }
     }]
   }) }}
@@ -412,7 +421,7 @@
       </div>
     {% endif %}
     <div class="app-filter__options">
-      <form method="get" action="/applications" novalidate>
+      <form id="filter" method="get" action="/search/applications" novalidate>
         <button class="govuk-button" data-module="govuk-button">
           Apply filters
         </button>

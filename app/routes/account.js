@@ -59,7 +59,8 @@ module.exports = router => {
         hiddenPlaces: {}
       }
     }
-    res.redirect('/account/new/confirmation')
+
+    res.redirect('/account/new/create')
   })
 
   router.get('/account/new/confirmation', (req, res) => {
@@ -68,5 +69,49 @@ module.exports = router => {
       user: req.session.user
     })
   })
+
+
+  router.post('/account/new/confirmation', (req, res) => {
+
+    var previousApplication = req.session.user.profile.previousApplication
+
+    if (previousApplication == "Yes"){
+      req.flash('success', 'You have recently submitted a job application, so some of your details have been imported into your profile.')
+    } else {
+
+    }
+
+
+    res.redirect('/profile')
+  })
+
+  router.get('/account/new/activate', (req, res) => {
+
+    res.render('account/new/activate', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/new/activate', (req, res) => {
+
+    req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
+   
+    res.redirect('/account/new/activate')
+  })
+
+  router.get('/account/new/expired', (req, res) => {
+
+    res.render('account/new/expired', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/new/expired', (req, res) => {
+
+    req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
+   
+    res.redirect('/account/new/expired')
+  })
+
 
 }

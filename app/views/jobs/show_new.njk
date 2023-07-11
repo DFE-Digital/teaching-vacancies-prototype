@@ -1,0 +1,511 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+
+{% block content %}
+
+  {% set h1 %}
+    <span class="govuk-caption-l">
+      {{job.organisation.name}}
+    </span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+      {{job.title}}
+    </h1>
+  {% endset %}
+
+  {% if job.isUsingApplicationForm == 'Yes' %}
+    {{govukTag({
+      text: "QUICK APPLY",
+      classes: "govuk-tag--green govuk-!-margin-bottom-3"
+    })}}
+   {% endif %}
+
+  <div class="app-logo-title">
+    {% if job.organisation.logo != 'Not entered' %}
+      <div class="app-logo-title__image">
+        <img src="{{job.organisation.logo}}">
+      </div>
+      <div class="app-logo-title__text">
+        {{h1 | safe}}
+      </div>
+    {% else %}
+      {{h1 | safe}}
+    {% endif %}
+  </div>
+
+
+  {% set inset %}
+    <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+    {% set href %}
+      {% if job.isUsingApplicationForm == 'No' %}
+        #apply
+      {% else %}
+        jobs/{{job.id}}/apply
+      {% endif %}
+    {% endset %}
+
+    {{ govukButton({
+      text: "Apply for job",
+      href: href,
+      classes: "govuk-!-margin-bottom-0"
+    }) }}
+    {{ govukButton({
+      text: "Save job for later",
+      classes: "govuk-button--secondary govuk-!-margin-left-2 govuk-!-margin-bottom-0"
+    }) }}
+  {% endset %}
+  {{ govukInsetText({
+    html: inset,
+    classes: 'govuk-!-margin-top-5 govuk-!-padding-bottom-4'
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set workingPatterns %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+
+          {% for workingPattern in job.workingPatterns %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              {{workingPattern}} -
+              {% if workingPattern == 'Full time' %}
+                {{job.fullTimeDetails}}
+              {% else %}
+                {{job.partTimeDetails}}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {% set additionalDocuments %}
+        <ul class="govuk-list govuk-list--bullet">
+          {% for document in job.additionalDocuments %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              <a href="#">{{document.file}}, {{document.size}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {% set contract %}
+        {{job.contractType}}
+
+        {% if job.contractLength %}
+          - {{job.contractLength}}
+        {% endif %}
+      {% endset %}
+
+      {{job | log}}
+
+       {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Job role"
+            },
+            value: {
+              text: job.role
+            }
+          },
+          {
+            key: {
+              text: "Suitability for early career teachers (ECT)"
+            },
+            value: {
+              text: job.isRoleSuitableForEarlyCareeerTeachers
+            }
+          },
+          {
+            key: {
+              text: "Key stage"
+            },
+            value: {
+              text: job.keyStages | join(', ')
+            }
+          } if job.keyStages,
+          {
+            key: {
+              text: "Subject"
+            },
+            value: {
+              text: job.subjects | join(', ')
+            }
+          } if job.subjects.length > 0,
+          {
+            key: {
+              text: "Working pattern"
+            },
+            value: {
+              html: workingPatterns
+            }
+          },
+          {
+            key: {
+              text: "Contract"
+            },
+            value: {
+              html: contract
+            }
+          },
+          {
+            key: {
+              text: "Job start date"
+            },
+            value: {
+              html: job.startDate | date
+            }
+          },
+          {
+            key: {
+              text: "Full-time equivalent salary"
+            },
+            value: {
+              html: job.fullTimeEquivalentSalaryDetails
+            }
+          } if job.fullTimeEquivalentSalaryDetails,
+          {
+            key: {
+              text: "Actual salary"
+            },
+            value: {
+              html: job.actualSalaryDetails
+            }
+          } if job.actualSalaryDetails,
+          {
+            key: {
+              text: "Pay scale"
+            },
+            value: {
+              html: job.payScaleDetails
+            }
+          } if job.payScaleDetails,
+          {
+            key: {
+              text: "Distance from you"
+            },
+            value: {
+              html: job.distance + ' miles'
+            }
+          } if job.distance
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">
+        What skills and experience we’re looking for
+      </h2>
+
+      <div class="app-prose govuk-!-margin-bottom-6">
+        {{job.skillsAndExperience | markdown | safe}}
+      </div>
+
+      <h2 class="govuk-heading-m">
+        What the school offers its staff
+      </h2>
+
+      <div class="app-prose govuk-!-margin-bottom-6">
+        {{job.whatSchoolOffers | markdown | safe}}
+      </div>
+
+      {% if job.offersSchoolVisits == 'Yes' %}
+        <h2 class="govuk-heading-m">
+          Arrange a visit
+        </h2>
+
+        <p>To arrange a visit and increase the chance of a successful application, email <a href="mailto:{{job.contactEmailAddress}}">{{job.contactEmailAddress}}</a>.</p>
+      {% endif %}
+
+
+      {% if job.hasFurtherDetailsAboutTheRole == 'Yes' %}
+        <h2 class="govuk-heading-m">
+          Further information about the role
+        </h2>
+
+        <div class="app-prose">
+          {{job.furtherDetailsAboutTheRole | markdown | safe}}
+        </div>
+      {% endif %}
+
+
+      {% if job.hasAdditionalDocuments == 'Yes' %}
+        <h2 class="govuk-heading-m">
+          Additional documents
+        </h2>
+
+        {{additionalDocuments | safe }}
+      {% endif %}
+
+      {% set address %}
+        {% for part, value in job.organisation.address %}
+          {{value}}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      {% endset %}
+
+      {% set emailAddress %}
+        <a href="{{job.organisation.emailAddress}}">{{job.organisation.emailAddress}}</a>
+      {% endset %}
+
+      {% set website %}
+        <a href="{{job.organisation.website}}">{{job.organisation.website}} (opens in new tab)</a>
+      {% endset %}
+
+      {% if job.locations.length == 1 %}
+        <h2 class="govuk-heading-m">
+          About the school
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: job.organisation.name
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                text: job.organisation.address.address1
+              }
+            },
+            {
+              key: {
+                text: "Type"
+              },
+              value: {
+                text: job.organisation.type
+              }
+            },
+            {
+              key: {
+                text: "Education phase"
+              },
+              value: {
+                html: job.organisation.phase
+              }
+            } if job.organisation.phase,
+            {
+              key: {
+                text: "Age group"
+              },
+              value: {
+                text: job.organisation.ageGroup
+              }
+            } if job.organisation.ageGroup,
+            {
+              key: {
+                text: "Size"
+              },
+              value: {
+                text: job.organisation.size + ' pupils enrolled'
+              }
+            } if job.organisation.size,
+            {
+              key: {
+                text: "Ofsted report"
+              },
+              value: {
+                html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: emailAddress
+              }
+            },
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: website
+              }
+            }
+          ]
+        }) }}
+
+
+        <h2 class="govuk-heading-m">
+          Location and map
+        </h2>
+
+        <p>{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+
+        <div class="app-map">
+          <img src="/public/images/maps/single.png">
+        </div>
+      {% else %}
+        <h2 class="govuk-heading-m">
+          About the schools
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: job.organisation.name
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                text: address
+              }
+            },
+            {
+              key: {
+                text: "School type"
+              },
+              value: {
+                html: job.schoolType
+              }
+            } if job.schoolType,
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: emailAddress
+              }
+            } if job.organisation.emailAddress != 'Not entered',
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: website
+              }
+            } if job.organisation.website != 'Not entered'
+          ]
+        }) }}
+
+        {% if job.organisation.about != 'Not entered' %}
+          <div class="app-prose govuk-!-margin-bottom-6">
+            {{job.organisation.about | markdown | safe}}
+          </div>
+        {% endif %}
+
+        <p>You can find out more information about:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          {% for location in job.locations %}
+            {% if location.name != job.organisation.name %}
+              <li>
+                <a href="/schools/{{location.id}}">{{location.name}}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        <h2 class="govuk-heading-m">
+          Location and map
+        </h2>
+
+        <div class="app-map">
+          <img src="/public/images/maps/multiple.png">
+        </div>
+
+      {% endif %}
+
+      {% if job.hasSafeguardingCommitment == 'Yes' %}
+        <h2 class="govuk-heading-m">
+          Commitment to safeguarding
+        </h2>
+
+        <div class="app-prose govuk-!-margin-bottom-6">
+          {{job.safeguardingCommitment | markdown | safe}}
+        </div>
+      {% endif %}
+
+      {% if job.isUsingApplicationForm == 'No' %}
+          <h2 class="govuk-heading-m" id="apply">
+            Apply for the job
+          </h2>
+
+          {% if job.applicationMethod == 'By email' %}
+            <p>Download application form and send it to <a href="mailto:{{job.emailAddressForApplications}}">{{job.emailAddressForApplications}}</a>.</p>
+
+            {{ govukButton({
+              text: "Application form (PDF), 7MB"
+            }) }}
+          {% else %}
+            {# <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p> #}
+            <p>Apply through the school’s website.</p>
+
+            {# {{ govukButton({
+              text: job.linkToWebsite
+            }) }} #}
+
+            {{ govukButton({
+              text: "Apply for job (opens in new tab)",
+              text: "Continue to school website",
+              text: "Go to school website",
+              text: "Apply through website"
+            }) }}
+          {% endif %}
+
+      {% endif %}
+
+      <hr>
+
+      <h2 class="govuk-heading-m">
+        Set up a job alert
+      </h2>
+
+      <p>Get a job alert whenever a {{job.role | lower}} role is listed near {{job.organisation.address.postcode}}.</p>
+
+      {# {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Role"
+            },
+            value: {
+              text: job.role
+            }
+          },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              text: "Near " + job.organisation.address.postcode
+            }
+          }
+        ]
+      }) }} #}
+
+      {# <p><a href="#">Set up a job alert</a></p> #}
+
+      {{ govukButton({
+        text: "Set up job alert",
+        classes: 'govuk-button--secondary'
+      }) }}
+
+
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

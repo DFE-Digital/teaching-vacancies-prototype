@@ -9,13 +9,27 @@ module.exports = router => {
       text: 'Teacher',
       checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Teacher')
     }, {
-      value: 'Headteacher, deputy or assistant headteacher',
-      text: 'Headteacher, deputy or assistant headteacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Headteacher, deputy or assistant headteacher')
+      value: 'Head of year or phase',
+      text: 'Head of year or phase',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of year or phase')
+    }
+    , {
+      value: 'Head of department or curriculum',
+      text: 'Head of department or curriculum',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of department or curriculum')
+    }
+    , {
+      value: 'Assistant headteacher',
+      text: 'Assistant headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Assistant headteacher')
+    },{
+      value: 'Deputy headteacher',
+      text: 'Deputy headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Deputy headteacher')
     }, {
-      value: 'Head of year, department, curriculum or phase',
-      text: 'Head of year, department, curriculum or phase',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of year, department, curriculum or phase')
+      value: 'Headteacher',
+      text: 'Headteacher',
+      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Headteacher')
     }, {
       value: 'Teaching assistant',
       text: 'Teaching assistant',
@@ -460,6 +474,25 @@ module.exports = router => {
     res.render('profile/job-preferences/review', {
       profile
     })
+  })
+
+
+  //location delete
+
+  router.get('/profile/job-preferences/location-delete', (req, res) => {
+    let profile = req.session.user.profile
+
+    res.render('profile/job-preferences/location-delete', {
+      profile
+    })
+  })
+
+  router.post('/profile/job-preferences/location-delete', (req, res) => {
+    let id = req.params.id
+    let profile = req.session.user.profile
+
+    req.flash('success', 'Location deleted')
+    res.redirect('/profile/job-preferences/location-check')
   })
 
 }
