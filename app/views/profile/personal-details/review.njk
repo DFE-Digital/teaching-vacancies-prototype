@@ -123,6 +123,23 @@
           } if profile.providePhoneNumber == 'Yes',
           {
             key: {
+              text: "Do you have the right to work in the UK?"
+            },
+            value: {
+              text: profile.provideWork
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/work",
+                  text: "Change",
+                  visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Do you want to provide an address?"
             },
             value: {

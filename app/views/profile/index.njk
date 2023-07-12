@@ -175,6 +175,23 @@
               } if user.profile.providePhoneNumber == 'Yes',
               {
                 key: {
+                  text: "Do you have the right to work in the UK?"
+                },
+                value: {
+                  text: user.profile.provideWork
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/work",
+                      text: "Change",
+                      visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
                   text: "Do you want to provide an address?"
                 },
                 value: {
@@ -189,7 +206,7 @@
                     }
                   ]
                 }
-              } if user.profile.provideAddress == 'Yes',
+              }, 
               {
                 key: {
                   text: "Address"
@@ -207,6 +224,23 @@
                   ]
                 }
               } if user.profile.provideAddress == 'Yes',
+              {
+                key: {
+                  text: "Do you want to provide your National Insurance number?"
+                },
+                value: {
+                  text: user.profile.provideNI
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/profile/personal-details/ni",
+                      text: "Change",
+                      visuallyHiddenText: "if you want to provide your national insurance number"
+                    }
+                  ]
+                }
+              }, 
               {
                 key: {
                   text: "National Insurance number"
@@ -702,7 +736,7 @@
         {% endif %}
       </div>
 
-      <div class="app-profile__section">
+      <div class="app-profile__section" style="display:none;">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           References
 
@@ -794,7 +828,7 @@
 
 
 
-      <div class="app-profile__section">
+      <div class="app-profile__section" style="display:none;">
 
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
