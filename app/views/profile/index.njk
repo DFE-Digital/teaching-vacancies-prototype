@@ -175,22 +175,14 @@
               } if user.profile.providePhoneNumber == 'Yes',
               {
                 key: {
-<<<<<<< HEAD
                   text: "Do you want to provide an address?"
                 },
                 value: {
                   text: user.profile.provideAddress
-=======
-                  text: "Do you have the right to work in the UK?"
-                },
-                value: {
-                  text: user.profile.provideWork
->>>>>>> main
                 },
                 actions: {
                   items: [
                     {
-<<<<<<< HEAD
                       href: "/profile/personal-details/address",
                       text: "Change",
                       visuallyHiddenText: "if you want to provide an address"
@@ -232,15 +224,6 @@
                   ]
                 }
               } if user.profile.provideNI == 'Yes'
-=======
-                      href: "/profile/personal-details/work",
-                      text: "Change",
-                      visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
-                    }
-                  ]
-                }
-              } if user.profile.provideWork
->>>>>>> main
             ]
           }) }}
 
@@ -1053,16 +1036,11 @@
               </h2>
 
 
-<<<<<<< HEAD
 
 
 
 
-      {% if not user.profile.status %}
-=======
-              <p><a href="/profile/preview">Preview profile</a></p>
-              <p>When you turn off your profile it will not be visible to hiring staff in schools and trusts.</p>
->>>>>>> main
+          {% if not user.profile.status %}
 
               <a href="/profile/deactivate" class="govuk-button" data-module="govuk-button">
                 Turn off profile
@@ -1100,7 +1078,8 @@
 
     </div>
   </div>
-
+  
+ {% endif %}
 
 
 {% endblock %}

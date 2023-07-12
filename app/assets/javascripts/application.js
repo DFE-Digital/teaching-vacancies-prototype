@@ -31,10 +31,6 @@ $(document).ready(function () {
       }
 
   }
-<<<<<<< HEAD
-
-
-=======
 
   if (window.location.href.indexOf("search") > -1) {
    
@@ -51,7 +47,6 @@ $(document).ready(function () {
     }
 
   }
->>>>>>> main
 
 
 })
