@@ -267,7 +267,14 @@
         Applying for the job
       </h2>
 
-      <p class="govuk-body">If you're interested in teaching or training to teach in England as an international citizen, we can <a data-controller="tracked-link" data-action="click->tracked-link#track auxclick->tracked-link#track contextmenu->tracked-link#track" data-tracked-link-target="link" data-link-type="international_teacher_advice_link_job_listing" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers">help you understand your next steps</a>.</p>
+      {% if job.international == 'International' %}
+
+        {{ govukInsetText({
+          text: "This job can provide a sponsorship visa for international teachers."
+        }) }}
+     
+      {% endif %}
+
 
        {% set href %}
           {% if job.isUsingApplicationForm == 'No' %}
