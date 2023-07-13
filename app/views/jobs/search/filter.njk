@@ -55,6 +55,7 @@
   {% if data['filter-workingPatterns'] %}  {% set filterPatterns %} {{data['filter-workingPatterns'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPatterns %}{% endset %} {% endif %}
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
+  {% if data['filter-international'] %}  {% set filterInternational %} {{data['filter-international'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
 
   <!-- each time there is a match, we plus 1 -->
 
@@ -398,6 +399,25 @@
         }) }}
 
         <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                Suitability for international teachers
+             </legend>
+             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                   <input class="govuk-checkboxes__input" id="filter-international" name="filter-international" type="checkbox" value="International" aria-describedby="filter-international-item-hint" {% if data['filter-international']  %} {% if 'International' in data['filter-international']  %} checked {% endif %} {% endif %}>
+                   <label class="govuk-label govuk-checkboxes__label" for="filter-international">
+                   Only show job roles that can sponsor a teacher
+                   </label>
+                   <div id="filter-international-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                      This includes jobs that can offer a sponsorship visa
+                   </div>
+                </div>
+             </div>
+          </fieldset>
+       </div>
+
+        <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitability for early career teachers (ECT)</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -491,7 +511,7 @@
         </div>
         <div class="app-filter__content">
 
-            {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length %} 
+            {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length or filterInternational.length %} 
 
                 <div class="app-filter__selected">
                 <div class="app-filter__selected-heading">
@@ -559,6 +579,18 @@
                         {% endif %}
                         {% if 'Through school' in filterPhase %} 
                             <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Through school</a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+                    {% if filterInternational.length %}
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Suitability for international teachers</h3>
+                        <ul class="app-filter-tags">
+                        {% if 'International' in filterInternational %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show job roles that can sponsor a teacher
+                            </a></li>
                         {% endif %}
                         </ul>
 
@@ -781,6 +813,7 @@
           {% if job.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if job.international in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           
           <!-- each time there is a match, we plus 1 -->
 

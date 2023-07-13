@@ -11,7 +11,7 @@
         "postcode": "N19 4PT"
       },
       "type": "Academy",
-      "phase": "Middle school",
+      "phase": "Secondary school",
       "ageGroup": "11 to 16",
       "size": "100",
       "website": "http://junior-pennant.gov.uk",
@@ -31,21 +31,21 @@
         }
       }
     ],
-    "role": "SENDCo (special educational needs and disabilities coordinator)",
-    "title": "Temporary teacher for SENDCo",
-    "phase": "Middle school",
+    "role": "Physics teacher",
+    "international": "International",
+    "title": "Physics teacher",
+    "phase": "Secondary school",
     "keyStages": [
-      "Key stage 1",
-      "Key stage 2",
       "Key stage 3",
-      "Key stage 4"
+      "Key stage 4",
+      "Key stage 5"
     ],
     "contractType": "Fixed term",
     "contractLength": "6 months",
     "workingPatterns": [
       "Part time"
     ],
-    "partTimeDetails": "20 hours a week",
+    "partTimeDetails": "40 hours a week",
     "salaryDetails": [
       "Pay scale",
       "Actual salary"

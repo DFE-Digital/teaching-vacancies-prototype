@@ -303,6 +303,25 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filter-international",
+    name: "filter-international",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Suitability for international teachers",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'International',
+      text: 'Only show job roles that can sponsor a teacher',
+      hint: {
+        text: 'This includes jobs that can offer a sponsorship visa'
+      }
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
     idPrefix: "filter-suitability",
     name: "filter-suitability",
     classes: "govuk-checkboxes--small",
