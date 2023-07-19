@@ -150,12 +150,8 @@
               <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
               <li class="sort-component__list-item" style="display: inline-block;">
                 <a class="govuk-link" {% if job.distance %} href="" {% else %} href="location" {% endif %}>
-                  <span class="govuk-visually-hidden">Sort by </span>Distance from city, county or postcode
+                  <span class="govuk-visually-hidden">Sort by </span>Distance
                 </a>
-              </li>
-              <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
-              <li class="sort-component__list-item" style="display: inline-block;">
-                <span class="govuk-visually-hidden">Sort by </span>Most relevant
               </li>
             </ul>
           </nav>
@@ -238,10 +234,10 @@
                           },
                           {
                             key: {
-                              text: "Distance from postcode"
+                              text: "Location"
                             },
                             value: {
-                              text: job.distance + ' miles'
+                              text: job.distance + ' miles from you'
                             }
                           } if job.distance
                         ]
@@ -319,7 +315,7 @@
                           },
                           {
                             key: {
-                              text: "Distance from postcode"
+                              text: "Location"
                             },
                             value: {
                               text: job.distance + ' miles'
@@ -411,7 +407,7 @@
                           },
                           {
                             key: {
-                              text: "Distance from postcode"
+                              text: "Location"
                             },
                             value: {
                               text: job.distance + ' miles'

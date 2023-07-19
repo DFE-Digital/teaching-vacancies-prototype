@@ -272,6 +272,12 @@
         {{ govukInsetText({
           text: "This job can provide a sponsorship visa for international teachers."
         }) }}
+      
+      {% else %}
+
+        {{ govukInsetText({
+          text: "This job cannot provide a sponsorship visa for international teachers."
+        }) }}
      
       {% endif %}
 

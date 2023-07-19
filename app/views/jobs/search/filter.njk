@@ -785,7 +785,7 @@
                   </li>
                   <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
                   <li class="sort-component__list-item" style="display: inline-block;">
-                    <span class="govuk-visually-hidden">Sort by </span>Distance from city, county or postcode 
+                    <span class="govuk-visually-hidden">Sort by </span>Distance
                   </li>
                 </ul>
               </nav>
@@ -895,10 +895,10 @@
                     },
                     {
                     key: {
-                        text: "Distance from postcode"
+                        text: "Location"
                     },
                     value: {
-                        text: job.distance + ' miles'
+                        text: job.distance + ' miles from you'
                     }
                     } if job.distance
                 ]
@@ -917,37 +917,40 @@
       </div>
 
       <div id="try-another-search" class="divider-bottom" style="display:none;">
-        <div class="govuk-heading-m">Try another search</div>
-        <p class="govuk-body">You may get more results if you:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>add more keywords, or try different ones</li>
-          <li>change the radius of your search</li>
-          <li>look at a wider geographical location, West Yorkshire instead of Leeds for example</li>
-          <li>remove some filters if you have used them</li>
-        </ul>
-        <p></p>
-      </div>
 
-      {{ govukPagination({
-          next: {
-            href: "#"
-          },
-          items: [
-            {
-              number: 1,
-              href: "#",
-              current: true
-            },
-            {
-              number: 2,
-              href: "#"
-            },
-            {
-              number: 3,
-              href: "#"
-            }
-          ]
-        }) }}
+        {% if data['filter-international'] %}
+        
+
+          <div class="govuk-heading-m">No teaching jobs can offer sponsorships currently</div>
+              
+            <p>You are unlikely to be given a teaching job in England unless you have qualified teacher status.</p>
+              
+            <p>You may be able to apply for QTS – <a target="_blank" class="govuk-link" href="https://apply-for-qts-in-england.education.gov.uk/eligibility/start">check your eligibility (link opens in new tab)</a>.</p>
+            <p>Schools cannot give you advice about becoming a teacher in England. However, you can visit <a target="_blank" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas">Teach in England if you trained overseas (link opens in new tab)</a> to learn more about:</p>
+            
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the qualifications and experience you’ll need</li>
+              <li>visas and immigration</li>
+              <li>other routes to QTS</li>
+            </ul>
+         
+          </div>
+
+        {% else %}
+
+          <div class="govuk-heading-m">Try another search</div>
+            <p class="govuk-body">You may get more results if you:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>add more keywords, or try different ones</li>
+              <li>change the radius of your search</li>
+              <li>look at a wider geographical location, West Yorkshire instead of Leeds for example</li>
+              <li>remove some filters if you have used them</li>
+            </ul>
+            <p></p>
+          </div>
+     
+        {% endif %}
+
     </div>
   </div>
 
