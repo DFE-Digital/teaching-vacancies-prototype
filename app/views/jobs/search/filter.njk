@@ -401,17 +401,14 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                Suitability for international teachers
+                Visa sponsorship
              </legend>
              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
                    <input class="govuk-checkboxes__input" id="filter-international" name="filter-international" type="checkbox" value="International" aria-describedby="filter-international-item-hint" {% if data['filter-international']  %} {% if 'International' in data['filter-international']  %} checked {% endif %} {% endif %}>
                    <label class="govuk-label govuk-checkboxes__label" for="filter-international">
-                   Only show job roles that can sponsor a teacher
+                    Only show jobs with visa sponsorship
                    </label>
-                   <div id="filter-international-item-hint" class="govuk-hint govuk-checkboxes__hint">
-                      This includes jobs that can offer a sponsorship visa
-                   </div>
                 </div>
              </div>
           </fieldset>
@@ -586,10 +583,10 @@
 
                     {% if filterInternational.length %}
                     
-                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Suitability for international teachers</h3>
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
                         <ul class="app-filter-tags">
                         {% if 'International' in filterInternational %} 
-                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show job roles that can sponsor a teacher
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show jobs with visa sponsorship
                             </a></li>
                         {% endif %}
                         </ul>
@@ -918,26 +915,6 @@
 
       <div id="try-another-search" class="divider-bottom" style="display:none;">
 
-        {% if data['filter-international'] %}
-        
-
-          <div class="govuk-heading-m">No teaching jobs can offer sponsorships currently</div>
-              
-            <p>You are unlikely to be given a teaching job in England unless you have qualified teacher status.</p>
-              
-            <p>You may be able to apply for QTS – <a target="_blank" class="govuk-link" href="https://apply-for-qts-in-england.education.gov.uk/eligibility/start">check your eligibility (link opens in new tab)</a>.</p>
-            <p>Schools cannot give you advice about becoming a teacher in England. However, you can visit <a target="_blank" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas">Teach in England if you trained overseas (link opens in new tab)</a> to learn more about:</p>
-            
-            <ul class="govuk-list govuk-list--bullet">
-              <li>the qualifications and experience you’ll need</li>
-              <li>visas and immigration</li>
-              <li>other routes to QTS</li>
-            </ul>
-         
-          </div>
-
-        {% else %}
-
           <div class="govuk-heading-m">Try another search</div>
             <p class="govuk-body">You may get more results if you:</p>
             <ul class="govuk-list govuk-list--bullet">
@@ -948,8 +925,6 @@
             </ul>
             <p></p>
           </div>
-     
-        {% endif %}
 
     </div>
   </div>

@@ -122,6 +122,16 @@
         {% endif %}
       {% endset %}
 
+
+      {% set offerVisa %}
+        {% if job.international == 'International' %}
+          This job can offer visa sponsorship   
+        {% else %}
+          No
+        {% endif %}
+      {% endset %}
+
+    
       {{job | log}}
 
        {{ govukSummaryList({
@@ -140,6 +150,14 @@
             },
             value: {
               text: job.isRoleSuitableForEarlyCareeerTeachers
+            }
+          },
+          {
+            key: {
+              text: "Visa sponsorship"
+            },
+            value: {
+              text: offerVisa
             }
           },
           {
@@ -266,21 +284,6 @@
       <h2 class="govuk-heading-m">
         Applying for the job
       </h2>
-
-      {% if job.international == 'International' %}
-
-        {{ govukInsetText({
-          text: "This job can provide a sponsorship visa for international teachers."
-        }) }}
-      
-      {% else %}
-
-        {{ govukInsetText({
-          text: "This job cannot provide a sponsorship visa for international teachers."
-        }) }}
-     
-      {% endif %}
-
 
        {% set href %}
           {% if job.isUsingApplicationForm == 'No' %}

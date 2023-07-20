@@ -3,7 +3,7 @@
   {{ govukCheckboxes({
     idPrefix: "filter-role",
     name: "filter-role",
-    classes: "govuk-checkboxes--small",
+    classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
         text: "Job role",
@@ -43,7 +43,7 @@
   {{ govukCheckboxes({
     idPrefix: "filter-phase",
     name: "filter-phase",
-    classes: "govuk-checkboxes--small",
+    classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
         text: "Education phase",
@@ -303,28 +303,9 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filter-international",
-    name: "filter-international",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Suitability for international teachers",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'International',
-      text: 'Only show job roles that can sponsor a teacher',
-      hint: {
-        text: 'This includes jobs that can offer a sponsorship visa'
-      }
-    }]
-  }) }}
-
-  {{ govukCheckboxes({
     idPrefix: "filter-suitability",
     name: "filter-suitability",
-    classes: "govuk-checkboxes--small",
+    classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
         text: "Suitability for early career teachers (ECT)",
@@ -343,7 +324,7 @@
   {{ govukCheckboxes({
     idPrefix: "filter-keyStages",
     name: "filter-keyStages",
-    classes: "govuk-checkboxes--small",
+    classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
         text: "Key stage",
@@ -374,7 +355,7 @@
   {{ govukCheckboxes({
     idPrefix: "filter-workingPatterns",
     name: "filter-workingPatterns",
-    classes: "govuk-checkboxes--small",
+    classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
         text: "Working pattern",
@@ -387,6 +368,23 @@
     }, {
       value: 'Part time',
       text: 'Part time'
+    }]
+  }) }}
+  
+
+  {{ govukCheckboxes({
+    idPrefix: "filter-international",
+    name: "filter-international",
+    classes: "govuk-checkboxes--small filter-bottom",
+    fieldset: {
+      legend: {
+        text: "Visa sponsorship",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'International',
+      text: 'Only show jobs with visa sponsorship'
     }]
   }) }}
 
