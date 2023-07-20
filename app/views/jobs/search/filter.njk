@@ -70,7 +70,7 @@
       
       {% set filterOptionsHtml %}
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Job role</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -115,7 +115,7 @@
             </fieldset>
         </div>
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
               Education phase
@@ -398,23 +398,8 @@
           ]
         }) }}
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                Visa sponsorship
-             </legend>
-             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                   <input class="govuk-checkboxes__input" id="filter-international" name="filter-international" type="checkbox" value="International" aria-describedby="filter-international-item-hint" {% if data['filter-international']  %} {% if 'International' in data['filter-international']  %} checked {% endif %} {% endif %}>
-                   <label class="govuk-label govuk-checkboxes__label" for="filter-international">
-                    Only show jobs with visa sponsorship
-                   </label>
-                </div>
-             </div>
-          </fieldset>
-       </div>
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitability for early career teachers (ECT)</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -431,7 +416,7 @@
         </div>
 
         
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Key stage</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -464,7 +449,7 @@
         </div>
         
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Working pattern</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -480,7 +465,24 @@
             </fieldset>
         </div>
 
-        <div class="govuk-form-group">
+
+        <div class="govuk-form-group filter-bottom">
+          <fieldset class="govuk-fieldset">
+             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                Visa sponsorship
+             </legend>
+             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                   <input class="govuk-checkboxes__input" id="filter-international" name="filter-international" type="checkbox" value="International" aria-describedby="filter-international-item-hint" {% if data['filter-international']  %} {% if 'International' in data['filter-international']  %} checked {% endif %} {% endif %}>
+                   <label class="govuk-label govuk-checkboxes__label" for="filter-international">
+                    Only show jobs with visa sponsorship
+                   </label>
+                </div>
+             </div>
+          </fieldset>
+       </div>
+
+        <div class="govuk-form-group filter-bottom">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Application method</legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
