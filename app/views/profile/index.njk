@@ -68,8 +68,8 @@
               {% if user.profile.address1 | length %}{{user.profile.address1}}, {% endif %}
               {% if user.profile.address2 | length %}{{user.profile.address2}}, {% endif %}
               {% if user.profile.addressTown | length %}{{user.profile.addressTown}}, {% endif %}
-              {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}}, {% endif %}
-              {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}}{% endif %}
+              {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}},{% endif %}
+              {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}} {% endif %}
             </p>
 
             {{govukTag({
@@ -1083,7 +1083,6 @@
               <h2 class="govuk-heading-m govuk-!-font-size-27">
                 Preview and turn on profile
               </h2>
-
 
               <p><a href="/profile/preview">Preview profile</a></p>
               <p>When you turn on your profile it will be only be visible to hiring staff in schools and trusts. They can get in touch by email to invite you apply for roles.</p>

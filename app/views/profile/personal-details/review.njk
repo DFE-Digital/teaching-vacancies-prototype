@@ -37,8 +37,8 @@
           {% if user.profile.address1 | length %}{{user.profile.address1}}, {% endif %}
           {% if user.profile.address2 | length %}{{user.profile.address2}}, {% endif %}
           {% if user.profile.addressTown | length %}{{user.profile.addressTown}}, {% endif %}
-          {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}}, {% endif %}
-          {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}}{% endif %}
+          {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}},{% endif %}
+          {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}} {% endif %}
         </p>
 
       {% endset %}

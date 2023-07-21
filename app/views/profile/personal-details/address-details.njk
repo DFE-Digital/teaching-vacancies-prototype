@@ -65,15 +65,6 @@
           }) }}
           {{ govukInput({
             label: {
-              text: "County (optional)"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "profile[addressCounty]",
-            name: "profile[addressCounty]",
-            value: addressCounty
-          }) }}
-          {{ govukInput({
-            label: {
               text: "Postcode"
             },
             classes: "govuk-input--width-10",
@@ -81,6 +72,15 @@
             name: "profile[addressPostcode]",
             autocomplete: "postal-code",
             value: addressPostcode
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Country"
+            },
+            classes: "govuk-input--width-10",
+            id: "profile[addressCounty]",
+            name: "profile[addressCounty]",
+            value: addressCounty
           }) }}
         {% endcall %}
 
