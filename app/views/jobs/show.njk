@@ -223,15 +223,7 @@
             value: {
               html: job.payScaleDetails
             }
-          } if job.payScaleDetails,
-          {
-            key: {
-              text: "Distance from you"
-            },
-            value: {
-              html: job.distance + ' miles'
-            }
-          } if job.distance
+          } if job.payScaleDetails
         ]
       }) }}
 
@@ -409,7 +401,7 @@
           Location and map
         </h2>
 
-        <p>{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+        <p>{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span>. This is {{job.distance}} miles from <span style="text-transform: uppercase;">{{ data['location'] }}</span>.</p>
 
         <div class="app-map">
           <img src="/public/images/maps/single.png">

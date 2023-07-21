@@ -42,7 +42,7 @@
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Jobs (<span id="job-count">240</span>)
+    <span id="job-count">240</span> jobs found
   </h1>
 
   <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
@@ -138,9 +138,11 @@
       <div>
         <div class="app-jobs">
 
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Sorted by distance from <span style="text-transform: uppercase;">{{data['location']}}</span> </h2>
+
         <div class="sort-component">
           <nav class="govuk-body" style="margin:0px;">
-            <span class="govuk-!-font-weight-bold">Sort by:</span>
+            <span class="">Sort by:</span>
             <ul class="sort-component__list" style="display: inline-block; list-style:none; padding:0px; font-size:18px;">
               <li class="sort-component__list-item" style="display: inline-block;">
                 <a class="govuk-link" href="newest">
@@ -155,7 +157,7 @@
           </nav>
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Distance from <span style="text-transform: uppercase;">{{data['location']}}</span> </h2>
+        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
         {% for job in jobs|sort(attribute='distance', reverse=false) %}
 
