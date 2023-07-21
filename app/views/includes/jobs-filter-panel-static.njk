@@ -5,7 +5,7 @@
         {{ govukCheckboxes({
           idPrefix: "filters[role]",
           name: "filters[role]",
-          classes: "govuk-checkboxes--small",
+          classes: "govuk-checkboxes--small filter-bottom",
           fieldset: {
             legend: {
               text: "Job role",
@@ -43,7 +43,7 @@
         }) }}
 
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
               Education phase
@@ -363,7 +363,7 @@
         {{ govukCheckboxes({
           idPrefix: "filters[suitability]",
           name: "filters[suitability]",
-          classes: "govuk-checkboxes--small",
+          classes: "govuk-checkboxes--small filter-bottom",
           fieldset: {
             legend: {
               text: "Suitability for early career teachers (ECT)",
@@ -380,7 +380,7 @@
         }) }}
 
         
-        <div class="govuk-form-group">
+        <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Key stage</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -425,7 +425,7 @@
         {{ govukCheckboxes({
           idPrefix: "filters[workingPatterns]",
           name: "filters[workingPatterns]",
-          classes: "govuk-checkboxes--small",
+          classes: "govuk-checkboxes--small filter-bottom",
           fieldset: {
             legend: {
               text: "Working pattern",
@@ -438,6 +438,41 @@
           }, {
             value: 'Part time',
             text: 'Part time'
+          }]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "filter-international",
+          name: "filter-international",
+          classes: "govuk-checkboxes--small filter-bottom",
+          fieldset: {
+            legend: {
+              text: "Visa sponsorship",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            value: 'International',
+            text: 'Only show jobs with visa sponsorship'
+          }]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "filter-quick",
+          name: "filter-quick",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Application method",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [{
+            value: 'Apply online',
+            text: 'Only show quick apply jobs',
+            hint: {
+              text: 'Apply for jobs simply and quickly using your profile'
+            }
           }]
         }) }}
 
