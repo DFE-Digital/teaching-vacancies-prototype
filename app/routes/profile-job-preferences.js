@@ -101,6 +101,18 @@ module.exports = router => {
       value: 'Key stage 2',
       text: 'Key stage 2',
       checked: profile.keyStages && profile.keyStages.includes('Key stage 2')
+    }, {
+      value: 'Key stage 3',
+      text: 'Key stage 3',
+      checked: profile.keyStages && profile.keyStages.includes('Key stage 3')
+    }, {
+      value: 'Key stage 4',
+      text: 'Key stage 4',
+      checked: profile.keyStages && profile.keyStages.includes('Key stage 4')
+    }, {
+      value: 'Key stage 5',
+      text: 'Key stage 5',
+      checked: profile.keyStages && profile.keyStages.includes('Key stage 5')
     }]
 
     res.render('profile/job-preferences/key-stages', {

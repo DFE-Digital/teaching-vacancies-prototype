@@ -263,16 +263,6 @@
         </div>
       {% endif %}
 
-      {% if job.hasSafeguardingCommitment == 'Yes' %}
-        <h2 class="govuk-heading-m">
-          Commitment to safeguarding
-        </h2>
-
-        <div class="app-prose govuk-!-margin-bottom-6">
-          {{job.safeguardingCommitment | markdown | safe}}
-        </div>
-      {% endif %}
-
       <h2 class="govuk-heading-m">
         Applying for the job
       </h2>
