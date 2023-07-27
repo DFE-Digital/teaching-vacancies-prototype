@@ -1,44 +1,13 @@
 
 {% extends "layout.njk" %}
 
+
+{% block pageTitle %}
+ 18 jobs found sorted by distance from postcode - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
 {% set primaryNavId = 'jobs' %}
 
-
-<style>
-  .square {
-      position: relative;
-      display: inline-block;
-      vertical-align: top; /*not required*/
-      border: 1px solid black; /*not required*/
-      position: relative;
-  }
-
-  .square span {
-    font-family: arial, sans-serif;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    background: rgba(0,0,0,0.4);
-    font-size: 12px;
-  }
-
-  img {
-    max-height: 100%;
-   max-width: 100%;
-   width: auto;
-   height: auto;
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   margin: auto;
- }
-
-</style>
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
@@ -138,26 +107,38 @@
       <div>
         <div class="app-jobs">
 
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Sorted by distance from <span style="text-transform: uppercase;">{{data['location']}}</span> </h2>
+            <div class="govuk-grid-column-one-full">
+              <div style="float:left;">
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by distance </h2><br/>
+                <p style="display:inline-block">Jobs in or near <span style="text-transform: uppercase;">{{data['location']}}</span></p>
+              </div>
 
-        <div class="sort-component">
-          <nav class="govuk-body" style="margin:0px;">
-            <span class="">Sort by:</span>
-            <ul class="sort-component__list" style="display: inline-block; list-style:none; padding:0px; font-size:18px;">
-              <li class="sort-component__list-item" style="display: inline-block;">
-                <a class="govuk-link" href="newest">
-                  <span class="govuk-visually-hidden">Sort by </span>Newest job
-                </a>
-              </li>
-              <li style="display: inline-block; color:grey; margin:0px 0px;">|</li>
-              <li class="sort-component__list-item" style="display: inline-block;">
-                <span class="govuk-visually-hidden">Sort by </span> Distance 
-              </li>
-            </ul>
-          </nav>
-        </div>
+            <div style="display:inline-block; float:right">
+              <form id="sortform" action="/jobs">
+                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                  <label class="govuk-label" for="sort" style="display:inline-block;">
+                    Sort by
+                  </label>
+                  <select class="govuk-select" id="sort" name="sort">
+                    <option value="newest">Newest job</option>
+                    {% if data['location'] %}<option value="distance" selected>Distance</option>{% endif %}
+                  </select>
+                  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Update sort
+                  </button>
+                </div>
+              </form>
+            </div>
 
-        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+          </div>
+
+          <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-full">
+              <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
+            </div>
+            
+          </div>
 
         {% for job in jobs|sort(attribute='distance', reverse=false) %}
 
@@ -237,12 +218,14 @@
                               text: "Location"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
+                          
                         ]
                       }) }}
                     </div>
+
 
                   {% endif %}
               
@@ -318,7 +301,7 @@
                               text: "Location"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
                         ]
@@ -406,7 +389,7 @@
                               text: "Location"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
                         ]
@@ -491,7 +474,7 @@
                               text: "Location"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
                         ]

@@ -361,3 +361,10 @@ hr {
   width:100%;
   padding-bottom: 20px;
 }
+
+.js-enabled #sortform .govuk-button--secondary{
+  display:none;
+}
+#sortform .govuk-button--secondary{
+  display:inline-block;
+}

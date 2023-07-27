@@ -13,6 +13,11 @@
 
 {% block content %}
 
+  {{ govukErrorSummary({
+    titleText: "There’s a problem",
+    errorList: errorList
+  }) if errorList.length }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -25,7 +30,7 @@
 
       <form method="post" novalidate>
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group {% if errorList.length %} govuk-form-group--error{% endif %}">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
@@ -37,9 +42,17 @@
               text: "Your address will not be visible on your profile. Schools can only see it if you apply for a role."
             }) }}
 
+            {% if errorList.length %} 
+            
+              <p id="passport-issued-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ errorList[0].text }}
+              </p>
+            
+            {% endif %}
+
             {{ govukRadios({
-              idPrefix: "profile[provideAddress]",
-              name: "profile[provideAddress]",
+              idPrefix: "profile-provideAddress",
+              name: "profile-provideAddress",
               items: [{
                 value: options[0].value,
                 text: options[0].text,

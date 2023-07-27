@@ -42,7 +42,7 @@
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Jobs (<span id="job-count">240</span>)
+    <span id="job-count">240</span> jobs found
   </h1>
 
   <!-- set a 0 that we can loop through and + 1 to -->
@@ -482,7 +482,7 @@
           </fieldset>
        </div>
 
-        <div class="govuk-form-group filter-bottom">
+        <div class="govuk-form-group filfter-bottom">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Application method</legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -771,26 +771,67 @@
       <div>
         <div class="app-jobs">
 
-          {% if data['radius'] %}
+          {% if data['location'] %}
 
-            <div class="sort-component">
-              <nav class="govuk-body" style="margin:0px;">
-                <span class="govuk-!-font-weight-bold">Sort by:</span>
-                <ul class="sort-component__list" style="display: inline-block; list-style:none; padding:0px; font-size:18px;">
-                  <li class="sort-component__list-item" style="display: inline-block;">
-                    <a class="govuk-link" href="#">
-                      <span class="govuk-visually-hidden">Sort by </span>Newest job listing
-                    </a>
-                  </li>
-                  <li style="display: inline-block; color:grey; margin:0px 3px;">|</li>
-                  <li class="sort-component__list-item" style="display: inline-block;">
-                    <span class="govuk-visually-hidden">Sort by </span>Distance
-                  </li>
-                </ul>
-              </nav>
+              <div class="govuk-grid-column-one-full">
+                <div style="float:left;">
+                  <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+                </div>
+                <div style="display:inline-block; float:right">
+                  <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                    <label class="govuk-label" for="sort" style="display:inline-block;">
+                      Sort by
+                    </label>
+                    <select class="govuk-select" id="sort" name="sort">
+                      <option value="newest" selected>Newest job</option>
+                      {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
+                      <option value="ending">Ending soonest</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+              
+             
+            <div class="govuk-grid-row">
+
+              <div class="govuk-grid-column-full">
+                <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
+              </div>
+              
             </div>
 
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Sorted by: Distance from {{data['location'] | capitalize }}</h2>
+          {% else %}
+
+            <div class="govuk-grid-row">
+
+              <div class="govuk-grid-column-one-half">
+                <h2 style="float:left;" class="govuk-heading-m govuk-!-margin-bottom-3 govuk-!-margin-top-1">Sorted by newest job </h2>
+              </div>
+              
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                  <label class="govuk-label" for="sort" style="display:inline-block;">
+                    Sort by
+                  </label>
+                  <select class="govuk-select" id="sort" name="sort">
+                    <option value="newest" selected>Newest job</option>
+                    {% if data['radius'] %}<option value="distance">distance</option>{% endif %}
+                    <option value="views">Most views</option>
+                    <option value="comments">Most comments</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="govuk-grid-row">
+
+              <div class="govuk-grid-column-full">
+                <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
+              </div>
+              
+            </div>
 
           {% endif %}
 
@@ -900,6 +941,7 @@
                         text: job.distance + ' miles from you'
                     }
                     } if job.distance
+                    
                 ]
                 }) }}
 

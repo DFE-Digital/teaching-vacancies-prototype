@@ -1,6 +1,10 @@
 
 {% extends "layout.njk" %}
 
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
 {% set primaryNavId = 'jobs' %}
 
 
@@ -42,7 +46,7 @@
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Jobs (240)
+    240 jobs
   </h1>
 
   <div class="app-filter-layout">
@@ -57,15 +61,40 @@
         <div class="app-action-bar__filter"></div>
       </div>
 
-      <div class="govuk-inset-text">
-        If you're interested in teaching or training to teach in England as an international citizen, we can <a data-controller="tracked-link" data-action="click->tracked-link#track auxclick->tracked-link#track contextmenu->tracked-link#track" data-tracked-link-target="link" data-link-type="international_teacher_advice_link_search_results" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers">help you understand your next steps</a>.
-      </div>
-
       <div>
         <div class="app-jobs">
 
+          <div class="govuk-grid-column-one-full">
+              <div style="float:left;">
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+              </div>
+            {% if data['location'] %}
+            <div style="display:inline-block; float:right">
+              <form id="sortform" action="/jobs/search/postcode">
+                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                  <label class="govuk-label" for="sort" style="display:inline-block;">
+                    Sort by
+                  </label>
+                  <select class="govuk-select" id="sort" name="sort">
+                    <option value="newest" selected>Newest job</option>
+                    <option value="distance">Distance</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            {% endif %}
 
-        {% for job in jobs %}
+          </div>
+
+          <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-full">
+              <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
+            </div>
+            
+          </div>
+
+        {% for job in jobs|sort(attribute='startDate', reverse=false) %}
 
           {% if loop.index0 < 10 %} 
 
@@ -155,6 +184,7 @@
                       html: job.subjects | join(', ') | capitalize
                     }
                   } if job.subjects.length
+                  
                 ]
               }) }}
             </div>

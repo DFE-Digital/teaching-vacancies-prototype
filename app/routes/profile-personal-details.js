@@ -67,9 +67,65 @@ module.exports = router => {
     })
   })
 
-   //address
-   router.get('/profile/personal-details/address', (req, res) => {
-      let provideAddress = req.session.user.profile.provideAddress
+
+  router.post('/profile/personal-details/work', (req, res) => {
+    req.session.user.profile.provideWork = req.body.profile.provideWork
+    res.redirect('/profile/personal-details/address')
+  })
+
+
+  //address
+  router.get('/profile/personal-details/address', (req, res) => {
+
+      var addressData = req.session.data['profile-provideAddress']
+
+      if(addressData){
+        let provideAddress = req.session.data['profile-provideAddress']
+      }else{
+
+      }
+      
+      let options = [{
+        value: 'Yes',
+        text: 'Yes',
+        checked: req.session.data['profile-provideAddress'] == 'Yes'
+      }, {
+        value: 'No',
+        text: 'No',
+        checked: req.session.data['profile-provideAddress'] == 'No'
+      }]
+      res.render('profile/personal-details/address', {
+        options
+      })
+  })
+
+
+  router.post('/profile/personal-details/address', (req, res) => {
+
+    // Make a variable and give it the value from 'how-many-balls'
+    var addressAnswer = req.session.data['profile-provideAddress']
+
+    // Check whether the variable matches a condition
+    if (addressAnswer == "Yes"){
+      // good
+      
+      req.session.user.profile.provideAddress = addressAnswer
+
+      res.redirect('/profile/personal-details/address-details')
+
+    } else if (addressAnswer == "No"){
+      
+      req.session.user.profile.provideAddress = addressAnswer
+
+      res.redirect('/profile/personal-details/ni')
+
+    }else {
+      // bad
+
+      //create errorList array
+      let errorList = []
+
+      //generate options for page (only needed if errors)
       let options = [{
         value: 'Yes',
         text: 'Yes',
@@ -79,26 +135,21 @@ module.exports = router => {
         text: 'No',
         checked: req.session.user.profile.provideAddress == 'No'
       }]
+
+      //if answer is blank, create an error message
+      errorList.push({
+        href: '#profile-provideAddress',
+        text: 'Select yes if you want to provide an address'
+      })
+
       res.render('profile/personal-details/address', {
+        user: req.session.user,
+        errorList,
         options
       })
-    })
 
-
-  router.post('/profile/personal-details/work', (req, res) => {
-    req.session.user.profile.provideWork = req.body.profile.provideWork
-    res.redirect('/profile/personal-details/address')
-  })
-
-  router.post('/profile/personal-details/address', (req, res) => {
-    req.session.user.profile.provideAddress = req.body.profile.provideAddress
-    let addressChoice = req.session.user.profile.provideAddress
-
-    if(addressChoice == 'Yes'){
-      res.redirect('/profile/personal-details/address-details')
-    }else{
-      res.redirect('/profile/personal-details/ni')
     }
+
 
   })
 

@@ -48,5 +48,21 @@ $(document).ready(function () {
 
   }
 
+  $("#toggleSearch").click(function() {
+    $('#search-form').toggle();
+  });
+
+  $('#sort').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    
+    if (valueSelected == 'newest'){
+      document.getElementById("sortform").submit();
+    }else{
+      document.getElementById("sortform").submit();
+    }
+
+  });
+
 
 })

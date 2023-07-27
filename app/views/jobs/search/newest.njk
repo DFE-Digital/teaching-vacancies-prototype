@@ -1,6 +1,11 @@
 
 {% extends "layout.njk" %}
 
+{% block pageTitle %}
+ 18 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+
 {% set primaryNavId = 'jobs' %}
 
 
@@ -245,7 +250,7 @@
                               text: "Distance"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
                         ]
@@ -326,7 +331,7 @@
                               text: "Distance"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
                         ]
@@ -418,7 +423,7 @@
                               text: "Distance"
                             },
                             value: {
-                              text: job.distance + ' miles from you'
+                              text: job.distance + ' miles from postcode'
                             }
                           } if job.distance
                         ]
