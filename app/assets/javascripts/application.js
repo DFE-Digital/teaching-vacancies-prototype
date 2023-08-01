@@ -57,8 +57,13 @@ $(document).ready(function () {
     var valueSelected = this.value;
     
     if (valueSelected == 'newest'){
+      $('#sortform').attr('action', '/jobs');
+      document.getElementById("sortform").submit();
+    }else if (valueSelected == 'closing'){
+      $('#sortform').attr('action', '/jobs/search/closing');
       document.getElementById("sortform").submit();
     }else{
+      $('#sortform').attr('action', '/jobs/search/postcode');
       document.getElementById("sortform").submit();
     }
 

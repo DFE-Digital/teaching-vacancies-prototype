@@ -4,42 +4,6 @@
 {% set primaryNavId = 'jobs' %}
 
 
-<style>
-  .square {
-      position: relative;
-      display: inline-block;
-      vertical-align: top; /*not required*/
-      border: 1px solid black; /*not required*/
-      position: relative;
-  }
-
-  .square span {
-    font-family: arial, sans-serif;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    background: rgba(0,0,0,0.4);
-    font-size: 12px;
-  }
-
-  img {
-    max-height: 100%;
-   max-width: 100%;
-   width: auto;
-   height: auto;
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   margin: auto;
- }
-
-</style>
-
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     Jobs (<span id="job-count">240</span>)

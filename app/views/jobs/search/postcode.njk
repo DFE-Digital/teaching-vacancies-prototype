@@ -121,6 +121,7 @@
                   </label>
                   <select class="govuk-select" id="sort" name="sort">
                     <option value="newest">Newest job</option>
+                    <option value="closing">Closing date</option>
                     {% if data['location'] %}<option value="distance" selected>Distance</option>{% endif %}
                   </select>
                   <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -141,6 +142,10 @@
           </div>
 
         {% for job in jobs|sort(attribute='distance', reverse=false) %}
+
+          {% set closingInformation %}
+            {{job.closingDate | date}} at {{job.closingTime}}
+          {% endset %}
 
           {% if job.distance <= data['radius'] %}
 
@@ -213,6 +218,14 @@
                               text: job.workingPatterns | join(', ') | capitalize
                             }
                           },
+                          {
+                            key: {
+                              text: "Closing date"
+                            },
+                            value: {
+                              html: closingInformation
+                            }
+                          } if job.closingDate,
                           {
                             key: {
                               text: "Location"
@@ -296,6 +309,14 @@
                               text: job.workingPatterns | join(', ') | capitalize
                             }
                           },
+                           {
+                            key: {
+                              text: "Closing date"
+                            },
+                            value: {
+                              html: closingInformation
+                            }
+                          } if job.closingDate,
                           {
                             key: {
                               text: "Location"
@@ -384,6 +405,14 @@
                               text: job.workingPatterns | join(', ') | capitalize
                             }
                           },
+                           {
+                            key: {
+                              text: "Closing date"
+                            },
+                            value: {
+                              html: closingInformation
+                            }
+                          } if job.closingDate,
                           {
                             key: {
                               text: "Location"
@@ -469,6 +498,14 @@
                               text: job.workingPatterns | join(', ') | capitalize
                             }
                           },
+                           {
+                            key: {
+                              text: "Closing date"
+                            },
+                            value: {
+                              html: closingInformation
+                            }
+                          } if job.closingDate,
                           {
                             key: {
                               text: "Location"

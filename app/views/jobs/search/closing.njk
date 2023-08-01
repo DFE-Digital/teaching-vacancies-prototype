@@ -2,15 +2,14 @@
 {% extends "layout.njk" %}
 
 {% block pageTitle %}
- 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+ 240 jobs found sorted by closing date - Find a job in teaching - Teaching Vacancies - GOV.UK
 {% endblock %}
 
 {% set primaryNavId = 'jobs' %}
 
-
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    240 jobs 
+    <span id="job-count"></span> jobs found
   </h1>
 
   <div class="app-filter-layout">
@@ -30,7 +29,7 @@
 
           <div class="govuk-grid-column-one-full">
               <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by closing date</h2><br/>
               </div>
             <div style="display:inline-block; float:right">
               <form id="sortform" action="/jobs/search/postcode">
@@ -39,8 +38,8 @@
                     Sort by
                   </label>
                   <select class="govuk-select" id="sort" name="sort">
-                    <option value="newest" selected>Newest job</option>
-                    <option value="closing">Closing date</option>
+                    <option value="newest">Newest job</option>
+                    <option value="closing" selected>Closing date</option>
                     {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
                   </select>
                 </div>
@@ -57,7 +56,7 @@
             
           </div>
 
-        {% for job in jobs|sort(attribute='startDate', reverse=false) %}
+        {% for job in jobs|sort(attribute='closingDate', reverse=false) %}
 
           {% if loop.index0 < 10 %} 
 

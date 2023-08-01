@@ -108,7 +108,6 @@ module.exports = router => {
     // Check whether the variable matches a condition
     if (addressAnswer == "Yes"){
       // good
-      
       req.session.user.profile.provideAddress = addressAnswer
 
       res.redirect('/profile/personal-details/address-details')
