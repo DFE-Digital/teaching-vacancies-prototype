@@ -110,7 +110,7 @@
             <div class="govuk-grid-column-one-full">
               <div style="float:left;">
                 <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by distance </h2><br/>
-                <p style="display:inline-block">Jobs in or near <span style="text-transform: uppercase;">{{data['location']}}</span></p>
+                <p style="display:inline-block">Jobs in or near <span style="text-transform:capitalise;">{{data['location']}}</span></p>
               </div>
 
             <div style="display:inline-block; float:right">
@@ -228,10 +228,10 @@
                           } if job.closingDate,
                           {
                             key: {
-                              text: "Location"
+                              text: "Distance from location"
                             },
                             value: {
-                              text: job.distance + ' miles from postcode'
+                              text: job.distance + ' miles'
                             }
                           } if job.distance
                           
@@ -319,10 +319,10 @@
                           } if job.closingDate,
                           {
                             key: {
-                              text: "Location"
+                              text: "Distance from location"
                             },
                             value: {
-                              text: job.distance + ' miles from postcode'
+                              text: job.distance + ' miles'
                             }
                           } if job.distance
                         ]
@@ -415,10 +415,10 @@
                           } if job.closingDate,
                           {
                             key: {
-                              text: "Location"
+                              text: "Distance from location"
                             },
                             value: {
-                              text: job.distance + ' miles from postcode'
+                              text: job.distance + ' miles'
                             }
                           } if job.distance
                         ]
@@ -508,10 +508,10 @@
                           } if job.closingDate,
                           {
                             key: {
-                              text: "Location"
+                              text: "Distance from location"
                             },
                             value: {
-                              text: job.distance + ' miles from postcode'
+                              text: job.distance + ' miles'
                             }
                           } if job.distance
                         ]

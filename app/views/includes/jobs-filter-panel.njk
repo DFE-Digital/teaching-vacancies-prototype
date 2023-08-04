@@ -303,6 +303,23 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filter-international",
+    name: "filter-international",
+    classes: "govuk-checkboxes--small filter-bottom",
+    fieldset: {
+      legend: {
+        text: "Visa sponsorship",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'International',
+      text: 'Only show jobs with visa sponsorship'
+    }]
+  }) }}
+
+
+  {{ govukCheckboxes({
     idPrefix: "filter-suitability",
     name: "filter-suitability",
     classes: "govuk-checkboxes--small filter-bottom",
@@ -371,23 +388,6 @@
     }]
   }) }}
   
-
-  {{ govukCheckboxes({
-    idPrefix: "filter-international",
-    name: "filter-international",
-    classes: "govuk-checkboxes--small filter-bottom",
-    fieldset: {
-      legend: {
-        text: "Visa sponsorship",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'International',
-      text: 'Only show jobs with visa sponsorship'
-    }]
-  }) }}
-
   {{ govukCheckboxes({
     idPrefix: "filter-quick",
     name: "filter-quick",

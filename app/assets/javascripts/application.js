@@ -9,7 +9,6 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 
 
-
   if ($(".schoolSelecter")[0]){
 
       var selectEl = document.querySelector('.schoolSelecter')
@@ -68,6 +67,9 @@ $(document).ready(function () {
     }
 
   });
+
+
+  $("#filter-subjects legend").after('<div class="searchable-collection-component__search govuk-!-margin-bottom-2"><input aria-expanded="true" aria-label="Subject" aria-owns="subjects__listbox" class="govuk-input icon icon--left icon--search js-action" data-action="input->searchable-collection#input" data-searchable-collection-target="input" placeholder="Search" role="combobox"><div aria-live="assertive" class="govuk-visually-hidden collection-match" role="status"></div></div>');
 
 
 })
