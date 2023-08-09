@@ -24,25 +24,57 @@
         {{title}}
       {% endset %}
 
-      <form method="post" novalidate>
-
-        {{ govukCheckboxes({
-          idPrefix: "profile[keyStages]",
-          name: "profile[keyStages]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: options
-        }) }}
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading"><span class="govuk-caption-xl">Job preferences</span> Key stages</legend></h1></legend>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[keyStages]" name="profile[keyStages]" type="checkbox" value="Early years" aria-describedby="early-years-hint"> 
+                <label class="govuk-label govuk-checkboxes__label" for="profile[keyStages]">Early years</label>
+                <div id="early-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 3 to 5
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[keyStages]-2" name="profile[keyStages]" type="checkbox" value="Key stage 1" aria-describedby="KS1-years-hint">
+                <label class="govuk-label govuk-checkboxes__label" for="profile[keyStages]-2">Key stage 1</label>
+                <div id="KS1-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 5 to 7
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[keyStages]-3" name="profile[keyStages]" type="checkbox" value="Key stage 2" aria-describedby="KS2-years-hint">
+                <label class="govuk-label govuk-checkboxes__label" for="profile[keyStages]-3">Key stage 2</label>
+                <div id="KS2-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 7 to 11
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[keyStages]-4" name="profile[keyStages]" type="checkbox" value="Key stage 3" aria-describedby="KS3-years-hint">
+                <label class="govuk-label govuk-checkboxes__label" for="profile[keyStages]-4">Key stage 3</label>
+                <div id="KS3-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 11 to 14
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[keyStages]-5" name="profile[keyStages]" type="checkbox" value="Key stage 4" aria-describedby="KS4-years-hint">
+                <label class="govuk-label govuk-checkboxes__label" for="profile[keyStages]-5">Key stage 4</label>
+                <div id="KS4-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 14 to 16
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[keyStages]-6" name="profile[keyStages]" type="checkbox" value="Key stage 5" aria-describedby="KS5-years-hint">
+                <label class="govuk-label govuk-checkboxes__label" for="profile[keyStages]-6">Key stage 5</label>
+                <div id="KS5-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 16 to 18
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div><button class="govuk-button" data-module="govuk-button">Save and continue</button>
         <p><a href="/profile">Cancel</a></p>
       </form>
 

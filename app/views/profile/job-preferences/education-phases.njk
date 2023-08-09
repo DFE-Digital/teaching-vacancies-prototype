@@ -24,25 +24,44 @@
         {{title}}
       {% endset %}
 
-      <form method="post" novalidate>
 
-        {{ govukCheckboxes({
-          idPrefix: "profile[phases]",
-          name: "profile[phases]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: options
-        }) }}
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+            <h1 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><span class="govuk-caption-l">Job preferences</span> Phases</legend></h1><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input checked class="govuk-checkboxes__input" id="profile[phases]" name="profile[phases]" type="checkbox" value="Primary"> 
+                <label class="govuk-label govuk-checkboxes__label" for="profile[phases]">Primary</label>
+                <div id="primary-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 3 to 11
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[phases]-2" name="profile[phases]" type="checkbox" value="Middle"> 
+                <label class="govuk-label govuk-checkboxes__label" for="profile[phases]-2">Middle</label>
+                <div id="middle-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages typically 9 to 13
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[phases]-3" name="profile[phases]" type="checkbox" value="Secondary"> 
+                <label class="govuk-label govuk-checkboxes__label" for="profile[phases]-3">Secondary</label>
+                <div id="secondary-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Ages 11 to 16
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[phases]-4" name="profile[phases]" type="checkbox" value="Sixth form or college"> 
+                <label class="govuk-label govuk-checkboxes__label" for="profile[phases]-4">Sixth form or college</label>
+                <div id="college-years-hint" class="govuk-hint govuk-checkboxes__hint">
+                 Ages 16 to 18
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div><button class="govuk-button" data-module="govuk-button">Save and continue</button>
         <p><a href="/profile">Cancel</a></p>
       </form>
 
