@@ -385,7 +385,7 @@ module.exports = router => {
 
   router.post('/profile/job-preferences/working-patterns', (req, res) => {
     req.session.user.profile.workingPatterns = req.body.profile.workingPatterns
-    res.redirect('/profile/job-preferences/location')
+    res.redirect('/profile/job-preferences/location-all-of-england')
   })
 
   router.get('/profile/job-preferences/location', (req, res) => {
@@ -505,6 +505,29 @@ module.exports = router => {
 
     req.flash('success', 'Location deleted')
     res.redirect('/profile/job-preferences/location-check')
+  })
+
+
+  //location all of england
+
+  router.get('/profile/job-preferences/location-all-of-england', (req, res) => {
+    let profile = req.session.user.profile
+
+    res.render('profile/job-preferences/location-all-of-england', {
+      profile
+    })
+  })
+
+  router.post('/profile/job-preferences/location-all-of-england', (req, res) => {
+    
+    var allEngland = req.session.data['all-of-england']
+
+    if (allEngland == "Yes"){
+        res.redirect("review")
+    } else {
+        res.redirect("location")
+    }
+
   })
 
 }

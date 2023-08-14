@@ -117,6 +117,23 @@
           } if profile.workingPatterns,
           {
             key: {
+              text: "Are you interested in jobs across all of England? "
+            },
+            value: {
+              text: data['all-of-england']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/job-preferences/location-all-of-england",
+                  text: "Change",
+                  visuallyHiddenText: "Locations"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Locations"
             },
             value: {
