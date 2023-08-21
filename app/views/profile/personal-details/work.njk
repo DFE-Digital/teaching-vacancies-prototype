@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Do you have the right to work in the UK?' %}
+{% set title = 'Do you currently have the legal right to work in the UK?' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -29,24 +29,9 @@
         {% set hintCode %}
         
             <div id="right-to-work-hint" class="govuk-hint">
-                There is <a target="_blank" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas">guidance for working as a teacher in England (link opens in a new tab)</a> if you qualified outside the UK.
+              If you're a non-UK citizen you will need a visa or immigration status which allows you to work as a teacher in England. If you're not sure you can <a target="_blank" href="https://www.gov.uk/check-uk-visa">check if you need a visa</a>.
             </div>
          
-        {% endset %}
-
-        {% set nocode %}
-        
-            <p>You are unlikely to be given a teaching job in England unless you have qualified teacher status.</p>
-            
-            <p>You may be able to apply for QTS – <a target="_blank" class="govuk-link" href="https://apply-for-qts-in-england.education.gov.uk/eligibility/start">check your eligibility (link opens in new tab)</a>.</p>
-            <p>Schools cannot give you advice about becoming a teacher in England. However, you can visit <a target="_blank" class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas">Teach in England if you trained overseas (link opens in new tab)</a> to learn more about:</p>
-            
-            <ul class="govuk-list govuk-list--bullet">
-              <li>the qualifications and experience you’ll need</li>
-              <li>visas and immigration</li>
-              <li>other routes to QTS</li>
-            </ul>
-           
         {% endset %}
 
         {{ govukRadios({
