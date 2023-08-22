@@ -26,27 +26,28 @@
                     Job preferences
                 </span>
                 <h1 class="govuk-fieldset__heading">
-                    Are you interested in jobs across all of England? 
+                    Are you interested in jobs across England? 
                 </h1>
                 </legend>
-                <div id="all-of-england-hint" class="govuk-hint">
-                Select yes if you are willing to relocate across England to work.
-                </div>
+                
                 <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="all-of-england" name="all-of-england" type="radio" value="Yes" data-aria-controls="conditional-all-of-england">
                         <label class="govuk-label govuk-radios__label" for="all-of-england">
-                            Yes
+                            Yes, I am willing to relocate across England to work
                         </label>
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-all-of-england">
-                        <p class="govuk-body">This will show that you are willing to relocate anywhere in the UK.</p>
+                        <p class="govuk-body">This will show your profile to all relevant roles across England.</p>
                     </div>
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="all-of-england-2" name="all-of-england" type="radio" value="No" data-aria-controls="conditional-all-of-england-2">
                         <label class="govuk-label govuk-radios__label" for="all-of-england-2">
                             No, I am looking for roles in specific locations
                         </label>
+                        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            This will allow you to select multiple locations with a search radius around cities, towns and postcodes.
+                        </div>
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-all-of-england-2">
                         <p class="govuk-body">Your profile will only be shown to schools relevant to your location preferences.</p>

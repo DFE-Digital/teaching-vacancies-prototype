@@ -23,4 +23,10 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/unhappy', (req, res) => {
+    res.render('jobs/unhappy', {
+
+    })
+  })
+
 }

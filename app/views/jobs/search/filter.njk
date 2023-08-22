@@ -19,7 +19,7 @@
   {% if data['filter-workingPatterns'] %}  {% set filterPatterns %} {{data['filter-workingPatterns'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPatterns %}{% endset %} {% endif %}
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
-  {% if data['filter-international'] %}  {% set filterInternational %} {{data['filter-international'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
+  {% if data['filter-international'] %}  {% set filterInternational %}Yes, skilled worker visa can be sponsored{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
 
   <!-- each time there is a match, we plus 1 -->
 
@@ -551,7 +551,7 @@
                     
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
                         <ul class="app-filter-tags">
-                        {% if 'International' in filterInternational %} 
+                        {% if 'Yes, skilled worker visa can be sponsored' in filterInternational %} 
                             <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show jobs with visa sponsorship
                             </a></li>
                         {% endif %}
@@ -817,7 +817,7 @@
           {% if job.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if job.international in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if job.sponsorship in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           
           <!-- each time there is a match, we plus 1 -->
 
@@ -904,7 +904,15 @@
                     value: {
                         text: job.distance + ' miles from you'
                     }
-                    } if job.distance
+                    } if job.distance,
+                    {
+                      key: {
+                        text: "Visa sponsorship"
+                      },
+                      value: {
+                        text: job.sponsorship | capitalize
+                      }
+                    } if job.sponsorship
                     
                 ]
                 }) }}

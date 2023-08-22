@@ -124,10 +124,10 @@
 
 
       {% set offerVisa %}
-        {% if job.international == 'International' %}
-          This job can offer visa sponsorship   
+        {% if job.sponsorship == 'Skilled worker visa can be sponsored' %}
+          Skilled worker visa can be sponsored
         {% else %}
-          No
+          Visas cannot be sponsored
         {% endif %}
       {% endset %}
 
@@ -267,6 +267,20 @@
         Applying for the job
       </h2>
 
+      {% if job.sponsorship == 'Yes, skilled worker visa can be sponsored' %}
+
+        {{ govukInsetText({
+          text: " This role can offer a skilled worker visa sponsorship to a Non-UK citizen."
+        }) }}
+
+      {% else %}
+
+        {{ govukInsetText({
+          text: " This role cannot offer a skilled worker sponsorship to a Non-UK citizen."
+        }) }}
+
+      {% endif %}
+
        {% set href %}
           {% if job.isUsingApplicationForm == 'No' %}
             #apply
@@ -275,11 +289,36 @@
           {% endif %}
         {% endset %}
 
-        {{ govukButton({
-          text: "Apply for job",
-          href: href,
-          classes: "govuk-!-margin-bottom-7"
-        }) }}
+        {% if job.sponsorship == 'Yes, skilled worker visa can be sponsored' %}
+
+          {{ govukButton({
+            text: "Apply for job",
+            href: href,
+            classes: "govuk-!-margin-bottom-7"
+          }) }}
+
+        {% else %}
+
+          {% if user.profile.provideWork == 'No' %}
+
+            {{ govukButton({
+              text: "Apply for job",
+              href: '../apply/unhappy',
+              classes: "govuk-!-margin-bottom-7"
+            }) }}
+
+          {% else %}
+
+            {{ govukButton({
+              text: "Apply for job",
+              href: href,
+              classes: "govuk-!-margin-bottom-7"
+            }) }}
+          
+          {% endif %}
+
+        {% endif %}
+
       
 
       {% if job.hasAdditionalDocuments == 'Yes' %}

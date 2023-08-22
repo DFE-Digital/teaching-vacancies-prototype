@@ -159,8 +159,15 @@
                     value: {
                       html: closingInformation
                     }
-                  } if job.closingDate
-                  
+                  } if job.closingDate,
+                  {
+                    key: {
+                      text: "Visa sponsorship"
+                    },
+                    value: {
+                      text: job.sponsorship | capitalize
+                    }
+                  } if job.sponsorship
                 ]
               }) }}
             </div>
