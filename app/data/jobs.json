@@ -2,7 +2,7 @@
   {
     "id": "749013",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "56201816-91e1-4e6a-a0b2-b630b6ec7eb4",
       "name": "Sawley School",
@@ -74,7 +74,7 @@
   {
     "id": "834960",
     "status": "Active",
-    "sponsorship": "Yes, skilled worker visa can be sponsored",
+    "sponsorship": "Yes, visa sponsorship available",
     "organisation": {
       "id": "9aad4029-2564-44c5-a8d1-32a8cbc7de01",
       "name": "Courtland Nursery",
@@ -149,7 +149,7 @@
   {
     "id": "602262",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "8a98cdd8-90a8-448d-aa70-86f3dd169b30",
       "name": "Royal Academy Trust",
@@ -416,7 +416,7 @@
   {
     "id": "804863",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "b473a892-e58e-4191-a43f-2d125fc4ff82",
       "name": "Trent School",
@@ -500,7 +500,7 @@
   {
     "id": "569755",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "6d2531db-541f-4157-90ca-e783b70667d4",
       "name": "ML Secondary School",
@@ -573,7 +573,7 @@
   {
     "id": "474804",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Lakeside Nursery",
@@ -647,7 +647,7 @@
   {
     "id": "903530",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "c17e429f-f073-41c1-8eec-f8fbd77272c0",
       "name": "Erewash School",
@@ -721,7 +721,7 @@
   {
     "id": "560861",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "6cd838ae-1ba6-4d7c-9de8-6ca8b5f3c764",
       "name": "Svelte Academy Trust",
@@ -995,7 +995,7 @@
   {
     "id": "808196",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "c17e429f-f073-41c1-8eec-f8fbd77272c0",
       "name": "Erewash School",
@@ -1080,7 +1080,7 @@
   {
     "id": "525354",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "b473a892-e58e-4191-a43f-2d125fc4ff82",
       "name": "Trent School",
@@ -1167,7 +1167,7 @@
   {
     "id": "647382",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "b473a892-e58e-4191-a43f-2d125fc4ff82",
       "name": "Trent School",
@@ -1239,7 +1239,7 @@
   {
     "id": "2432864",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Pembury House Nursery School",
@@ -1318,7 +1318,7 @@
   {
     "id": "243266",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Pembury House Primary School",
@@ -1400,7 +1400,7 @@
   {
     "id": "243255",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Lee Green Primary School",
@@ -1482,7 +1482,7 @@
   {
     "id": "243244",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Long Caledwood primary school",
@@ -1565,7 +1565,7 @@
   {
     "id": "243233",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Lee Royd Fields Nursery School",
@@ -1644,7 +1644,7 @@
   {
     "id": "243222",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Sunny Fields Nursery School",
@@ -1727,7 +1727,7 @@
   {
     "id": "243211",
     "status": "Active",
-    "sponsorship": "No, visas cannot be sponsored",
+    "sponsorship": "No, visas sponsorship not available",
     "organisation": {
       "id": "0b46e9ca-6d6a-4a5f-9416-a17c3efffe81",
       "name": "Albion Nursery School",

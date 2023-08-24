@@ -16,6 +16,18 @@
     
   {% endset %}
 
+  {% set sponsorshipInset %}
+    {% if job.sponsorship == 'Yes, visa sponsorship available' %}
+      {{ govukInsetText({
+        text: "Skilled worker visa sponsorship is available for this job."
+      }) }}
+    {% else %}
+      {{ govukInsetText({
+        text: 'Skilled worker visa sponsorship is not available for this job.'
+      }) }}
+    {% endif %}
+  {% endset %}
+
 
   <div class="govuk-grid-row old-design">
     <div class="govuk-grid-column-full">
@@ -157,7 +169,7 @@
               text: "Visa sponsorship"
             },
             value: {
-              text: offerVisa
+              text: job.sponsorship
             }
           },
           {
@@ -255,7 +267,7 @@
 
       {% if job.hasFurtherDetailsAboutTheRole == 'Yes' %}
         <h2 class="govuk-heading-m">
-          Further information about the role
+          Further information about the job
         </h2>
 
         <div class="app-prose">
@@ -263,61 +275,89 @@
         </div>
       {% endif %}
 
-      <h2 class="govuk-heading-m">
-        Applying for the job
-      </h2>
+       {% if job.isUsingApplicationForm == 'Yes' %}
 
-      {% if job.sponsorship == 'Yes, skilled worker visa can be sponsored' %}
+          <h2 class="govuk-heading-m">
+            Applying for the job
+          </h2>
 
-        {{ govukInsetText({
-          text: " This role can offer a skilled worker visa sponsorship to a Non-UK citizen."
-        }) }}
+          {{sponsorshipInset | safe }}
 
-      {% else %}
+          {% set href %}
+              {% if job.isUsingApplicationForm == 'No' %}
+                #apply
+              {% else %}
+                jobs/{{job.id}}/apply
+              {% endif %}
+            {% endset %}
 
-        {{ govukInsetText({
-          text: " This role cannot offer a skilled worker sponsorship to a Non-UK citizen."
-        }) }}
+            {% if job.sponsorship == 'Yes, visa sponsorship available' %}
 
-      {% endif %}
+              {{ govukButton({
+                text: "Apply for job",
+                href: href,
+                classes: "govuk-!-margin-bottom-7"
+              }) }}
 
-       {% set href %}
-          {% if job.isUsingApplicationForm == 'No' %}
-            #apply
-          {% else %}
-            jobs/{{job.id}}/apply
-          {% endif %}
-        {% endset %}
+            {% else %}
 
-        {% if job.sponsorship == 'Yes, skilled worker visa can be sponsored' %}
+              {% if user.profile.provideWork == 'No' %}
 
-          {{ govukButton({
-            text: "Apply for job",
-            href: href,
-            classes: "govuk-!-margin-bottom-7"
-          }) }}
+                {{ govukButton({
+                  text: "Apply for job",
+                  href: '../apply/unhappy',
+                  classes: "govuk-!-margin-bottom-7"
+                }) }}
 
-        {% else %}
+              {% else %}
 
-          {% if user.profile.provideWork == 'No' %}
+                {{ govukButton({
+                  text: "Apply for job",
+                  href: href,
+                  classes: "govuk-!-margin-bottom-7"
+                }) }}
+              
+              {% endif %}
 
-            {{ govukButton({
-              text: "Apply for job",
-              href: '../apply/unhappy',
-              classes: "govuk-!-margin-bottom-7"
-            }) }}
-
-          {% else %}
-
-            {{ govukButton({
-              text: "Apply for job",
-              href: href,
-              classes: "govuk-!-margin-bottom-7"
-            }) }}
-          
           {% endif %}
 
         {% endif %}
+
+
+         {% if job.isUsingApplicationForm == 'No' %}
+          <h2 class="govuk-heading-m" id="apply">
+            Apply for the job
+          </h2>
+
+          {% if job.applicationMethod == 'By email' %}
+            <p>Download application form and send it to <a href="mailto:{{job.emailAddressForApplications}}">{{job.emailAddressForApplications}}</a>.</p>
+            
+            {{sponsorshipInset | safe }}
+
+            {{ govukButton({
+              text: "Application form (PDF), 7MB"
+            }) }}
+
+          {% else %}
+            {# <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p> #}
+            <p>Apply through the school’s website.</p>
+
+            {{sponsorshipInset | safe }}
+
+            {# {{ govukButton({
+              text: job.linkToWebsite
+            }) }} #}
+
+            {{ govukButton({
+              text: "Apply for job (opens in new tab)",
+              text: "Continue to school website",
+              text: "Go to school website",
+              text: "Apply through website"
+            }) }}
+          {% endif %}
+
+      {% endif %}
+
 
       
 
@@ -515,35 +555,7 @@
       {% endif %}
 
 
-      {% if job.isUsingApplicationForm == 'No' %}
-          <h2 class="govuk-heading-m" id="apply">
-            Apply for the job
-          </h2>
-
-          {% if job.applicationMethod == 'By email' %}
-            <p>Download application form and send it to <a href="mailto:{{job.emailAddressForApplications}}">{{job.emailAddressForApplications}}</a>.</p>
-
-            {{ govukButton({
-              text: "Application form (PDF), 7MB"
-            }) }}
-          {% else %}
-            {# <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p> #}
-            <p>Apply through the school’s website.</p>
-
-            {# {{ govukButton({
-              text: job.linkToWebsite
-            }) }} #}
-
-            {{ govukButton({
-              text: "Apply for job (opens in new tab)",
-              text: "Continue to school website",
-              text: "Go to school website",
-              text: "Apply through website"
-            }) }}
-          {% endif %}
-
-      {% endif %}
-
+     
       <hr>
 
       <section>
