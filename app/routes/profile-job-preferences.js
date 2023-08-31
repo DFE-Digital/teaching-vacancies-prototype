@@ -521,11 +521,47 @@ module.exports = router => {
   router.post('/profile/job-preferences/location-all-of-england', (req, res) => {
     
     var allEngland = req.session.data['all-of-england']
+    let locations = req.session.user.profile.locations
+    //ADD ANSWER TO PROFILE
+
+    let profile = req.session.user.profile
+    profile.allEnglandYes = allEngland
 
     if (allEngland == "Yes"){
+
+      if(locations){
+        res.redirect("location-all-of-england-yes")
+      }else{
         res.redirect("review")
+      }
+        
     } else {
         res.redirect("location")
+    }
+
+  })
+
+  //location all of england yes
+
+  router.get('/profile/job-preferences/location-all-of-england-yes', (req, res) => {
+    let profile = req.session.user.profile
+
+    res.render('profile/job-preferences/location-all-of-england-yes', {
+      profile
+    })
+  })
+
+  router.post('/profile/job-preferences/location-all-of-england-yes', (req, res) => {
+    
+    var allEnglandYes = req.session.data['delete-all-locations-for-england']
+
+    if (allEnglandYes == "Yes"){
+
+      req.flash('success', 'Location preference set to all of England')
+      res.redirect('/profile/job-preferences/review')
+        
+    } else {
+      res.redirect('/profile/job-preferences/location-check')
     }
 
   })

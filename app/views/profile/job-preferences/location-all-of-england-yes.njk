@@ -27,29 +27,31 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl govuk-!-margin-bottom-5">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-5">
               <h1 class="govuk-fieldset__heading">
                 Are you sure you want to set your location preference to all of England?
               </h1>
             </legend>
 
-            <p class="govuk-body">This will remove your current location preferences of:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>London (50 miles)</li>
-                <li>Manchester (20 miles)</li>
-            </ul>
+            <div class="govuk-inset-text"> 
+                <p class="govuk-body">This will remove your current location preferences of:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>London (50 miles)</li>
+                    <li>Manchester (20 miles)</li>
+                </ul>
+            </div>
 
             <div class="govuk-radios" data-module="govuk-radios">
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="delete-all-locations-for-england" name="delete-all-locations-for-england" type="radio" value="england">
+                <input class="govuk-radios__input" id="delete-all-locations-for-england" name="delete-all-locations-for-england" type="radio" value="Yes">
                 <label class="govuk-label govuk-radios__label" for="delete-all-locations-for-england">
-                  Yes, delete previous locations and set my location preference to all of England
+                  Yes, delete current locations and set my location preference to all of England
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="delete-all-locations-for-england-2" name="delete-all-locations-for-england" type="radio" value="scotland">
+                <input class="govuk-radios__input" id="delete-all-locations-for-england-2" name="delete-all-locations-for-england" type="radio" value="No">
                 <label class="govuk-label govuk-radios__label" for="delete-all-locations-for-england-2">
                   No, keep my location preferences
                 </label>

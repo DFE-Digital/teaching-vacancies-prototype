@@ -13,6 +13,13 @@
 {% endblock %}
 
 {% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
@@ -117,10 +124,10 @@
           } if profile.workingPatterns,
           {
             key: {
-              text: "Are you interested in jobs across all of England? "
+              text: "Are you interested in jobs across all of England?"
             },
             value: {
-              text: data['all-of-england']
+              text: profile.allEnglandYes
             },
             actions: {
               items: [
@@ -131,7 +138,7 @@
                 }
               ]
             }
-          },
+          } if profile.allEnglandYes,
           {
             key: {
               text: "Locations"
@@ -148,9 +155,11 @@
                 }
               ]
             }
-          } if profile.locations | length
+          } if profile.allEnglandYes == 'No'
         ]
       }) }}
+
+      
 
       {{ govukButton({
         text: "Return to profile",

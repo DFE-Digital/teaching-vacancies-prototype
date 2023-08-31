@@ -399,10 +399,10 @@
             } if user.profile.workingPatterns,
             {
             key: {
-              text: "Are you interested in jobs across all of England? "
+              text: "Are you interested in jobs across all of England?"
             },
             value: {
-              text: data['all-of-england']
+              text: user.profile.allEnglandYes
             },
             actions: {
               items: [
@@ -430,7 +430,7 @@
                   }
                 ]
               }
-            } if user.profile.locations | length
+            } if user.profile.allEnglandYes == 'No'
           ]
         }) }}
 
