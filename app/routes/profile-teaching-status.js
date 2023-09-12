@@ -15,9 +15,9 @@ module.exports = router => {
       text: 'No',
       checked: profile.qts && profile.qts.includes('No')
     }, {
-      value: 'I’m on track to receive QTS',
-      text: 'I’m on track to receive QTS',
-      checked: profile.qts && profile.qts.includes('I’m on track to receive QTS')
+      value: 'I’m on track to or have requested QTS',
+      text: 'I’m on track to or have requested QTS',
+      checked: profile.qts && profile.qts.includes('I’m on track to or have requested QTS')
     }]
 
     let qtsAwardedYear = profile.qtsAwardedYear
