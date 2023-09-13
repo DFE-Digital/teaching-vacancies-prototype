@@ -35,38 +35,80 @@
       <div class="app-list">
 
         {% for id, role in profile.workHistory %}
-          <div class="app-list__item">
 
-            {{appPageHeader({
-              classes: 'govuk-!-margin-bottom-0',
-              heading: {
-                level: 2,
-                text: role.employer,
-                classes: 'govuk-heading-s'
-              },
-              items: [{
-                text: 'Change',
-                href: "/profile/work-history/"+id+"/edit",
-                type: 'link'
-              }, {
-                text: 'Delete',
-                href: "/profile/work-history/"+id+"/delete",
-                type: 'link'
-              }]
-            })}}
-
-            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
-            <p class="govuk-!-margin-bottom-0">
-              {{role.startDate | monthYear}}
-              to
-              {% if role.endDate %}
-                {{role.endDate | monthYear}}
-              {% else %}
-                present
-              {% endif %}
-            </p>
-            <p class="govuk-caption-m  govuk-!-margin-bottom-0 govuk-!-margin-top-2">{{role.mainduties}}</p>
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">{{role.role}}</h2>
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action"> <a class="govuk-link" href="/profile/work-history/{{id}}/edit">
+                    Change<span class="govuk-visually-hidden"> Role</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-card__action"> <a class="govuk-link" href="/profile/work-history/{{id}}/delete">
+                    Delete<span class="govuk-visually-hidden"> Role</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    School or employer
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{role.employer}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Subjects and key stages taught (optional)
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{role.roleSubject}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Start date
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{role.startDate | monthYear}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Is this your current role?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{role.currentRole}}
+                  </dd>
+                </div>
+                {% if role.currentRole == 'No' %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    End date
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{role.endDate | monthYear}}
+                  </dd>
+                </div>
+                {% endif %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Main duties
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{role.mainduties}}
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
+
+
+
+          
         {% endfor %}
       </div>
 

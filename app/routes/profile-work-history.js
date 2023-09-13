@@ -9,6 +9,7 @@ module.exports = router => {
 
     let employer = _.get(req, 'session.data.profile.employer')
     let role = _.get(req, 'session.data.profile.role')
+    let roleSubject = _.get(req, 'session.data.profile.roleSubject')
     let mainduties = _.get(req, 'session.data.profile.mainduties')
 
     let currentRoleOptions = [
@@ -38,6 +39,7 @@ module.exports = router => {
     res.render('profile/work-history/index', {
       employer,
       role,
+      roleSubject,
       startDate,
       currentRoleOptions,
       currentRole,
@@ -52,6 +54,7 @@ module.exports = router => {
     role.id = uuidv4()
     role.employer = req.body.profile.employer
     role.role = req.body.profile.role
+    role.roleSubject = req.body.profile.roleSubject
     role.startDate = DateTime.fromObject({
       month: req.body.profile.startDate.month,
       year: req.body.profile.startDate.year,
@@ -78,6 +81,8 @@ module.exports = router => {
 
     let employer = item.employer
     let role = item.role
+    let roleSubject = item.roleSubject
+
     let startDate = {
       month: DateTime.fromISO(item.startDate).month,
       year: DateTime.fromISO(item.startDate).year,
@@ -107,6 +112,7 @@ module.exports = router => {
     res.render('profile/work-history/index', {
       employer,
       role,
+      roleSubject,
       startDate,
       endDate,
       currentRoleOptions,
@@ -122,6 +128,7 @@ module.exports = router => {
     var item = req.session.user.profile.workHistory[id]
     item.employer = req.body.profile.employer
     item.role = req.body.profile.role
+    item.roleSubject = req.body.profile.roleSubject
     item.startDate = DateTime.fromObject({
       month: req.body.profile.startDate.month,
       year: req.body.profile.startDate.year,

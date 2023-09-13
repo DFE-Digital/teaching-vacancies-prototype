@@ -108,10 +108,10 @@
               } if user.profile.keyStages,
               {
                 key: {
-                  text: "Subject"
+                  text: "Subjects"
                 },
                 value: {
-                  text: user.profile.subjects
+                  text: user.profile.subjects | join(', ')
                 }
               } if user.profile.subjects,
               {
@@ -205,6 +205,7 @@
                   {{role.employer}}
                 </h3>
                 <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.roleSubject}}</p>
                 <p class="govuk-caption-m govuk-!-margin-bottom-0">
                   {{role.startDate | monthYear}}
                   to

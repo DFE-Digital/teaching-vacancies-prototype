@@ -39,6 +39,14 @@
             classes: 'govuk-label--m'
           }
         }) }}
+        {{ govukInput({
+          id: "profile[roleSubject]",
+          name: "profile[roleSubject]",
+          label: {
+            text: 'Subjects and key stages taught (optional)',
+            classes: 'govuk-label--m'
+          }
+        }) }}
         {{ govukDateInput({
           id: "profile[startDate]",
           name: "profile[startDate]",
