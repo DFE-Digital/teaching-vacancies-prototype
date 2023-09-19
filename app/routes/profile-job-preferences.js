@@ -456,8 +456,13 @@ module.exports = router => {
     location.id = uuidv4()
     location.location = req.body.profile.location
     location.radius = req.body.profile.radius
+    location.alert = req.body.profile.alert
 
     req.session.user.profile.locations[location.id] = location
+
+    if(_.get(req, 'session.data.profile-alert') !== 'no') {
+      req.flash('success', 'Job alert created for ' + location.location + ' (' + location.radius + ')')
+    } 
 
     res.redirect('/profile/job-preferences/location-check')
   })

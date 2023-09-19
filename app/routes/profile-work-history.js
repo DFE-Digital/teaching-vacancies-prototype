@@ -55,11 +55,13 @@ module.exports = router => {
     role.employer = req.body.profile.employer
     role.role = req.body.profile.role
     role.roleSubject = req.body.profile.roleSubject
+    role.currentRole = req.body.profile.currentRole
     role.startDate = DateTime.fromObject({
       month: req.body.profile.startDate.month,
       year: req.body.profile.startDate.year,
     }).toISO()
-    role.currentRole = req.body.profile.currentRole
+
+    
     if(role.currentRole == 'No') {
       role.endDate = DateTime.fromObject({
         month: req.body.profile.endDate.month,

@@ -50,6 +50,36 @@
           items: searchRadiusOptions
         }) }}
 
+        {{ govukRadios({
+          name: "profile-alert",
+          fieldset: {
+            legend: {
+              text: "Do you want to set up a job alert for this location?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Job alerts provide a convenient way to receive email notifications when new jobs are posted."
+          },
+          items: [
+            {
+              value: "daily",
+              text: "Yes daily, at 3pm"
+            },
+            {
+              value: "weekly",
+              text: "Yes weekly, at 6pm on Fridays"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "no",
+              text: "No, I don't want to set up a job alert"
+            }
+          ]
+        }) }}
+
         {{ govukButton({
           text: "Save and continue"
         }) }}

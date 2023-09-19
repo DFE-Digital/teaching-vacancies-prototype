@@ -82,6 +82,10 @@
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {{role.currentRole}}
+
+                    {{ data ['currentRole'] }}
+
+                    {{ data['profile[currentRole]'] }}
                   </dd>
                 </div>
                 {% if role.currentRole == 'No' %}

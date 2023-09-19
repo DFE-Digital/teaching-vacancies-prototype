@@ -14,8 +14,14 @@
 
 {% block content %}
 
+{% set htmlContent = "<h2 class=\"govuk-heading-m\">" + flash + "</h2>" %}
+{% if 'alert' in flash %}
+  {% set htmlContent = htmlContent + "<p>hello</p>" %}
+{% endif %}
+
+
   {{ govukNotificationBanner({
-    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    html: htmlContent,
     type: "success",
     icon: false
   }) if flash and flash.length }}
