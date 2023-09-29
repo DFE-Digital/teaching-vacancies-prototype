@@ -32,7 +32,7 @@
           id: "profile[location]",
           name: "profile[location]",
           label: {
-            text: "Location",
+            text: "City, county or postcode (in England)",
             classes: 'govuk-label--m'
           },
           value: location
@@ -79,6 +79,8 @@
             }
           ]
         }) }}
+
+         ALL ENGLAND: {{user.profile.allEnglandYes }} 
 
         {{ govukButton({
           text: "Save and continue"

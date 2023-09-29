@@ -124,21 +124,21 @@
           } if profile.workingPatterns,
           {
             key: {
-              text: "Are you interested in jobs across all of England?"
+              text: "Locations"
             },
             value: {
-              text: profile.allEnglandYes
+              text: "England (This area only)"
             },
             actions: {
               items: [
                 {
-                  href: "/profile/job-preferences/location-all-of-england",
+                  href: "/profile/job-preferences/location-check-all",
                   text: "Change",
                   visuallyHiddenText: "Locations"
                 }
               ]
             }
-          } if profile.allEnglandYes,
+          } if profile.allEnglandYes == 'Yes',
           {
             key: {
               text: "Locations"
@@ -159,7 +159,7 @@
         ]
       }) }}
 
-      
+      ALL ENGLAND: {{user.profile.allEnglandYes }} 
 
       {{ govukButton({
         text: "Return to profile",

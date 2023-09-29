@@ -399,21 +399,21 @@
             } if user.profile.workingPatterns,
             {
             key: {
-              text: "Are you interested in jobs across all of England?"
+              text: "Locations"
             },
             value: {
-              text: user.profile.allEnglandYes
+              text: "England (This area only)"
             },
             actions: {
               items: [
                 {
-                  href: "/profile/job-preferences/location-all-of-england",
+                  href: "/profile/job-preferences/location-check-all",
                   text: "Change",
                   visuallyHiddenText: "Locations"
                 }
               ]
             }
-          },
+          } if user.profile.allEnglandYes == 'Yes',
             {
               key: {
                 text: "Locations"
@@ -469,11 +469,13 @@
       {% endif %}
       </div>
 
+      ALL ENGLAND: {{user.profile.allEnglandYes }} 
+
       <div class="app-profile__section">
 
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Qualified teaching status (QTS)
+        Qualified teaching status (QTS)
         </h2>
 
         {% set fullTRN %}

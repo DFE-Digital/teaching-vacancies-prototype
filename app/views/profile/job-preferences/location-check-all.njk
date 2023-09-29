@@ -1,0 +1,80 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Locations' %}
+{% set caption = 'Job preferences' %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set htmlContent = "<h2 class=\"govuk-heading-m\">" + flash + "</h2>" %}
+{% if 'alert' in flash %}
+  {% set htmlContent = htmlContent + "<p>hello</p>" %}
+{% endif %}
+
+
+  {{ govukNotificationBanner({
+    html: htmlContent,
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      </h1>
+
+      <form action="" method="post">
+
+       {{ govukRadios({
+          idPrefix: "all-of-england-question",
+          name: "all-of-england-question",
+          fieldset: {
+            legend: {
+              text: "Location setting",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Show profile to schools across England",
+              checked: true
+            },
+            {
+              value: "No",
+              text: "Show profile to schools in specific locations",
+              hint:{
+                text:'Enter multiple locations with a search radius around cities, towns and postcodes.'
+              }
+            }
+          ]
+        }) }}
+
+      
+       ALL ENGLAND: {{user.profile.allEnglandYes }} 
+
+       {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+      
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
