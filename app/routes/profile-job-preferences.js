@@ -469,20 +469,68 @@ module.exports = router => {
 
   router.get('/profile/job-preferences/location-check', (req, res) => {
     let locations = req.session.user.profile.locations
+    let profile = req.session.user.profile
+
 
     res.render('profile/job-preferences/location-check', {
-      locations
+      locations,
+      profile
     })
   })
 
   router.post('/profile/job-preferences/location-check', (req, res) => {
+
+    let profile = req.session.user.profile
+
+
     if(_.get(req, 'session.data.profile.addAnotherLocation') == 'Yes') {
-      // TODO: set values to null
 
       res.redirect('/profile/job-preferences/location')
-    } else {
+
+    } else if(_.get(req, 'session.data.profile.addAnotherLocation') == 'England') {
+      //set to across England
+      req.session.user.profile.allEnglandYes = 'Yes'
+
       res.redirect('/profile/job-preferences/review')
+
+    } else if(_.get(req, 'session.data.profile.addAnotherLocation') == 'No') {
+      //set to across England  
+      res.redirect('/profile/job-preferences/review')
+    } else{
+      res.redirect('/profile/job-preferences/location')
     }
+
+
+  })
+
+  router.get('/profile/job-preferences/location-check-all', (req, res) => {
+    let locations = req.session.user.profile.locations
+    let profile = req.session.user.profile
+
+
+    res.render('profile/job-preferences/location-check-all', {
+      locations,
+      profile
+    })
+  })
+
+  router.post('/profile/job-preferences/location-check-all', (req, res) => {
+
+    let profile = req.session.user.profile
+
+    if ( req.session.data['all-of-england-question'] == "Yes"){
+
+      profile.allEnglandYes = 'Yes'
+
+      res.redirect('/profile/job-preferences/review')
+      
+    } else {
+      profile.allEnglandYes = 'No'
+      res.redirect('/profile/job-preferences/location')
+
+    }
+
+
   })
 
   router.get('/profile/job-preferences/review', (req, res) => {
@@ -534,12 +582,8 @@ module.exports = router => {
 
     if (allEngland == "Yes"){
 
-      if(locations){
-        res.redirect("location-all-of-england-yes")
-      }else{
-        res.redirect("review")
-      }
-        
+      res.redirect("review")
+      
     } else {
         res.redirect("location")
     }
