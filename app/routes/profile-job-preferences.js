@@ -511,6 +511,8 @@ module.exports = router => {
       delete req.session.user.profile.locations
       req.session.user.profile.locations = {}
 
+      req.flash('success', 'Location preference set to across England')
+
       res.redirect('/profile/job-preferences/review')
 
     } else if(_.get(req, 'session.data.profile.addAnotherLocation') == 'No') {
