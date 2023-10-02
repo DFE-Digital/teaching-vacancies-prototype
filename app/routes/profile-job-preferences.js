@@ -505,15 +505,8 @@ module.exports = router => {
 
     } else if(_.get(req, 'session.data.profile.addAnotherLocation') == 'England') {
       //set to across England
-      req.session.user.profile.allEnglandYes = 'Yes'
 
-      //REMOVE LOCATIONS
-      delete req.session.user.profile.locations
-      req.session.user.profile.locations = {}
-
-      req.flash('success', 'Location preference set to across England')
-
-      res.redirect('/profile/job-preferences/review')
+      res.redirect('/profile/job-preferences/location-all-of-england-yes')
 
     } else if(_.get(req, 'session.data.profile.addAnotherLocation') == 'No') {
       //set to across England  
@@ -544,7 +537,11 @@ module.exports = router => {
 
       profile.allEnglandYes = 'Yes'
 
-      res.redirect('/profile/job-preferences/review')
+      //REMOVE LOCATIONS
+      delete req.session.user.profile.locations
+      req.session.user.profile.locations = {}
+
+      req.flash('success', 'Location preference set to across England')
       
     } else {
       profile.allEnglandYes = 'No'
@@ -628,7 +625,14 @@ module.exports = router => {
 
     if (allEnglandYes == "Yes"){
 
-      req.flash('success', 'Location preference set to all of England')
+      req.session.user.profile.allEnglandYes = 'Yes'
+
+      //REMOVE LOCATIONS
+      delete req.session.user.profile.locations
+      req.session.user.profile.locations = {}
+
+      req.flash('success', 'Location preference set to across England')
+
       res.redirect('/profile/job-preferences/review')
         
     } else {
