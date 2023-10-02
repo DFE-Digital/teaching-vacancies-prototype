@@ -384,8 +384,24 @@ module.exports = router => {
   })
 
   router.post('/profile/job-preferences/working-patterns', (req, res) => {
+
     req.session.user.profile.workingPatterns = req.body.profile.workingPatterns
-    res.redirect('/profile/job-preferences/location-all-of-england')
+
+    let profile = req.session.user.profile
+
+    if( profile.allEnglandYes == 'Yes') {
+      
+      res.redirect('/profile/job-preferences/location-check-all');
+
+    }else if( profile.allEnglandYes == 'No') {
+    
+      res.redirect('/profile/job-preferences/location-check');
+
+    }else{
+      res.redirect('/profile/job-preferences/location-all-of-england')
+    }
+    
+
   })
 
   router.get('/profile/job-preferences/location', (req, res) => {
@@ -490,6 +506,10 @@ module.exports = router => {
     } else if(_.get(req, 'session.data.profile.addAnotherLocation') == 'England') {
       //set to across England
       req.session.user.profile.allEnglandYes = 'Yes'
+
+      //REMOVE LOCATIONS
+      delete req.session.user.profile.locations
+      req.session.user.profile.locations = {}
 
       res.redirect('/profile/job-preferences/review')
 
