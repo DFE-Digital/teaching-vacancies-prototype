@@ -42,13 +42,7 @@
 
         <h2 class="govuk-heading-m">Locations added</h2>
 
-        {% if user.profile.allEnglandYes == 'Yes' %}
-
-          <p class="">
-            Your profile is currently visible to schools across England.
-          </p>
-
-        {% else %}
+  
 
           {% set englandFound = false %}
 
@@ -67,8 +61,6 @@
                 If you are interested in jobs across England, you can <a href="location-all-of-england-yes" class="govuk-link govuk-link--no-visited-state">set your location preference to across England</a>.
               </p>
           {% endif %}
-
-        {% endif %}
 
      
 
