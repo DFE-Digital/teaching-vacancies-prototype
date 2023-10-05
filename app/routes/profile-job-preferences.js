@@ -404,7 +404,7 @@ module.exports = router => {
 
   })
 
-  router.get('/profile/job-preferences/location', (req, res) => {
+  router.get('/profile/job-preferences/:id/location', (req, res) => {
     let location = _.get(req, 'session.data.profile.location')
 
     let searchRadiusOptions = [
@@ -467,7 +467,7 @@ module.exports = router => {
   })
 
 
-  router.post('/profile/job-preferences/location', (req, res) => {
+  router.post('/profile/job-preferences/:id/location', (req, res) => {
     let location = {}
     location.id = uuidv4()
     location.location = req.body.profile.location
@@ -476,7 +476,7 @@ module.exports = router => {
 
     req.session.user.profile.locations[location.id] = location
 
-    if(_.get(req, 'session.data.profile-alert') !== 'no') {
+    if(_.get(req, 'session.data.profile-alert') == 'Yes') {
       req.flash('success', 'Job alert created for ' + location.location + ' (' + location.radius + ')')
     } 
 
@@ -537,11 +537,16 @@ module.exports = router => {
 
       profile.allEnglandYes = 'Yes'
 
-      //REMOVE LOCATIONS
-      delete req.session.user.profile.locations
-      req.session.user.profile.locations = {}
+      if(req.session.user.profile.locations){
+        //REMOVE LOCATIONS
+        delete req.session.user.profile.locations
+        req.session.user.profile.locations = {}
+        req.flash('success', 'Location preference set to across England')
 
-      req.flash('success', 'Location preference set to across England')
+      }
+      
+      res.redirect('/profile/job-preferences/review')
+
       
     } else {
       profile.allEnglandYes = 'No'
@@ -560,22 +565,27 @@ module.exports = router => {
     })
   })
 
-
   //location delete
 
-  router.get('/profile/job-preferences/location-delete', (req, res) => {
+  router.get('/profile/job-preferences/:id/location-delete', (req, res) => {
+
+    let id = req.params.id
     let profile = req.session.user.profile
+    let hiddenPlace = profile.locations[id]
 
     res.render('profile/job-preferences/location-delete', {
-      profile
+      hiddenPlace
     })
   })
 
-  router.post('/profile/job-preferences/location-delete', (req, res) => {
+  router.post('/profile/job-preferences/:id/location-delete', (req, res) => {
     let id = req.params.id
     let profile = req.session.user.profile
 
     req.flash('success', 'Location deleted')
+
+    delete profile.locations[id]
+
     res.redirect('/profile/job-preferences/location-check')
   })
 
@@ -620,9 +630,11 @@ module.exports = router => {
   })
 
   router.post('/profile/job-preferences/location-all-of-england-yes', (req, res) => {
-    
-    var allEnglandYes = req.session.data['delete-all-locations-for-england']
 
+    let location = {}
+   
+    var allEnglandYes = req.session.data['delete-all-locations-for-england']
+    
     if (allEnglandYes == "Yes"){
 
       req.session.user.profile.allEnglandYes = 'Yes'
@@ -630,6 +642,12 @@ module.exports = router => {
       //REMOVE LOCATIONS
       delete req.session.user.profile.locations
       req.session.user.profile.locations = {}
+
+      location.id = uuidv4()
+      location.location = 'England'
+      location.radius = 'This area only'
+
+      req.session.user.profile.locations[location.id] = location
 
       req.flash('success', 'Location preference set to across England')
 

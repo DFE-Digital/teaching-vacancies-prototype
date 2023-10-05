@@ -32,8 +32,11 @@
           id: "profile[location]",
           name: "profile[location]",
           label: {
-            text: "City, county or postcode (in England)",
+            text: "Location",
             classes: 'govuk-label--m'
+          },
+          hint:{
+            text: 'Enter a city, county or postcode in England, or, enter England if you are interested in roles across England.'
           },
           value: location
         }) }}
@@ -63,11 +66,11 @@
           },
           items: [
             {
-              value: "daily",
+              value: "Yes",
               text: "Yes daily, at 3pm"
             },
             {
-              value: "weekly",
+              value: "Yes",
               text: "Yes weekly, at 6pm on Fridays"
             },
             {
