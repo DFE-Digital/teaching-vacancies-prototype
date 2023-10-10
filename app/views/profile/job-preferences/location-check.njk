@@ -39,9 +39,41 @@
 
       <form action="/profile/job-preferences/location-check" method="post">
 
+      {% if profile.allEnglandYes == 'Yes' %}
+
+         <h2 class="govuk-heading-m">Locations added</h2>
+        
+        <p class="">
+          Your profile is currently visible to schools across England.
+        </p>
+
+         <div class="app-list">
+
+              <div class="app-list__item">
+                <div class="app-page-header govuk-!-margin-bottom-0">
+                  <div class="app-page-header__title">
+                    <h2 class="govuk-heading-s">Location {{ loop.index }}</h2>
+                  </div>
+                  <div class="app-page-header__actions">
+                    <div class="app-button-menu">
+                      <div class="app-button-menu__wrapper">
+                        <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location">Change</a> <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location-delete">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">England (This area only)</p>
+              </div>
+                                 
+        </div>
+
+      {% else %}
+       
+       
+     
+
 
         <h2 class="govuk-heading-m">Locations added</h2>
-
   
 
           {% set englandFound = false %}
@@ -87,6 +119,8 @@
             {% endfor %}
                    
         </div>
+
+        {% endif %}
 
         {{ govukRadios({
           idPrefix: "profile[addAnotherLocation]",
