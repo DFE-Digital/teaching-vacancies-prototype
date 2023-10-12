@@ -467,7 +467,22 @@
           </div>
         {% endif %}
       {% endif %}
+
+
+      <div class="speed-bump" style="background:#f3f2f1; padding:10px 30px 50px; margin-bottom:30px; margin-top:40px;">
+      
+        <h3 class="govuk-heading-m">200 jobs match your profile</h3>
+      <!--  <h3 class="govuk-heading-m">Get notified next time a job gets listed.</h3> -->
+  
+        <p>Get notified next time a job gets listed. Job alerts provide a convenient way to receive email notifications when new jobs are posted.</p>
+
+        <a href="https://teaching-vacancies.service.gov.uk/subscriptions/new" class="govuk-button" data-module="govuk-button">
+          Set up a job alert
+        </a>
+
       </div>
+
+      <div class="empty-section-component"><h3 class="govuk-heading-m">You have no job alerts set up</h3><p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-link" href="/subscriptions/new">Create a job alert</a> to be made aware of future listings.</p></div>
 
       <div class="app-profile__section">
 
@@ -1124,6 +1139,8 @@
 
     </div>
 
+  </div>
+
     <div class="govuk-grid-column-one-third">
       <div style="background-color: #f3f2f1; padding: 30px;">
         <h2 class="govuk-heading-m">Job alerts</h2>
@@ -1136,9 +1153,11 @@
         </ul>
         <ul class="govuk-list govuk-!-font-size-16">
           {% if user.profile.locations | length %}
-          <li>
-            <a class="govuk-link" href="#">Create job alert from profile</a>
-          </li>
+          <!--
+            <li>
+              <a class="govuk-link" href="#">Create job alert from profile</a>
+            </li>
+          -->
           {% endif %}
           <li>
             <a class="govuk-link" href="#">Create job alert</a>
@@ -1154,12 +1173,17 @@
         
         <ul class="govuk-list govuk-!-font-size-16">
           {% if user.profile.locations | length %}
+          <!--
             <li>
               <a class="govuk-link" href="#">Create job alert from profile</a>
             </li>
+          -->
           {% endif %}
           <li>
             <a class="govuk-link" href="#">Create job alert</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">Manage job alerts</a>
           </li>
         </ul>
 
