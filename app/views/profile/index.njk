@@ -469,25 +469,7 @@
       {% endif %}
 
 
-      {% if user.profile.locations or user.profile.allEnglandYes == 'Yes' %}
-
-        <div class="speed-bump" style="background:#f3f2f1; padding:10px 30px 40px; margin-bottom:30px; margin-top:0px;">
-        
-          <h3 class="govuk-heading-m">Create a job alert based on your preferences</h3>
-    
-          <p>Get notified next time a job gets listed. Job alerts provide a convenient way to receive email notifications when new jobs are posted.</p>
-
-          <form method="post" novalidate>
-
-          <a href="/profile" class="govuk-button" data-module="govuk-button">
-            Create a job alert
-          </a>
-
-          </form>
-
-        </div>
-
-      {% endif %}
+     </div>
 
       <div class="app-profile__section">
 
@@ -1145,58 +1127,11 @@
     </div>
 
   </div>
+  
 
-    <div class="govuk-grid-column-one-third">
-      <div style="background-color: #f3f2f1; padding: 30px;">
-        <h2 class="govuk-heading-m">Job alerts</h2>
-
-        {% if data['profile-alert'] | length %}
-
-        <p class="govuk-body govuk-!-font-size-16">Current job alerts:</p>
-        <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-          <li>Within 20 miles of Nottingham, Teacher, Design and technology, Secondary school, Full time</li>
-        </ul>
-        <ul class="govuk-list govuk-!-font-size-16">
-          {% if user.profile.locations | length %}
-          <!--
-            <li>
-              <a class="govuk-link" href="#">Create job alert from profile</a>
-            </li>
-          -->
-          {% endif %}
-          <li>
-            <a class="govuk-link" href="#">Create job alert</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="#">Manage job alerts</a>
-          </li>
-        </ul>
-
-        {% else %}
-
-        <p class="govuk-body govuk-!-font-size-16">Job alerts provide a convenient way to receive email notifications when new jobs are posted.</p>
-        
-        <ul class="govuk-list govuk-!-font-size-16">
-          {% if user.profile.locations | length %}
-          <!--
-            <li>
-              <a class="govuk-link" href="#">Create job alert from profile</a>
-            </li>
-          -->
-          {% endif %}
-          <li>
-            <a class="govuk-link" href="#">Create job alert</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="#">Manage job alerts</a>
-          </li>
-        </ul>
-
-        {% endif %}
-
-        
-      </div>
-    </div>
+  <div class="govuk-grid-column-one-third">
+    
+  </div>
 
   </div>
   

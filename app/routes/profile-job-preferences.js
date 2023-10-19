@@ -391,7 +391,7 @@ module.exports = router => {
 
     if( profile.allEnglandYes == 'Yes') {
       
-      res.redirect('/profile/job-preferences/location-check-all');
+      res.redirect('/profile/job-preferences/location-check');
 
     }else if( profile.allEnglandYes == 'No') {
     
@@ -399,6 +399,23 @@ module.exports = router => {
 
     }else{
       res.redirect('/profile/job-preferences/location-all-of-england')
+    }
+    
+
+  })
+
+  router.post('/profile/job-preferences/alerts', (req, res) => {
+
+
+    let alertAnswer = _.get(req, 'session.data.alerts')
+
+    if( alertAnswer == 'Yes') {
+      
+      req.flash('success', 'Job alert created from job preferences')
+      res.redirect('/profile/job-preferences/review');
+
+    }else{
+      res.redirect('/profile/job-preferences/review')
     }
     
 
@@ -704,7 +721,7 @@ module.exports = router => {
 
     if (allEngland == "Yes"){
 
-      res.redirect("review")
+      res.redirect("alerts")
       
     } else {
         res.redirect("location")

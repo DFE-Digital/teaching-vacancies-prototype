@@ -1,0 +1,72 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Location' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+         <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="alerts-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <span class="govuk-caption-xl">
+                        Job preferences
+                    </span>
+                    <h1 class="govuk-fieldset__heading">
+                        Do you want to receive a job alert everytime a job matches your profile?
+                    </h1>
+                </legend>
+
+                 <div id="signIn-hint" class="govuk-hint">
+                    Selecting Yes will create a job alert across England based on your job preferences.
+                </div>
+
+                </legend>
+                
+                <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="alerts" name="alerts" type="radio" value="Yes" data-aria-controls="conditional-alerts">
+                        <label class="govuk-label govuk-radios__label" for="alerts">
+                            Yes, receive a daily alert of relevant jobs
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="alerts" name="alerts" type="radio" value="Yes" data-aria-controls="conditional-alerts">
+                        <label class="govuk-label govuk-radios__label" for="alerts">
+                            Yes, receive a weekly alert of relevant jobs
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="alerts-2" name="alerts" type="radio" value="No" data-aria-controls="conditional-alerts-2">
+                        <label class="govuk-label govuk-radios__label" for="alerts-2">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
