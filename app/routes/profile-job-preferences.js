@@ -421,6 +421,23 @@ module.exports = router => {
 
   })
 
+  router.post('/profile/job-preferences/alerts_location', (req, res) => {
+
+
+    let alertAnswer = _.get(req, 'session.data.alerts')
+
+    if( alertAnswer == 'Yes') {
+      
+      req.flash('success', 'Job alert created for London (10 miles)')
+      res.redirect('/profile/job-preferences/location-check');
+
+    }else{
+      res.redirect('/profile/job-preferences/location-check');
+    }
+    
+
+  })
+
   router.get('/profile/job-preferences/:id/location', (req, res) => {
 
     let id = req.params.id
@@ -563,8 +580,10 @@ module.exports = router => {
       req.flash('success', 'Job alert created for ' + location.location + ' (' + location.radius + ')')
     } 
 
-    res.redirect('/profile/job-preferences/location-check')
+    res.redirect('/profile/job-preferences/alerts_location')
   })
+
+  
 
   router.get('/profile/job-preferences/location-check', (req, res) => {
     let locations = req.session.user.profile.locations
@@ -590,7 +609,7 @@ module.exports = router => {
       req.flash('success', 'Job alert created for ' + location.location + ' (' + location.radius + ')')
     } 
 
-    res.redirect('/profile/job-preferences/location-check')
+    res.redirect('/profile/job-preferences/alerts_location')
   })
 
   router.get('/profile/job-preferences/location-check', (req, res) => {

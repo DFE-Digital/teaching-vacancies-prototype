@@ -14,9 +14,9 @@
 
 {% block content %}
 
-{% set htmlContent = "<h2 class=\"govuk-heading-m\">" + flash + "</h2>" %}
+{% set htmlContent = "<h2 class=\"govuk-heading-m\">" + flash + "</h2><p class='govuk-body'>You can <a class='govuk-notification-banner__link' href='#'>manage your job alerts</a> if you want to make any changes.</p>" %}
 {% if 'alert' in flash %}
-  {% set htmlContent = htmlContent + "<p>hello</p>" %}
+  {% set htmlContent = htmlContent + '<p>hello</p>' %}
 {% endif %}
 
 

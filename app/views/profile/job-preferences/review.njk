@@ -15,7 +15,7 @@
 {% block content %}
 
   {{ govukNotificationBanner({
-    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2><p class='govuk-body'>You can <a class='govuk-notification-banner__link' href='#'>manage your job alerts</a> if you want to make any changes.</p>",
     type: "success",
     icon: false
   }) if flash and flash.length }}
