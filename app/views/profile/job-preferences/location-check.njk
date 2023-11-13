@@ -47,87 +47,12 @@
           Your profile is currently visible to schools across England.
         </p>
 
-         <div class="app-list">
-
-              <div class="app-list__item">
-                <div class="app-page-header govuk-!-margin-bottom-0">
-                  <div class="app-page-header__title">
-                    <h2 class="govuk-heading-s">Location {{ loop.index }}</h2>
-                  </div>
-                  <div class="app-page-header__actions">
-                    <div class="app-button-menu">
-                      <div class="app-button-menu__wrapper">
-                        <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location">Change</a> <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location-delete">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">England (This area only)</p>
-              </div>
-                                 
-        </div>
-
-      {% else %}
-       
-       
-     
-
-
-        <h2 class="govuk-heading-m">Locations added</h2>
-  
-
-          {% set englandFound = false %}
-
-          {% for key, location in profile.locations %}
-              {% if 'England' in location.location %}
-                  {% set englandFound = true %}
-              {% endif %}
-          {% endfor %}
-
-          {% if englandFound %}
-              <p class="">
-                Your profile is currently visible to schools across England.
-              </p>
-          {% else %}
-              <p class="">
-                If you are interested in jobs across England, you can <a href="location-all-of-england-yes" class="govuk-link govuk-link--no-visited-state">set your location preference to across England</a>.
-              </p>
-          {% endif %}
-
-     
-
-        <div class="app-list">
-
-            {% for key, location in profile.locations %}
-
-              <div class="app-list__item">
-                <div class="app-page-header govuk-!-margin-bottom-0">
-                  <div class="app-page-header__title">
-                    <h2 class="govuk-heading-s">Location {{ loop.index }}</h2>
-                  </div>
-                  <div class="app-page-header__actions">
-                    <div class="app-button-menu">
-                      <div class="app-button-menu__wrapper">
-                        <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location">Change</a> <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location-delete">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{location.location}} ({{location.radius}})</p>
-              </div>
-              
-            {% endfor %}
-                   
-        </div>
-
-        {% endif %}
-
         {{ govukRadios({
           idPrefix: "profile[addAnotherLocation]",
           name: "profile[addAnotherLocation]",
           fieldset: {
             legend: {
-              text: "Do you want to add another location?",
+              text: "Do you want to look for jobs in a specific location?",
               classes: "govuk-fieldset__legend--m"
             }
           },
@@ -142,7 +67,75 @@
             }
           ]
         }) }} 
+        
+      {% else %}
+       
 
+        <h2 class="govuk-heading-m">Locations added</h2>
+  
+
+          {% set englandFound = false %}
+
+          {% for key, location in profile.locations %}
+              {% if 'England' in location.location %}
+                  {% set englandFound = true %}
+              {% endif %}
+          {% endfor %}
+
+     
+
+        <div class="app-list">
+
+            {% for key, location in profile.locations %}
+
+              <div class="app-list__item">
+                <div class="app-page-header govuk-!-margin-bottom-0">
+                  <div class="app-page-header__title">
+                    <h3 class="govuk-heading-s">{{location.location}} ({{location.radius}})</h3>
+                  </div>
+                  <div class="app-page-header__actions">
+                    <div class="app-button-menu">
+                      <div class="app-button-menu__wrapper">
+                        <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location">Change</a> <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location-delete">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            {% endfor %}
+                   
+        </div>
+        
+              <p class="govuk-!-margin-bottom-7">
+                If you are interested in jobs across England, you can <a href="location-all-of-england-yes" class="govuk-link govuk-link--no-visited-state">set your location preference to across England</a>.
+              </p>
+
+              {{ govukRadios({
+                idPrefix: "profile[addAnotherLocation]",
+                name: "profile[addAnotherLocation]",
+                fieldset: {
+                  legend: {
+                    text: "Do you want to add another location?",
+                    classes: "govuk-fieldset__legend--m"
+                  }
+                },
+                items: [
+                  {
+                    value: "Yes",
+                    text: "Yes"
+                  },
+                  {
+                    value: "No",
+                    text: "No"
+                  }
+                ]
+              }) }} 
+
+
+        {% endif %}
+
+        
       
        {{ govukButton({
           text: "Save and continue"

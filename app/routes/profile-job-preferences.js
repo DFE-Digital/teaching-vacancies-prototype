@@ -597,6 +597,9 @@ module.exports = router => {
   })
 
   router.post('/profile/job-preferences/location', (req, res) => {
+
+    let profile = req.session.user.profile
+
     let location = {}
     location.id = uuidv4()
     location.location = req.body.profile.location
@@ -608,6 +611,8 @@ module.exports = router => {
     if(_.get(req, 'session.data.profile-alert') == 'Yes') {
       req.flash('success', 'Job alert created for ' + location.location + ' (' + location.radius + ')')
     } 
+
+    profile.allEnglandYes = 'No'
 
     res.redirect('/profile/job-preferences/alerts_location')
   })
@@ -626,7 +631,6 @@ module.exports = router => {
   router.post('/profile/job-preferences/location-check', (req, res) => {
 
     let profile = req.session.user.profile
-
 
     if(_.get(req, 'session.data.profile.addAnotherLocation') == 'Yes') {
 
