@@ -17,7 +17,7 @@
   {% endset %}
 
   {% set sponsorshipInset %}
-    {% if job.sponsorship == 'Yes, visa sponsorship available' %}
+    {% if job.sponsorship == 'Skilled Worker visas can be sponsored' %}
       {{ govukInsetText({
         text: "Skilled worker visa sponsorship is available for this job."
       }) }}
@@ -291,7 +291,7 @@
               {% endif %}
             {% endset %}
 
-            {% if job.sponsorship == 'Yes, visa sponsorship available' %}
+            {% if job.sponsorship == 'Skilled Worker visas can be sponsored' %}
 
               {{ govukButton({
                 text: "Apply for job",

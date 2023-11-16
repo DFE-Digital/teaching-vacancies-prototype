@@ -1,6 +1,6 @@
 .app-checkbox-filter {
   position: relative;
-  margin-bottom: govuk-spacing(2);
+  margin-bottom: govuk-spacing(6);
   padding: 0;
 
   @include govuk-media-query($from: desktop) {
@@ -21,6 +21,7 @@
       // scss-lint:enable ColorVariable
       // sass-lint:enable no-color-literals
     }
+
   }
 }
 
