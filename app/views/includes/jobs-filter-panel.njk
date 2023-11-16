@@ -1,5 +1,22 @@
 {% set filterOptionsHtml %}
 
+
+  {{ govukCheckboxes({
+    idPrefix: "filter-international",
+    name: "filter-international",
+    classes: "govuk-checkboxes--small filter-bottom",
+    fieldset: {
+      legend: {
+        text: "Visa sponsorship",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'International',
+      text: 'Only show jobs with visa sponsorship'
+    }]
+  }) }}
+
   {{ govukCheckboxes({
     idPrefix: "filter-role",
     name: "filter-role",
@@ -303,23 +320,6 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filter-international",
-    name: "filter-international",
-    classes: "govuk-checkboxes--small filter-bottom",
-    fieldset: {
-      legend: {
-        text: "Visa sponsorship",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'International',
-      text: 'Only show jobs with visa sponsorship'
-    }]
-  }) }}
-
-
-  {{ govukCheckboxes({
     idPrefix: "filter-suitability",
     name: "filter-suitability",
     classes: "govuk-checkboxes--small filter-bottom",
@@ -338,36 +338,6 @@
     }]
   }) }}
 
-  {{ govukCheckboxes({
-    idPrefix: "filter-keyStages",
-    name: "filter-keyStages",
-    classes: "govuk-checkboxes--small filter-bottom",
-    fieldset: {
-      legend: {
-        text: "Key stage",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Early years',
-      text: 'Early years'
-    }, {
-      value: 'Key stage 1',
-      text: 'KS1'
-    }, {
-      value: 'Key stage 2',
-      text: 'KS2'
-    }, {
-      value: 'Key stage 3',
-      text: 'KS3'
-    }, {
-      value: 'Key stage 4',
-      text: 'KS4'
-    }, {
-      value: 'Key stage 5',
-      text: 'KS5'
-    }]
-  }) }}
 
   {{ govukCheckboxes({
     idPrefix: "filter-workingPatterns",
@@ -412,7 +382,7 @@
 <div class="app-filter">
   <div class="app-filter__header">
     <div class="app-filter__header-title">
-      <h2 class="govuk-heading-m">Filter</h2>
+      <h2 class="govuk-heading-m">Filters</h2>
     </div>
     <div class="app-filter__header-action">
 
