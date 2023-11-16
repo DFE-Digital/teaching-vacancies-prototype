@@ -34,6 +34,22 @@
       
       {% set filterOptionsHtml %}
 
+      <div class="govuk-form-group filter-bottom">
+          <fieldset class="govuk-fieldset">
+             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                Visa sponsorship
+             </legend>
+             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                   <input class="govuk-checkboxes__input" id="filter-international" name="filter-international" type="checkbox" value="International" aria-describedby="filter-international-item-hint" {% if data['filter-international']  %} {% if 'International' in data['filter-international']  %} checked {% endif %} {% endif %}>
+                   <label class="govuk-label govuk-checkboxes__label" for="filter-international">
+                    Only show jobs with visa sponsorship
+                   </label>
+                </div>
+             </div>
+          </fieldset>
+       </div>
+ 
         <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Job role</legend>
@@ -430,21 +446,7 @@
         </div>
 
 
-        <div class="govuk-form-group filter-bottom">
-          <fieldset class="govuk-fieldset">
-             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                Visa sponsorship
-             </legend>
-             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                   <input class="govuk-checkboxes__input" id="filter-international" name="filter-international" type="checkbox" value="International" aria-describedby="filter-international-item-hint" {% if data['filter-international']  %} {% if 'International' in data['filter-international']  %} checked {% endif %} {% endif %}>
-                   <label class="govuk-label govuk-checkboxes__label" for="filter-international">
-                    Only show jobs with visa sponsorship
-                   </label>
-                </div>
-             </div>
-          </fieldset>
-       </div>
+        
 
         <div class="govuk-form-group filfter-bottom">
           <fieldset class="govuk-fieldset">
@@ -483,6 +485,20 @@
                     <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/jobs">Clear filters</a></p>
                     </div>
                 </div>
+
+                  {% if filterInternational.length %}
+                    
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
+                        <ul class="app-filter-tags">
+                        {% if 'Yes, visa sponsorship available' in filterInternational %} 
+                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show jobs with visa sponsorship
+                            </a></li>
+                        {% endif %}
+                        </ul>
+
+                    {% endif %}
+
+
 
                     {% if filterRole.length %}
                     
@@ -547,19 +563,7 @@
 
                     {% endif %}
 
-                    {% if filterInternational.length %}
                     
-                        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
-                        <ul class="app-filter-tags">
-                        {% if 'Yes, visa sponsorship available' in filterInternational %} 
-                            <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show jobs with visa sponsorship
-                            </a></li>
-                        {% endif %}
-                        </ul>
-
-                    {% endif %}
-
-
                     {% if filterSuitability.length %}
                     
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Suitability for early career teachers (ECT)</h3>
