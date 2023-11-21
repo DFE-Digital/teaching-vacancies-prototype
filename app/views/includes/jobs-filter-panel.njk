@@ -17,14 +17,16 @@
     }]
   }) }}
 
+  <h3 class="govuk-heading-s">Job type</h3>
+
   {{ govukCheckboxes({
     idPrefix: "filter-role",
     name: "filter-role",
-    classes: "govuk-checkboxes--small filter-bottom",
+    classes: "govuk-checkboxes--small roles-checkboxes",
     fieldset: {
       legend: {
-        text: "Job role",
-        classes: "govuk-fieldset__legend--s"
+        text: "Teaching & leadership",
+        classes: "govuk-fieldset__legend--s roles-header"
       }
     },
     items: [{
@@ -46,14 +48,58 @@
       value: 'Headteacher',
       text: 'Headteacher'
     }, {
+      value: 'SENDCo (special educational needs and disabilities coordinator)',
+      text: 'SENDCo (special educational needs and disabilities coordinator)'
+    }, {
+      value: 'Other leadership roles',
+      text: 'Other leadership roles'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filter-role",
+    name: "filter-role",
+    classes: "govuk-checkboxes--small roles-checkboxes",
+    fieldset: {
+      legend: {
+        text: "Teaching support",
+        classes: "govuk-fieldset__legend--s roles-header"
+      }
+    },
+    items: [{
       value: 'Teaching assistant',
       text: 'Teaching assistant'
     }, {
-      value: 'Learning support, cover supervisor or tutor',
-      text: 'Learning support, cover supervisor or tutor'
+      value: 'HLTA (Higher level teaching assistant)',
+      text: 'HLTA (Higher level teaching assistant)'
     }, {
-      value: 'SENDCo (special educational needs and disabilities coordinator)',
-      text: 'SENDCo (special educational needs and disabilities coordinator)'
+      value: 'Learning support or cover supervisor',
+      text: 'Learning support or cover supervisor'
+    }, {
+      value: 'Other teaching support',
+      text: 'Other teaching support'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filter-role",
+    name: "filter-role",
+    classes: "govuk-checkboxes--small roles-checkboxes filter-bottom",
+    fieldset: {
+      legend: {
+        text: "Non-teaching support",
+        classes: "govuk-fieldset__legend--s roles-header"
+      }
+    },
+    items: [{
+      value: 'Administration, HR, data and finance',
+      text: 'Administration, HR, data and finance'
+    }, {
+      value: 'Catering, cleaning and site management',
+      text: 'Catering, cleaning and site management'
+    }, {
+      value: 'IT support',
+      text: 'IT support'
     }]
   }) }}
 

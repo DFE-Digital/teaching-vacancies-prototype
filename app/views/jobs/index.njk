@@ -15,7 +15,20 @@
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
-      {% include "includes/jobs-filter-panel.njk" %}
+      {% if data['filtertype'] == '1' %}
+
+        {% include "includes/jobs-filter-panel.njk" %}
+
+      {% elseif data['filtertype'] == '2' %}
+
+        {% include "includes/jobs-filter-panel-collapsible.njk" %}
+
+      {% else %}
+
+        {% include "includes/jobs-filter-panel.njk" %}
+
+      {% endif %}
+
     </div>
 
     <div class="app-filter-layout__content">
