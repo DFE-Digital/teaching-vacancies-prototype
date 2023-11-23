@@ -17,16 +17,14 @@
     }]
   }) }}
 
-  <h3 class="govuk-heading-s">Job type</h3>
-
   {{ govukCheckboxes({
     idPrefix: "filter-role",
     name: "filter-role",
-    classes: "govuk-checkboxes--small roles-checkboxes",
+    classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
-        text: "Teaching & leadership",
-        classes: "govuk-fieldset__legend--s roles-header"
+        text: "Teaching & leadership job roles",
+        classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
@@ -56,52 +54,6 @@
     }]
   }) }}
 
-  {{ govukCheckboxes({
-    idPrefix: "filter-role",
-    name: "filter-role",
-    classes: "govuk-checkboxes--small roles-checkboxes",
-    fieldset: {
-      legend: {
-        text: "Teaching support",
-        classes: "govuk-fieldset__legend--s roles-header"
-      }
-    },
-    items: [{
-      value: 'Teaching assistant',
-      text: 'Teaching assistant'
-    }, {
-      value: 'HLTA (Higher level teaching assistant)',
-      text: 'HLTA (Higher level teaching assistant)'
-    }, {
-      value: 'Learning support or cover supervisor',
-      text: 'Learning support or cover supervisor'
-    }, {
-      value: 'Other teaching support',
-      text: 'Other teaching support'
-    }]
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filter-role",
-    name: "filter-role",
-    classes: "govuk-checkboxes--small roles-checkboxes filter-bottom",
-    fieldset: {
-      legend: {
-        text: "Non-teaching support",
-        classes: "govuk-fieldset__legend--s roles-header"
-      }
-    },
-    items: [{
-      value: 'Administration, HR, data and finance',
-      text: 'Administration, HR, data and finance'
-    }, {
-      value: 'Catering, cleaning and site management',
-      text: 'Catering, cleaning and site management'
-    }, {
-      value: 'IT support',
-      text: 'IT support'
-    }]
-  }) }}
 
   {{ govukCheckboxes({
     idPrefix: "filter-phase",
@@ -378,52 +330,10 @@
     items: [{
       value: 'Suitable for ECTs',
       text: 'Suitable for ECTs'
+    }, {
+      value: 'Not suitable for ECTs',
+      text: 'Not suitable for ECTs'
     }]
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filter-organisation",
-    name: "filter-organisation",
-    classes: "govuk-checkboxes--small filter-bottom",
-    fieldset: {
-      legend: {
-        text: "Organisation type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Academy',
-      text: 'Academy',
-      hint: {
-        text: 'includes free schools'
-      }
-    },
-    {
-      value: 'Local authority maintained schools',
-      text:'Local authority maintained schools'
-    }
-    ]
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filter-school",
-    name: "filter-school",
-    classes: "govuk-checkboxes--small filter-bottom",
-    fieldset: {
-      legend: {
-        text: "School type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Faith school',
-      text: 'Faith school'
-    },
-    {
-      value: 'Special school',
-      text:'Special school'
-    }
-    ]
   }) }}
 
 

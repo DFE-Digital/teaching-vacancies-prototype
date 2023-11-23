@@ -1,0 +1,92 @@
+//TV home page 
+
+.home_index .search {
+    color: #fff
+}
+
+@media(max-width: 40.0525em) {
+    .home_index .search {
+        background:url("/../public/images/TVS-logo.png") no-repeat 100% 10px/120px auto #003078;
+
+        padding: 20px
+    }
+
+    .home_index .search h1 {
+        padding-right: 100px
+    }
+
+    .home_index .search .govuk-button {
+        margin-bottom: 0;
+        margin-top: 20px
+    }
+}
+
+@media(min-width: 40.0625em) {
+    .home_index .search {
+        background:url("/../public/images/TVS-logo.png") no-repeat 100% 10px/150px auto #003078;
+
+        padding: 30px
+    }
+
+    .home_index .search h1 {
+        padding-right: 150px
+    }
+
+    .home_index .search .govuk-button,.home_index .search .govuk-form-group {
+        align-self: flex-end;
+        margin: 0
+    }
+}
+
+.home_index .search .govuk-label,.home_index .search .govuk-hint,.home_index .search .govuk-link,.home_index .search .posts_index .post a,.posts_index .post .home_index .search a,.home_index .search .posts_show .post a,.posts_show .post .home_index .search a,.home_index .search h1,.home_index .search h3 {
+    color: #fff
+}
+
+.home_index .search .govuk-hint {
+    display: none
+}
+
+.home_index .search h3 {
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+@media(min-width: 40.0625em) {
+    .home_index .search__form {
+        align-items:end;
+        column-gap: 20px;
+        display: flex
+    }
+
+    .home_index .search__form>div {
+        width: 33.33%
+    }
+}
+
+@media(min-width: 48.0625em) {
+    .home_index .search__form .autocomplete__menu {
+        position:absolute
+    }
+}
+
+.home_index .search__form>div:last-child {
+    align-items: center;
+    display: flex
+}
+
+.home_index .search__popular {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.home_index .search__popular .govuk-link,.home_index .search__popular .posts_index .post a,.posts_index .post .home_index .search__popular a,.home_index .search__popular .posts_show .post a,.posts_show .post .home_index .search__popular a {
+    margin-right: 10px
+}
+
+.home_index.js-enabled .landing-page-links .govuk-accordion__section-content {
+    padding: 0
+}
+
+.home_index .landing-page-links .govuk-accordion__section-button {
+    font-size: 1.2rem
+}

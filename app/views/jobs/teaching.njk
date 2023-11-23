@@ -1,118 +1,27 @@
 
-{% extends "layout.njk" %}
+{% extends "layout_support.njk" %}
 
-{% set primaryNavId = 'jobs' %}
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'teaching' %}
+
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    <span id="job-count">240</span> jobs found
+    240 teaching and leadership jobs 
   </h1>
 
-  <p><a href="#" class="govuk-link--no-visited-state">Receive a job alert</a> whenever a job matching this search is listed.</p>
-
   <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+           
+        {% include "includes/jobs-filter-panel-teaching.njk" %}
 
-    {% include "includes/jobs-filter-panel-static.njk" %}
+    </div>
 
     <div class="app-filter-layout__content">
-      <div class="app-search-form">
-
-        <p style="text-transform:" class="govuk-!-margin-bottom-1">
-          
-          Searched for <b>{{data['keywords']}}</b> jobs within <b>{{data['radius']}} miles</b>  of <b>{{data['location']}}</b> 
-          <a id="toggleSearch" href="#app" class="govuk-link govuk-link--no-visited-state govuk-!-margin-left-4">
-              Change <span class="govuk-visually-hidden">keywords, radius or location search</span>
-          </a>
-        </p>
-
-        <form class="govuk-!-margin-top-3" id="search-form" method="post" novalidate style="display:none;">
-
-          {{ govukInput({
-            id: "keywords",
-            name: "keywords",
-            label: {
-              text: "Keywords",
-              classes: "govuk-label--s"
-            },
-            value: data['keywords']
-          }) }}
-
-          <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-half">
-              {{ govukInput({
-                id: "location",
-                name: "location",
-                label: {
-                  text: "City, county or postcode",
-                  classes: "govuk-label--s"
-                },
-                value: data['location']
-              }) }}
-            </div>
-
-            <div class="govuk-grid-column-one-half">
-              {{ govukSelect({
-                id: "radius",
-                name: "radius",
-                label: {
-                  text: "Search radius",
-                  classes: "govuk-label--s"
-                },
-                value: data['radius'],
-                items: [
-                {
-                  value: "updated",
-                  text: "This area only"
-                },
-                {
-                  value: "1",
-                  text: "1 mile"
-                },
-                {
-                  value: "5",
-                  text: "5 miles"
-                },
-                {
-                  value: "10",
-                  text: "10 miles"
-                },
-                {
-                  value: "15",
-                  text: "15 miles"
-                },
-                {
-                  value: "20",
-                  text: "20 miles"
-                },
-                {
-                  value: "25",
-                  text: "25 miles"
-                },
-                {
-                  value: "50",
-                  text: "50 miles"
-                },
-                {
-                  value: "100",
-                  text: "100 miles"
-                },
-                {
-                  value: "200",
-                  text: "200 miles"
-                }
-              ]
-              }) }}
-            </div>
-          </div>
-
-          
-
-          {{ govukButton({
-            text: 'Search'
-          }) }}
-        </form>
-      </div>
-
+      {% include "includes/jobs-search-form.njk" %}
 
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
@@ -125,18 +34,19 @@
               <div style="float:left;">
                 <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
               </div>
-
             <div style="display:inline-block; float:right">
-              <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
-                <label class="govuk-label" for="sort" style="display:inline-block;">
-                  Sort by
-                </label>
-                <select class="govuk-select" id="sort" name="sort">
-                  <option value="newest" selected>Newest job</option>
-                  {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
-                  <option value="ending">Ending soonest</option>
-                </select>
-              </div>
+              <form id="sortform" action="/jobs/search/postcode">
+                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                  <label class="govuk-label" for="sort" style="display:inline-block;">
+                    Sort by
+                  </label>
+                  <select class="govuk-select" id="sort" name="sort">
+                    <option value="newest" selected>Newest job</option>
+                    <option value="closing">Closing date</option>
+                    {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
+                  </select>
+                </div>
+              </form>
             </div>
 
           </div>
@@ -159,6 +69,10 @@
               {% endfor %}
             {% endset %}
 
+            {% set closingInformation %}
+              {{job.closingDate | date}} at {{job.closingTime}}
+            {% endset %}
+
             <div class="app-jobs__item">
               {% if job.organisation.logo != 'Not entered' %}
               <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
@@ -167,6 +81,7 @@
               </div>
               {% endif %}
               <h2 class="govuk-heading-m">
+                
                 <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
                 {% if job.isUsingApplicationForm == 'Yes' %}
@@ -238,25 +153,29 @@
                     value: {
                       html: job.subjects | join(', ') | capitalize
                     }
-                  } if job.subjects.length
+                  } if job.subjects.length,
+                  {
+                    key: {
+                      text: "Closing date"
+                    },
+                    value: {
+                      html: closingInformation
+                    }
+                  } if job.closingDate,
+                  {
+                    key: {
+                      text: "Visa sponsorship"
+                    },
+                    value: {
+                      text: job.sponsorship
+                    }
+                  } if job.sponsorship
                 ]
               }) }}
             </div>
 
           {% endif %}
         {% endfor %}
-      </div>
-
-      <div id="try-another-search" class="divider-bottom" style="display:none;">
-        <div class="govuk-heading-m">Try another search</div>
-        <p class="govuk-body">You may get more results if you:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>add more keywords, or try different ones</li>
-          <li>change the radius of your search</li>
-          <li>look at a wider geographical location, West Yorkshire instead of Leeds for example</li>
-          <li>remove some filters if you have used them</li>
-        </ul>
-        <p></p>
       </div>
 
       {{ govukPagination({

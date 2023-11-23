@@ -15,6 +15,44 @@ module.exports = router => {
     })
   })
 
+  router.get('/teaching', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/teaching', {
+      jobs
+    })
+  })
+
+  router.get('/home', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/home', {
+      jobs
+    })
+  })
+
+  router.get('/question', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/question', {
+      jobs
+    })
+  })
+
+  router.post('/question', (req, res) => {
+    var liveInUK = req.session.data['typeofjob']
+
+    if (liveInUK == "teaching"){
+        res.redirect("/teaching")
+    } else {
+        res.redirect("/support")
+    }
+  })
+
+  router.get('/support', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/support', {
+      jobs
+    })
+  })
+
   router.get('/jobs/:id', (req, res) => {
     let jobs = req.session.data.jobs
     let job = jobs.find(job => job.id == req.params.id)

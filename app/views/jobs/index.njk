@@ -17,15 +17,15 @@
     <div class="app-filter-layout__filter">
       {% if data['filtertype'] == '1' %}
 
-        {% include "includes/jobs-filter-panel.njk" %}
+        {% include "includes/jobs-filter-panel-collapsible.njk" %}
 
       {% elseif data['filtertype'] == '2' %}
 
-        {% include "includes/jobs-filter-panel-collapsible.njk" %}
+        {% include "includes/jobs-filter-panel.njk" %}
 
       {% else %}
 
-        {% include "includes/jobs-filter-panel.njk" %}
+        {% include "includes/jobs-filter-panel-collapsible.njk" %}
 
       {% endif %}
 

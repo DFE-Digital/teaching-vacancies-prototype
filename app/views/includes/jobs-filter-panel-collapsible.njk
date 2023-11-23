@@ -543,6 +543,51 @@
           }]
         }) }}
 
+          {{ govukCheckboxes({
+    idPrefix: "filter-organisation",
+    name: "filter-organisation",
+    classes: "govuk-checkboxes--small filter-bottom",
+    fieldset: {
+      legend: {
+        text: "Organisation type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Academy',
+      text: 'Academy',
+      hint: {
+        text: 'includes free schools'
+      }
+    },
+    {
+      value: 'Local authority maintained schools',
+      text:'Local authority maintained schools'
+    }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filter-school",
+    name: "filter-school",
+    classes: "govuk-checkboxes--small filter-bottom",
+    fieldset: {
+      legend: {
+        text: "School type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Faith school',
+      text: 'Faith school'
+    },
+    {
+      value: 'Special school',
+      text:'Special school'
+    }
+    ]
+  }) }}
+
         
         <div class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">

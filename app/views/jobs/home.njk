@@ -1,0 +1,173 @@
+
+{% extends "layout_support.njk" %}
+
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'home' %}
+
+
+{% block content %}
+
+<div class="home_index">
+   
+    <div class="search">
+		<h1 class="govuk-heading-l">Find teacher and school jobs near you</h1>
+		<form accept-charset="UTF-8" action="/jobs" class="new_" id="new_" method="get" name="new_">
+			<div class="search__form">
+				<div class="govuk-form-group">
+					<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
+                    <input class="govuk-input" id="keyword-field" name="keyword" type="text">
+				</div>
+                <div class="govuk-form-group">
+					<label class="govuk-label govuk-label--s" for="keyword-field">City, county or postcode</label>
+                    <input class="govuk-input" id="location-field" name="location" type="text">
+				</div>
+				<button class="govuk-button govuk-button--start" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</button>
+			</div>
+		</form>
+		<h3 class="govuk-heading-s">Popular searches:</h3>
+		<div class="search__popular">
+			<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/primary-school-jobs">Primary</a><a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/maths-teacher-jobs">Maths</a><a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/science-teacher-jobs">Science</a><a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/teaching-assistant-jobs">Teaching Assistant</a><a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/headteacher-jobs">Headteacher</a>
+		</div>
+	</div>
+
+    <div class="govuk-grid-row govuk-!-margin-top-6">
+		<div class="govuk-grid-column-one-half">
+			<h2 class="govuk-heading-m">Welcome to Teaching Vacancies</h2>
+			<p class="govuk-body">Search for teaching, school leadership and education support jobs in England.</p>
+			<p class="govuk-body">You can also apply for jobs, set up job alerts and <a class="govuk-link govuk-link--no-visited-state" href="/jobseeker-guides/how-to-write-teacher-personal-statement">read advice for jobseekers</a>.</p>
+		</div>
+		<div class="govuk-grid-column-one-quarter">
+			<h2 class="govuk-heading-m">For jobseekers</h2>
+			<p class="govuk-body">Save and apply for jobs in schools.</p><a class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button" draggable="false" href="/jobseekers/sign-in" role="button">Sign in</a>
+			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state" href="/jobseekers/sign_up">create an account</a>.</p>
+		</div>
+		<div class="govuk-grid-column-one-quarter">
+			<h2 class="govuk-heading-m">For hiring staff</h2>
+			<p class="govuk-body">Post jobs and manage applications.</p><a class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button" draggable="false" href="/publishers/sign_in" role="button">Sign in</a>
+			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state" href="/pages/dsi-account-request">create an account</a>.</p>
+		</div>
+	</div>
+
+
+    <div class="govuk-accordion__section" id="jobs-by-type-of-school-and-role-section">
+		<div class="govuk-accordion__section-header">
+			<h2 class="govuk-accordion__section-heading"><button aria-controls="jobs-by-type-of-school-and-role-content" aria-expanded="false" aria-label="Jobs by type of school and role , Show this section" class="govuk-accordion__section-button" type="button"><span class="govuk-accordion__section-heading-text" id="jobs-by-type-of-school-and-role"><span class="govuk-accordion__section-heading-text-focus">Jobs by type of school and role</span></span><span class="govuk-visually-hidden govuk-accordion__section-heading-divider">,</span> <span class="govuk-accordion__section-toggle" data-nosnippet=""><span class="govuk-accordion__section-toggle-focus"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__section-toggle-text">Show</span></span></span></button></h2>
+		</div>
+		<div aria-labelledby="jobs-by-type-of-school-and-role" class="govuk-accordion__section-content" hidden="until-found" id="jobs-by-type-of-school-and-role-content">
+			<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+				<h3 class="govuk-heading-s">Job roles</h3>
+				<ul class="govuk-list">
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/teacher-jobs"><span class="govuk-visually-hidden">View 2140</span> Teacher<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(2140)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/assistant-headteacher-jobs"><span class="govuk-visually-hidden">View 57</span> Assistant headteacher<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(57)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/deputy-headteacher-jobs"><span class="govuk-visually-hidden">View 34</span> Deputy headteacher<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(34)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/headteacher-jobs"><span class="govuk-visually-hidden">View 77</span> Headteacher<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(77)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/head-of-year-or-phase-jobs"><span class="govuk-visually-hidden">View 70</span> Head of year or phase<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(70)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/head-of-department-or-curriculum-jobs"><span class="govuk-visually-hidden">View 170</span> Head of department or curriculum<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(170)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/higher-level-teaching-assistant-jobs"><span class="govuk-visually-hidden">View 80</span> HLTA (higher level teaching assistant)<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(80)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/teaching-assistant-jobs"><span class="govuk-visually-hidden">View 1525</span> Teaching assistant<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(1525)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/sendco-jobs"><span class="govuk-visually-hidden">View 51</span> SENDCo (special educational needs and disabilities coordinator)<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(51)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/education-support-jobs"><span class="govuk-visually-hidden">View 350</span> Learning support or cover supervisor<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(350)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/ect-suitable-jobs"><span class="govuk-visually-hidden">View 1317</span> Suitable for early career teachers<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(1317)</span>
+					</li>
+				</ul>
+			</div>
+			<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+				<h3 class="govuk-heading-s">School phases</h3>
+				<ul class="govuk-list">
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/nursery-jobs"><span class="govuk-visually-hidden">View 51</span> Nursery<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(51)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/primary-school-jobs"><span class="govuk-visually-hidden">View 1558</span> Primary<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(1558)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/middle-school-jobs"><span class="govuk-visually-hidden">View 64</span> Middle<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(64)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/secondary-school-jobs"><span class="govuk-visually-hidden">View 2469</span> Secondary<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(2469)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/sixth-form-or-college-jobs"><span class="govuk-visually-hidden">View 43</span> Sixth form and college<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(43)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/through-school-jobs"><span class="govuk-visually-hidden">View 484</span> Through school<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(484)</span>
+					</li>
+				</ul>
+			</div>
+			<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+				<h3 class="govuk-heading-s">Working patterns</h3>
+				<ul class="govuk-list">
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/full-time-school-jobs"><span class="govuk-visually-hidden">View 3119</span> Full time<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(3119)</span>
+					</li>
+					<li>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/part-time-school-jobs"><span class="govuk-visually-hidden">View 1660</span> Part time<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(1660)</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+    
+  {# {{ govukDetails({
+    summaryText: "Jobs by school, role, location and subject",
+    text: "Text",
+    classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
+  }) }} #}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}
