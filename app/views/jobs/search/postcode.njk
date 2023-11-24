@@ -18,7 +18,23 @@
 
   <div class="app-filter-layout">
 
-    {% include "includes/jobs-filter-panel-static.njk" %}
+    <div class="app-filter-layout__filter">
+      
+      {% if data['filtertype'] == '1' %}
+
+        {% include "includes/jobs-filter-panel-collapsible.njk" %}
+
+      {% elseif data['filtertype'] == '2' %}
+
+        {% include "includes/jobs-filter-panel.njk" %}
+
+      {% else %}
+
+        {% include "includes/jobs-filter-panel-collapsible.njk" %}
+
+      {% endif %}
+
+    </div>
 
     <div class="app-filter-layout__content">
       <div class="app-search-form">
@@ -150,377 +166,95 @@
 
           {% if job.distance <= data['radius'] %}
 
-            {% if data['keywords'] in ['early years','Early years','ks1','KS1','ks2','KS2','primary', 'Primary', 'Primary school', 'primary school'] %}
-
-              {% if data['keywords'] in ['early years', 'Early years'] %}
-
-                {% if job.phase == 'Primary school' or 'Nursery school' %}
-
-                  <div class="app-jobs__item">
-                      {% if job.organisation.logo != 'Not entered' %}
-                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-                      </div>
-                      {% endif %}
-                      <h2 class="govuk-heading-m">
-                        <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
-
-                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}</p>
-
-                      {{ govukSummaryList({
-                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                        rows: [
-                          {
-                            key: {
-                              text: "Full-time equivalent salary"
-                            },
-                            value: {
-                              html: job.fullTimeEquivalentSalaryDetails
-                            }
-                          } if job.fullTimeEquivalentSalaryDetails,
-                          {
-                            key: {
-                              text: "Actual salary"
-                            },
-                            value: {
-                              html: job.actualSalaryDetails
-                            }
-                          } if job.actualSalaryDetails,
-                          {
-                            key: {
-                              text: "Pay scale"
-                            },
-                            value: {
-                              html: job.payScaleDetails
-                            }
-                          } if job.payScaleDetails,
-                          {
-                            key: {
-                              text: "School type"
-                            },
-                            value: {
-                              html: job.schoolType
-                            }
-                          } if job.schoolType,
-                          {
-                            key: {
-                              text: "Education phase"
-                            },
-                            value: {
-                              text: job.phase | capitalize
-                            }
-                          } if job.phase,
-                          {
-                            key: {
-                              text: "Working pattern"
-                            },
-                            value: {
-                              text: job.workingPatterns | join(', ') | capitalize
-                            }
-                          },
-                          {
-                            key: {
-                              text: "Closing date"
-                            },
-                            value: {
-                              html: closingInformation
-                            }
-                          } if job.closingDate,
-                          {
-                            key: {
-                              text: "Distance from location"
-                            },
-                            value: {
-                              text: job.distance + ' miles'
-                            }
-                          } if job.distance
-                          
-                        ]
-                      }) }}
-                    </div>
-
-
-                  {% endif %}
-              
-              {% endif %}
-
-              {% if job.phase == 'Primary school' %}
-
-                    <div class="app-jobs__item">
-                      {% if job.organisation.logo != 'Not entered' %}
-                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-                      </div>
-                      {% endif %}
-                      <h2 class="govuk-heading-m">
-                        <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
-
-                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
-
-                      {{ govukSummaryList({
-                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                        rows: [
-                          {
-                            key: {
-                              text: "Full-time equivalent salary"
-                            },
-                            value: {
-                              html: job.fullTimeEquivalentSalaryDetails
-                            }
-                          } if job.fullTimeEquivalentSalaryDetails,
-                          {
-                            key: {
-                              text: "Actual salary"
-                            },
-                            value: {
-                              html: job.actualSalaryDetails
-                            }
-                          } if job.actualSalaryDetails,
-                          {
-                            key: {
-                              text: "Pay scale"
-                            },
-                            value: {
-                              html: job.payScaleDetails
-                            }
-                          } if job.payScaleDetails,
-                          {
-                            key: {
-                              text: "School type"
-                            },
-                            value: {
-                              html: job.schoolType
-                            }
-                          } if job.schoolType,
-                          {
-                            key: {
-                              text: "Education phase"
-                            },
-                            value: {
-                              text: job.phase | capitalize
-                            }
-                          } if job.phase,
-                          {
-                            key: {
-                              text: "Working pattern"
-                            },
-                            value: {
-                              text: job.workingPatterns | join(', ') | capitalize
-                            }
-                          },
-                           {
-                            key: {
-                              text: "Closing date"
-                            },
-                            value: {
-                              html: closingInformation
-                            }
-                          } if job.closingDate,
-                          {
-                            key: {
-                              text: "Distance from location"
-                            },
-                            value: {
-                              text: job.distance + ' miles'
-                            }
-                          } if job.distance
-                        ]
-                      }) }}
-                    </div>
-
-              {% endif %}
-
-
-            {% elif data['keywords'] in ['reception','Reception','nursery', 'Nursery', 'Nursery school', 'nursery school']  %}
-
-
-              {% if job.phase == 'Nursery school' %}
-
-                    
-                    <div class="app-jobs__item">
-                      {% if job.organisation.logo != 'Not entered' %}
-                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-                      </div>
-                      {% endif %}
-                      <h2 class="govuk-heading-m">
-                      <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
-                      </h2>
-                      
-                      
-                      
-                    
-                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
-
-                      {{ govukSummaryList({
-                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                        rows: [
-                          {
-                            key: {
-                              text: "Full-time equivalent salary"
-                            },
-                            value: {
-                              html: job.fullTimeEquivalentSalaryDetails
-                            }
-                          } if job.fullTimeEquivalentSalaryDetails,
-                          {
-                            key: {
-                              text: "Actual salary"
-                            },
-                            value: {
-                              html: job.actualSalaryDetails
-                            }
-                          } if job.actualSalaryDetails,
-                          {
-                            key: {
-                              text: "Pay scale"
-                            },
-                            value: {
-                              html: job.payScaleDetails
-                            }
-                          } if job.payScaleDetails,
-                          {
-                            key: {
-                              text: "School type"
-                            },
-                            value: {
-                              html: job.schoolType
-                            }
-                          } if job.schoolType,
-                          {
-                            key: {
-                              text: "Education phase"
-                            },
-                            value: {
-                              text: job.phase | capitalize
-                            }
-                          } if job.phase,
-                          {
-                            key: {
-                              text: "Working pattern"
-                            },
-                            value: {
-                              text: job.workingPatterns | join(', ') | capitalize
-                            }
-                          },
-                           {
-                            key: {
-                              text: "Closing date"
-                            },
-                            value: {
-                              html: closingInformation
-                            }
-                          } if job.closingDate,
-                          {
-                            key: {
-                              text: "Distance from location"
-                            },
-                            value: {
-                              text: job.distance + ' miles'
-                            }
-                          } if job.distance
-                        ]
-                      }) }}
-                    </div>
-
-
-
-
-              {% endif %}
-
-
-
-
-            {% else %}
-
+            {% for item in job.searches %}
+              {% if data['keywords'] == item %}
+                  
                 <div class="app-jobs__item">
-                      {% if job.organisation.logo != 'Not entered' %}
-                      <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                        <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                        <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-                      </div>
-                      {% endif %}
-                      <h2 class="govuk-heading-m">
-                        <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+                  {% if job.organisation.logo != 'Not entered' %}
+                  <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
+                    <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
+                    <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
+                  </div>
+                  {% endif %}
+                  <h2 class="govuk-heading-m">
+                    <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
-                      <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}</p>
+                  <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}</p>
 
-                      {{ govukSummaryList({
-                        classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                        rows: [
-                          {
-                            key: {
-                              text: "Full-time equivalent salary"
-                            },
-                            value: {
-                              html: job.fullTimeEquivalentSalaryDetails
-                            }
-                          } if job.fullTimeEquivalentSalaryDetails,
-                          {
-                            key: {
-                              text: "Actual salary"
-                            },
-                            value: {
-                              html: job.actualSalaryDetails
-                            }
-                          } if job.actualSalaryDetails,
-                          {
-                            key: {
-                              text: "Pay scale"
-                            },
-                            value: {
-                              html: job.payScaleDetails
-                            }
-                          } if job.payScaleDetails,
-                          {
-                            key: {
-                              text: "School type"
-                            },
-                            value: {
-                              html: job.schoolType
-                            }
-                          } if job.schoolType,
-                          {
-                            key: {
-                              text: "Education phase"
-                            },
-                            value: {
-                              text: job.phase | capitalize
-                            }
-                          } if job.phase,
-                          {
-                            key: {
-                              text: "Working pattern"
-                            },
-                            value: {
-                              text: job.workingPatterns | join(', ') | capitalize
-                            }
-                          },
-                           {
-                            key: {
-                              text: "Closing date"
-                            },
-                            value: {
-                              html: closingInformation
-                            }
-                          } if job.closingDate,
-                          {
-                            key: {
-                              text: "Distance from location"
-                            },
-                            value: {
-                              text: job.distance + ' miles'
-                            }
-                          } if job.distance
-                        ]
-                      }) }}
-                    </div>
-
-            {% endif %}
-
+                  {{ govukSummaryList({
+                    classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                    rows: [
+                      {
+                        key: {
+                          text: "Full-time equivalent salary"
+                        },
+                        value: {
+                          html: job.fullTimeEquivalentSalaryDetails
+                        }
+                      } if job.fullTimeEquivalentSalaryDetails,
+                      {
+                        key: {
+                          text: "Actual salary"
+                        },
+                        value: {
+                          html: job.actualSalaryDetails
+                        }
+                      } if job.actualSalaryDetails,
+                      {
+                        key: {
+                          text: "Pay scale"
+                        },
+                        value: {
+                          html: job.payScaleDetails
+                        }
+                      } if job.payScaleDetails,
+                      {
+                        key: {
+                          text: "School type"
+                        },
+                        value: {
+                          html: job.schoolType
+                        }
+                      } if job.schoolType,
+                      {
+                        key: {
+                          text: "Education phase"
+                        },
+                        value: {
+                          text: job.phase | capitalize
+                        }
+                      } if job.phase,
+                      {
+                        key: {
+                          text: "Working pattern"
+                        },
+                        value: {
+                          text: job.workingPatterns | join(', ') | capitalize
+                        }
+                      },
+                        {
+                        key: {
+                          text: "Closing date"
+                        },
+                        value: {
+                          html: closingInformation
+                        }
+                      } if job.closingDate,
+                      {
+                        key: {
+                          text: "Distance from location"
+                        },
+                        value: {
+                          text: job.distance + ' miles'
+                        }
+                      } if job.distance
+                    ]
+                  }) }}
+                </div>
+                  
+              {% endif %}
+            {% endfor %}
+            
           {% endif %}
           
         {% endfor %}

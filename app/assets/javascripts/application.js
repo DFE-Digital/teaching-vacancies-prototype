@@ -111,7 +111,6 @@ $(document).ready(function () {
 
         checkboxes.forEach(function(checkbox) {
             // Add an event listener to each checkbox
-            checkbox.addEventListener('change', function() {
                 // Check if any checkbox in this specific div is checked
                 const anyChecked = Array.from(checkboxes).some(c => c.checked);
 
@@ -121,7 +120,6 @@ $(document).ready(function () {
                 } else {
                     div.classList.remove('js-opened');
                 }
-            });
         });
     });
 }
