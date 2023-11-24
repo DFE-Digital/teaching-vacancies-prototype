@@ -100,4 +100,31 @@ $(document).ready(function () {
   });
 
 
+  if (window.location.href.includes('search')) {
+
+    // Select all divs with the class 'app-c-option-select'
+    const optionSelectDivs = document.querySelectorAll('.app-c-option-select');
+
+    optionSelectDivs.forEach(function(div) {
+        // Select all checkboxes within this div
+        const checkboxes = div.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach(function(checkbox) {
+            // Add an event listener to each checkbox
+            checkbox.addEventListener('change', function() {
+                // Check if any checkbox in this specific div is checked
+                const anyChecked = Array.from(checkboxes).some(c => c.checked);
+
+                // Add or remove the 'js-opened' class based on whether any checkbox is checked
+                if (anyChecked) {
+                    div.classList.add('js-opened');
+                } else {
+                    div.classList.remove('js-opened');
+                }
+            });
+        });
+    });
+}
+
+
 })

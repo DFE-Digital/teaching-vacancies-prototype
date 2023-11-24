@@ -163,7 +163,7 @@
             value: {
               text: job.isRoleSuitableForEarlyCareeerTeachers
             }
-          },
+          }if job.isRoleSuitableForEarlyCareeerTeachers,
           {
             key: {
               text: "Visa sponsorship"
@@ -171,7 +171,7 @@
             value: {
               text: job.sponsorship
             }
-          },
+          }if job.sponsorship,
           {
             key: {
               text: "Key stage"
@@ -203,7 +203,7 @@
             value: {
               html: contract
             }
-          },
+          }if  job.contractLength,
           {
             key: {
               text: "Job start date"
@@ -281,7 +281,10 @@
             Applying for the job
           </h2>
 
-          {{sponsorshipInset | safe }}
+          {% if job.jobtype == 'support' %}
+          {% else %}   
+            {{sponsorshipInset | safe }}
+          {% endif %}
 
           {% set href %}
               {% if job.isUsingApplicationForm == 'No' %}

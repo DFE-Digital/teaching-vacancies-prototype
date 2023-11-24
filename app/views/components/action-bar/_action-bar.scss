@@ -9,9 +9,13 @@
 
   @include govuk-media-query($until: desktop) {
     float: right;
+    width:100%;
+    margin-bottom: 10px;
   }
 
   @include govuk-media-query($from: desktop) {
     display: none;
+    width:auto;
+    margin-bottom: 0px;
   }
 }

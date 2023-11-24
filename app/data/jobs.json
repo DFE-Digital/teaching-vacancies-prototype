@@ -2044,5 +2044,66 @@
     "closingTime": "5pm",
     "startDate": "2024-11-19T18:10:58.264Z",
     "distance": 5
+  },
+  {
+    "id": "55001",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "56201816-91e1-4e6a-a0b2-b630b6ec7eb4",
+      "name": "Sawley School",
+      "address": {
+        "address1": "10 Seed Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      },
+      "type": "Academy",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 16",
+      "size": "100",
+      "website": "http://junior-pennant.gov.uk",
+      "emailAddress": "email@sawleyschool.org.uk",
+      "about": "Asperiores accusamus sint sapiente. Tenetur suscipit neque. Dolorem delectus iusto illo iusto. Ratione atque molestias ad eligendi quo.\n\nFacere sapiente soluta eum exercitationem eligendi excepturi similique sit. Doloremque consectetur iure tempora neque nisi ad consectetur quaerat quasi. Excepturi ea ullam nam beatae. Officiis libero dicta veritatis odio ullam et nisi. Iure a ex illo temporibus molestiae.",
+      "safeguardingCommitment": "Accusamus sint corrupti veritatis. Nemo ipsa autem eligendi. Officia excepturi fugiat labore ullam repellendus cumque nemo temporibus sed. Nam quisquam possimus nulla at alias aut exercitationem veniam. Eaque fugit eveniet similique quis veritatis. Provident eius nam ab quas voluptates eveniet.\n\nOptio autem minus enim laboriosam fuga eveniet eum ducimus laudantium. Eaque fugit voluptates temporibus dolores accusamus repellat doloribus. Eveniet dignissimos in.",
+      "logo": "https://loremflickr.com/100/100/abstract",
+      "photo": "https://loremflickr.com/640/320/abstract"
+    },
+    "locations": [
+      {
+        "name": "Sawley School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      }
+    ],
+    "role": "Catering, cleaning and site management",
+    "title": "Chef",
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Actual salary"
+    ],
+    "actualSalaryDetails": "£31,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0204 259 644",
+    "skillsAndExperience": "We are looking for a school chef with a strong background in culinary arts, capable of creating a diverse and nutritious menu for our students. The ideal candidate should have knowledge of various cooking techniques, be skilled in preparing both vegetarian and non-vegetarian dishes, and have an understanding of children's nutritional needs. Familiarity with dietary requirements, including allergies and specific preferences like vegan or gluten-free options, is essential.",
+    "whatSchoolOffers": "- A full extra-curricular programme with opportunities for enrichment activities for all \n- An excellent opportunity for continued personal development through our Talent Pathway \n- A wide range of staff benefits \n- Excellent resources and facilities \n- A wonderful community that is involved within school life.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "This school is committed to safeguarding and promoting the welfare of children and young people and for ensuring that they are protected from harm.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-26T03:58:57.701Z",
+    "closingDate": "2024-07-19T15:48:49.508Z",
+    "closingTime": "9am",
+    "startDate": "2025-06-30T10:49:41.733Z",
+    "distance": 1
   }
 ]

@@ -170,7 +170,7 @@
 
         {% for job in jobs|sort(attribute='startDate', reverse=false) %}
 
-          {% if loop.index0 < 10 %} 
+          {% if job.jobtype == 'support' %}
 
             {% set address %}
               {% for part, value in job.organisation.address %}
@@ -244,7 +244,11 @@
               }) }}
             </div>
 
+          {% else %}
+
           {% endif %}
+
+
         {% endfor %}
       </div>
 
