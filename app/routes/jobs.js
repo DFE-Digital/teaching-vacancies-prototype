@@ -56,7 +56,7 @@ module.exports = router => {
   router.get('/jobs/:id', (req, res) => {
     let jobs = req.session.data.jobs
     let job = jobs.find(job => job.id == req.params.id)
-    res.render('jobs/show', {
+    res.render('jobs/show_new', {
       job
     })
   })

@@ -117,7 +117,15 @@
             value: {
               text: job.isRoleSuitableForEarlyCareeerTeachers
             }
-          },
+          }if job.isRoleSuitableForEarlyCareeerTeachers,
+          {
+            key: {
+              text: "Visa sponsorship"
+            },
+            value: {
+              text: job.sponsorship
+            }
+          }if job.sponsorship,
           {
             key: {
               text: "Key stage"
@@ -149,7 +157,7 @@
             value: {
               html: contract
             }
-          },
+          }if  job.contractLength,
           {
             key: {
               text: "Job start date"
@@ -181,15 +189,7 @@
             value: {
               html: job.payScaleDetails
             }
-          } if job.payScaleDetails,
-          {
-            key: {
-              text: "Distance from you"
-            },
-            value: {
-              html: job.distance + ' miles'
-            }
-          } if job.distance
+          } if job.payScaleDetails
         ]
       }) }}
 

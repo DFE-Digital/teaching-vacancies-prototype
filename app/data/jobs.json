@@ -1759,6 +1759,10 @@
     ],
     "role": "Teacher",
     "title": "Teacher",
+    "category": "Teacher",
+    "searches": [ 
+      "teacher", "Teacher"
+    ],
     "phase": "Nursery school",
     "schoolType": "Local authority maintained school, ages 3 to 5",
     "subjects": "",
@@ -2081,7 +2085,7 @@
     "role": "Catering, cleaning and site management",
     "title": "Chef",
     "searches": [ 
-      "Chef", "chef", "cook"
+      "Chef", "chef", "cook", "kitchen"
     ],
     "phase": "Secondary school",
     "workingPatterns": [

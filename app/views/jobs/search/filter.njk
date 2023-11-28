@@ -49,8 +49,9 @@
 
 
     <div class="app-filter-layout__content">
-      <div class="app-search-form">
-        <form method="post" novalidate>
+      <div class="app-search-form">      
+
+        <form id="filter" method="get" action="/search/applications" novalidate>
 
           {{ govukInput({
             id: "keywords",
@@ -140,32 +141,39 @@
 
           {% if data['location'] %}
 
-              <div class="govuk-grid-column-one-full">
-                <div style="float:left;">
-                  <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
-                </div>
-                <div style="display:inline-block; float:right">
-                  <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+             <div class="govuk-grid-column-one-full">
+              <div style="float:left;">
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by distance </h2><br/>
+              </div>
+
+              <div style="display:inline-block; float:right">
+                <form id="sortform" action="/jobs">
+                  <div class="govuk-form-group govuk-!-margin-bottom-0" style="float:right">
                     <label class="govuk-label" for="sort" style="display:inline-block;">
                       Sort by
                     </label>
                     <select class="govuk-select" id="sort" name="sort">
-                      <option value="newest" selected>Newest job</option>
-                      {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
-                      <option value="ending">Ending soonest</option>
+                      <option value="newest">Newest job</option>
+                      <option value="closing">Closing date</option>
+                      {% if data['location'] %}<option value="distance" selected>Distance</option>{% endif %}
                     </select>
+                    <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
+                      Update sort
+                    </button>
                   </div>
-                </div>
-
+                </form>
               </div>
-              
-             
+
+              <p class="govuk-!-margin-top-2" style="display:inline-block; width:100%;">Jobs in or near <span style="text-transform:capitalise;">{{data['location']}}</span></p>
+            
+            </div>
+
             <div class="govuk-grid-row">
 
               <div class="govuk-grid-column-full">
                 <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
               </div>
-              
+            
             </div>
 
           {% else %}
@@ -202,32 +210,42 @@
 
           {% endif %}
 
-            
+          {% if data['location'] != '' %}
+              {% set job_list = jobs|sort(attribute='distance', reverse=false) %}
+          {% else %}
+              {% set job_list = jobs %}
+          {% endif %}
 
-        {% for job in jobs %}
-
-          {% if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" %}  {% set jobECT %} Suitable for ECTs {% endset %} {% elseif job.isRoleSuitableForEarlyCareeerTeachers == "No"  %} {% set jobECT %} Not suitable for ECTs {% endset %} {% else %} {% set jobECT %} {% endset %} {% endif %}
-          {% if job.isUsingApplicationForm == 'Yes' %}  {% set jobQuick %} Apply online {% endset %} {% else %} {% set jobQuick %}No{% endset %} {% endif %}
-
-          <!-- set a 0 that we can loop through and + 1 to -->
-          {% set countOfJobMatch = 0 %}
-  
-          {% if job.role in filterRole %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
-          {% if job.phase in filterPhase %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if jobECT in filterSuitability %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if job.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if job.sponsorship in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% for job in job_list %}
           
-          <!-- each time there is a match, we plus 1 -->
+            {% if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" %}  {% set jobECT %} Suitable for ECTs {% endset %} {% elseif job.isRoleSuitableForEarlyCareeerTeachers == "No"  %} {% set jobECT %} Not suitable for ECTs {% endset %} {% else %} {% set jobECT %} {% endset %} {% endif %}
+            {% if job.isUsingApplicationForm == 'Yes' %}  {% set jobQuick %} Apply online {% endset %} {% else %} {% set jobQuick %}No{% endset %} {% endif %}
 
-          <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
+            {% set closingInformation %}
+              {{job.closingDate | date}} at {{job.closingTime}}
+            {% endset %}
 
-          {% if countOfMatch == countOfJobMatch %}
+            <!-- set a 0 that we can loop through and + 1 to -->
+            {% set countOfJobMatch = 0 %}
+    
+            {% if job.role in filterRole %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
+            {% if job.phase in filterPhase %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% if jobECT in filterSuitability %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% if job.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% if job.sponsorship in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            
+            <!-- each time there is a match, we plus 1 -->
 
-           <div class="app-jobs__item">
-                
+            <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
+
+            {% if countOfMatch == countOfJobMatch %}
+
+            {% set jobItem %}
+
+            <div class="app-jobs__item">
+
                 {% if job.organisation.logo != 'Not entered' %}
                 <div class="square" style="height: 65px; width: 65px; float:left; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
                 <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
@@ -319,6 +337,42 @@
                 }) }}
 
             </div>
+
+            {% endset %}
+
+            <!--LOOP -->
+
+            {% if data['location'] %}
+                {% if job.distance <= data['radius'] %}
+                    <!-- Check if keywords exist and match with job searches -->
+                    {% if data['keywords'] %}
+                        {% for item in job.searches %}
+                            {% if data['keywords'] == item %}
+                                {{ jobItem | safe }}  <!-- Display job item -->
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {{ jobItem | safe }}  <!-- Display job item if no specific keyword is required -->
+                    {% endif %}
+                {% endif %}
+            {% else %}            
+                <!-- If location data does not exist, check for keyword match -->
+                {% if data['keywords'] %}
+                    {% for item in job.searches %}
+                        {% if data['keywords'] == item %}
+                            {{ jobItem | safe }}  <!-- Display job item -->
+                        {% endif %}
+                    {% endfor %}
+                
+                {% else %}
+                   
+                   {{ jobItem | safe }}  <!-- Display job item -->
+
+                {% endif %}
+            {% endif %}
+
+        
+            
            
            {% else %}
            

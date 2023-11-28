@@ -13,10 +13,10 @@ module.exports = router => {
         if (numberPattern.test(location)) {
             res.redirect('jobs/search/postcode')
         } else if (location !== ''){
-            res.redirect('jobs/search/location')
+            res.redirect('jobs/search/applications')
         }
         else {
-            res.redirect('jobs/search/relevant')
+            res.redirect('jobs/search/applications')
         }
     })
 
@@ -148,6 +148,15 @@ module.exports = router => {
         res.render('jobs/search/filter', {
             jobs
         })
+    })
+
+    router.get('/clear-filters', (req, res) => {
+       
+        req.session.data['filter-role'] = '';
+        req.session.data['keywords'] = '';
+        req.session.data['location'] = '';
+
+        res.redirect('/jobs')
     })
 
 
