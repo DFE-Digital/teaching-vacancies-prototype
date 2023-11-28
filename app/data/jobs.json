@@ -35,6 +35,9 @@
     "role": "Physics teacher",
     "title": "Physics teacher",
     "phase": "Secondary school",
+    "searches": [ 
+      "teacher", "Teacher", "physics"
+    ],
     "keyStages": [
       "Key stage 3",
       "Key stage 4",
@@ -105,6 +108,9 @@
       }
     ],
     "role": "Learning support, cover supervisor or tutor",
+    "searches": [ 
+      "Early", "years", "educator", "supervisor", "tutor"
+    ],
     "title": "Early years educator",
     "phase": "Nursery school",
     "schoolType": "Local authority maintained school, ages 3 to 5",
@@ -368,6 +374,9 @@
       }
     ],
     "role": "Head of year or phase",
+    "searches": [ 
+      "head of year", "head", "leader"
+    ],
     "title": "KS2 Phase leader",
     "phase": "Primary school",
     "keyStages": [
@@ -447,6 +456,9 @@
       }
     ],
     "role": "Teaching assistant",
+    "searches": [ 
+      "teaching assistant", "assistant", "Teaching assistant"
+    ],
     "title": "Level 2 teaching assistant",
     "phase": "Sixth form or college",
     "keyStages": [
@@ -531,6 +543,9 @@
       }
     ],
     "role": "Teaching assistant",
+    "searches": [ 
+      "teaching", "assistant", "Teaching"
+    ],
     "title": "Level 2 teaching assistant",
     "phase": "Secondary school",
     "keyStages": [
@@ -604,6 +619,9 @@
       }
     ],
     "role": "Nursery Class Teacher",
+    "searches": [ 
+      "nursery", "Nursery", "class", "teacher"
+    ],
     "title": "Nursery Class Teacher",
     "phase": "Nursery school",
     "schoolType": "Local authority maintained school, ages 2 to 4",
@@ -678,6 +696,9 @@
       }
     ],
     "role": "Head of department or curriculum",
+    "searches": [ 
+      "Head", "head", "languages", "Languages"
+    ],
     "title": "Head of modern foreign languages",
     "phase": "Secondary school",
     "keyStages": [
@@ -940,6 +961,9 @@
       }
     ],
     "role": "Teacher KS1 or KS2",
+    "searches": [ 
+      "teacher", "Teacher", "KS1"
+    ],
     "title": "Teacher KS1 or KS2",
     "phase": "Primary school",
     "keyStages": [
@@ -1026,6 +1050,9 @@
       }
     ],
     "role": "Learning support, cover supervisor or tutor",
+    "searches": [ 
+      "Learning", "learning", "support", "supervisor", "tutor"
+    ],
     "title": "Learning support assistant",
     "phase": "Secondary school",
     "keyStages": [
@@ -1111,6 +1138,9 @@
       }
     ],
     "role": "SENDCo (special educational needs and disabilities coordinator)",
+    "searches": [ 
+      "SENDCO", "SENDCo", "sendco", "special", "education"
+    ],
     "title": "SENDCo",
     "phase": "Sixth form or college",
     "keyStages": [
@@ -1198,6 +1228,9 @@
       }
     ],
     "role": "Assistant headteacher",
+    "searches": [ 
+      "headteacher", "Headteacher", "Assistant headteacher", "assistant headteacher"
+    ],
     "title": "Assistant headteacher",
     "phase": "Sixth form or college",
     "keyStages": [
@@ -1270,6 +1303,9 @@
       }
     ],
     "role": "Early Years Educator - key person",
+    "searches": [ 
+      "early", "years", "Early years"
+    ],
     "title": "Early Years Educator - key person",
     "phase": "Nursery school",
     "schoolType": "Local authority maintained school, ages 3 to 5",
@@ -1349,6 +1385,9 @@
       }
     ],
     "role": "Class Teacher of KS1 or KS2",
+    "searches": [ 
+      "teacher", "Teacher", "KS1", "KS2"
+    ],
     "title": "Class Teacher of KS1 or KS2",
     "phase": "Primary school",
     "schoolType": "Local authority maintained school, ages 4 to 11",
@@ -1431,6 +1470,9 @@
       }
     ],
     "role": "Teacher of KS1 or KS2",
+    "searches": [ 
+      "teacher", "Teacher", "ks1", "KS1"
+    ],
     "title": "Teacher of KS1 or KS2",
     "phase": "Primary school",
     "schoolType": "Local authority maintained school, ages 4 to 11",
@@ -1513,6 +1555,9 @@
       }
     ],
     "role": "KS1 or KS2 teacher",
+    "searches": [ 
+      "teacher", "Teacher", "KS1", "ks1"
+    ],
     "title": "KS1 or KS2 teacher",
     "phase": "Primary school",
     "schoolType": "Local authority maintained school, ages 4 to 11",
@@ -1596,6 +1641,9 @@
       }
     ],
     "role": "Early Years Teacher",
+    "searches": [ 
+      "teacher", "Teacher", "early years"
+    ],
     "title": "Early Years Teacher",
     "phase": "Nursery school",
     "schoolType": "Local authority maintained school, ages 3 to 5",
@@ -1675,6 +1723,9 @@
       }
     ],
     "role": "Class teacher",
+    "searches": [ 
+      "teacher", "Teacher", "class"
+    ],
     "title": "Class teacher",
     "phase": "Nursery school",
     "schoolType": "Local authority maintained school, ages 3 to 5",
@@ -1849,6 +1900,9 @@
     ],
     "role": "Teacher",
     "title": "Teacher of computing",
+    "searches": [ 
+      "teacher", "Teacher", "computing", "Computing"
+    ],
     "phase": "Primary school",
     "keyStages": [
       "Early years",
@@ -1924,6 +1978,9 @@
       }
     ],
     "role": "Head of year or phase",
+    "searches": [ 
+      "head of year", "Head", "head of year"
+    ],
     "title": "KS2 Phase leader",
     "phase": "Middle school",
     "keyStages": [
@@ -1996,6 +2053,9 @@
       }
     ],
     "role": "HLTA (higher level teaching assistant)",
+    "searches": [ 
+      "HLTA", "assistant", "Assistant", "teaching"
+    ],
     "title": "HLTA",
     "phase": "Secondary school",
     "keyStages": [
@@ -2084,8 +2144,8 @@
     ],
     "role": "Catering, cleaning and site management",
     "title": "Chef",
-    "searches": [ 
-      "Chef", "chef", "cook", "kitchen"
+    "searches": [
+      "Chef", "chef", "cook", "kitchen", "catering", "Head Chef", "Sous Chef", "Executive Chef", "Pastry Chef", "Culinary Arts", "Line Cook", "Gourmet Chef", "Restaurant Manager", "Food Preparation", "Culinary Expert", "Grill Cook", "Kitchen Manager", "Food Service"
     ],
     "phase": "Secondary school",
     "workingPatterns": [
@@ -2111,6 +2171,6 @@
     "closingDate": "2024-07-19T15:48:49.508Z",
     "closingTime": "9am",
     "startDate": "2025-06-30T10:49:41.733Z",
-    "distance": 1
+    "distance": 1.5
   }
 ]
