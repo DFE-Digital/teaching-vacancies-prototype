@@ -227,8 +227,20 @@
 
             <!-- set a 0 that we can loop through and + 1 to -->
             {% set countOfJobMatch = 0 %}
-    
-            {% if job.role in filterRole %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
+
+            {% if job.hybrid == "Yes" %}
+              <!-- cater for arrays of job types -->
+              {% for role in job.role %}
+                {% if role in filterRole %}
+                  {% set countOfJobMatch = countOfJobMatch + 1 %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              
+              {% if job.role in filterRole %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
+
+            {% endif %}
+           
             {% if job.phase in filterPhase %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             {% if jobECT in filterSuitability %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             {% if job.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}

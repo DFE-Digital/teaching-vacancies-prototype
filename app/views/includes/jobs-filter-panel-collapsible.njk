@@ -154,7 +154,7 @@
 
 
 
-    <div class="app-c-option-select js-collapsible {% if 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+    <div id="non-teaching" class="app-c-option-select js-collapsible {% if 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
         <div class="app-c-option-select__heading js-container-heading">
             <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Non-teaching support</button>

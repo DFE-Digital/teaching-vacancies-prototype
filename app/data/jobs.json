@@ -1947,7 +1947,7 @@
   },
   {
     "id": "792255",
-    "status": "Draft",
+    "status": "Active",
     "organisation": {
       "id": "56201816-91e1-4e6a-a0b2-b630b6ec7eb4",
       "name": "Sawley School",
@@ -2022,7 +2022,7 @@
   },
   {
     "id": "203405",
-    "status": "Scheduled",
+    "status": "Active",
     "organisation": {
       "id": "9c394ec6-d836-409d-ac10-a31aebb9612c",
       "name": "LS Secondary School",
@@ -2172,5 +2172,334 @@
     "closingTime": "9am",
     "startDate": "2025-06-30T10:49:41.733Z",
     "distance": 1.5
+  },
+  {
+    "id": "55003",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "78236428-29f1-4d3b-a3e2-c2763bfc123a",
+      "name": "Greenwood Academy",
+      "address": {
+        "address1": "32 Oak Avenue",
+        "town": "Bristol",
+        "postcode": "BS1 6EQ"
+      },
+      "type": "Public School",
+      "phase": "All levels",
+      "ageGroup": "5 to 18",
+      "size": "500",
+      "website": "http://greenwoodacademy.edu.uk",
+      "emailAddress": "support@greenwoodacademy.org.uk",
+      "about": "Innovative and forward-thinking, Greenwood Academy offers a dynamic approach to education. Our commitment to integrating technology into our curriculum requires an IT Technician who is passionate about digital solutions.",
+      "safeguardingCommitment": "Committed to student safety, our staff are vigilant and proactive in ensuring a secure and nurturing environment for all.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Greenwood Academy",
+        "address": {
+          "address1": "32 Oak Avenue",
+          "town": "Bristol",
+          "postcode": "BS1 6EQ"
+        }
+      }
+    ],
+    "role": "IT support",
+    "title": "IT Technician",
+    "searches": [
+      "IT Technician", "Technical Support", "Computer Technician", "Network Support", "Helpdesk Technician", "IT", "Technician", "technician"
+    ],
+    "phase": "All levels",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive salary"
+    ],
+    "actualSalaryDetails": "£26,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0117 325 4567",
+    "skillsAndExperience": "Seeking an IT Technician with a strong background in computer systems and network management. The ideal candidate should have experience in troubleshooting hardware and software issues, managing school IT infrastructure, and providing technical support to staff and students.",
+    "whatSchoolOffers": "- Continuous professional development opportunities\n- Access to the latest technology and resources\n- A supportive and collaborative team environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our school is dedicated to safeguarding and promoting the welfare of children, ensuring a safe and inclusive environment.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants must pass a DBS check and have the right to work in the UK. Prior experience in educational settings is a plus.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-30T09:00:00.000Z",
+    "closingDate": "2024-03-15T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-05-01T08:00:00.000Z",
+    "distance": 2.0
+  },
+  {
+    "id": "55004",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "a3e2c276-91e1-4d3b-29f1-36428bfc123a",
+      "name": "Riverside Secondary",
+      "address": {
+        "address1": "47 River Road",
+        "town": "Manchester",
+        "postcode": "M20 3BN"
+      },
+      "type": "State School",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 18",
+      "size": "800",
+      "website": "http://riversidesecondary.edu.uk",
+      "emailAddress": "info@riversidesecondary.org.uk",
+      "about": "Riverside Secondary is a vibrant educational institution with a focus on scientific discovery and innovation. We are looking for a Science Technician to support our science department, helping to inspire the next generation of scientists.",
+      "safeguardingCommitment": "We prioritize the safety and well-being of our students, fostering a secure and supportive learning atmosphere.",
+      "logo": "https://loremflickr.com/100/100/science",
+      "photo": "https://loremflickr.com/640/320/science"
+    },
+    "locations": [
+      {
+        "name": "Riverside Secondary",
+        "address": {
+          "address1": "47 River Road",
+          "town": "Manchester",
+          "postcode": "M20 3BN"
+        }
+      }
+    ],
+    "role": [
+      "Other teaching support"
+    ],
+    "title": "Science Technician",
+    "searches": [
+      "Science Technician", "Laboratory Technician", "Lab Assistant", "School Lab Technician", "science", "technician"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Scale 4"
+    ],
+    "actualSalaryDetails": "£24,000 - £28,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0161 998 3210",
+    "skillsAndExperience": "Looking for a dedicated Science Technician with experience in setting up laboratory experiments, managing equipment, and adhering to safety protocols. Familiarity with the science curriculum and ability to assist in practical lessons is crucial.",
+    "whatSchoolOffers": "- A dynamic and innovative work environment\n- Opportunities for professional growth and development\n- A strong community spirit.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our commitment to safeguarding extends to ensuring a safe and positive environment for our students and staff.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The candidate should have relevant qualifications in science or a related field. A DBS check is required.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-30T09:00:00.000Z",
+    "closingDate": "2024-02-28T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-04-01T08:00:00.000Z",
+    "distance": 1.8
+  },
+  {
+    "id": "55005",
+    "jobtype": "management",
+    "status": "Active",
+    "organisation": {
+      "id": "bfc123a-29f1-4d3b-a3e2-36428c276",
+      "name": "Maple Grove Primary",
+      "address": {
+        "address1": "15 Grove Street",
+        "town": "Liverpool",
+        "postcode": "L15 8JG"
+      },
+      "type": "Primary School",
+      "phase": "Primary",
+      "ageGroup": "4 to 11",
+      "size": "350",
+      "website": "http://maplegroveprimary.edu.uk",
+      "emailAddress": "contact@maplegroveprimary.org.uk",
+      "about": "Maple Grove Primary is a community-centric school that values the safety and well-being of our students and staff. We are seeking a Site Manager to oversee the maintenance and security of our school facilities.",
+      "safeguardingCommitment": "Dedicated to creating a safe and welcoming environment for our young learners.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Maple Grove Primary",
+        "address": {
+          "address1": "15 Grove Street",
+          "town": "Liverpool",
+          "postcode": "L15 8JG"
+        }
+      }
+    ],
+    "role": "Catering, cleaning and site management",
+    "title": "Site Manager",
+    "searches": [
+      "Site Manager", "Caretaker", "Facilities Manager", "School Caretaker", "Maintenance Manager","caretaker"
+    ],
+    "phase": "Primary",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 6"
+    ],
+    "actualSalaryDetails": "£28,000 - £32,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0151 546 7890",
+    "skillsAndExperience": "The ideal candidate will have experience in facility management, basic repair skills, and knowledge of health and safety protocols. Strong organizational skills and the ability to work independently are essential.",
+    "whatSchoolOffers": "- A supportive and collaborative working environment\n- Opportunities for professional development\n- A role that is integral to the school community.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our school is committed to the safety and welfare of its students and staff, and expects all staff to share this commitment.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Successful candidates will be subject to an enhanced DBS check. Previous experience in a school setting is advantageous.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-15T09:00:00.000Z",
+    "closingDate": "2024-01-30T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-03-01T08:00:00.000Z",
+    "distance": 2.2
+  },
+
+  {
+    "id": "55006",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "a3e2c276-91e1-4d3b-29f1-36428bfc789b",
+      "name": "Hilltop High School",
+      "address": {
+        "address1": "22 Hill Street",
+        "town": "Sheffield",
+        "postcode": "S10 2GX"
+      },
+      "type": "Secondary School",
+      "phase": "Secondary",
+      "ageGroup": "11 to 18",
+      "size": "600",
+      "website": "http://hilltophigh.edu.uk",
+      "emailAddress": "info@hilltophigh.org.uk",
+      "about": "At Hilltop High School, we pride ourselves on providing a safe and positive lunchtime experience for our students. We are seeking a Midday Supervisor who is caring, vigilant, and enjoys working with children.",
+      "safeguardingCommitment": "Ensuring a secure and supportive environment during all school hours, including lunchtimes.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Hilltop High School",
+        "address": {
+          "address1": "22 Hill Street",
+          "town": "Sheffield",
+          "postcode": "S10 2GX"
+        }
+      }
+    ],
+    "role": [
+      "Other teaching support", "Catering, cleaning and site management"
+    ],
+    "title": "Midday/Lunchtime Supervisor",
+    "searches": [
+      "Midday Supervisor", "Lunchtime Supervisor", "School Supervisor", "Student Supervisor", "dinner lady", "lunch"
+    ],
+    "hybrid": "Yes",
+    "phase": "Secondary",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "salaryDetails": [
+      "Hourly pay"
+    ],
+    "actualSalaryDetails": "£9.50 per hour",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0114 236 9100",
+    "skillsAndExperience": "Looking for an individual with patience, good communication skills, and a positive attitude towards child development. Previous experience in a school setting is preferred but not essential.",
+    "whatSchoolOffers": "- A rewarding role with direct impact on student well-being\n- Training and development opportunities\n- A friendly and supportive staff team.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We are dedicated to the protection and well-being of our students, with a strong emphasis on safeguarding during all school activities.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Candidates will need to complete a DBS check. Experience working with children is beneficial.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-11-20T09:00:00.000Z",
+    "closingDate": "2024-01-05T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-02-01T08:00:00.000Z",
+    "distance": 1.0
+  },
+
+
+
+  {
+    "id": "55007",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "29f1bfc1-91e1-4d3b-a3e2-36428c276",
+      "name": "Valley View Elementary",
+      "address": {
+        "address1": "48 Valley Road",
+        "town": "Norwich",
+        "postcode": "NR1 3QW"
+      },
+      "type": "Elementary School",
+      "phase": "Primary",
+      "ageGroup": "4 to 11",
+      "size": "400",
+      "website": "http://valleyviewelementary.edu.uk",
+      "emailAddress": "admin@valleyviewelementary.org.uk",
+      "about": "Valley View Elementary is a nurturing and innovative school, looking for an Administrator to join our team. The ideal candidate will be organized, have excellent communication skills, and thrive in a dynamic educational environment.",
+      "safeguardingCommitment": "Our staff are committed to providing a safe, inclusive, and supportive environment for our students.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Valley View Elementary",
+        "address": {
+          "address1": "48 Valley Road",
+          "town": "Norwich",
+          "postcode": "NR1 3QW"
+        }
+      }
+    ],
+    "role": "Administration, HR, data and finance",
+    "title": "Administrator",
+    "searches": [
+      "Administrator", "School Administrator", "Administrative Assistant", "Office Coordinator", "School Secretary"
+    ],
+    "phase": "Primary",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 3"
+    ],
+    "actualSalaryDetails": "£22,000 - £25,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01603 456789",
+    "skillsAndExperience": "We are looking for an individual with strong organizational skills, excellent communication abilities, and experience in handling school administrative tasks, including student records, staff coordination, and liaison with parents.",
+    "whatSchoolOffers": "- A supportive and collaborative work environment\n- Opportunities for career advancement\n- A comprehensive benefits package.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Maplewood High School is committed to safeguarding and promoting the welfare of children and expects all staff and volunteers to share this commitment.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role involves working with sensitive information; therefore, a full enhanced DBS check is required.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-31T10:00:00.000Z",
+    "closingDate": "2024-02-20T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-04-10T09:00:00.000Z",
+    "distance": 2.5
   }
 ]

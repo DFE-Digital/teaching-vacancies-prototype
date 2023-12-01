@@ -121,7 +121,21 @@ $(document).ready(function () {
                     div.classList.remove('js-opened');
                 }
         });
+
+        // Check if the div ID is 'hello'
+        if (div.id === 'non-teaching') {
+           // Check if the div has a specific class, e.g., 'your-class-name'
+           if (div.classList.contains('js-opened')) {
+              // Perform progressive disclosure
+              
+              $('.app-filter__options #subjects').hide();
+
+            }
+        }
+
     });
+
+
 }
 
 

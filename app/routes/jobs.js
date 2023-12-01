@@ -3,7 +3,7 @@ module.exports = router => {
 
   router.get('/', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
-    res.render('jobs/index', {
+    res.render('jobs/home', {
       jobs
     })
   })
@@ -56,7 +56,7 @@ module.exports = router => {
   router.get('/jobs/:id', (req, res) => {
     let jobs = req.session.data.jobs
     let job = jobs.find(job => job.id == req.params.id)
-    res.render('jobs/show_new', {
+    res.render('jobs/show', {
       job
     })
   })
