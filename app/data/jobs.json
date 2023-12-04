@@ -2237,6 +2237,7 @@
     "startDate": "2024-05-01T08:00:00.000Z",
     "distance": 2.0
   },
+
   {
     "id": "55004",
     "jobtype": "support",
@@ -2270,8 +2271,9 @@
         }
       }
     ],
+    "hybrid": "Yes",
     "role": [
-      "Other teaching support"
+      "Other teaching support", "Learning support or cover supervisor", "Other support roles"
     ],
     "title": "Science Technician",
     "searches": [
@@ -2303,6 +2305,7 @@
     "startDate": "2024-04-01T08:00:00.000Z",
     "distance": 1.8
   },
+
   {
     "id": "55005",
     "jobtype": "management",
@@ -2501,5 +2504,1420 @@
     "closingTime": "5pm",
     "startDate": "2024-04-10T09:00:00.000Z",
     "distance": 2.5
+  },
+
+  {
+    "id": "55007",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "c4d5e6f7-g8h9-i1j2-k3l4-m5n6o7p8q9r0",
+      "name": "Brookdale Institute",
+      "address": {
+        "address1": "55 Elm Street",
+        "town": "Cambridge",
+        "postcode": "CB2 3AR"
+      },
+      "type": "Educational Institute",
+      "phase": "Higher Education",
+      "ageGroup": "18+",
+      "size": "1500",
+      "website": "http://brookdaleinstitute.ac.uk",
+      "emailAddress": "contact@brookdaleinstitute.org.uk",
+      "about": "Brookdale Institute, renowned for its innovative approach to education, seeks a dynamic Marketing Manager to enhance our brand presence and outreach.",
+      "safeguardingCommitment": "We are dedicated to ensuring a safe and positive environment for our learners and staff, with a strong emphasis on safeguarding.",
+      "logo": "https://loremflickr.com/100/100/education",
+      "photo": "https://loremflickr.com/640/320/education"
+    },
+    "locations": [
+      {
+        "name": "Brookdale Institute",
+        "address": {
+          "address1": "55 Elm Street",
+          "town": "Cambridge",
+          "postcode": "CB2 3AR"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other leadership roles", "Other teaching support", "Other support roles" ],
+    "title": "Marketing Manager",
+    "searches": [
+      "Marketing Manager", "Marketing Director", "Communications Manager", "Brand Manager", "Marketing Officer", "marketing", "manager"
+    ],
+    "phase": "Higher Education",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive salary"
+    ],
+    "actualSalaryDetails": "£40,000 - £50,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01223 789 456",
+    "skillsAndExperience": "Seeking a Marketing Manager with a proven track record in developing and executing marketing strategies, digital campaigns, and public relations initiatives. Strong leadership skills and the ability to collaborate with various departments are essential.",
+    "whatSchoolOffers": "- A creative and innovative work environment\n- Opportunities for professional development\n- A supportive team and management.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our commitment to safeguarding is integral to our institute's ethos, ensuring a safe learning and working environment.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Candidates will undergo a background check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-20T09:00:00.000Z",
+    "closingDate": "2024-01-31T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-03-01T09:00:00.000Z",
+    "distance": 3.0
+  },
+
+  {
+    "id": "55008",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "d7e8f9g0-h1i2-j3k4-l5m6-n7o8p9q0r1s2",
+      "name": "Valley High School",
+      "address": {
+        "address1": "78 Hill Road",
+        "town": "Sheffield",
+        "postcode": "S10 2NJ"
+      },
+      "type": "Secondary School",
+      "phase": "Secondary",
+      "ageGroup": "11 to 16",
+      "size": "900",
+      "website": "http://valleyhighschool.edu.uk",
+      "emailAddress": "info@valleyhighschool.org.uk",
+      "about": "Valley High School is seeking a School Business Manager to oversee our financial and administrative operations, contributing to the effective management of our school.",
+      "safeguardingCommitment": "We are committed to the safeguarding and welfare of our students and staff, maintaining a safe educational environment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Valley High School",
+        "address": {
+          "address1": "78 Hill Road",
+          "town": "Sheffield",
+          "postcode": "S10 2NJ"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other leadership roles" ],
+    "title": "School Business Manager",
+    "searches": [
+      "School Business Manager", "Finance Manager", "School Administrator", "Business Manager", "Educational Finance Officer", "business", "manager"
+    ],
+    "phase": "Secondary",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive salary"
+    ],
+    "actualSalaryDetails": "£35,000 - £45,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0114 321 7890",
+    "skillsAndExperience": "The ideal candidate will have experience in school business management, financial planning, and administrative leadership. Strong communication and analytical skills are essential, along with a commitment to the school's values and mission.",
+    "whatSchoolOffers": "- A collaborative and inclusive work environment\n- Opportunities for professional and personal growth\n- A competitive benefits package.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our dedication to safeguarding reflects our commitment to the well-being and development of our students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Successful applicants will be subject to an enhanced DBS check.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-25T09:00:00.000Z",
+    "closingDate": "2024-02-15T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-04-15T09:00:00.000Z",
+    "distance": 2.2
+  },
+
+  {
+    "id": "55009",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "e7f8g9h0-i1j2-k3l4-m5n6-o7p8q9r1s2t3",
+      "name": "Valley High School",
+      "address": {
+        "address1": "789 Hillside Road",
+        "town": "Sheffield",
+        "postcode": "S10 2QT"
+      },
+      "type": "Secondary School",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 18",
+      "size": "600",
+      "website": "http://valleyhigh.edu.uk",
+      "emailAddress": "contact@valleyhigh.org.uk",
+      "about": "Valley High School, renowned for its inclusive and supportive learning environment, is seeking a dedicated Attendance Officer. The successful candidate will play a key role in promoting regular school attendance and punctuality, essential for students' educational success.",
+      "safeguardingCommitment": "Our school is unwavering in its commitment to safeguarding and ensuring the welfare of all students.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Valley High School",
+        "address": {
+          "address1": "789 Hillside Road",
+          "town": "Sheffield",
+          "postcode": "S10 2QT"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Pastoral, health and welfare", "Other teaching support", "Other support roles" ],
+    "title": "Attendance Officer",
+    "searches": [
+      "Attendance Officer", "Student Attendance", "School Attendance", "Educational Support", "Pupil Welfare", "attendance", "officer"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 5"
+    ],
+    "actualSalaryDetails": "£23,000 - £27,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0114 233 4455",
+    "skillsAndExperience": "The ideal candidate should have experience in handling student attendance records, excellent communication skills, and the ability to work effectively with students, parents, and staff. A commitment to promoting the importance of education and regular attendance is essential.",
+    "whatSchoolOffers": "- A supportive and collaborative work environment\n- Opportunities for professional development\n- Engaging with a diverse student body.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We are dedicated to the safety and welfare of our students and expect all staff to share in this commitment.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants will be subject to a DBS check and must be eligible to work in the UK.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-01T12:00:00.000Z",
+    "closingDate": "2024-01-15T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-02-01T09:00:00.000Z",
+    "distance": 3.2
+  },
+
+
+
+  {
+    "id": "55010",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6",
+      "name": "Orchard Grove College",
+      "address": {
+        "address1": "101 Blossom Street",
+        "town": "Norwich",
+        "postcode": "NR3 3AB"
+      },
+      "type": "College",
+      "phase": "Further Education",
+      "ageGroup": "16 to 19",
+      "size": "450",
+      "website": "http://orchardgrove.ac.uk",
+      "emailAddress": "info@orchardgrove.ac.uk",
+      "about": "Orchard Grove College, a center for excellence in further education, is seeking a responsible and vigilant Exam Invigilator to ensure fair and smooth conduct of examinations.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of our students, expecting all staff to uphold these values.",
+      "logo": "https://loremflickr.com/100/100/college",
+      "photo": "https://loremflickr.com/640/320/college"
+    },
+    "locations": [
+      {
+        "name": "Orchard Grove College",
+        "address": {
+          "address1": "101 Blossom Street",
+          "town": "Norwich",
+          "postcode": "NR3 3AB"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other teaching support", "Other support roles" ],
+    "title": "Exam Invigilator",
+    "searches": [
+      "Exam Invigilator", "Examination Supervisor", "Test Monitor", "Exam Proctor", "exam", "officer"
+    ],
+    "phase": "Further Education",
+    "workingPatterns": [
+      "Part time", "Temporary"
+    ],
+    "salaryDetails": [
+      "Hourly rate"
+    ],
+    "actualSalaryDetails": "£10 per hour",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01603 775599",
+    "skillsAndExperience": "The ideal candidate should have strong attention to detail, ability to enforce examination rules, and good organizational skills. Experience in an educational setting is preferred but not essential.",
+    "whatSchoolOffers": "- A flexible working schedule\n- Training for the role\n- A supportive and collaborative team environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our college prioritizes the safety and wellbeing of our students and staff.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Successful candidates will be required to undergo a DBS check.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-11-20T08:00:00.000Z",
+    "closingDate": "2024-01-05T16:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-05-01T08:30:00.000Z",
+    "distance": 1.0
+  },
+  
+  
+  {
+    "id": "55011",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6",
+      "name": "Harmony Elementary School",
+      "address": {
+        "address1": "123 Green Lane",
+        "town": "Norwich",
+        "postcode": "NR4 6XY"
+      },
+      "type": "Primary School",
+      "phase": "Primary school",
+      "ageGroup": "5 to 11",
+      "size": "300",
+      "website": "http://harmonyschool.edu.uk",
+      "emailAddress": "info@harmonyschool.org.uk",
+      "about": "Harmony Elementary School, a vibrant and nurturing school community, is looking for a dedicated Cleaner to maintain a clean, safe, and welcoming environment for our students and staff.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and expect all staff to share in this commitment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Harmony Elementary School",
+        "address": {
+          "address1": "123 Green Lane",
+          "town": "Norwich",
+          "postcode": "NR4 6XY"
+        }
+      }
+    ],
+    "role": "Catering, cleaning and site management",
+    "title": "Cleaner",
+    "searches": [
+      "Cleaner", "School Cleaner", "Custodian", "Janitor", "Facility Maintenance", "cleaner"
+    ],
+    "phase": "Primary school",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "salaryDetails": [
+      "Hourly wage"
+    ],
+    "actualSalaryDetails": "£9.50 per hour",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01603 555789",
+    "skillsAndExperience": "The ideal candidate will have experience in cleaning and facility maintenance, with a focus on attention to detail and the ability to work independently. Knowledge of cleaning chemicals and supplies, and a commitment to maintaining a high standard of cleanliness are essential.",
+    "whatSchoolOffers": "- A friendly and supportive work environment\n- Flexible working hours\n- Training and development opportunities.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our school is dedicated to providing a safe and clean environment for our students and staff.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Candidates will be required to undergo a DBS check. Previous experience in a school setting is preferred but not essential.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-10-05T08:00:00.000Z",
+    "closingDate": "2023-11-30T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-01-02T09:00:00.000Z",
+    "distance": 1.0
+  },
+
+  {
+    "id": "55012",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "f1g2h3i4-j5k6-l7m8-n9o0-p1q2r3s4t5u6",
+      "name": "Sunrise Middle School",
+      "address": {
+        "address1": "45 Park Road",
+        "town": "Birmingham",
+        "postcode": "B12 9KL"
+      },
+      "type": "Middle School",
+      "phase": "Middle school",
+      "ageGroup": "9 to 14",
+      "size": "400",
+      "website": "http://sunrisemiddleschool.edu.uk",
+      "emailAddress": "catering@sunrisems.org.uk",
+      "about": "At Sunrise Middle School, we emphasize the importance of nutrition and healthy eating habits for our students. We are seeking a passionate Kitchen Assistant to join our catering team and assist in preparing and serving nutritious meals.",
+      "safeguardingCommitment": "Our school is dedicated to safeguarding and creating a nurturing environment for our students and staff.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Sunrise Middle School",
+        "address": {
+          "address1": "45 Park Road",
+          "town": "Birmingham",
+          "postcode": "B12 9KL"
+        }
+      }
+    ],
+    "role": "Catering and Nutrition",
+    "title": "Kitchen Assistant",
+    "searches": [
+      "Kitchen Assistant", "Catering Assistant", "Food Service Worker", "School Canteen", "Catering Staff"
+    ],
+    "phase": "Middle school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive salary"
+    ],
+    "actualSalaryDetails": "£18,000 - £20,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0121 456 7890",
+    "skillsAndExperience": "We are looking for a kitchen assistant with experience in food preparation and service. The ideal candidate should have basic cooking skills, understand kitchen hygiene and safety standards, and be able to work efficiently in a busy environment.",
+    "whatSchoolOffers": "- A friendly and dynamic kitchen team\n- Opportunities for culinary skill development\n- A supportive working environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "All staff are expected to contribute to a safe and healthy eating environment for our students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants will need to undergo a DBS check. Previous experience in a school kitchen is advantageous but not essential.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-11-01T10:00:00.000Z",
+    "closingDate": "2024-01-31T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-03-01T09:00:00.000Z",
+    "distance": 1.5
+  },
+
+
+  {
+    "id": "55013",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "u7v8w9x0-y1z2-a3b4-c5d6-e7f8g9h1i2j3",
+      "name": "Cedar Grove Community School",
+      "address": {
+        "address1": "88 Maple Drive",
+        "town": "Liverpool",
+        "postcode": "L14 5QP"
+      },
+      "type": "Community School",
+      "phase": "Primary school",
+      "ageGroup": "4 to 11",
+      "size": "350",
+      "website": "http://cedargroveschool.edu.uk",
+      "emailAddress": "office@cedargrove.cs.uk",
+      "about": "Cedar Grove Community School, a school that prides itself on creating a nurturing and inclusive environment for its students, is seeking an experienced Office Manager. The successful candidate will play a vital role in the smooth running of the school's administrative functions.",
+      "safeguardingCommitment": "Our school is committed to safeguarding and promoting the welfare of children and expects all staff to share this commitment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Cedar Grove Community School",
+        "address": {
+          "address1": "88 Maple Drive",
+          "town": "Liverpool",
+          "postcode": "L14 5QP"
+        }
+      }
+    ],
+    "role": "Administration, HR, data and finance",
+    "title": "Office Manager",
+    "searches": [
+      "Office Manager", "School Administrator", "Administrative Manager", "Office Supervisor", "School Office Manager", "office", "manager"
+    ],
+    "phase": "Primary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 6"
+    ],
+    "actualSalaryDetails": "£26,000 - £30,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0151 600 3456",
+    "skillsAndExperience": "The ideal candidate will have a strong background in office management, excellent organizational and communication skills, and experience in handling a variety of administrative duties. Familiarity with school systems and processes is highly desirable.",
+    "whatSchoolOffers": "- A supportive and vibrant work environment\n- Opportunities for professional development and growth\n- A role that is central to the school community.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Cedar Grove is dedicated to creating a safe and supportive environment for all its members.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "This role requires handling sensitive information and will include a DBS check. Previous experience in an educational setting is preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-15T09:00:00.000Z",
+    "closingDate": "2023-12-01T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-10T09:00:00.000Z",
+    "distance": 2.0
+  },
+
+
+  {
+    "id": "55014",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "k5l6m7n8-o9p0-q1r2-s3t4-u5v6w7x8y9z0",
+      "name": "Orchard Valley Secondary School",
+      "address": {
+        "address1": "100 Blossom Street",
+        "town": "Exeter",
+        "postcode": "EX2 7YZ"
+      },
+      "type": "Secondary School",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 16",
+      "size": "700",
+      "website": "http://orchardvalleyss.edu.uk",
+      "emailAddress": "admin@orchardvalleyss.uk",
+      "about": "Orchard Valley Secondary School is dedicated to providing an enriching educational experience. We are currently seeking a Data Manager to oversee and manage our student and staff data systems, ensuring accuracy, compliance, and efficient data processes.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people and expect all staff to share this commitment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Orchard Valley Secondary School",
+        "address": {
+          "address1": "100 Blossom Street",
+          "town": "Exeter",
+          "postcode": "EX2 7YZ"
+        }
+      }
+    ],
+    "role": "Data Management",
+    "title": "Data Manager",
+    "searches": [
+      "Data Manager", "School Data Coordinator", "Data Analysis", "Information Manager", "Educational Data Specialist"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 7"
+    ],
+    "actualSalaryDetails": "£30,000 - £35,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01392 456 789",
+    "skillsAndExperience": "The successful candidate will possess strong analytical skills, experience with data management systems, and an understanding of data protection regulations. Experience in educational data management and reporting is highly desirable.",
+    "whatSchoolOffers": "- A dynamic and supportive work environment\n- Opportunities for professional development in data management and analysis\n- A key role in school operations and decision making.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our commitment to safeguarding is integral to our ethos and practices.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants must be eligible to work in the UK and will be subject to a DBS check. Familiarity with educational data systems is a plus.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-11-20T09:00:00.000Z",
+    "closingDate": "2024-01-10T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-02-15T09:00:00.000Z",
+    "distance": 2.5
+  },
+
+
+
+  {
+    "id": "55015",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "z1y2x3w4-v5u6-t7s8-r9q0-p1o2n3m4l5k6",
+      "name": "Willow Tree Primary School",
+      "address": {
+        "address1": "15 Riverside Drive",
+        "town": "Nottingham",
+        "postcode": "NG7 1AB"
+      },
+      "type": "Primary School",
+      "phase": "Primary school",
+      "ageGroup": "4 to 11",
+      "size": "420",
+      "website": "http://willowtreeprimary.edu.uk",
+      "emailAddress": "support@willowtree.ps.uk",
+      "about": "Willow Tree Primary School is a community-centered school focused on holistic development. We are looking for a compassionate and dedicated Family Support Worker to join our team and provide support to our students and their families, fostering a positive home-school relationship.",
+      "safeguardingCommitment": "Our school is deeply committed to the safety and well-being of our students, ensuring a supportive and secure environment for them to thrive.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Willow Tree Primary School",
+        "address": {
+          "address1": "15 Riverside Drive",
+          "town": "Nottingham",
+          "postcode": "NG7 1AB"
+        }
+      }
+    ],
+    "role": "Pastoral, health and welfare",
+    "title": "Family Support Worker",
+    "searches": [
+      "Family Support Worker", "School Counsellor", "Community Support Worker", "Child Welfare Specialist", "Educational Support Worker"
+    ],
+    "phase": "Primary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 5"
+    ],
+    "actualSalaryDetails": "£25,000 - £28,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0115 948 2334",
+    "skillsAndExperience": "Ideal candidates should have experience in family support, counseling, or social work, with strong communication skills and a compassionate approach to dealing with sensitive family matters. Experience in a school setting is beneficial but not essential.",
+    "whatSchoolOffers": "- A supportive and inclusive team environment\n- Opportunities for professional development in family and community engagement\n- A rewarding role making a real difference in the lives of children and families.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "All staff are expected to uphold our commitment to safeguarding and supporting our students and their families.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role requires a DBS check and eligibility to work in the UK. A qualification in social work, counseling, or related field is preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-01T10:00:00.000Z",
+    "closingDate": "2024-02-28T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-04-01T09:00:00.000Z",
+    "distance": 3.0
+  },
+  
+  
+  
+  {
+    "id": "55015",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "z1y2x3w4-v5u6-t7s8-r9q0-p1o2n3m4l5k6",
+      "name": "Willow Tree Primary School",
+      "address": {
+        "address1": "15 Riverside Drive",
+        "town": "Nottingham",
+        "postcode": "NG7 1AB"
+      },
+      "type": "Primary School",
+      "phase": "Primary school",
+      "ageGroup": "4 to 11",
+      "size": "420",
+      "website": "http://willowtreeprimary.edu.uk",
+      "emailAddress": "support@willowtree.ps.uk",
+      "about": "Willow Tree Primary School is a community-centered school focused on holistic development. We are looking for a compassionate and dedicated Family Support Worker to join our team and provide support to our students and their families, fostering a positive home-school relationship.",
+      "safeguardingCommitment": "Our school is deeply committed to the safety and well-being of our students, ensuring a supportive and secure environment for them to thrive.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Willow Tree Primary School",
+        "address": {
+          "address1": "15 Riverside Drive",
+          "town": "Nottingham",
+          "postcode": "NG7 1AB"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Learning support or cover supervisor", "Other teaching support" ],
+    "title": "Family Support Worker",
+    "searches": [
+      "Family Support Worker", "School Counsellor", "Community Support Worker", "Child Welfare Specialist", "Educational Support Worker", "support", "family"
+    ],
+    "phase": "Primary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 5"
+    ],
+    "actualSalaryDetails": "£25,000 - £28,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0115 948 2334",
+    "skillsAndExperience": "Ideal candidates should have experience in family support, counseling, or social work, with strong communication skills and a compassionate approach to dealing with sensitive family matters. Experience in a school setting is beneficial but not essential.",
+    "whatSchoolOffers": "- A supportive and inclusive team environment\n- Opportunities for professional development in family and community engagement\n- A rewarding role making a real difference in the lives of children and families.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "All staff are expected to uphold our commitment to safeguarding and supporting our students and their families.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role requires a DBS check and eligibility to work in the UK. A qualification in social work, counseling, or related field is preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-12-01T10:00:00.000Z",
+    "closingDate": "2024-02-28T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-04-01T09:00:00.000Z",
+    "distance": 3.0
+  },
+
+
+  {
+    "id": "55016",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "b6c7d8e9-f0a1-b2c3-d4e5-f6g7h8i9j0k1",
+      "name": "Riverbank High School",
+      "address": {
+        "address1": "500 Mountain View Road",
+        "town": "Cardiff",
+        "postcode": "CF10 1AB"
+      },
+      "type": "High School",
+      "phase": "Secondary school",
+      "ageGroup": "13 to 18",
+      "size": "800",
+      "website": "http://riverbankhs.edu.uk",
+      "emailAddress": "counselling@riverbankhs.org.uk",
+      "about": "Riverbank High School is dedicated to supporting the emotional and mental well-being of our students. We are seeking a qualified School Counsellor to provide guidance and support, helping students navigate challenges and promote positive mental health.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people and expect all staff to share this commitment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Riverbank High School",
+        "address": {
+          "address1": "500 Mountain View Road",
+          "town": "Cardiff",
+          "postcode": "CF10 1AB"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Learning support or cover supervisor", "Other teaching support", "Other leadership roles" ],
+    "title": "School Counsellor",
+    "searches": [
+      "School Counsellor", "Student Counsellor", "Educational Psychologist", "Guidance Counsellor", "Mental Health Counsellor", "counsellor"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 8"
+    ],
+    "actualSalaryDetails": "£32,000 - £37,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "02920 123 456",
+    "skillsAndExperience": "The ideal candidate will have a background in counselling or psychology, with experience in a school or youth setting. Strong interpersonal skills, empathy, and the ability to provide confidential and effective support to students are essential.",
+    "whatSchoolOffers": "- A supportive educational environment\n- Opportunities for ongoing professional development\n- Being part of a dedicated team focused on student well-being.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our staff are instrumental in creating a safe, supportive, and inclusive environment for our students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role requires a DBS check and relevant qualifications in counselling or psychology. Experience in dealing with a range of mental health issues is highly valued.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-10-15T09:00:00.000Z",
+    "closingDate": "2024-01-31T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-03-01T09:00:00.000Z",
+    "distance": 2.7
+  },
+
+
+
+  {
+    "id": "55017",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "l1m2n3o4-p5q6-r7s8-t9u0-v1w2x3y4z5a6",
+      "name": "Parkside Academy",
+      "address": {
+        "address1": "300 Orchard Road",
+        "town": "Swansea",
+        "postcode": "SA1 6YZ"
+      },
+      "type": "Academy",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 18",
+      "size": "650",
+      "website": "http://parksideacademy.edu.uk",
+      "emailAddress": "careers@parksideacademy.uk",
+      "about": "Parkside Academy is focused on empowering students for future success. We're seeking a Careers Advisor to provide guidance and support to students, helping them make informed decisions about their educational and career paths.",
+      "safeguardingCommitment": "We prioritize the safety and well-being of our students and staff, maintaining a secure learning environment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Parkside Academy",
+        "address": {
+          "address1": "300 Orchard Road",
+          "town": "Swansea",
+          "postcode": "SA1 6YZ"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other teaching support", "Pastoral, health and welfare", "Other support roles"],
+    "title": "Careers Advisor",
+    "searches": [
+      "Careers Advisor", "Career Counsellor", "Student Guidance", "Education Advisor", "Career Coach", "career", "advisor"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 6"
+    ],
+    "actualSalaryDetails": "£27,000 - £30,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01792 123 456",
+    "skillsAndExperience": "Candidates should have experience in career counseling or career development, with strong communication skills and knowledge of current job markets and educational opportunities. A passion for helping students achieve their potential is essential.",
+    "whatSchoolOffers": "- A rewarding role shaping students' futures\n- Professional development opportunities\n- A collaborative and dynamic team environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our commitment to safeguarding is integral to our ethos, ensuring a safe and positive atmosphere for career exploration.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Eligibility to work in the UK is required, and a DBS check will be conducted.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-11-10T09:00:00.000Z",
+    "closingDate": "2024-01-05T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-02-10T09:00:00.000Z",
+    "distance": 2.3
+  },
+
+
+
+
+  {
+    "id": "55019",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "h3i4j5k6-l7m8-n9o0-p1q2-r3s4t5u6v7w8",
+      "name": "Oakridge Secondary School",
+      "address": {
+        "address1": "45 High Street",
+        "town": "York",
+        "postcode": "YO1 8ZX"
+      },
+      "type": "Secondary School",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 18",
+      "size": "1000",
+      "website": "http://oakridgess.edu.uk",
+      "emailAddress": "sports@oakridgess.org.uk",
+      "about": "Oakridge Secondary School, known for its commitment to holistic student development, is seeking a dynamic Sports Coach to lead our sports programs. The ideal candidate will inspire students in various sports, emphasizing skill development, teamwork, and sportsmanship.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and expect all staff to share in this commitment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Oakridge Secondary School",
+        "address": {
+          "address1": "45 High Street",
+          "town": "York",
+          "postcode": "YO1 8ZX"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Other teaching support", "Other support roles"],    
+    "title": "Sports Coach",
+    "searches": [
+      "Sports Coach", "Physical Education Teacher", "Athletic Coach", "PE Instructor", "School Sports Coach", "sports", "coach"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 5"
+    ],
+    "actualSalaryDetails": "£24,000 - £28,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01904 123 456",
+    "skillsAndExperience": "The successful candidate should have experience in coaching youth sports, excellent organizational skills, and a passion for physical education. A background in multiple sports and the ability to motivate and mentor students of varying skill levels is essential.",
+    "whatSchoolOffers": "- A state-of-the-art sports facility\n- A vibrant and supportive school community\n- Opportunities for professional development in sports coaching and education.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our staff play a key role in creating a safe and positive learning environment for students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role requires a DBS check. Relevant coaching qualifications are preferred, and eligibility to work in the UK is essential.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-08-15T09:00:00.000Z",
+    "closingDate": "2023-10-30T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-01T09:00:00.000Z",
+    "distance": 2.0
+  },
+
+
+
+  {
+    "id": "55020",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "u6v7w8x9-y0z1-a2b3-c4d5-e6f7g8h9i0j1",
+      "name": "Meadowfield Primary School",
+      "address": {
+        "address1": "12 Daisy Lane",
+        "town": "Glasgow",
+        "postcode": "G12 4LN"
+      },
+      "type": "Primary School",
+      "phase": "Primary school",
+      "ageGroup": "4 to 11",
+      "size": "350",
+      "website": "http://meadowfieldps.edu.uk",
+      "emailAddress": "therapy@meadowfieldps.org.uk",
+      "about": "Meadowfield Primary School is dedicated to supporting the diverse needs of our students. We are looking for a qualified Speech and Language Therapist to provide assessment and intervention for students with communication disorders, contributing to their academic and social success.",
+      "safeguardingCommitment": "Our school is committed to safeguarding and ensuring a nurturing environment for our students.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Meadowfield Primary School",
+        "address": {
+          "address1": "12 Daisy Lane",
+          "town": "Glasgow",
+          "postcode": "G12 4LN"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "SENDCo (special educational needs and disabilities coordinator)", "Pastoral, health and welfare", "Learning support or cover supervisor", "Other teaching support"],
+    "title": "Speech and Language Therapist",
+    "searches": [
+      "Speech and Language Therapist", "SLT", "Speech Therapist", "Language Pathologist", "Pediatric Speech Therapist", "therapist", "speech"
+    ],
+    "phase": "Primary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "NHS Band 5-6"
+    ],
+    "actualSalaryDetails": "£26,000 - £35,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0141 334 5566",
+    "skillsAndExperience": "The ideal candidate should have a degree in Speech and Language Therapy and experience in a pediatric or educational setting. Strong communication skills, empathy, and the ability to create and implement individualized therapy plans are essential.",
+    "whatSchoolOffers": "- Supportive multidisciplinary team\n- Continuing professional development opportunities\n- A rewarding role making a significant difference in children's lives.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We are dedicated to providing a safe and supportive learning environment for all our students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "A DBS check is required for this role. HCPC registration is preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-01T09:00:00.000Z",
+    "closingDate": "2023-11-15T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2024-01-05T09:00:00.000Z",
+    "distance": 1.8
+  },
+  
+  {
+    "id": "55021",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "p2q3r4s5-t6u7-v8w9-x0y1-z2a3b4c5d6e7",
+      "name": "Elmwood Community School",
+      "address": {
+        "address1": "67 Elm Street",
+        "town": "Birmingham",
+        "postcode": "B1 2HQ"
+      },
+      "type": "Community School",
+      "phase": "Primary and Secondary",
+      "ageGroup": "5 to 16",
+      "size": "800",
+      "website": "http://elmwoodcs.edu.uk",
+      "emailAddress": "library@elmwoodcs.org.uk",
+      "about": "Elmwood Community School is committed to fostering a love of reading and learning among our students. We are seeking an experienced Librarian to manage our school library, curate a diverse range of resources, and engage students in literacy and research.",
+      "safeguardingCommitment": "Our school is dedicated to safeguarding and promoting the welfare of children, providing a safe and inclusive educational environment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Elmwood Community School",
+        "address": {
+          "address1": "67 Elm Street",
+          "town": "Birmingham",
+          "postcode": "B1 2HQ"
+        }
+      }
+    ],
+    "role": "Other support roles",
+    "title": "Librarian",
+    "searches": [
+      "Librarian", "School Librarian", "Library Manager", "Media Specialist", "Information Specialist", "librarian"
+    ],
+    "phase": "Primary and Secondary",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Grade 6"
+    ],
+    "actualSalaryDetails": "£25,000 - £30,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0121 678 9012",
+    "skillsAndExperience": "The ideal candidate will have a degree in Library Science or a related field, experience in managing a library, and a passion for literature and education. Strong organizational skills and experience in developing literacy programs are essential.",
+    "whatSchoolOffers": "- A vibrant and resourceful library\n- Opportunities for professional development\n- A central role in the academic life of the school.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We uphold the highest standards of safety and wellbeing for our students and staff.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants must be eligible to work in the UK. A DBS check is required for this position.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-20T09:00:00.000Z",
+    "closingDate": "2023-12-10T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-15T09:00:00.000Z",
+    "distance": 2.5
+  },
+
+
+  {
+    "id": "55022",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "f8g9h0i1-j2k3-l4m5-n6o7-p8q9r0s1t2u3",
+      "name": "Harbourview Academy",
+      "address": {
+        "address1": "90 Coastal Road",
+        "town": "Brighton",
+        "postcode": "BN1 3XX"
+      },
+      "type": "Academy",
+      "phase": "All levels",
+      "ageGroup": "4 to 18",
+      "size": "950",
+      "website": "http://harbourviewacademy.edu.uk",
+      "emailAddress": "improvement@harbourviewacademy.ac.uk",
+      "about": "Harbourview Academy, known for its innovative approach to education, is seeking a School Improvement Lead to spearhead initiatives that enhance our educational standards and student outcomes. The role involves collaborating with staff to implement best practices and foster continuous improvement.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people and expect all staff to share this commitment.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Harbourview Academy",
+        "address": {
+          "address1": "90 Coastal Road",
+          "town": "Brighton",
+          "postcode": "BN1 3XX"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Other leadership roles", "Other support roles"],
+    "title": "School Improvement Lead",
+    "searches": [
+      "School Improvement Lead", "Educational Consultant", "Curriculum Developer", "Academic Coordinator", "Education Reform Specialist"
+    ],
+    "phase": "All levels",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive salary"
+    ],
+    "actualSalaryDetails": "£40,000 - £45,000",
+    "hasAdditionalAllowances": "Yes",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01273 123 456",
+    "skillsAndExperience": "The ideal candidate will have significant experience in educational leadership, a strong understanding of curriculum development, and a proven track record in school improvement. Excellent analytical, communication, and project management skills are essential.",
+    "whatSchoolOffers": "- Leadership role in a forward-thinking institution\n- Opportunities for impactful change and professional growth\n- Supportive and collaborative working environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our school's ethos revolves around creating a safe and effective learning environment for all.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "This role requires a DBS check and eligibility to work in the UK. A background in educational leadership and change management is highly valued.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-08-01T09:00:00.000Z",
+    "closingDate": "2023-11-30T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-06T09:00:00.000Z",
+    "distance": 3.0
+  },
+
+
+
+  {
+    "id": "55023",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "v4w5x6y7-z8a9-b0c1-d2e3-f4g5h6i7j8k9",
+      "name": "Countryside High School",
+      "address": {
+        "address1": "22 Country Road",
+        "town": "Lincoln",
+        "postcode": "LN5 8RQ"
+      },
+      "type": "High School",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 18",
+      "size": "850",
+      "website": "http://countrysidehs.edu.uk",
+      "emailAddress": "transport@countrysidehs.org.uk",
+      "about": "Countryside High School is committed to providing safe and reliable transportation for our students. We are currently seeking a responsible and experienced Bus/Coach Driver to join our team, ensuring the safe transport of students to and from school and various school events.",
+      "safeguardingCommitment": "Our school prioritizes the safety and well-being of our students in every aspect of their educational experience.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Countryside High School",
+        "address": {
+          "address1": "22 Country Road",
+          "town": "Lincoln",
+          "postcode": "LN5 8RQ"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Catering, cleaning and site management", "Other support roles"],
+    "title": "Bus/Coach Driver",
+    "searches": [
+      "Bus Driver", "Coach Driver", "School Bus Driver", "Transport Officer", "Student Transportation", "driver"
+    ],
+    "phase": "Secondary school",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "salaryDetails": [
+      "Hourly wage"
+    ],
+    "actualSalaryDetails": "£12.50 per hour",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01522 123 456",
+    "skillsAndExperience": "Candidates should possess a valid bus driving license, have experience in driving school buses or coaches, and demonstrate excellent driving skills. Knowledge of safety protocols and a strong commitment to student safety are essential.",
+    "whatSchoolOffers": "- A vital role in our school community\n- A supportive working environment\n- Flexible working hours.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We ensure a safe and caring environment for our students, including their transportation to and from school.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role requires a full UK driving license, CPC (Certificate of Professional Competence), and a DBS check.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-07-20T09:00:00.000Z",
+    "closingDate": "2023-09-15T17:00:00.000Z",
+    "closingTime": "4pm",
+    "startDate": "2023-10-01T08:00:00.000Z",
+    "distance": 2.0
+  },
+  
+
+
+
+  {
+    "id": "55024",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "m8n9o0p1-q2r3-s4t5-u6v7-w8x9y0z1a2b3",
+      "name": "Rivertown Educational Trust",
+      "address": {
+        "address1": "98 Finance Avenue",
+        "town": "Leicester",
+        "postcode": "LE1 4FG"
+      },
+      "type": "Educational Trust",
+      "phase": "Multiple Phases",
+      "ageGroup": "4 to 18",
+      "size": "Multi-school trust",
+      "website": "http://rivertownedutrust.edu.uk",
+      "emailAddress": "finance@rivertownedutrust.org.uk",
+      "about": "Rivertown Educational Trust oversees a network of schools and is dedicated to providing high-quality education. We are seeking an experienced CFO to lead our financial strategy, oversee budgeting and finance operations, and contribute to the Trust's overall success.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people across our schools.",
+      "logo": "https://loremflickr.com/100/100/finance",
+      "photo": "https://loremflickr.com/640/320/finance"
+    },
+    "locations": [
+      {
+        "name": "Rivertown Educational Trust Head Office",
+        "address": {
+          "address1": "98 Finance Avenue",
+          "town": "Leicester",
+          "postcode": "LE1 4FG"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other leadership roles", "Other support roles"],
+    "title": "Chief Financial Officer (CFO)",
+    "searches": [
+      "CFO", "Chief Financial Officer", "Finance Director", "Senior Financial Manager", "Head of Finance", "cfo"
+    ],
+    "phase": "Multiple Phases",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Executive scale"
+    ],
+    "actualSalaryDetails": "£75,000 - £90,000",
+    "hasAdditionalAllowances": "Yes",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0116 234 5678",
+    "skillsAndExperience": "The ideal candidate will have a strong background in financial management, experience in a leadership role within the education sector or a similar field, and a proven track record in strategic financial planning and execution. An accountancy qualification is essential.",
+    "whatSchoolOffers": "- A leadership role in an influential educational organization\n- Opportunities to shape financial strategy and policy\n- A collaborative and dynamic working environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our commitment to safeguarding extends to all aspects of our operation, including financial stewardship.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "This senior position requires thorough background checks and eligibility to work in the UK. Experience in the education sector is highly valued.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-08-01T10:00:00.000Z",
+    "closingDate": "2023-10-31T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-02T09:00:00.000Z",
+    "distance": 3.5
+  },
+
+
+  {
+    "id": "55025",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "c4d5e6f7-g8h9-i1j2-k3l4-m5n6o7p8q9r0",
+      "name": "Innovative Learning Trust",
+      "address": {
+        "address1": "15 Innovation Way",
+        "town": "Manchester",
+        "postcode": "M20 3XW"
+      },
+      "type": "Education Trust",
+      "phase": "Multiple Phases",
+      "ageGroup": "3 to 18",
+      "size": "Multi-academy trust",
+      "website": "http://innovativelearningtrust.edu.uk",
+      "emailAddress": "leadership@ilt.org.uk",
+      "about": "Innovative Learning Trust oversees a group of academies focused on delivering excellence in education. We are seeking a visionary CEO to lead our trust, drive strategic growth, and ensure the highest standards of education across our schools.",
+      "safeguardingCommitment": "The trust is dedicated to safeguarding and promoting the welfare of children and young people in all our academies.",
+      "logo": "https://loremflickr.com/100/100/education",
+      "photo": "https://loremflickr.com/640/320/education"
+    },
+    "locations": [
+      {
+        "name": "Innovative Learning Trust Headquarters",
+        "address": {
+          "address1": "15 Innovation Way",
+          "town": "Manchester",
+          "postcode": "M20 3XW"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other leadership roles", "Other support roles"],
+    "title": "Chief Executive Officer (CEO)",
+    "searches": [
+      "CEO", "Chief Executive Officer", "Trust Leader", "Executive Director", "Academy Trust CEO", "ceo"
+    ],
+    "phase": "Multiple Phases",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Executive scale"
+    ],
+    "actualSalaryDetails": "£100,000 - £120,000",
+    "hasAdditionalAllowances": "Yes",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0161 234 5678",
+    "skillsAndExperience": "The ideal candidate will have extensive experience in educational leadership, strategic planning, and organizational management. A proven track record in leading multi-academy trusts or similar organizations, with a focus on educational excellence and innovation, is essential.",
+    "whatSchoolOffers": "- A pivotal leadership role in a prestigious educational trust\n- The opportunity to shape educational strategy and impact\n- A dynamic and supportive working environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We are committed to creating a safe and positive educational environment across our trust.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "This senior executive role requires a comprehensive background check and eligibility to work in the UK. Prior experience in managing educational institutions at a high level is highly preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-09-01T10:00:00.000Z",
+    "closingDate": "2023-11-15T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-06T09:00:00.000Z",
+    "distance": 4.0
+  },
+
+
+
+  {
+    "id": "55026",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
+      "name": "Greenwood Junior School",
+      "address": {
+        "address1": "32 Grove Street",
+        "town": "Sheffield",
+        "postcode": "S1 2FQ"
+      },
+      "type": "Junior School",
+      "phase": "Primary school",
+      "ageGroup": "7 to 11",
+      "size": "400",
+      "website": "http://greenwoodjunior.edu.uk",
+      "emailAddress": "health@greenwoodjs.org.uk",
+      "about": "Greenwood Junior School is dedicated to the health and well-being of our students. We are seeking a qualified and caring School Nurse to provide health services, support student health education, and ensure a healthy school environment.",
+      "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people in our care.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Greenwood Junior School",
+        "address": {
+          "address1": "32 Grove Street",
+          "town": "Sheffield",
+          "postcode": "S1 2FQ"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Pastoral, health and welfare", "Other support roles"],
+    "title": "School Nurse",
+    "searches": [
+      "School Nurse", "Registered Nurse", "Pediatric Nurse", "RN School", "Student Health Nurse"
+    ],
+    "phase": "Primary school",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "NHS Band 6"
+    ],
+    "actualSalaryDetails": "£31,000 - £34,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0114 321 4567",
+    "skillsAndExperience": "Ideal candidates should be registered nurses with experience in pediatric or school nursing. Excellent clinical skills, strong communication abilities, and a compassionate approach to child care are essential. Experience in health education and promoting healthy lifestyles is desirable.",
+    "whatSchoolOffers": "- A rewarding role in a supportive school environment\n- Opportunities for professional development in school healthcare\n- Active engagement in the well-being of students.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Our commitment to safeguarding extends to the health and well-being of our students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants must hold a valid nursing qualification and be eligible to work in the UK. A DBS check is required.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-10-01T09:00:00.000Z",
+    "closingDate": "2023-12-15T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-10T09:00:00.000Z",
+    "distance": 2.0
+  },
+  
+  {
+    "id": "55027",
+    "jobtype": "support",
+    "status": "Active",
+    "organisation": {
+      "id": "f6g7h8i9-j0k1-l2m3-n4o5-p6q7r8s9t0u1",
+      "name": "Broadway Education Center",
+      "address": {
+        "address1": "50 Central Avenue",
+        "town": "Newcastle",
+        "postcode": "NE1 3PE"
+      },
+      "type": "Education Center",
+      "phase": "Professional Development",
+      "ageGroup": "Staff",
+      "size": "200",
+      "website": "http://broadwayeducenter.edu.uk",
+      "emailAddress": "pd@broadwayeducenter.org.uk",
+      "about": "Broadway Education Center is committed to the continuous professional development of its staff. We are seeking a Personal Development Manager to design and implement staff development programs, fostering a culture of continuous learning and professional growth.",
+      "safeguardingCommitment": "Our center maintains a strong commitment to safeguarding and promoting the well-being of our team members.",
+      "logo": "https://loremflickr.com/100/100/education",
+      "photo": "https://loremflickr.com/640/320/education"
+    },
+    "locations": [
+      {
+        "name": "Broadway Education Center",
+        "address": {
+          "address1": "50 Central Avenue",
+          "town": "Newcastle",
+          "postcode": "NE1 3PE"
+        }
+      }
+    ],
+    "hybrid": "Yes",
+    "role":[ "Administration, HR, data and finance", "Other support roles"],
+    "title": "Personal Development Manager (Staff)",
+    "searches": [
+      "Personal Development Manager", "Staff Development Coordinator", "Professional Development Specialist", "Training Manager", "HR Development Manager"
+    ],
+    "phase": "Professional Development",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive salary"
+    ],
+    "actualSalaryDetails": "£35,000 - £40,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0191 654 3210",
+    "skillsAndExperience": "The candidate should have experience in staff development, excellent organizational and leadership skills, and a proven ability to design and deliver effective training programs. Knowledge of current educational training practices and staff welfare is essential.",
+    "whatSchoolOffers": "- A leadership role in staff development\n- Opportunities to innovate in professional training\n- A collaborative and supportive working environment.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "We are dedicated to providing a safe and enriching professional environment for our staff.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "The role requires eligibility to work in the UK and may involve occasional travel to different training locations. A background in education or human resources is preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-10-10T09:00:00.000Z",
+    "closingDate": "2023-12-20T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2024-02-01T09:00:00.000Z",
+    "distance": 2.5
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ]

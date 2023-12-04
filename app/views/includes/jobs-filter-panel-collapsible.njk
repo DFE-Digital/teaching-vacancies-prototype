@@ -187,6 +187,18 @@
                                         IT support
                                     </label>
                                 </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Pastoral, health and welfare' in filterRole  %} checked {% endif %}  type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-pastoral" value="Pastoral, health and welfare">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-pastoral">
+                                        Pastoral, health and welfare
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Other support roles' in filterRole  %} checked {% endif %}  type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-other-support" value="Other support roles">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-other-support">
+                                        Other support roles
+                                    </label>
+                                </li>
                         </ul>
                     </fieldset>
                 </div>
@@ -780,7 +792,7 @@
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other teaching support</a></li>
                 {% endif %}
 
-                <!-- // teaching and leadership -->
+                <!-- // other -->
 
                 {% if 'Administration, HR, data and finance' in filterRole %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Administration, HR, data and finance</a></li>
@@ -790,6 +802,12 @@
                 {% endif %}
                 {% if 'IT support' in filterRole %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>IT support</a></li>
+                {% endif %}
+                 {% if 'Pastoral, health and welfare' in filterRole %} 
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Pastoral, health and welfare</a></li>
+                {% endif %}
+                 {% if 'Other support roles' in filterRole %} 
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
                 {% endif %}
 
                 </ul>
