@@ -129,6 +129,8 @@ $(document).ready(function () {
               // Perform progressive disclosure
               
               $('.app-filter__options #subjects').hide();
+              $('.app-filter__options #key-stage').hide();
+              $('.app-filter__options #suitability').hide();
 
             }
         }

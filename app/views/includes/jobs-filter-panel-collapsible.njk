@@ -544,48 +544,43 @@
 
         {% endif %}
 
-        {{ govukCheckboxes({
-          idPrefix: "filters[suitability]",
-          name: "filters[suitability]",
-          classes: "govuk-checkboxes--small filter-bottom",
-          fieldset: {
-            legend: {
-              text: "Suitability for early career teachers (ECT)",
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          items: [{
-            value: 'Suitable for ECTs',
-            text: 'Suitable for ECTs'
-          }, {
-            value: 'Not suitable for ECTs',
-            text: 'Not suitable for ECTs'
-          }]
-        }) }}
+        <div id="suitability" class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitability for early career teachers (ECT)</legend>
+                <div class="govuk-checkboxes govuk-checkboxes--small filter-bottom" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[suitability]" name="filters[suitability]" type="checkbox" value="Suitable for ECTs"> <label class="govuk-label govuk-checkboxes__label" for="filters[suitability]">Suitable for ECTs</label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="filters[suitability]-2" name="filters[suitability]" type="checkbox" value="Not suitable for ECTs"> <label class="govuk-label govuk-checkboxes__label" for="filters[suitability]-2">Not suitable for ECTs</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
 
           {{ govukCheckboxes({
-    idPrefix: "filter-organisation",
-    name: "filter-organisation",
-    classes: "govuk-checkboxes--small filter-bottom",
-    fieldset: {
-      legend: {
-        text: "Organisation type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Academy',
-      text: 'Academy',
-      hint: {
-        text: 'includes free schools'
-      }
-    },
-    {
-      value: 'Local authority maintained schools',
-      text:'Local authority maintained schools'
-    }
-    ]
-  }) }}
+                idPrefix: "filter-organisation",
+                name: "filter-organisation",
+                classes: "govuk-checkboxes--small filter-bottom",
+                fieldset: {
+                legend: {
+                    text: "Organisation type",
+                    classes: "govuk-fieldset__legend--s"
+                }
+                },
+                items: [{
+                value: 'Academy',
+                text: 'Academy',
+                hint: {
+                    text: 'includes free schools'
+                }
+                },
+                {
+                value: 'Local authority maintained schools',
+                text:'Local authority maintained schools'
+                }
+                ]
+            }) }}
 
   {{ govukCheckboxes({
     idPrefix: "filter-school",
@@ -609,7 +604,7 @@
   }) }}
 
         
-        <div class="govuk-form-group filter-bottom">
+        <div id="key-stage" class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Key stage</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
