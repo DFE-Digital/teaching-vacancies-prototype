@@ -230,9 +230,11 @@
 
             {% if job.hybrid == "Yes" %}
               <!-- cater for arrays of job types -->
+              {% set found = false %}
               {% for role in job.role %}
-                {% if role in filterRole %}
+                {% if role in filterRole and not found %}
                   {% set countOfJobMatch = countOfJobMatch + 1 %}
+                  {% set found = true %}
                 {% endif %}
               {% endfor %}
             {% else %}
@@ -274,6 +276,8 @@
                     }) }}
                   {% endif %}
                 </h2>
+
+                <p class="app-jobs__item__roles" style="display:none;">{{job.role}}</p>
 
                 <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
 

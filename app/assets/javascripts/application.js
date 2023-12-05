@@ -136,8 +136,68 @@ $(document).ready(function () {
         }
 
     });
+    
+
+    ///////
+
+    // FILTER LOGIC PRE-SELECT
 
 
+    ///////
+
+    // Access the input element
+    var input = document.getElementById('keywords');
+
+
+    if (window.location.href.includes('/search/home')) {
+      
+      if (document.querySelector('.app-filter__selected')) {
+
+      }else{
+
+        // Check if the input has a value
+        if (input.value.trim() !== '') {
+            
+          if (document.querySelector('.app-jobs__item__roles')) {
+            
+            var elements = document.querySelectorAll('.app-jobs__item__roles');
+
+            // Iterate over the NodeList
+            elements.forEach(function(element) {
+                // Get the HTML content of the element
+                var otherValue = element.innerHTML;
+                
+                // Select all checkboxes within the div with id 'myDiv'
+                var checkboxes = document.querySelectorAll('.app-c-option-select input[type="checkbox"]');
+
+                // Iterate over the NodeList
+                checkboxes.forEach(function(checkbox) {
+                    // Check if the value of the checkbox is a substring of otherValue
+                    if (otherValue.includes(checkbox.value)) {
+                        // If so, select the checkbox
+                        checkbox.checked = true;
+                    }
+                });
+
+
+            });
+            
+          }
+          
+        } 
+
+        // Select the form element
+        var form = document.getElementById('filter');
+
+        // Submit the form
+        form.submit();
+        
+
+      } 
+
+    }
+
+    
 }
 
 
