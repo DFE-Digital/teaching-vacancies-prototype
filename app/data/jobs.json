@@ -32,7 +32,7 @@
         }
       }
     ],
-    "role": "Physics teacher",
+    "role": "Teacher",
     "title": "Physics teacher",
     "phase": "Secondary school",
     "searches": [ 
@@ -107,7 +107,7 @@
         }
       }
     ],
-    "role": "Learning support, cover supervisor or tutor",
+    "role": "Learning support or cover supervisor",
     "searches": [ 
       "Early", "years", "educator", "supervisor", "tutor"
     ],
@@ -618,7 +618,7 @@
         }
       }
     ],
-    "role": "Nursery Class Teacher",
+    "role": "Teacher",
     "searches": [ 
       "nursery", "Nursery", "class", "teacher"
     ],
@@ -960,7 +960,7 @@
         "photo": "https://loremflickr.com/640/320/abstract"
       }
     ],
-    "role": "Teacher KS1 or KS2",
+    "role": "Teacher",
     "searches": [ 
       "teacher", "Teacher", "KS1"
     ],
@@ -1049,7 +1049,7 @@
         }
       }
     ],
-    "role": "Learning support, cover supervisor or tutor",
+    "role": "Learning support or cover supervisor",
     "searches": [ 
       "Learning", "learning", "support", "supervisor", "tutor"
     ],
@@ -1302,7 +1302,7 @@
         }
       }
     ],
-    "role": "Early Years Educator - key person",
+    "role": "HLTA (Higher level teaching assistant)",
     "searches": [ 
       "early", "years", "Early years"
     ],
@@ -1384,7 +1384,7 @@
         }
       }
     ],
-    "role": "Class Teacher of KS1 or KS2",
+    "role": "Teacher",
     "searches": [ 
       "teacher", "Teacher", "KS1", "KS2"
     ],
@@ -1469,7 +1469,7 @@
         }
       }
     ],
-    "role": "Teacher of KS1 or KS2",
+    "role": "Teacher",
     "searches": [ 
       "teacher", "Teacher", "ks1", "KS1"
     ],
@@ -1554,7 +1554,7 @@
         }
       }
     ],
-    "role": "KS1 or KS2 teacher",
+    "role": "Teacher",
     "searches": [ 
       "teacher", "Teacher", "KS1", "ks1"
     ],
@@ -1640,7 +1640,7 @@
         }
       }
     ],
-    "role": "Early Years Teacher",
+    "role": "Teacher",
     "searches": [ 
       "teacher", "Teacher", "early years"
     ],
@@ -1722,7 +1722,7 @@
         }
       }
     ],
-    "role": "Class teacher",
+    "role": "Teacher",
     "searches": [ 
       "teacher", "Teacher", "class"
     ],
@@ -3910,6 +3910,140 @@
     "closingTime": "5pm",
     "startDate": "2024-02-01T09:00:00.000Z",
     "distance": 2.5
+  },
+
+
+
+
+  {
+    "id": "55028",
+    "jobtype": "leadership",
+    "status": "Active",
+    "organisation": {
+      "id": "org-12345",
+      "name": "Maplewood Secondary School",
+      "address": {
+        "address1": "123 Oak Street",
+        "town": "Springfield",
+        "postcode": "SP1 2DQ"
+      },
+      "type": "State School",
+      "phase": "Secondary",
+      "ageGroup": "11 to 18",
+      "size": "1200",
+      "website": "http://maplewoodsecondary.edu.uk",
+      "emailAddress": "info@maplewoodsecondary.edu.uk",
+      "about": "Maplewood Secondary School is known for its innovative curriculum and dedicated staff, committed to providing excellent education and fostering a positive learning environment.",
+      "safeguardingCommitment": "Our school is committed to safeguarding and promoting the welfare of children and expects all staff to share this commitment.",
+      "logo": "https://loremflickr.com/100/100/education",
+      "photo": "https://loremflickr.com/640/320/education"
+    },
+    "locations": [
+      {
+        "name": "Maplewood Secondary School",
+        "address": {
+          "address1": "123 Oak Street",
+          "town": "Springfield",
+          "postcode": "SP1 2DQ"
+        }
+      }
+    ],
+    "role": "Deputy headteacher",
+    "title": "Deputy Headteacher",
+    "searches": [
+      "Deputy Headteacher", "Senior Leadership", "School Leadership", "Educational Leadership", "Deputy Principal", "headteacher"
+    ],
+    "phase": "Secondary",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive Salary"
+    ],
+    "actualSalaryDetails": "£55,000 - £65,000",
+    "hasAdditionalAllowances": "Yes",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01234 567890",
+    "skillsAndExperience": "We seek a dynamic leader with a proven track record in educational leadership, strong management skills, and the ability to inspire both staff and students. Experience in curriculum development and staff mentoring is essential.",
+    "whatSchoolOffers": "An opportunity to work in a dynamic environment, lead a team of passionate educators, and contribute to the development of innovative educational strategies.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Maplewood Secondary School is dedicated to creating a safe and nurturing environment for all students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Candidates will be subject to an enhanced DBS check. Experience in secondary education leadership is highly preferred.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-03-01T09:00:00.000Z",
+    "closingDate": "2023-05-15T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2023-09-01T09:00:00.000Z",
+    "distance": 5
+  },
+  
+  
+  {
+    "id": "56029",
+    "jobtype": "leadership",
+    "status": "Active",
+    "organisation": {
+      "id": "org-67890",
+      "name": "Riverside Primary Academy",
+      "address": {
+        "address1": "789 River Road",
+        "town": "Meadowfield",
+        "postcode": "MF4 5CD"
+      },
+      "type": "Academy",
+      "phase": "Primary",
+      "ageGroup": "4 to 11",
+      "size": "500",
+      "website": "http://riversideprimaryacademy.edu.uk",
+      "emailAddress": "head@riversidepa.uk",
+      "about": "Riverside Primary Academy is a vibrant and forward-thinking school, committed to providing an engaging and inclusive learning environment. We emphasize a creative curriculum and a holistic approach to child development.",
+      "safeguardingCommitment": "We place a high priority on safeguarding and ensuring a safe and supportive environment for our pupils.",
+      "logo": "https://loremflickr.com/100/100/school",
+      "photo": "https://loremflickr.com/640/320/school"
+    },
+    "locations": [
+      {
+        "name": "Riverside Primary Academy",
+        "address": {
+          "address1": "789 River Road",
+          "town": "Meadowfield",
+          "postcode": "MF4 5CD"
+        }
+      }
+    ],
+    "role": "Headteacher",
+    "title": "Headteacher",
+    "searches": [
+      "Headteacher", "School Principal", "School Leader", "Primary Headteacher", "Education Leader", "headteacher"
+    ],
+    "phase": "Primary",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "salaryDetails": [
+      "Competitive Salary"
+    ],
+    "actualSalaryDetails": "£60,000 - £70,000",
+    "hasAdditionalAllowances": "Yes",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "01632 960123",
+    "skillsAndExperience": "We are looking for an experienced and visionary Headteacher with a passion for primary education. The ideal candidate will have a track record of successful leadership, excellent communication skills, and a commitment to fostering a positive learning culture.",
+    "whatSchoolOffers": "A leadership role in an inspiring educational setting, opportunities for impact and innovation, and a supportive community of educators and parents.",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "Riverside Primary Academy is dedicated to the welfare and safety of our students.",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "Applicants must undergo an enhanced DBS check and provide proven leadership experience in an educational setting.",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-04-10T08:00:00.000Z",
+    "closingDate": "2023-06-20T17:00:00.000Z",
+    "closingTime": "5pm",
+    "startDate": "2023-09-05T08:00:00.000Z",
+    "distance": 4.5
   }
   
   
