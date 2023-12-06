@@ -30,6 +30,7 @@
 
     <h3 class="govuk-heading-s">Job type</h3>
 
+
     <div class="app-c-option-select js-collapsible {% if 'Teacher' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
         <div class="app-c-option-select__heading js-container-heading">
@@ -149,11 +150,6 @@
 
 
 
-
-
-
-
-
     <div id="non-teaching" class="app-c-option-select js-collapsible {% if 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
         <div class="app-c-option-select__heading js-container-heading">
@@ -234,72 +230,72 @@
             </legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filters[phase]" name="filters[phase]" type="checkbox" value="Nursery school"
+                <input class="govuk-checkboxes__input" id="filter-phase" name="filter-phase" type="checkbox" value="Nursery school"
 
-                {% if data['keywords'] in ['nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
+                {% if 'Nursery school' in filterPhase %}
                   checked
                 {% endif %}
 
                 >
-                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]">
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase">
                   Nursery school
                 </label>
               </div>
               
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filters[phase]-2" name="filters[phase]" type="checkbox" value="Primary school"
+                <input class="govuk-checkboxes__input" id="filter-phase-2" name="filter-phase" type="checkbox" value="Primary school"
                 
-                {% if data['keywords'] in ['ks1','KS1','ks2','KS2', 'primary', 'Primary', 'Primary school', 'primary school'] %}
+                {% if 'Primary school' in filterPhase %}
                   checked
                 {% endif %}
                 
                 >
-                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-2">
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-2">
                   Primary school
                 </label>
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filters[phase]-3" name="filters[phase]" type="checkbox" value="Middle school"
+                <input class="govuk-checkboxes__input" id="filter-phase-3" name="filter-phase" type="checkbox" value="Middle school"
                 
-                {% if data['keywords'] in ['middle', 'Middle', 'Middle school', 'middle school'] %}
+                {% if 'Middle school' in filterPhase %}
                   checked
                 {% endif %}
 
                 >
-                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-3">
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-3">
                   Middle school
                 </label>
               </div>
             
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filters[phase]-4" name="filters[phase]" type="checkbox" value="Secondary school"
+                <input class="govuk-checkboxes__input" id="filter-phase-4" name="filter-phase" type="checkbox" value="Secondary school"
 
-                {% if data['keywords'] in ['secondary', 'Secondary', 'Secondary school', 'secondary school'] %}
+                {% if 'Secondary school' in filterPhase %}
                   checked
                 {% endif %}
                 >
-                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-4">
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-4">
                   Secondary school
                 </label>
               </div>
               
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filters[phase]-5" name="filters[phase]" type="checkbox" value="Sixth form or college"
+                <input class="govuk-checkboxes__input" id="filter-phase-5" name="filter-phase" type="checkbox" value="Sixth form or college"
                 
-                {% if data['keywords'] in ['sixth form', 'Sixth form', 'College', 'college'] %}
+                {% if 'Sixth form or college' in filterPhase %}
                   checked
                 {% endif %}
 
                 >
-                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-5">
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-5">
                   Sixth form or college
                 </label>
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filters[phase]-6" name="filters[phase]" type="checkbox" value="Through school">
-                <label class="govuk-label govuk-checkboxes__label" for="filters[phase]-6">
+                <input class="govuk-checkboxes__input" id="filter-phase-6" name="filter-phase" type="checkbox" value="Through school">
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-6">
                   Through school
                 </label>
               </div>
@@ -311,7 +307,7 @@
 
         {% else %}
 
-        {{ appCheckboxFilter({
+            {{ appCheckboxFilter({
           idPrefix: "subjects",
           name: "filters[subjects]",
           classes: "govuk-checkboxes--small",
@@ -549,10 +545,10 @@
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitability for early career teachers (ECT)</legend>
                 <div class="govuk-checkboxes govuk-checkboxes--small filter-bottom" data-module="govuk-checkboxes">
                     <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="filters[suitability]" name="filters[suitability]" type="checkbox" value="Suitable for ECTs"> <label class="govuk-label govuk-checkboxes__label" for="filters[suitability]">Suitable for ECTs</label>
+                        <input class="govuk-checkboxes__input" id="filter-suitability" name="filter-suitability" type="checkbox" value="Suitable for ECTs"> <label class="govuk-label govuk-checkboxes__label" for="filter-suitability">Suitable for ECTs</label>
                     </div>
                     <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="filters[suitability]-2" name="filters[suitability]" type="checkbox" value="Not suitable for ECTs"> <label class="govuk-label govuk-checkboxes__label" for="filters[suitability]-2">Not suitable for ECTs</label>
+                        <input class="govuk-checkboxes__input" id="filter-suitability-2" name="filter-suitability" type="checkbox" value="Not suitable for ECTs"> <label class="govuk-label govuk-checkboxes__label" for="filter-suitability-2">Not suitable for ECTs</label>
                     </div>
                 </div>
             </fieldset>
@@ -647,8 +643,8 @@
         
 
         {{ govukCheckboxes({
-          idPrefix: "filters[workingPatterns]",
-          name: "filters[workingPatterns]",
+          idPrefix: "filter-workingPatterns",
+          name: "filter-workingPatterns",
           classes: "govuk-checkboxes--small filter-bottom",
           fieldset: {
             legend: {

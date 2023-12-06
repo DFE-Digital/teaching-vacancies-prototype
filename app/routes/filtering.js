@@ -138,13 +138,15 @@ module.exports = router => {
     router.get('/clear-filters', (req, res) => {
        
         req.session.data['filter-role'] = '';
+        req.session.data['filter-phase'] = '';
+        req.session.data['filter-subject'] = '';
+        req.session.data['filter-suitability'] = '';
+        req.session.data['filter-workingPatterns'] = '';
+        req.session.data['filter-keyStages'] = '';
         req.session.data['keywords'] = '';
         req.session.data['location'] = '';
 
         res.redirect('/jobs')
     })
-
-
-
 
 }
