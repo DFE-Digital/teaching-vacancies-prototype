@@ -9,6 +9,34 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 
 
+  ///////
+
+  // Job alert dynamic
+
+  ///////
+
+
+  // Select all radio buttons with the name 'myOption'
+  var radios = document.querySelectorAll('input[type="radio"][name="role-type"]');
+
+  // Function to perform an action when a radio button is clicked
+  function handleRadioClick(event) {
+      var theValue = event.target.value;
+
+      $('.non-teaching-role').removeClass('active');
+      $('.teaching-role').removeClass('active');
+      $('.support-role').removeClass('active');
+
+      $("." + theValue).addClass('active');
+  }
+
+  // Add a click event listener to each radio button
+  radios.forEach(function(radio) {
+      radio.addEventListener('click', handleRadioClick);
+  });
+
+
+
   if ($(".schoolSelecter")[0]){
 
       var selectEl = document.querySelector('.schoolSelecter')
@@ -142,7 +170,6 @@ $(document).ready(function () {
 
     // FILTER LOGIC PRE-SELECT
 
-
     ///////
 
     // Access the input element
@@ -197,6 +224,9 @@ $(document).ready(function () {
 
     }
 
+
+
+    
     
 }
 

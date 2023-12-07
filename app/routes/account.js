@@ -24,6 +24,18 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobalert', (req, res) => {
+    res.render('account/jobalert', {
+      users
+    })
+  })
+
+  router.get('/jobalert_dynamic', (req, res) => {
+    res.render('account/jobalert_dynamic', {
+      users
+    })
+  })
+
   router.post('/account/sign-in', (req, res) => {
     if(req.body.emailAddress) {
       res.locals.user = req.session.user = users.find(user => user.emailAddress == req.body.emailAddress)

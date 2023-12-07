@@ -597,3 +597,15 @@ hr {
       padding:25px
   }
 }
+
+
+.job-alert-new{
+  
+  .teaching-role, .support-role, .non-teaching-role{
+    display: none;
+
+    &.active{
+      display: block;
+    }
+  }
+}
