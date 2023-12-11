@@ -1,0 +1,60 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Create your job alert' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+        {{title}}
+    </h1>
+
+
+      <form method="post" novalidate>
+
+         <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="roletype-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">
+                        What type of job are you looking for?
+                    </h2>
+                </legend>
+                
+                <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="roletype" name="roletype" type="radio" value="teaching">
+                        <label class="govuk-label govuk-radios__label" for="roletype">
+                            Teaching, teaching support and leadership jobs
+                        </label>
+                        <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                            This includes teacher, teaching assistant, headteacher and other leadership jobs.
+                        </div>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="roletype-2" name="roletype" type="radio" value="non-teaching">
+                        <label class="govuk-label govuk-radios__label" for="roletype-2">
+                            Non-teaching support roles
+                        </label>
+                        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                           This includes other schools roles, for example, administration, HR, data and finance jobs.
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

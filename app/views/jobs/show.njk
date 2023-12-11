@@ -56,7 +56,15 @@
 
       <div class="govuk-grid-row banner-buttons  govuk-!-margin-bottom-7">
         <div class="govuk-grid-column-one-third">
-            <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
+          {% if job.jobtype == 'support' %}
+            <form action="/jobalerts/support">
+              <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
+            </form>
+          {% else %}   
+            <form action="/jobalerts/teaching">
+              <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
+            </form>
+          {% endif %}
         </div>
         <div class="govuk-grid-column-one-third">
             <button class="banner-button-component__button icon icon--left icon--save" type="submit">Save this job for later</button>
@@ -563,8 +571,11 @@
 
       <section>
         <p class="icon icon--left icon--alert-blue govuk-!-margin-top-7" style="background-repeat: no-repeat; padding-left:30px">
-          <a class="govuk-link" href="#">Get a job alert</a> when similar jobs are listed
-        </p>
+        {% if job.jobtype == 'support' %}
+           <a class="govuk-link" href="/jobalerts/support">Get a job alert</a> when similar jobs are listed
+          {% else %}   
+           <a class="govuk-link" href="/jobalerts/teaching">Get a job alert</a> when similar jobs are listed
+        {% endif %}
       </section>
 
       {# {{ govukSummaryList({

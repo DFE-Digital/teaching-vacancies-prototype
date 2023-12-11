@@ -24,16 +24,45 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobalert', (req, res) => {
-    res.render('account/jobalert', {
+  router.get('/jobalerts/jobalert', (req, res) => {
+    res.render('account/jobalerts/jobalert', {
       users
     })
   })
 
-  router.get('/jobalert_dynamic', (req, res) => {
-    res.render('account/jobalert_dynamic', {
+  router.get('/jobalerts/jobalert_dynamic', (req, res) => {
+    res.render('account/jobalerts/jobalert_dynamic', {
       users
     })
+  })
+
+  router.get('/jobalerts/question', (req, res) => {
+    res.render('account/jobalerts/question', {
+      users
+    })
+  })
+
+  router.get('/jobalerts/teaching', (req, res) => {
+    res.render('account/jobalerts/teaching', {
+      users
+    })
+  })
+
+  router.get('/jobalerts/support', (req, res) => {
+    res.render('account/jobalerts/support', {
+      users
+    })
+  })
+
+  router.post('/jobalerts/question', (req, res) => {
+
+    var choice = req.session.data['roletype']
+
+    if (choice == "teaching"){
+      res.redirect('/jobalerts/teaching')
+    } else {
+      res.redirect('/jobalerts/support')
+    }
   })
 
   router.post('/account/sign-in', (req, res) => {

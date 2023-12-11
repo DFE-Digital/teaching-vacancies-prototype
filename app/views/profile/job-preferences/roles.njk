@@ -24,25 +24,42 @@
         {{title}}
       {% endset %}
 
-      <form method="post" novalidate>
-
-       {{ govukCheckboxes({
-          idPrefix: "profile[roles]",
-          name: "profile[roles]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: options
-        }) }}
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+            <h1 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><span class="govuk-caption-l">Job preferences</span> Roles</legend></h1><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]" name="profile[roles]" type="checkbox" value="Teacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]">Teacher</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-2" name="profile[roles]" type="checkbox" value="Head of year or phase"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-2">Head of year or phase</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-3" name="profile[roles]" type="checkbox" value="Head of department or curriculum"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-3">Head of department or curriculum</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-4" name="profile[roles]" type="checkbox" value="Assistant headteacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-4">Assistant headteacher</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-5" name="profile[roles]" type="checkbox" value="Deputy headteacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-5">Deputy headteacher</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-6" name="profile[roles]" type="checkbox" value="Headteacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-6">Headteacher</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-7" name="profile[roles]" type="checkbox" value="Teaching assistant"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-7">Teaching assistant</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-8" name="profile[roles]" type="checkbox" value="Learning support, cover supervisor or tutor"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-8">Learning support, cover supervisor or tutor</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="profile[roles]-9" name="profile[roles]" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-9">SENDCo (special educational needs and disabilities coordinator)</label>
+              </div>
+            </div>
+          </fieldset>
+        </div><button class="govuk-button" data-module="govuk-button">Save and continue</button>
         <p><a href="/profile">Cancel</a></p>
       </form>
 
