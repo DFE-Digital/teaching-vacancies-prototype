@@ -1,18 +1,19 @@
 {% if user %}
-  {% set navigationItems = [{
-      href: "/profile",
-      text: "Your profile",
-      active: primaryNavId == 'profile'
-    },
-    {
-      href: "/account",
-      text: "Your account",
-      active: primaryNavId == 'account'
-    }, {
-      href: "/account/sign-out",
-      text: "Sign out"
-    }]
-  %}
+
+    {% set navigationItems = [{
+        href: "/profile",
+        text: "Your profile",
+        active: primaryNavId == 'profile'
+      } if user.accountType == 'teaching',
+      {
+        href: "/account",
+        text: "Your account",
+        active: primaryNavId == 'account'
+      }, {
+        href: "/account/sign-out",
+        text: "Sign out"
+      }]
+    %}
 
 {% else %}
   {% set navigationItems = [{
@@ -23,6 +24,7 @@
       text: "Sign in"
     }]
   %}
+
 {% endif %}
 
 {{ govukHeader({

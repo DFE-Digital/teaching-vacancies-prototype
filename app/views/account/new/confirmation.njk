@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Account created' %}
+{% set title = 'Account type' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -11,69 +11,43 @@
           {{title}}
       </h1>
 
-      <p class="govuk-body">
-        You can now <a href="/jobs">search and apply for teaching jobs</a> or <a href="#">create a profile</a>.
-      </p>
-
-      <p>A profile will let you:</p>
-
-      {% for user in users %}
-
-          <form method="post" action="/account/sign-in">
-
-            {% if returnUrl %}
-              <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
-            {% endif %}
-
-            <input type="hidden" name="emailAddress" value="{{user.emailAddress}}">
-
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
-              {{user.emailAddress}}
-            </h2>
-
-            <div class="govuk-!-margin-bottom-3">
-              {% if user.profile.status %}
-                {{ govukTag({
-                  text: user.profile.status,
-                  classes: 'govuk-tag--blue'
-                }) }}
-              {% else %}
-                {{ govukTag({
-                  text: 'Not activated yet',
-                  classes: 'govuk-tag--red'
-                }) }}
-
-              {% endif %}
-            </div>
-
-            {{ govukButton({
-              text: 'Sign in'
-            }) }}
-          </form>
-
-      {% endfor %}
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          share your qualifcations and experience with schools
-        </li>
-        <li>
-          specifiy the types of teaching jobs you're looking for
-        </li>
-         <li>
-          apply for roles more quickly by pre-filling your information
-        </li>
-      </ul>
-
-
-      <p class="govuk-body">
-        When you turn on your profile it will only be visible to hiring staff in schools and trusts. They can contact you by email to invite you to apply for roles.
-      </p>
-
       <form method="post" novalidate>
 
+
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="accountType-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">
+                      What type of job are you looking for?
+                  </h2>
+              </legend>
+              
+              <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="accountType" name="accountType" type="radio" value="teaching">
+                      <label class="govuk-label govuk-radios__label" for="accountType">
+                          Teaching, teaching support and headteacher jobs
+                      </label>
+                      <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                          This includes teacher, teaching assistant, learning support or cover supervisor, SEND and headteacher jobs.
+                      </div>
+                  </div>
+                  
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="accountType-2" name="accountType" type="radio" value="non-teaching">
+                      <label class="govuk-label govuk-radios__label" for="accountType-2">
+                          Non-teaching support roles
+                      </label>
+                      <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                          This includes all other schools roles, for example, administration, HR, data and finance jobs.
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+      </div>
+
         {{ govukButton({
-          text: "Create a profile"
+          text: "Continue"
         }) }}
 
       </form>

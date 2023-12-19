@@ -2,6 +2,7 @@
   {
     "emailAddress": "anne.smith@example.com",
     "password": "tv",
+    "accountType": "teacher",    
     "profile": {
       "locations": {},
       "qualifications": {},
@@ -13,6 +14,7 @@
   {
     "emailAddress": "rachael@example.com",
     "password": "tv",
+    "accountType": "teacher",    
     "profile": {
       "status": "Active",
       "firstName": "Adam",
@@ -61,6 +63,7 @@
   {
     "emailAddress": "adam@example.com",
     "password": "tv",
+    "accountType": "teacher",    
     "profile": {
       "status": "Active",
       "firstName": "Adam",
@@ -234,6 +237,7 @@
   {
     "emailAddress": "ernest.hemingway@hotmail.com",
     "password": "tv",
+    "accountType": "teacher",    
     "profile": {
       "status": null,
       "firstName": "Ernest",

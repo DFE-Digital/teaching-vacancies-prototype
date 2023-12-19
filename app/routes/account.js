@@ -111,8 +111,22 @@ module.exports = router => {
     })
   })
 
-
   router.post('/account/new/confirmation', (req, res) => {
+
+    req.session.user.accountType = req.session.data['accountType']
+    
+    res.redirect('/account/new/confirmation2')
+  })
+
+  router.get('/account/new/confirmation2', (req, res) => {
+
+    res.render('account/new/confirmation2', {
+      user: req.session.user
+    })
+  })
+
+
+  router.post('/account/new/confirmation2', (req, res) => {
 
     var previousApplication = req.session.user.profile.previousApplication
 
@@ -122,8 +136,22 @@ module.exports = router => {
 
     }
 
+    res.redirect('/profile')
+
+  })
+
+  router.post('/account/new/confirmation2', (req, res) => {
+
+    var previousApplication = req.session.user.profile.previousApplication
+
+    if (previousApplication == "Yes"){
+      req.flash('success', 'You have recently submitted a job application, so some of your details have been imported into your profile.')
+    } else {
+
+    }
 
     res.redirect('/profile')
+
   })
 
   router.get('/account/new/activate', (req, res) => {

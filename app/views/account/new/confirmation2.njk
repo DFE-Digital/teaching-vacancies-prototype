@@ -1,0 +1,74 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Account created' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          {{title}}
+      </h1>
+
+      {% if user.accountType == 'teaching' %}
+    
+        <p class="govuk-body">
+            You can now <a href="/jobs">search and apply for jobs</a> or <a href="#">create a profile</a>.
+        </p>
+
+        <p>Adding your details will let you:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            save your qualifcations and experience 
+            </li>
+            <li>
+            specifiy the types of teaching jobs you're looking for
+            </li>
+            <li>
+            apply for roles more quickly by pre-filling your information
+            </li>
+            <li>
+            share your details with schools if you're a teacher
+            </li>
+        </ul>
+
+
+      <form method="post" novalidate>
+
+        {{ govukButton({
+          text: "Create a profile"
+        }) }}
+
+      </form>
+
+      {% else %}
+
+
+        <p class="govuk-body">
+            You can now <a href="/jobs">search and apply for jobs</a> or <a href="#">create a job alert</a>.
+        </p>
+
+        <p>You can also:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+                 <a href="#">view your applications</a>
+            </li>
+            <li>
+               <a href="#"> view your saved jobs</a>
+            </li>
+        </ul>
+
+
+      {% endif %}
+
+
+      
+
+
+    </div>
+  </div>
+
+{% endblock %}

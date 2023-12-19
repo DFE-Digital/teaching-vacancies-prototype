@@ -3,7 +3,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Roles' %}
+{% set title = 'What roles are you interested in?' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -25,42 +25,81 @@
       {% endset %}
 
       <form method="post" novalidate="">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
             <h1 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><span class="govuk-caption-l">Job preferences</span> Roles</legend></h1><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]" name="profile[roles]" type="checkbox" value="Teacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]">Teacher</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-2" name="profile[roles]" type="checkbox" value="Head of year or phase"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-2">Head of year or phase</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-3" name="profile[roles]" type="checkbox" value="Head of department or curriculum"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-3">Head of department or curriculum</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-4" name="profile[roles]" type="checkbox" value="Assistant headteacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-4">Assistant headteacher</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-5" name="profile[roles]" type="checkbox" value="Deputy headteacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-5">Deputy headteacher</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-6" name="profile[roles]" type="checkbox" value="Headteacher"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-6">Headteacher</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-7" name="profile[roles]" type="checkbox" value="Teaching assistant"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-7">Teaching assistant</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-8" name="profile[roles]" type="checkbox" value="Learning support, cover supervisor or tutor"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-8">Learning support, cover supervisor or tutor</label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="profile[roles]-9" name="profile[roles]" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)"> <label class="govuk-label govuk-checkboxes__label" for="profile[roles]-9">SENDCo (special educational needs and disabilities coordinator)</label>
-              </div>
+
+
+      <div id="hint" class="govuk-hint">
+        Select all that apply to set up your profile.
+      </div>
+      
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            
+            <p class="govuk-!-margin-top-6"><b>Teaching &amp; leadership</b></p>
+      
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-teacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="teacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-teacher-field">Teacher</label>
             </div>
-          </fieldset>
-        </div><button class="govuk-button" data-module="govuk-button">Save and continue</button>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-head-of-year-or-phase-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="head_of_year_or_phase"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-head-of-year-or-phase-field">Head of year or phase</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-head-of-department-or-curriculum-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="head_of_department_or_curriculum"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-head-of-department-or-curriculum-field">Head of department or curriculum</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-assistant-headteacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="assistant_headteacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-assistant-headteacher-field">Assistant headteacher</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-deputy-headteacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="deputy_headteacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-deputy-headteacher-field">Deputy headteacher</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-headteacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="headteacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-headteacher-field">Headteacher</label>
+            </div>
+            
+
+            <p class="govuk-!-margin-top-4"><b>Teaching support</b></p>
+
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-teaching-assistant-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="teaching_assistant"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-teaching-assistant-field">Teaching assistant</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-higher-level-teaching-assistant-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="higher_level_teaching_assistant"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-higher-level-teaching-assistant-field">HLTA (higher level teaching assistant)</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-education-support-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="education_support"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-education-support-field">Learning support or cover supervisor</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-sendco-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="sendco"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-sendco-field">SENDCo (special educational needs and disabilities coordinator)</label>
+            </div>
+
+            <p class="govuk-!-margin-top-4"><b>Non-teaching support</b></p>
+
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-teaching-assistant-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="teaching_assistant"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-teaching-assistant-field">Administration, HR, data and finance</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-higher-level-teaching-assistant-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="higher_level_teaching_assistant"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-higher-level-teaching-assistant-field">Catering, cleaning and site management</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-education-support-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="education_support"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-education-support-field">IT support</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-sendco-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="sendco"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-sendco-field">Pastoral, health and welfare</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-sendco-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="sendco"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-sendco-field">Other support roles</label>
+            </div><div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-headteacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="other-leadership"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-headteacher-field">Other leadership roles</label>
+            </div>
+
+
+        </div>
+        
+        
+        <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Save and continue</button>
         <p><a href="/profile">Cancel</a></p>
+
       </form>
 
     </div>
