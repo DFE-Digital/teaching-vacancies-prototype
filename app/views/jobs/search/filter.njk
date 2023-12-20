@@ -362,7 +362,7 @@
                     <!-- Check if keywords exist and match with job searches -->
                     {% if data['keywords'] %}
                         {% for item in job.searches %}
-                            {% if data['keywords'] == item %}
+                            {% if item in data['keywords'] %}
                                 {{ jobItem | safe }}  <!-- Display job item -->
                             {% endif %}
                         {% endfor %}
@@ -374,8 +374,8 @@
                 <!-- If location data does not exist, check for keyword match -->
                 {% if data['keywords'] %}
                     {% for item in job.searches %}
-                        {% if data['keywords'] == item %}
-                            {{ jobItem | safe }}  <!-- Display job item -->
+                        {% if item in data['keywords'] %}
+                          {{ jobItem | safe }}  <!-- Display job item -->
                         {% endif %}
                     {% endfor %}
                 
