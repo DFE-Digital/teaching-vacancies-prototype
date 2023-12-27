@@ -104,6 +104,20 @@ module.exports = router => {
     res.redirect('/account/new/create')
   })
 
+  router.get('/account/type', (req, res) => {
+
+    res.render('account/account-type', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/type', (req, res) => {
+
+    req.session.user.accountType = req.session.data['accountType']
+    
+    res.redirect('/account')
+  })
+
   router.get('/account/new/confirmation', (req, res) => {
 
     res.render('account/new/confirmation', {
@@ -115,7 +129,35 @@ module.exports = router => {
 
     req.session.user.accountType = req.session.data['accountType']
     
+    res.redirect('/account/new/marketing')
+  })
+
+  router.get('/account/new/marketing', (req, res) => {
+
+    res.render('account/new/marketing', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/new/marketing', (req, res) => {
+
+    req.session.user.marketingPreferences = req.session.data['marketingPreferences']
+    
     res.redirect('/account/new/confirmation2')
+  })
+
+  router.get('/account/marketing', (req, res) => {
+
+    res.render('account/marketing', {
+      user: req.session.user
+    })
+  })
+
+  router.post('/account/marketing', (req, res) => {
+
+    req.session.user.marketingPreferences = req.session.data['marketingPreferences']
+    
+    res.redirect('/account')
   })
 
   router.get('/account/new/confirmation2', (req, res) => {

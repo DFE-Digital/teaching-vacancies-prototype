@@ -3,6 +3,7 @@
     "emailAddress": "anne.smith@example.com",
     "password": "tv",
     "accountType": "teacher",    
+    "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "locations": {},
       "qualifications": {},
@@ -15,6 +16,7 @@
     "emailAddress": "rachael@example.com",
     "password": "tv",
     "accountType": "teacher",    
+    "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "status": "Active",
       "firstName": "Adam",
@@ -64,6 +66,7 @@
     "emailAddress": "adam@example.com",
     "password": "tv",
     "accountType": "teacher",    
+    "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "status": "Active",
       "firstName": "Adam",
@@ -237,7 +240,8 @@
   {
     "emailAddress": "ernest.hemingway@hotmail.com",
     "password": "tv",
-    "accountType": "teacher",    
+    "accountType": "teacher",   
+    "marketingPreferences": "Yes, open to receiving marketing messages", 
     "profile": {
       "status": null,
       "firstName": "Ernest",
@@ -302,6 +306,20 @@
       },
       "about": null,
       "previousApplication": "Yes",
+      "hiddenPlaces": {}
+    }
+  },
+  {
+    "emailAddress": "john.doe@hotmail.com",
+    "password": "tv",
+    "accountType": "non-teaching",   
+    "marketingPreferences": "No, do not send marketing messages",
+    "profile": {
+      "status": null,
+      "firstName": "John",
+      "lastName": "Doe",
+      "about": null,
+      "previousApplication": "No",
       "hiddenPlaces": {}
     }
   }

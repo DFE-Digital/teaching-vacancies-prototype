@@ -394,6 +394,16 @@
                     Enter your email address. We'll only use it to send you job alerts.
                 </div><input aria-describedby="jobseekers-subscription-form-email-hint" class="govuk-input" id="jobseekers-subscription-form-email-field" name="jobseekers_subscription_form[email]" required="required" type="email">
             </div>
+            <div class="govuk-checkboxes govuk-!-margin-bottom-4" data-module="govuk-checkboxes">
+      
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="updates-3" name="updates" type="checkbox" value="farm">
+                    <label class="govuk-label govuk-checkboxes__label" for="updates-3">
+                        I am interested in receiving updates via email about the latest Teaching Vacancies news and features.
+                    </label>
+                </div>
+                
+            </div>
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
@@ -408,7 +418,13 @@
                     </div>
                 </fieldset>
             </div>
+
+            
+            
+
         </div>
+
+        
 
 
     {{ govukButton({

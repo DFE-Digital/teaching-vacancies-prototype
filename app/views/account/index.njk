@@ -31,7 +31,24 @@
                 }
               ]
             }
-          },
+          } if user.emailAddress,
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: faker.email
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Email address"
+                }
+              ]
+            }
+          } if user.emailAddress == '',
           {
             key: {
               text: "Password"
@@ -59,9 +76,26 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/account/type",
                   text: "Change",
-                  visuallyHiddenText: "Password"
+                  visuallyHiddenText: "account type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Marketing preferences"
+            },
+            value: {
+              text: user.marketingPreferences
+            },
+            actions: {
+              items: [
+                {
+                  href: "/account/marketing",
+                  text: "Change",
+                  visuallyHiddenText: "marketing preferences"
                 }
               ]
             }

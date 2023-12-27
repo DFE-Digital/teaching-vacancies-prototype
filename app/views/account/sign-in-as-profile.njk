@@ -21,9 +21,8 @@
             <input type="hidden" name="emailAddress" value="{{user.emailAddress}}">
 
             <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
-              {{user.emailAddress}}
+              {{user.emailAddress}}, {{user.accountType}}
             </h2>
-            <p>{{user.accountType}}</p>
 
             <div class="govuk-!-margin-bottom-3">
               {% if user.profile.status %}
