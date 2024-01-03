@@ -2548,7 +2548,9 @@
             "School Administrator",
             "Administrative Assistant",
             "Office Coordinator",
-            "School Secretary"
+            "School Secretary",
+            "admin",
+            "Admin"
         ],
         "phase": "Primary",
         "workingPatterns": [
@@ -2700,7 +2702,8 @@
             "business",
             "manager",
             "finance",
-            "Finance"
+            "Finance",
+            "admin"
         ],
         "phase": "Secondary",
         "workingPatterns": [
