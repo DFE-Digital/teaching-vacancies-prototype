@@ -304,11 +304,7 @@
 
         {% if user.profile.roles %}
 
-          {% set jobPreferencesIncomplete = not user.profile.phases or not user.profile.keyStages or not user.profile.workingPatterns or not user.profile.locations %}
-
-          {% if jobPreferencesIncomplete %}
-            <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsJobPreferencesIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
-          {% endif %}
+          {% set jobPreferencesIncomplete = not user.profile.workingPatterns or not user.profile.locations %}
 
           {{ govukSummaryList({
           rows: [
@@ -434,29 +430,7 @@
           ]
         }) }}
 
-        {% if jobPreferencesIncomplete %}
-          <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
-
-          {% set url = '' %}
-          {% if not user.profile.phases %}
-            {% set url = '/profile/job-preferences/education-phases' %}
-          {% elseif not user.profile.keyStages %}
-            {% set url = '/profile/job-preferences/key-stages' %}
-          {% elseif not user.profile.workingPatterns %}
-            {% set url = '/profile/job-preferences/working-patterns' %}
-          {% elseif not user.profile.locations %}
-            {% set url = '/profile/job-preferences/locations' %}
-          {% endif %}
-
-          {{ govukButton({
-            text: "Complete job preferences",
-            href: url
-          }) }}
-        {% endif %}
-
-        {% if incomplete %}
-          </div>
-        {% endif %}
+        
       {% else %}
         {% if errorIsJobPreferencesIncomplete %}
           <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
@@ -471,6 +445,7 @@
 
 
      </div>
+
 
       <div class="app-profile__section">
 
@@ -546,7 +521,7 @@
                   }
                 ]
               }
-            },
+            } if user.profile.provideTRN,
             {
               key: {
                 text: "Teacher reference number (TRN)"
@@ -570,9 +545,6 @@
           <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
         {% endif %}
       </div>
-
-
-
 
       <div class="app-profile__section">
 
@@ -707,6 +679,7 @@
           {% endif %}
         {% endfor %}
       </div>
+
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Work history
@@ -845,10 +818,6 @@
         {% endif %}
       </div>
 
-
-
-
-
       <div class="app-profile__section" style="display:none;">
 
 
@@ -986,13 +955,6 @@
 
       </div>
 
-
-
-
-
-
-
-
       <div class="app-profile__section">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Hide profile from schools or trusts
@@ -1120,14 +1082,15 @@
             </div>
                 
           {% endif %}
-          
-          
-        </p>
-     
+     </div>
 
-    </div>
+  
 
-  </div>
+    
+
+    
+
+   </div>   
   
 
   <div class="govuk-grid-column-one-third">

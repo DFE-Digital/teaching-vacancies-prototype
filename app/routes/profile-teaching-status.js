@@ -35,11 +35,14 @@ module.exports = router => {
 
     if( profile.qts == 'No' ){
       res.redirect('/profile/teaching-status/review')
+    }
+    else if( profile.qts == "I'm  not looking for a teaching job" ){
+      res.redirect('/profile/teaching-status/review')
     }else{
       res.redirect('/profile/teaching-status/trn')
     }
 
-  })
+  }) 
 
   //TRN details
 

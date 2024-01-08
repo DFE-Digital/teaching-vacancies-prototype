@@ -4,54 +4,33 @@ const _ = require('lodash');
 module.exports = router => {
 
   router.get('/profile/job-preferences/roles', (req, res) => {
-    let options = [{
-      value: 'Teacher',
-      text: 'Teacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Teacher')
-    }, {
-      value: 'Head of year or phase',
-      text: 'Head of year or phase',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of year or phase')
-    }
-    , {
-      value: 'Head of department or curriculum',
-      text: 'Head of department or curriculum',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Head of department or curriculum')
-    }
-    , {
-      value: 'Assistant headteacher',
-      text: 'Assistant headteacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Assistant headteacher')
-    },{
-      value: 'Deputy headteacher',
-      text: 'Deputy headteacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Deputy headteacher')
-    }, {
-      value: 'Headteacher',
-      text: 'Headteacher',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Headteacher')
-    }, {
-      value: 'Teaching assistant',
-      text: 'Teaching assistant',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Teaching assistant')
-    }, {
-      value: 'Learning support, cover supervisor or tutor',
-      text: 'Learning support, cover supervisor or tutor',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('Learning support, cover supervisor or tutor')
-    }, {
-      value: 'SENDCo (special educational needs and disabilities coordinator)',
-      text: 'SENDCo (special educational needs and disabilities coordinator)',
-      checked: req.session.user.profile.roles && req.session.user.profile.roles.includes('SENDCo (special educational needs and disabilities coordinator)')
-    }]
 
     res.render('profile/job-preferences/roles', {
-      options
+      
     })
   })
 
   router.post('/profile/job-preferences/roles', (req, res) => {
+    
+    var accountType = req.session.data['accountType']
+
+    if( accountType == 'teaching') {
+      res.redirect('/profile/job-preferences/roles_teaching')
+    } else {
+      res.redirect('/profile/job-preferences/roles_non_teaching')
+    }
+
+  })
+
+  router.post('/profile/job-preferences/roles_teaching', (req, res) => {
     req.session.user.profile.roles = req.body.profile.roles
     res.redirect('/profile/job-preferences/education-phases')
+  })
+
+
+  router.post('/profile/job-preferences/roles_non_teaching', (req, res) => {
+    req.session.user.profile.roles = req.body.profile.roles
+    res.redirect('/profile/job-preferences/working-patterns')
   })
 
   router.get('/profile/job-preferences/education-phases', (req, res) => {

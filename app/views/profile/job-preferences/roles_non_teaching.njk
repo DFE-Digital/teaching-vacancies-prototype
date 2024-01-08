@@ -1,0 +1,72 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'What roles are you interested in?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Job preferences
+        </span>
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate="">
+
+        <h1 class="govuk-fieldset__heading">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Job preferences</span> 
+            What type of roles are you interested in?
+          </legend>
+        </h1>
+
+        <div id="hint" class="govuk-hint">
+          Select all that apply to set up your profile.
+        </div>
+      
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-teaching-assistant-field" name="profile[roles]" type="checkbox" value="Administration, HR, data and finance"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-teaching-assistant-field">Administration, HR, data and finance</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-higher-level-teaching-assistant-field" name="profile[roles]" type="checkbox" value="Catering, cleaning and site management"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-higher-level-teaching-assistant-field">Catering, cleaning and site management</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-education-support-field" name="profile[roles]" type="checkbox" value="IT support"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-education-support-field">IT support</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-sendco-field" name="profile[roles]" type="checkbox" value="Pastoral, health and welfare"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-sendco-field">Pastoral, health and welfare</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-sendco-field" name="profile[roles]" type="checkbox" value="Other support roles"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-sendco-field">Other support roles</label>
+            </div><div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-headteacher-field" name="profile[roles]" type="checkbox" value="Other leadership roles"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-headteacher-field">Other leadership roles</label>
+            </div>
+
+
+        </div>
+        
+        
+        <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Save and continue</button>
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
