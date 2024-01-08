@@ -30,7 +30,7 @@ module.exports = router => {
 
   router.post('/profile/job-preferences/roles_non_teaching', (req, res) => {
     req.session.user.profile.roles = req.body.profile.roles
-    res.redirect('/profile/job-preferences/working-patterns')
+    res.redirect('/profile/job-preferences/education-phases')
   })
 
   router.get('/profile/job-preferences/education-phases', (req, res) => {
@@ -62,7 +62,15 @@ module.exports = router => {
   router.post('/profile/job-preferences/education-phases', (req, res) => {
     let profile = req.session.user.profile
     profile.phases = req.body.profile.phases
-    res.redirect('/profile/job-preferences/key-stages')
+
+    var accountType = req.session.data['accountType']
+
+    if( accountType == 'teaching') {
+      res.redirect('/profile/job-preferences/key-stages')
+    } else {
+      res.redirect('/profile/job-preferences/working-patterns')
+    }
+
   })
 
   router.get('/profile/job-preferences/key-stages', (req, res) => {
