@@ -37,6 +37,41 @@
           }
         }) }}
 
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="accountType-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">
+                      What type of job are you looking for?
+                  </h2>
+              </legend>
+              <div id="signIn-item-hint" class="govuk-hint">
+                You can change this in your account at anytime.
+            </div>
+      
+              <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="accountType" name="accountType" type="radio" value="teaching">
+                      <label class="govuk-label govuk-radios__label" for="accountType">
+                          Teaching, teaching support and leadership jobs
+                      </label>
+                      <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                          This includes teacher, teaching assistant, learning support or cover supervisor, SEND and headteacher jobs.
+                      </div>
+                  </div>
+                  
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="accountType-2" name="accountType" type="radio" value="non-teaching">
+                      <label class="govuk-label govuk-radios__label" for="accountType-2">
+                          Non-teaching support jobs
+                      </label>
+                      <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                          This includes all other schools jobs, for example, administration, HR, data and finance jobs.
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+      </div>
+
 
 
         {{ govukButton({
