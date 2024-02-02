@@ -216,12 +216,28 @@ module.exports = router => {
       user: req.session.user
     })
   })
+  
 
   router.post('/account/new/expired', (req, res) => {
 
     req.flash('success', 'We have just sent you an email with a link to activate your Teaching Vacancies account.')
    
     res.redirect('/account/new/expired')
+  })
+
+
+  router.get('/account/delete-account', (req, res) => {
+
+    res.render('account/delete-account', {
+      user: req.session.user
+    })
+  })
+
+  router.get('/account/delete-account-confirmation', (req, res) => {
+
+    res.render('account/delete-account-confirmation', {
+      user: req.session.user
+    })
   })
 
   router.post('/account/delete-account', (req, res) => {
