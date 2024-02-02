@@ -224,5 +224,19 @@ module.exports = router => {
     res.redirect('/account/new/expired')
   })
 
+  router.post('/account/delete-account', (req, res) => {
+  
+    res.redirect('/account/delete-account-confirmation')
+
+  })
+
+  router.post('/account/delete-account-confirmation', (req, res) => {
+
+    req.flash('success', 'Your account has been deleted. To create new job alerts and apply for jobs through Teaching Vacancies, you can <a href="#">create a new jobseeker account</a>.')
+  
+    res.redirect('/')
+
+  })
+
 
 }
