@@ -14,7 +14,9 @@
 {% elseif type == 'A qualification not from the UK' %}
   {% set title = 'A qualification not from the UK' %}
 {% elseif type == 'Degree' %}
-{% set title = 'Degree' %}
+  {% set title = 'Degree' %}
+{% elseif type == 'Continuing Professional Development (CPD)' %}
+  {% set title = 'Continuing Professional Development (CPD)' %}
 {% endif %}
 
 {% block beforeContent %}

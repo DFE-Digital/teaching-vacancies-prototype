@@ -28,6 +28,11 @@ module.exports = router => {
         checked: _.get(req, 'session.data.profile.qualifications') == 'Degree'
       },
       {
+        value: "Continuing Professional Development (CPD)",
+        text: "Continuing Professional Development (CPD)",
+        checked: _.get(req, 'session.data.profile.qualifications') == 'Continuing Professional Development (CPD)'
+      },
+      {
         value: "Another UK qualification",
         text: "Another UK qualification",
         checked: _.get(req, 'session.data.profile.qualifications') == 'Another UK qualification'
