@@ -54,6 +54,12 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobalerts/jobalert_itt', (req, res) => {
+    res.render('account/jobalerts/jobalert_itt', {
+      users
+    })
+  })
+
   router.post('/jobalerts/question', (req, res) => {
 
     var choice = req.session.data['roletype']
