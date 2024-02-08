@@ -28,11 +28,6 @@ module.exports = router => {
         checked: _.get(req, 'session.data.profile.qualifications') == 'Degree'
       },
       {
-        value: "Continuing Professional Development (CPD)",
-        text: "Continuing Professional Development (CPD)",
-        checked: _.get(req, 'session.data.profile.qualifications') == 'Continuing Professional Development (CPD)'
-      },
-      {
         value: "Another UK qualification",
         text: "Another UK qualification",
         checked: _.get(req, 'session.data.profile.qualifications') == 'Another UK qualification'
@@ -173,6 +168,18 @@ module.exports = router => {
 
     req.flash('success', 'Qualification deleted')
     res.redirect('/profile/qualifications/review')
+  })
+
+  router.post('/profile/qualifications/training', (req, res) => {
+    res.redirect('/profile/qualifications/training_review')
+  })
+
+  router.get('/profile/qualifications/training_review', (req, res) => {
+    let profile = req.session.user.profile
+
+    res.render('profile/qualifications/training_review', {
+      profile
+    })
   })
 
 }

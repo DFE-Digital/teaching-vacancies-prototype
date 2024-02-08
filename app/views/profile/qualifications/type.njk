@@ -3,7 +3,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Qualification type' %}
+{% set title = 'Qualification' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -82,17 +82,13 @@
            {
             value: options[4].value,
             text: options[4].text,
-            checked: options[4].checked
-          }, {
-            value: options[5].value,
-            text: options[5].text,
-            checked: options[5].checked,
+            checked: options[4].checked,
             conditional: {
               html: anotherUKQualification
             }
           }, {
-            value: options[6].value,
-            text: options[6].text,
+            value: options[5].value,
+            text: options[5].text,
             conditional: {
               html: nonUKQualification
             }
