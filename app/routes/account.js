@@ -36,26 +36,14 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobalerts/question', (req, res) => {
-    res.render('account/jobalerts/question', {
-      users
-    })
-  })
-
-  router.get('/jobalerts/teaching', (req, res) => {
-    res.render('account/jobalerts/teaching', {
-      users
-    })
-  })
-
-  router.get('/jobalerts/support', (req, res) => {
-    res.render('account/jobalerts/support', {
-      users
-    })
-  })
-
   router.get('/jobalerts/jobalert_itt', (req, res) => {
     res.render('account/jobalerts/jobalert_itt', {
+      users
+    })
+  })
+
+  router.get('/jobalerts/jobalert_itt2', (req, res) => {
+    res.render('account/jobalerts/jobalert_itt2', {
       users
     })
   })
