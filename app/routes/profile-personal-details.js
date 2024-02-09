@@ -53,13 +53,13 @@ module.exports = router => {
     let work = req.session.user.profile.work
 
     let options = [{
-      value: 'Yes',
-      text: 'Yes',
-      checked: req.session.user.profile.provideAddress == 'Yes'
-    }, {
       value: 'No',
-      text: 'No',
+      text: 'No, I already have the right to work in the UK',
       checked: req.session.user.profile.provideAddress == 'No'
+    },{
+      value: 'Yes',
+      text: 'Yes, I will need to apply for a visa giving me the right to work in the UK',
+      checked: req.session.user.profile.provideAddress == 'Yes'
     }]
 
     res.render('profile/personal-details/work', {
