@@ -244,8 +244,9 @@ function getUTMParamsFromCurrentURL() {
 
 
 
-
+/////////////////
 // job alerts ITT
+/////////////////
 
 // Function to get UTM parameters from the current page's URL
 function getUTMParamsFromCurrentURL() {
@@ -258,17 +259,44 @@ function getUTMParamsFromCurrentURL() {
       // Update the value of the 'name' element if 'utm_name' is present
       if (utmParams.hasOwnProperty('utm_name')) {
         const nameElement = document.getElementById('email-name');
-
         // Update the content of the element with the value from UTM parameters
         nameElement.textContent = utmParams['utm_name'];
       } 
-      // Update the value of the 'subject' element if 'utm_subject' is present
-      if (utmParams.hasOwnProperty('utm_subject')) {
-        const subjectElement = document.getElementById('email-subject');
-
+      if (utmParams.hasOwnProperty('utm_postcode')) {
+        const nameElement = document.getElementById('jobseekers-subscription-form-location-field');
         // Update the content of the element with the value from UTM parameters
-        subjectElement.textContent = utmParams['utm_subject'];
+        nameElement.value = utmParams['utm_postcode'];
       } 
+      if (utmParams.hasOwnProperty('utm_email')) {
+        const nameElement = document.getElementById('jobseekers-subscription-form-email-field');
+        // Update the content of the element with the value from UTM parameters
+        nameElement.value = utmParams['utm_email'];
+      } 
+      // Update the value of the 'subject' element if 'utm_subject' is present
+      if (utmParams.hasOwnProperty('utm_title')) {
+        const subjectElement = document.getElementById('email-title');
+        // Update the content of the element with the value from UTM parameters
+        subjectElement.textContent = utmParams['utm_title'];
+      } 
+      // Update the checkbox value if 'utm_phase' is present
+      if (utmParams.hasOwnProperty('utm_phase')) {
+        const phaseCheckbox = document.querySelector('input[name="jobseekers_subscription_form[phases][]"][value="' + utmParams['utm_phase'] + '"]');
+
+        // Check if the checkbox is found before updating its value
+        if (phaseCheckbox) {
+            // Update the value of the checkbox
+            phaseCheckbox.checked = true; // or false depending on your use case
+        } 
+      }
+      if (utmParams.hasOwnProperty('utm_subject')) {
+        const phaseCheckbox = document.querySelector('input[name="jobseekers_subscription_form[subjects][]"][value="' + utmParams['utm_subject'] + '"]');
+
+        // Check if the checkbox is found before updating its value
+        if (phaseCheckbox) {
+            // Update the value of the checkbox
+            phaseCheckbox.checked = true; // or false depending on your use case
+        }
+      }
   }
 }
 
@@ -296,6 +324,8 @@ function getUTMParams(url) {
 
 // Attach the function to the 'load' event of the window
 window.addEventListener('load', getUTMParamsFromCurrentURL);
+
+
 
 
 
