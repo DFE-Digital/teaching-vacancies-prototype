@@ -231,4 +231,72 @@ $(document).ready(function () {
 }
 
 
+
+// Function to get UTM parameters from the current page's URL
+function getUTMParamsFromCurrentURL() {
+  const url = window.location.href;
+  const utmParams = getUTMParams(url);
+
+  // Do something with the UTM parameters, for example, log them to the console
+  console.log(utmParams);
+}
+
+
+
+
+
+// job alerts ITT
+
+// Function to get UTM parameters from the current page's URL
+function getUTMParamsFromCurrentURL() {
+  const url = window.location.href;
+
+  // Check if the URL contains 'jobalert_itt'
+  if (url.includes('jobalert_itt')) {
+      const utmParams = getUTMParams(url);
+
+      // Update the value of the 'name' element if 'utm_name' is present
+      if (utmParams.hasOwnProperty('utm_name')) {
+        const nameElement = document.getElementById('email-name');
+
+        // Update the content of the element with the value from UTM parameters
+        nameElement.textContent = utmParams['utm_name'];
+      } 
+      // Update the value of the 'subject' element if 'utm_subject' is present
+      if (utmParams.hasOwnProperty('utm_subject')) {
+        const subjectElement = document.getElementById('email-subject');
+
+        // Update the content of the element with the value from UTM parameters
+        subjectElement.textContent = utmParams['utm_subject'];
+      } 
+  }
+}
+
+// Function to extract UTM parameters from a URL
+function getUTMParams(url) {
+  const utmParams = {};
+  
+  // Use a regular expression to find UTM parameters in the URL
+  const regex = /[?&]([^=#]+)=([^&#]*)/g;
+  let match;
+
+  while ((match = regex.exec(url)) !== null) {
+      // Decode the parameter values and store them in the utmParams object
+      const key = decodeURIComponent(match[1]);
+      const value = decodeURIComponent(match[2]);
+
+      // Check if the parameter starts with "utm_"
+      if (key.startsWith("utm_")) {
+          utmParams[key] = value;
+      }
+  }
+
+  return utmParams;
+}
+
+// Attach the function to the 'load' event of the window
+window.addEventListener('load', getUTMParamsFromCurrentURL);
+
+
+
 })
