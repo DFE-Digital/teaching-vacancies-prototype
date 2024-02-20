@@ -123,7 +123,7 @@ module.exports = router => {
 
     req.session.user.accountType = req.session.data['accountType']
     
-    res.redirect('/account/new/marketing')
+    res.redirect('/account/new/confirmation2')
   })
 
   router.get('/account/new/marketing', (req, res) => {
