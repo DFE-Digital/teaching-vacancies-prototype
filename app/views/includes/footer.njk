@@ -46,61 +46,104 @@
 }) }} #}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
-{{ govukFooter({
-  navigation: [
-    {
-      title: "Jobs by category",
-      width: "one-third",
-      items: [{
-        href: "/jobs-by-type-of-school-and-role",
-        text: "Jobs by type of school and role"
-      },
-      {
-        href: "/landing",
-        text: "School and teaching jobs by location"
-      },
-      {
-        href: "/landing",
-        text: "Teaching jobs by subject"
-      }]
-    },
-    {
-      title: "Job seekers",
-      width: "one-third",
-      items: [
-        {
-          href: "/account/sign-in",
-          text: "Sign in"
-        },
-        {
-          href: "#",
-          text: "Create an account"
-        },
-        {
-          href: "#",
-          text: "Writing a personal statement"
-        }
-      ]
-    },
-    {
-      title: "Hiring staff",
-      width: "one-third",
-      items: [{
-        href: "#",
-        text: "Sign in"
-      },
-      {
-        href: "#",
-        text: "Create an account"
-      },
-      {
-        href: "#",
-        text: "School hiring guides"
-      }]
-    }
-  ],
-  meta: {
-    items: items,
-    html:  html
-  }
-}) }}
+<footer class="govuk-footer" role="contentinfo">
+		<div class="govuk-width-container">
+			<div class="govuk-footer__navigation">
+
+        <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Support</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Get help or report a problem</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Job seekers</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Find a job</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Return to teaching</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Teach in England if you trained overseas</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Sign in</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Writing a personal statement</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of first half -->
+
+        <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Feedback</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Provide feedback on Teaching Vacancies</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Hiring staff</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Sign in</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Create an account</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">School hiring guides</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of second half -->
+
+			</div>
+
+			<hr class="govuk-footer__section-break">
+
+			<div class="govuk-footer__meta">
+				<div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+					<h2 class="govuk-visually-hidden">Support links</h2>
+					<ul class="govuk-footer__inline-list">
+						<li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit v12.0.4</a>
+						</li>
+						<li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="/account/sign-in-as-profile">Sign in as profile</a>
+						</li>
+						<li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="/prototype-admin/clear-data">Clear data</a>
+						</li>
+					</ul>
+					<div class="govuk-footer__meta-custom">
+						<a href="?realFooter=1">Turn on real footer</a>
+					</div><svg aria-hidden="true" class="govuk-footer__licence-logo" height="17" viewbox="0 0 483.2 195.7" width="41" xmlns="http://www.w3.org/2000/svg">
+					<path d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" fill="currentColor"></path></svg> <span class="govuk-footer__licence-description">All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</span>
+				</div>
+				<div class="govuk-footer__meta-item">
+					<a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+				</div>
+			</div>
+		</div>
+	</footer>
