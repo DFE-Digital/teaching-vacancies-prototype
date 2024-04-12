@@ -43,38 +43,23 @@
 
       {% endset %}
 
+      {% set fullName %}{{profile.firstName}} {{profile.lastName}}{% endset %}
+
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "First name"
+              text: "Name"
             },
             value: {
-              text: profile.firstName
+              text: fullName
             },
             actions: {
               items: [
                 {
                   href: "/profile/personal-details/name",
                   text: "Change",
-                  visuallyHiddenText: "First name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Last name"
-            },
-            value: {
-              text: profile.lastName
-            },
-            actions: {
-              items: [
-                {
-                  href: "/profile/personal-details/name",
-                  text: "Change",
-                  visuallyHiddenText: "Last name"
+                  visuallyHiddenText: "First name and last name"
                 }
               ]
             }

@@ -95,14 +95,16 @@
             <div class="govuk-inset-text app-inset-text--incomplete-section {% if errorIsPersonalDetailsIncomplete %} app-inset-text--incomplete-section-error {% endif %}">
           {% endif %}
 
+          {% set fullName %}{{user.profile.firstName}} {{user.profile.lastName}}{% endset %}
+
           {{ govukSummaryList({
             rows: [
               {
                 key: {
-                  text: "First name"
+                  text: "Name"
                 },
                 value: {
-                  text: user.profile.firstName
+                  text: fullName
                 },
                 actions: {
                   items: [
@@ -110,23 +112,6 @@
                       href: "/profile/personal-details/name",
                       text: "Change",
                       visuallyHiddenText: "First name"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Last name"
-                },
-                value: {
-                  text: user.profile.lastName
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/profile/personal-details/name",
-                      text: "Change",
-                      visuallyHiddenText: "Last name"
                     }
                   ]
                 }
