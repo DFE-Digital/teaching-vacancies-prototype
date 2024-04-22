@@ -16,7 +16,7 @@ module.exports = router => {
   router.post('/profile/personal-details/name', (req, res) => {
     req.session.user.profile.firstName = req.body.profile.firstName
     req.session.user.profile.lastName = req.body.profile.lastName
-    res.redirect('/profile/personal-details/phone-number')
+    res.redirect('/profile/personal-details/phone-number/')
   })
 
   //phone number
@@ -43,7 +43,7 @@ module.exports = router => {
   router.post('/profile/personal-details/phone-number', (req, res) => {
     req.session.user.profile.providePhoneNumber = req.body.profile.providePhoneNumber
     req.session.user.profile.phoneNumber = req.body.profile.phoneNumber
-    res.redirect('/profile/personal-details/work')
+    res.redirect('/profile/personal-details/work/')
   })
 
 
@@ -70,7 +70,7 @@ module.exports = router => {
 
   router.post('/profile/personal-details/work', (req, res) => {
     req.session.user.profile.provideWork = req.body.profile.provideWork
-    res.redirect('/profile/personal-details/address')
+    res.redirect('/profile/personal-details/address/')
   })
 
 
