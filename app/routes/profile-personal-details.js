@@ -16,7 +16,7 @@ module.exports = router => {
   router.post('/profile/personal-details/name', (req, res) => {
     req.session.user.profile.firstName = req.body.profile.firstName
     req.session.user.profile.lastName = req.body.profile.lastName
-    res.redirect('/profile/personal-details/phone-number/')
+    res.redirect('/profile/personal-details/phone-number_static/')
   })
 
   //phone number
@@ -35,6 +35,31 @@ module.exports = router => {
     }]
 
     res.render('profile/personal-details/phone-number', {
+      options,
+      phoneNumber
+    })
+  })
+
+  router.post('/profile/personal-details/phone-number_static', (req, res) => {
+    req.session.user.profile.providePhoneNumber = req.body.profile.providePhoneNumber
+    req.session.user.profile.phoneNumber = req.body.profile.phoneNumber
+    res.redirect('/profile/personal-details/work/')
+  })
+
+  router.get('/profile/personal-details/phone-number_static', (req, res) => {
+    let phoneNumber = req.session.user.profile.phoneNumber
+
+    let options = [{
+      value: 'Yes',
+      text: 'Yes',
+      checked: req.session.user.profile.providePhoneNumber == 'Yes'
+    }, {
+      value: 'No',
+      text: 'No',
+      checked: req.session.user.profile.providePhoneNumber == 'No'
+    }]
+
+    res.render('profile/personal-details/phone-number_static', {
       options,
       phoneNumber
     })
