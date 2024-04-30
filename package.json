@@ -11,7 +11,6 @@
     "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-jobs.js && node ./scripts/generate-users.js",
     "build": "gulp",
     "start": "node start.js",
-    "heroku-postbuild": "gulp",
     "lint": "standard",
     "rapidtest": "jest --bail",
     "test": "gulp && jest && npm run lint"
