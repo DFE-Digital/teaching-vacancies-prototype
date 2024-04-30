@@ -9,10 +9,12 @@
   "scripts": {
     "postinstall": "npm rebuild node-sass",
     "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-jobs.js && node ./scripts/generate-users.js",
+    "build": "gulp",
     "start": "node start.js",
+    "heroku-postbuild": "gulp",
     "lint": "standard",
     "rapidtest": "jest --bail",
-    "test": "gulp generate-assets && jest && npm run lint"
+    "test": "gulp && jest && npm run lint"
   },
   "dependencies": {
     "@faker-js/faker": "^7.4.0",
