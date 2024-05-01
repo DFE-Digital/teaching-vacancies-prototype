@@ -100,10 +100,10 @@
       </div>
 
 
-      <div class="app-c-option-select js-collapsible {% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support or cover supervisor' in filterRole or 'Other teaching support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+      <div class="app-c-option-select js-collapsible {% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support or cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
           <div class="app-c-option-select__heading js-container-heading">
-              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support or cover supervisor' in filterRole or 'Other teaching support' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Teaching support <span class="govuk-visually-hidden">jobs</span></button>
+              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support or cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Support <span class="govuk-visually-hidden">jobs</span></button>
               <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
               <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
           </div>
@@ -112,7 +112,7 @@
               <div class="app-c-option-select__container-inner">
                   <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
                       <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
-                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Teaching support</legend>
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Support</legend>
 
                           <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
@@ -133,36 +133,7 @@
                                           Learning support or cover supervisor
                                       </label>
                                   </li>
-                                  <li class="govuk-checkboxes__item" data-testid="job-name">
-                                      <input {% if 'Other teaching support' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-other-teaching-support" value="Other teaching support">
-                                      <label class="govuk-label govuk-checkboxes__label" for="job-other-teaching-support">
-                                          Other teaching support
-                                      </label>
-                                  </li>
-                          </ul>
-                      </fieldset>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-
-
-      <div id="non-teaching" class="app-c-option-select js-collapsible {% if 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
-
-          <div class="app-c-option-select__heading js-container-heading">
-              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Non-teaching support <span class="govuk-visually-hidden">jobs</span></button>
-              <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
-              <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
-          </div>
-
-          <div id="list-of-key-stage-1" role="group" aria-labelledby="option-teaching-support" class="app-c-option-select__container js-options-container" tabindex="-1">
-              <div class="app-c-option-select__container-inner">
-                  <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
-                      <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
-                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Non-teaching support</legend>
-
-                          <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
+                                 
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
                                       <input {% if 'Administration, HR, data and finance' in filterRole  %} checked {% endif %}  type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-admin" value="Administration, HR, data and finance">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-admin">
@@ -205,6 +176,9 @@
               </div>
           </div>
       </div>
+
+
+
 
     </section>
 
@@ -785,8 +759,8 @@
                 {% if 'Learning support or cover supervisor' in filterRole %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Learning support or cover supervisor</a></li>
                 {% endif %}
-                {% if 'Other teaching support' in filterRole %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other teaching support</a></li>
+                {% if 'Other support roles' in filterRole %} 
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
                 {% endif %}
 
                 <!-- // other -->
