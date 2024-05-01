@@ -312,7 +312,7 @@
   {
     "emailAddress": "john.doe@hotmail.com",
     "password": "tv",
-    "accountType": "non-teaching",   
+    "accountType": "support",   
     "marketingPreferences": "No, do not send marketing messages",
     "profile": {
       "status": null,

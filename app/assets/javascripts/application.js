@@ -23,7 +23,6 @@ $(document).ready(function () {
   function handleRadioClick(event) {
       var theValue = event.target.value;
 
-      $('.non-teaching-role').removeClass('active');
       $('.teaching-role').removeClass('active');
       $('.support-role').removeClass('active');
 
@@ -150,18 +149,6 @@ $(document).ready(function () {
                 }
         });
 
-        // Check if the div ID is 'hello'
-        if (div.id === 'non-teaching') {
-           // Check if the div has a specific class, e.g., 'your-class-name'
-           if (div.classList.contains('js-opened')) {
-              // Perform progressive disclosure
-              
-              $('.app-filter__options #subjects').hide();
-              $('.app-filter__options #key-stage').hide();
-              $('.app-filter__options #suitability').hide();
-
-            }
-        }
 
     });
     
