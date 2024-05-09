@@ -1,134 +1,6 @@
 /*
 ================================================================================
 */
-.grid-container {
-    display: flex;
-    flex-direction: column;
-    grid-gap: 15px;
-  }
-  @media screen and (min-width: 640px) {
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      grid-gap: 30px;
-    }
-  }
-  
-  .card-container img {
-    max-width: 100%;
-    margin-bottom: 5px;
-  }
-  
-  .card {
-    position: relative;
-    background-color: #f3f2f1;
-    border-bottom: 3px solid #1d70b8;
-  }
-  @media (min-width: 40.0625em) {
-    .card {
-      max-width: 300px;
-    }
-  }
-  .card .govuk-tag--ey {
-    width: min-content;
-    margin: 5px 0;
-  }
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 40px);
-    padding: 20px;
-  }
-  .card-container .card-progress-bar {
-    color: #505a5f;
-    margin-top: auto;
-  }
-  .card-container .card-progress-bar .percentage {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .card-container .card-progress-bar .description {
-    font-size: 14px;
-  }
-  .card-container .card-progress-bar .bar-settings {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-  }
-  .card-container .card-progress-bar .bar-bg {
-    width: 100%;
-    background-color: #b1b4b6;
-  }
-  .card-container .card-progress-bar .bar-progress,
-  .card-container .card-progress-bar .bar-ball {
-    background-color: #00703c;
-    position: absolute;
-  }
-  .card:hover, .card:focus-within {
-    background-color: #1d70b8;
-  }
-  .card:hover a, .card:hover .percentage, .card:hover .description, .card:focus-within a, .card:focus-within .percentage, .card:focus-within .description {
-    color: #ffffff;
-  }
-  .card:hover .bar-bg, .card:focus-within .bar-bg {
-    background-color: #0b0c0c;
-  }
-  .card:hover .bar-progress,
-  .card:hover .bar-ball, .card:focus-within .bar-progress,
-  .card:focus-within .bar-ball {
-    background-color: #ffdd00;
-  }
-  .card:hover .govuk-tag, .card:focus-within .govuk-tag {
-    background-color: #f3f2f1;
-    color: #1d70b8;
-  }
-  .card:hover .card-link--retake:hover {
-    color: #f3f2f1;
-  }
-  .card:hover .card-link--retake:focus {
-    color: #0b0c0c;
-  }
-  .card:focus-within {
-    outline: 3px solid #ffdd00;
-  }
-  .card-link--retake:focus, .card-link--header:focus {
-    outline: 3px solid transparent;
-    color: #0b0c0c;
-    background-color: #ffdd00;
-    box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-    text-decoration: none;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    background-color: #ffdd00;
-    border-color: transparent;
-    outline: 2px solid #ffdd00;
-    outline-offset: 2px;
-    box-shadow: none;
-  }
-  .card-container .card-link--retake:focus, .card-container .card-link--header:focus {
-    color: #0b0c0c;
-  }
-  .card-link--retake {
-    position: relative;
-    z-index: 2;
-  }
-  .card-link--header {
-    text-decoration: none;
-    color: #1d70b8;
-  }
-  .card-link--header:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-
-
-
-
 
   
   .hf-card-container {
@@ -139,6 +11,7 @@
     .full-width-image{
       max-width:100%;
     }
+  
   }
   
   .hf-card-details {
@@ -158,11 +31,13 @@
     color: #1d70b8;
   }
   
-  a:hover .hf-card-container {
+  .hf-card a:hover .hf-card-container, .hf-card a:focus .hf-card-container {
     background-color: #1d70b8;
   }
   
-  a:hover .hf-card-container .hf-card-details p,
-  a:hover .hf-card-container .hf-card-details h3 {
+  .hf-card a:hover .hf-card-container .hf-card-details p,
+  .hf-card a:hover .hf-card-container .hf-card-details h3,
+  .hf-card a:focus .hf-card-container .hf-card-details p,
+  .hf-card a:focus .hf-card-container .hf-card-details h3 {
     color: #ffffff;
   }
