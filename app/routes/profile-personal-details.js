@@ -16,7 +16,7 @@ module.exports = router => {
   router.post('/profile/personal-details/name', (req, res) => {
     req.session.user.profile.firstName = req.body.profile.firstName
     req.session.user.profile.lastName = req.body.profile.lastName
-    res.redirect('/profile/personal-details/phone-number_static/')
+    res.redirect('/profile/personal-details/phone-number/')
   })
 
   //phone number
