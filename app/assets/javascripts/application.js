@@ -315,5 +315,14 @@ window.addEventListener('load', getUTMParamsFromCurrentURL);
 
 
 
+if (window.location.href.indexOf("profile/personal-details") > -1) {
+
+  console.log("your url contains profile/personal details");
+
+  document.activeElement.blur();
+}
+
+
+
 
 })
