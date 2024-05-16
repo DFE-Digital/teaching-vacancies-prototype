@@ -1,0 +1,196 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-l">Teacher at Weydon Multi Academy Trust</span>
+            {{title}}
+        </h1>
+
+        <h2 class="govuk-heading-l">
+            Religious information
+        </h2>
+
+        <p class="govuk-body">The school wants you to provide your religion or faith as part of the application.</p>
+
+
+      
+        <form action="/jobs">
+
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="event-name">
+                    What is your religious denomination or faith?
+                </label>
+                <div id="event-name-hint" class="govuk-hint">
+                    For example, Christian. If you are not religious, enter no religion.
+                </div>
+                <input class="govuk-input" id="religion-name" name="religionName" type="text" aria-describedby="religion-name-hint">
+            </div>
+
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="address">
+                    Address of place of worship (optional)
+                </label>
+                <div id="event-name-hint" class="govuk-hint">
+                    For example, Westminster Abbey, Dean's Yard, London. If you are not religious, enter no religion.
+                </div>
+                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
+            </div>
+
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        What religious information can you provide?
+                    </legend>
+                    <div id="contact-hint" class="govuk-hint">
+                        Select all options that are relevant to you.
+                    </div>
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-checkboxes__label" for="contact">
+                                Religous referee
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+                            <div class="govuk-form-group">
+                                    
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="referee-name">
+                                        Name
+                                        </label>
+                                        <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                                    </div>
+
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="address">
+                                            Address
+                                        </label>
+                                        <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
+                                    </div>
+
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="referee-name">
+                                        Role
+                                        </label>
+                                        <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                                    </div>
+
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="referee-name">
+                                        Email address
+                                        </label>
+                                        <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                                    </div>
+
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="referee-name">
+                                        Phone number (optional)
+                                        </label>
+                                        <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">Only give a phone number that your referee is happy to be contacted on.</div>
+                                        <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                                    </div>
+                                                                    
+                                </div>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-checkboxes__label" for="contact-2">
+                                Baptism certificate
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-2">
+                            <div class="govuk-form-group">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="file-upload-1">
+                                        Upload a file
+                                    </label>
+                                    <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
+                            <label class="govuk-label govuk-checkboxes__label" for="contact-3">
+                                Address and date of baptism
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
+                            
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="address">
+                                   Address of baptism location
+                                </label>
+                                <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
+                            </div>
+
+                            <div class="govuk-form-group">
+                                <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                                    <legend class="govuk-fieldset__legend">
+                                        What was the date of baptism?
+                                    </legend>
+                                    <div id="passport-issued-hint" class="govuk-hint">
+                                        For example, 27 3 2007
+                                    </div>
+                                    <div class="govuk-date-input" id="passport-issued">
+                                        <div class="govuk-date-input__item">
+                                            <div class="govuk-form-group">
+                                            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                                Day
+                                            </label>
+                                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+                                            </div>
+                                        </div>
+                                        <div class="govuk-date-input__item">
+                                            <div class="govuk-form-group">
+                                            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                                Month
+                                            </label>
+                                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+                                            </div>
+                                        </div>
+                                        <div class="govuk-date-input__item">
+                                            <div class="govuk-form-group">
+                                            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                                                Year
+                                            </label>
+                                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                                                        
+                        </div>
+                        <div class="govuk-checkboxes__divider">or</div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="contact-3" name="countries" type="checkbox" value="none" data-behaviour="exclusive">
+                            <label class="govuk-label govuk-checkboxes__label" for="contact-3">
+                            I do not have a religion
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                </div>
+            
+            
+            <div class="govuk-button-group">
+                <button class="govuk-button" data-module="govuk-button">
+                    Save
+                </button>
+            </div>
+
+            <p><a href="#">Cancel</a></p>
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}
