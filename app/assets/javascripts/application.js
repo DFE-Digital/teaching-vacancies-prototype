@@ -323,7 +323,7 @@ if (window.location.href.indexOf("profile/personal-details") > -1) {
 
     document.getElementsByClassName("govuk-template")[0].focus();
 
-  }, 1000);
+  }, 1500);
 
 }
 
