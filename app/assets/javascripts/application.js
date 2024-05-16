@@ -317,12 +317,14 @@ window.addEventListener('load', getUTMParamsFromCurrentURL);
 
 if (window.location.href.indexOf("profile/personal-details") > -1) {
 
-  console.log("your url contains profile/personal details");
+  setTimeout(function () {
 
-  document.activeElement.blur();
+    document.activeElement.blur();
+
+    document.getElementsByClassName("govuk-template__body")[0].focus();
+
+  }, 2000);
+
 }
-
-
-
 
 })
