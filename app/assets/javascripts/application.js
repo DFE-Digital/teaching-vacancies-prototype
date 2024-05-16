@@ -313,13 +313,8 @@ function getUTMParams(url) {
 window.addEventListener('load', getUTMParamsFromCurrentURL);
 
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 if (isMobile) {
-  alert('')
-}
 
-if (isMobile) {
-  
   if (window.location.href.indexOf("profile/personal-details") > -1) {
 
     setTimeout(function () {
