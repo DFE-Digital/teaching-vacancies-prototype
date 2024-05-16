@@ -26,40 +26,25 @@
 
       <form method="post" id="work-form" novalidate>
 
-        {% set hintCode %}
-        
-            <div id="right-to-work-hint" class="govuk-hint">
-              You can <a target="_blank" href="https://getintoteaching.education.gov.uk/non-uk-teachers/visas-for-non-uk-teachers">find out what visa you need if you're a non-UK citizen (link opens in new tab)</a>.
-            </div>
-         
-        {% endset %}
-
-        {{ govukRadios({
-          idPrefix: "profile[provideWork]",
-          name: "profile[provideWork]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          hint: {
-            html: hintCode
-          },
-          items: [{
-            value: options[0].value,
-            text: options[0].text,
-            checked: options[0].checked
-          }, {
-            value: options[1].value,
-            text: options[1].text,
-            checked: options[1].checked,
-            conditional: {
-              html: nocode
-            }
-          }]
-        }) }}
+        <div class="govuk-form-group">
+			<fieldset aria-describedby="profile[provideWork]-hint" class="govuk-fieldset">
+				<legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+				<h1 tabindex="0" class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--l">Do you need Skilled worker visa sponsorship?</legend></h1><legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+				<div class="govuk-hint" id="profile[provideWork]-hint">
+					<div class="govuk-hint" id="right-to-work-hint">
+						You can <a href="https://getintoteaching.education.gov.uk/non-uk-teachers/visas-for-non-uk-teachers" target="_blank">find out what visa you need if you're a non-UK citizen (link opens in new tab)</a>.
+					</div>
+				</div>
+				<div class="govuk-radios" data-module="govuk-radios">
+					<div class="govuk-radios__item">
+						<input class="govuk-radios__input" id="profile[provideWork]" name="profile[provideWork]" type="radio" value="No"> <label class="govuk-label govuk-radios__label" for="profile[provideWork]">No, I already have the right to work in the UK</label>
+					</div>
+					<div class="govuk-radios__item">
+						<input class="govuk-radios__input" id="profile[provideWork]-2" name="profile[provideWork]" type="radio" value="Yes"> <label class="govuk-label govuk-radios__label" for="profile[provideWork]-2">Yes, I will need to apply for a visa giving me the right to work in the UK</label>
+					</div>
+				</div>
+			</fieldset>
+		</div>
 
         <button class="govuk-button next-location-6"  id="sponsorship_button" tabindex="-1">
           Save and continue
