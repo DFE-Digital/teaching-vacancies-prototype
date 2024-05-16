@@ -314,16 +314,21 @@ window.addEventListener('load', getUTMParamsFromCurrentURL);
 
 
 
+if (typeof screen.orientation !== 'undefined') {  
+//desktop
+}else{
 
-if (window.location.href.indexOf("profile/personal-details") > -1) {
+  if (window.location.href.indexOf("profile/personal-details") > -1) {
 
-  setTimeout(function () {
+    setTimeout(function () {
 
-    document.activeElement.blur();
+      document.activeElement.blur();
 
-    document.getElementsByClassName("govuk-skip-link")[0].focus();
+      document.getElementsByClassName("govuk-skip-link")[0].focus();
 
-  }, 1500);
+    }, 1500);
+
+  }
 
 }
 
