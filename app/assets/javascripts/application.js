@@ -321,9 +321,9 @@ if (window.location.href.indexOf("profile/personal-details") > -1) {
 
     document.activeElement.blur();
 
-    document.getElementsByClassName("govuk-back-link")[0].focus();
+    document.getElementsByClassName("govuk-template ")[0].focus();
 
-  }, 2000);
+  }, 100);
 
 }
 
