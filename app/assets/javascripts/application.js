@@ -315,16 +315,17 @@ window.addEventListener('load', getUTMParamsFromCurrentURL);
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-
 if (isMobile) {
   
   if (window.location.href.indexOf("profile/personal-details") > -1) {
+
+    document.activeElement.blur()
 
     setTimeout(function () {
 
       document.activeElement.blur();
 
-      document.getElementsByClassName("govuk-skip-link")[0].focus();
+      document.getElementsByClassName("govuk-template__body")[0].focus();
 
     }, 1500);
 
