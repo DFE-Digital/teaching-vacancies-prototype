@@ -319,17 +319,8 @@ if (isMobile) {
   
   if (window.location.href.indexOf("profile/personal-details") > -1) {
 
-    if ($("#formButton").is(":focus")) {
-      document.getElementsByClassName("govuk-skip-link")[0].focus();
-      document.activeElement.blur();
-    }
-
-    setTimeout(function () {
-
-      document.getElementsByClassName("govuk-skip-link")[0].focus();
-      document.activeElement.blur();
-
-    }, 1200);
+    document.getElementsByClassName("govuk-skip-link")[0].focus();
+    document.activeElement.blur();
 
   }
 
