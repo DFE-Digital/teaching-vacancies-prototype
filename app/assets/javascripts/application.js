@@ -329,7 +329,7 @@ if (isMobile) {
       document.getElementsByClassName("govuk-skip-link")[0].focus();
       document.activeElement.blur();
 
-    }, 1000);
+    }, 1200);
 
   }
 
