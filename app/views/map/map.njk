@@ -116,7 +116,7 @@ function addCircles(feature, layer) {
     }).addTo(map);
 
     // Bind popup to display open rate
-    openCircle.bindPopup("Open Rate: " + feature.properties.open_rate + "%");
+    openCircle.bindPopup( feature.properties.name + ". Open Rate: " + feature.properties.open_rate + "%");
 }
 
 
