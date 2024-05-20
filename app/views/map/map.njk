@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        #map { height: 100vh; width: 100vw; }
+        #map { height: 100vh; width: 70%; float: left; }
         .info {
             padding: 6px 8px;
             font: 14px/16px Arial, Helvetica, sans-serif;
@@ -31,10 +31,37 @@
             margin-right: 8px;
             opacity: 0.7;
         }
+        /* Style for the table */
+table {
+    width: 30%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+/* Style for table header */
+th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Style for table data */
+td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Style for table rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
     </style>
 </head>
 <body>
     <div id="map"></div>
+    <div id="table-container"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
       // Initialize the map
@@ -1923,6 +1950,37 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
+
+
+// Extract locations from GeoJSON data
+var locations = geojsonData.features.map(feature => {
+    return {
+        name: feature.properties.name,
+        open_rate: feature.properties.open_rate,
+        click_rate: feature.properties.click_rate
+    };
+});
+
+// Create HTML table
+// Extract locations from GeoJSON data and sort by open rate in descending order
+var locations = geojsonData.features.map(feature => {
+    return {
+        name: feature.properties.name,
+        open_rate: feature.properties.open_rate,
+        click_rate: feature.properties.click_rate
+    };
+}).sort((a, b) => b.open_rate - a.open_rate);
+
+// Create HTML table
+var tableHtml = '<table><thead><tr><th>Name</th><th>Open Rate (%)</th><th>Click Rate (%)</th></tr></thead><tbody>';
+locations.forEach(location => {
+    tableHtml += '<tr><td>' + location.name + '</td><td>' + location.open_rate + '</td><td>' + location.click_rate + '</td></tr>';
+});
+tableHtml += '</tbody></table>';
+
+// Display HTML table
+document.getElementById('table-container').innerHTML = tableHtml;
+
     </script>
 </body>
 </html>
