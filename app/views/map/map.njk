@@ -15,6 +15,11 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
         }
+        .buttons{
+          margin-top:20px;
+          margin-left:20px;
+          float:right;
+        }
         .info h4 {
             margin: 0 0 5px;
             color: #777;
@@ -67,58 +72,16 @@
 <body>
     <div id="map"></div>
     <div id="table-container"></div>
+    <div class="buttons">
+        <button onclick="showOpenRates()">Show Open Rates</button>
+        <button onclick="showClickRates()">Show Click Rates</button>
+    </div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-      // Initialize the map
-var map = L.map('map').setView([53.8, -1.5], 6); // Centered on the UK
 
-// Load and display tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19
-}).addTo(map);
+      
 
-// Define a color scale based on the open rate
-function getColor(d) {
-    return d > 60 ? '#14FF5E' :
-           d > 55 ? '#1a9641' :
-           d > 50 ? '#a6d96a' :
-           d > 45 ? '#D4D96A' :
-           d > 40 ? '#D9B66A' :
-           d > 35 ? '#D99C6A' :
-           d > 30 ? '#d7191c' :
-                    '#000000';
-}
-
-// Function to create circles for each feature
-function addCircles(feature, layer) {
-    var center;
-
-    // Check if the feature's geometry is a Point
-    if (feature.geometry.type === 'Point') {
-        center = layer.getLatLng(); // Get LatLng for point features
-    } else if (feature.geometry.type === 'Polygon') {
-        center = layer.getBounds().getCenter(); // Get center of polygon bounds
-    } else {
-        console.error('Unsupported geometry type:', feature.geometry.type);
-        return;
-    }
-
-    if (!center) {
-        console.error('Center not found for feature:', feature);
-        return;
-    }
-
-    var openCircle = L.circle(center, {
-        color: getColor(feature.properties.open_rate),
-        fillColor: getColor(feature.properties.open_rate),
-        fillOpacity: 0.5,
-        radius: 10000 // Adjust radius as needed
-    }).addTo(map);
-
-    // Bind popup to display open rate
-    openCircle.bindPopup( feature.properties.name + ". Open Rate: " + feature.properties.open_rate + "%");
-}
-
+    
 
 // GeoJSON data with local authority regions
 var geojsonData = {
@@ -1904,6 +1867,172 @@ var geojsonData = {
     }
     ;
 
+
+// Function to update the legend
+  function updateLegend() {
+
+    // Remove the existing legend if it exists
+    if (legend) {
+        map.removeControl(legend);
+    }
+
+    // Create a new legend
+    legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function(map) {
+        var div = L.DomUtil.create('div', 'info legend'),
+            title = currentRateType === 'open' ? 'Open Rates' : 'Click Rates',
+            grades = currentRateType === 'open' ? [0, 30, 35, 40, 45, 50, 55, 60] : [0, 3, 6, 9, 12, 15],
+            labels = [];
+
+        // Add title to the legend
+        div.innerHTML += '<strong>' + title + '</strong><br>';
+
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < grades.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        }
+
+        return div;
+    };
+    // Add the updated legend to the map
+    legend.addTo(map);
+}
+
+
+// Define map and geojsonData variables
+var map = L.map('map').setView([54.5, -3.5], 6);
+
+// Add tile layer to the map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+}).addTo(map);
+
+// Global variable for current rate type
+var currentRateType = 'open'; // Default to open rates
+
+// Function to get color based on rate and type
+function getColor(d) {
+    if (currentRateType === 'open') {
+        return d > 60 ? '#1a9641' :
+               d > 55 ? '#66bd63' :
+               d > 50 ? '#a6d96a' :
+               d > 45 ? '#d9ef8b' :
+               d > 40 ? '#ffffbf' :
+               d > 35 ? '#fee08b' :
+               d > 30 ? '#fdae61' :
+               d > 25 ? '#f46d43' :
+                        '#d7191c';
+    } else {
+        return d > 15 ? '#1a9641' :
+               d > 12 ? '#66bd63' :
+               d > 9 ? '#a6d96a' :
+               d > 6 ? '#d9ef8b' :
+               d > 3 ? '#fee08b' :
+               d > 0 ? '#fdae61' :
+                       '#d7191c';
+    }
+}
+
+// Add legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = currentRateType === 'open' ? [0, 30, 35, 40, 45, 50, 55, 60] : [0, 3, 6, 9, 12, 15],
+        labels = [];
+
+    // Add title to the legend
+    div.innerHTML += '<strong>' + (currentRateType === 'open' ? 'Open Rates' : 'Click Rates') + '</strong><br>';
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+
+// Function to create circles for each feature
+function addCircles(feature, layer) {
+    var center;
+
+    // Check if the feature's geometry is a Point
+    if (feature.geometry.type === 'Point') {
+        center = layer.getLatLng(); // Get LatLng for point features
+    } else if (feature.geometry.type === 'Polygon') {
+        center = layer.getBounds().getCenter(); // Get center of polygon bounds
+    } else {
+        console.error('Unsupported geometry type:', feature.geometry.type);
+        return;
+    }
+
+    if (!center) {
+        console.error('Center not found for feature:', feature);
+        return;
+    }
+
+    // Adjust the radius based on the feature
+    var radius = feature.properties.name.includes("London Borough") ? 5000 : 10000;
+    var rate = currentRateType === 'open' ? feature.properties.open_rate : feature.properties.click_rate;
+
+    var circle = L.circle(center, {
+        color: getColor(rate),
+        fillColor: getColor(rate),
+        fillOpacity: 0.5,
+        radius: radius
+    }).addTo(map);
+
+    // Bind popup to display the rate
+    circle.bindPopup(feature.properties.name + ". " + (currentRateType === 'open' ? "Open Rate: " : "Click Rate: ") + rate + "%");
+}
+
+// Clear existing circles from the map
+function clearCircles() {
+    map.eachLayer(function (layer) {
+        if (layer instanceof L.Circle) {
+            map.removeLayer(layer);
+        }
+    });
+}
+
+// Functions to show open rates and click rates
+function showOpenRates() {
+    currentRateType = 'open';
+    clearCircles();
+    L.geoJSON(geojsonData, {
+        onEachFeature: function(feature, layer) {
+            addCircles(feature, layer);
+        }
+    }).addTo(map);
+    updateLegend();
+}
+
+function showClickRates() {
+    currentRateType = 'click';
+    clearCircles();
+    L.geoJSON(geojsonData, {
+        onEachFeature: function(feature, layer) {
+            addCircles(feature, layer);
+        }
+    }).addTo(map);
+    updateLegend();
+}
+
+// Load initial data
+L.geoJSON(geojsonData, {
+    onEachFeature: function(feature, layer) {
+        addCircles(feature, layer);
+    }
+}).addTo(map);
+
+
+
 // Info control
 var info = L.control();
 
@@ -1935,27 +2064,6 @@ L.geoJSON(geojsonData, {
     },
     onEachFeature: addCircles // Call addCircles function for each feature
 }).addTo(map);
-
-// Add legend
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 30, 35, 40, 45, 50, 55, 60],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(map);
-
 
 // Extract locations from GeoJSON data
 var locations = geojsonData.features.map(feature => {
