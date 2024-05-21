@@ -1930,10 +1930,10 @@ function getColor(d) {
                d > 9 ? '#a6d96a' :
                d > 6 ? '#d9ef8b' :
                d > 3 ? '#fee08b' :
-               d > 0 ? '#fdae61' :
-                       '#d7191c';
+                       '#fdae61';
     }
 }
+
 
 // Add legend
 var legend = L.control({position: 'bottomright'});
@@ -1991,6 +1991,7 @@ function addCircles(feature, layer) {
     // Bind popup to display the rate
     circle.bindPopup(feature.properties.name + ". " + (currentRateType === 'open' ? "Open Rate: " : "Click Rate: ") + rate + "%");
 }
+
 
 // Clear existing circles from the map
 function clearCircles() {
