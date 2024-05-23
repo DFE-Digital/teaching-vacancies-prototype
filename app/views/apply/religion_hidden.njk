@@ -16,32 +16,7 @@
             Religious information
         </h2>
 
-        <p class="govuk-body">The school wants you to provide your religion or faith as part of the application.</p>
-
-
-      
         <form action="/jobs">
-
-            <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="event-name">
-                    What is your religious denomination or faith?
-                </label>
-                <div id="event-name-hint" class="govuk-hint">
-                    For example, Christian. If you are not religious, enter no religion.
-                </div>
-                <input class="govuk-input" id="religion-name" name="religionName" type="text" aria-describedby="religion-name-hint">
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="address">
-                    Address of place of worship (optional)
-                </label>
-                <div id="event-name-hint" class="govuk-hint">
-                    For example, Westminster Abbey, Dean's Yard, London. If you are not religious, enter no religion.
-                </div>
-                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
-            </div>
-
 
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
@@ -49,49 +24,85 @@
                         What religious information can you provide?
                     </legend>
                     <div id="contact-hint" class="govuk-hint">
-                        Select all options that are relevant to you.
+                        Select all options that are relevant to you. r 'I am not religious'.
                     </div>
                     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
                             <label class="govuk-label govuk-checkboxes__label" for="contact">
+                                Religious denomination or faith
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">                                
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-label--s" for="event-name">
+                                    What is your religious denomination or faith?
+                                </label>
+                                <div id="event-name-hint" class="govuk-hint">
+                                    For example, Christian. If you are not religious, enter no religion.
+                                </div>
+                                <input class="govuk-input" id="religion-name" name="religionName" type="text" aria-describedby="religion-name-hint">
+                            </div>   
+                        </div>
+
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact-4">
+                            <label class="govuk-label govuk-checkboxes__label" for="contact">
+                                Address of place of worship
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-4">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-label--s" for="address">
+                                    Address of place of worship (optional)
+                                </label>
+                                <div id="event-name-hint" class="govuk-hint">
+                                    For example, Westminster Abbey, Dean's Yard, London. If you are not religious, enter no religion.
+                                </div>
+                                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact-5">
+                            <label class="govuk-label govuk-checkboxes__label" for="contact">
                                 Religous referee
                             </label>
                         </div>
-                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-5">
                             <div class="govuk-form-group">
                                     
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="referee-name">
-                                        Name
+                                        Religous referee name
                                         </label>
                                         <input class="govuk-input" id="referee-name" name="referee-name" type="text">
                                     </div>
 
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="address">
-                                            Address
+                                            Religous referee address
                                         </label>
                                         <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
                                     </div>
 
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="referee-name">
-                                        Role
+                                        Religous referee role
                                         </label>
                                         <input class="govuk-input" id="referee-name" name="referee-name" type="text">
                                     </div>
 
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="referee-name">
-                                        Email address
+                                        Religous referee email address
                                         </label>
                                         <input class="govuk-input" id="referee-name" name="referee-name" type="text">
                                     </div>
 
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="referee-name">
-                                        Phone number (optional)
+                                        Religous referee phone number (optional)
                                         </label>
                                         <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">Only give a phone number that your referee is happy to be contacted on.</div>
                                         <input class="govuk-input" id="referee-name" name="referee-name" type="text">
@@ -99,6 +110,11 @@
                                                                     
                                 </div>
                         </div>
+
+
+
+
+
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2">
                             <label class="govuk-label govuk-checkboxes__label" for="contact-2">
@@ -172,7 +188,7 @@
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="contact-3" name="countries" type="checkbox" value="none" data-behaviour="exclusive">
                             <label class="govuk-label govuk-checkboxes__label" for="contact-3">
-                            I do not have a religion
+                            I am not religious
                             </label>
                         </div>
                     </div>
