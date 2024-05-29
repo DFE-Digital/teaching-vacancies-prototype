@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        #map { height: 100vh; width: 70%; float: left; }
+        #map { height: 100vh; width: 50%; float: left; }
         .info {
             padding: 6px 8px;
             font: 14px/16px Arial, Helvetica, sans-serif;
@@ -49,6 +49,7 @@
             padding: 8px;
             text-align: left;
             border: 1px solid #ddd;
+            cursor:pointer;
         }
 
         /* Style for table data */
@@ -64,7 +65,7 @@
         #table-container{
           height: 80vh;
           overflow: scroll;
-          width:30%;
+          width:50%;
         }
 
     </style>
@@ -77,1792 +78,2101 @@
         <button onclick="showClickRates()">Show Click Rates</button>
     </div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Include jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include Tablesorter library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.min.js"></script>
     <script>
-
-      
-
     
 
-// GeoJSON data with local authority regions
 var geojsonData = {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "North Lincolnshire",
-                    "open_rate": 59.7,
-                    "click_rate": 17.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.5, 53.6] // Center coordinates of North Lincolnshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Cheshire East",
-                    "open_rate": 60.4,
-                    "click_rate": 15.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.5, 53.1] // Center coordinates of Cheshire East
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Blackpool",
-                    "open_rate": 57.7,
-                    "click_rate": 15.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.05, 53.8] // Center coordinates of Blackpool
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Borough of Darlington",
-                    "open_rate": 44.4,
-                    "click_rate": 14.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.55, 54.53] // Center coordinates of Darlington
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Tower Hamlets",
-                    "open_rate": 55.5,
-                    "click_rate": 14.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.03, 51.52] // Center coordinates of Tower Hamlets
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Metropolitan Borough of Oldham",
-                    "open_rate": 47.1,
-                    "click_rate": 14.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.12, 53.54] // Center coordinates of Oldham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Northumberland",
-                    "open_rate": 62.5,
-                    "click_rate": 13.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.78, 55.27] // Center coordinates of Northumberland
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Knowsley, Merseyside",
-                    "open_rate": 41.7,
-                    "click_rate": 13.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.82, 53.42] // Center coordinates of Knowsley
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Waltham Forest",
-                    "open_rate": 50,
-                    "click_rate": 13.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.01, 51.59] // Center coordinates of Waltham Forest
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Royal Borough of Kensington and Chelsea",
-                    "open_rate": 46.7,
-                    "click_rate": 13.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.19, 51.5] // Center coordinates of Kensington and Chelsea
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Richmond upon Thames",
-                    "open_rate": 50.8,
-                    "click_rate": 12.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.32, 51.45] // Center coordinates of Richmond upon Thames
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Herefordshire",
-                    "open_rate": 54.2,
-                    "click_rate": 12.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.72, 52.08] // Center coordinates of Herefordshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Haringey",
-                    "open_rate": 50.7,
-                    "click_rate": 12.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.12, 51.6] // Center coordinates of Haringey
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Rotherham",
-                    "open_rate": 68.2,
-                    "click_rate": 12.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.35, 53.43] // Center coordinates of Rotherham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bexley",
-                    "open_rate": 48,
-                    "click_rate": 12
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.15, 51.45] // Center coordinates of Bexley
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Lewisham",
-                    "open_rate": 44.8,
-                    "click_rate": 11.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.02, 51.46] // Center coordinates of Lewisham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Southwark",
-                    "open_rate": 42.7,
-                    "click_rate": 11.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.08, 51.5] // Center coordinates of Southwark
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Barking and Dagenham",
-                    "open_rate": 44.6,
-                    "click_rate": 10.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.13, 51.54] // Center coordinates of Barking and Dagenham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Wolverhampton",
-                    "open_rate": 52.9,
-                    "click_rate": 10.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.12, 52.59] // Center coordinates of Wolverhampton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Croydon",
-                    "open_rate": 53.1,
-                    "click_rate": 10.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.1, 51.37] // Center coordinates of Croydon
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Peterborough",
-                    "open_rate": 39.6,
-                    "click_rate": 10.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.25, 52.58] // Center coordinates of Peterborough
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Isle of Wight",
-                    "open_rate": 69,
-                    "click_rate": 10.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.3, 50.68] // Center coordinates of Isle of Wight
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "St Helens",
-                    "open_rate": 59.2,
-                    "click_rate": 10.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.73, 53.45] // Center coordinates of St Helens
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Barnet",
-                    "open_rate": 56,
-                    "click_rate": 10.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.2, 51.65] // Center coordinates of Barnet
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "South Tyneside",
-                    "open_rate": 62.5,
-                    "click_rate": 10
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.46, 54.97] // Center coordinates of South Tyneside
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Sandwell",
-                    "open_rate": 50.4,
-                    "click_rate": 9.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.02, 52.52] // Center coordinates of Sandwell
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Middlesbrough",
-                    "open_rate": 40.3,
-                    "click_rate": 9.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.24, 54.57] // Center coordinates of Middlesbrough
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Wokingham",
-                    "open_rate": 66.7,
-                    "click_rate": 9.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.85, 51.41] // Center coordinates of Wokingham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Brighton and Hove",
-                    "open_rate": 56.3,
-                    "click_rate": 9.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.15, 50.83] // Center coordinates of Brighton and Hove
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Kirklees",
-                    "open_rate": 50.3,
-                    "click_rate": 9.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.77, 53.68] // Center coordinates of Kirklees
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Dorset",
-                    "open_rate": 53.6,
-                    "click_rate": 9.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.23, 50.74] // Center coordinates of Dorset
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Slough",
-                    "open_rate": 46.5,
-                    "click_rate": 9.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.59, 51.51] // Center coordinates of Slough
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "East Riding of Yorkshire",
-                    "open_rate": 52.9,
-                    "click_rate": 9.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.43, 53.88] // Center coordinates of East Riding of Yorkshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "South Gloucestershire",
-                    "open_rate": 55.2,
-                    "click_rate": 9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.47, 51.57] // Center coordinates of South Gloucestershire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Shropshire",
-                    "open_rate": 50,
-                    "click_rate": 9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.76, 52.64] // Center coordinates of Shropshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Wirral-Enniskillen",
-                    "open_rate": 56.7,
-                    "click_rate": 8.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.11, 53.37] // Center coordinates of Wirral-Enniskillen
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Bromley",
-                    "open_rate": 53.3,
-                    "click_rate": 8.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.02, 51.4] // Center coordinates of London Borough of Bromley
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Newham",
-                    "open_rate": 48.4,
-                    "click_rate": 8.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.03, 51.53] // Center coordinates of London Borough of Newham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Enfield",
-                    "open_rate": 40.5,
-                    "click_rate": 8.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.08, 51.65] // Center coordinates of London Borough of Enfield
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Norfolk",
-                    "open_rate": 50.2,
-                    "click_rate": 8.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [1.01, 52.68] // Center coordinates of Norfolk
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bath and North East Somerset",
-                    "open_rate": 48.6,
-                    "click_rate": 8.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.48, 51.38] // Center coordinates of Bath and North East Somerset
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Blackburn with Darwen",
-                    "open_rate": 46.6,
-                    "click_rate": 8.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.47, 53.71] // Center coordinates of Blackburn with Darwen
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Westminster",
-                    "open_rate": 62.5,
-                    "click_rate": 8.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.13, 51.5] // Center coordinates of Westminster
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bedford",
-                    "open_rate": 46.9,
-                    "click_rate": 8.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.47, 52.14] // Center coordinates of Bedford
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Trafford",
-                    "open_rate": 48.4,
-                    "click_rate": 8.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.28, 53.42] // Center coordinates of Trafford
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Southampton",
-                    "open_rate": 47.7,
-                    "click_rate": 8.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.4, 50.91] // Center coordinates of Southampton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Sefton",
-                    "open_rate": 58.7,
-                    "click_rate": 8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.03, 53.5] // Center coordinates of Sefton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Westmorland and Furness (Cumbria)",
-                    "open_rate": 63.2,
-                    "click_rate": 7.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.1, 54.25] // Center coordinates of Westmorland and Furness (Cumbria)
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Royal Borough of Windsor and Maidenhead",
-                    "open_rate": 52.6,
-                    "click_rate": 7.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.71, 51.48] // Center coordinates of Royal Borough of Windsor and Maidenhead
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Kingston upon Thames",
-                    "open_rate": 50.8,
-                    "click_rate": 7.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.3, 51.41] // Center coordinates of Kingston upon Thames
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "West Sussex",
-                    "open_rate": 52.7,
-                    "click_rate": 7.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.5, 50.93] // Center coordinates of West Sussex
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Solihull",
-                    "open_rate": 45.5,
-                    "click_rate": 7.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.78, 52.41] // Center coordinates of Solihull
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Sutton",
-                    "open_rate": 53.8,
-                    "click_rate": 7.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.18, 51.36] // Center coordinates of London Borough of Sutton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Wakefield",
-                    "open_rate": 48.4,
-                    "click_rate": 7.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.5, 53.68] // Center coordinates of Wakefield
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Calderdale",
-                    "open_rate": 43,
-                    "click_rate": 7.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.95, 53.72] // Center coordinates of Calderdale
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Derby",
-                    "open_rate": 43.4,
-                    "click_rate": 7.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.47, 52.92] // Center coordinates of Derby
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Barnsley",
-                    "open_rate": 47.1,
-                    "click_rate": 7.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.47, 53.55] // Center coordinates of Barnsley
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Borough of Halton",
-                    "open_rate": 40.7,
-                    "click_rate": 7.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.73, 53.34] // Center coordinates of Borough of Halton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "North Tyneside",
-                    "open_rate": 61.8,
-                    "click_rate": 7.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.49, 55.02] // Center coordinates of North Tyneside
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Stockton-on-Tees",
-                    "open_rate": 48.2,
-                    "click_rate": 7.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.31, 54.57] // Center coordinates of Stockton-on-Tees
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Kingston upon Hull",
-                    "open_rate": 47,
-                    "click_rate": 7.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.33, 53.75] // Center coordinates of Kingston upon Hull
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Hillingdon",
-                    "open_rate": 39.1,
-                    "click_rate": 7.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.45, 51.54] // Center coordinates of London Borough of Hillingdon
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Wiltshire",
-                    "open_rate": 52.4,
-                    "click_rate": 7.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.99, 51.35] // Center coordinates of Wiltshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Hartlepool",
-                    "open_rate": 50,
-                    "click_rate": 7.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.21, 54.69] // Center coordinates of Hartlepool
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Plymouth",
-                    "open_rate": 49.4,
-                    "click_rate": 7.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-4.14, 50.38] // Center coordinates of Plymouth
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Newcastle upon Tyne",
-                    "open_rate": 47.5,
-                    "click_rate": 7.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.62, 54.97] // Center coordinates of Newcastle upon Tyne
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Lambeth",
-                    "open_rate": 41.8,
-                    "click_rate": 7.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.12, 51.47] // Center coordinates of London Borough of Lambeth
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Camden",
-                    "open_rate": 56.3,
-                    "click_rate": 7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.18, 51.54] // Center coordinates of London Borough of Camden
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Liverpool",
-                    "open_rate": 49,
-                    "click_rate": 6.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.98, 53.41] // Center coordinates of Liverpool
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Swindon",
-                    "open_rate": 61.4,
-                    "click_rate": 6.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.78, 51.56] // Center coordinates of Swindon
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Hammersmith and Fulham",
-                    "open_rate": 54.2,
-                    "click_rate": 6.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.22, 51.49] // Center coordinates of London Borough of Hammersmith and Fulham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Redbridge",
-                    "open_rate": 45.8,
-                    "click_rate": 6.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.08, 51.56] // Center coordinates of London Borough of Redbridge
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Somerset",
-                    "open_rate": 55.6,
-                    "click_rate": 6.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.15, 51.03] // Center coordinates of Somerset
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Worcestershire",
-                    "open_rate": 51.3,
-                    "click_rate": 6.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.21, 52.19] // Center coordinates of Worcestershire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Buckinghamshire",
-                    "open_rate": 52.6,
-                    "click_rate": 6.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.99, 51.83] // Center coordinates of Buckinghamshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Derbyshire",
-                    "open_rate": 54,
-                    "click_rate": 6.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.47, 53.1] // Center coordinates of Derbyshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Sunderland",
-                    "open_rate": 43.5,
-                    "click_rate": 6.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.38, 54.9] // Center coordinates of Sunderland
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "North Somerset",
-                    "open_rate": 59.6,
-                    "click_rate": 6.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.76, 51.4] // Center coordinates of North Somerset
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "North East Lincolnshire",
-                    "open_rate": 55.3,
-                    "click_rate": 6.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.06, 53.54] // Center coordinates of North East Lincolnshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bracknell Forest",
-                    "open_rate": 59.4,
-                    "click_rate": 6.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.77, 51.39] // Center coordinates of Bracknell Forest
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bury",
-                    "open_rate": 57.8,
-                    "click_rate": 6.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.3, 53.59] // Center coordinates of Bury
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Thurrock",
-                    "open_rate": 56.3,
-                    "click_rate": 6.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.37, 51.51] // Center coordinates of Thurrock
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Hertfordshire",
-                    "open_rate": 54.2,
-                    "click_rate": 6.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.24, 51.81] // Center coordinates of Hertfordshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Hampshire",
-                    "open_rate": 51.6,
-                    "click_rate": 6.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.3, 51.06] // Center coordinates of Hampshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Southend-on-Sea",
-                    "open_rate": 61.2,
-                    "click_rate": 6.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.71, 51.54] // Center coordinates of Southend-on-Sea
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "North Yorkshire",
-                    "open_rate": 53.1,
-                    "click_rate": 6.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.08, 54.17] // Center coordinates of North Yorkshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Essex",
-                    "open_rate": 50.5,
-                    "click_rate": 6.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.69, 51.77] // Center coordinates of Essex
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Wandsworth",
-                    "open_rate": 54.8,
-                    "click_rate": 6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.19, 51.46] // Center coordinates of London Borough of Wandsworth
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Telford and Wrekin",
-                    "open_rate": 52,
-                    "click_rate": 6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.52, 52.68] // Center coordinates of Telford and Wrekin
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Havering",
-                    "open_rate": 50.7,
-                    "click_rate": 6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.19, 51.58] // Center coordinates of London Borough of Havering
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bournemouth",
-                    "open_rate": 45,
-                    "click_rate": 6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.88, 50.72] // Center coordinates of Bournemouth
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Cambridgeshire",
-                    "open_rate": 44.7,
-                    "click_rate": 6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.14, 52.29] // Center coordinates of Cambridgeshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Surrey",
-                    "open_rate": 53.4,
-                    "click_rate": 5.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.41, 51.24] // Center coordinates of Surrey
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Sheffield",
-                    "open_rate": 45.3,
-                    "click_rate": 5.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.47, 53.38] // Center coordinates of Sheffield
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Walsall",
-                    "open_rate": 41.2,
-                    "click_rate": 5.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.98, 52.59] // Center coordinates of Walsall
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Leicester",
-                    "open_rate": 57.3,
-                    "click_rate": 5.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.13, 52.64] // Center coordinates of Leicester
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Portsmouth",
-                    "open_rate": 44.9,
-                    "click_rate": 5.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.09, 50.81] // Center coordinates of Portsmouth
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Devon",
-                    "open_rate": 51.4,
-                    "click_rate": 5.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.9, 50.73] // Center coordinates of Devon
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "East Sussex",
-                    "open_rate": 48.4,
-                    "click_rate": 5.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.34, 50.91] // Center coordinates of East Sussex
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Stoke-on-Trent",
-                    "open_rate": 45.7,
-                    "click_rate": 5.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.18, 53.01] // Center coordinates of Stoke-on-Trent
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Birmingham",
-                    "open_rate": 42.7,
-                    "click_rate": 5.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.89, 52.48] // Center coordinates of Birmingham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Central Bedfordshire",
-                    "open_rate": 50.5,
-                    "click_rate": 5.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.42, 52] // Center coordinates of Central Bedfordshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Ealing",
-                    "open_rate": 46.5,
-                    "click_rate": 5.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.33, 51.51] // Center coordinates of London Borough of Ealing
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Islington",
-                    "open_rate": 46.7,
-                    "click_rate": 5.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.11, 51.54] // Center coordinates of Islington
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Nottinghamshire",
-                    "open_rate": 55,
-                    "click_rate": 5.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.06, 53.13] // Center coordinates of Nottinghamshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "City of Bradford",
-                    "open_rate": 43.5,
-                    "click_rate": 5.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.75, 53.79] // Center coordinates of City of Bradford
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Metropolitan Borough of Dudley",
-                    "open_rate": 49.3,
-                    "click_rate": 5.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.09, 52.47] // Center coordinates of Metropolitan Borough of Dudley
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Metropolitan Borough of Wigan",
-                    "open_rate": 45.9,
-                    "click_rate": 5.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.63, 53.53] // Center coordinates of Metropolitan Borough of Wigan
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Brent",
-                    "open_rate": 62.4,
-                    "click_rate": 5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.27, 51.56] // Center coordinates of London Borough of Brent
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Merton",
-                    "open_rate": 54.1,
-                    "click_rate": 4.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.19, 51.4] // Center coordinates of London Borough of Merton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Warrington",
-                    "open_rate": 59.5,
-                    "click_rate": 4.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.59, 53.39] // Center coordinates of Warrington
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Staffordshire",
-                    "open_rate": 53.3,
-                    "click_rate": 4.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.04, 52.88] // Center coordinates of Staffordshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Warwickshire",
-                    "open_rate": 51.4,
-                    "click_rate": 4.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.59, 52.29] // Center coordinates of Warwickshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Greenwich",
-                    "open_rate": 38.1,
-                    "click_rate": 4.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.05, 51.48] // Center coordinates of Greenwich
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Tameside",
-                    "open_rate": 54.7,
-                    "click_rate": 4.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.08, 53.47] // Center coordinates of Tameside
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Northamptonshire",
-                    "open_rate": 51.2,
-                    "click_rate": 4.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.89, 52.24] // Center coordinates of Northamptonshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Leicestershire",
-                    "open_rate": 47.9,
-                    "click_rate": 4.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.21, 52.64] // Center coordinates of Leicestershire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Gloucestershire",
-                    "open_rate": 48.3,
-                    "click_rate": 4.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.2, 51.86] // Center coordinates of Gloucestershire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Nottingham",
-                    "open_rate": 47.7,
-                    "click_rate": 4.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.15, 52.95] // Center coordinates of Nottingham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Harrow",
-                    "open_rate": 46.3,
-                    "click_rate": 4.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.33, 51.58] // Center coordinates of London Borough of Harrow
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "County Durham",
-                    "open_rate": 45.2,
-                    "click_rate": 4.5
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.86, 54.78] // Center coordinates of County Durham
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Oxfordshire",
-                    "open_rate": 52.5,
-                    "click_rate": 4.4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.23, 51.76] // Center coordinates of Oxfordshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "York",
-                    "open_rate": 58.7,
-                    "click_rate": 4.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.08, 53.96] // Center coordinates of York
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Hackney",
-                    "open_rate": 48.6,
-                    "click_rate": 4.3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.07, 51.55] // Center coordinates of London Borough of Hackney
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Stockport",
-                    "open_rate": 56.8,
-                    "click_rate": 4.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.16, 53.41] // Center coordinates of Stockport
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Metropolitan Borough of Gateshead",
-                    "open_rate": 54.2,
-                    "click_rate": 4.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.61, 54.96] // Center coordinates of Metropolitan Borough of Gateshead
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Torbay",
-                    "open_rate": 45.8,
-                    "click_rate": 4.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-3.52, 50.45] // Center coordinates of Torbay
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Redcar and Cleveland",
-                    "open_rate": 43.8,
-                    "click_rate": 4.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.06, 54.57] // Center coordinates of Redcar and Cleveland
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Lincolnshire",
-                    "open_rate": 44.4,
-                    "click_rate": 4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.5, 53.15] // Center coordinates of Lincolnshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Luton",
-                    "open_rate": 40.6,
-                    "click_rate": 4
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.41, 51.88] // Center coordinates of Luton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Reading, Berkshire",
-                    "open_rate": 53.8,
-                    "click_rate": 3.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.97, 51.46] // Center coordinates of Reading, Berkshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Kent",
-                    "open_rate": 46,
-                    "click_rate": 3.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.89, 51.28] // Center coordinates of Kent
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Doncaster",
-                    "open_rate": 38.5,
-                    "click_rate": 3.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.14, 53.52] // Center coordinates of Doncaster
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Milton Keynes",
-                    "open_rate": 55.6,
-                    "click_rate": 3.2
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.78, 52.04] // Center coordinates of Milton Keynes
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Manchester",
-                    "open_rate": 49.8,
-                    "click_rate": 3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.24, 53.48] // Center coordinates of Manchester
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Cornwall",
-                    "open_rate": 46.3,
-                    "click_rate": 3
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-4.71, 50.26] // Center coordinates of Cornwall
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bristol",
-                    "open_rate": 49.6,
-                    "click_rate": 2.9
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.59, 51.45] // Center coordinates of Bristol
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "London Borough of Hounslow",
-                    "open_rate": 40.8,
-                    "click_rate": 2.8
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.36, 51.47] // Center coordinates of London Borough of Hounslow
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Suffolk",
-                    "open_rate": 56.8,
-                    "click_rate": 2.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.93, 52.19] // Center coordinates of Suffolk
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Leeds",
-                    "open_rate": 46.8,
-                    "click_rate": 2.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.55, 53.8] // Center coordinates of Leeds
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Medway",
-                    "open_rate": 45.9,
-                    "click_rate": 2.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.55, 51.39] // Center coordinates of Medway
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Medway",
-                    "open_rate": 45.9,
-                    "click_rate": 2.7
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [0.55, 51.39] // Center coordinates of Medway
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Coventry",
-                    "open_rate": 48.4,
-                    "click_rate": 2.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.51, 52.41] // Center coordinates of Coventry
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "West Northamptonshire",
-                    "open_rate": 47.4,
-                    "click_rate": 2.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.01, 52.23] // Center coordinates of West Northamptonshire
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "City of Salford",
-                    "open_rate": 46.3,
-                    "click_rate": 1.6
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.28, 53.49] // Center coordinates of City of Salford
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Bolton",
-                    "open_rate": 45.5,
-                    "click_rate": 1.1
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-2.43, 53.58] // Center coordinates of Bolton
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "Rutland",
-                    "open_rate": 55.6,
-                    "click_rate": 0
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-0.72, 52.67] // Center coordinates of Rutland
-                }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": "West Berkshire",
-                    "open_rate": 44.2,
-                    "click_rate": 0
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-1.23, 51.42] // Center coordinates of West Berkshire
-                }
-            }               
+    "type": "FeatureCollection",
+    "features": [
+        {
+    "type": "Feature",
+    "properties": {
+        "name": "North Lincolnshire",
+        "open_rate": 59.7,
+        "click_rate": 17.7,
+        "send": 62,
+        "vacancy_view_conversion_rate": 30.8
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.5, 53.6]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Cheshire East",
+        "open_rate": 60.4,
+        "click_rate": 15.4,
+        "send": 91,
+        "vacancy_view_conversion_rate": 41.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.5, 53.1]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Blackpool",
+        "open_rate": 57.7,
+        "click_rate": 15.4,
+        "send": 26,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-3.05, 53.8]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Borough of Darlington",
+        "open_rate": 44.4,
+        "click_rate": 14.8,
+        "send": 27,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.55, 54.53]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Tower Hamlets",
+        "open_rate": 55.5,
+        "click_rate": 14.1,
+        "send": 128,
+        "vacancy_view_conversion_rate": 30
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.03, 51.52]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Metropolitan Borough of Oldham",
+        "open_rate": 47.1,
+        "click_rate": 14.1,
+        "send": 85,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.12, 53.54]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Northumberland",
+        "open_rate": 62.5,
+        "click_rate": 13.9,
+        "send": 72,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.78, 55.27]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Knowsley, Merseyside",
+        "open_rate": 41.7,
+        "click_rate": 13.9,
+        "send": 36,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.82, 53.42]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Waltham Forest",
+        "open_rate": 50,
+        "click_rate": 13.6,
+        "send": 88,
+        "vacancy_view_conversion_rate": 23.1
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.01, 51.59]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Royal Borough of Kensington and Chelsea",
+        "open_rate": 46.7,
+        "click_rate": 13.3,
+        "send": 30,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.19, 51.5]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Richmond upon Thames",
+        "open_rate": 50.8,
+        "click_rate": 12.7,
+        "send": 63,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.32, 51.45]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Herefordshire",
+        "open_rate": 54.2,
+        "click_rate": 12.5,
+        "send": 48,
+        "vacancy_view_conversion_rate": 41.7
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.72, 52.08]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Haringey",
+        "open_rate": 50.7,
+        "click_rate": 12.3,
+        "send": 73,
+        "vacancy_view_conversion_rate": 33.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.12, 51.6]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Rotherham",
+        "open_rate": 68.2,
+        "click_rate": 12.1,
+        "send": 70,
+        "vacancy_view_conversion_rate": 20
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.35, 53.43]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Bexley",
+        "open_rate": 48,
+        "click_rate": 12,
+        "send": 55,
+        "vacancy_view_conversion_rate": 42.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.15, 51.45]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Lewisham",
+        "open_rate": 44.8,
+        "click_rate": 11.5,
+        "send": 45,
+        "vacancy_view_conversion_rate": 53.8
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.02, 51.46]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Southwark",
+        "open_rate": 42.7,
+        "click_rate": 11.2,
+        "send": 48,
+        "vacancy_view_conversion_rate": 33.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.08, 51.5]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Barking and Dagenham",
+        "open_rate": 44.6,
+        "click_rate": 10.8,
+        "send": 42,
+        "vacancy_view_conversion_rate": 50
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.13, 51.54]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Wolverhampton",
+        "open_rate": 52.9,
+        "click_rate": 10.6,
+        "send": 53,
+        "vacancy_view_conversion_rate": 44.4
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.12, 52.59]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Croydon",
+        "open_rate": 53.1,
+        "click_rate": 10.4,
+        "send": 50,
+        "vacancy_view_conversion_rate": 41.7
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.1, 51.37]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Peterborough",
+        "open_rate": 39.6,
+        "click_rate": 10.4,
+        "send": 40,
+        "vacancy_view_conversion_rate": 33.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.25, 52.58]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Isle of Wight",
+        "open_rate": 69,
+        "click_rate": 10.3,
+        "send": 60,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.3, 50.68]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "St Helens",
+        "open_rate": 59.2,
+        "click_rate": 10.2,
+        "send": 62,
+        "vacancy_view_conversion_rate": 14.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.73, 53.45]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Barnet",
+        "open_rate": 56,
+        "click_rate": 10.1,
+        "send": 75,
+        "vacancy_view_conversion_rate": 20
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.2, 51.65]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "South Tyneside",
+        "open_rate": 62.5,
+        "click_rate": 10,
+        "send": 48,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.46, 54.97]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Sandwell",
+        "open_rate": 50.4,
+        "click_rate": 9.8,
+        "send": 55,
+        "vacancy_view_conversion_rate": 33.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.02, 52.52]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Middlesbrough",
+        "open_rate": 40.3,
+        "click_rate": 9.7,
+        "send": 47,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.24, 54.57]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Wokingham",
+        "open_rate": 66.7,
+        "click_rate": 9.5,
+        "send": 69,
+        "vacancy_view_conversion_rate": 50
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.85, 51.41]
+    }
+},
+
+
+
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Brighton and Hove",
+        "open_rate": 56.3,
+        "click_rate": 9.4,
+        "send": 61,
+        "vacancy_view_conversion_rate": 44.4
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.15, 50.83]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Kirklees",
+        "open_rate": 50.3,
+        "click_rate": 9.4,
+        "send": 68,
+        "vacancy_view_conversion_rate": 33.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.77, 53.68]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Dorset",
+        "open_rate": 53.6,
+        "click_rate": 9.3,
+        "send": 56,
+        "vacancy_view_conversion_rate": 33.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.23, 50.74]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Slough",
+        "open_rate": 46.5,
+        "click_rate": 9.3,
+        "send": 50,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.59, 51.51]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "East Riding of Yorkshire",
+        "open_rate": 52.9,
+        "click_rate": 9.2,
+        "send": 57,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.43, 53.88]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "South Gloucestershire",
+        "open_rate": 55.2,
+        "click_rate": 9,
+        "send": 59,
+        "vacancy_view_conversion_rate": 14.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.47, 51.57]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Shropshire",
+        "open_rate": 50,
+        "click_rate": 9,
+        "send": 54,
+        "vacancy_view_conversion_rate": 14.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.76, 52.64]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Wirral-Enniskillen",
+        "open_rate": 56.7,
+        "click_rate": 8.9,
+        "send": 90,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-3.11, 53.37]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Bromley",
+        "open_rate": 53.3,
+        "click_rate": 8.9,
+        "send": 91,
+        "vacancy_view_conversion_rate": 22.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.02, 51.4]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Newham",
+        "open_rate": 48.4,
+        "click_rate": 8.9,
+        "send": 125,
+        "vacancy_view_conversion_rate": 25
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.03, 51.53]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Enfield",
+        "open_rate": 40.5,
+        "click_rate": 8.9,
+        "send": 79,
+        "vacancy_view_conversion_rate": 22.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.08, 51.65]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Norfolk",
+        "open_rate": 50.2,
+        "click_rate": 8.8,
+        "send": 239,
+        "vacancy_view_conversion_rate": 40.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [1.01, 52.68]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Bath and North East Somerset",
+        "open_rate": 48.6,
+        "click_rate": 8.6,
+        "send": 70,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.48, 51.38]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Blackburn with Darwen",
+        "open_rate": 46.6,
+        "click_rate": 8.6,
+        "send": 58,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.47, 53.71]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Westminster",
+        "open_rate": 62.5,
+        "click_rate": 8.3,
+        "send": 48,
+        "vacancy_view_conversion_rate": 80
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.13, 51.5]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Bedford",
+        "open_rate": 46.9,
+        "click_rate": 8.2,
+        "send": 49,
+        "vacancy_view_conversion_rate": 25
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.47, 52.14]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Trafford",
+        "open_rate": 48.4,
+        "click_rate": 8.1,
+        "send": 62,
+        "vacancy_view_conversion_rate": 40
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.28, 53.42]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Southampton",
+        "open_rate": 47.7,
+        "click_rate": 8.1,
+        "send": 86,
+        "vacancy_view_conversion_rate": 14.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.4, 50.91]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Sefton",
+        "open_rate": 58.7,
+        "click_rate": 8,
+        "send": 75,
+        "vacancy_view_conversion_rate": 22.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-3.03, 53.5]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Westmorland and Furness (Cumbria)",
+        "open_rate": 63.2,
+        "click_rate": 7.9,
+        "send": 38,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-3.1, 54.25]
+    }
+},
+
+
+
+
+
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Royal Borough of Windsor and Maidenhead",
+        "open_rate": 52.6,
+        "click_rate": 7.9,
+        "send": 38,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.71, 51.48]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Kingston upon Thames",
+        "open_rate": 50.8,
+        "click_rate": 7.9,
+        "send": 63,
+        "vacancy_view_conversion_rate": 10.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.3, 51.41]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "West Sussex",
+        "open_rate": 52.7,
+        "click_rate": 7.8,
+        "send": 167,
+        "vacancy_view_conversion_rate": 15
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.5, 50.93]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Solihull",
+        "open_rate": 45.5,
+        "click_rate": 7.8,
+        "send": 77,
+        "vacancy_view_conversion_rate": 18.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.78, 52.41]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Sutton",
+        "open_rate": 53.8,
+        "click_rate": 7.7,
+        "send": 65,
+        "vacancy_view_conversion_rate": 20.6
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.18, 51.36]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Wakefield",
+        "open_rate": 48.4,
+        "click_rate": 7.7,
+        "send": 91,
+        "vacancy_view_conversion_rate": 17.6
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.5, 53.68]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Calderdale",
+        "open_rate": 43,
+        "click_rate": 7.6,
+        "send": 80,
+        "vacancy_view_conversion_rate": 21.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.95, 53.72]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Derby",
+        "open_rate": 43.4,
+        "click_rate": 7.5,
+        "send": 53,
+        "vacancy_view_conversion_rate": 14.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.47, 52.92]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Barnsley",
+        "open_rate": 47.1,
+        "click_rate": 7.4,
+        "send": 68,
+        "vacancy_view_conversion_rate": 13.7
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.47, 53.55]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Borough of Halton",
+        "open_rate": 40.7,
+        "click_rate": 7.4,
+        "send": 27,
+        "vacancy_view_conversion_rate": 0
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.73, 53.34]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "North Tyneside",
+        "open_rate": 61.8,
+        "click_rate": 7.3,
+        "send": 55,
+        "vacancy_view_conversion_rate": 10.5
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.49, 55.02]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Stockton-on-Tees",
+        "open_rate": 48.2,
+        "click_rate": 7.2,
+        "send": 83,
+        "vacancy_view_conversion_rate": 9.6
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.31, 54.57]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Kingston upon Hull",
+        "open_rate": 47,
+        "click_rate": 7.2,
+        "send": 75,
+        "vacancy_view_conversion_rate": 12.5
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.33, 53.75]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Hillingdon",
+        "open_rate": 39.1,
+        "click_rate": 7.2,
+        "send": 72,
+        "vacancy_view_conversion_rate": 10.1
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.45, 51.54]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Wiltshire",
+        "open_rate": 52.4,
+        "click_rate": 7.1,
+        "send": 64,
+        "vacancy_view_conversion_rate": 11.1
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.99, 51.35]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Hartlepool",
+        "open_rate": 50,
+        "click_rate": 7.1,
+        "send": 87,
+        "vacancy_view_conversion_rate": 9.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.21, 54.69]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Plymouth",
+        "open_rate": 49.4,
+        "click_rate": 7.1,
+        "send": 69,
+        "vacancy_view_conversion_rate": 9.4
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-4.14, 50.38]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Newcastle upon Tyne",
+        "open_rate": 47.5,
+        "click_rate": 7.1,
+        "send": 56,
+        "vacancy_view_conversion_rate": 7.6
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.62, 54.97]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Lambeth",
+        "open_rate": 41.8,
+        "click_rate": 7.1,
+        "send": 72,
+        "vacancy_view_conversion_rate": 12.8
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.12, 51.47]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Camden",
+        "open_rate": 56.3,
+        "click_rate": 7,
+        "send": 84,
+        "vacancy_view_conversion_rate": 9.5
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.18, 51.54]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Liverpool",
+        "open_rate": 49,
+        "click_rate": 6.9,
+        "send": 90,
+        "vacancy_view_conversion_rate": 8.1
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.98, 53.41]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Swindon",
+        "open_rate": 61.4,
+        "click_rate": 6.8,
+        "send": 58,
+        "vacancy_view_conversion_rate": 12.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.78, 51.56]
+    }
+},
+
+
+
+
+
+
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Hammersmith and Fulham",
+        "open_rate": 54.2,
+        "click_rate": 6.8,
+        "send": 73,
+        "vacancy_view_conversion_rate": 8.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.22, 51.49]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Redbridge",
+        "open_rate": 45.8,
+        "click_rate": 6.8,
+        "send": 76,
+        "vacancy_view_conversion_rate": 7.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.08, 51.56]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Somerset",
+        "open_rate": 55.6,
+        "click_rate": 6.7,
+        "send": 86,
+        "vacancy_view_conversion_rate": 9.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-3.15, 51.03]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Worcestershire",
+        "open_rate": 51.3,
+        "click_rate": 6.7,
+        "send": 92,
+        "vacancy_view_conversion_rate": 8.6
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.21, 52.19]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Buckinghamshire",
+        "open_rate": 52.6,
+        "click_rate": 6.6,
+        "send": 65,
+        "vacancy_view_conversion_rate": 8.7
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.99, 51.83]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Derbyshire",
+        "open_rate": 54,
+        "click_rate": 6.5,
+        "send": 83,
+        "vacancy_view_conversion_rate": 9.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.47, 53.1]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Sunderland",
+        "open_rate": 43.5,
+        "click_rate": 6.5,
+        "send": 94,
+        "vacancy_view_conversion_rate": 8.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.38, 54.9]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "North Somerset",
+        "open_rate": 59.6,
+        "click_rate": 6.4,
+        "send": 71,
+        "vacancy_view_conversion_rate": 10.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.76, 51.4]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "North East Lincolnshire",
+        "open_rate": 55.3,
+        "click_rate": 6.4,
+        "send": 84,
+        "vacancy_view_conversion_rate": 9.1
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.06, 53.54]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Bracknell Forest",
+        "open_rate": 59.4,
+        "click_rate": 6.3,
+        "send": 79,
+        "vacancy_view_conversion_rate": 10.5
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.77, 51.39]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Bury",
+        "open_rate": 57.8,
+        "click_rate": 6.3,
+        "send": 81,
+        "vacancy_view_conversion_rate": 9.8
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.3, 53.59]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Thurrock",
+        "open_rate": 56.3,
+        "click_rate": 6.3,
+        "send": 77,
+        "vacancy_view_conversion_rate": 8.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.37, 51.51]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Hertfordshire",
+        "open_rate": 54.2,
+        "click_rate": 6.2,
+        "send": 89,
+        "vacancy_view_conversion_rate": 9.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.24, 51.81]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Hampshire",
+        "open_rate": 51.6,
+        "click_rate": 6.2,
+        "send": 94,
+        "vacancy_view_conversion_rate": 8.7
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.3, 51.06]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Southend-on-Sea",
+        "open_rate": 61.2,
+        "click_rate": 6.1,
+        "send": 80,
+        "vacancy_view_conversion_rate": 10.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.71, 51.54]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "North Yorkshire",
+        "open_rate": 53.1,
+        "click_rate": 6.1,
+        "send": 90,
+        "vacancy_view_conversion_rate": 8.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.08, 54.17]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Essex",
+        "open_rate": 50.5,
+        "click_rate": 6.1,
+        "send": 75,
+        "vacancy_view_conversion_rate": 8.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.69, 51.77]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Wandsworth",
+        "open_rate": 54.8,
+        "click_rate": 6,
+        "send": 88,
+        "vacancy_view_conversion_rate": 9.1
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.19, 51.46]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Telford and Wrekin",
+        "open_rate": 52,
+        "click_rate": 6,
+        "send": 83,
+        "vacancy_view_conversion_rate": 8.4
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-2.52, 52.68]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "London Borough of Havering",
+        "open_rate": 50.7,
+        "click_rate": 6,
+        "send": 78,
+        "vacancy_view_conversion_rate": 7.9
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.19, 51.58]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Bournemouth",
+        "open_rate": 45,
+        "click_rate": 6,
+        "send": 86,
+        "vacancy_view_conversion_rate": 7.2
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.88, 50.72]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Cambridgeshire",
+        "open_rate": 44.7,
+        "click_rate": 6,
+        "send": 82,
+        "vacancy_view_conversion_rate": 7.3
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0.14, 52.29]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Surrey",
+        "open_rate": 53.4,
+        "click_rate": 5.9,
+        "send": 88,
+        "vacancy_view_conversion_rate": 7.6
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-0.41, 51.24]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Sheffield",
+        "open_rate": 45.3,
+        "click_rate": 5.9,
+        "send": 75,
+        "vacancy_view_conversion_rate": 7.4
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-1.47, 53.38]
+    }
+},
+
+
+
+
+
+
+
+
+
+
+{
+    "type": "Feature",
+    "properties": {
+      "name": "Walsall",
+      "open_rate": 41.2,
+      "click_rate": 5.9,
+      "send": 80,
+      "vacancy_view_conversion_rate": 0.0176829268
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.98, 52.59]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Leicester",
+      "open_rate": 57.3,
+      "click_rate": 5.8,
+      "send": 87,
+      "vacancy_view_conversion_rate": 0.0126326339
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.13, 52.64]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Portsmouth",
+      "open_rate": 44.9,
+      "click_rate": 5.8,
+      "send": 78,
+      "vacancy_view_conversion_rate": 0.0164222874
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.09, 50.81]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Devon",
+      "open_rate": 51.4,
+      "click_rate": 5.7,
+      "send": 84,
+      "vacancy_view_conversion_rate": 0.016832916
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-3.9, 50.73]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "East Sussex",
+      "open_rate": 48.4,
+      "click_rate": 5.7,
+      "send": 73,
+      "vacancy_view_conversion_rate": 0.0186440678
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0.34, 50.91]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Stoke-on-Trent",
+      "open_rate": 45.7,
+      "click_rate": 5.7,
+      "send": 82,
+      "vacancy_view_conversion_rate": 0.0156424553
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.18, 53.01]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Birmingham",
+      "open_rate": 42.7,
+      "click_rate": 5.7,
+      "send": 79,
+      "Unique daily users": 41,
+      "vacancy_view_conversion_rate": 0.0167585442
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.89, 52.48]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Central Bedfordshire",
+      "open_rate": 50.5,
+      "click_rate": 5.5,
+      "send": 88,
+      "vacancy_view_conversion_rate": 0.0125225225
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.42, 52]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "London Borough of Ealing",
+      "open_rate": 46.5,
+      "click_rate": 5.4,
+      "send": 76,
+      "vacancy_view_conversion_rate": 0.0157894737
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.33, 51.51]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Islington",
+      "open_rate": 46.7,
+      "click_rate": 5.3,
+      "send": 79,
+      "vacancy_view_conversion_rate": 0.0140435816
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.11, 51.54]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Nottinghamshire",
+      "open_rate": 55,
+      "click_rate": 5.2,
+      "send": 90,
+      "vacancy_view_conversion_rate": 0.0115555556
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.06, 53.13]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "City of Bradford",
+      "open_rate": 43.5,
+      "click_rate": 5.2,
+      "send": 72,
+      "vacancy_view_conversion_rate": 0.0185185185
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.75, 53.79]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Metropolitan Borough of Dudley",
+      "open_rate": 49.3,
+      "click_rate": 5.1,
+      "send": 79,
+      "vacancy_view_conversion_rate": 0.0129113924
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.09, 52.47]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Metropolitan Borough of Wigan",
+      "open_rate": 45.9,
+      "click_rate": 5.1,
+      "send": 77,
+      "vacancy_view_conversion_rate": 0.0134020619
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.63, 53.53]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "London Borough of Brent",
+      "open_rate": 62.4,
+      "click_rate": 5,
+      "send": 90,
+      "vacancy_view_conversion_rate":0.0128205128
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.27, 51.56]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "London Borough of Merton",
+      "open_rate": 54.1,
+      "click_rate": 4.9,
+      "send": 85,
+      "vacancy_view_conversion_rate": 0.0137647059
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.19, 51.4]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Warrington",
+      "open_rate": 59.5,
+      "click_rate": 4.8,
+      "send": 88,
+      "vacancy_view_conversion_rate": 0.0136363636
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.59, 53.39]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Staffordshire",
+      "open_rate": 53.3,
+      "click_rate": 4.8,
+      "send": 83,
+      "vacancy_view_conversion_rate": 0.013253012
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.04, 52.88]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Warwickshire",
+      "open_rate": 51.4,
+      "click_rate": 4.8,
+      "send": 82,
+      "vacancy_view_conversion_rate": 0.0134146341
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.59, 52.29]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Greenwich",
+      "open_rate": 38.1,
+      "click_rate": 4.8,
+      "send": 69,
+      "vacancy_view_conversion_rate": 0.0180722892
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0.05, 51.48]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Tameside",
+      "open_rate": 54.7,
+      "click_rate": 4.7,
+      "send": 87,
+      "vacancy_view_conversion_rate": 0.0136075949
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.08, 53.47]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Northamptonshire",
+      "open_rate": 51.2,
+      "click_rate": 4.7,
+      "send": 84,
+      "vacancy_view_conversion_rate": 0.0138888889
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.89, 52.24]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Leicestershire",
+      "open_rate": 47.9,
+      "click_rate": 4.7,
+      "send": 79,
+      "vacancy_view_conversion_rate": 0.0145454545
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.21, 52.64]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Gloucestershire",
+      "open_rate": 48.3,
+      "click_rate": 4.6,
+      "send": 78,
+      "vacancy_view_conversion_rate": 0.0148734177
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.2, 51.86]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Nottingham",
+      "open_rate": 47.7,
+      "click_rate": 4.6,
+      "send": 77,
+      "vacancy_view_conversion_rate": 0.0149746193
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.15, 52.95]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "London Borough of Harrow",
+      "open_rate": 46.3,
+      "click_rate": 4.5,
+      "send": 76,
+      "vacancy_view_conversion_rate": 0.0151315789
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.33, 51.58]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "County Durham",
+      "open_rate": 45.2,
+      "click_rate": 4.5,
+      "send": 75,
+      "vacancy_view_conversion_rate": 0.015
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.86, 54.78]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Oxfordshire",
+      "open_rate": 52.5,
+      "click_rate": 4.4,
+      "send": 80,
+      "vacancy_view_conversion_rate": 0.01375
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.23, 51.76]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "York",
+      "open_rate": 58.7,
+      "click_rate": 4.3,
+      "send": 86,
+      "vacancy_view_conversion_rate": 0.0125581395
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.08, 53.96]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "London Borough of Hackney",
+      "open_rate": 48.6,
+      "click_rate": 4.3,
+      "send": 77,
+      "vacancy_view_conversion_rate": 0.0140349345
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.07, 51.55]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Stockport",
+      "open_rate": 56.8,
+      "click_rate": 4.2,
+      "send": 82,
+      "vacancy_view_conversion_rate": 0.0131578947
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.16, 53.41]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Metropolitan Borough of Gateshead",
+      "open_rate": 54.2,
+      "click_rate": 4.2,
+      "send": 81,
+      "vacancy_view_conversion_rate": 0.0135802469
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.61, 54.96]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Torbay",
+      "open_rate": 45.8,
+      "click_rate": 4.2,
+      "send": 75,
+      "vacancy_view_conversion_rate": 0.016
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-3.52, 50.45]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Redcar and Cleveland",
+      "open_rate": 43.8,
+      "click_rate": 4.2,
+      "send": 74,
+      "vacancy_view_conversion_rate": 0.0162162162
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.06, 54.57]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Lincolnshire",
+      "open_rate": 44.4,
+      "click_rate": 4,
+      "send": 73,
+      "vacancy_view_conversion_rate": 0.0164383562
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.5, 53.15]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Luton",
+      "open_rate": 40.6,
+      "click_rate": 4,
+      "send": 72,
+      "vacancy_view_conversion_rate": 0.0166666667
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.41, 51.88]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Reading, Berkshire",
+      "open_rate": 53.8,
+      "click_rate": 3.8,
+      "send": 79,
+      "vacancy_view_conversion_rate": 0.0164556962
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.97, 51.46]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Kent",
+      "open_rate": 46,
+      "click_rate": 3.8,
+      "send": 75,
+      "vacancy_view_conversion_rate": 0.016
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0.89, 51.28]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Doncaster",
+      "open_rate": 38.5,
+      "click_rate": 3.8,
+      "send": 70,
+      "vacancy_view_conversion_rate": 0.0171428571
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.14, 53.52]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Milton Keynes",
+      "open_rate": 55.6,
+      "click_rate": 3.2,
+      "send": 82,
+      "vacancy_view_conversion_rate": 0.0146341463
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.78, 52.04]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Manchester",
+      "open_rate": 49.8,
+      "click_rate": 3,
+      "send": 80,
+      "vacancy_view_conversion_rate": 0.015
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.24, 53.48]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Cornwall",
+      "open_rate": 46.3,
+      "click_rate": 3,
+      "send": 78,
+      "vacancy_view_conversion_rate": 0.0153846154
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-4.71, 50.26]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Bristol",
+      "open_rate": 49.6,
+      "click_rate": 2.9,
+      "send": 77,
+      "vacancy_view_conversion_rate": 0.0155844156
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-2.59, 51.45]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "London Borough of Hounslow",
+      "open_rate": 40.8,
+      "click_rate": 2.8,
+      "send": 76,
+      "vacancy_view_conversion_rate": 0.0157894737
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-0.36, 51.47]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Suffolk",
+      "open_rate": 56.8,
+      "click_rate": 2.7,
+      "send": 75,
+      "vacancy_view_conversion_rate": 0.0186666667
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0.93, 52.19]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Leeds",
+      "open_rate": 46.8,
+      "click_rate": 2.7,
+      "send": 74,
+      "vacancy_view_conversion_rate": 0.0189189189
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.55, 53.8]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+        "name": "Medway",
+        "open_rate": 45.9,
+        "click_rate": 2.7,
+        "send": 73,
+        "vacancy_view_conversion_rate": 0.0369863014
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0.55, 51.39]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coventry",
+        "open_rate": 48.4,
+        "click_rate": 2.1,
+        "send": 72,
+        "vacancy_view_conversion_rate": 0.0291666667
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.51, 52.41]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Northamptonshire",
+        "open_rate": 47.4,
+        "click_rate": 2.1,
+        "send": 71,
+        "vacancy_view_conversion_rate": 0.0295774648
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.01, 52.23]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "City of Salford",
+        "open_rate": 46.3,
+        "click_rate": 1.6,
+        "send": 70,
+        "vacancy_view_conversion_rate": 0.0228571429
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.28, 53.49]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bolton",
+        "open_rate": 45.5,
+        "click_rate": 1.1,
+        "send": 69,
+        "vacancy_view_conversion_rate": 0.0159420289
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.43, 53.58]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rutland",
+        "open_rate": 55.6,
+        "click_rate": 0,
+        "send": 68,
+        "vacancy_view_conversion_rate": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.72, 52.67]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Berkshire",
+        "open_rate": 44.2,
+        "click_rate": 0,
+        "send": 67,
+        "vacancy_view_conversion_rate": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.23, 51.42]
+      }
+    }
+  
+        
     ]
     }
     ;
@@ -1958,7 +2268,7 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-// Function to create circles for each feature
+// Modify the addCircles function to adjust the circle size based on the number of people sent to
 function addCircles(feature, layer) {
     var center;
 
@@ -1977,20 +2287,36 @@ function addCircles(feature, layer) {
         return;
     }
 
-    // Adjust the radius based on the feature
-    var radius = feature.properties.name.includes("London Borough") ? 5000 : 10000;
+    // Adjust the radius based on the number of people sent to
+    var radius = Math.sqrt(feature.properties.send) * 1000; // Adjust the factor as needed
+
+    // Define the color based on the open rate or click rate
     var rate = currentRateType === 'open' ? feature.properties.open_rate : feature.properties.click_rate;
 
     var circle = L.circle(center, {
         color: getColor(rate),
         fillColor: getColor(rate),
         fillOpacity: 0.5,
-        radius: radius
+        radius: radius // Set the radius based on the number of people sent to
     }).addTo(map);
 
-    // Bind popup to display the rate
-    circle.bindPopup(feature.properties.name + ". " + (currentRateType === 'open' ? "Open Rate: " : "Click Rate: ") + rate + "%");
+    // Bind popup to display the rate and number of people sent to
+    circle.bindPopup(feature.properties.name + ". " + 
+                     (currentRateType === 'open' ? "Open Rate: " : "Click Rate: ") + rate + "%" + 
+                     "<br>Number of people sent to: " + feature.properties.send);
 }
+
+
+// Update the info control to display the number of people sent to when a circle is clicked
+function updateInfo(props) {
+    this._div.innerHTML = '<h4>Region Info</h4>' +  (props ?
+        '<b>' + props.name + '</b><br />' + 
+        props.open_rate + '% open rate<br />' + 
+        props.click_rate + '% click rate<br />' + 
+        'Number of people sent to: ' + props.send // Add the number of people sent to
+        : 'Hover over a region');
+}
+
 
 
 // Clear existing circles from the map
@@ -2066,34 +2392,40 @@ L.geoJSON(geojsonData, {
     onEachFeature: addCircles // Call addCircles function for each feature
 }).addTo(map);
 
-// Extract locations from GeoJSON data
-var locations = geojsonData.features.map(feature => {
-    return {
-        name: feature.properties.name,
-        open_rate: feature.properties.open_rate,
-        click_rate: feature.properties.click_rate
-    };
-});
-
-// Create HTML table
 // Extract locations from GeoJSON data and sort by open rate in descending order
 var locations = geojsonData.features.map(feature => {
     return {
         name: feature.properties.name,
+        send: feature.properties.send,
         open_rate: feature.properties.open_rate,
-        click_rate: feature.properties.click_rate
+        click_rate: feature.properties.click_rate,
+        vacancy: feature.properties.vacancy_view_conversion_rate
     };
 }).sort((a, b) => b.open_rate - a.open_rate);
 
-// Create HTML table
-var tableHtml = '<table><thead><tr><th>Name</th><th>Open Rate (%)</th><th>Click Rate (%)</th></tr></thead><tbody>';
+// Update the HTML table generation code to include the new column for vacancy views
+var tableHtml = '<table id="location-table" class="tablesorter"><thead><tr><th>Name</th><th>Sends</th><th>Open Rate (%)</th><th>Click Rate (%)</th><th>Number that clicked</th><th>Vacancy view (%)</th><th>Vacancy view number</th></tr></thead><tbody>';
+
 locations.forEach(location => {
-    tableHtml += '<tr><td>' + location.name + '</td><td>' + location.open_rate + '</td><td>' + location.click_rate + '</td></tr>';
+
+    // Calculate the actual number of clicks based on the vacancy view conversion rate
+    var clicks = Math.round((location.send * location.click_rate) / 100);
+      // Calculate the number of people who viewed a vacancy based on the vacancy view conversion rate
+    var viewedVacancy = Math.round((clicks * location.vacancy) / 100);
+
+    tableHtml += '<tr><td>' + location.name + '</td><td>' + location.send + '</td><td>' + location.open_rate + '</td><td>' + location.click_rate + '</td><td>' + clicks + '</td><td>' + location.vacancy + '</td><td>' + viewedVacancy + '</td></tr>';
 });
 tableHtml += '</tbody></table>';
 
-// Display HTML table
+// Display the updated HTML table
 document.getElementById('table-container').innerHTML = tableHtml;
+
+// Initialize Tablesorter on the table
+$(document).ready(function() {
+    $("#location-table").tablesorter();
+});
+
+
 
     </script>
 </body>
