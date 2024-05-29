@@ -95,17 +95,89 @@
 
         {% if 'Baptism certificate' in religionQuestons %}
 
-            <h3 class="govuk-heading-s">
-                Baptism certificate
-            </h3>
-
+         
             <div class="govuk-form-group">
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="file-upload-1">
-                        Upload a file
-                    </label>
-                    <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
-                </div>
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h3 class="govuk-fieldset__heading">
+                        Can you provide evidence of your baptism certificate?
+                    </h3>
+                    </legend>
+                    <div id="contact-hint" class="govuk-hint">
+                    Select one option.
+                    </div>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+                        <label class="govuk-label govuk-radios__label" for="contact">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                        <div class="govuk-form-group">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="file-upload-1">
+                                    Upload baptism certificate
+                                </label>
+                                <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                        <label class="govuk-label govuk-radios__label" for="contact-2">
+                            No, provide address and date of baptism
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                     
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address">
+                                Address of baptism location
+                            </label>
+                            <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                                <legend class="govuk-fieldset__legend">
+                                    What was the date of your baptism?
+                                </legend>
+                                <div id="passport-issued-hint" class="govuk-hint">
+                                    For example, 27 3 2007
+                                </div>
+                                <div class="govuk-date-input" id="passport-issued">
+                                    <div class="govuk-date-input__item">
+                                        <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                            Day
+                                        </label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+                                        </div>
+                                    </div>
+                                    <div class="govuk-date-input__item">
+                                        <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                            Month
+                                        </label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+                                        </div>
+                                    </div>
+                                    <div class="govuk-date-input__item">
+                                        <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                                            Year
+                                        </label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </fieldset>
             </div>
 
         {% endif %}
