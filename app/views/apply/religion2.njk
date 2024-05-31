@@ -20,8 +20,6 @@
 
         <form action="/jobs">
 
-        {% if 'denomination' in religionQuestons %}
-
             <div class="govuk-form-group">
                 <label class="govuk-label govuk-label--s" for="event-name">
                     What is your religious denomination or faith?
@@ -32,10 +30,6 @@
                 <input class="govuk-input" id="religion-name" name="religionName" type="text" aria-describedby="religion-name-hint">
             </div> 
         
-        {% endif %}
-
-        {% if 'Address of place of worship' in religionQuestons %}
-
             <div class="govuk-form-group">
                 <label class="govuk-label govuk-label--s" for="address">
                     Address of place of worship (optional)
@@ -45,66 +39,16 @@
                 </div>
                 <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
             </div>
-
-        {% endif %}
-
-        {% if 'Religious referee' in religionQuestons %}
-
-            <h3 class="govuk-heading-s">
-                Religious referee
-            </h3>
-
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="referee-name">
-                Religous referee name
-                </label>
-                <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="address">
-                    Religous referee address
-                </label>
-                <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="referee-name">
-                    Religous referee role
-                </label>
-                <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="referee-name">
-                    Religous referee email address
-                </label>
-                <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="referee-name">
-                    Religous referee phone number (optional)
-                </label>
-                <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">Only give a phone number that your referee is happy to be contacted on.</div>
-                <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-            </div>
-
-        {% endif %}
-
-        {% if 'Baptism certificate' in religionQuestons %}
-
-         
+ 
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                     <h3 class="govuk-fieldset__heading">
-                        Can you provide evidence of your baptism certificate?
+                        Can you provide a religious referee?
                     </h3>
                     </legend>
                     <div id="contact-hint" class="govuk-hint">
-                    Select one option.
+                    A religious referee is...
                     </div>
                     <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
@@ -115,125 +59,53 @@
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                         <div class="govuk-form-group">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label" for="file-upload-1">
-                                    Upload baptism certificate
-                                </label>
-                                <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
-                            </div>
+                        <label class="govuk-label" for="referee-name">
+                            Religous referee name
+                            </label>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
                         </div>
-                    </div>
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
-                        <label class="govuk-label govuk-radios__label" for="contact-2">
-                            No, provide address and date of baptism
-                        </label>
-                    </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
-                     
+
                         <div class="govuk-form-group">
                             <label class="govuk-label" for="address">
-                                Address of baptism location
+                                Religous referee address
                             </label>
                             <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
                         </div>
 
                         <div class="govuk-form-group">
-                            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-                                <legend class="govuk-fieldset__legend">
-                                    What was the date of your baptism?
-                                </legend>
-                                <div id="passport-issued-hint" class="govuk-hint">
-                                    For example, 27 3 2007
-                                </div>
-                                <div class="govuk-date-input" id="passport-issued">
-                                    <div class="govuk-date-input__item">
-                                        <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                                            Day
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
-                                        </div>
-                                    </div>
-                                    <div class="govuk-date-input__item">
-                                        <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                                            Month
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
-                                        </div>
-                                    </div>
-                                    <div class="govuk-date-input__item">
-                                        <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                                            Year
-                                        </label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
+                            <label class="govuk-label" for="referee-name">
+                                Religous referee role
+                            </label>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="referee-name">
+                                Religous referee email address
+                            </label>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="referee-name">
+                                Religous referee phone number (optional)
+                            </label>
+                            <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">Only give a phone number that your referee is happy to be contacted on.</div>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
                         </div>
                     </div>
-                    
-                    </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone">
+                                <label class="govuk-label govuk-radios__label" for="contact-2">
+                                    No
+                                </label>
+                            </div>
+                         
                 </fieldset>
             </div>
 
-        {% endif %}
-
-        {% if 'Address and date of baptism' in religionQuestons %}
-
-        <h3 class="govuk-heading-s">
-            Address and date of baptism
-        </h3>
-
-        <div class="govuk-form-group">
-            <label class="govuk-label" for="address">
-                Address of baptism location
-            </label>
-            <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
-        </div>
-
-        <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-                <legend class="govuk-fieldset__legend">
-                    What was the date of baptism?
-                </legend>
-                <div id="passport-issued-hint" class="govuk-hint">
-                    For example, 27 3 2007
-                </div>
-                <div class="govuk-date-input" id="passport-issued">
-                    <div class="govuk-date-input__item">
-                        <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                            Day
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
-                        </div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                        <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                            Month
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
-                        </div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                        <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                            Year
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-
-        {% endif %}
-
+        
+    
         <div class="govuk-button-group">
             <button class="govuk-button" data-module="govuk-button">
                 Save and continue
