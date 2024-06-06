@@ -1,0 +1,28 @@
+
+{% extends "layout.njk" %}
+
+{% set title = "You've signed in to your GOV.UK One Login account" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>You can now continue to use the service.</p>
+
+      <form action="success">
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends "layout.njk" %}
+
+{% set title = "One Login designs" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+        <p>A list of designs done for GOV.UK One Login:</p>
+
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link" href="/onelogin/create">Create account page</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="/onelogin/login">Log in to service page</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="/onelogin/start">GOV.UK One Login end journey</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="/onelogin/account">Your account</a>
+            </li>
+        </ul>
+
+        <p>Content design</p>
+
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link" href="/onelogin/create">Advice page before switch</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="/onelogin/login">Advice page after switch</a>
+            </li>
+        </ul>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

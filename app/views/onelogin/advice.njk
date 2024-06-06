@@ -1,0 +1,55 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'What to do if you had an account with Teaching Vacancies' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+        <p>Gov OneLogin has replaced Teaching Vacancies accounts. Your account details are still on record for 12 months, but will need to be imported into your account once you've setup an account with Gov OneLogin.</p>
+
+        <h2 class="govuk-heading-m">How to access your account data</h2>
+
+        <p>There are multiple ways to access your site data, you can either:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>create a Gov OneLogin account using the same email address as your Teaching Vacancies account</li>
+            <li>Import your data into your Gov OneLogin account if you are using different email addresses</li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Create a Gov OneLogin account using the same email address as your Teaching Vacancies account</h3>
+
+        <p>If you create a OneLogin account with the same email address you signed up with on Teaching Vacancies prior to [date], your account data will be imported automatically.</p>
+
+        <h3 class="govuk-heading-s">Import your data into your Gov OneLogin account if you are using different email addresse</h3>
+
+        <p>If you decide to use a different email address for your Gov OneLogin account that you used for Teaching Vacancies, you will be given the option to request an import once you've setup a new account with Gov OneLogin.</p>
+
+        <p>This will require you to have access to the email address you signed up to Teaching Vacancies with prior to [date] when Gov OneLogin replaced Teaching Vacancies accounts.</p>
+
+        <p>You will also be able to request an import from your old account once signed in by selecting the 'Your account' navigation link.</p>
+
+        <h2 class="govuk-heading-m">Creating a Gov OneLogin account</h2>
+
+        <p>Select Create a Gov Onelogin account to begin creating an account on the Gov OneLogin service.</p>
+
+        <form method="post">
+
+            {{ govukButton({
+            text: 'Create a Gov OneLogin account'
+            }) }}
+        </form>
+
+
+
+
+    </div>
+
+  
+  </div>
+
+{% endblock %}

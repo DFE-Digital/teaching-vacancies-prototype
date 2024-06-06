@@ -1,0 +1,44 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Jobseeker sign in' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>Use Gov OneLogin to access your Teaching Vacancies account.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Continue to GOV.UK One Login'
+        }) }}
+      </form>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            How to access an existing Teaching Vacancies account
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>If you have an existing Teaching Vacancies account but you do not yet have a GOV.UK One Login, you can use the same email address for both accounts to retain your data.</p>
+
+          <p>If you have used a different email address for GOV.UK One Login, you will need to submit a request to import your data from your old account. You will be given the option to do this after signing in with a GOV.UK One Login account.</p>
+
+          <p>There is advice on <a class="govuk-link" href="advice">what to do if you had an account with Teaching Vacancies</a>.</p>
+        </div>
+      </details>
+
+    </div>
+  
+
+
+
+  </div>
+
+{% endblock %}

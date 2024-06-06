@@ -1,0 +1,35 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Create a jobseeker account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>Create an account with GOV.UK One Login to save and apply for jobs.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Create an account on GOV.UK One Login'
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">If you have a OneLogin account</h2>
+      <p class="govuk-body">
+        You can sign in via the <a class="govuk-link" href="login">sign in</a> page.        
+      </p>
+    </div>
+
+
+  </div>
+
+{% endblock %}
