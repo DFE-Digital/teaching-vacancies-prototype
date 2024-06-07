@@ -1,7 +1,7 @@
 
-{% extends "layout_email.njk" %}
+{% extends "layout.njk" %}
 
-{% set title = 'An account matching your email has been found' %}
+{% set title = 'An account matching your email has been found and your details have been imported' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -10,15 +10,11 @@
             {{title}}
         </h1>
 
-      <p>We've imported the details from your Teaching Vacanies account that used the same email address.</p>
+        <p>We've imported the details from your Teaching Vacancies account into your GOV.UK One Login account because you used the same email address.</p>
 
-      <form action="/onelogin/journey/match">
-
-        {{ govukButton({
-          text: 'Email matches an old account'
-        }) }}
-
-      </form>
+        <p class="govuk-body">
+            You can continue to <a href="/jobs">search and apply for jobs</a>, <a href="/jobs">create job alerts</a> or <a href="#">create a profile</a>.
+        </p>
 
     </div>
 

@@ -1,0 +1,50 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Check your email' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-l">
+          {{title}}
+      </h1>
+    
+        <p class="govuk-body">
+          Email sent to:
+        </p>
+
+        <div class="govuk-inset-text">
+            {{ data['oneloginemail'] }}
+        </div>
+        
+        <div class="govuk-form-group">
+            <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="email-auth">
+                Authentication code
+                </label>
+            </h2>
+            <div id="email-auth-hint" class="govuk-hint">
+                To import data from your old account enter the code sent to this email address.
+            </div>
+            <input class="govuk-input govuk-input--width-10" id="email-auth" name="email-auth" type="text" aria-describedby="email-auth-hint">
+        </div>
+        
+      <form action="ready" novalidate>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+
+
+      
+
+
+    </div>
+  </div>
+
+{% endblock %}

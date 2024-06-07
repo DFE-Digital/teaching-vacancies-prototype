@@ -12,6 +12,7 @@ router.all('*', (req, res, next) => {
 })
 
 require('./routes/account')(router)
+require('./routes/onelogin')(router)
 
 require('./routes/profile')(router)
 require('./routes/profile-personal-details')(router)

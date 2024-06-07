@@ -7,41 +7,7 @@
 {% block content %}
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-full">
-
-      <!-- URGENT -->
-
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            You have 7 days left before you must sign in with a GOV.UK One Login account.
-            You can find out more by reading our advice on <a class="govuk-notification-banner__link" href="onelogin/advice_before">how to prepare for GOV.UK One Login</a>.
-          </p>
-        </div>
-      </div>
-      
-
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            How you log in to Teaching Vacancies is changing
-          </h3>
-          <p class="govuk-body">We are replacing Teaching Vacancies accounts with GOV.UK One Login. You can find out more about <a class="govuk-notification-banner__link" href="onelogin/advice_before">how to prepare for the GOV.UK One Login update</a> before the switch.</p>
-        </div>
-      </div>
-
-    </div>
-
+  
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
         {{title}}
@@ -110,7 +76,7 @@
 
       <p>If you had an old Teaching Vacancies account you want to import data from. You can request an import by selecting import account.</p>
 
-      <form action="/onelogin/import">
+      <form action="/onelogin/journey/import">
 
         <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
           Import account

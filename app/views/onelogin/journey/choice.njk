@@ -10,7 +10,9 @@
 
       <p>Make choice:</p>
 
-      <form action="/onelogin/journey/match">
+      <form method="post">
+
+        <input class="govuk-input" id="match" name="match" type="hidden" value="match">
 
         {{ govukButton({
           text: 'Email matches an old account'
@@ -18,7 +20,9 @@
 
       </form>
 
-      <form action="/onelogin/journey/nomatch">
+      <form method="post">
+
+        <input class="govuk-input" id="match" name="match" type="hidden" value="nomatch">
 
         {{ govukButton({
           text: 'Email does not match an old account'
