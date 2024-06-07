@@ -1,5 +1,5 @@
 
-{% extends "layout.njk" %}
+{% extends "layout_email.njk" %}
 
 {% set title = "You've signed in to your GOV.UK One Login account" %}
 
@@ -12,7 +12,7 @@
 
       <p>You can now continue to use the service.</p>
 
-      <form action="success">
+      <form action="/onelogin/journey/choice">
 
         {{ govukButton({
           text: 'Continue'

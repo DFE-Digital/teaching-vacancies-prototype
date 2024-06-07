@@ -1,0 +1,28 @@
+
+{% extends "layout_email.njk" %}
+
+{% set title = 'An account matching your email has been found' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+      <p>We've imported the details from your Teaching Vacanies account that used the same email address.</p>
+
+      <form action="/onelogin/journey/match">
+
+        {{ govukButton({
+          text: 'Email matches an old account'
+        }) }}
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}
