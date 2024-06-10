@@ -7,18 +7,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Success
-          </h2>
+        <div class="govuk-error-summary" data-module="govuk-error-summary">
+            <div role="alert">
+                <h2 class="govuk-error-summary__title">
+                There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#">That authentication code is incorrect</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
         </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            Account found with that email address
-          </h3>
-        </div>
-      </div>
    
       <h1 class="govuk-heading-l">
           {{title}}
@@ -29,14 +31,14 @@
         </p>
 
         <div class="govuk-inset-text">
-            {{ data['oneloginemail'] }}
+            email@email.com
         </div>
         
         
         
       <form method="post" novalidate>
 
-        <div class="govuk-form-group">
+        <div class="govuk-form-group govuk-form-group--error">
             <h2 class="govuk-label-wrapper">
                 <label class="govuk-label govuk-label--m" for="auth-code">
                   Authentication code
@@ -45,7 +47,10 @@
             <div id="auth-code-hint" class="govuk-hint">
                Enter the code sent to your email address.
             </div>
-            <input class="govuk-input govuk-input--width-10" id="auth-code" name="auth-code" type="text" aria-describedby="auth-code-hint">
+            <p id="passport-issued-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> That authentication code is incorrect
+            </p>
+            <input class="govuk-input govuk-input--width-10 govuk-input--error" id="auth-code" name="auth-code" type="text" aria-describedby="auth-code-hint" value="{{ data['auth-code'] }}">
         </div>
 
         {{ govukButton({

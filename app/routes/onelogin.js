@@ -31,4 +31,28 @@ module.exports = router => {
  
   })
 
+  router.post('/onelogin/journey/found', (req, res) => {
+  
+    var email = req.session.data['auth-code']
+
+    if (email == "KJFJKFJK56DVDD"){
+        res.redirect('/onelogin/journey/code_match')
+    } else {
+        res.redirect('/onelogin/journey/code_error')
+    }
+ 
+  })
+
+  router.post('/onelogin/journey/code_error', (req, res) => {
+  
+    var email = req.session.data['auth-code']
+
+    if (email == "KJFJKFJK56DVDD"){
+        res.redirect('/onelogin/journey/code_match')
+    } else {
+        res.redirect('/onelogin/journey/code_error')
+    }
+ 
+  })
+
 }

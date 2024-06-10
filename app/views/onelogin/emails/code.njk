@@ -1,0 +1,26 @@
+
+{% extends "layout_email.njk" %}
+
+{% set title = 'A request to import a Teaching Vacancies account has been requested for this email' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+        <p class="govuk-body">Use this code to import your account:</p>
+
+        <div class="govuk-inset-text">
+            KJFJKFJK56DVDD
+        </div>
+
+        <p class="govuk-body">If you did not make this request you can ignore this email or <a class="govuk-notification-banner__link" href="#">report this to our support team</a>.</p>
+
+    </div>
+  
+
+  </div>
+
+{% endblock %}
