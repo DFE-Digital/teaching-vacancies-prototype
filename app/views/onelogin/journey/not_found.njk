@@ -1,40 +1,62 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'No account found with that email address' %}
+{% set primaryNavId = 'account' %}
+
+{% set title = "What was the email address on your previous account?" %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-   
-      <h1 class="govuk-heading-l">
-          {{title}}
-      </h1>
-    
-        <p class="govuk-body">
-          There was no previous Teaching Vacancies account with the email:
-        </p>
 
-        <div class="govuk-inset-text">
-           email@email.com
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+            <h2 class="govuk-error-summary__title">
+            There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                    <a href="#">No email address with that account has been found</a>
+                </li>
+            </ul>
+            </div>
         </div>
-        
-        
-      <form action="import" novalidate>
+    </div>
 
-        <div class="govuk-button-group">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Edit email address
-            </button>
-            <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/account">Cancel</a>
-        </div>
-
-      </form>
-
-
-
+      <span class="govuk-caption-l">
+        Import account
+      </span>
       
+      <form method="post" id="name-form" novalidate>
 
+        <div class="govuk-form-group govuk-form-group--error">
+            <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="oneloginemail">
+                {{title}}
+                </label>
+            </h1>
+            <p id="passport-issued-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> No email address with that account has been found
+            </p>
+            <input class="govuk-input govuk-input--error" id="oneloginemail" name="oneloginemail" type="text" value="{{ data['oneloginemail'] }}">
+        </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+        <p><a class="govuk-link--no-visited-state" href="../account">Cancel</a></p>
+      </form>
 
     </div>
   </div>

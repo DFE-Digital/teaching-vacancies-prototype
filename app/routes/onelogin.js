@@ -31,6 +31,18 @@ module.exports = router => {
  
   })
 
+  router.post('/onelogin/journey/not_found', (req, res) => {
+  
+    var email = req.session.data['oneloginemail']
+
+    if (email == "match@match.com"){
+        res.redirect('/onelogin/journey/found')
+    } else {
+        res.redirect('/onelogin/journey/not_found')
+    }
+ 
+  })
+
   router.post('/onelogin/journey/found', (req, res) => {
   
     var email = req.session.data['auth-code']
