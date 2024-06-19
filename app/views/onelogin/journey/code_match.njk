@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Previous account details' %}
+{% set title = 'Check previous account details' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -23,8 +23,10 @@
       <h1 class="govuk-heading-l">
           {{title}}
       </h1>
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-6">Personal details</h2>
     
-        <dl class="govuk-summary-list">
+      <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             Name
@@ -35,30 +37,88 @@
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Date of birth
+            Do you want to provide a phone number?	
             </dt>
             <dd class="govuk-summary-list__value">
-            5 January 1978
+            No
             </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Address
+            Do you need Skilled Worker visa sponsorship?	
             </dt>
             <dd class="govuk-summary-list__value">
-            72 Guild Street<br>London<br>SE23 6FH
+            No, I already have the right to work in the UK	
+            </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-6">Job preferences</h2>
+    
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Role
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Teacher 
             </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Contact details
+              Education phases	
             </dt>
             <dd class="govuk-summary-list__value">
-            <p class="govuk-body">07700 900457</p>
-            <p class="govuk-body">sarah.phillips@example.com</p>
+              Primary
             </dd>
         </div>
-        </dl>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Key stages	
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Early years (ages 0 to 5), Key stage 1 (ages 5 to 7), Key stage 2 (ages 7 to 11)
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Working pattern	
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Full time
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Locations
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Nottinghamshire (This area only)
+            </dd>
+        </div>
+      </dl>
+
+     
+      <h2 class="govuk-heading-m govuk-!-padding-top-6">Job alerts</h2>
+    
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Job alert 1
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Within 20 miles of Sawley, Nottingham NG1 111, <br/>Teaching and leadership roles: Teacher,<br/>Working patterns: Full time 
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Job alert 2
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Within 20 miles of Derbyshire, <br/>Teaching and leadership roles: Teacher,<br/>Working patterns: Full time 
+            </dd>
+        </div>
+      </dl>
         
       <p>If these details look familiar, you can import them into your account.</p>
 
@@ -72,10 +132,6 @@
         </div>
 
       </form>
-
-
-
-      
 
 
     </div>
