@@ -1,5 +1,5 @@
 
-{% extends "layout.njk" %}
+{% extends "layout_primary.njk" %}
 
 {% block pageTitle %}
  240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
@@ -9,9 +9,7 @@
 
 
 {% block content %}
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    240 jobs 
-  </h1>
+
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -32,21 +30,34 @@
     </div>
 
 
-    <div class="app-filter-layout__content">
-      {% include "includes/jobs-search-form.njk" %}
+    <div class="app-filter-layout__content">    
 
       <div class="app-action-bar">
-        <div class="app-action-bar__filter"></div>
+        <div class="app-action-bar__filter">
+
+        </div>
       </div>
 
       <div>
         <div class="app-jobs">
+            <!--
+        <div class="app-jobs-banner">
+
+            <div style="float:left;">
+                <h1 style="display:inline-block" class="govuk-heading-l govuk-!-margin-bottom-3  govuk-!-margin-top-1">240 primary jobs</h1><br/>
+            </div>
+
+        </div>
+
+        -->
 
           <div class="govuk-grid-column-one-full">
-              <div style="float:left;">
+
+             <div style="float:left; width:100%;">
                 <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
               </div>
-            <div style="display:inline-block; float:right">
+
+            <div style="display:inline-block; float:left">
               <form id="sortform" action="/jobs/search/postcode">
                 <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
                   <label class="govuk-label" for="sort" style="display:inline-block;">
@@ -229,9 +240,9 @@
       startHidden: false,
       toggleButton: {
         container: $('.app-action-bar__filter'),
-        showText: 'Show filter',
+        showText: 'Open filters',
         hideText: 'Hide filter',
-        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-0 open-filters'
       },
       closeButton: {
         container: $('.app-filter__header-action'),

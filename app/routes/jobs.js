@@ -22,6 +22,13 @@ module.exports = router => {
     })
   })
 
+  router.get('/primary', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/primary', {
+      jobs
+    })
+  })
+
   router.get('/home', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/home', {
