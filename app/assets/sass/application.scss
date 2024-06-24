@@ -633,12 +633,44 @@ hr {
   background-size: cover;
 }
 
+.itt-banner-form{
+
+  .desktop-image{
+    display:none;
+  }
+
+  @include govuk-media-query($from: tablet) {
+
+    .desktop-switch{
+      float:left;
+      margin-right: 20px;
+    }
+    button{
+      margin-top: 30px;
+    }
+    .desktop-image{
+      display: block;
+
+      img{
+        max-width: 100%;
+      }
+    }
+  }
+}
+
 #itt-banner--top{
   width:100%;
   height: 120px;
   background-image: url('../images/banner/primary2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  float: left;
+  margin-bottom: 20px;
+
+  @include govuk-media-query($from: tablet) {
+    //background-color: red;
+    display:none;
+  }
 }
 
 .open-filters{

@@ -54,23 +54,24 @@
           <div class="govuk-grid-column-one-full">
 
              <div style="float:left; width:100%;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2>
+                <div style="display:inline-block; float:right">
+                    <form id="sortform" action="/jobs/search/postcode">
+                        <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                        <label class="govuk-label" for="sort" style="display:inline-block;">
+                            Sort by
+                        </label>
+                        <select class="govuk-select" id="sort" name="sort">
+                            <option value="newest" selected>Newest job</option>
+                            <option value="closing">Closing date</option>
+                            {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
+                        </select>
+                        </div>
+                    </form>
+                </div>
               </div>
 
-            <div style="display:inline-block; float:left">
-              <form id="sortform" action="/jobs/search/postcode">
-                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
-                  <label class="govuk-label" for="sort" style="display:inline-block;">
-                    Sort by
-                  </label>
-                  <select class="govuk-select" id="sort" name="sort">
-                    <option value="newest" selected>Newest job</option>
-                    <option value="closing">Closing date</option>
-                    {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
-                  </select>
-                </div>
-              </form>
-            </div>
+            
 
           </div>
 
