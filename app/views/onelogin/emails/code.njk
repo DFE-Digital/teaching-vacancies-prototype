@@ -1,0 +1,40 @@
+
+{% extends "layout_email.njk" %}
+
+{% set title = 'Your security code for your for importing a Teaching Vacancies account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+        <p class="govuk-body">Use this security code to confirm the import of the account associated with this email address on Teaching Vacancies.</p>
+
+        <div class="govuk-inset-text">
+            KJFJKFJK56DVDD
+        </div>
+
+        <p>
+          The code will expire after one hour.
+        </p>
+        <p>
+          If you did not use this email address to create a GOV.​UK One Login, you can ignore this email.
+        </p>
+        <p>
+          If you need help using the security code, you can contact us:<br/><a href="https://teaching-vacancies.service.gov.uk/support_request/new">https://teaching-vacancies.service.gov.uk/support_request/new</a>
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <p class="govuk-body">
+          Do not reply to this email – it’s an automatic message from an unmonitored account.
+        </p>
+
+    </div>
+  
+
+  </div>
+
+{% endblock %}

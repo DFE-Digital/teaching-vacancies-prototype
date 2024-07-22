@@ -9,9 +9,7 @@
 
 
 {% block content %}
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    240 jobs 
-  </h1>
+  
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -33,7 +31,99 @@
 
 
     <div class="app-filter-layout__content">
-      {% include "includes/jobs-search-form.njk" %}
+        
+        <div class="app-search-form" style="padding:0px; background:none;">
+            <div class="govuk-summary-card">
+                 <div class="app-search-form-header" style="width:101%;">
+                    </div>
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title govuk-heading-m">
+                        240 secondary jobs 
+                    </h2>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <p>Find a secondary school job with the location, size and setting that is perfect for you to teach at.</p>
+
+                    <form id="filter" class="secondary-form" method="get" action="/search/applications" novalidate style="padding:0px;">
+
+                        <div class="govuk-form-group ">
+                            <label class="govuk-label govuk-label--s" for="location">
+                                City, county or postcode
+                            </label>
+
+                            <input class="govuk-input" id="location" name="location" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--s" for="radius">
+                                Search radius
+                            </label>
+
+                            <select class="govuk-select" id="radius" name="radius">
+                                <option value="1">1 mile</option>
+                                <option value="5">5 miles</option>
+                                <option value="10">10 miles</option>
+                                <option value="15">15 miles</option>
+                                <option value="20">20 miles</option>
+                                <option value="25">25 miles</option>
+                                <option value="50">50 miles</option>
+                                <option value="100">100 miles</option>
+                                <option value="200">200 miles</option>
+                            </select>
+                        </div>
+
+                        <button class="govuk-button" data-module="govuk-button">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!--
+        <div class="app-search-form" style="padding:0px;">
+            <div class="app-search-form-header">
+            </div>
+
+            
+            <form id="filter" class="secondary-form" method="get" action="/search/applications" novalidate style="">
+
+                <h1 class="govuk-heading-m govuk-!-margin-bottom-6">
+                    240 secondary jobs 
+                </h1>
+
+                <div class="govuk-form-group ">
+                    <label class="govuk-label govuk-label--s" for="location">
+                        City, county or postcode
+                    </label>
+
+                    <input class="govuk-input" id="location" name="location" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="radius">
+                        Search radius
+                    </label>
+
+                    <select class="govuk-select" id="radius" name="radius">
+                        <option value="1">1 mile</option>
+                        <option value="5">5 miles</option>
+                        <option value="10">10 miles</option>
+                        <option value="15">15 miles</option>
+                        <option value="20">20 miles</option>
+                        <option value="25">25 miles</option>
+                        <option value="50">50 miles</option>
+                        <option value="100">100 miles</option>
+                        <option value="200">200 miles</option>
+                    </select>
+                </div>
+
+                <button class="govuk-button" data-module="govuk-button">
+                    Search
+                </button>
+            </form>
+        </div>
+        -->
 
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
@@ -44,7 +134,7 @@
 
           <div class="govuk-grid-column-one-full">
               <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+                <h2 style="display:inline-block" class="govuk-heading-s govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
               </div>
             <div style="display:inline-block; float:right">
               <form id="sortform" action="/jobs/search/postcode">

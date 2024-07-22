@@ -1,0 +1,115 @@
+
+{% extends "layout_ittjobalert.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Jobseeker guides' %}
+
+{% block content %}
+  
+    <div class="govuk-grid-row" style="margin-bottom:40px;">
+        <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m">
+                Control your content
+            </h2>
+            <p class="govuk-body">
+                You do not need any technical knowledge to create email,
+                text&nbsp;message or letter templates.
+            </p>
+        </div>
+        <div class="govuk-grid-column-one-half">
+            <img src="https://static.notifications.service.gov.uk/images/product/01-templates.svg?f51380f30b12eae2118361d2ac301d14" alt="">
+        </div>
+    </div>
+
+    <div class="govuk-grid-row" style="margin-bottom:40px;">
+        <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m">
+                See how your messages perform
+            </h2>
+            <p class="govuk-body">
+            Track how many messages you’ve sent and
+            find out which ones are not being delivered.
+            </p>
+        </div>
+        <div class="govuk-grid-column-one-half">
+            <img src="https://static.notifications.service.gov.uk/images/product/02-reporting.svg?3caf8127301fa95081fdbc689d73d154" alt="A screenshot of GOV.UK Notify showing counts of emails and text messages sent">
+        </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+<div class="product-page-section">
+    <h2 class="govuk-heading-m">
+      Send messages manually or automatically
+    </h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <p class="govuk-body">
+          Upload a spreadsheet of email&nbsp;addresses or
+          phone&nbsp;numbers and Notify sends the messages.
+        </p>
+        <img src="https://static.notifications.service.gov.uk/images/product/03-spreadsheet.svg?7e8a474345db3a97630a1ccdedc427ff" alt="A screenshot of a spreadsheet with columns for email address, name and colour">
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <p class="govuk-body">
+          Integrate the GOV.UK Notify API with your web&nbsp;application or
+          back office system.
+        </p>
+        <img src="https://static.notifications.service.gov.uk/images/product/04-api.svg?5a30f79a4c2eae6f62b591ac49065c60" alt="A screenshot of some computer code with a notify.send_email function">
+      </div>
+    </div>
+  </div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<div class="product-page-section">
+    <div class="with-keyline bottom-gutter-2" id="whos-using-notify">
+      <h2 class="govuk-heading-m">
+        Who’s using Teaching Vacancies
+        </h2>
+      <div class="govuk-grid-row bottom-gutter">
+        <div class="govuk-grid-column-one-half">
+          <span class="govuk-visually-hidden">There are</span>
+          <h3 class="govuk-heading-xl" style="margin-bottom:0px;">
+            1,552
+            </h3>
+          <p>organisations</p>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-grid-column-one-half">
+          <span class="govuk-visually-hidden">There are</span>
+          <h3 class="govuk-heading-xl" style="margin-bottom:0px;">
+            5,456
+            </h3>
+          <p>jobs posted</p>
+        </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row bottom-gutter">
+        <div class="govuk-grid-column-one-half">
+          <span class="govuk-visually-hidden">There are</span>
+          <h3 class="govuk-heading-xl" style="margin-bottom:0px;">
+            1,552
+            </h3>
+          <p>organisations</p>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-grid-column-one-half">
+          <span class="govuk-visually-hidden">There are</span>
+          <h3 class="govuk-heading-xl" style="margin-bottom:0px;">
+            5,456
+            </h3>
+          <p>jobs posted</p>
+        </div>
+        </div>
+      </div>
+      <p class="govuk-body">
+        See the
+        <a class="govuk-link govuk-link--no-visited-state" href="/features/performance">schools and organisations</a>.
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

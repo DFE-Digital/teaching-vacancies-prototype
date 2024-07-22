@@ -17,27 +17,36 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+          titleText: 'There’s a problem',
+          errorList: errorSummary.items
+        }) }}
+      {% endif %}
+
       <span class="govuk-caption-l">
         Import account
       </span>
       
       <form method="post" id="name-form" novalidate>
 
-        <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="oneloginemail">
-             {{title}}
-            </label>
-          </h1>
-          <input class="govuk-input" id="oneloginemail" name="oneloginemail" type="text">
-        </div>
+        {{ govukInput({
+          label: {
+            text: title,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          id: "oneloginemail",
+          name: "oneloginemail",
+          errorMessage: inlineErrors['onelogin'].oneloginemail
+        }) }}
 
-
+  
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>
 
-        <p><a href="/profile">Cancel</a></p>
+        <p><a class="govuk-link--no-visited-state" href="../account">Cancel</a></p>
       </form>
 
     </div>

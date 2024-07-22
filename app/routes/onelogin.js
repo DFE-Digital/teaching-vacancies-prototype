@@ -1,5 +1,6 @@
-const schools = require('../data/orgs.json')
 const users = require('../data/users.json')
+const Validator = require('../helpers/validator')
+
 module.exports = router => {
 
   router.post('/onelogin/journey/choice', (req, res) => {
@@ -26,7 +27,84 @@ module.exports = router => {
     if (email == "match@match.com"){
         res.redirect('/onelogin/journey/found')
     } else {
+        
+      
+      const validator = new Validator(req, res);
+
+      validator.add({
+        name: 'onelogin.oneloginemail',
+        rules: [{
+          fn: (value) => {
+            let valid = true;
+            if(!value || value.trim().length == 0) {
+              valid = false;
+            }
+            return valid;
+          },
+          message: 'No email address with that account has been found'
+        }]
+      })
+    
+      validator.validate();
+
+      res.render('onelogin/journey/import');
+
+    }
+ 
+  })
+
+  router.post('/onelogin/journey/not_found', (req, res) => {
+  
+    var email = req.session.data['oneloginemail']
+
+    if (email == "match@match.com"){
+        res.redirect('/onelogin/journey/found')
+    } else {
         res.redirect('/onelogin/journey/not_found')
+    }
+ 
+  })
+
+  router.post('/onelogin/journey/found', (req, res) => {
+  
+    var email = req.session.data['auth-code']
+
+    if (email == "KJFJKFJK56DVDD"){
+        res.redirect('/onelogin/journey/code_match')
+    } else {
+
+      const validator = new Validator(req, res);
+
+      validator.add({
+        name: 'onelogin.code',
+        rules: [{
+          fn: (value) => {
+            let valid = true;
+            if(!value || value.trim().length == 0) {
+              valid = false;
+            }
+            return valid;
+          },
+          message: 'That authentication code is incorrect'
+        }]
+      })
+    
+      validator.validate();
+
+      res.render('onelogin/journey/found');
+
+    }
+ 
+  })
+
+  router.post('/onelogin/journey/code_error', (req, res) => {
+  
+    var email = req.session.data['auth-code']
+
+    if (email == "KJFJKFJK56DVDD"){
+        res.redirect('/onelogin/journey/code_match')
+    } else {
+        res.redirect('/onelogin/journey/code_error')
     }
  
   })

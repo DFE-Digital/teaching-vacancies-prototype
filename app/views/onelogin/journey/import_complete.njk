@@ -1,0 +1,38 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Your previous account details have been imported' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            Import complete
+          </h3>
+        </div>
+      </div>
+
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+        <p>We've imported the details from your Teaching Vacancies account into your GOV.UK One Login account.</p>
+
+        <p class="govuk-body">
+            You can continue to <a href="/jobs">search and apply for jobs</a>, <a href="/jobs">create job alerts</a> or <a href="#">create a profile</a>.
+        </p>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

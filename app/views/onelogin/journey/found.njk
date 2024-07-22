@@ -3,48 +3,102 @@
 
 {% set title = 'Check your email' %}
 
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+          titleText: 'There’s a problem',
+          errorList: errorSummary.items
+        }) }}
+      {% endif %}
    
       <h1 class="govuk-heading-l">
           {{title}}
       </h1>
     
+        <div class="govuk-inset-text">
+           Email sent to: <b>{{ data['oneloginemail'] }}</b>
+        </div>
+
         <p class="govuk-body">
-          Email sent to:
+          The email contains a 12 digit security code.
         </p>
 
-        <div class="govuk-inset-text">
-            {{ data['oneloginemail'] }}
-        </div>
-        
-        <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--m" for="email-auth">
-                Authentication code
-                </label>
-            </h2>
-            <div id="email-auth-hint" class="govuk-hint">
-                To import data from your old account enter the code sent to this email address.
-            </div>
-            <input class="govuk-input govuk-input--width-10" id="email-auth" name="email-auth" type="text" aria-describedby="email-auth-hint">
-        </div>
-        
-      <form action="ready" novalidate>
+         <p class="govuk-body">
+          Your email may take a few minutes to arrive. If you do not get an email, check your spam folder.
+        </p>
 
-        {{ govukButton({
-          text: "Continue"
+        <p class="govuk-body">
+          The code will expire after one hour.
+        </p>
+
+        
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: 'Enter the 12 digit security code',
+            classes: "govuk-label--s",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-10",
+          id: "auth-code",
+          name: "auth-code",
+          errorMessage: inlineErrors['onelogin'].code
         }) }}
+
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </div>
+
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with the code
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+    
+            <p class="govuk-body">
+              We can 
+              <a href="#" class="govuk-link" rel="noreferrer noopener">send the code again</a>
+              or you can 
+              <a href="import" class="govuk-link" rel="noreferrer noopener">use a different email address</a>.
+            </p>
+            
+          </div>
+        </details>
+
+         <p><a href="/onelogin/account">Cancel</a></p>
 
       </form>
 
+    </div>
 
 
+    <div class="govuk-grid-column-one-third">
       
-
+      <p> <a class="govuk-notification-banner__link" href="/onelogin/emails/code" target="_blank">Email concept</a> offline step</p>
+      <iframe src="/onelogin/emails/code" title="description" style="width:100%; height:500px"></iframe>
 
     </div>
+
+
+
+
   </div>
 
 {% endblock %}
