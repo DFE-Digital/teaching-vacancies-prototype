@@ -10,34 +10,45 @@
         {{title}}
       </h1>
 
-      <p>Use Gov OneLogin to access your Teaching Vacancies account.</p>
+<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            How you sign in has changed
+          </h3>
+          <p class="govuk-body">GOV.UK One Login is replacing all other ways to sign in to services on GOV.UK.</p>
+          
+          <p class="govuk-body">Sign in to or create a GOV.UK One Login account to save and apply for jobs on Teaching Vacancies.</p>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">
+        If you do not have a GOV.UK One Login account
+      </h2>
+
+      <p>Create an account using the same email address as your Teaching Vacancies account to save your past account details.</p>
+
+      <h2 class="govuk-heading-m">
+        If you have a GOV.UK One Login account
+      </h2>
+
+      <p>If your GOV.UK One Login account uses the same email address as your Teaching Vacancies account, your information will automatically be saved.</p>
+
+      <p>If it uses a different email address, you'll be able to transfer your information after signing in.</p>
 
       <form method="post">
 
         {{ govukButton({
           text: 'Continue to GOV.UK One Login'
         }) }}
+
       </form>
 
-      <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            How to access an existing Teaching Vacancies account
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <p>If you have an existing Teaching Vacancies account but you do not yet have a GOV.UK One Login, you can use the same email address for both accounts to retain your data.</p>
-
-          <p>If you have used a different email address for GOV.UK One Login, you will need to submit a request to import your data from your old account. You will be given the option to do this after signing in with a GOV.UK One Login account.</p>
-
-        </div>
-      </details>
-
     </div>
-  
-
-
-
   </div>
 
 {% endblock %}
