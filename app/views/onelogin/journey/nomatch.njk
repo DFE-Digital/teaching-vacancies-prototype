@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Account created' %}
+{% set title = 'You are creating a new Teaching Vacancies account' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -12,46 +12,16 @@
       </h1>
     
         <p class="govuk-body">
-            You can now <a class="govuk-link--no-visited-state" href="/jobs">search and apply for jobs</a> or <a class="govuk-link--no-visited-state" href="/profile">create a profile</a>.
+            We could not find an existing Teaching Vacancies account using this email.
         </p>
 
-        <h2 class="govuk-heading-m">
-            Import an old account
-        </h2>
+        <p class="govuk-body">
+            If this is correct, you can <a class="govuk-link--no-visited-state" href="import">continue to your account</a>.
+        </p>
         
         <p class="govuk-body">
-           If you had an old Teaching Vacancies account, you can <a class="govuk-link--no-visited-state" href="import">import your old account information</a> in your account settings.
+           If you have a Teaching Vacancies account using a different email address, you can <a class="govuk-link--no-visited-state" href="import">transfer your account information</a>.
         </p>
-
-        <h2 class="govuk-heading-m">
-            Create a profile
-        </h2>
-        
-       <p>Creating a profile will let you:</p>
-
-        <ul class="govuk-list govuk-list--bullet">
-            <li>
-            save your qualifcations and experience 
-            </li>
-            <li>
-            specifiy the types of jobs you're looking for
-            </li>
-            <li>
-            apply for roles quickly by pre-filling your information
-            </li>
-            <li>
-            share your details with schools
-            </li>
-        </ul>
-
-
-      <form method="post" novalidate>
-
-        {{ govukButton({
-          text: "Create a profile"
-        }) }}
-
-      </form>
 
 
 
