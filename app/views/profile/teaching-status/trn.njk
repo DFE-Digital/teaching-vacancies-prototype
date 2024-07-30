@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Do you want to provide your Teacher reference number (TRN)?' %}
+{% set title = 'What is your Teacher reference number (TRN)?' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -16,8 +16,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {{ govukErrorSummary({
+        titleText: "There’s a problem",
+        errorList: errorList
+      }) if errorList.length }}
+
       <span class="govuk-caption-l">
-        Personal details
+        Teaching status
       </span>
       {% set h1 %}
         {{title}}
@@ -25,22 +30,7 @@
 
       <form method="post" novalidate>
 
-        {% set trn_container %}
-          {{ govukInput({
-            id: "profile[TRN]",
-            name: "profile[TRN]",
-            label: {
-              text: "Teacher reference number (TRN)",
-              classes: 'govuk-label--s'
-            },
-            type: number,
-            classes: "govuk-input--width-20",
-            value: user.profile.TRN
-          }) }}
-        {% endset %}
-
-
-        <div class="govuk-form-group">
+        <div class="govuk-form-group {% if errorList.length %} govuk-form-group--error{% endif %}">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
@@ -52,23 +42,19 @@
               Your Teacher reference number (TRN) will not be visible on your profile. Schools can only see it if you apply for a role. You can locate a lost TRN using the <a href="#">Find a lost TRN</a> service.
             </div>
 
-            {{ govukRadios({
-              idPrefix: "profile[provideTRN]",
-              name: "profile[provideTRN]",
-              items: [{
-                value: options[0].value,
-                text: options[0].text,
-                checked: options[0].checked,
-                conditional: {
-                  html: trn_container
-                }
-              }, {
-                value: options[1].value,
-                text: options[1].text,
-                checked: options[1].checked
-              }]
-            }) }}
+            
 
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="profile[TRN]">Teacher reference number (TRN)</label> 
+              {% if errorList.length %} 
+                <p id="passport-issued-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> {{ errorList[0].text }}
+                </p>
+              {% endif %}
+              <input class="govuk-input govuk-input--width-20" id="profile[TRN]" name="profile[TRN]" type="text">
+            </div>
+
+         
           </fieldset>
         </div>
 

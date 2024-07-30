@@ -146,9 +146,6 @@ module.exports = router => {
     }else {
       // bad
 
-      //create errorList array
-      let errorList = []
-
       //generate options for page (only needed if errors)
       let options = [{
         value: 'Yes',
@@ -159,6 +156,9 @@ module.exports = router => {
         text: 'No',
         checked: req.session.user.profile.provideAddress == 'No'
       }]
+
+      //create errorList array
+      let errorList = []
 
       //if answer is blank, create an error message
       errorList.push({

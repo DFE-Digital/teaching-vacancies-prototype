@@ -16,7 +16,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Qualified teaching status (QTS)
+        Teaching status
       </h1>
 
       {{ govukSummaryList({
@@ -57,23 +57,6 @@
             } if profile.qtsAwardedYear,
             {
               key: {
-                text: "Do you want to provide your Teacher reference number (TRN)?"
-              },
-              value: {
-                text: profile.provideTRN
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/profile/personal-details/trn",
-                    text: "Change",
-                    visuallyHiddenText: "if you want to provide your TRN"
-                  }
-                ]
-              }
-            } if profile.qts !== 'No',
-            {
-              key: {
                 text: "Teacher reference number (TRN)"
               },
               value: {
@@ -82,13 +65,13 @@
               actions: {
                 items: [
                   {
-                    href: "/profile/personal-details/trn",
+                    href: "/profile/teaching-status/trn",
                     text: "Change",
                     visuallyHiddenText: "Teacher reference number (TRN)"
                   }
                 ]
               }
-            } if profile.provideTRN == 'Yes'
+            } if profile.TRN
           ]
         }) }}
 

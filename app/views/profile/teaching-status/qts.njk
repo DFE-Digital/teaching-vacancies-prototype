@@ -18,7 +18,7 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Qualified teaching status
+          Teaching status
         </span>
         {{title}}
       {% endset %}
@@ -70,15 +70,16 @@
               }
             },
             {
-              value: options[1].value,
-              text: options[1].text,
-              checked: options[1].checked
-            },
-            {
               value: options[2].value,
               text: options[2].text,
               checked: options[2].checked
             },
+            {
+              value: options[1].value,
+              text: options[1].text,
+              checked: options[1].checked
+            },
+            
             {
               divider: "or"
             },

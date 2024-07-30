@@ -34,9 +34,11 @@ module.exports = router => {
     profile.qtsAwardedYear = req.body.profile.qtsAwardedYear
 
     if( profile.qts == 'No' ){
-      res.redirect('/profile/teaching-status/review')
+      res.redirect('/profile/teaching-status/trn_optional')
     }
-    else if( profile.qts == "I'm  not looking for a teaching job" ){
+    else if( profile.qts == "I’m on track to or have requested QTS" ){
+      res.redirect('/profile/teaching-status/trn_optional')
+    }else if( profile.qts == "I'm  not looking for a teaching job" ){
       res.redirect('/profile/teaching-status/review')
     }else{
       res.redirect('/profile/teaching-status/trn')
@@ -46,29 +48,47 @@ module.exports = router => {
 
   //TRN details
 
+  router.get('/profile/teaching-status/trn_optional', (req, res) => {
+    let trnNumber = req.session.user.profile.TRN
+
+    res.render('profile/teaching-status/trn_optional', {
+      trnNumber
+    })
+  })
+
   router.get('/profile/teaching-status/trn', (req, res) => {
     let trnNumber = req.session.user.profile.TRN
 
-    let options = [{
-      value: 'Yes',
-      text: 'Yes',
-      checked: req.session.user.profile.provideTRN == 'Yes'
-    }, {
-      value: 'No',
-      text: 'No',
-      checked: req.session.user.profile.provideTRN == 'No'
-    }]
-
     res.render('profile/teaching-status/trn', {
-      options,
       trnNumber
     })
   })
 
   router.post('/profile/teaching-status/trn', (req, res) => {
-    req.session.user.profile.provideTRN = req.body.profile.provideTRN
     req.session.user.profile.TRN = req.body.profile.TRN
-    res.redirect('/profile/teaching-status/review')
+
+    var addressData = req.body.profile.TRN
+
+    if( addressData == ""){
+
+      //create errorList array
+      let errorList = []
+
+      //if answer is blank, create an error message
+      errorList.push({
+        href: '#profile-provideAddress',
+        text: 'You must enter your Teacher reference number to continue'
+      })
+
+      res.render('profile/teaching-status/trn', {
+        user: req.session.user,
+        errorList,
+      })
+
+    }else{
+      res.redirect('/profile/teaching-status/review')
+    }
+
   })
 
   //// // REVIEW:

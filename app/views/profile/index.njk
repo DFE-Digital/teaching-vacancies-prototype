@@ -436,7 +436,7 @@
 
 
         <h2 class="govuk-heading-m govuk-!-font-size-27">
-        Qualified teaching status (QTS)
+        Teaching status
         </h2>
 
         {% set fullTRN %}
@@ -492,6 +492,23 @@
             } if user.profile.qtsAwardedYear,
             {
               key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                text: user.profile.TRN
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/teaching-status/trn",
+                    text: "Change",
+                    visuallyHiddenText: "Teacher reference number (TRN)"
+                  }
+                ]
+              }
+            } if user.profile.TRN,
+            {
+              key: {
                 text: "Do you want to provide your Teacher reference number (TRN)?"
               },
               value: {
@@ -527,7 +544,7 @@
           ]
         }) }}
         {% else %}
-          <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teaching status</a></p>
+          <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add teaching status</a></p>
         {% endif %}
       </div>
 
