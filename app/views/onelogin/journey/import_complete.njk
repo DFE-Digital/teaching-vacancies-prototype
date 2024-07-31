@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Your previous account details have been imported' %}
+{% set title = 'Your account details have been transferred' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -15,7 +15,7 @@
         </div>
         <div class="govuk-notification-banner__content">
           <h3 class="govuk-notification-banner__heading">
-            Import complete
+            Transfer complete
           </h3>
         </div>
       </div>
@@ -24,10 +24,8 @@
             {{title}}
         </h1>
 
-        <p>We've imported the details from your Teaching Vacancies account into your GOV.UK One Login account.</p>
-
         <p class="govuk-body">
-            You can continue to <a href="/jobs">search and apply for jobs</a>, <a href="/jobs">create job alerts</a> or <a href="#">create a profile</a>.
+            You can <a class="govuk-link--no-visited-state" href="/jobs">update your account details</a>, continue to <a class="govuk-link--no-visited-state" href="/jobs">search and apply for jobs</a> or <a class="govuk-link--no-visited-state" href="#">create a job alert</a>.
         </p>
 
     </div>

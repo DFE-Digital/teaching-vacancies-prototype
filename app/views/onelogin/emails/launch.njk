@@ -1,7 +1,7 @@
 
 {% extends "layout_email.njk" %}
 
-{% set title = 'Teaching Vacancies accounts have changed' %}
+{% set title = 'How you sign in to Teaching Vacancies has changed' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -10,8 +10,31 @@
         {{title}}
       </h1>
 
-      <p class="govuk-body">We have now replace Teaching Vacancies accounts with GOV.UK One Login.</p>
-      <p class="govuk-body">You can find out more about this change and <a class="govuk-notification-banner__link" href="onelogin/advice_before">how to import your account into a GOV.UK One Login</a>.</p>
+      <p class="govuk-body">You will now need to sign in to Teaching Vacancies through GOV.UK One Login.</p>
+
+      <p class="govuk-body">GOV.UK One Login is replacing all other ways to sign in to services on GOV.UK.</p>
+
+      <h2 class="govuk-heading-m">
+        If you do not have a GOV.UK One Login account
+      </h2>
+
+      <p>Create an account using the same email address as your Teaching Vacancies account to save your existing account details.</p>
+
+      <h2 class="govuk-heading-m">
+        If you have a GOV.UK One Login account
+      </h2>
+
+      <p>If your GOV.UK One Login account uses the same email address as your Teaching Vacancies account, your information will automatically be saved.</p>
+
+      <p>If it uses a different email address, you'll be able to transfer your information after signing in.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Sign in or create a GOV.UK One Login account'
+        }) }}
+
+      </form>
 
     </div>
   
