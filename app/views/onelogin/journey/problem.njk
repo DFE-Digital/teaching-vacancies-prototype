@@ -1,0 +1,25 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'There has been a problem importing your account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            {{title}}
+        </h1>
+
+        <p>You can <a class="govuk-link govuk-link--no-visited-state" href="import">try again</a> by beginning the import account journey.</p>
+
+        <p class="govuk-body">
+           If the problem keeps happening, you can get <a class="govuk-link govuk-link--no-visited-state" href="https://teaching-vacancies.service.gov.uk/support_request/new">help or report a problem</a> via our support request form.
+        </p>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}
