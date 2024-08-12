@@ -3,7 +3,8 @@
 
 {% set primaryNavId = 'account' %}
 
-{% set title = "What was the email address on your Teaching Vacancies account?" %}
+{% set title = "What was the email address on your Teaching Vacancies account?"
+ %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -36,6 +37,9 @@
             classes: "govuk-label--l",
             isPageHeading: true
           },
+            hint: {
+    text: "If you have an account associated with this email address, we'll send you an email to verify your details."
+  },
           id: "oneloginemail",
           name: "oneloginemail",
           errorMessage: inlineErrors['onelogin'].oneloginemail
