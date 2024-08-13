@@ -1,7 +1,9 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Check previous account details' %}
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Your profile' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -15,14 +17,14 @@
         </div>
         <div class="govuk-notification-banner__content">
           <h3 class="govuk-notification-banner__heading">
-            Code matches
+            Your account details have been transferred.
           </h3>
         </div>
       </div>
    
-      <h1 class="govuk-heading-l">
-          {{title}}
-      </h1>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+          {{title}} </h1>
+      <p>Schools and trusts can find your profile and invite you to apply for roles.</p>
 
       <h2 class="govuk-heading-m govuk-!-padding-top-6">Personal details</h2>
     
@@ -34,6 +36,9 @@
             <dd class="govuk-summary-list__value">
             Sarah Philips
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -42,6 +47,9 @@
             <dd class="govuk-summary-list__value">
             No
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -49,6 +57,9 @@
             </dt>
             <dd class="govuk-summary-list__value">
             No, I already have the right to work in the UK	
+            </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
             </dd>
         </div>
       </dl>
@@ -63,6 +74,9 @@
             <dd class="govuk-summary-list__value">
               Teacher 
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -70,6 +84,9 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Primary
+            </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
             </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -79,6 +96,9 @@
             <dd class="govuk-summary-list__value">
               Early years (ages 0 to 5), Key stage 1 (ages 5 to 7), Key stage 2 (ages 7 to 11)
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -87,6 +107,9 @@
             <dd class="govuk-summary-list__value">
               Full time
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -94,6 +117,9 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Nottinghamshire (This area only)
+            </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
             </dd>
         </div>
       </dl>
@@ -109,6 +135,9 @@
             <dd class="govuk-summary-list__value">
               Within 20 miles of Sawley, Nottingham NG1 111, <br/>Teaching and leadership roles: Teacher,<br/>Working patterns: Full time 
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -117,19 +146,13 @@
             <dd class="govuk-summary-list__value">
               Within 20 miles of Derbyshire, <br/>Teaching and leadership roles: Teacher,<br/>Working patterns: Full time 
             </dd>
+                        <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
         </div>
       </dl>
         
-      <p>If these details look familiar, you can transfer them into your account.</p>
-
-      <form action="import_complete" novalidate>
-
-        <div class="govuk-button-group">
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-            Transfer account details
-          </button>
-          <a class="govuk-link" href="#">Cancel</a>
-        </div>
+     
 
       </form>
 
