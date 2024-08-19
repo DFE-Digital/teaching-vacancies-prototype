@@ -727,58 +727,59 @@ hr {
 }
 
 /* Container Styling */
-.container {
-  position: relative; /* Needed for absolute positioning of the image */
+.govuk-width-container {
   display: flex; /* Flex layout for the container */
-  max-width: 100%; /* Full width to avoid gaps */
-
+  flex-direction: row; /* Default to row direction (for desktop) */
+  flex-wrap: wrap; /* Ensure items wrap if necessary */
 }
 
 /* Text Column Styling */
 .custom-banner-text-column {
-  flex: 1; /* Takes up half of the container */
+  flex: 1; /* Takes up space in the container */
   padding: 1em;
   background-color: inherit; /* Ensures background color matches the banner */
 }
 
 /* Image Column Styling */
 .custom-banner-image-column {
-  position: absolute; /* Absolute positioning to break out of the container's flow */
-  top: 0;
-  right: 0;
- 
-  width: 45%; /* Takes up half of the container */
-  height: 100%; /* Full height */
-  overflow: hidden; /* Hide overflow */
+  flex: 1.5; /* Takes up space in the container */
+  width: 50%; /* Spans half of the container on desktop */
+  padding-top: 1em; /* Add top padding to the image column on desktop */
+  height: auto; /* Adjust height based on content */
 }
 
 /* Image Styling */
 .custom-banner-image {
   width: 100%; /* Full width of the image column */
-  height: 100%; /* Full height of the image column */
+  height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure the image covers the area without distortion */
-}
-
-/* Override Container Styles */
-#custom-banner .container {
-  padding: 0;
-}
-
-/* Slanted Background Effect */
-.campaign-hero {
-  background-color: #f3f2f1;
-  background: linear-gradient(182deg, #f3f2f1 75%, #f3f2f1 75.5%);
+  max-height: 100%; /* Adjust the height to fill the column but not exceed */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .container {
+  .govuk-width-container {
     flex-direction: column; /* Stack text and image vertically on small screens */
   }
 
   .custom-banner-image-column {
-    position: relative; /* Remove absolute positioning for small screens */
     width: 100%; /* Full width on small screens */
     height: auto; /* Adjust height for smaller screens */
+    max-height: 40vh; /* Limit height to 40% of the viewport height */
+    order: -1; /* Move the image column above the text column */
+    padding-top: 0; /* Remove top padding on mobile if needed */
+  }
+
+  .custom-banner-image {
+    width: 100%; /* Full width of the screen */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    max-height: 40vh; /* Limit height to 40% of the viewport height */
+  }
+
+  .custom-banner-text-column {
+    width: 100%; /* Full width on small screens */
+    order: 1; /* Ensure the text column appears below the image */
+    padding-top: 1em; /* Add some space above the text */
   }
 }
