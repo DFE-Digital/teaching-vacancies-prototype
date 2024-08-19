@@ -716,3 +716,69 @@ hr {
     }
   }
 }
+/* General Styling for the Banner */
+#custom-banner {
+  min-height: 15em;
+  padding-block: 0em;
+  background-color: #f3f2f1; /* Adjust according to your color scheme */
+  color: #ffffff; /* Text color */
+  position: relative; /* Relative positioning to contain absolutely positioned elements */
+  overflow: hidden;
+}
+
+/* Container Styling */
+.container {
+  position: relative; /* Needed for absolute positioning of the image */
+  display: flex; /* Flex layout for the container */
+  max-width: 100%; /* Full width to avoid gaps */
+
+}
+
+/* Text Column Styling */
+.custom-banner-text-column {
+  flex: 1; /* Takes up half of the container */
+  padding: 1em;
+  background-color: inherit; /* Ensures background color matches the banner */
+}
+
+/* Image Column Styling */
+.custom-banner-image-column {
+  position: absolute; /* Absolute positioning to break out of the container's flow */
+  top: 0;
+  right: 0;
+ 
+  width: 45%; /* Takes up half of the container */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Hide overflow */
+}
+
+/* Image Styling */
+.custom-banner-image {
+  width: 100%; /* Full width of the image column */
+  height: 100%; /* Full height of the image column */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+/* Override Container Styles */
+#custom-banner .container {
+  padding: 0;
+}
+
+/* Slanted Background Effect */
+.campaign-hero {
+  background-color: #f3f2f1;
+  background: linear-gradient(182deg, #f3f2f1 75%, #f3f2f1 75.5%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack text and image vertically on small screens */
+  }
+
+  .custom-banner-image-column {
+    position: relative; /* Remove absolute positioning for small screens */
+    width: 100%; /* Full width on small screens */
+    height: auto; /* Adjust height for smaller screens */
+  }
+}
