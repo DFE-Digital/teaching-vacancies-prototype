@@ -783,3 +783,34 @@ hr {
     padding-top: 1em; /* Add some space above the text */
   }
 }
+
+.landing-2 {
+  width: 100%; /* Makes the image span the full width of its container */
+  height: auto; /* Maintains aspect ratio */
+  max-width: 120%; /* Allows the image to be larger if needed */
+  display: block; /* Removes any inline spacing issues */
+  margin: 0 auto; /* Centers the image horizontally if there's extra space */
+}
+
+@media (min-width: 1024px) {
+  .landing-2 {
+      max-width: 100%; /* Ensures the image doesn't overflow the container on larger screens */
+  }
+}
+/* Default styling for mobile-full-width-heading */
+.mobile-full-width-heading {
+  display: inline-block; /* Keeps inline-block on desktop */
+  padding: 20px 40px; /* Consistent padding */
+  background-color: #003078; /* Background color */
+  color: white; /* Text color */
+}
+
+/* Mobile-specific styling */
+@media screen and (max-width: 768px) {
+  .mobile-full-width-heading {
+    display: block; /* Full width on mobile */
+    width: 100%; /* Full width of the parent container */
+    text-align: center; /* Center the text */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+}

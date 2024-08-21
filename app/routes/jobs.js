@@ -29,6 +29,13 @@ module.exports = router => {
     })
   })
 
+  router.get('/landing_page2_support_roles', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/landing_page2_support_roles', {
+      jobs
+    })
+  })
+
 
   router.get('/primary', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
