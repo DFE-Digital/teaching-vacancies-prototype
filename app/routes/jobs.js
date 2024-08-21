@@ -36,6 +36,27 @@ module.exports = router => {
     })
   })
 
+  router.get('/school-business-manager-jobs', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/school-business-manager-jobs', {
+      jobs
+    })
+  })
+
+  router.get('/exam-invigilator-jobs', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/exam-invigilator-jobs', {
+      jobs
+    })
+  })
+
+  router.get('/after-school-breakfast-club-assistant-jobs', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/after-school-breakfast-club-assistant-jobs', {
+      jobs
+    })
+  })
+
 
   router.get('/primary', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
