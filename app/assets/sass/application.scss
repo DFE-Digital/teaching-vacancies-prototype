@@ -727,42 +727,43 @@ hr {
 }
 
 /* Container Styling */
-.govuk-width-container {
+#custom-banner .my-custom-container {
   display: flex; /* Flex layout for the container */
   flex-direction: row; /* Default to row direction (for desktop) */
   flex-wrap: wrap; /* Ensure items wrap if necessary */
 }
 
 /* Text Column Styling */
-.custom-banner-text-column {
+#custom-banner .custom-banner-text-column {
   flex: 1; /* Takes up space in the container */
   padding: 1em;
   background-color: inherit; /* Ensures background color matches the banner */
 }
 
 /* Image Column Styling */
-.custom-banner-image-column {
-  flex: 1.5; /* Takes up space in the container */
+#custom-banner .custom-banner-image-column {
+  flex: 1.5; /* Takes up more space in the container */
   width: 50%; /* Spans half of the container on desktop */
   padding-top: 1em; /* Add top padding to the image column on desktop */
   height: auto; /* Adjust height based on content */
 }
 
 /* Image Styling */
-.custom-banner-image {
+#custom-banner .custom-banner-image {
   width: 100%; /* Full width of the image column */
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure the image covers the area without distortion */
+  object-position: top; /* Focus on the top of the image */
   max-height: 100%; /* Adjust the height to fill the column but not exceed */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .govuk-width-container {
+  #custom-banner .my-custom-container {
     flex-direction: column; /* Stack text and image vertically on small screens */
   }
 
-  .custom-banner-image-column {
+  #custom-banner .custom-banner-image-column {
     width: 100%; /* Full width on small screens */
     height: auto; /* Adjust height for smaller screens */
     max-height: 40vh; /* Limit height to 40% of the viewport height */
@@ -770,20 +771,22 @@ hr {
     padding-top: 0; /* Remove top padding on mobile if needed */
   }
 
-  .custom-banner-image {
+  #custom-banner .custom-banner-image {
     width: 100%; /* Full width of the screen */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover; /* Ensure the image covers the area without distortion */
+    object-position: top; /* Focus on the top of the image */
     max-height: 40vh; /* Limit height to 40% of the viewport height */
   }
 
-  .custom-banner-text-column {
+  #custom-banner .custom-banner-text-column {
     width: 100%; /* Full width on small screens */
     order: 1; /* Ensure the text column appears below the image */
     padding-top: 1em; /* Add some space above the text */
   }
 }
 
+/* Additional Styling for Other Components */
 .landing-2 {
   width: 100%; /* Makes the image span the full width of its container */
   height: auto; /* Maintains aspect ratio */
@@ -797,6 +800,7 @@ hr {
       max-width: 100%; /* Ensures the image doesn't overflow the container on larger screens */
   }
 }
+
 /* Default styling for mobile-full-width-heading */
 .mobile-full-width-heading {
   display: inline-block; /* Keeps inline-block on desktop */
