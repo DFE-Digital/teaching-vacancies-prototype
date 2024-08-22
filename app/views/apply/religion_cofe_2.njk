@@ -1,0 +1,188 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-l">Teacher at Weydon Multi Academy Trust</span>
+            {{title}}
+        </h1>
+
+        <h2 class="govuk-heading-l">
+            Religious information
+        </h2>
+    
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="address">
+What is your religious denomination or faith?                </label>
+                <div id="event-name-hint" class="govuk-hint">
+For example, Christian or Not applicable.
+                </div>
+                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
+            </div>
+                        <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="address">
+Address of place of worship (optional)               </label>
+                <div id="event-name-hint" class="govuk-hint">
+For example, Westminster Abbey, Dean's Yard, London.
+
+                </div>
+                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
+            </div>
+ 
+ 
+
+        <!--
+        <form action="religion2">
+            
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">
+                        Are you currently following a religion or faith?
+                    </h2>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                            Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+                            No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+    
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="religion-question-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    What religious information can you provide?
+                </legend>
+                <div id="contact-hint" class="govuk-hint">
+                    The school has asked to provide this information where possible. Select all options that are relevant to you, or, select 'I am not religious'.
+                </div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="religion-question" name="religion-question" type="checkbox" value="Religious denomination or faith">
+                        <label class="govuk-label govuk-checkboxes__label" for="religion-question">
+                            Religious denomination or faith
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="religion-question-2" name="religion-question" type="checkbox" value="Address of place of worship">
+                        <label class="govuk-label govuk-checkboxes__label" for="religion-question-2">
+                            Address of place of worship
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="religion-question-3" name="religion-question" type="checkbox" value="Religious referee">
+                        <label class="govuk-label govuk-checkboxes__label" for="religion-question-3">
+                            Religious referee
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="religion-question-4" name="religion-question" type="checkbox" value="Baptism certificate">
+                        <label class="govuk-label govuk-checkboxes__label" for="religion-question-4">
+                            Baptism certificate or date and address of baptism
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__divider">or</div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="religion-question-6" name="religion-question" type="checkbox" value="none" data-behaviour="exclusive">
+                        <label class="govuk-label govuk-checkboxes__label" for="religion-question-6">
+                            I am not religious
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            </div>
+
+           
+    -->
+     <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h3 class="govuk-fieldset__heading">
+                        Would you like to provide a religious referee?
+                    </h3>
+                    </legend>
+
+                    <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+                        <label class="govuk-label govuk-radios__label" for="contact">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="referee-name">
+                            Religous referee name
+                            </label>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address">
+                                Religous referee address
+                            </label>
+                            <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="referee-name">
+                                Religous referee role
+                            </label>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="referee-name">
+                                Religous referee email address
+                            </label>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="referee-name">
+                                Religous referee phone number (optional)
+                            </label>
+                            <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">Only give a phone number that your referee is happy to be contacted on.</div>
+                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
+                        </div>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone">
+                        <label class="govuk-label govuk-radios__label" for="contact-2">
+                             No
+                        </label>
+                    </div>
+                         
+                </fieldset>
+            </div>
+
+            <div class="govuk-button-group">
+                <button class="govuk-button" data-module="govuk-button">
+                    Save and continue
+                </button>
+            </div>
+
+            <p><a href="#">Cancel</a></p>
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
