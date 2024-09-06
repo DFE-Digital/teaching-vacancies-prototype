@@ -885,3 +885,7 @@ hr {
   color: #00703c;
   font-weight: bold;
 }
+
+.no-bottom-margin {
+  margin-bottom: 0 !important; /* Use !important if needed to override existing styles */
+}
