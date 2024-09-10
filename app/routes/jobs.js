@@ -43,6 +43,13 @@ module.exports = router => {
     })
   })
 
+  router.get('/new-teachers-campaign2', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/new-teachers-campaign2', {
+      jobs
+    })
+  })
+
   router.get('/school-business-manager-jobs', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/school-business-manager-jobs', {
