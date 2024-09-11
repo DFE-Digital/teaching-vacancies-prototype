@@ -1,10 +1,11 @@
+
 {% extends "layout.njk" %}
 
 {% set title = 'Application' %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-three-quaters">
    
         <h1 class="govuk-heading-xl">
             <span class="govuk-caption-l">Teacher at Weydon Multi Academy Trust</span>
@@ -14,29 +15,11 @@
         <h2 class="govuk-heading-l">
             Religious information
         </h2>
-    
-            <div class="govuk-form-group">
-               <label class="govuk-label govuk-label--s" for="event-name">
-                    What is your religious denomination or faith?
-                </label>
-                <div id="event-name-hint" class="govuk-hint">
-                    For example, Christian or not applicable. 
-                </div>
-                <input class="govuk-input" id="religion-name" name="religionName" type="text" aria-describedby="religion-name-hint">
-            </div> 
-                        <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="address">
-Address of place of worship (optional)               </label>
-                <div id="event-name-hint" class="govuk-hint">
-For example, Westminster Abbey, Dean's Yard, London.
 
-                </div>
-                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
-            </div>
- 
- 
+        <p>Weydon Multi Academy Trust is a Catholic school.</p>
+        <p>Schools, academies and colleges of a religious character can give preference to Catholic applicants when recruiting for teaching roles.</p>
+        <p>Non-Catholics are still encouraged to apply.</p>
 
-        <!--
         <form action="religion2">
             
             <div class="govuk-form-group">
@@ -62,7 +45,7 @@ For example, Westminster Abbey, Dean's Yard, London.
                     </div>
                 </fieldset>
             </div>
-    
+    <!--
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="religion-question-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -109,70 +92,6 @@ For example, Westminster Abbey, Dean's Yard, London.
 
            
     -->
-     <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                    <h3 class="govuk-fieldset__heading">
-                        Can you provide a religious referee? (optional)
-                    </h3>
-                                                <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">For example, the priest where you regularly worship.</div>
-                    </legend>
-
-                    <div class="govuk-radios" data-module="govuk-radios">
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
-                        <label class="govuk-label govuk-radios__label" for="contact">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-                        <div class="govuk-form-group">
-                        <label class="govuk-label" for="referee-name">
-                            Religous referee name
-                            </label>
-                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-                        </div>
-
-                        <div class="govuk-form-group">
-                            <label class="govuk-label" for="address">
-                                Religous referee address
-                            </label>
-                            <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address"></textarea>
-                        </div>
-
-                        <div class="govuk-form-group">
-                            <label class="govuk-label" for="referee-name">
-                                Religous referee role
-                            </label>
-                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-                        </div>
-
-                        <div class="govuk-form-group">
-                            <label class="govuk-label" for="referee-name">
-                                Religous referee email address
-                            </label>
-                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-                        </div>
-
-                        <div class="govuk-form-group">
-                            <label class="govuk-label" for="referee-name">
-                                Religous referee phone number (optional)
-                            </label>
-                            <div class="govuk-hint" id="jobseekers-job-application-details-reference-form-phone-number-hint">Only give a phone number that your referee is happy to be contacted on.</div>
-                            <input class="govuk-input" id="referee-name" name="referee-name" type="text">
-                        </div>
-                    </div>
-
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone">
-                        <label class="govuk-label govuk-radios__label" for="contact-2">
-                             No
-                        </label>
-                    </div>
-                         
-                </fieldset>
-            </div>
-
             <div class="govuk-button-group">
                 <button class="govuk-button" data-module="govuk-button">
                     Save and continue
@@ -187,4 +106,3 @@ For example, Westminster Abbey, Dean's Yard, London.
   </div>
 
 {% endblock %}
-
