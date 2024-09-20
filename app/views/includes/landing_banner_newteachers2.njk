@@ -1,17 +1,36 @@
-<div id="itt-banner" class="primary-banner" style="background-color: #f3f2f1; border-top:1px solid #b1b4b6; border-bottom:1px solid #dedede;">
-    <div class="govuk-width-container">
-        <div class="govuk-main-wrapper itt-banner-form" style="padding-bottom:20px;">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
-                    <h1 class="govuk-heading-l govuk-!-margin-bottom-6 mobile-full-width-heading">
-                        Ellie, find your primary teacher job
-                    </h1>
+<div class="main-content">
+    <!-- Other content of your main section -->
+
+    <div id="custom-banner" class="campaign-hero blue">
+        <div class="govuk-width-container my-custom-container">
+           
+            <div class="govuk-grid-column-one-half-from-desktop custom-banner-text-column">
+                <h1 class="govuk-heading-l govuk-!-margin-bottom-6";">
+                    Ellie, find your primary teacher job
+                </h1>
+
+                <div class="govuk-form-group desktop-switch">
+                    <label class="govuk-label govuk-label--s" for="event-name">City, county or postcode</label>
+                    <input class="govuk-input" id="event-name" name="eventName" type="text"  value="KT1 2DY">
                 </div>
-                <div class="govuk-grid-column-one-half-from-desktop">
-                    <img class="landing-2" src="public/images/banner/primary-cropped-image-png.png"/>
+
+                <div class="govuk-form-group desktop-switch">
+                    <label class="govuk-label govuk-label--s" for="sort">Search radius</label>
+                    <select class="govuk-select" id="sort" name="sort">
+                        <option value="5">5 miles</option>
+                        <option value="10">10 miles</option>
+                        <option value="20">20 miles</option>
+                    </select>
                 </div>
+
+                <button type="submit" class="govuk-button" data-module="govuk-button">Search</button>
             </div>
+
+            <div class="custom-banner-image-column">
+                <img src="public/images/banner/primary-school-uncropped.jpg" alt="Banner Image" class="custom-banner-image">
+            </div>
+
         </div>
     </div>
-</div>
 
+</div>
