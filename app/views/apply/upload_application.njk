@@ -1,0 +1,281 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Custom file upload' %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">Teacher at Bexleyheath Academy</h1>
+<div class="govuk-body govuk-!-margin-bottom-0 govuk-!-font-weight-bold govuk-!-display-none-print">Closing date</div>
+<div class="govuk-body govuk-!-margin-bottom-5 govuk-!-display-none-print">24 March 2025 at 9am</div>
+
+     <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--pink">
+          draft
+        </strong>
+      </td>
+<div class="govuk-button-group govuk-!-margin-bottom-3 govuk-!-margin-top-3 govuk-!-display-none-print"><a class="govuk-button govuk-button--warning govuk-!-margin-bottom-4" data-module="govuk-button" href="/jobseekers/job_applications/5c1fd192-b9b4-491a-8bc0-3d9afca393d5/confirm_destroy">Delete application</a><a class="govuk-link govuk-!-margin-bottom-0 view-listing-link" target="_blank" rel="noreferrer noopener" href="/jobs/tutor-of-science-southampton-local-authority">View this listing (opens in new tab)</a></div>
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+
+ <style>
+    .custom-upload-button {
+      width: 200px; /* Fixed width for the button */
+      height: 40px; /* Fixed height for the button */
+      text-align: center; /* Center the button text */
+      vertical-align: top; /* Align the button to the top of its container */
+    }
+
+    .custom-upload-dropzone-text-container {
+      display: inline-block;
+      max-width: calc(100% - 220px); /* Ensure the text container fits next to the button */
+      vertical-align: top; /* Align with the top of the button */
+      padding-left: 10px; /* Add space between the button and the text */
+    }
+
+    .custom-upload-dropzone-text-container p {
+      margin: 0;
+      white-space: pre-wrap; /* Allow the text to wrap onto multiple lines */
+      text-align: left; /* Align text to the left */
+    }
+
+    .custom-upload-dropzone-text-container p.file-name {
+      margin-top: 5px; /* Add space between file names */
+      position: relative; /* Position relative for the "Cancel" link */
+    }
+
+    .custom-upload-dropzone-text-container p.file-name a {
+      margin-left: 10px; /* Space between file name and the "Cancel" link */
+      color: #005ea5; /* Link color */
+      text-decoration: none; /* Remove underline */
+    }
+
+    .custom-upload-dropzone-text-container p.file-name a:hover {
+      text-decoration: underline; /* Underline on hover */
+    }
+
+    .custom-upload-multi-file-upload {
+      margin-bottom: 40px;
+    }
+
+    .custom-upload-multi-file-upload__dropzone {
+      outline: 3px dashed #0b0c0c;
+      text-align: left;
+      padding: 60px 15px;
+      transition: outline-offset 0.1s ease-in-out, background-color 0.1s linear;
+    }
+
+    .custom-upload-multi-file-upload__dropzone label {
+      margin-bottom: 0;
+      display: inline-block;
+      width: auto;
+    }
+
+    .custom-upload-multi-file-upload__dropzone [type=file] {
+      position: absolute;
+      left: -9999em;
+    }
+
+    .custom-upload-multi-file-upload--dragover {
+      background: #b1b4b6;
+      outline-color: #6f777b;
+    }
+
+    .custom-upload-multi-file-upload__error {
+      color: #d4351c;
+      font-weight: bold;
+    }
+
+    .custom-upload-multi-file-upload__success {
+      color: #00703c;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">
+
+        Download application form
+      </h2>
+          <p id="document-title" class="govuk-caption-s">You will need to download the application form and complete the application form</p>
+    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Download application form - 165 KB
+</button>
+      <h2 class="govuk-heading-m">
+
+        Upload application form
+      </h2>
+      <p id="document-title" class="govuk-caption-s">You can only upload PDF or DOCX files under 10MB. Please check your application form to see if there are any additional documents you need to provide that can be uploaded here.</p>
+      <div class="govuk-!-padding-bottom-2"></div>
+      <div class="custom-upload-multi-file-upload__upload">
+        <div class="custom-upload-multi-file-upload__dropzone">
+          <label for="documents" class="govuk-button govuk-button--secondary custom-upload-button">Choose files</label>
+          <div id="dropzone-text-container" class="custom-upload-dropzone-text-container">
+            <p id="dropzone-text" class="govuk-body initial-text">or drag and drop files here</p>
+          </div>
+          <input class="govuk-file-upload custom-upload-multi-file-upload__input" id="documents" name="documents" type="file" multiple>
+          <div aria-live="polite" role="status" class="govuk-visually-hidden"></div>
+        </div>
+      </div>
+      <div class="govuk-!-padding-bottom-6"></div>
+    </div>
+  </div>
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h2 class="govuk-heading-m">
+
+        Personal details
+      </h2>
+  <dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      First name
+    </dt>
+    <dd class="govuk-summary-list__value">
+     Joe
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Last name
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Bloggs
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+
+      <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     TRN
+    </dt>
+    <dd class="govuk-summary-list__value">
+      01010101
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Email
+    </dt>
+    <dd class="govuk-summary-list__value">
+      joe.bloggs@education.gov.uk
+      <div class="govuk-inset-text">
+Change your email address from within your <a href="#" class="govuk-link">account</a></div>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Do you need a skilled worker visa sponsorship?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p class="govuk-body">No</p>
+     
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <ul class="govuk-summary-list__actions-list">
+        <li class="govuk-summary-list__actions-list-item">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </li>
+      </ul>
+    </dd>
+    
+  </div>
+</dl>
+
+<form class="new_jobseekers_job_application_review_form" id="new_jobseekers_job_application_review_form" action="/jobseekers/job_applications/5c1fd192-b9b4-491a-8bc0-3d9afca393d5/submit" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="e39OgcyUEpEsgu4sOgbq30YrJ7gtDaYPfIO1CQyPeAwayL_FMYqR71NIOs_phk4rrxwYZUopRVVxfbfvqKkkyQ" autocomplete="off"><h3 class="govuk-heading-m">Confirmation</h3><div class="govuk-form-group"><fieldset class="govuk-fieldset"><div class="govuk-checkboxes" data-module="govuk-checkboxes"><div class="govuk-checkboxes__item"><input name="jobseekers_job_application_review_form[confirm_data_accurate]" type="hidden" value="0" autocomplete="off"><input id="jobseekers-job-application-review-form-confirm-data-accurate-1-field" class="govuk-checkboxes__input" type="checkbox" value="1" name="jobseekers_job_application_review_form[confirm_data_accurate]"><label for="jobseekers-job-application-review-form-confirm-data-accurate-1-field" class="govuk-label govuk-checkboxes__label">I confirm that the above information is accurate and complete</label></div></div></fieldset></div><h3 class="govuk-heading-m">How your data is used</h3><p class="govuk-body">When you submit your application, your data will be shared with:</p><ul class="govuk-list govuk-list--bullet"><li>the Department for Education</li><li>the school, trust or local authority which posted the job listing</li><li>the school or schools the job is at</li></ul><p class="govuk-body">Please read the Teaching Vacancies <a class="govuk-link" href="https://www.gov.uk/government/publications/privacy-information-education-providers-workforce-including-teachers/privacy-information-education-providers-workforce-including-teachers">Privacy Policy</a> for more information on how your data is used.</p><div class="govuk-form-group"><fieldset class="govuk-fieldset"><div class="govuk-checkboxes" data-module="govuk-checkboxes"><div class="govuk-checkboxes__item"><input name="jobseekers_job_application_review_form[confirm_data_usage]" type="hidden" value="0" autocomplete="off"><input id="jobseekers-job-application-review-form-confirm-data-usage-1-field" class="govuk-checkboxes__input" type="checkbox" value="1" name="jobseekers_job_application_review_form[confirm_data_usage]"><label for="jobseekers-job-application-review-form-confirm-data-usage-1-field" class="govuk-label govuk-checkboxes__label">I consent to my data being shared with these organisations</label></div></div></fieldset></div><p class="govuk-body">You cannot edit your application after submitting. If you withdraw your application, you will not be able to resubmit.</p><div class="govuk-button-group"><button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Submit application</button><a class="govuk-link govuk-link--no-visited-state" href="/jobseekers/job_applications">Cancel and return to account</a></div></form>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropzone = document.querySelector('.custom-upload-multi-file-upload__dropzone');
+      const input = document.getElementById('documents');
+      const title = document.getElementById('document-title');
+      const dropzoneTextContainer = document.getElementById('dropzone-text-container');
+
+      const updateDropzoneText = () => {
+        dropzoneTextContainer.innerHTML = '<p id="dropzone-text" class="govuk-body initial-text">or drag and drop file here</p>';
+      };
+
+      const updateFileList = () => {
+        dropzoneTextContainer.innerHTML = '';
+        if (input.files.length > 0) {
+          title.textContent = 'Files Selected'; // Update title
+          Array.from(input.files).forEach(function(file, index) {
+            const fileNameElement = document.createElement('p');
+            fileNameElement.className = 'file-name govuk-body';
+            fileNameElement.innerHTML = `${file.name} <a href="#" data-name="${file.name}">Cancel</a>`;
+            dropzoneTextContainer.appendChild(fileNameElement);
+          });
+
+          // Add event listeners to "Cancel" links
+          dropzoneTextContainer.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+              event.preventDefault();
+              const fileName = this.getAttribute('data-name');
+              const dataTransfer = new DataTransfer();
+              Array.from(input.files).forEach((file) => {
+                if (file.name !== fileName) dataTransfer.items.add(file);
+              });
+              input.files = dataTransfer.files;
+              updateFileList(); // Update the file list display
+
+              // Check if no files remain and reset
+              if (input.files.length === 0) {
+                title.textContent = 'You can only upload PDF or DOCX files under 10MB'; // Reset title
+                updateDropzoneText();
+              }
+            });
+          });
+        } else {
+          title.textContent = 'You can only upload PDF or DOCX files under 10MB'; // Reset title if no files are selected
+          updateDropzoneText();
+        }
+      };
+
+      // Handle dragover event
+      dropzone.addEventListener('dragover', function(event) {
+        event.preventDefault();
+        dropzone.classList.add('custom-upload-multi-file-upload--dragover');
+      });
+
+      // Handle dragleave event
+      dropzone.addEventListener('dragleave', function(event) {
+        dropzone.classList.remove('custom-upload-multi-file-upload--dragover');
+      });
+
+      // Handle drop event
+      dropzone.addEventListener('drop', function(event) {
+        event.preventDefault();
+        dropzone.classList.remove('custom-upload-multi-file-upload--dragover');
+      });
+
+      // Handle file input change event
+      input.addEventListener('change', function() {
+        updateFileList(); // Update the file list display
+      });
+    });
+  </script>
+</body>
+
+{% endblock %}
