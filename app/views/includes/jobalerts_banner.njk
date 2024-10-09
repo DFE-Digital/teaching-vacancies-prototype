@@ -1,20 +1,36 @@
+<div style="background-color: #f3f2f1; border-top: 1px solid #b1b4b6;">    
+    <style>
+        /* General image styling */
+        .gdsc-image-card__image {
+            height: auto;
+            display: block;
+        }
 
-<div id="itt-banner" class="itt-banner" style="background-color: #f3f2f1; border-top:1px solid #b1b4b6;">
+        /* Make images full width on screens smaller than 768px */
+        @media (max-width: 768px) {
+            .govuk-grid-column-one-half:nth-child(2) img {
+                max-width: 100vw;
+                width: 100%;
+                margin-left: 0;
+                border: none;
+            }
+        }
+    </style>
+    
     <div class="govuk-width-container">
         <div class="govuk-main-wrapper govuk-main-wrapper--auto-spacing">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half">
-
-
                     <img style="max-width:250px; height: auto;" decoding="async" class="gdsc-image-card__image" src="https://teaching-vacancies2.campaign.gov.uk/wp-content/uploads/sites/158/2023/01/tv_logo_on_grey.jpg" alt="Teaching Vacancies logo">
-
+                    <div class="govuk-!-padding-bottom-7"></div>
                     <h1 class="govuk-heading-l">
                        Get jobs sent straight to your inbox
                     </h1>
                     
                 </div>
+                
                 <div class="govuk-grid-column-one-half">
-                    <img style="max-width:80%; float:left; height: auto; border:1px solid #b1b4b6;" decoding="async" class="gdsc-image-card__image" src="/public/images/_03A1853_960.jpg" alt="Children concentrating while the teacher sits at the back of the class observing.">
+                    <img style="max-width:100%; height: auto; border:1px solid #b1b4b6;" decoding="async" class="gdsc-image-card__image" src="/public/images/_03A1853_960.jpg" alt="Children concentrating while the teacher sits at the back of the class observing.">
                 </div>
             </div>
         </div>
