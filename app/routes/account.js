@@ -30,6 +30,12 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobalerts/jobalert_new_banner', (req, res) => {
+    res.render('account/jobalerts/jobalert_new_banner', {
+      users
+    })
+  })
+
   router.get('/jobalerts/jobalert_dynamic', (req, res) => {
     res.render('account/jobalerts/jobalert_dynamic', {
       users
