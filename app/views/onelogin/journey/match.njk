@@ -11,11 +11,15 @@
             {{title}}
         </h1>
 
-        <p>We've found a Teaching Vacancies account using the same email address as your GOV.UK One Login account and have saved your information.</p>
+        <p>We've found a Teaching Vacancies account using this email address.</p>
 
-        <p class="govuk-body">
-            You can <a class="govuk-link--no-visited-state" href="/profile">update your profile details</a>, continue to <a class="govuk-link--no-visited-state" href="/jobs">search and apply for jobs</a> or <a class="govuk-link--no-visited-state" href="#">create a job alert</a>.
-        </p>
+        <p>Any information from your profile or past applications has been saved.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Search for jobs'
+        }) }}
 
     </div>
 
