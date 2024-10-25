@@ -889,3 +889,37 @@ hr {
 .no-bottom-margin {
   margin-bottom: 0 !important; /* Use !important if needed to override existing styles */
 }
+
+.full-width-value {
+  width: 100%; /* Force the dd to use the full width */
+}
+
+.custom-details {
+  width: 100%; /* Ensure details take full width */
+  border: 1px solid #b0b0b0; /* Optional: border for visibility */
+  border-radius: 5px; /* Optional: rounded corners */
+  background-color: #f9f9f9; /* Optional: add a background color */
+}
+
+.custom-details__summary {
+  cursor: pointer; /* Change the cursor to pointer on hover */
+  padding: 10px; /* Optional: padding for summary */
+  width: 100%; /* Ensure summary takes full width */
+}
+
+.custom-details__text {
+  padding: 16px; /* Add padding for better spacing */
+  margin-top: 8px; /* Space between summary and text */
+}
+
+
+.govuk-inset-text--red {
+  border-left: 10px solid #d4351c; /* Red colour */
+}
+
+.govuk-inset-text--red-title {
+  font-weight: bold;
+  color: #d4351c; /* Red color for the title text */
+  margin-bottom: 0; /* Optional: Ensure no extra margin if needed */
+}
+

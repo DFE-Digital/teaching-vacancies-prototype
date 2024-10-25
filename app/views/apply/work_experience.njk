@@ -1,0 +1,115 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+   
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-l">Teacher at Weydon Multi Academy Trust</span>
+      {{title}}
+    </h1>
+
+    <h2 class="govuk-heading-l">Work history</h2>
+
+    <p class="govuk-body">Add details of all jobs you’ve had since leaving full-time education. This should include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>all paid roles</li>
+      <li>voluntary work, if relevant to your application</li>
+    </ul>
+    <p class="govuk-body">If you’re applying for a teaching job, you should include teaching and other experience, if you have it.</p>
+    <p class="govuk-body">You’ll also need to explain any gaps in your work history, including between finishing full-time education and starting work.</p>
+    <p class="govuk-body">You’ll need to provide the reason you left each role.</p>   
+    
+    <div class="govuk-button-group">
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Add work history
+      </button>
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Add gap in work history
+      </button>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--visible">
+    <br>
+
+    <div class="detail-component govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">Class Teacher</h3>
+        <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action">
+            <a class="govuk-link govuk-link--no-visited-state" href="#">Change 
+            <span class="govuk-visually-hidden">Example</span></a>
+          </li>
+          <li class="govuk-summary-card__action">
+            <a class="govuk-link" rel="nofollow" data-method="delete" href="#">Delete 
+            <span class="govuk-visually-hidden">Example</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+          <!-- Organisation Row -->
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">Organisation</dt>
+            <dd class="govuk-summary-list__value">The Laurels Primary School</dd>
+          </div>
+
+          <!-- Start Date Row -->
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">Start date</dt>
+            <dd class="govuk-summary-list__value">December 2023</dd>
+          </div>
+
+          <!-- End Date Row -->
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">End date</dt>
+            <dd class="govuk-summary-list__value">This is my current role</dd>
+          </div>
+     
+              </div>
+
+               <div style="padding-left: 20px; padding-right: 20px;">
+              <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Additional information
+    </span>
+  </summary>
+ 
+  <div class="govuk-details__text">
+<p class="govuk-body govuk-!-font-weight-bold">Subjects and key stages taught</p>
+<p class="govuk-body">	Lorem ipsum dolor sit amet, soluta molestiae disputando vim in. Est ei graece tincidunt, graeco docendi scriptorem te ius. Mea natum accusata ea. Justo soluta honestatis qui at. Ut dicam ceteros vituperata usu, suavitate comprehensam quo eu. At tota causae duo.</p>
+<p class="govuk-body govuk-!-font-weight-bold">Main duties</p>
+<p class="govuk-body">	Lorem ipsum dolor sit amet, soluta molestiae disputando vim in. Est ei graece tincidunt, graeco docendi scriptorem te ius. Mea natum accusata ea. Justo soluta honestatis qui at. Ut dicam ceteros vituperata usu, suavitate comprehensam quo eu. At tota causae duo.</p>
+<p class="govuk-body govuk-!-font-weight-bold">Reason for leaving</p>
+<p class="govuk-body">	Lorem ipsum dolor sit amet, soluta molestiae disputando vim in. Est ei graece tincidunt, graeco docendi scriptorem te ius. Mea natum accusata ea. Justo soluta honestatis qui at. Ut dicam ceteros vituperata usu, suavitate comprehensam quo eu. At tota causae duo.</p>
+  </div>
+</details>
+</div>
+            </dd>
+          </div>
+        </dl>
+ <div class="govuk-button-group"><button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Save</button><a class="govuk-link govuk-link--no-visited-state" href="/jobseekers/job_applications">Cancel and return to account</a><span class="govuk-caption-m">If you click cancel you will lose any unsaved information from this step. Completed details from previous steps will be saved in your draft applications.</span></div>    
+     
+      </div>
+      
+
+      
+    </div>
+
+
+
+
+    
+
+  </div>
+</div>
+
+
+
+  {% endblock %}
