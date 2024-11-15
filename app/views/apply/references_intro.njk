@@ -1,0 +1,56 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">Maths teacher at Bexleyheath Academy</span>
+          {{title}}
+      </h1>
+
+
+            <span class="govuk-caption-m">Part 7 of 11</span>
+ <h2 class="govuk-heading-l">
+            References </h2>
+       
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+     Have you ever worked with children, or are you currently working with them?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+         Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+        No
+        </label>
+      </div>
+     
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-button-group">
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+    Continue
+  </button>
+  <a class="govuk-link" href="#">Cancel</a>
+</div>
+  
+  
+    </div>
+  </div>
+
+{% endblock %}

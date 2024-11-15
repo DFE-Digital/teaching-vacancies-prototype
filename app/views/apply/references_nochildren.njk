@@ -1,0 +1,62 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">Maths teacher at Bexleyheath Academy</span>
+          {{title}}
+      </h1>
+
+
+            <span class="govuk-caption-m">Part 7 of 11</span>
+ <h2 class="govuk-heading-l">
+            References </h2>
+       
+
+<p class="govuk-body">To comply with KCSIE requirements, you must provide:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>2 referees for your application</li>
+  <li>One referee must be your current or most recent employer</li>
+</ul>
+      </form>
+
+<br>
+
+      <div class="empty-section-component"><h3 class="govuk-heading-m">No referees specified</h3>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" href="/toadd" data-govuk-button-init="">Add a referee</a></p></div>
+
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Have you completed this section?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="haveYouCompletedThisSection" name="haveYouCompletedThisSection" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="haveYouCompletedThisSection">
+          Yes, I’ve completed this section
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="haveYouCompletedThisSection-2" name="haveYouCompletedThisSection" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="haveYouCompletedThisSection-2">
+          No, I’ll come back to it later
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+  
+  
+    </div>
+  </div>
+
+{% endblock %}
