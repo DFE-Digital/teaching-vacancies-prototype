@@ -36,6 +36,14 @@ module.exports = router => {
     })
   })
 
+
+  router.get('/leadership-jobs', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/landing_page_leadership_roles', {
+      jobs
+    })
+  })
+
   router.get('/new-teachers-campaign', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/new-teachers-campaign', {
