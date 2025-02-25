@@ -21,7 +21,7 @@ module.exports = router => {
       jobs
     })
   })
-  
+
 
   router.get('/support-jobs', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
@@ -36,7 +36,6 @@ module.exports = router => {
       jobs
     })
   })
-
 
   router.get('/leadership-jobs', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
