@@ -1,0 +1,35 @@
+
+{% extends "layout.njk" %}
+
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'jobs' %}
+
+
+{% block content %}
+
+<span class="govuk-caption-l">Bus/Coach Driver at Countryside High School</span>
+<h1 class="govuk-heading-xl">Application</h1>
+
+<h2 class="govuk-heading-l">Upload application form</h2>
+
+ <div id="changedName-hint" class="govuk-hint">
+You can only upload PDF or DOCX files under 20MB
+    </div>
+
+<div class="govuk-form-group">
+
+  <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+</div>
+
+<br>
+
+<fieldset class="govuk-fieldset"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s"><h3 class="govuk-fieldset__heading">Have you completed this section?</h3></legend><input value="" autocomplete="off" type="hidden" name="jobseekers_job_application_qualifications_form[qualifications_section_completed]" id="jobseekers_job_application_qualifications_form_qualifications_section_completed"><div class="govuk-radios" data-module="govuk-radios" data-govuk-radios-init=""><div class="govuk-radios__item"><input id="jobseekers-job-application-qualifications-form-qualifications-section-completed-true-field" class="govuk-radios__input" type="radio" value="true" name="jobseekers_job_application_qualifications_form[qualifications_section_completed]"><label for="jobseekers-job-application-qualifications-form-qualifications-section-completed-true-field" class="govuk-label govuk-radios__label">Yes, I've completed this section</label></div><div class="govuk-radios__item"><input id="jobseekers-job-application-qualifications-form-qualifications-section-completed-false-field" class="govuk-radios__input" type="radio" value="false" name="jobseekers_job_application_qualifications_form[qualifications_section_completed]"><label for="jobseekers-job-application-qualifications-form-qualifications-section-completed-false-field" class="govuk-label govuk-radios__label">No, I'll come back to it later</label></div></div></fieldset>
+<br>
+<br>
+<br>
+<div class="govuk-button-group"><button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true" data-govuk-button-init="">Save and continue</button><a class="govuk-link govuk-link--no-visited-state" href="/jobseekers/job_applications">Cancel</a></div>
+
+{% endblock %}

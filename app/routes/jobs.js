@@ -79,6 +79,33 @@ module.exports = router => {
     })
   })
 
+  router.get('/download-app-job-example', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/download-app-job-example', {
+      jobs
+    })
+  })
+
+  router.get('/download-app-job-example-loggedin', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/download-app-job-example-loggedin', {
+      jobs
+    })
+  })
+
+  router.get('/download-app-job-personal-details', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/download-app-job-personal-details', {
+      jobs
+    })
+  })
+
+  router.get('/download-app-job-upload-doc', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/download-app-job-upload-doc', {
+      jobs
+    })
+  })
 
   router.get('/primary', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
