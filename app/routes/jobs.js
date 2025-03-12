@@ -107,6 +107,20 @@ module.exports = router => {
     })
   })
 
+  router.get('/download-app-job-example-loggedin-complete', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/download-app-job-example-loggedin-complete', {
+      jobs
+    })
+  })
+
+  router.get('/download-app-job-example-loggedin-filledin', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/download-app-job-example-loggedin-filledin', {
+      jobs
+    })
+  })
+
   router.get('/primary', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/primary', {
