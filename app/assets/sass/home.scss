@@ -37,7 +37,7 @@ $app-images-path: "/public/images/";
 
 .govuk-header__content {
   @include govuk-media-query($from: tablet) {
-    width: 55%;
+    width: 54%;
   }
 }
 

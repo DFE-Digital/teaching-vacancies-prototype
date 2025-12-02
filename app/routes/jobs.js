@@ -202,5 +202,14 @@ module.exports = router => {
     })
   })
 
+  //FE
+
+  router.get('/jobsfe', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/indexfe', {
+      jobs
+    })
+  })
+
 }
 
