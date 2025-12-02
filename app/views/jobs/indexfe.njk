@@ -73,8 +73,8 @@
 
         {% for job in jobs|sort(attribute='startDate', reverse=false) %}
 
-          {% if loop.index0 < 10 %} 
-
+        {% if job.jobtype in ['Teaching and Lecturing','Support','SEN','Leadership','Vocational'] %}
+    
             {% set address %}
               {% for part, value in job.organisation.address %}
                 {{value}}{% if not loop.last %}, {% endif %}
@@ -186,7 +186,7 @@
               }) }}
             </div>
 
-          {% endif %}
+          {% endif %} 
         {% endfor %}
       </div>
 

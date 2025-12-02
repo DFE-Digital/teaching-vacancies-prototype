@@ -4242,5 +4242,72 @@
         "closingTime": "5pm",
         "startDate": "2023-09-05T08:00:00.000Z",
         "distance": 4.5
+    },
+    {
+        "id": "67666",
+        "jobtype": "Teaching and Lecturing",
+        "status": "Active",
+        "organisation": {
+            "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
+            "name": "Nottingham College",
+            "address": {
+                "address1": "32 Grove Street",
+                "town": "Nottingham",
+                "postcode": "NG1 2FQ"
+            },
+            "type": "College",
+            "phase": "Higher dducation",
+            "ageGroup": "16 to 19",
+            "size": "400",
+            "website": "http://greenwoodjunior.edu.uk",
+            "emailAddress": "health@greenwoodjs.org.uk",
+            "about": "Greenwood Junior School is dedicated to the health and well-being of our students. We are seeking a qualified and caring School Nurse to provide health services, support student health education, and ensure a healthy school environment.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people in our care.",
+            "logo": "https://loremflickr.com/100/100/school",
+            "photo": "https://loremflickr.com/640/320/school"
+        },
+        "locations": [
+            {
+                "name": "Nottingham College",
+                "address": {
+                    "address1": "32 Grove Street",
+                    "town": "Sheffield",
+                    "postcode": "S1 2FQ"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": [
+            "Teaching and Lecturing"
+        ],
+        "title": "College Lecturer",
+        "searches": [
+            "Lecturer"
+        ],
+        "phase": "Higher education",
+        "workingPatterns": [
+            "Full time"
+        ],
+        "salaryDetails": [
+            "Band 6"
+        ],
+        "actualSalaryDetails": "\u00a331,000 - \u00a334,000",
+        "hasAdditionalAllowances": "No",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0114 321 4567",
+        "skillsAndExperience": "Ideal candidates should be registered nurses with experience in pediatric or school nursing. Excellent clinical skills, strong communication abilities, and a compassionate approach to child care are essential. Experience in health education and promoting healthy lifestyles is desirable.",
+        "whatSchoolOffers": "- A rewarding role in a supportive school environment\n- Opportunities for professional development in school healthcare\n- Active engagement in the well-being of students.",
+        "hasSafeguardingCommitment": "Yes",
+        "safeguardingCommitment": "Our commitment to safeguarding extends to the health and well-being of our students.",
+        "hasFurtherDetailsAboutTheRole": "Yes",
+        "furtherDetailsAboutTheRole": "Applicants must hold a valid nursing qualification and be eligible to work in the UK. A DBS check is required.",
+        "hasAdditionalDocuments": "No",
+        "publishDate": "2023-10-01T09:00:00.000Z",
+        "closingDate": "2026-12-15T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2024-01-10T09:00:00.000Z",
+        "distance": 2.0
     }
 ]
