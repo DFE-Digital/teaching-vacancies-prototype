@@ -3,6 +3,8 @@
 
 {% set primaryNavId = 'jobs' %}
 
+{% if job.organisation.type == 'College' %}{% set joeFEtype = 'college' %}{% elseif job.organisation.type == 'Corporate' %}{% set joeFEtype = 'company' %}{% elseif job.organisation.type == 'Academy' %}{% set joeFEtype = 'academy' %}{% else %}{% set joeFEtype = 'school' %}{% endif %}
+
 {% block content %}
 
   {% set h1 %}
@@ -257,7 +259,7 @@
       </div>
 
       <h2 class="govuk-heading-m">
-        What the school offers its staff
+        What the <span style="text-transform:lowercase;"> {{joeFEtype}}</span> offers its staff
       </h2>
 
       <div class="app-prose govuk-!-margin-bottom-6">
@@ -351,7 +353,7 @@
 
           {% else %}
             {# <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p> #}
-            <p>Apply through the school’s website.</p>
+            <p>Apply through the <span style="text-transform:lowercase;"> {{joeFEtype}}</span> website.</p>
 
             {{sponsorshipInset | safe }}
 
@@ -396,7 +398,7 @@
 
       {% if job.locations.length == 1 %}
         <h2 class="govuk-heading-l">
-          About the school
+          About the <span style="text-transform:lowercase;"> {{joeFEtype}}</span>
         </h2>
 
         {{ govukSummaryList({

@@ -4381,7 +4381,7 @@
         "distance": 2.0
     },
     {
-        "id": "67662",
+        "id": "67663",
         "jobtype": "SEN",
         "status": "Active",
         "organisation": {
@@ -4392,7 +4392,7 @@
                 "town": "Nottingham",
                 "postcode": "NG1 2FQ"
             },
-            "type": "SEN",
+            "type": "Academy",
             "phase": "Higher education",
             "ageGroup": "16-19",
             "size": "30",
@@ -4448,7 +4448,7 @@
         "distance": 2.0
     },
     {
-        "id": "67663",
+        "id": "67664",
         "jobtype": "Leadership",
         "status": "Active",
         "organisation": {
@@ -4459,7 +4459,7 @@
                 "town": "Nottingham",
                 "postcode": "NG1 2FQ"
             },
-            "type": "Leadership",
+            "type": "School",
             "phase": "Sixth form",
             "ageGroup": "16-19",
             "size": "30",
@@ -4515,7 +4515,7 @@
         "distance": 2.0
     },
     {
-        "id": "67664",
+        "id": "67665",
         "jobtype": "Vocational",
         "status": "Active",
         "organisation": {
@@ -4526,7 +4526,7 @@
                 "town": "Nottingham",
                 "postcode": "NG1 2FQ"
             },
-            "type": "Vocational",
+            "type": "Academy",
             "phase": "College",
             "ageGroup": "16-19",
             "size": "30",
