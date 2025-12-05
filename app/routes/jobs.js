@@ -220,5 +220,15 @@ module.exports = router => {
     })
   })
 
+
+  //FE PROTOTYPE WORK
+
+  router.get('/fe', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/indexfework', {
+      jobs
+    })
+  })
+
 }
 
