@@ -211,5 +211,14 @@ module.exports = router => {
     })
   })
 
+  //FE ONLY SERVICE
+
+  router.get('/jobsfeonly', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/index_feonly', {
+      jobs
+    })
+  })
+
 }
 
