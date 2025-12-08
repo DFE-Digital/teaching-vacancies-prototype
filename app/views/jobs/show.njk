@@ -1,7 +1,17 @@
 
-{% extends "layout.njk" %}
+
+{% if data['optionPrototype'] == 'a' %}
+  {% extends "layout.njk" %}
+{% elif data['optionPrototype'] == 'b' %}
+  {% extends "layout.njk" %}
+{% else %}
+  {% extends "layout_feonly.njk" %}
+  {% set activeNav = 'feonlyjobs' %}  
+{% endif %}
+
 
 {% set primaryNavId = 'jobs' %}
+
 
 {% if job.organisation.type == 'College' %}{% set joeFEtype = 'college' %}{% elseif job.organisation.type == 'Corporate' %}{% set joeFEtype = 'company' %}{% elseif job.organisation.type == 'Academy' %}{% set joeFEtype = 'academy' %}{% else %}{% set joeFEtype = 'school' %}{% endif %}
 

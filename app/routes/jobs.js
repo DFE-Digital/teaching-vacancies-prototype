@@ -206,6 +206,7 @@ module.exports = router => {
 
   router.get('/jobsfe', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    req.session.data['option'] = 'optiona'
     res.render('jobs/indexfe', {
       jobs
     })
@@ -215,6 +216,7 @@ module.exports = router => {
 
   router.get('/jobsfeonly', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    req.session.data['option'] = 'optionb'
     res.render('jobs/index_feonly', {
       jobs
     })
@@ -225,6 +227,7 @@ module.exports = router => {
 
   router.get('/fe', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    req.session.data['option'] = 'optionc'
     res.render('jobs/indexfework', {
       jobs
     })
