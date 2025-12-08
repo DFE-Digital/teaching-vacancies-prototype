@@ -30,10 +30,6 @@
   {
     href: '/account/sign-in-as-profile',
     text: 'Sign in as profile'
-  },
-  {
-    href: "#",
-    text: data['optionPrototype']
   }] %}
   {% set html = '<a href="?realFooter=1">Turn on real footer</a>' %}
 {% endif %}
@@ -134,7 +130,10 @@
 						<li class="govuk-footer__inline-list-item">
 							<a class="govuk-footer__link" href="/prototype-admin/clear-data">Clear data</a>
 						</li>
-					</ul>
+            <li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="/prototype-admin/clear-data">Prototype option: {{data['optionPrototype']}}</a>
+						</li>
+          </ul>
 					</div>
 				<div class="govuk-footer__meta-item">
 					<a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>

@@ -95,7 +95,7 @@
               {% endif %}
               <h2 class="govuk-heading-m">
                 
-                <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+                <a class="govuk-link--no-visited-state" href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
                 {% if job.isUsingApplicationForm == 'Yes' %}
                   {{ govukTag({
