@@ -7,7 +7,6 @@
 
 {% set activeNav = 'feonlyjobs' %}
 
-
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     Further Education prototype work
@@ -19,7 +18,7 @@
 
   <p class="govuk-body">Combining FE roles into the current jobs list on the service. So 'merging' the roles alongside teaching and school jobs in one place. This would have to cater the filters to all roles.</p>
 
-  <form action="/jobsfeand">
+  <form action="/jobsfemerge">
     <input class="govuk-input" id="optionPrototype" name="optionPrototype" type="text" value="a" hidden>
     <button type="submit" class="govuk-button" data-module="govuk-button">
       go to Option A concept
@@ -43,7 +42,7 @@
     Option C
   </h2>
 
-  <p class="govuk-body">Have FE roles on a dedicated service and not on the current TV setup</p>
+  <p class="govuk-body">Have FE roles on a dedicated service and not on the current TV setup.</p>
 
   <form action="/jobsfeonly">
     <input class="govuk-input" id="optionPrototype" name="optionPrototype" type="text" value="c" hidden>

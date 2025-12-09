@@ -60,7 +60,13 @@
     </div>
     <div class="govuk-header__content">
 
-         
+          <nav class="govuk-header__navigation" aria-label="Top Menu">
+            <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
+            <ul id="navigation" class="govuk-header__navigation-list">
+                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/new">Creat account</a></li>
+                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-in/">Sign in</a></li>
+            </ul>
+          </nav>      
       </div>
   </div>
   </div>
@@ -71,20 +77,20 @@
   <div class="govuk-width-container">
     <div class="govuk-service-navigation__container">
       <span class="govuk-service-navigation__service-name">
-          Further Education jobs
+          Teaching Vacancies
       </span>
       <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
         <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
           Menu
         </button>
         <ul class="govuk-service-navigation__list" id="navigation">
-          <li class="govuk-service-navigation__item {% if activeNav == 'feonlyjobs' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="/jobsfeonly">
+          <li class="govuk-service-navigation__item {% if activeNav == 'jobs' %} govuk-service-navigation__item--active {% endif %}">
+            <a class="govuk-service-navigation__link" href="/jobsfemerge">
               Jobs
             </a>
           </li>
           <li class="govuk-service-navigation__item {% if activeNav == 'schools' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="#">
+            <a class="govuk-service-navigation__link" href="/schools">
               Schools
             </a>
           </li>

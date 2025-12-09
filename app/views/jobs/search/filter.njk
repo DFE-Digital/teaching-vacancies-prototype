@@ -216,7 +216,7 @@
           {% endif %}
 
           {% for job in job_list %}
-          
+
             {% if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" %}  {% set jobECT %} Suitable for ECTs {% endset %} {% elseif job.isRoleSuitableForEarlyCareeerTeachers == "No"  %} {% set jobECT %} Not suitable for ECTs {% endset %} {% else %} {% set jobECT %} {% endset %} {% endif %}
             {% if job.isUsingApplicationForm == 'Yes' %}  {% set jobQuick %} Apply online {% endset %} {% else %} {% set jobQuick %}No{% endset %} {% endif %}
 
@@ -237,9 +237,14 @@
                 {% endif %}
               {% endfor %}
             {% else %}
-              
-              {% if job.role in filterRole %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
 
+                {% set cleanRole = job.role | replace(" ", "") %}
+                {% set cleanFilter = filterRole | replace(" ", "") %}
+
+                {% if cleanFilter in cleanRole %}
+                  {% set countOfJobMatch = countOfJobMatch + 1 %}
+                {% endif %}
+            
             {% endif %}
            
             {% if job.phase in filterPhase %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}

@@ -202,22 +202,29 @@ module.exports = router => {
     })
   })
 
-  //FE
+  //FE Option B
 
   router.get('/jobsfe', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
-    req.session.data['option'] = 'optiona'
     res.render('jobs/indexfe', {
       jobs
     })
   })
 
-  //FE ONLY SERVICE
+  //FE ONLY SERVICE Option C
 
   router.get('/jobsfeonly', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
-    req.session.data['option'] = 'optionb'
     res.render('jobs/index_feonly', {
+      jobs
+    })
+  })
+
+  //FE ONLY SERVICE Option A
+
+  router.get('/jobsfemerge', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/index_femerge', {
       jobs
     })
   })
