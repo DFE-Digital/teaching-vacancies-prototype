@@ -1,0 +1,399 @@
+
+
+{% extends "layout_feonly.njk" %}
+
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'jobs' %}
+{% set activeNav = 'feonlyjobsalert' %}
+
+{% set title = 'Create your job alert' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{title}}
+      </h1>
+
+      <p>
+        You can change the search criteria you have used by amending the keywords, location or filters before you create your alert.
+      </p>
+
+      <form method="post">
+
+        <div class="subscription-criteria">
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-keyword-field">Keywords</label><input class="govuk-input" id="jobseekers-subscription-form-keyword-field" name="jobseekers_subscription_form[keyword]" type="text">
+            </div>
+            <div class="autocomplete" data-controller="autocomplete" data-source="getLocationSuggestions">
+                <div class="govuk-form-group location-finder__input govuk-!-margin-bottom-0">
+                    <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-location-field">City, county or postcode (in England)</label>
+                </div>
+                <div class="autocomplete__suggestions govuk-body">
+                    <div class="autocomplete__wrapper">
+                        <div style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                            <div aria-atomic="true" aria-live="polite" id="jobseekers-subscription-form-location-field__status--A" role="status"></div>
+                            <div aria-atomic="true" aria-live="polite" id="jobseekers-subscription-form-location-field__status--B" role="status"></div>
+                        </div><input aria-autocomplete="list" aria-describedby="jobseekers-subscription-form-location-field__assistiveHint" aria-expanded="false" aria-owns="jobseekers-subscription-form-location-field__listbox" autocomplete="off" class="autocomplete__input autocomplete__input--default" id="jobseekers-subscription-form-location-field" name="jobseekers_subscription_form[location]" placeholder="" role="combobox" type="text">
+                        <ul class="autocomplete__menu autocomplete__menu--inline autocomplete__menu--hidden" id="jobseekers-subscription-form-location-field__listbox" role="listbox"></ul><span id="jobseekers-subscription-form-location-field__assistiveHint" style="display: none;">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>
+                        <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-radius-field">Search radius</label><select class="govuk-select" data-change-submit="false" id="jobseekers-subscription-form-radius-field" name="jobseekers_subscription_form[radius]">
+                    <option selected="selected" value="0">
+                        This area only
+                    </option>
+                    <option value="1">
+                        1 mile
+                    </option>
+                    <option value="5">
+                        5 miles
+                    </option>
+                    <option value="10">
+                        10 miles
+                    </option>
+                    <option value="15">
+                        15 miles
+                    </option>
+                    <option value="20">
+                        20 miles
+                    </option>
+                    <option value="25">
+                        25 miles
+                    </option>
+                    <option value="50">
+                        50 miles
+                    </option>
+                    <option value="100">
+                        100 miles
+                    </option>
+                    <option value="200">
+                        200 miles
+                    </option>
+                </select>
+            </div>
+
+            <div class="plain-styling">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                <div class="divider-bottom govuk-!-margin-top-6"></div>
+
+                <div class="filters-component" data-controller="filters">
+                    <div class="filters-component__groups">
+                        <div class="filters-component__groups__group" data-filters-target="group" data-group="job_roles">
+                            <div>
+
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+                                        <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Job role</legend></h3>
+                                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                                                                 
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-teacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="Teaching and Lecturing">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-teacher-field">Teaching and Lecturing</label>
+                                            </div>
+                                             <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-head-of-year-or-phase-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="sen">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-head-of-year-or-phase-field">Support</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-head-of-department-or-curriculum-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="sen">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-head-of-department-or-curriculum-field">SEN</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-assistant-headteacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="leadership">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-assistant-headteacher-field">Leadership</label>
+                                            </div>
+                                           
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-job-roles-headteacher-field" name="jobseekers_subscription_form[job_roles][]" type="checkbox" value="vocational">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-job-roles-headteacher-field">Vocational</label>
+                                            </div>
+                                           
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+
+                        <div class="filters-component__groups__group" data-filters-target="group" data-group="education_phase">
+                            <div>
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+                                        <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Education phase</legend></h3>
+                                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                            <input autocomplete="off" name="jobseekers_subscription_form[phases][]" type="hidden" value="">
+                                            
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-secondary-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="secondary">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-secondary-field">Secondary school</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-sixth-form-or-college-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="sixth_form_or_college">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-sixth-form-or-college-field">Sixth form or college</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-through-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="further education">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-through-field">Further education</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-through-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="higher education">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-through-field">Higher education</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-through-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="adult">
+                                                <label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-through-field">Adult</label>
+                                            </div>
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filters-component__groups__group" data-filters-target="group" data-group="working_patterns">
+                            <div>
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+                                        <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Working pattern</legend></h3>
+                                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                            <input autocomplete="off" name="jobseekers_subscription_form[working_patterns][]" type="hidden" value="">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-working-patterns-full-time-field" name="jobseekers_subscription_form[working_patterns][]" type="checkbox" value="full_time"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-working-patterns-full-time-field">Full time</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-working-patterns-part-time-field" name="jobseekers_subscription_form[working_patterns][]" type="checkbox" value="part_time"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-working-patterns-part-time-field">Part time</label>
+                                            </div>
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-working-patterns-part-time-field" name="jobseekers_subscription_form[working_patterns][]" type="checkbox" value="part_time"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-working-patterns-part-time-field">Job share</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filters-component__groups__group" data-filters-target="group" data-group="subjects">
+                            <h3 class="govuk-fieldset__legend govuk-fieldset__legend--s">Subject</h3>
+                            <div>
+                                <div class="searchable-collection-component" data-controller="searchable-collection">
+                                    <div class=" searchable-collection-component--scrollable">
+                                        <div class="searchable-collection-component__search">
+                                            <input aria-expanded="true" aria-label="Subject" aria-owns="subjects__listbox" class="govuk-input icon icon--left icon--search js-action" data-action="input-&gt;searchable-collection#input" data-searchable-collection-target="input" placeholder="Search" role="combobox">
+                                            <div aria-live="assertive" class="govuk-visually-hidden collection-match" role="status"></div>
+                                        </div>
+                                        <div class="govuk-form-group"  style="margin-left: -10px; max-height: 400px; overflow-y: auto; padding-left: 10px; padding-top:10px;">
+
+                                            
+                                            
+                                            {{ appCheckboxFilter({
+                                                idPrefix: "subjects",
+                                                name: "filters[subjects]",
+                                                classes: "govuk-checkboxes--small",
+                                                items: [
+                                                    { value: "Accountancy & Finance", text: "Accountancy & Finance", checked: checked("['filters']['subjects']", "Accountancy & Finance") },
+                                                    { value: "Aeronautical Engineering", text: "Aeronautical Engineering", checked: checked("['filters']['subjects']", "Aeronautical Engineering") },
+                                                    { value: "Agriculture/Horticulture/Land-Based Studies", text: "Agriculture/Horticulture/Land-Based Studies", checked: checked("['filters']['subjects']", "Agriculture/Horticulture/Land-Based Studies") },
+                                                    { value: "Animal Care", text: "Animal Care", checked: checked("['filters']['subjects']", "Animal Care") },
+                                                    { value: "Art", text: "Art", checked: checked("['filters']['subjects']", "Art") },
+                                                    { value: "Art History", text: "Art History", checked: checked("['filters']['subjects']", "Art History") },
+                                                    { value: "Biochemistry", text: "Biochemistry", checked: checked("['filters']['subjects']", "Biochemistry") },
+                                                    { value: "Biology", text: "Biology", checked: checked("['filters']['subjects']", "Biology") },
+                                                    { value: "British Sign Language", text: "British Sign Language", checked: checked("['filters']['subjects']", "British Sign Language") },
+                                                    { value: "Building & Construction", text: "Building & Construction", checked: checked("['filters']['subjects']", "Building & Construction") },
+                                                    { value: "Business Studies", text: "Business Studies", checked: checked("['filters']['subjects']", "Business Studies") },
+                                                    { value: "Catering", text: "Catering", checked: checked("['filters']['subjects']", "Catering") },
+                                                    { value: "Chemistry", text: "Chemistry", checked: checked("['filters']['subjects']", "Chemistry") },
+                                                    { value: "Children's Development & Learning", text: "Children's Development & Learning", checked: checked("['filters']['subjects']", "Children's Development & Learning") },
+                                                    { value: "Civil Engineering", text: "Civil Engineering", checked: checked("['filters']['subjects']", "Civil Engineering") },
+                                                    { value: "Class Teacher", text: "Class Teacher", checked: checked("['filters']['subjects']", "Class Teacher") },
+                                                    { value: "Classics", text: "Classics", checked: checked("['filters']['subjects']", "Classics") },
+                                                    { value: "Computer Science", text: "Computer Science", checked: checked("['filters']['subjects']", "Computer Science") },
+                                                    { value: "Counselling", text: "Counselling", checked: checked("['filters']['subjects']", "Counselling") },
+                                                    { value: "Creative Arts", text: "Creative Arts", checked: checked("['filters']['subjects']", "Creative Arts") },
+                                                    { value: "Criminology", text: "Criminology", checked: checked("['filters']['subjects']", "Criminology") },
+                                                    { value: "Customer Service", text: "Customer Service", checked: checked("['filters']['subjects']", "Customer Service") },
+                                                    { value: "Design and Technology", text: "Design and Technology", checked: checked("['filters']['subjects']", "Design and Technology") },
+                                                    { value: "Drama", text: "Drama", checked: checked("['filters']['subjects']", "Drama") },
+                                                    { value: "Early Years", text: "Early Years", checked: checked("['filters']['subjects']", "Early Years") },
+                                                    { value: "Early Years Care and Education", text: "Early Years Care and Education", checked: checked("['filters']['subjects']", "Early Years Care and Education") },
+                                                    { value: "Economics", text: "Economics", checked: checked("['filters']['subjects']", "Economics") },
+                                                    { value: "Education", text: "Education", checked: checked("['filters']['subjects']", "Education") },
+                                                    { value: "Electrical Engineering", text: "Electrical Engineering", checked: checked("['filters']['subjects']", "Electrical Engineering") },
+                                                    { value: "Electrical Installation", text: "Electrical Installation", checked: checked("['filters']['subjects']", "Electrical Installation") },
+                                                    { value: "Electronics", text: "Electronics", checked: checked("['filters']['subjects']", "Electronics") },
+                                                    { value: "Employability", text: "Employability", checked: checked("['filters']['subjects']", "Employability") },
+                                                    { value: "Engineering", text: "Engineering", checked: checked("['filters']['subjects']", "Engineering") },
+                                                    { value: "Engineering & Technology", text: "Engineering & Technology", checked: checked("['filters']['subjects']", "Engineering & Technology") },
+                                                    { value: "English", text: "English", checked: checked("['filters']['subjects']", "English") },
+                                                    { value: "English as a Foreign Language", text: "English as a Foreign Language", checked: checked("['filters']['subjects']", "English as a Foreign Language") },
+                                                    { value: "English as a Second or Other Language", text: "English as a Second or Other Language", checked: checked("['filters']['subjects']", "English as a Second or Other Language") },
+                                                    { value: "Esports", text: "Esports", checked: checked("['filters']['subjects']", "Esports") },
+                                                    { value: "Fabrication and Welding", text: "Fabrication and Welding", checked: checked("['filters']['subjects']", "Fabrication and Welding") },
+                                                    { value: "Farming", text: "Farming", checked: checked("['filters']['subjects']", "Farming") },
+                                                    { value: "Food Technology", text: "Food Technology", checked: checked("['filters']['subjects']", "Food Technology") },
+                                                    { value: "Foundation Studies", text: "Foundation Studies", checked: checked("['filters']['subjects']", "Foundation Studies") },
+                                                    { value: "French", text: "French", checked: checked("['filters']['subjects']", "French") },
+                                                    { value: "Functional Skills", text: "Functional Skills", checked: checked("['filters']['subjects']", "Functional Skills") },
+                                                    { value: "Games Design", text: "Games Design", checked: checked("['filters']['subjects']", "Games Design") },
+                                                    { value: "General Studies", text: "General Studies", checked: checked("['filters']['subjects']", "General Studies") },
+                                                    { value: "Geography", text: "Geography", checked: checked("['filters']['subjects']", "Geography") },
+                                                    { value: "Graphic Design", text: "Graphic Design", checked: checked("['filters']['subjects']", "Graphic Design") },
+                                                    { value: "Hair & Beauty", text: "Hair & Beauty", checked: checked("['filters']['subjects']", "Hair & Beauty") },
+                                                    { value: "Health and Social Care", text: "Health and Social Care", checked: checked("['filters']['subjects']", "Health and Social Care") },
+                                                    { value: "History", text: "History", checked: checked("['filters']['subjects']", "History") },
+                                                    { value: "Hotel, Catering & Travel", text: "Hotel, Catering & Travel", checked: checked("['filters']['subjects']", "Hotel, Catering & Travel") },
+                                                    { value: "Humanities", text: "Humanities", checked: checked("['filters']['subjects']", "Humanities") },
+                                                    { value: "ICT", text: "ICT", checked: checked("['filters']['subjects']", "ICT") },
+                                                    { value: "Key Stage 1", text: "Key Stage 1", checked: checked("['filters']['subjects']", "Key Stage 1") },
+                                                    { value: "Key Stage 2", text: "Key Stage 2", checked: checked("['filters']['subjects']", "Key Stage 2") },
+                                                    { value: "Land & Property Management", text: "Land & Property Management", checked: checked("['filters']['subjects']", "Land & Property Management") },
+                                                    { value: "Languages", text: "Languages", checked: checked("['filters']['subjects']", "Languages") },
+                                                    { value: "Latin", text: "Latin", checked: checked("['filters']['subjects']", "Latin") },
+                                                    { value: "Leadership and Management", text: "Leadership and Management", checked: checked("['filters']['subjects']", "Leadership and Management") },
+                                                    { value: "Learning and Development", text: "Learning and Development", checked: checked("['filters']['subjects']", "Learning and Development") },
+                                                    { value: "Literacy", text: "Literacy", checked: checked("['filters']['subjects']", "Literacy") },
+                                                    { value: "Logistics", text: "Logistics", checked: checked("['filters']['subjects']", "Logistics") },
+                                                    { value: "Mathematics", text: "Mathematics", checked: checked("['filters']['subjects']", "Mathematics") },
+                                                    { value: "Mechanical Engineering", text: "Mechanical Engineering", checked: checked("['filters']['subjects']", "Mechanical Engineering") },
+                                                    { value: "Media Studies", text: "Media Studies", checked: checked("['filters']['subjects']", "Media Studies") },
+                                                    { value: "Modern Foreign Languages", text: "Modern Foreign Languages", checked: checked("['filters']['subjects']", "Modern Foreign Languages") },
+                                                    { value: "Motor Vehicle", text: "Motor Vehicle", checked: checked("['filters']['subjects']", "Motor Vehicle") },
+                                                    { value: "Music", text: "Music", checked: checked("['filters']['subjects']", "Music") },
+                                                    { value: "Not applicable", text: "Not applicable", checked: checked("['filters']['subjects']", "Not applicable") },
+                                                    { value: "People Management", text: "People Management", checked: checked("['filters']['subjects']", "People Management") },
+                                                    { value: "Performing Arts", text: "Performing Arts", checked: checked("['filters']['subjects']", "Performing Arts") },
+                                                    { value: "Personal, Social and Health Education", text: "Personal, Social and Health Education", checked: checked("['filters']['subjects']", "Personal, Social and Health Education") },
+                                                    { value: "Philosophy", text: "Philosophy", checked: checked("['filters']['subjects']", "Philosophy") },
+                                                    { value: "Photography", text: "Photography", checked: checked("['filters']['subjects']", "Photography") },
+                                                    { value: "Physical Education", text: "Physical Education", checked: checked("['filters']['subjects']", "Physical Education") },
+                                                    { value: "Physics", text: "Physics", checked: checked("['filters']['subjects']", "Physics") },
+                                                    { value: "Plumbing & Heating", text: "Plumbing & Heating", checked: checked("['filters']['subjects']", "Plumbing & Heating") },
+                                                    { value: "Politics", text: "Politics", checked: checked("['filters']['subjects']", "Politics") },
+                                                    { value: "Primary/General", text: "Primary/General", checked: checked("['filters']['subjects']", "Primary/General") },
+                                                    { value: "Public Services", text: "Public Services", checked: checked("['filters']['subjects']", "Public Services") },
+                                                    { value: "Religious Education", text: "Religious Education", checked: checked("['filters']['subjects']", "Religious Education") },
+                                                    { value: "Science", text: "Science", checked: checked("['filters']['subjects']", "Science") },
+                                                    { value: "SEN", text: "SEN", checked: checked("['filters']['subjects']", "SEN") },
+                                                    { value: "Sociology", text: "Sociology", checked: checked("['filters']['subjects']", "Sociology") },
+                                                    { value: "Spanish", text: "Spanish", checked: checked("['filters']['subjects']", "Spanish") },
+                                                    { value: "Sport & Leisure", text: "Sport & Leisure", checked: checked("['filters']['subjects']", "Sport & Leisure") },
+                                                    { value: "Sports science", text: "Sports science", checked: checked("['filters']['subjects']", "Sports science") },
+                                                    { value: "Tourism", text: "Tourism", checked: checked("['filters']['subjects']", "Tourism") },
+                                                    { value: "Welsh", text: "Welsh", checked: checked("['filters']['subjects']", "Welsh") },
+                                                    { value: "Woodworking, Joinery & Carpentry", text: "Woodworking, Joinery & Carpentry", checked: checked("['filters']['subjects']", "Woodworking, Joinery & Carpentry") }
+                                                ]
+                                                }) }}
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filters-component__groups__group" data-filters-target="group" data-group="ect_statuses">
+                            <div>
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+                                        <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitable for early career teachers</legend></h3>
+                                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                            <input autocomplete="off" name="jobseekers_subscription_form[ect_statuses][]" type="hidden" value="">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-ect-statuses-ect-suitable-field" name="jobseekers_subscription_form[ect_statuses][]" type="checkbox" value="ect_suitable"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-ect-statuses-ect-suitable-field">Suitable for early career teachers</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filters-component__groups__group" data-filters-target="group" data-group="international">
+                            <div>
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+                                        <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Visa sponsorship</legend></h3>
+                                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                            <input autocomplete="off" name="jobseekers_subscription_form[international][]" type="hidden" value="">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-ect-statuses-ect-suitable-field" name="jobseekers_subscription_form[international][]" type="checkbox" value="ect_suitable"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-ect-statuses-ect-suitable-field">Only send alerts for jobs with visa sponsorship</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="divider-bottom govuk-!-margin-top-4"></div>
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-email-field">Email address</label>
+                <div class="govuk-hint" id="jobseekers-subscription-form-email-hint">
+                    Enter your email address.
+                </div><input aria-describedby="jobseekers-subscription-form-email-hint" class="govuk-input" id="jobseekers-subscription-form-email-field" name="jobseekers_subscription_form[email]" required="required" type="email">
+            </div>
+            <div class="govuk-checkboxes govuk-!-margin-bottom-4" data-module="govuk-checkboxes">
+      
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="updates-3" name="updates" type="checkbox" value="marketingYes">
+                    <label class="govuk-label govuk-checkboxes__label" for="updates-3">
+                        I am interested in receiving emails about the latest Teaching Vacancies news and features
+                    </label>
+                </div>
+                
+            </div>
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+                    <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">When do you want to receive alerts?</legend></h3><input autocomplete="off" id="jobseekers_subscription_form_frequency" name="jobseekers_subscription_form[frequency]" type="hidden" value="">
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="jobseekers-subscription-form-frequency-daily-field" name="jobseekers_subscription_form[frequency]" type="radio" value="daily"><label class="govuk-label govuk-radios__label" for="jobseekers-subscription-form-frequency-daily-field">Daily, at around 3 pm</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="jobseekers-subscription-form-frequency-weekly-field" name="jobseekers_subscription_form[frequency]" type="radio" value="weekly"><label class="govuk-label govuk-radios__label" for="jobseekers-subscription-form-frequency-weekly-field">Weekly (Friday evening at around 6 pm)</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            
+            
+
+        </div>
+
+        
+
+
+    {{ govukButton({
+        text: 'Subscribe'
+    }) }}
+
+
+    </form>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

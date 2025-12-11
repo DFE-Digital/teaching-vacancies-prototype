@@ -78,9 +78,11 @@
             </form>
           {% endif %}
         </div>
+        {% if data ['optionPrototype'] !== 'c' %}
         <div class="govuk-grid-column-one-third">
             <button class="banner-button-component__button icon icon--left icon--save" type="submit">Save this job for later</button>
         </div>
+        {% endif %}
       </div>
 
 
