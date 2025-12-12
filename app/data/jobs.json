@@ -4245,7 +4245,7 @@
     },
     {
         "id": "67661",
-        "jobtype": "Teaching and Lecturing",
+        "jobtype": "Teaching and lecturing",
         "status": "Active",
         "organisation": {
             "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
@@ -4278,7 +4278,7 @@
         ],
         "hybrid": "No",
         "role": [
-            "Teaching and Lecturing",
+            "Teaching and lecturing",
             "Lecturer"
         ],
         "subjects": [

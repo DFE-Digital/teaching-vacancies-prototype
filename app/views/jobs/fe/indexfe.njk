@@ -11,7 +11,7 @@
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    80 Further Education jobs 
+    80 further education jobs 
   </h1>
 
   <div class="app-filter-layout">
@@ -74,7 +74,7 @@
 
         {% for job in jobs|sort(attribute='startDate', reverse=false) %}
 
-        {% if job.jobtype in ['Teaching and Lecturing','Support','SEN','Leadership','Vocational'] %}
+        {% if job.jobtype in ['Teaching and lecturing','Support','SEN','Leadership','Vocational'] %}
     
             {% set address %}
               {% for part, value in job.organisation.address %}
