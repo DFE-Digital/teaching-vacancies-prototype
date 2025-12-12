@@ -45,23 +45,23 @@
 		<div class="govuk-width-container">
 			<div class="govuk-footer__navigation">
 
+      {% if data ['optionPrototype'] !== 'c' %}
+
         <div class="govuk-footer__section govuk-grid-column-one-half">
           <div class="govuk-grid-row">
             
             <div class="govuk-footer__section govuk-grid-column-full">
-              <h2 class="govuk-footer__heading govuk-heading-m">Support</h2>
+              <h2 class="govuk-footer__heading govuk-heading-m">Jobseekers</h2>
               <ul class="govuk-footer__list">
-                <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Get help or report a problem</a>
-                </li>
-              </ul>
-            </div>
 
-            <div class="govuk-footer__section govuk-grid-column-full">
-              <h2 class="govuk-footer__heading govuk-heading-m">Job seekers</h2>
-              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Jobseeker sign in</a>
+                </li>
                 <li class="govuk-footer__list-item">
                   <a class="govuk-footer__link" href="#">Find a job</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Jobseeker guides</a>
                 </li>
                 <li class="govuk-footer__list-item">
                   <a class="govuk-footer__link" href="#">Return to teaching</a>
@@ -69,42 +69,40 @@
                 <li class="govuk-footer__list-item">
                   <a class="govuk-footer__link" href="#">Teach in England if you trained overseas</a>
                 </li>
-                <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Sign in</a>
-                </li>
-                <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Writing a personal statement</a>
-                </li>
+
               </ul>
             </div>
 
           </div>
         </div>
-        <!-- end of first half -->
+        <!-- end of first half --> 
+      
 
         <div class="govuk-footer__section govuk-grid-column-one-half">
           <div class="govuk-grid-row">
             
-            <div class="govuk-footer__section govuk-grid-column-full">
-              <h2 class="govuk-footer__heading govuk-heading-m">Feedback</h2>
-              <ul class="govuk-footer__list">
-                <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Provide feedback on Teaching Vacancies</a>
-                </li>
-              </ul>
-            </div>
+            
 
             <div class="govuk-footer__section govuk-grid-column-full">
               <h2 class="govuk-footer__heading govuk-heading-m">Hiring staff</h2>
               <ul class="govuk-footer__list">
                 <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Sign in</a>
+                  <a class="govuk-footer__link" href="#">Hiring staff sign in</a>
                 </li>
                 <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Create an account</a>
+                  <a class="govuk-footer__link" href="#">Hiring guides</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Feedback</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Get help or report a problem</a>
                 </li>
                 <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">School hiring guides</a>
+                  <a class="govuk-footer__link" href="#">Provide feedback on Teaching Vacancies</a>
                 </li>
               </ul>
             </div>
@@ -115,11 +113,76 @@
 
 			</div>
 
+      {% else %}
+
+      <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Hiring staff</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Hiring staff sign in</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Hiring guides</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of first half --> 
+      
+
+        <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Feedback</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Get help or report a problem</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Provide feedback</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of second half -->
+
+			</div>
+
+      {% endif %}
+
 			<hr class="govuk-footer__section-break">
 
 			<div class="govuk-footer__meta">
 				<div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
 					<h2 class="govuk-visually-hidden">Support links</h2>
+          <ul class="govuk-footer__inline-list">
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/cookies-preferences">Cookies</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/government/publications/privacy-information-education-providers-workforce-including-teachers/privacy-information-education-providers-workforce-including-teachers">Privacy policy</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/terms-and-conditions">Terms and conditions</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/accessibility">Accessibility</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/savings-methodology">Savings methodology</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/vision-statement">Vision statement</a>
+                </li>
+            </ul>
 					<ul class="govuk-footer__inline-list">
 						<li class="govuk-footer__inline-list-item">
 							<a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit v12.0.4</a>
