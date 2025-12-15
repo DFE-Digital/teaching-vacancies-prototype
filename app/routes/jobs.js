@@ -241,8 +241,16 @@ module.exports = router => {
 
   router.get('/fe', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
-    req.session.data['option'] = 'optionc'
     res.render('jobs/fe/indexfework', {
+      jobs
+    })
+  })
+
+  //FE PROTOTYPE WORK
+
+  router.get('/fealert', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/fe/jobalert_fe', {
       jobs
     })
   })

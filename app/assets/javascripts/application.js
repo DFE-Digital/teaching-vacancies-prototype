@@ -5,6 +5,23 @@ if (window.console && window.console.info) {
   window.console.info('GOV.UK Prototype Kit - do not use for production')
 }
 
+window.addEventListener('load', function () {
+    const params = new URLSearchParams(window.location.search);
+    const roleType = params.get('role-type');
+
+    if (!roleType) return;
+
+    setTimeout(function () {
+      const radio = document.querySelector(
+        `input[name="role-type"][value="${roleType}"]`
+      );
+
+      if (radio && !radio.checked) {
+        radio.click();
+      }
+    }, 100); // 0.1 seconds
+  });
+
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 
@@ -25,6 +42,7 @@ $(document).ready(function () {
 
       $('.teaching-role').removeClass('active');
       $('.support-role').removeClass('active');
+      $('.fe-role').removeClass('active');
 
       $("." + theValue).addClass('active');
   }
