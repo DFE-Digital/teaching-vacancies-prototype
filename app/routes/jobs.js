@@ -246,11 +246,20 @@ module.exports = router => {
     })
   })
 
-  //FE PROTOTYPE WORK
+  //FE HYBRID ALERT WORK
 
   router.get('/fealert', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/fe/jobalert_fe', {
+      jobs
+    })
+  })
+
+  //FE HOME WORK
+
+  router.get('/fehome', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/fe/homefe', {
       jobs
     })
   })
