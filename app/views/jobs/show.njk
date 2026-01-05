@@ -65,11 +65,14 @@
         {% endif %}
       </div>
 
-
       <div class="govuk-grid-row banner-buttons  govuk-!-margin-bottom-7">
         <div class="govuk-grid-column-one-third">
           {% if job.jobtype == 'support' %}
             <form action="/jobalerts/support">
+              <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
+            </form>
+          {% elseif data ['optionPrototype'] == 'b' %}
+            <form action="/jobs/fe/jobalert_fe?role-type=fe-role">
               <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
             </form>
           {% else %}   
