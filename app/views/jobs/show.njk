@@ -590,8 +590,10 @@
         <p class="icon icon--left icon--alert-blue govuk-!-margin-top-7" style="background-repeat: no-repeat; padding-left:30px">
         {% if job.jobtype == 'support' %}
            <a class="govuk-link" href="/jobalerts/support">Get a job alert</a> when similar jobs are listed
+        {% elseif data ['optionPrototype'] == 'b' %}
+           <a class="govuk-link" href="/jobs/fe/jobalert_fe??role-type=fe-role">Get a job alert</a> when similar jobs are listed
           {% else %}   
-           <a class="govuk-link" href="/jobalerts/teaching">Get a job alert</a> when similar jobs are listed
+           <a class="govuk-link" href="/jobsfeonly_alert">Get a job alert</a> when similar jobs are listed
         {% endif %}
       </section>
 
