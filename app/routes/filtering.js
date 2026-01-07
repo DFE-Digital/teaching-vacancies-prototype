@@ -125,6 +125,14 @@ module.exports = router => {
         })
     })
 
+    router.get('/search/fe', (req, res) => {
+        let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+
+        res.render('jobs/search/filterfe', {
+            jobs
+        })
+    })
+
     //only use home search to pre-select filters
 
     router.get('/search/home', (req, res) => {
