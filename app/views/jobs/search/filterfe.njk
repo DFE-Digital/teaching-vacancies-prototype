@@ -1,5 +1,15 @@
 
-{% extends "layout.njk" %}
+
+
+ {% if data ['optionPrototype'] !== 'c' %}
+
+    {% extends "layout.njk" %}
+    
+ {% else %}
+
+ {% extends "layout_feonly.njk" %}
+
+  {% endif %}
 
 {% set primaryNavId = 'jobs' %}
 {% set activeNav = 'fe' %}
