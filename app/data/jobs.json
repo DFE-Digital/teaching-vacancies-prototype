@@ -71,6 +71,77 @@
         "distance": 2.0
     },
     {
+        "id": "45654664",
+        "jobtype": "Teaching and Lecturing",
+        "status": "Active",
+        "organisation": {
+            "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
+            "name": "Greenwood College",
+            "address": {
+            "address1": "32 Grove Street",
+            "town": "Nottingham",
+            "postcode": "NG1 2FQ"
+            },
+            "type": "College",
+            "phase": "Higher education",
+            "ageGroup": "16 to 19",
+            "size": "400",
+            "website": "http://greenwoodcollege.ac.uk",
+            "emailAddress": "recruitment@greenwoodcollege.ac.uk",
+            "about": "Greenwood College is committed to delivering high-quality further education that supports learners in achieving their academic and vocational goals. We are seeking a dedicated Student Support Officer to help learners overcome barriers to learning and succeed in their studies.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners and expect all staff to share this commitment.",
+            "logo": "https://loremflickr.com/100/100/school",
+            "photo": "https://loremflickr.com/640/320/school"
+        },
+        "locations": [
+            {
+            "name": "Greenwood College",
+            "address": {
+                "address1": "32 Grove Street",
+                "town": "Nottingham",
+                "postcode": "N1 2FQ"
+            }
+            }
+        ],
+        "hybrid": "No",
+        "role": [
+            "Teaching and Lecturing"
+        ],
+        "subjects": [
+            "Student Support"
+        ],
+        "title": "Student Support Officer",
+        "searches": [
+            "Student support",
+            "Learner support"
+        ],
+        "phase": "Further education",
+        "workingPatterns": [
+            "Full time"
+        ],
+        "salaryDetails": [
+            "Band 5"
+        ],
+        "actualSalaryDetails": "£26,000 - £29,000",
+        "hasAdditionalAllowances": "No",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "No",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0114 321 4567",
+        "skillsAndExperience": "Ideal candidates will have experience supporting students in an education or training environment. Strong communication skills, empathy, and the ability to work collaboratively with teaching staff are essential.",
+        "whatSchoolOffers": "- A supportive and inclusive college environment\n- Opportunities for professional development\n- The chance to make a meaningful difference to learners’ educational journeys.",
+        "hasSafeguardingCommitment": "Yes",
+        "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners, and expect all staff to share this commitment.",
+        "hasFurtherDetailsAboutTheRole": "Yes",
+        "furtherDetailsAboutTheRole": "Applicants should have relevant experience working with young people or adults in an educational setting. A DBS check is required.",
+        "hasAdditionalDocuments": "No",
+        "publishDate": "2023-10-01T09:00:00.000Z",
+        "closingDate": "2026-12-15T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2024-01-10T09:00:00.000Z",
+        "distance": 2.0
+        },
+        {
         "id": "67662",
         "jobtype": "Support",
         "status": "Active",
@@ -138,6 +209,79 @@
         "distance": 2.0
     },
     {
+        "id": "67345453",
+        "jobtype": "Teaching and Lecturing",
+        "status": "Active",
+        "organisation": {
+            "id": "a7f8e9d0-b1c2-3d4e-5f6a-7b8c9d0e1f2a",
+            "name": "Riverside Technical College",
+            "address": {
+            "address1": "14 Mill Wharf",
+            "town": "Leeds",
+            "postcode": "LS10 1AB"
+            },
+            "type": "College",
+            "phase": "Further education",
+            "ageGroup": "16 to adult",
+            "size": "850",
+            "website": "https://www.riversidetechnical.ac.uk",
+            "emailAddress": "careers@riversidetechnical.ac.uk",
+            "about": "Riverside Technical College provides vocational and technical education to learners across the region, working closely with local employers to develop practical skills for employment. We are seeking a committed Learner Progress Coach to support students in achieving positive outcomes and progressing to their next steps.",
+            "safeguardingCommitment": "Riverside Technical College is committed to safeguarding and promoting the welfare of children, young people and vulnerable adults.",
+            "logo": "https://loremflickr.com/100/100/college",
+            "photo": "https://loremflickr.com/640/320/campus"
+        },
+        "locations": [
+            {
+            "name": "Riverside Technical College",
+            "address": {
+                "address1": "14 Mill Wharf",
+                "town": "Leeds",
+                "postcode": "LS10 1AB"
+            }
+            }
+        ],
+        "hybrid": "Yes",
+        "role": [
+            "Teaching and Lecturing"
+        ],
+        "subjects": [
+            "Student Progression"
+        ],
+        "title": "Learner Progress Coach",
+        "searches": [
+            "Learner support",
+            "Student progression",
+            "Progress coach"
+        ],
+        "phase": "Further education",
+        "workingPatterns": [
+            "Full time",
+            "Part time"
+        ],
+        "salaryDetails": [
+            "Band 4"
+        ],
+        "actualSalaryDetails": "£24,000 - £27,500",
+        "hasAdditionalAllowances": "No",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "No",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0113 555 9876",
+        "skillsAndExperience": "The successful candidate will have experience working with learners in an education, training, or youth support setting. You will be confident providing one-to-one guidance, monitoring progress, and working with teaching teams to identify and address barriers to learning.",
+        "whatSchoolOffers": "- A learner-focused and inclusive college culture\n- Flexible working arrangements\n- Ongoing training and development opportunities\n- The opportunity to support learners into education, employment or training.",
+        "hasSafeguardingCommitment": "Yes",
+        "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners and expect all staff to share this commitment.",
+        "hasFurtherDetailsAboutTheRole": "Yes",
+        "furtherDetailsAboutTheRole": "Applicants should have relevant experience in learner support or pastoral roles. A willingness to work flexibly across departments is essential. An enhanced DBS check will be required.",
+        "hasAdditionalDocuments": "No",
+        "publishDate": "2024-03-12T09:00:00.000Z",
+        "closingDate": "2026-11-30T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2024-05-01T09:00:00.000Z",
+        "distance": 6.5
+        },
+        {
         "id": "67663",
         "jobtype": "SEN",
         "status": "Active",
