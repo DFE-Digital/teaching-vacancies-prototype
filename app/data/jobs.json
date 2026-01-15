@@ -20,8 +20,8 @@
             "emailAddress": "recruitment@greenwoodcollege.ac.uk",
             "about": "Greenwood College is committed to delivering high-quality further education that supports learners in achieving their academic and vocational goals. We are seeking an enthusiastic and knowledgeable College Lecturer to deliver engaging lessons, support student progression, and contribute to the wider college community.",
             "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners and expect all staff to share this commitment.",
-            "logo": "https://loremflickr.com/100/100/school",
-            "photo": "https://loremflickr.com/640/320/school"
+            "logo": "https://loremflickr.com/100/100/engineering",
+            "photo": "https://loremflickr.com/640/320/engineering"
         },
         "locations": [
             {
@@ -63,6 +63,76 @@
         "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners, and expect all staff to share this commitment.",
         "hasFurtherDetailsAboutTheRole": "Yes",
         "furtherDetailsAboutTheRole": "Applicants should hold a relevant degree, HNC/HND, or industry-recognised qualification in construction or a related trade. A recognised teaching qualification, or willingness to work towards one, is desirable. Recent industry experience and knowledge of health and safety requirements would be an advantage. An enhanced DBS check will be required.",
+        "hasAdditionalDocuments": "No",
+        "publishDate": "2023-10-01T09:00:00.000Z",
+        "closingDate": "2026-12-15T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2024-01-10T09:00:00.000Z",
+        "distance": 2.0
+    },
+    {
+        "id": "67668686122",
+        "jobtype": "Teaching and Lecturing",
+        "status": "Active",
+        "organisation": {
+            "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
+            "name": "Hope College",
+            "address": {
+                "address1": "32 Gillam Street",
+                "town": "Nottingham",
+                "postcode": "NG10 2FQ"
+            },
+            "type": "College",
+            "phase": "Higher education",
+            "ageGroup": "16 to 19",
+            "size": "400",
+            "website": "http://greenwoodcollege.ac.uk",
+            "emailAddress": "recruitment@greenwoodcollege.ac.uk",
+            "about": "Greenwood College is committed to delivering high-quality further education that supports learners in achieving their academic and vocational goals. We are seeking an enthusiastic and knowledgeable College Lecturer to deliver engaging lessons, support student progression, and contribute to the wider college community.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners and expect all staff to share this commitment.",
+            "logo": "https://loremflickr.com/100/100/science",
+            "photo": "https://loremflickr.com/640/320/science"
+        },
+        "locations": [
+            {
+                "name": "Greenwood College",
+                "address": {
+                    "address1": "32 Grove Street",
+                    "town": "Nottingham",
+                    "postcode": "N1 2FQ"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": [
+            "Teaching and Lecturing"
+        ],
+        "subjects": [
+            "Civil Engineering"
+        ],
+        "title": "Lecturer in applied sciences",
+        "searches": [
+            "Lecturer"
+        ],
+        "phase": "Further education",
+        "workingPatterns": [
+            "Full time"
+        ],
+        "salaryDetails": [
+            "Band 6"
+        ],
+        "actualSalaryDetails": "\u00a331,000 - \u00a334,000",
+        "hasAdditionalAllowances": "No",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0114 321 4567",
+        "skillsAndExperience": "The successful candidate will have strong subject knowledge in science or a related discipline, with experience teaching or training learners in a further education or post-16 setting. You will be confident delivering engaging theoretical and practical lessons, supporting learners to develop scientific understanding and practical laboratory skills. Experience with curriculum planning, assessment, and promoting safe laboratory practice is highly desirable.",
+        "whatSchoolOffers": "- A supportive and collaborative college environment\n- Access to well-equipped laboratories and teaching resources\n- Opportunities for professional development and teaching qualifications\n- A committed science teaching team focused on learner achievement\n- The opportunity to inspire learners pursuing further study or careers in science-related fields.",
+        "hasSafeguardingCommitment": "Yes",
+        "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners, and expect all staff to share this commitment.",
+        "hasFurtherDetailsAboutTheRole": "Yes",
+        "furtherDetailsAboutTheRole": "Applicants should hold a relevant degree in science or a related subject such as biology, chemistry, or physics. A recognised teaching qualification, or willingness to work towards one, is desirable. Experience delivering practical laboratory sessions and assessing learners in a post-16 or further education setting would be an advantage. An enhanced DBS check will be required.",
         "hasAdditionalDocuments": "No",
         "publishDate": "2023-10-01T09:00:00.000Z",
         "closingDate": "2026-12-15T17:00:00.000Z",
