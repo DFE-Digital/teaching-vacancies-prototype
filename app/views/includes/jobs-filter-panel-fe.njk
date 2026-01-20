@@ -66,12 +66,17 @@
             </legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
 
+
+            {% if data ['optionPrototype'] !== 'c' %}
+
             <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-phase-6" name="filter-phase" type="checkbox" value="Secondary school">
                 <label class="govuk-label govuk-checkboxes__label" for="filter-phase-6">
                   Secondary school
                 </label>
               </div>
+
+            {% endif %}
 
             <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-phase-6" name="filter-phase" type="checkbox" value="Sixth form">
