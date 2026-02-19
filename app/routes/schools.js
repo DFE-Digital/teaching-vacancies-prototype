@@ -8,6 +8,14 @@ module.exports = router => {
     })
   })
 
+  router.get('/colleges', (req, res) => {
+    let organisations = req.session.data.organisations
+
+    res.render('schools/colleges', {
+      organisations
+    })
+  })
+
   router.get('/schools/:id', (req, res) => {
     let organisations = req.session.data.organisations
     let organisation = organisations.find(organisation => organisation.id == req.params.id)

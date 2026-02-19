@@ -1,0 +1,135 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'schools' %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Colleges (200)
+  </h1>
+
+    <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/schools-filter-panel.njk" %}
+    </div>
+
+    <div class="app-filter-layout__content">
+      {% include "includes/schools-search-form.njk" %}
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div class="app-schools">
+
+        {% for organisation in organisations %}
+
+        {% if organisation.phase == 'Sixth form or college' %}
+
+            {% set phase %}
+                {% if organisation.phase %}
+                {{organisation.phase}}
+                {% else %}
+                Multiple phases
+                {% endif %}
+            {% endset %}
+
+
+          <div class="app-schools__item">
+            <div>
+
+              {% if organisation.logo != 'Not entered' %}
+                <img src="{{organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
+              {% endif %}
+              <h2 class="govuk-heading-m">
+                <a href="/schools/{{organisation.id}}">{{organisation.name}}</a>
+              </h2>
+              <p>
+                {% for part, value in organisation.address %}
+                  {{value}}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </p>
+            </div>
+            {{ govukSummaryList({
+              classes: 'govuk-summary-list--no-border',
+              rows: [
+                {
+                  key: {
+                    text: "Key stages"
+                  },
+                  value: {
+                    text: ['KS1, KS2', 'KS3, KS4'] | random
+                  }
+                },
+                {
+                  key: {
+                    text: "Education phase"
+                  },
+                  value: {
+                    text: phase
+                  }
+                },
+                {
+                  key: {
+                    text: "Active jobs"
+                  },
+                  value: {
+                    text: [0, 1, 2, 3, 4] | random
+                  }
+                }
+              ]
+            }) }}
+
+          </div>
+        {% else %}
+        {% endif %}
+        {% endfor %}
+
+      </div>
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
+{% endblock %}
