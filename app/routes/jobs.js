@@ -3,7 +3,7 @@ module.exports = router => {
 
   router.get('/', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
-    res.render('jobs/fe/homefe', {
+    res.render('jobs/home', {
       jobs
     })
   })
