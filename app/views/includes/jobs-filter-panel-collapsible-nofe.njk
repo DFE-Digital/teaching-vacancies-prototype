@@ -53,19 +53,7 @@
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
                                       <input {% if 'Teacher' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-teacher" value="Teacher">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
-                                          Teacher
-                                      </label>
-                                  </li>
-                                  <li class="govuk-checkboxes__item" data-testid="job-name">
-                                      <input {% if 'Lecturer' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-lecturer" value="Lecturer">
-                                      <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
-                                          Lecturer
-                                      </label>
-                                  </li>
-                                  <li class="govuk-checkboxes__item" data-testid="job-name">
-                                      <input {% if 'Trainer, assessor or tutor' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-trainer-or-assessor" value="Trainer, assessor or tutor">
-                                      <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
-                                          Trainer, assessor or tutor
+                                          Teacher or lecturer
                                       </label>
                                   </li>
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
@@ -281,7 +269,7 @@
 
                 >
                 <label class="govuk-label govuk-checkboxes__label" for="filter-phase-5">
-                  Sixth form or college
+                  Sixth form
                 </label>
               </div>
 
@@ -289,6 +277,19 @@
                 <input class="govuk-checkboxes__input" id="filter-phase-6" name="filter-phase" type="checkbox" value="Through school">
                 <label class="govuk-label govuk-checkboxes__label" for="filter-phase-6">
                   Through school
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-phase-5" name="filter-phase" type="checkbox" value="Further education"
+                
+                {% if 'Further education' in filterPhase %}
+                  checked
+                {% endif %}
+
+                >
+                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-5">
+                  Further education or college
                 </label>
               </div>
 
@@ -581,17 +582,17 @@
     classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
-        text: "School type",
+        text: "School or college type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
       value: 'Faith school',
-      text: 'Faith school'
+      text: 'Faith school or college'
     },
     {
       value: 'Special school',
-      text:'Special school'
+      text:'Special school or college'
     }
     ]
   }) }}
@@ -741,10 +742,7 @@
                 <!-- // teaching and leadership -->
 
                 {% if 'Teacher' in filterRole %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher</a></li>
-                {% endif %}
-                {% if 'Lecturer' in filterRole %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Lecturer</a></li>
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher or lecturer</a></li>
                 {% endif %}
                 {% if 'Head of year or phase' in filterRole %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Head of year or phase</a></li>
@@ -822,10 +820,13 @@
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Secondary school</a></li>
                 {% endif %}
                 {% if 'Sixth form or college' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Sixth form or college</a></li>
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Sixth form</a></li>
                 {% endif %}
                 {% if 'Through school' in filterPhase %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Through school</a></li>
+                {% endif %}
+                {% if 'Further education' in filterPhase %} 
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Further education or college</a></li>
                 {% endif %}
                 </ul>
 

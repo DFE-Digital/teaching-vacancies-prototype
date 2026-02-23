@@ -7,7 +7,6 @@
 
 {% set primaryNavId = 'home' %}
 
-
 {% block content %}
 
 {{ govukNotificationBanner({
@@ -19,7 +18,7 @@
 <div class="home_index">
    
     <div class="search" style="padding-bottom:50px;">
-		<h1 class="govuk-heading-l">Find teacher and school jobs near you</h1>
+		<h1 class="govuk-heading-l">Find school and college jobs near you</h1>
 		<form id="filter" class="home" method="get" action="/search/home" novalidate>
 			<div class="search__form">
 				<div class="govuk-form-group">
@@ -57,7 +56,7 @@
 		</div>
 		<div class="govuk-grid-column-one-quarter">
 			<h2 class="govuk-heading-m">For jobseekers</h2>
-			<p class="govuk-body">Save and apply for jobs in schools.</p><a class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button" draggable="false" href="/jobseekers/sign-in" role="button">Sign in</a>
+			<p class="govuk-body">Save and apply for jobs in schools and colleges.</p><a class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button" draggable="false" href="/jobseekers/sign-in" role="button">Sign in</a>
 			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state govuk-link govuk-link--no-visited-state--no-visited-state" href="/jobseekers/sign_up">create an account</a>.</p>
 		</div>
 		<div class="govuk-grid-column-one-quarter">
@@ -69,21 +68,22 @@
 
 
     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
 		<div class="govuk-accordion__section">
 			<div class="govuk-accordion__section-header">
 			<h2 class="govuk-accordion__section-heading">
 				<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-					Jobs by organisation type and role
+					School jobs by role, phase and subject 
 				</span>
 			</h2>
 			</div>
-			<div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+			<div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1" style="display: block !important;">
 				
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
 					<h3 class="govuk-heading-s">Teaching and leadership roles</h3>
 					<ul class="govuk-list">
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-role=Teacher">Teacher<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-role=Teacher">Teacher or lecturer<span class="govuk-visually-hidden">jobs</span></a>
 						</li>
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-role=Head+of+year+or+phase">Head of year or phase<span class="govuk-visually-hidden">jobs</span></a>
@@ -139,10 +139,8 @@
 					</ul>
 				</div>
 
-				
-
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
-					<h3 class="govuk-heading-s">School phases</h3>
+					<h3 class="govuk-heading-s">Education phases</h3>
 					<ul class="govuk-list">
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Nursery+school"><span class="govuk-visually-hidden">View 40</span> Nursery<span class="govuk-visually-hidden">jobs</span></a> 
@@ -157,7 +155,7 @@
 							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Secondary+school">Secondary<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Sixth+form+or+college">Sixth form and college<span class="govuk-visually-hidden">jobs</span></a> 
+							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Sixth+form+or+college">Sixth form<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 					</ul>
 					<h3 class="govuk-heading-s">Working patterns</h3>
@@ -179,6 +177,240 @@
 						</li>
 					</ul>
 				</div>
+				
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-full">
+					<h3 class="govuk-heading-s">Subjects</h3>
+				</div>
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<h3 class="govuk-heading-s govuk-!-margin-bottom-2"></h3>
+					<ul class="govuk-list">
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/maths-teacher-jobs">Maths<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(159)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/english-media-studies-teacher-jobs">English and Media Studies<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(191)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/physical-education-teacher-jobs">Physical Education<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(28)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/dance-drama-music-teacher-jobs">Dance, Drama and Music<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(67)</span>
+						</li>
+						<li>
+							<div class="homepage-landing-page-link-group-component">
+								<div>
+									<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/science-teacher-jobs">Science<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(208)</span>
+								</div>
+								<ul class="govuk-list govuk-list--bullet">
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/chemistry-teacher-jobs">Chemistry<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(53)</span>
+									</li>
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/biology-teacher-jobs">Biology<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(42)</span>
+									</li>
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/physics-teacher-jobs">Physics<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(48)</span>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<h3 class="govuk-heading-s govuk-!-margin-bottom-2"></h3>
+					<ul class="govuk-list">
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/history-teacher-jobs">History<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(33)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/geography-teacher-jobs">Geography<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(54)</span>
+						</li>
+						<li>
+							<div class="homepage-landing-page-link-group-component">
+								<div>
+									<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/mfl-teacher-jobs">Foreign Languages<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(59)</span>
+								</div>
+								<ul class="govuk-list govuk-list--bullet">
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/french-teacher-jobs">French<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(18)</span>
+									</li>
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/spanish-teacher-jobs">Spanish<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(29)</span>
+									</li>
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/german-teacher-jobs">German<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(3)</span>
+									</li>
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/mandarin-teacher-jobs">Mandarin<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(0)</span>
+									</li>
+									<li>
+										<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/classics-latin-teacher-jobs">Classics<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(0)</span>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<h3 class="govuk-heading-s govuk-!-margin-bottom-2"></h3>
+					<ul class="govuk-list">
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/ict-computer-science-teacher-jobs">ICT and Computer Science<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(40)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/economics-business-studies-teacher-jobs">Economics and Business Studies<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(46)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/art-design-teacher-jobs">Art and design<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(52)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/design-technology-teacher-jobs">Design and technology<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(70)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/food-technology-teacher-jobs">Food technology<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(36)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/politics-humanities-social-sciences-teacher-jobs">Politics, Humanities and Social Sciences<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(40)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/psychology-philosophy-sociology-re-teacher-jobs">Psychology, Sociology and RE<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(53)</span>
+						</li>
+						<li>
+							<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/health-relationships-social-care-teacher-jobs">Health and Social Care<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(10)</span>
+						</li>
+					</ul>
+				</div>
+
+
+
+			</div>
+		</div>
+
+		<div class="govuk-accordion__section">
+			<div class="govuk-accordion__section-header">
+			<h2 class="govuk-accordion__section-heading">
+				<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+					Further education jobs by role, phase and subject 
+				</span>
+			</h2>
+			</div>
+			<div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1" style="display: block !important;">
+				
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<h3 class="govuk-heading-s">Teaching and leadership roles</h3>
+					<ul class="govuk-list">
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-role=Teacher">Teacher or lecturer<span class="govuk-visually-hidden">jobs</span></a>
+						</li>
+					</ul>
+				</div>
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<h3 class="govuk-heading-s">Education phases</h3>
+					<ul class="govuk-list">
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Further+education">Further education<span class="govuk-visually-hidden">jobs</span></a> 
+						</li>
+					</ul>
+				</div>
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					
+					<h3 class="govuk-heading-s">Working patterns</h3>
+					<ul class="govuk-list">
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Full time<span class="govuk-visually-hidden">jobs</span></a> 
+						</li>
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Part time<span class="govuk-visually-hidden">jobs</span></a>
+						</li>
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Flexible<span class="govuk-visually-hidden">jobs</span></a>
+						</li>
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Job share<span class="govuk-visually-hidden">jobs</span></a>
+						</li>
+						<li>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Term time<span class="govuk-visually-hidden">jobs</span></a>
+						</li>
+					</ul>
+				</div>
+				
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-full">
+					<h3 class="govuk-heading-s">Subjects</h3>
+				</div>
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<ul class="govuk-list">
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Accountancy and finance<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Aeronautical engineering<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Agriculture/horticulture/land-based studies<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Animal care<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Art<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Art history<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Biochemistry<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Biology<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">British sign language<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Building and construction<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Business studies<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Catering<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Chemistry<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Children's development and learning<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Civil engineering<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Class teacher<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Classics<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Computer science<span class="govuk-visually-hidden">jobs</span></a></li>
+					</ul>
+				</div>
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<ul class="govuk-list">
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Counselling<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Creative arts<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Criminology<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Customer service<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Design and technology<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Drama<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Early years<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Early years care and education<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Economics<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Education<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Electrical engineering<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Electrical installation<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Electronics<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Employability<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Engineering<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Engineering and technology<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">English<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">English as a foreign language<span class="govuk-visually-hidden">jobs</span></a></li>
+					</ul>
+				</div>
+
+				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
+					<ul class="govuk-list">
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">English as a second or other language<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Esports<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Fabrication and welding<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Farming<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Food technology<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Foundation studies<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Functional skills<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Games design<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">General studies<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Geography<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Graphic design<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Hair and beauty<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Health and social care<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">History<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Hotel, catering and travel<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Humanities<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">ICT<span class="govuk-visually-hidden">jobs</span></a></li>
+						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Land and property management<span class="govuk-visually-hidden">jobs</span></a></li>
+					</ul>
+				</div>
+
 
 			</div>
 		</div>
@@ -384,111 +616,12 @@
 			</div>
 		</div>
 
-		<div class="govuk-accordion__section">
-			<div class="govuk-accordion__section-header">
-			<h2 class="govuk-accordion__section-heading">
-				<span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-					Jobs by subject
-				</span>
-			</h2>
-			</div>
-			<div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
-				
-				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
-					<ul class="govuk-list">
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Accountancy and finance</a> (70)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Aeronautical engineering</a> (12)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Agriculture/horticulture/land-based studies</a> (34)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Animal care</a> (28)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Art and design</a> (80)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Art history</a> (9)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Biochemistry</a> (17)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Biology</a> (54)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">British sign language</a> (6)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Building and construction</a> (41)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Chemistry</a> (69)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Children's development and learning</a> (22)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Civil engineering</a> (18)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Class teacher</a> (145)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Classics</a> (7)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Dance, Drama and Music</a> (93)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Design and technology</a> (113)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Economics and Business Studies</a> (54)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Education</a> (88)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Electrical engineering</a> (26)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Electrical installation</a> (19)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Electronics</a> (23)</li>
-					</ul>
-				</div>
-
-				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
-					<ul class="govuk-list">
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Employability</a> (31)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Engineering</a> (96)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Engineering and technology</a> (44)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">English and Media Studies</a> (283)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">English as a foreign language</a> (39)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">English as a second or other language</a> (27)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Esports</a> (14)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Fabrication and welding</a> (21)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Farming</a> (16)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Food technology</a> (49)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Foreign Languages</a> (83)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Foundation studies</a> (25)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">French</a> (28)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Functional skills</a> (62)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Games design</a> (19)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Geography</a> (71)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">German</a> (7)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Graphic design</a> (36)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Hair and beauty</a> (29)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Health and Social Care</a> (12)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">History</a> (48)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Hotel, catering and travel</a> (33)</li>
-					</ul>
-				</div>
-
-				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
-					<ul class="govuk-list">
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">ICT and Computer Science</a> (83)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Land and property management</a> (11)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Languages</a> (58)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Latin</a> (6)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Leadership and management</a> (47)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Learning and development</a> (24)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Literacy</a> (38)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Logistics</a> (15)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Mandarin</a> (0)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Maths</a> (234)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Mechanical engineering</a> (32)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Media studies</a> (47)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Motor vehicle</a> (26)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Music</a> (44)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Performing arts</a> (51)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Personal, social and health education</a> (39)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Philosophy</a> (13)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Photography</a> (18)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Physical Education</a> (47)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Physics</a> (71)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Politics, Humanities and Social Sciences</a> (50)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Psychology, Sociology and RE</a> (93)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Science</a> (325)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Spanish</a> (35)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Sports science</a> (22)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Tourism</a> (17)</li>
-						<li><a class="govuk-link govuk-link--no-visited-state" href="#">Welsh</a> (5)</li>
-					</ul>
-				</div>
-
-
-
-
-			</div>
-		</div>
-		
 		
 
 </div>
+
+<p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state govuk-link govuk-link--no-visited-state--no-visited-state" href="#">Browse all school and college jobs in England</a>.</p>
+
     
   {# {{ govukDetails({
     summaryText: "Jobs by school, role, location and subject",
