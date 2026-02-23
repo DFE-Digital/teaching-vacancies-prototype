@@ -1,19 +1,52 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[special]",
-    name: "filters[special]",
+    idPrefix: "filters[collegeType]",
+    name: "filters[collegeType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Special school",
+        text: "College type",
         classes: "govuk-fieldset__legend--s"
       }
     },
-    items: [{
-      value: 'Special school',
-      text: 'Special school'
-    }]
+    items: [
+    {
+      value: 'General FE Colleges​',
+      text: 'General FE Colleges​',
+      hint: {
+        text: 'Provide wide range of courses to students aged 16+​​'
+      }
+    },
+    {
+      value: 'Sixth Form Colleges​',
+      text: 'Sixth Form Colleges​',
+      hint: {
+        text: 'Provide A Level and equivalent education to students aged 16-19​​'
+      }
+    },
+    {
+      value: 'Specialist Colleges​',
+      text: 'Specialist Colleges​',
+      hint: {
+        text: 'Post-16 education for young people with learning difficulties and/or disabilities​​'
+      }
+    },
+    {
+      value: 'Art, Design & Performing Arts Colleges​',
+      text: 'Art, Design & Performing Arts Colleges',
+      hint: {
+        text: 'Focus on creative arts​'
+      }
+    },
+    {
+      value: 'Land Based Colleges​​',
+      text: 'Land Based Colleges​',
+      hint: {
+        text: 'Agricultural training, animal care and forestry training​​'
+      }
+    }
+    ]
   }) }}
 
   {{ govukCheckboxes({
