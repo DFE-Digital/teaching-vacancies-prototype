@@ -18,36 +18,89 @@
 
 <div class="home_index">
 
-	<div class="search" style="padding-bottom:50px;">
-		<h1 class="govuk-heading-l">Find jobs in education near you</h1>
-		<form id="filter" class="home" method="get" action="/search/home" novalidate>
-			<div class="search__form">
-				<div class="govuk-form-group">
-					<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
-                    <input class="govuk-input" id="keywords" name="keywords" type="text">
-				</div>
-                <div class="govuk-form-group">
-					<label class="govuk-label govuk-label--s" for="keyword-field">City, county or postcode</label>
-                    <input class="govuk-input" id="location-field" name="location" type="text">
-				</div>
-				<div class="govuk-form-group" style="display:none;">
-					<label class="govuk-label govuk-label--s" for="radius">
-						Search radius
-					</label>
-					<select class="govuk-select" id="radius" name="radius">
-						<option value="10">10 miles</option>
-					</select>
+	<div class="govuk-tabs" data-module="govuk-tabs">
+		<h2 class="govuk-tabs__title">
+			Contents
+		</h2>
+		<ul class="govuk-tabs__list">
+			<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+			<a class="govuk-tabs__tab" href="#past-day">
+				Teaching and school jobs
+			</a>
+			</li>
+			<li class="govuk-tabs__list-item">
+			<a class="govuk-tabs__tab" href="#past-week">
+				Further education jobs
+			</a>
+			</li>
+		</ul>
+		<div class="govuk-tabs__panel" id="past-day">
+			
+			<div class="search" style="padding-bottom:50px;">
+				<h1 class="govuk-heading-l">Find jobs in education near you</h1>
+					<div class="search__form">
+						<div class="govuk-form-group">
+							<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
+							<input class="govuk-input" id="keywords" name="keywords" type="text">
+						</div>
+						<div class="govuk-form-group">
+							<label class="govuk-label govuk-label--s" for="keyword-field">City, county or postcode</label>
+							<input class="govuk-input" id="location-field" name="location" type="text">
+						</div>
+						<div class="govuk-form-group" style="display:none;">
+							<label class="govuk-label govuk-label--s" for="radius">
+								Search radius
+							</label>
+							<select class="govuk-select" id="radius" name="radius">
+								<option value="10">10 miles</option>
+							</select>
+							</div>
+						<a href="/jobs" class="govuk-button govuk-button--start" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</a>
 					</div>
-				<button class="govuk-button govuk-button--start" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</button>
+				<!-- 
+					<h3 class="govuk-heading-s">Popular searches:</h3>
+				<div class="search__popular">
+					<a class="govuk-link govuk-link--no-visited-state"  href="/primary-school-jobs">Primary</a><a class="govuk-link govuk-link--no-visited-state"  href="/maths-teacher-jobs">Maths</a><a class="govuk-link govuk-link--no-visited-state"  href="/science-teacher-jobs">Science</a><a class="govuk-link govuk-link--no-visited-state"  href="/teaching-assistant-jobs">Teaching Assistant</a><a class="govuk-link govuk-link--no-visited-state"  href="/headteacher-jobs">Headteacher</a>
+				</div>
+				-->
 			</div>
-		</form>
-		<!-- 
-			<h3 class="govuk-heading-s">Popular searches:</h3>
-		<div class="search__popular">
-			<a class="govuk-link govuk-link--no-visited-state"  href="/primary-school-jobs">Primary</a><a class="govuk-link govuk-link--no-visited-state"  href="/maths-teacher-jobs">Maths</a><a class="govuk-link govuk-link--no-visited-state"  href="/science-teacher-jobs">Science</a><a class="govuk-link govuk-link--no-visited-state"  href="/teaching-assistant-jobs">Teaching Assistant</a><a class="govuk-link govuk-link--no-visited-state"  href="/headteacher-jobs">Headteacher</a>
+			
 		</div>
-		-->
-	</div>
+		<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+			
+			<div class="search" style="padding-bottom:50px;">
+				<h1 class="govuk-heading-l">Find further education jobs near you</h1>
+					<div class="search__form">
+						<div class="govuk-form-group">
+							<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
+							<input class="govuk-input" id="keywords" name="keywords" type="text">
+						</div>
+						<div class="govuk-form-group">
+							<label class="govuk-label govuk-label--s" for="keyword-field">City, county or postcode</label>
+							<input class="govuk-input" id="location-field" name="location" type="text">
+						</div>
+						<div class="govuk-form-group" style="display:none;">
+							<label class="govuk-label govuk-label--s" for="radius">
+								Search radius
+							</label>
+							<select class="govuk-select" id="radius" name="radius">
+								<option value="10">10 miles</option>
+							</select>
+							</div>
+						<a href="/jobsfe" class="govuk-button govuk-button--start" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</a>
+					</div>
+				<!-- 
+					<h3 class="govuk-heading-s">Popular searches:</h3>
+				<div class="search__popular">
+					<a class="govuk-link govuk-link--no-visited-state"  href="/primary-school-jobs">Primary</a><a class="govuk-link govuk-link--no-visited-state"  href="/maths-teacher-jobs">Maths</a><a class="govuk-link govuk-link--no-visited-state"  href="/science-teacher-jobs">Science</a><a class="govuk-link govuk-link--no-visited-state"  href="/teaching-assistant-jobs">Teaching Assistant</a><a class="govuk-link govuk-link--no-visited-state"  href="/headteacher-jobs">Headteacher</a>
+				</div>
+				-->
+			</div>
+			
+		</div>
+		
+		</div>
+		
     
 
     <div class="govuk-grid-row govuk-!-margin-top-6">
