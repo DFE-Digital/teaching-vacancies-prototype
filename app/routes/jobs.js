@@ -202,6 +202,13 @@ module.exports = router => {
     })
   })
 
+  router.get('/alert', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('account/jobalerts/jobalert', {
+      jobs
+    })
+  })
+
   //FE Option B
 
   router.get('/jobsfe', (req, res) => {
@@ -232,6 +239,15 @@ module.exports = router => {
   router.get('/jobsfemerge', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/fe/index_femerge', {
+      jobs
+    })
+  })
+
+  //FE ONLY SCHOOLS OPTION B TEACHING AND SCHOOL JOBS
+
+  router.get('/jobsfeschools', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/fe/index_schools', {
       jobs
     })
   })

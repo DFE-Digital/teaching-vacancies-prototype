@@ -1,5 +1,5 @@
 
-{% extends "layout.njk" %}
+{% extends "layout_femerge.njk" %}
 
 {% block pageTitle %}
  240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
@@ -9,27 +9,16 @@
 {% set activeNav = 'jobs' %}
 
 {% block content %}
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Jobs (341)
-  </h1>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+        Teaching and school jobs (341)
+    </h1>
 
-  <p><a class="govuk-link govuk-link--no-visited-state" href="alert?role-type=fe-role">Receive a job alert</a> whenever a job matching this search is listed.</p>
+    <p><a class="govuk-link govuk-link--no-visited-state" href="fealert?role-type=fe-role">Receive a job alert</a> whenever a job matching this search is listed.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
-      {% if data['filtertype'] == '1' %}
-
-        {% include "includes/jobs-filter-panel-collapsible.njk" %}
-
-      {% elseif data['filtertype'] == '2' %}
-
-        {% include "includes/jobs-filter-panel.njk" %}
-
-      {% else %}
-
-        {% include "includes/jobs-filter-panel-collapsible.njk" %}
-
-      {% endif %}
+      
+        {% include "includes/jobs-filter-panel-collapsible-nofe.njk" %}
 
     </div>
 

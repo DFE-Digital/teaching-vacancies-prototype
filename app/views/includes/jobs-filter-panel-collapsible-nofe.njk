@@ -53,7 +53,7 @@
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
                                       <input {% if 'Teacher' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-teacher" value="Teacher">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
-                                          Teacher or lecturer
+                                          Teacher
                                       </label>
                                   </li>
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
@@ -277,19 +277,6 @@
                 <input class="govuk-checkboxes__input" id="filter-phase-6" name="filter-phase" type="checkbox" value="Through school">
                 <label class="govuk-label govuk-checkboxes__label" for="filter-phase-6">
                   Through school
-                </label>
-              </div>
-
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filter-phase-5" name="filter-phase" type="checkbox" value="Further education"
-                
-                {% if 'Further education' in filterPhase %}
-                  checked
-                {% endif %}
-
-                >
-                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-5">
-                  Further education or college
                 </label>
               </div>
 
@@ -568,10 +555,6 @@
                 {
                 value: 'Local authority maintained schools',
                 text:'Local authority maintained schools'
-                },
-                {
-                value: 'Colleges',
-                text:'Colleges'
                 }
                 ]
             }) }}
@@ -582,17 +565,17 @@
     classes: "govuk-checkboxes--small filter-bottom",
     fieldset: {
       legend: {
-        text: "School or college type",
+        text: "School type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
       value: 'Faith school',
-      text: 'Faith school or college'
+      text: 'Faith school'
     },
     {
       value: 'Special school',
-      text:'Special school or college'
+      text:'Special school'
     }
     ]
   }) }}

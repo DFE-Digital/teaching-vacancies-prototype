@@ -1,20 +1,20 @@
 
-{% extends "layout.njk" %}
+{% extends "layout_femerge.njk" %}
 
 {% block pageTitle %}
  240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
 {% endblock %}
 
-{% set primaryNavId = 'jobs' %}
+{% set primaryNavId = 'fe' %}
 {% set activeNav = 'fe' %}
 
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    80 further education jobs 
+    Further education jobs (80)
   </h1>
 
-  <p><a class="govuk-link" href="fealert?role-type=fe-role">Get a job alert</a> whenever a job matching this search is listed.</p>
+  <p><a class="govuk-link govuk-link--no-visited-state" href="fealert?role-type=fe-role">Receive a job alert</a> whenever a job matching this search is listed.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
