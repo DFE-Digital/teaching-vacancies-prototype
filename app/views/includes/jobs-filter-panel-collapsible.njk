@@ -33,7 +33,7 @@
       <h3 class="govuk-heading-s">Job type</h3>
 
 
-      <div class="app-c-option-select js-collapsible {% if 'Teacher' in filterRole or 'Lecturer' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+      <div class="app-c-option-select js-collapsible {% if 'Teacher or lecturer' in filterRole or 'Lecturer' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
           <div class="app-c-option-select__heading js-container-heading">
               <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teacher' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-and-leadership" aria-controls="list-of-key-stage-1">
@@ -51,7 +51,7 @@
 
                           <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
-                                      <input {% if 'Teacher' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-teacher" value="Teacher">
+                                      <input {% if 'Teacher or lecturer' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-teacher" value="Teacher or lecturer">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
                                           Teacher or lecturer
                                       </label>
@@ -737,7 +737,7 @@
                 <!-- // teaching and leadership -->
 
                 {% if 'Teacher' in filterRole %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher</a></li>
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher or lecturer</a></li>
                 {% endif %}
                 {% if 'Lecturer' in filterRole %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Lecturer</a></li>

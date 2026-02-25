@@ -2,7 +2,7 @@
 
     {
         "id": "676686861",
-        "jobtype": "Teaching and Lecturing",
+        "jobtype": "Teacher or lecturer",
         "status": "Active",
         "organisation": {
             "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
@@ -13,7 +13,7 @@
                 "postcode": "NG1 2FQ"
             },
             "type": "College",
-            "phase": "Higher education",
+            "phase": "Further education",
             "ageGroup": "16 to 19",
             "size": "400",
             "website": "http://greenwoodcollege.ac.uk",
@@ -35,7 +35,7 @@
         ],
         "hybrid": "No",
         "role": [
-            "Teaching and Lecturing"
+            "Teacher or lecturer"
         ],
         "subjects": [
             "Civil Engineering"
@@ -72,7 +72,7 @@
     },
     {
         "id": "67668686122",
-        "jobtype": "Teaching and Lecturing",
+        "jobtype": "Teacher or lecturer",
         "status": "Active",
         "organisation": {
             "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
@@ -83,7 +83,7 @@
                 "postcode": "NG10 2FQ"
             },
             "type": "College",
-            "phase": "Higher education",
+            "phase": "Further education",
             "ageGroup": "16 to 19",
             "size": "400",
             "website": "http://greenwoodcollege.ac.uk",
@@ -105,14 +105,14 @@
         ],
         "hybrid": "No",
         "role": [
-            "Teaching and Lecturing"
+            "Teacher or lecturer"
         ],
         "subjects": [
             "Science"
         ],
-        "title": "Lecturer in applied sciences",
+        "title": "Science teacher",
         "searches": [
-            "Lecturer"
+            "Science"
         ],
         "phase": "Further education",
         "workingPatterns": [
@@ -142,7 +142,7 @@
     },
     {
     "id": "676676685",
-    "jobtype": "Teaching and Lecturing",
+    "jobtype": "Teacher or lecturer",
     "status": "Active",
     "organisation": {
         "id": "f1a2b3c4-d5e6-7f8a-9b0c-d1e2f3a4b5c6",
@@ -174,7 +174,7 @@
         }
     ],
     "hybrid": "No",
-    "role": ["Teaching and Lecturing"],
+    "role": ["Teacher or lecturer"],
     "subjects": ["Mathematics"],
     "title": "Functional Skills Maths Lecturer",
     "searches": ["Maths lecturer", "Functional skills maths"],
@@ -189,7 +189,7 @@
     },
     {
   "id": "6766667657",
-  "jobtype": "Teaching and Lecturing",
+  "jobtype": "Teacher or lecturer",
   "status": "Active",
   "organisation": {
     "id": "a9b8c7d6-e5f4-3a2b-1c0d-e9f8a7b6c5d4",
@@ -221,7 +221,7 @@
     }
   ],
   "hybrid": "No",
-  "role": ["Teaching and Lecturing"],
+  "role": ["Teacher or lecturer"],
   "subjects": ["Engineering"],
   "title": "Engineering Workshop Instructor",
   "searches": ["Engineering instructor", "Workshop tutor"],
@@ -236,7 +236,7 @@
 },
 {
   "id": "6766755435",
-  "jobtype": "Teaching and Lecturing",
+  "jobtype": "Teacher or lecturer",
   "status": "Active",
   "organisation": {
     "id": "0a1b2c3d-4e5f-6a7b-8c9d-e0f1a2b3c4d5",
@@ -268,7 +268,7 @@
     }
   ],
   "hybrid": "Yes",
-  "role": ["Teaching and Lecturing"],
+  "role": ["Teacher or lecturer"],
   "subjects": ["English languages"],
   "title": "English Lecturer",
   "searches": ["English", "English lecturer"],
@@ -283,7 +283,7 @@
 },
     {
         "id": "45654664",
-        "jobtype": "Teaching and Lecturing",
+        "jobtype": "Teacher or lecturer",
         "status": "Active",
         "organisation": {
             "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
@@ -294,7 +294,7 @@
             "postcode": "NG1 2FQ"
             },
             "type": "College",
-            "phase": "Higher education",
+            "phase": "Further education",
             "ageGroup": "16 to 19",
             "size": "400",
             "website": "http://greenwoodcollege.ac.uk",
@@ -316,12 +316,12 @@
         ],
         "hybrid": "No",
         "role": [
-            "Teaching and Lecturing"
+            "Teacher or lecturer"
         ],
         "subjects": [
             "Student Support"
         ],
-        "title": "Psychology lecturer",
+        "title": "Psychology teacher",
         "searches": [
             "Student support",
             "Learner support"
@@ -421,7 +421,7 @@
     },
     {
         "id": "67345453",
-        "jobtype": "Teaching and Lecturing",
+        "jobtype": "Teacher or lecturer",
         "status": "Active",
         "organisation": {
             "id": "a7f8e9d0-b1c2-3d4e-5f6a-7b8c9d0e1f2a",
@@ -454,7 +454,7 @@
         ],
         "hybrid": "Yes",
         "role": [
-            "Teaching and Lecturing"
+            "Teacher or lecturer"
         ],
         "subjects": [
             "Student Progression"
@@ -505,7 +505,7 @@
                 "postcode": "NG1 2FQ"
             },
             "type": "Academy",
-            "phase": "Higher education",
+            "phase": "Further education",
             "ageGroup": "16-19",
             "size": "30",
             "website": "http://greenwoodcollege.ac.uk",
@@ -533,7 +533,7 @@
         "searches": [
             "SEN"
         ],
-        "phase": "Higher education",
+        "phase": "Further education",
         "workingPatterns": [
             "Part time"
         ],

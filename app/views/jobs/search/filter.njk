@@ -238,10 +238,10 @@
               {% endfor %}
             {% else %}
 
-                {% set cleanRole = job.role | replace(" ", "") %}
-                {% set cleanFilter = filterRole | replace(" ", "") %}
+                {% set cleanRole = job.role %}
+                {% set cleanFilter = filterRole %}
 
-                {% if cleanFilter in cleanRole %}
+                {% if cleanRole in cleanFilter %}
                   {% set countOfJobMatch = countOfJobMatch + 1 %}
                 {% endif %}
             

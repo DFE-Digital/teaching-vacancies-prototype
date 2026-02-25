@@ -76,7 +76,7 @@
 
         {% for job in jobs|sort(attribute='startDate', reverse=false) %}
 
-        {% if job.jobtype in ['Teaching and lecturing','Support','SEN','Leadership','Vocational'] %}
+        {% if job.jobtype in ['Teacher or lecturer','Support','SEN','Leadership','Vocational'] %}
     
             {% set address %}
               {% for part, value in job.organisation.address %}
