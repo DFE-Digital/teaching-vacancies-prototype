@@ -1,0 +1,58 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+      id: "keywords",
+      name: "keywords",
+      label: {
+        text: "Name of college",
+        classes: "govuk-label--s"
+      }
+    }) }}
+
+    {{ govukInput({
+      id: "location",
+      name: "location",
+      label: {
+        text: "City, county or postcode",
+        classes: "govuk-label--s"
+      }
+    }) }}
+
+    {{ govukSelect({
+      id: "radius",
+      name: "radius",
+      label: {
+        text: "Search radius",
+        classes: "govuk-label--s"
+      },
+      items: [
+        {
+          value: "updated",
+          text: "This area only"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: 'Search',
+      href: '/colleges'
+    }) }}
+  </form>
+</div>
+
+{# {{ appSearch({
+  label: {
+    text: 'Search by job title or description',
+    classes: 'govuk-label--s'
+  },
+  input: {
+    id: 'keywords',
+    name: 'keywords',
+    value: data.keywords
+  },
+  action: '/jobs',
+  buttons: [{
+    text: 'Search',
+    classes: 'app-search__button'
+  }]
+}) }} #}
