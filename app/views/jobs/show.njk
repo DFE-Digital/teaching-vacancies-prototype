@@ -67,8 +67,8 @@
 
       <div class="govuk-grid-row banner-buttons  govuk-!-margin-bottom-7">
         <div class="govuk-grid-column-one-third">
-          {% if job.jobtype == 'support' %}
-            <form action="/jobalerts/support">
+          {% if data ['optionPrototype'] == 'a' %}
+             <form action="/alert?role-type=fe-role">
               <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
             </form>
           {% elseif data ['optionPrototype'] == 'b' %}
