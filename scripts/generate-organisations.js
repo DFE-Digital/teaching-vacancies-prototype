@@ -215,7 +215,6 @@ const generateOrgs = () => {
 
   let matSchool1 = generateSchool({ phase: 'Primary school', name: 'Draycott Primary School' })
   let matSchool2 = generateSchool({ phase: 'Secondary school', name: 'Erewash School' })
-  let matSchool3 = generateSchool({ phase: 'Middle school', name: 'Sawley School' })
   let matSchool4 = generateSchool({ phase: 'Sixth form or college', name: 'Trent School' })
   let matSchool5 = generateSchool({ phase: 'Primary school', name: 'Applewood Primary School' })
 

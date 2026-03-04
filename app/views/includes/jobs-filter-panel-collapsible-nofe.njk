@@ -236,19 +236,6 @@
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="filter-phase-3" name="filter-phase" type="checkbox" value="Middle school"
-                
-                {% if 'Middle school' in filterPhase %}
-                  checked
-                {% endif %}
-
-                >
-                <label class="govuk-label govuk-checkboxes__label" for="filter-phase-3">
-                  Middle school
-                </label>
-              </div>
-            
-              <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-phase-4" name="filter-phase" type="checkbox" value="Secondary school"
 
                 {% if 'Secondary school' in filterPhase %}
@@ -795,9 +782,6 @@
                 {% endif %}
                 {% if 'Primary school' in filterPhase %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Primary school</a></li>
-                {% endif %}
-                {% if 'Middle school' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Middle school</a></li>
                 {% endif %}
                 {% if 'Secondary school' in filterPhase %} 
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Secondary school</a></li>

@@ -7,8 +7,6 @@ module.exports = ({phase}) => {
       return ['Early years']
     case 'Primary school':
       return ['Early years', 'Key stage 1', 'Key stage 2']
-    case 'Middle school':
-      return ['Key stage 1', 'Key stage 2', 'Key stage 3', 'Key stage 4']
     case 'Secondary school':
       return ['Key stage 3', 'Key stage 4']
     case 'Sixth form or college':
