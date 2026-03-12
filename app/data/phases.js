@@ -3,7 +3,7 @@ const phases = [
   'Primary school',
   'Secondary school',
   'Sixth form or college',
-  'Through school'
+  'All through school'
 ]
 
 module.exports = phases

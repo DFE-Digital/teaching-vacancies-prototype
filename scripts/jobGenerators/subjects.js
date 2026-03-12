@@ -21,7 +21,6 @@ module.exports = (params) => {
     'French',
     'Geography',
     'German',
-    'Health and social care',
     'History',
     'Humanities',
     'ICT',

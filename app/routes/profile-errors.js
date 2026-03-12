@@ -239,11 +239,6 @@ module.exports = router => {
       checked: profile.subjects && profile.subjects.includes('German')
     },
     {
-      value: "Health and social care",
-      text: "Health and social care",
-      checked: profile.subjects && profile.subjects.includes('Health and social care')
-    },
-    {
       value: "History",
       text: "History",
       checked: profile.subjects && profile.subjects.includes('History')
