@@ -6,14 +6,19 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Special college",
+        text: "College type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
+      value: 'Faith college',
+      text: 'Faith college'
+    },
+    {
       value: 'Special college',
       text: 'Special college'
-    }]
+    }
+    ]
   }) }}
 
   {{ govukCheckboxes({
@@ -27,11 +32,8 @@
       }
     },
     items: [{
-      value: 'Has jobs',
-      text: 'Has jobs'
-    }, {
-      value: 'Does not have any jobs',
-      text: 'Does not have any jobs'
+      value: 'Only show school with jobs available',
+      text: 'Only show school with jobs available'
     }]
   }) }}
 
