@@ -572,7 +572,7 @@
                 "postcode": "NG1 2FQ"
             },
             "type": "School",
-            "phase": "Sixth form",
+            "phase": "Sixth form or college",
             "ageGroup": "16-19",
             "size": "30",
             "website": "http://greenwoodcollege.ac.uk",
@@ -600,7 +600,7 @@
         "searches": [
             "SEN"
         ],
-        "phase": "Sixth form",
+        "phase": "Sixth form or college",
         "workingPatterns": [
             "Full time"
         ],
