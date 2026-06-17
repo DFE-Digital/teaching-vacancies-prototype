@@ -125,8 +125,31 @@
           },
           hint: {
             text: "List all the responsibilities this role involved"
+          },
+          attributes: {
+            'data-word-count': 'main-duties',
+            'data-word-limit': '150'
           }
         }) }}
+        <p class="govuk-hint" id="main-duties-remaining">You have 150 words remaining</p>
+
+        {{ govukTextarea({
+          id: "profile[description]",
+          name: "profile[description]",
+          rows: "4",
+          label: {
+            text: "Reason for leaving role",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "Explain why you left this role if it helps add context"
+          },
+          attributes: {
+            'data-word-count': 'reason-for-leaving',
+            'data-word-limit': '50'
+          }
+        }) }}
+        <p class="govuk-hint" id="reason-for-leaving-remaining">You have 50 words remaining</p>
         {{ govukButton({
           text: "Save and continue"
         }) }}
@@ -134,4 +157,33 @@
       </form>
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    function countWords(text) {
+      var words = text.trim().match(/\S+/g);
+      return words ? words.length : 0;
+    }
+
+    function updateWordCount(textarea) {
+      var limit = parseInt(textarea.getAttribute('data-word-limit'), 10);
+      var targetId = textarea.getAttribute('data-word-count') + '-remaining';
+      var target = document.getElementById(targetId);
+
+      if (!target || isNaN(limit)) {
+        return;
+      }
+
+      var remaining = Math.max(limit - countWords(textarea.value), 0);
+      target.textContent = 'You have ' + remaining + ' words remaining';
+    }
+
+    document.querySelectorAll('textarea[data-word-count]').forEach(function (textarea) {
+      updateWordCount(textarea);
+      textarea.addEventListener('input', function () {
+        updateWordCount(textarea);
+      });
+    });
+  </script>
 {% endblock %}

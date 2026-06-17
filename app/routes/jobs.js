@@ -1,4 +1,6 @@
 
+const _ = require('lodash');
+
 module.exports = router => {
 
   router.get('/', (req, res) => {
@@ -236,11 +238,95 @@ module.exports = router => {
 
   //FE ONLY SERVICE Option A
 
+  const nonTeachingRolesData = require('../data/non-teaching-roles')
+
   router.get('/jobsfemerge', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/fe/index_femerge', {
-      jobs
+      jobs,
+      nonTeachingRoles: nonTeachingRolesData.roles,
+      nonTeachingRoleCategories: nonTeachingRolesData.categories,
+      showNonTeachingRoles: true,
+      filterFormAction: '/femerge',
+      clearFiltersHref: '/femerge/clear-filters',
+      showFeSubjects: true
     })
+  })
+
+  router.get('/femerge', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/fe/index_femerge', {
+      jobs,
+      nonTeachingRoles: nonTeachingRolesData.roles,
+      nonTeachingRoleCategories: nonTeachingRolesData.categories,
+      showNonTeachingRoles: true,
+      filterFormAction: '/femerge',
+      clearFiltersHref: '/femerge/clear-filters',
+      showFeSubjects: true
+    })
+  })
+
+  router.get('/femerge/clear-filters', (req, res) => {
+    req.session.data['filter-role'] = ''
+    req.session.data['filter-phase'] = ''
+    req.session.data['filter-subject'] = ''
+    req.session.data['filter-suitability'] = ''
+    req.session.data['filter-workingPatterns'] = ''
+    req.session.data['filter-keyStages'] = ''
+    req.session.data['filter-quick'] = ''
+    req.session.data['filter-international'] = ''
+    req.session.data['filter-organisation'] = ''
+    req.session.data['filter-school'] = ''
+    req.session.data['filters'] = ''
+
+    res.redirect('/femerge')
+  })
+
+  router.get('/femerge/remove-filter', (req, res) => {
+    const name = req.query.name
+    const value = req.query.value
+
+    if (name && value) {
+      if (name.startsWith('filters.')) {
+        const key = name.split('.')[1]
+
+        if (req.session.data.filters && req.session.data.filters[key]) {
+          const current = req.session.data.filters[key]
+
+          if (Array.isArray(current)) {
+            const updated = current.filter(item => item !== value)
+
+            if (updated.length) {
+              req.session.data.filters[key] = updated
+            } else {
+              delete req.session.data.filters[key]
+            }
+          } else if (current === value) {
+            delete req.session.data.filters[key]
+          }
+
+          if (req.session.data.filters && Object.keys(req.session.data.filters).length === 0) {
+            delete req.session.data.filters
+          }
+        }
+      } else if (req.session.data[name]) {
+        const current = req.session.data[name]
+
+        if (Array.isArray(current)) {
+          const updated = current.filter(item => item !== value)
+
+          if (updated.length) {
+            req.session.data[name] = updated
+          } else {
+            delete req.session.data[name]
+          }
+        } else if (current === value) {
+          delete req.session.data[name]
+        }
+      }
+    }
+
+    res.redirect('/femerge')
   })
 
   //FE ONLY SCHOOLS OPTION B TEACHING AND SCHOOL JOBS
@@ -260,6 +346,83 @@ module.exports = router => {
     res.render('jobs/fe/indexfework', {
       jobs
     })
+  })
+
+  router.get('/fe/search-for-a-teaching-job', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/fe/search-for-a-teaching-job', {
+      jobs
+    })
+  })
+
+  router.get('/fe/location', (req, res) => {
+    let location = _.get(req, 'session.data.feLocation') || {
+      organisation: 'Northbrook College',
+      campus: 'Worthing Campus',
+      address: 'Littlehampton Road, Worthing, BN12 6NU',
+      manualOverride: 'No',
+      overrideAddress: ''
+    }
+
+    res.render('jobs/fe/location-edit', {
+      location,
+      errors: {}
+    })
+  })
+
+  router.post('/fe/location', (req, res) => {
+    const submittedLocation = _.get(req, 'body.feLocation', {})
+    const existingLocation = _.get(req, 'session.data.feLocation') || {
+      organisation: 'Northbrook College',
+      campus: 'Worthing Campus',
+      address: 'Littlehampton Road, Worthing, BN12 6NU',
+      manualOverride: 'No',
+      overrideAddress: ''
+    }
+    const overrideAddress = (submittedLocation.address || '').trim()
+
+    req.session.data.feLocation = {
+      organisation: existingLocation.organisation || 'Northbrook College',
+      campus: existingLocation.campus || 'Worthing Campus',
+      address: overrideAddress || existingLocation.address || 'Littlehampton Road, Worthing, BN12 6NU',
+      manualOverride: overrideAddress ? 'Yes' : 'No',
+      overrideAddress: overrideAddress
+    }
+
+    res.redirect('/femerge')
+  })
+
+  router.get('/fe/location/review', (req, res) => {
+    res.redirect('/femerge')
+  })
+
+  router.get('/fe/job-title', (req, res) => {
+    res.render('jobs/fe/job-title', {
+      job: _.get(req, 'session.data.feJob') || {
+        title: ''
+      }
+    })
+  })
+
+  router.post('/fe/job-title', (req, res) => {
+    const title = _.get(req, 'body.feJob.title', '').trim()
+
+    if (!title) {
+      return res.status(400).render('jobs/fe/job-title', {
+        job: {
+          title
+        },
+        errors: {
+          title: 'Enter a job title'
+        }
+      })
+    }
+
+    req.session.data.feJob = {
+      title
+    }
+
+    res.redirect('/fe/location')
   })
 
   //FE HYBRID ALERT WORK

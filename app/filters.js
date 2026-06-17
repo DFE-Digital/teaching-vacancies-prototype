@@ -74,6 +74,10 @@ module.exports = function (env) {
     }
   }
 
+  filters.urlencode = function(value) {
+    return encodeURIComponent(value || '')
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

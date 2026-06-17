@@ -1,0 +1,44 @@
+{% extends "layout_femerge.njk" %}
+
+{% set title = 'Confirm job address' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="/fe/job-title" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">FE Colleges with multiple campuses</span>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">{{ title }}</h1>
+
+      <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+        Use this page to change the address for this job. Leave these fields blank to use the default address.
+      </p>
+
+      {{ govukInsetText({
+        html: '<p class="govuk-body"><strong>Default address</strong><br>' + location.campus + '<br>' + location.address + '</p>'
+      }) }}
+
+      <form method="post" novalidate>
+        
+
+        {{ govukInput({
+          id: "feLocation[address]",
+          name: "feLocation[address]",
+          rows: "3",
+          label: {
+            text: "Change the address for this job listing",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "Start typing the address or postcode, then select the correct address from the list."
+          },
+          value: location.overrideAddress or ''
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

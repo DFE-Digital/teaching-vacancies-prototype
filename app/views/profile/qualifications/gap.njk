@@ -1,0 +1,62 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Tell us about any gap between education and work' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile/qualifications/review"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Education and qualifications</span>
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      <p class="govuk-body">
+        We only ask for years in qualifications and month/year in work history, so this step lets a jobseeker flag any gap after education before their first job.
+      </p>
+
+      <form method="post" novalidate>
+        {{ govukRadios({
+          idPrefix: "profile[qualifications][gap]",
+          name: "profile[qualifications][gap]",
+          fieldset: {
+            legend: {
+              text: "Is there a gap between your most recent qualification and first job?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: gap.hasGap,
+          items: [{
+            value: "Yes",
+            text: "Yes"
+          }, {
+            value: "No",
+            text: "No"
+          }]
+        }) }}
+
+        {{ govukTextarea({
+          id: "profile[qualifications][gapExplanation]",
+          name: "profile[qualifications][gapExplanation]",
+          rows: "5",
+          label: {
+            text: "Tell us about the gap",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example, volunteering, travel, caring responsibilities or study"
+          },
+          value: gap.explanation
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

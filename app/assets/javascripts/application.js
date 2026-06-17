@@ -117,59 +117,153 @@ $(document).ready(function () {
   $("#filter-subjects legend").after('<div class="searchable-collection-component__search govuk-!-margin-bottom-2"><input aria-expanded="true" aria-label="Subject" aria-owns="subjects__listbox" class="govuk-input icon icon--left icon--search js-action" data-action="input->searchable-collection#input" data-searchable-collection-target="input" placeholder="Search" role="combobox"><div aria-live="assertive" class="govuk-visually-hidden collection-match" role="status"></div></div>');
 
 
+  function closeOptionSelect (optionSelect) {
+    optionSelect.classList.remove('js-opened');
+    optionSelect.classList.add('js-closed');
+
+    const optionButton = optionSelect.querySelector('.app-c-option-select__button');
+    if (optionButton) {
+      optionButton.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function openOptionSelect (optionSelect) {
+    optionSelect.classList.remove('js-closed');
+    optionSelect.classList.add('js-opened');
+
+    const optionButton = optionSelect.querySelector('.app-c-option-select__button');
+    if (optionButton) {
+      optionButton.setAttribute('aria-expanded', 'true');
+    }
+  }
+
   const buttons = document.querySelectorAll('.app-c-option-select__button');
 
   // Add a click event listener to each button
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      // Get the parent div of the clicked button
       const parentDiv = button.closest('.app-c-option-select');
-
-      // Check if a certain class exists on the parent div
-      if (parentDiv && parentDiv.classList.contains('js-closed')) {
-        // If it exists, change the class of the parent div
-        parentDiv.classList.remove('js-closed');
-        parentDiv.classList.add('js-opened');
-      }else if (parentDiv && parentDiv.classList.contains('js-opened')) {
-        // If it exists, change the class of the parent div
-        parentDiv.classList.remove('js-opened');
-        parentDiv.classList.add('js-closed');
+      if (!parentDiv) {
+        return;
       }
 
-      // Toggle the "aria-expanded" attribute on the button
-      const currentAriaExpanded = button.getAttribute('aria-expanded');
-      const newAriaExpanded = currentAriaExpanded === 'true' ? 'false' : 'true';
-      button.setAttribute('aria-expanded', newAriaExpanded);
+      const isOpening = parentDiv.classList.contains('js-closed');
 
+      if (isOpening) {
+        openOptionSelect(parentDiv);
+
+        if (parentDiv.classList.contains('app-c-option-select--nested')) {
+          const siblingAccordions = parentDiv.parentElement.querySelectorAll('.app-c-option-select--nested');
+
+          siblingAccordions.forEach((sibling) => {
+            if (sibling !== parentDiv) {
+              closeOptionSelect(sibling);
+            }
+          });
+        }
+      } else {
+        closeOptionSelect(parentDiv);
+      }
     });
   });
 
 
-  if (window.location.href.includes('search')) {
+  if (window.location.href.includes('search') || window.location.href.includes('femerge')) {
 
     // Select all divs with the class 'app-c-option-select'
     const optionSelectDivs = document.querySelectorAll('.app-c-option-select');
 
     optionSelectDivs.forEach(function(div) {
-        // Select all checkboxes within this div
-        const checkboxes = div.querySelectorAll('input[type="checkbox"]');
+        const isNested = div.classList.contains('app-c-option-select--nested');
+        let checkboxes;
 
-        checkboxes.forEach(function(checkbox) {
-            // Add an event listener to each checkbox
-                // Check if any checkbox in this specific div is checked
-                const anyChecked = Array.from(checkboxes).some(c => c.checked);
+        if (isNested) {
+          checkboxes = Array.from(div.querySelectorAll('input[type="checkbox"]'))
+            .filter(checkbox => checkbox.closest('.app-c-option-select') === div);
+        } else {
+          checkboxes = Array.from(div.querySelectorAll('input[type="checkbox"]'));
+        }
 
-                // Add or remove the 'js-opened' class based on whether any checkbox is checked
-                if (anyChecked) {
-                    div.classList.add('js-opened');
-                } else {
-                    div.classList.remove('js-opened');
-                }
-        });
+        const anyChecked = checkboxes.some(checkbox => checkbox.checked);
 
-
+        if (anyChecked) {
+            div.classList.add('js-opened');
+            div.classList.remove('js-closed');
+            const button = div.querySelector('.app-c-option-select__button');
+            if (button) {
+              button.setAttribute('aria-expanded', 'true');
+            }
+        }
     });
     
+
+    function getFilterTagText (tagLink) {
+      const clone = tagLink.cloneNode(true);
+      clone.querySelectorAll('.govuk-visually-hidden').forEach(function (element) {
+        element.remove();
+      });
+      return clone.textContent.trim();
+    }
+
+    document.querySelectorAll('.app-filter__tag').forEach(function (tagLink) {
+      tagLink.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        const filterText = getFilterTagText(tagLink);
+        const form = document.getElementById('filter');
+
+        if (!form || !filterText) {
+          return;
+        }
+
+        let removedCheckbox = null;
+
+        form.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+          const label = form.querySelector('label[for="' + checkbox.id + '"]');
+          const labelText = label ? label.textContent.trim() : '';
+
+          if (checkbox.value === filterText || labelText === filterText) {
+            checkbox.checked = false;
+            removedCheckbox = checkbox;
+          }
+        });
+
+        if (!removedCheckbox) {
+          return;
+        }
+
+        const formAction = form.getAttribute('action') || window.location.pathname;
+        const params = new URLSearchParams();
+        const namesWithCheckedValues = {};
+
+        form.querySelectorAll('input[type="checkbox"]:checked').forEach(function (checkbox) {
+          if (!checkbox.name) {
+            return;
+          }
+
+          if (!namesWithCheckedValues[checkbox.name]) {
+            namesWithCheckedValues[checkbox.name] = [];
+          }
+
+          namesWithCheckedValues[checkbox.name].push(checkbox.value);
+        });
+
+        Object.keys(namesWithCheckedValues).forEach(function (name) {
+          namesWithCheckedValues[name].forEach(function (value) {
+            params.append(name, value);
+          });
+        });
+
+        const removedName = removedCheckbox.name;
+
+        if (!namesWithCheckedValues[removedName] || namesWithCheckedValues[removedName].length === 0) {
+          params.append(removedName, '_unchecked');
+        }
+
+        const queryString = params.toString();
+        window.location.href = queryString ? formAction + '?' + queryString : formAction;
+      });
+    });
 
     ///////
 

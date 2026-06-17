@@ -7,6 +7,9 @@
 
 {% set primaryNavId = 'jobs' %}
 {% set activeNav = 'jobs' %}
+{% set filterFormAction = filterFormAction or '/femerge' %}
+{% set clearFiltersHref = clearFiltersHref or '/femerge/clear-filters' %}
+{% set showFeSubjects = showFeSubjects or true %}
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
@@ -17,6 +20,7 @@
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
+
       {% if data['filtertype'] == '1' %}
 
         {% include "includes/jobs-filter-panel-collapsible.njk" %}

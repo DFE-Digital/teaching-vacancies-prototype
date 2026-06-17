@@ -1,6 +1,6 @@
 
   {% set countOfMatch = 0 %}
-  
+
   {% if data['filter-role'] %}  {% set filterRole %} {{data['filter-role'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterRole %}{% endset %} {% endif %}
   {% if data['filter-phase'] %}  {% set filterPhase %} {{data['filter-phase'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPhase %}{% endset %} {% endif %}
   {% if data['filter-suitability'] %}  {% set filterSuitability %} {{ data['filter-suitability'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %}  {% set filterSuitability %}{% endset %} {% endif %}
@@ -8,6 +8,14 @@
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
   {% if data['filter-international'] %}  {% set filterInternational %}Skilled Worker visas can be sponsored{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
+
+{% macro removeFilterHref(name, value) -%}
+  {%- if filterFormAction -%}
+    /femerge/remove-filter?name={{ name | urlencode }}&value={{ value | urlencode }}
+  {%- else -%}
+    #
+  {%- endif -%}
+{%- endmacro %}
 
 {% set filterOptionsHtml %}
 
@@ -33,10 +41,10 @@
       <h3 class="govuk-heading-s">Job type</h3>
 
 
-      <div class="app-c-option-select js-collapsible {% if 'Teacher or lecturer' in filterRole or 'Lecturer' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+      <div class="app-c-option-select js-collapsible {% if 'Teacher or lecturer' in filterRole or 'Lecturer' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENCO (special educational needs coordinator)' in filterRole or 'Other leadership roles' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
           <div class="app-c-option-select__heading js-container-heading">
-              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teacher' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-and-leadership" aria-controls="list-of-key-stage-1">
+              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teacher' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENCO (special educational needs coordinator)' in filterRole or 'Other leadership roles' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-and-leadership" aria-controls="list-of-key-stage-1">
                 Teaching and leadership <span class="govuk-visually-hidden">jobs</span>
               </button>
               <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
@@ -87,10 +95,11 @@
                                       </label>
                                   </li>
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
-                                      <input {% if 'SENDCo (special educational needs and disabilities coordinator)' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-sendco" value="SENDCo (special educational needs and disabilities coordinator)">
-                                      <label class="govuk-label govuk-checkboxes__label" for="job-sendco">
-                                        SENDCo (special educational needs and disabilities coordinator)
+                                      <input {% if 'SENCO (special educational needs coordinator)' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-senco" value="SENCO (special educational needs coordinator)">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-senco">
+                                        SENCO (special educational needs coordinator)
                                       </label>
+                                      
                                   </li>
                                    <li class="govuk-checkboxes__item" data-testid="job-name">
                                       <input {% if 'Other leadership roles' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-other" value="Other leadership roles">
@@ -104,6 +113,56 @@
               </div>
           </div>
       </div>
+
+      {% if showNonTeachingRoles and nonTeachingRoleCategories %}
+      <div class="app-c-option-select js-collapsible js-closed" data-testid="non-teaching-roles" data-module="option-select" data-closed-on-load="true">
+
+          <div class="app-c-option-select__heading js-container-heading">
+              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="false" id="option-non-teaching-roles" aria-controls="list-of-non-teaching-roles">
+                Non-teaching roles <span class="govuk-visually-hidden">jobs</span>
+              </button>
+              <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
+              <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
+          </div>
+
+          <div id="list-of-non-teaching-roles" role="group" aria-labelledby="option-non-teaching-roles" class="app-c-option-select__container js-options-container" tabindex="-1">
+              <div class="app-c-option-select__container-inner app-c-option-select__container-inner--nested">
+                  {% for category in nonTeachingRoleCategories %}
+                  <div class="app-c-option-select app-c-option-select--nested js-collapsible js-closed" data-testid="non-teaching-roles-{{ category.id }}" data-module="option-select" data-closed-on-load="true">
+                      <div class="app-c-option-select__heading js-container-heading">
+                          <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="false" id="option-non-teaching-{{ category.id }}" aria-controls="list-of-non-teaching-{{ category.id }}">
+                            {{ category.title }} <span class="govuk-visually-hidden">non-teaching roles</span>
+                          </button>
+                          <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
+                          <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
+                      </div>
+
+                      <div id="list-of-non-teaching-{{ category.id }}" role="group" aria-labelledby="option-non-teaching-{{ category.id }}" class="app-c-option-select__container js-options-container" tabindex="-1">
+                          <div class="app-c-option-select__container-inner">
+                              <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
+                                  <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
+                                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">{{ category.title }}</legend>
+
+                                      <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
+                                          {% for role in category.roles %}
+                                              <li class="govuk-checkboxes__item" data-testid="job-name">
+                                                  <input {% if role in filterRole %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-non-teaching-{{ category.id }}-{{ loop.index }}" value="{{ role }}">
+                                                  <label class="govuk-label govuk-checkboxes__label" for="job-non-teaching-{{ category.id }}-{{ loop.index }}">
+                                                      {{ role }}
+                                                  </label>
+                                              </li>
+                                          {% endfor %}
+                                      </ul>
+                                  </fieldset>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+      {% endif %}
 
 
       <div class="app-c-option-select js-collapsible {% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support, assistants, cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
@@ -139,7 +198,7 @@
                                           Learning support, assistants, cover supervisor
                                       </label>
                                   </li>
-                                 
+
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
                                       <input {% if 'Administration, HR, data and finance' in filterRole  %} checked {% endif %}  type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-admin" value="Administration, HR, data and finance">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-admin">
@@ -221,21 +280,21 @@
                   Nursery school
                 </label>
               </div>
-              
+
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-phase-2" name="filter-phase" type="checkbox" value="Primary school"
-                
+
                 {% if 'Primary school' in filterPhase %}
                   checked
                 {% endif %}
-                
+
                 >
                 <label class="govuk-label govuk-checkboxes__label" for="filter-phase-2">
                   Primary school
                 </label>
               </div>
 
-             
+
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-phase-4" name="filter-phase" type="checkbox" value="Secondary school"
 
@@ -247,10 +306,10 @@
                   Secondary school
                 </label>
               </div>
-              
+
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-phase-5" name="filter-phase" type="checkbox" value="Sixth form or college"
-                
+
                 {% if 'Sixth form or college' in filterPhase %}
                   checked
                 {% endif %}
@@ -268,14 +327,12 @@
                 </label>
               </div>
 
-             
+
             </div>
           </fieldset>
       </div>
 
-        {% if data['keywords'] in ['ks1', 'KS1','ks2', 'KS2','primary', 'Primary', 'Primary school', 'primary school', 'nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
-
-        {% else %}
+        {% if showFeSubjects or data['keywords'] not in ['ks1', 'KS1','ks2', 'KS2','primary', 'Primary', 'Primary school', 'primary school', 'nursery', 'Nursery', 'Nursery school', 'nursery school'] %}
 
           {{ appCheckboxFilter({
             idPrefix: "subjects",
@@ -286,11 +343,16 @@
               classes: "govuk-fieldset__legend--s"
             },
             items: [
-
-              { value: "Accounting", text: "Accounting", hint: {text: 'includes religious studies'}, checked: checked("['filters']['subjects']", "Accounting") },
+                { value: "Accountancy and finance", text: "Accountancy and finance", checked: checked("['filters']['subjects']", "Accountancy and finance") },
+                { value: "Accounting", text: "Accounting", hint: {text: 'includes religious studies'}, checked: checked("['filters']['subjects']", "Accounting") },
+                { value: "Aeronautical engineering", text: "Aeronautical engineering", checked: checked("['filters']['subjects']", "Aeronautical engineering") },
                 { value: "Agriculture / horticulture / land-based studies", text: "Agriculture / horticulture / land-based studies", checked: checked("['filters']['subjects']", "Agriculture / horticulture / land-based studies") },
+                { value: "Agriculture/horticulture/land-based studies", text: "Agriculture/horticulture/land based studies", checked: checked("['filters']['subjects']", "Agriculture/horticulture/land-based studies") },
                 { value: "Animal care", text: "Animal care", checked: checked("['filters']['subjects']", "Animal care") },
+                { value: "Art", text: "Art", checked: checked("['filters']['subjects']", "Art") },
                 { value: "Art and design", text: "Art and design", checked: checked("['filters']['subjects']", "Art and design") },
+                { value: "Art history", text: "Art history", checked: checked("['filters']['subjects']", "Art history") },
+                { value: "Biochemistry", text: "Biochemistry", checked: checked("['filters']['subjects']", "Biochemistry") },
                 { value: "Biology", text: "Biology", checked: checked("['filters']['subjects']", "Biology") },
                 { value: "British Sign Language", text: "British Sign Language", checked: checked("['filters']['subjects']", "British Sign Language") },
                 { value: "Building and construction", text: "Building and construction", checked: checked("['filters']['subjects']", "Building and construction") },
@@ -298,25 +360,41 @@
                 { value: "Catering", text: "Catering", checked: checked("['filters']['subjects']", "Catering") },
                 { value: "Chemistry", text: "Chemistry", checked: checked("['filters']['subjects']", "Chemistry") },
                 { value: "Children’s development and learning", text: "Children’s development and learning", checked: checked("['filters']['subjects']", "Children’s development and learning") },
+                { value: "Children's development and learning", text: "Children's development and learning", checked: checked("['filters']['subjects']", "Children's development and learning") },
+                { value: "Civil engineering", text: "Civil engineering", checked: checked("['filters']['subjects']", "Civil engineering") },
                 { value: "Classics", text: "Classics",  hint: {text: 'includes Latin'}, checked: checked("['filters']['subjects']", "Classics") },
+                { value: "Computer science", text: "Computer science", checked: checked("['filters']['subjects']", "Computer science") },
                 { value: "Computing", text: "Computing", hint: {text: 'includes Computer science, Information technology, and ICT'}, checked: checked("['filters']['subjects']", "Computing") },
                 { value: "Counselling", text: "Counselling", checked: checked("['filters']['subjects']", "Counselling") },
+                { value: "Creative arts", text: "Creative arts", checked: checked("['filters']['subjects']", "Creative arts") },
                 { value: "Criminology", text: "Criminology", checked: checked("['filters']['subjects']", "Criminology") },
                 { value: "Customer service", text: "Customer service", checked: checked("['filters']['subjects']", "Customer service") },
                 { value: "Dance", text: "Dance", checked: checked("['filters']['subjects']", "Dance") },
                 { value: "Design and technology", text: "Design and technology",  hint: {text: 'includes Product design, Textiles and Systems and control'},  checked: checked("['filters']['subjects']", "Design and technology") },
                 { value: "Drama", text: "Drama",  hint: {text: 'includes Theatre studies and Performing arts'},  checked: checked("['filters']['subjects']", "Drama") },
                 { value: "Early years", text: "Early years", checked: checked("['filters']['subjects']", "Early years") },
+                { value: "Early years care and education", text: "Early years care and education", checked: checked("['filters']['subjects']", "Early years care and education") },
+                { value: "Economics", text: "Economics", checked: checked("['filters']['subjects']", "Economics") },
+                { value: "Education", text: "Education", checked: checked("['filters']['subjects']", "Education") },
+                { value: "Electrical engineering", text: "Electrical engineering", checked: checked("['filters']['subjects']", "Electrical engineering") },
+                { value: "Electrical installation", text: "Electrical installation", checked: checked("['filters']['subjects']", "Electrical installation") },
                 { value: "Electrics", text: "Electrics", checked: checked("['filters']['subjects']", "Electrics") },
+                { value: "Electronics", text: "Electronics", checked: checked("['filters']['subjects']", "Electronics") },
+                { value: "Employability", text: "Employability", checked: checked("['filters']['subjects']", "Employability") },
                 { value: "Engineering", text: "Engineering", checked: checked("['filters']['subjects']", "Engineering") },
+                { value: "Engineering and technology", text: "Engineering and technology", checked: checked("['filters']['subjects']", "Engineering and technology") },
                 { value: "English", text: "English",  hint: {text: 'includes English language and literature'},  checked: checked("['filters']['subjects']", "English") },
+                { value: "English as a foreign language", text: "English as a foreign language", checked: checked("['filters']['subjects']", "English as a foreign language") },
+                { value: "English as a second or other language", text: "English as a second or other language", checked: checked("['filters']['subjects']", "English as a second or other language") },
                 { value: "Esports", text: "Esports", checked: checked("['filters']['subjects']", "Esports") },
                 { value: "Fabrication and welding", text: "Fabrication and welding", checked: checked("['filters']['subjects']", "Fabrication and welding") },
                 { value: "Farming", text: "Farming", checked: checked("['filters']['subjects']", "Farming") },
                 { value: "Food technology", text: "Food technology", hint: {text: 'includes Hospitality and catering'},  checked: checked("['filters']['subjects']", "Food technology") },
+                { value: "Foundation studies", text: "Foundation studies", checked: checked("['filters']['subjects']", "Foundation studies") },
                 { value: "French", text: "French", checked: checked("['filters']['subjects']", "French") },
                 { value: "Functional skills", text: "Functional skills", checked: checked("['filters']['subjects']", "Functional skills") },
                 { value: "Games design", text: "Games design", checked: checked("['filters']['subjects']", "Games design") },
+                { value: "General studies", text: "General studies", checked: checked("['filters']['subjects']", "General studies") },
                 { value: "Geography", text: "Geography", checked: checked("['filters']['subjects']", "Geography") },
                 { value: "German", text: "German", checked: checked("['filters']['subjects']", "German") },
                 { value: "Graphic design", text: "Graphic design", checked: checked("['filters']['subjects']", "Graphic design") },
@@ -325,15 +403,23 @@
                 { value: "History", text: "History", checked: checked("['filters']['subjects']", "History") },
                 { value: "Hotel, catering and travel", text: "Hotel, catering and travel", checked: checked("['filters']['subjects']", "Hotel, catering and travel") },
                 { value: "Humanities", text: "Humanities", checked: checked("['filters']['subjects']", "Humanities") },
+                { value: "ICT", text: "ICT", checked: checked("['filters']['subjects']", "ICT") },
                 { value: "Land and property management", text: "Land and property management", checked: checked("['filters']['subjects']", "Land and property management") },
                 { value: "Languages", text: "Languages", hint: {text: 'includes MFL (Modern Foreign Languages)'}, checked: checked("['filters']['subjects']", "Languages") },
+                { value: "Latin", text: "Latin", checked: checked("['filters']['subjects']", "Latin") },
                 { value: "Leadership and management", text: "Leadership and management", checked: checked("['filters']['subjects']", "Leadership and management") },
+                { value: "Learning and development", text: "Learning and development", checked: checked("['filters']['subjects']", "Learning and development") },
+                { value: "Literacy", text: "Literacy", checked: checked("['filters']['subjects']", "Literacy") },
                 { value: "Logistics", text: "Logistics", checked: checked("['filters']['subjects']", "Logistics") },
                 { value: "Mandarin", text: "Mandarin", checked: checked("['filters']['subjects']", "Mandarin") },
                 { value: "Mathematics", text: "Mathematics", checked: checked("['filters']['subjects']", "Mathematics") },
+                { value: "Mechanical engineering", text: "Mechanical engineering", checked: checked("['filters']['subjects']", "Mechanical engineering") },
+                { value: "Media studies", text: "Media studies", checked: checked("['filters']['subjects']", "Media studies") },
+                { value: "Modern foreign languages", text: "Modern foreign languages", checked: checked("['filters']['subjects']", "Modern foreign languages") },
                 { value: "Motor vehicle", text: "Motor vehicle", checked: checked("['filters']['subjects']", "Motor vehicle") },
                 { value: "Music", text: "Music", checked: checked("['filters']['subjects']", "Music") },
                 { value: "People management", text: "People management", checked: checked("['filters']['subjects']", "People management") },
+                { value: "Performing arts", text: "Performing arts", checked: checked("['filters']['subjects']", "Performing arts") },
                 { value: "Philosophy", text: "Philosophy", checked: checked("['filters']['subjects']", "Philosophy") },
                 { value: "Photography", text: "Photography", checked: checked("['filters']['subjects']", "Photography") },
                 { value: "Physical education", text: "Physical education", checked: checked("['filters']['subjects']", "Physical education") },
@@ -355,7 +441,7 @@
             ]
           }) }}
 
-          {% endif %}
+        {% endif %}
 
         <div id="suitability" class="govuk-form-group">
             <fieldset class="govuk-fieldset">
@@ -420,7 +506,7 @@
     ]
   }) }}
 
-        
+
         <div id="key-stage" class="govuk-form-group filter-bottom">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Key stage</legend>
@@ -430,7 +516,7 @@
                         {% if data['keywords'] in ['early years','reception','Early years','Reception'] %}
                             checked
                         {% endif %}
-                        > 
+                        >
                         <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]">Early years</label>
                     </div>
                     <div class="govuk-checkboxes__item">
@@ -438,7 +524,7 @@
                         {% if data['keywords'] in ['ks1','KS1'] %}
                             checked
                         {% endif %}
-                        > 
+                        >
                         <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-2">KS1</label>
                     </div>
                     <div class="govuk-checkboxes__item">
@@ -446,7 +532,7 @@
                         {% if data['keywords'] in ['ks2','KS2'] %}
                             checked
                         {% endif %}
-                        > 
+                        >
                         <label class="govuk-label govuk-checkboxes__label" for="filters[keyStages]-3">KS2</label>
                     </div>
                     <div class="govuk-checkboxes__item">
@@ -461,7 +547,7 @@
                 </div>
             </fieldset>
         </div>
-        
+
 
         {{ govukCheckboxes({
           idPrefix: "filter-workingPatterns",
@@ -532,23 +618,23 @@
     </div>
   </div>
   <div class="app-filter__content">
-    
-    {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length or filterInternational.length %} 
+
+    {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length or filterInternational.length %}
 
         <div class="app-filter__selected">
         <div class="app-filter__selected-heading">
             <div class="app-filter__heading-title" style="width:100%; ">
             <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
-            <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/clear-filters">Clear filters</a></p>
+            <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="{{ clearFiltersHref or '/clear-filters' }}">Clear filters</a></p>
             </div>
         </div>
 
             {% if filterInternational.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
                 <ul class="app-filter-tags">
-                {% if 'Skilled Worker visas can be sponsored' in filterInternational %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show jobs with visa sponsorship
+                {% if 'Skilled Worker visas can be sponsored' in filterInternational %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-international', 'International') }}"><span class="govuk-visually-hidden">Remove this filter</span>Only show jobs with visa sponsorship
                     </a></li>
                 {% endif %}
                 </ul>
@@ -558,70 +644,78 @@
 
 
             {% if filterRole.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Job role</h3>
                 <ul class="app-filter-tags">
 
                 <!-- // teaching and leadership -->
 
-                {% if 'Teacher' in filterRole %} 
+                {% if 'Teacher' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher or lecturer</a></li>
                 {% endif %}
-                {% if 'Lecturer' in filterRole %} 
+                {% if 'Lecturer' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Lecturer</a></li>
                 {% endif %}
-                {% if 'Head of year or phase' in filterRole %} 
+                {% if 'Head of year or phase' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Head of year or phase</a></li>
                 {% endif %}
-                {% if 'Head of department or curriculum' in filterRole %} 
+                {% if 'Head of department or curriculum' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Head of department or curriculum</a></li>
                 {% endif %}
-                {% if 'Assistant headteacher' in filterRole %} 
+                {% if 'Assistant headteacher' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Assistant headteacher</a></li>
                 {% endif %}
-                {% if 'Deputy headteacher' in filterRole %} 
+                {% if 'Deputy headteacher' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Deputy headteacher</a></li>
                 {% endif %}
-                {% if 'Headteacher' in filterRole %} 
+                {% if 'Headteacher' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Headteacher</a></li>
                 {% endif %}
-                {% if 'SENDCo (special educational needs and disabilities coordinator' in filterRole %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>SENDCo (special educational needs and disabilities coordinator)</a></li>
+                {% if 'SENCO (special educational needs coordinator' in filterRole %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>SENCO (special educational needs coordinator)</a></li>
                 {% endif %}
-                {% if 'Other leadership roles' in filterRole %} 
+                {% if 'Other leadership roles' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other leadership roles</a></li>
+                {% endif %}
+
+                {% if showNonTeachingRoles and nonTeachingRoles %}
+                {% for role in nonTeachingRoles %}
+                {% if role in filterRole %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>{{ role }}</a></li>
+                {% endif %}
+                {% endfor %}
                 {% endif %}
 
                 <!-- // Teaching support  -->
 
-                {% if 'Teaching assistant' in filterRole %} 
+                {% if 'Teaching assistant' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teaching assistant</a></li>
                 {% endif %}
-                {% if 'HLTA (Higher level teaching assistant)' in filterRole %} 
+                {% if 'HLTA (Higher level teaching assistant)' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>HLTA (Higher level teaching assistant)</a></li>
                 {% endif %}
-                {% if 'Learning support, assistants, cover supervisor' in filterRole %} 
+                {% if 'Learning support, assistants, cover supervisor' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Learning support, assistants, cover supervisor</a></li>
                 {% endif %}
-                {% if 'Other support roles' in filterRole %} 
+                {% if 'Other support roles' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
                 {% endif %}
 
                 <!-- // other -->
 
-                {% if 'Administration, HR, data and finance' in filterRole %} 
+                {% if 'Administration, HR, data and finance' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Administration, HR, data and finance</a></li>
                 {% endif %}
-                {% if 'Catering, cleaning and site management' in filterRole %} 
+                {% if 'Catering, cleaning and site management' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Catering, cleaning and site management</a></li>
                 {% endif %}
-                {% if 'IT support' in filterRole %} 
+                {% if 'IT support' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>IT support</a></li>
                 {% endif %}
-                 {% if 'Pastoral, health and welfare' in filterRole %} 
+                 {% if 'Pastoral, health and welfare' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Pastoral, health and welfare</a></li>
                 {% endif %}
-                 {% if 'Other support roles' in filterRole %} 
+                 {% if 'Other support roles' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
                 {% endif %}
 
@@ -630,37 +724,37 @@
             {% endif %}
 
             {% if filterPhase.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h3>
                 <ul class="app-filter-tags">
-                {% if 'Nursery school' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Nursery school</a></li>
+                {% if 'Nursery school' in filterPhase %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-phase', 'Nursery school') }}"><span class="govuk-visually-hidden">Remove this filter</span>Nursery school</a></li>
                 {% endif %}
-                {% if 'Primary school' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Primary school</a></li>
+                {% if 'Primary school' in filterPhase %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-phase', 'Primary school') }}"><span class="govuk-visually-hidden">Remove this filter</span>Primary school</a></li>
                 {% endif %}
-                {% if 'Secondary school' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Secondary school</a></li>
+                {% if 'Secondary school' in filterPhase %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-phase', 'Secondary school') }}"><span class="govuk-visually-hidden">Remove this filter</span>Secondary school</a></li>
                 {% endif %}
-                {% if 'Sixth form or college' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Sixth form or college</a></li>
+                {% if 'Sixth form or college' in filterPhase %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-phase', 'Sixth form or college') }}"><span class="govuk-visually-hidden">Remove this filter</span>Sixth form or college</a></li>
                 {% endif %}
-                {% if 'Through school' in filterPhase %} 
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Through school</a></li>
+                {% if 'Through school' in filterPhase %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-phase', 'Through school') }}"><span class="govuk-visually-hidden">Remove this filter</span>Through school</a></li>
                 {% endif %}
                 </ul>
 
             {% endif %}
 
-            
+
             {% if filterSuitability.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Suitability for early career teachers (ECT)</h3>
                 <ul class="app-filter-tags">
-                {% if 'Suitable for ECTs' in filterSuitability %} 
+                {% if 'Suitable for ECTs' in filterSuitability %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Suitable for ECTs</a></li>
                 {% endif %}
-                {% if 'Not suitable for ECTs' in filterSuitability %} 
+                {% if 'Not suitable for ECTs' in filterSuitability %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Not suitable for ECTs</a></li>
                 {% endif %}
                 </ul>
@@ -668,25 +762,25 @@
             {% endif %}
 
             {% if filterStages.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Key stage</h3>
                 <ul class="app-filter-tags">
-                {% if 'Early years' in filterStages %} 
+                {% if 'Early years' in filterStages %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Early years</a></li>
                 {% endif %}
-                {% if 'Key stage 1' in filterStages %} 
+                {% if 'Key stage 1' in filterStages %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS1</a></li>
                 {% endif %}
-                {% if 'Key stage 2' in filterStages %} 
+                {% if 'Key stage 2' in filterStages %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS2</a></li>
                 {% endif %}
-                {% if 'Key stage 3' in filterStages %} 
+                {% if 'Key stage 3' in filterStages %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS3</a></li>
                 {% endif %}
-                {% if 'Key stage 4' in filterStages %} 
+                {% if 'Key stage 4' in filterStages %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS4</a></li>
                 {% endif %}
-                {% if 'Key stage 5' in filterStages %} 
+                {% if 'Key stage 5' in filterStages %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>KS5</a></li>
                 {% endif %}
                 </ul>
@@ -694,13 +788,13 @@
             {% endif %}
 
             {% if filterPatterns.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Working patterns</h3>
                 <ul class="app-filter-tags">
-                {% if 'Full time' in filterPatterns %} 
+                {% if 'Full time' in filterPatterns %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Full time</a></li>
                 {% endif %}
-                {% if 'Part time' in filterPatterns %} 
+                {% if 'Part time' in filterPatterns %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Part time</a></li>
                 {% endif %}
                 </ul>
@@ -708,10 +802,10 @@
             {% endif %}
 
             {% if filterQuick.length %}
-            
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Application method</h3>
                 <ul class="app-filter-tags">
-                {% if 'Apply online' in filterQuick %} 
+                {% if 'Apply online' in filterQuick %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show quick apply jobs</a></li>
                 {% endif %}
                 </ul>
@@ -724,7 +818,7 @@
     {% endif %}
 
     <div class="app-filter__options">
-      <form id="filter" method="get" action="/search/applications" novalidate>
+      <form id="filter" method="get" action="{{ filterFormAction or '/search/applications' }}" novalidate>
         <button class="govuk-button" data-module="govuk-button">
           Apply filters
         </button>
@@ -733,3 +827,4 @@
     </div>
   </div>
 </div>
+

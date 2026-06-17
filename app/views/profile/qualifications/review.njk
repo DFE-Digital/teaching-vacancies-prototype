@@ -32,6 +32,12 @@
         href: '/profile/qualifications/type'
       }) }}
 
+      {{ govukButton({
+        text: "Add education gap",
+        classes: 'govuk-button--secondary govuk-!-margin-left-2',
+        href: '/profile/qualifications/gap'
+      }) }}
+
       {% for id, qualification in profile.qualifications %}
 
         {{appPageHeader({

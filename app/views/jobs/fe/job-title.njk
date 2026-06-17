@@ -1,0 +1,50 @@
+{% extends "layout_femerge.njk" %}
+
+{% set title = 'Create a job listing' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Create a job listing - section 1 of 4</span>
+      <h1 class="govuk-heading-xl">Job title</h1>
+
+      {% if errors %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: errors.title,
+              href: "#feJob-title"
+            } if errors.title
+          ]
+        }) }}
+      {% endif %}
+
+      <form method="post" novalidate>
+        {{ govukInput({
+          id: "feJob-title",
+          name: "feJob[title]",
+          label: {
+            text: "Job title",
+            classes: "govuk-label--m"
+          },
+          value: job.title,
+          errorMessage: errors.title and { text: errors.title }
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          <button type="button" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Save and finish later
+          </button>
+        </div>
+      </form>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Cancel</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

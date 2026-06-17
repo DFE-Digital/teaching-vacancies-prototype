@@ -150,6 +150,23 @@ module.exports = router => {
     })
   })
 
+  router.get('/profile/qualifications/gap', (req, res) => {
+    let gap = _.get(req, 'session.data.profile.qualifications.gap')
+
+    res.render('profile/qualifications/gap', {
+      gap
+    })
+  })
+
+  router.post('/profile/qualifications/gap', (req, res) => {
+    req.session.user.profile.qualifications.gap = {
+      hasGap: req.body.profile.qualifications.gap,
+      explanation: req.body.profile.qualifications.gapExplanation
+    }
+
+    res.redirect('/profile/qualifications/review')
+  })
+
   router.get('/profile/qualifications/:id/delete', (req, res) => {
     let id = req.params.id
     let profile = req.session.user.profile

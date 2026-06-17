@@ -278,6 +278,26 @@
   border-bottom: 1px solid #b1b4b6
 }
 
+.app-c-option-select--nested {
+  margin-bottom: 0;
+  padding-bottom: 5px;
+  border-bottom: 0;
+
+  .app-c-option-select__title {
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .app-c-option-select__button {
+    font-weight: 400;
+  }
+}
+
+.app-c-option-select__container-inner--nested {
+  padding-top: 5px;
+}
+
 @media(min-width: 48.0625em) {
   .app-c-option-select ::-webkit-scrollbar {
       -webkit-appearance:none;
@@ -522,11 +542,13 @@ ul.gem-c-checkboxes__list {
   }
 }
 
-.app-c-option-select.js-closed .app-c-option-select__filter,.app-c-option-select.js-closed .app-c-option-select__container {
+.app-c-option-select.js-closed > .app-c-option-select__filter,
+.app-c-option-select.js-closed > .app-c-option-select__container {
   display: none
 }
 
-.app-c-option-select.js-opened .app-c-option-select__filter,.app-c-option-select.js-opened .app-c-option-select__container {
+.app-c-option-select.js-opened > .app-c-option-select__filter,
+.app-c-option-select.js-opened > .app-c-option-select__container {
   display: block
 }
 

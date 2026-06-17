@@ -1,0 +1,726 @@
+{% extends "layout.njk" %}
+
+{% block pageTitle %}
+  Search for a job training others in FE - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set activeNav = 'jobs' %}
+
+{% block content %}
+<style>
+  .fe-page {
+    margin-top: -24px;
+  }
+
+  .fe-page__full-bleed {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+  }
+
+  .fe-page__hero {
+    background: #2f8d87;
+    padding: 56px 0 40px;
+    overflow: hidden;
+  }
+
+  .fe-page__hero-inner {
+    display: grid;
+    grid-template-columns: minmax(300px, 1.05fr) minmax(320px, 1fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  .fe-page__hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding-top: 84px;
+  }
+
+  .fe-page__hero-title {
+    display: inline;
+    background: #5d67ff;
+    color: #111;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding: 0 18px 10px;
+    line-height: 1.06;
+    font-weight: 700;
+    font-size: 4.1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .fe-page__hero-media {
+    position: relative;
+    min-height: 540px;
+  }
+
+  .fe-page__hero-media img {
+    position: absolute;
+    object-fit: cover;
+  }
+
+  .fe-page__hero-media .fe-page__hero-image--back {
+    top: 0;
+    right: 0;
+    width: 92%;
+    height: 100%;
+  }
+
+  .fe-page__hero-media .fe-page__hero-image--front {
+    left: -6%;
+    top: 78px;
+    width: 68%;
+    height: 74%;
+  }
+
+  .fe-page__section {
+    padding: 48px 0;
+  }
+
+  .fe-page__section--cream {
+    background: #fbf0e3;
+  }
+
+  .fe-page__section--black {
+    background: #050505;
+  }
+
+  .fe-page__section--black p,
+  .fe-page__section--black h2,
+  .fe-page__section--black h3,
+  .fe-page__section--black li,
+  .fe-page__section--black a,
+  .fe-page__section--black .govuk-body,
+  .fe-page__section--black .govuk-heading-m,
+  .fe-page__section--black .govuk-heading-l {
+    color: #fff;
+  }
+
+  .fe-page__section--black a {
+    text-decoration-color: #fff;
+  }
+
+  .fe-page__section-title {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .fe-page__brand {
+    width: 166px;
+    height: 112px;
+    margin-left: auto;
+    border: 3px solid #111;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 8px 10px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .fe-page__two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 170px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .fe-page__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .fe-card {
+    border: 1px solid #c8c8c8;
+    background: #fff;
+    min-height: 432px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .fe-card--featured {
+    grid-column: 1 / -1;
+  }
+
+  .fe-card__image {
+    background: #fdebd8;
+    height: 198px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+  }
+
+  .fe-card__image::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 90px;
+    height: 90px;
+    border-right: 22px solid #5d67ff;
+    border-bottom: 22px solid #5d67ff;
+  }
+
+  .fe-card__image::before {
+    content: ">";
+    position: absolute;
+    left: 38px;
+    top: 50%;
+    transform: translateY(-54%);
+    color: #5d67ff;
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .fe-card--tvs .fe-card__image {
+    min-height: 245px;
+  }
+
+  .fe-card--tvs .fe-card__image::before {
+    content: none;
+  }
+
+  .fe-card__logo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .fe-card__logo--aoc {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .fe-card__logo--aoc .mark {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.08em;
+    color: #14a3b8;
+  }
+
+  .fe-card__logo--aoc .mark span {
+    color: #222;
+  }
+
+  .fe-card__logo--aoc .jobs {
+    margin-top: -8px;
+    font-size: 2rem;
+    color: #14a3b8;
+  }
+
+  .fe-card__logo--fe {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .fe-card__logo--fe .circle {
+    width: 164px;
+    height: 164px;
+    background: #000;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  .fe-card__logo--fe .jobs {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .fe-card__logo--tvs img {
+    display: block;
+    width: min(560px, 90%);
+    height: auto;
+  }
+
+  .fe-card__body {
+    padding: 16px 28px 28px;
+  }
+
+  .fe-card__title {
+    margin: 0 0 14px;
+    font-size: 1.45rem;
+    line-height: 1.15;
+    font-weight: 700;
+    color: #1d70b8;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .fe-card__text {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.35;
+  }
+
+  .fe-page__black-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .fe-page__black-copy {
+    font-size: 2rem;
+    line-height: 1.3;
+    max-width: 760px;
+    margin: 0;
+  }
+
+  .fe-page__chevron-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 1.25rem;
+  }
+
+  .fe-page__chevron-link::before {
+    content: "›";
+    color: #f84c4c;
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-top: -6px;
+  }
+
+  .fe-page__promo-image-wrap {
+    background: #2f8d87;
+    padding: 36px 44px 40px;
+  }
+
+  .fe-page__promo-image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fe-page__tips-card {
+    background: #fbf0e3;
+    border-radius: 24px 24px 0 0;
+    padding: 24px 28px 18px;
+    max-width: 700px;
+  }
+
+  .fe-page__search-input {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 4px;
+    margin-bottom: 24px;
+  }
+
+  .fe-page__form-grid {
+    max-width: 920px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .fe-page__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 920px;
+  }
+
+  .fe-page__form-grid .govuk-label {
+    font-size: 1.1875rem;
+    margin-bottom: 8px;
+  }
+
+  .fe-page__form-grid .govuk-input,
+  .fe-page__form-grid .govuk-select {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.1875rem;
+    min-height: 52px;
+  }
+
+  .fe-page__form-grid .govuk-button {
+    width: 100%;
+    max-width: 920px;
+  }
+
+  .fe-page__footer-cta {
+    background: #050505;
+    color: #fff;
+    padding: 34px 0;
+  }
+
+  .fe-page__footer-cta p,
+  .fe-page__footer-cta a,
+  .fe-page__footer-cta .govuk-body {
+    color: #fff;
+  }
+
+  .fe-page__footer-cta-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .fe-page__footer-cta-copy {
+    font-size: 1.7rem;
+    line-height: 1.3;
+    max-width: 680px;
+    margin: 0;
+  }
+
+  .fe-page__footer-cta-links {
+    margin-top: 18px;
+  }
+
+  .fe-page__footer-cta-links a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .fe-page__footer-cta-image {
+    background: #2f8d87;
+    padding: 20px;
+  }
+
+  .fe-page__footer-cta-image img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fe-page__contact {
+    background: #050505;
+    color: #fff;
+    padding: 24px 0 34px;
+  }
+
+  .fe-page__contact p,
+  .fe-page__contact h2,
+  .fe-page__contact a,
+  .fe-page__contact .govuk-body {
+    color: #fff;
+  }
+
+  .fe-page__contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .fe-page__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .fe-page__contact-icon {
+    font-size: 2.3rem;
+    line-height: 1;
+    width: 36px;
+    text-align: center;
+  }
+
+  .fe-page__contact-item a {
+    color: #fff;
+  }
+
+  .fe-page__light-footer {
+    background: #eef2f4;
+    border-top: 4px solid #1d70b8;
+    padding: 28px 0 34px;
+  }
+
+  .fe-page__light-footer-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-end;
+  }
+
+  .fe-page__light-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    margin-bottom: 16px;
+  }
+
+  .fe-page__light-footer-links a {
+    color: #0b0c0c;
+  }
+
+  @media (max-width: 960px) {
+    .fe-page__hero-inner,
+    .fe-page__black-grid,
+    .fe-page__footer-cta-grid,
+    .fe-page__contact-grid,
+    .fe-page__two-col,
+    .fe-page__cards,
+    .fe-page__fields,
+    .fe-page__light-footer-row {
+      grid-template-columns: 1fr;
+    }
+
+    .fe-page__hero-copy {
+      padding-top: 0;
+    }
+
+    .fe-page__hero-title {
+      font-size: 3rem;
+    }
+
+    .fe-page__hero-media {
+      min-height: 380px;
+    }
+
+    .fe-page__brand {
+      margin-left: 0;
+    }
+  }
+</style>
+
+<div class="fe-page">
+  <section class="fe-page__full-bleed fe-page__hero">
+    <div class="govuk-width-container">
+      <div class="fe-page__hero-inner">
+        <div class="fe-page__hero-copy">
+          <h1 class="fe-page__hero-title">Search for a job training others in FE</h1>
+        </div>
+
+        <div class="fe-page__hero-media" aria-hidden="true">
+          <img class="fe-page__hero-image--back" src="/public/images/hiringguides/advert.jpg" alt="">
+          <img class="fe-page__hero-image--front" src="/public/images/hiringguides/non-teaching.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section fe-page__section--cream">
+    <div class="govuk-width-container">
+      <div class="fe-page__two-col">
+        <div>
+          <h2 class="fe-page__section-title">Search for a job training others</h2>
+          <p class="govuk-body">If you're ready to share your skills with others, this page helps you get started with FE job search.</p>
+          <p class="govuk-body">You can explore roles focused on Further Education, or search for a local college to see opportunities near you.</p>
+        </div>
+        <div class="fe-page__brand" aria-hidden="true">
+          <span>TRAIN OTHERS</span>
+          <span style="margin-top:6px;">Further Education</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section">
+    <div class="govuk-width-container">
+      <h2 class="fe-page__section-title" style="margin-bottom: 18px;">Search for jobs</h2>
+      <p class="govuk-body" style="max-width: 820px;">There are many places to search for jobs. We've listed a couple of websites that focus on Further Education roles.</p>
+      <p class="govuk-body" style="max-width: 820px;">Remember, it is worth looking at multiple websites because jobs will feature in different places.</p>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section">
+    <div class="govuk-width-container">
+      <h2 class="fe-page__section-title" style="margin-bottom: 30px;">Jobs boards</h2>
+      <div class="fe-page__cards">
+        <a class="fe-card fe-card--featured fe-card--tvs" href="/femerge?filter-phase=Sixth+form+or+college" target="_blank" rel="noreferrer noopener" aria-label="Teaching Vacancies Services (TVS), opens in a new tab">
+          <div class="fe-card__image">
+            <div class="fe-card__logo fe-card__logo--tvs" aria-hidden="true">
+              <img src="/public/images/TVS-logo.png" alt="">
+            </div>
+          </div>
+          <div class="fe-card__body">
+            <h3 class="fe-card__title">Teaching Vacancies Services (TVS) - opens in a new tab</h3>
+            <p class="fe-card__text">Search for jobs on Teaching Vacancies Services. This is a GOV.UK service.</p>
+          </div>
+        </a>
+
+        <a class="fe-card" href="#" aria-label="Association of Colleges jobs, opens in a new tab">
+          <div class="fe-card__image">
+            <div class="fe-card__logo fe-card__logo--aoc" aria-hidden="true">
+              <div class="mark"><span>a</span>oc</div>
+              <div class="jobs">jobs</div>
+            </div>
+          </div>
+          <div class="fe-card__body">
+            <h3 class="fe-card__title">Association of Colleges jobs (AOC) - opens in a new tab</h3>
+            <p class="fe-card__text">Search AOC jobs website to find teaching jobs in colleges and other education settings.</p>
+          </div>
+        </a>
+
+        <a class="fe-card" href="#" aria-label="FE jobs, opens in a new tab">
+          <div class="fe-card__image">
+            <div class="fe-card__logo fe-card__logo--fe" aria-hidden="true">
+              <div class="circle">FE</div>
+              <div class="jobs">jobs</div>
+            </div>
+          </div>
+          <div class="fe-card__body">
+            <h3 class="fe-card__title">FE jobs - opens in a new tab</h3>
+            <p class="fe-card__text">Discover teaching, tutoring, leadership and support roles on the FE jobs website.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section fe-page__section--black">
+    <div class="govuk-width-container">
+      <div class="fe-page__black-grid">
+        <div>
+          <p class="fe-page__black-copy">Are you ready to start your new career training others, but unsure if you have the right skills and experience? Answer a few short questions on our Readiness Checker and we can point you in the right direction.</p>
+          <a class="fe-page__chevron-link" href="#">Check if you are ready to teach in FE</a>
+        </div>
+        <div class="fe-page__promo-image-wrap">
+          <img class="fe-page__promo-image" src="/public/images/hiringguides/non-teaching.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section">
+    <div class="govuk-width-container">
+      <div class="fe-page__tips-card">
+        <h2 class="fe-page__section-title" style="margin-bottom: 20px;">Tips for your FE job search</h2>
+        <p class="govuk-body">Jobs training others in Further Education may sometimes be advertised as FE lecturers or tutors, so remember to search for these roles too.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Education providers may also refer to trades or industry areas in different ways.</li>
+          <li>If you can't find a job that matches your specific occupation, try widening your search term or contacting your local college or FE provider.</li>
+          <li>Further Education providers are independent organisations, so they can set their own entry requirements and salary and benefit packages.</li>
+          <li>If you need help with writing a CV or cover letter, you can find a guide on becoming a Further Education trainer.</li>
+        </ul>
+
+        <h3 class="govuk-heading-m">Other places to search for FE jobs</h3>
+        <p class="govuk-body">Here are a few other websites where you might wish to look for FE jobs:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="#" target="_blank" rel="noreferrer noopener">Department for Work and Pensions - Find a job (opens in new tab)</a></li>
+          <li><a href="#" target="_blank" rel="noreferrer noopener">Indeed (opens in new tab)</a></li>
+          <li><a href="#" target="_blank" rel="noreferrer noopener">TotalJobs (opens in new tab)</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-m">Teach FE in a prison</h3>
+        <p class="govuk-body">If you are looking for a different challenge to regular further education settings, then a job teaching in a prison may be appropriate.</p>
+        <p class="govuk-body">Learn more about prison teaching and apply for a role here:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="#" target="_blank" rel="noreferrer noopener">Prison and Probation Jobs (opens in new tab)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section">
+    <div class="govuk-width-container">
+      <h2 class="fe-page__section-title">Search for colleges by location</h2>
+      <p class="govuk-body">Enter any postcode in England to find contact details for colleges within 25 miles.</p>
+      <input class="govuk-input fe-page__search-input" type="text" aria-label="College postcode">
+      <button type="button" class="govuk-button">Search</button>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__footer-cta">
+    <div class="govuk-width-container">
+      <div class="fe-page__footer-cta-grid">
+        <div>
+          <p class="fe-page__footer-cta-copy">Our FE advisers can help answer any questions you have about moving into a career in Further Education.</p>
+          <div class="fe-page__footer-cta-links">
+            <a href="#">Talk to an adviser</a>
+          </div>
+        </div>
+        <div class="fe-page__footer-cta-image">
+          <img src="/public/images/hiringguides/non-teaching.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__section fe-page__section--cream">
+    <div class="govuk-width-container">
+      <h2 class="fe-page__section-title" style="margin-bottom: 14px;">I want to find out more</h2>
+      <p class="govuk-body" style="max-width: 760px;">Sign up today and we'll keep you up to date on everything you need to know about training others in Further Education, including training, news and events.</p>
+      <div class="fe-page__form-grid">
+        <div class="fe-page__fields">
+          <div>
+            <label class="govuk-label" for="first-name">First Name</label>
+            <input class="govuk-input" id="first-name" name="firstName" type="text">
+          </div>
+          <div>
+            <label class="govuk-label" for="last-name">Last Name</label>
+            <input class="govuk-input" id="last-name" name="lastName" type="text">
+          </div>
+        </div>
+        <div>
+          <label class="govuk-label" for="email">Email</label>
+          <input class="govuk-input" id="email" name="email" type="email">
+        </div>
+        <div>
+          <label class="govuk-label" for="subject-area">What subject are you interested in training to others?</label>
+          <select class="govuk-select" id="subject-area" name="subjectArea">
+            <option>Choose a subject area</option>
+          </select>
+        </div>
+        <div>
+          <label class="govuk-label" for="location-interest">Where are you interested in working?</label>
+          <select class="govuk-select" id="location-interest" name="locationInterest">
+            <option>Choose a location</option>
+          </select>
+        </div>
+        <button type="button" class="govuk-button">Submit</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="fe-page__full-bleed fe-page__contact">
+    <div class="govuk-width-container">
+      <div class="fe-page__contact-grid">
+        <div>
+          <h2 class="fe-page__section-title" style="font-size: 1.6rem; margin-bottom: 18px;">Contact our advisers</h2>
+          <p class="govuk-body">If you have questions, our support team is here to help and can guide you through the next steps.</p>
+          <p class="govuk-body">They are available for any information you need on training others in Further Education, as well as one-to-one advice on how to get there.</p>
+          <p class="govuk-body">Lines are open Monday to Friday, 9:00am to 5:30pm.</p>
+        </div>
+        <div>
+          <div class="fe-page__contact-item">
+            <div class="fe-page__contact-icon" aria-hidden="true">&#9742;</div>
+            <div>
+              <div>0300 359 2502</div>
+            </div>
+          </div>
+          <div class="fe-page__contact-item">
+            <div class="fe-page__contact-icon" aria-hidden="true">&#9993;</div>
+            <div>
+              <a href="mailto:teach@education.gov.uk">teach@education.gov.uk</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
