@@ -92,12 +92,6 @@
             {% endset %}
 
             <div class="app-jobs__item">
-              {% if job.organisation.logo != 'Not entered' %}
-              <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-              </div>
-              {% endif %}
               <h2 class="govuk-heading-m">
                 
                 <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;

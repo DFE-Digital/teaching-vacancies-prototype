@@ -6,6 +6,318 @@
 
 {% set activeNav = 'jobs' %}
 
+{% block header %}
+<style>
+  .tife-header {
+    background: #003f67;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+
+  .tife-header a {
+    color: #fff;
+  }
+
+  .tife-header__inner {
+    max-width: 1215px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .tife-header__email {
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px 0 8px;
+    font-size: 14px;
+  }
+
+  .tife-header__email a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .tife-header__email-icon {
+    width: 18px;
+    height: 13px;
+    border: 2px solid #fff;
+    position: relative;
+  }
+
+  .tife-header__email-icon::before,
+  .tife-header__email-icon::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    width: 11px;
+    height: 2px;
+    background: #fff;
+  }
+
+  .tife-header__email-icon::before {
+    left: -1px;
+    transform: rotate(32deg);
+  }
+
+  .tife-header__email-icon::after {
+    right: -1px;
+    transform: rotate(-32deg);
+  }
+
+  .tife-header__brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .tife-header__department {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 26px;
+    line-height: 1.1;
+  }
+
+  .tife-header__crest {
+    font-size: 29px;
+    line-height: 1;
+  }
+
+  .tife-header__training-logo {
+    background: #fff;
+    color: #003f67;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px 0 16px;
+    font-size: 29px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    line-height: 1;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%);
+    white-space: nowrap;
+  }
+
+  .tife-header__training-logo strong {
+    background: #003f67;
+    color: #fff;
+    margin-left: 10px;
+    padding: 7px 22px 7px 10px;
+    font-size: 28px;
+    letter-spacing: 0;
+    font-weight: 700;
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+  }
+
+  .tife-header__nav-wrap {
+    border-top: 1px solid rgba(255,255,255,0.28);
+  }
+
+  .tife-header__nav {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tife-header__nav-item {
+    position: relative;
+  }
+
+  .tife-header__nav-link {
+    display: block;
+    padding: 21px 20px 19px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-bottom: 6px solid transparent;
+    font-family= Arial, Inter, sans-serif;
+  }
+
+  .tife-header__nav-link:hover,
+  .tife-header__nav-link:focus {
+    text-decoration: underline;
+  }
+
+  .tife-header__nav-link--active {
+    border-bottom-color: #3f90c4;
+  }
+  
+
+  .tife-header__menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 20;
+    min-width: 250px;
+    max-width: 440px;
+    background: #fff;
+    color: #0b0c0c;
+    padding: 24px 28px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  }
+
+  .tife-header__nav-item:hover .tife-header__menu,
+  .tife-header__nav-item:focus-within .tife-header__menu {
+    display: block;
+  }
+
+  .tife-header__menu a {
+    color: #0b0c0c;
+    display: block;
+    margin: 0 0 20px;
+    font-size: 1rem;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  .tife-header__menu a:hover,
+  .tife-header__menu a:focus {
+    text-decoration: underline;
+  }
+
+  .tife-header__menu-list {
+    border-left: 6px solid #e6e6e6;
+    padding-left: 18px;
+    margin-top: 8px;
+  }
+
+  .tife-header__menu-list a {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .govuk-main-wrapper--auto-spacing:first-child, .govuk-main-wrapper--l {
+        padding-top: 20px;
+    }
+}
+
+  @media (max-width: 900px) {
+    .tife-header__inner {
+      padding: 0 16px;
+    }
+
+    .tife-header__brand-row {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 24px 0;
+    }
+
+    .tife-header__department {
+      font-size: 21px;
+    }
+
+    .tife-header__training-logo,
+    .tife-header__training-logo strong {
+      font-size: 18px;
+    }
+
+    .tife-header__nav {
+      flex-wrap: wrap;
+    }
+
+    .tife-header__nav-link {
+      padding: 14px 12px 12px;
+      font-size: 17px;
+    }
+
+    .tife-header__menu {
+      position: static;
+      min-width: 100%;
+      box-shadow: none;
+    }
+  }
+</style>
+
+<header class="tife-header" role="banner">
+  <div class="tife-header__inner">
+    <div class="tife-header__email">
+      <a href="#">Sign up for emails <span class="tife-header__email-icon" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="tife-header__brand-row">
+      <div class="tife-header__department">
+         <img src="/public/images/search-page-logo.png" alt="" height="30px">
+      </div>
+      <div >
+        <img src="/public/images/FurtherEducation.png"  alt="" >
+      </div>
+    </div>
+
+    <nav class="tife-header__nav-wrap" aria-label="Train others navigation">
+      <ul class="tife-header__nav">
+        <li class="tife-header__nav-item">
+          <a class="tife-header__nav-link" href="#">Homepage</a>
+        </li>
+        <li class="tife-header__nav-item">
+          <a class="tife-header__nav-link" href="#">FAQs &#9662;</a>
+          <div class="tife-header__menu">
+            <a href="#">The difference between FE and higher education</a>
+            <a href="#">How to apply for an FE teaching role</a>
+            <a href="#">What is further education?</a>
+            <a href="#">FE Teacher Training</a>
+          </div>
+        </li>
+        <li class="tife-header__nav-item">
+          <a class="tife-header__nav-link tife-header__nav-link--active" href="#">Jobs in FE &#9662;</a>
+          <div class="tife-header__menu">
+            <a href="#">AoC</a>
+            <a href="#">Jobs by course</a>
+            <div class="tife-header__menu-list">
+              <a href="#">Engineering</a>
+              <a href="#">Health and social care</a>
+            </div>
+            <a href="#">Train others across the UK</a>
+            <a href="#">Train others part time</a>
+          </div>
+        </li>
+        <li class="tife-header__nav-item">
+          <a class="tife-header__nav-link" href="#">Talk to an adviser</a>
+        </li>
+        <li class="tife-header__nav-item">
+          <a class="tife-header__nav-link" href="#">Teaching &#9662;</a>
+          <div class="tife-header__menu">
+            <a href="#">Building a career</a>
+            <a href="#">Daily life</a>
+            <a href="#">Interview Preparation</a>
+            <div class="tife-header__menu-list">
+              <a href="#">Step 1: Thinking about what you want from a teaching role</a>
+              <a href="#">Step 2: Write an updated CV</a>
+              <a href="#">Step 3: Start your job search</a>
+              <a href="#">Step 4: How to prepare for an interview</a>
+              <a href="#">Step 5: After the interview</a>
+            </div>
+            <a href="#">Working part time</a>
+            <a href="#">Salary</a>
+            <a href="#">FE teaching assistants</a>
+            <a href="#">Teaching in colleges</a>
+            <a href="#">What subjects could I teach?</a>
+          </div>
+        </li>
+        <li class="tife-header__nav-item">
+          <a class="tife-header__nav-link" href="#">Training &#9662;</a>
+          <div class="tife-header__menu">
+            <a href="#">How to become an FE teacher</a>
+            <a href="#">What Course Should I Teach?</a>
+            <a href="#">Find funding</a>
+            <a href="#">Qualifications</a>
+            <a href="#">What Courses are Available?</a>
+            <div class="tife-header__menu-list">
+              <a href="#">PGCE</a>
+            </div>
+            <a href="#">How to get qualified</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+{% endblock %}
+
 {% block content %}
 <style>
   .fe-page {
@@ -19,23 +331,20 @@
   }
 
   .fe-page__hero {
-    background: #2f8d87;
+    background-image: url("/public/images/fe-search.png");
     padding: 56px 0 40px;
     overflow: hidden;
+    height: 470px;
   }
 
-  .fe-page__hero-inner {
-    display: grid;
-    grid-template-columns: minmax(300px, 1.05fr) minmax(320px, 1fr);
-    gap: 40px;
-    align-items: center;
-  }
+
+  
+  
 
   .fe-page__hero-copy {
     position: relative;
     z-index: 2;
-    max-width: 560px;
-    padding-top: 84px;
+    padding-top: 140px;
   }
 
   .fe-page__hero-title {
@@ -47,8 +356,9 @@
     padding: 0 18px 10px;
     line-height: 1.06;
     font-weight: 700;
-    font-size: 4.1rem;
+    font-size: 4rem;
     letter-spacing: -0.03em;
+    font-family: "BC-Bold",Arial,sans-serif;
   }
 
   .fe-page__hero-media {
@@ -108,14 +418,20 @@
     margin-bottom: 28px;
     font-weight: 700;
     letter-spacing: -0.03em;
+    font-family: InterVariable, sans-serif;
+  }
+
+  .fe-page__section-title-2{
+    font-size: 2rem;
+        line-height: 1.33333;
+        font-family: InterVariable, sans-serif;
+        margin-top: 0px;
   }
 
   .fe-page__brand {
     width: 166px;
     height: 112px;
     margin-left: auto;
-    border: 3px solid #111;
-    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -285,10 +601,12 @@
   }
 
   .fe-page__black-copy {
-    font-size: 2rem;
     line-height: 1.3;
     max-width: 760px;
     margin: 0;
+    color: #fff;
+    font-size: 1.88rem;
+    font-family: Arial, Inter, sans-serif;
   }
 
   .fe-page__chevron-link {
@@ -336,11 +654,12 @@
   }
 
   .fe-page__form-grid {
-    max-width: 920px;
+    max-width: 74%;
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
   }
+
 
   .fe-page__fields {
     display: grid;
@@ -373,6 +692,12 @@
     padding: 34px 0;
   }
 
+  .govuk-body{
+    font-size: 1.1875rem;
+        line-height: 1.3157894737;
+        font-family: Arial, Inter, sans-serif; 
+  }
+
   .fe-page__footer-cta p,
   .fe-page__footer-cta a,
   .fe-page__footer-cta .govuk-body {
@@ -381,16 +706,17 @@
 
   .fe-page__footer-cta-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 240px;
+    grid-template-columns: minmax(0, 1fr) 410px;
     gap: 28px;
-    align-items: center;
   }
 
   .fe-page__footer-cta-copy {
-    font-size: 1.7rem;
+    font-size: 1.88rem;
     line-height: 1.3;
     max-width: 680px;
     margin: 0;
+    font-family: Arial, Inter, sans-serif;
+    padding-top: 20px;
   }
 
   .fe-page__footer-cta-links {
@@ -409,7 +735,7 @@
 
   .fe-page__footer-cta-image img {
     width: 100%;
-    height: 170px;
+    height: 370px;
     object-fit: cover;
     display: block;
   }
@@ -511,12 +837,7 @@
     <div class="govuk-width-container">
       <div class="fe-page__hero-inner">
         <div class="fe-page__hero-copy">
-          <h1 class="fe-page__hero-title">Search for a job training others in FE</h1>
-        </div>
-
-        <div class="fe-page__hero-media" aria-hidden="true">
-          <img class="fe-page__hero-image--back" src="/public/images/hiringguides/advert.jpg" alt="">
-          <img class="fe-page__hero-image--front" src="/public/images/hiringguides/non-teaching.jpg" alt="">
+          <h1 class="fe-page__hero-title">Search for a <br /> job training others <br /> in FE</h1>
         </div>
       </div>
     </div>
@@ -527,12 +848,13 @@
       <div class="fe-page__two-col">
         <div>
           <h2 class="fe-page__section-title">Search for a job training others</h2>
-          <p class="govuk-body">If you're ready to share your skills with others, this page helps you get started with FE job search.</p>
-          <p class="govuk-body">You can explore roles focused on Further Education, or search for a local college to see opportunities near you.</p>
+          <p class="govuk-body">If you’re ready to inspire and share your skills with others, now is the perfect time to start your job search. With many jobs being advertised online, its easy to explore and find the training role that’s right for you.</p>
+          <p class="govuk-body">On this page you can find some suggested job boards that focus on Further Education jobs and search for your nearest college to explore opportunities local to you.
+
+</p>
         </div>
         <div class="fe-page__brand" aria-hidden="true">
-          <span>TRAIN OTHERS</span>
-          <span style="margin-top:6px;">Further Education</span>
+         <img src="/public/images/search-job-badge.png" alt="">
         </div>
       </div>
     </div>
@@ -541,8 +863,8 @@
   <section class="fe-page__full-bleed fe-page__section">
     <div class="govuk-width-container">
       <h2 class="fe-page__section-title" style="margin-bottom: 18px;">Search for jobs</h2>
-      <p class="govuk-body" style="max-width: 820px;">There are many places to search for jobs. We've listed a couple of websites that focus on Further Education roles.</p>
-      <p class="govuk-body" style="max-width: 820px;">Remember, it is worth looking at multiple websites because jobs will feature in different places.</p>
+      <p class="govuk-body" style="max-width: 820px;">There are many websites that focus on Further Education roles. Remember, it’s worth looking at multiple websites, as job sites will feature different job adverts.</p>
+      <p class="govuk-body" style="max-width: 820px;">If you'd rather get qualified before applying for jobs, check our Qualifications page for more information. You may be able to get funding to support your teacher training.</p>
     </div>
   </section>
 
@@ -605,10 +927,10 @@
     </div>
   </section>
 
-  <section class="fe-page__full-bleed fe-page__section">
+  <section class="fe-page__full-bleed">
     <div class="govuk-width-container">
       <div class="fe-page__tips-card">
-        <h2 class="fe-page__section-title" style="margin-bottom: 20px;">Tips for your FE job search</h2>
+        <h2 class="fe-page__section-title-2" style="margin-bottom: 20px;">Tips for your FE job search</h2>
         <p class="govuk-body">Jobs training others in Further Education may sometimes be advertised as FE lecturers or tutors, so remember to search for these roles too.</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>Education providers may also refer to trades or industry areas in different ways.</li>
@@ -637,7 +959,7 @@
 
   <section class="fe-page__full-bleed fe-page__section">
     <div class="govuk-width-container">
-      <h2 class="fe-page__section-title">Search for colleges by location</h2>
+      <h2 class="fe-page__section-title-2">Search for colleges by location</h2>
       <p class="govuk-body">Enter any postcode in England to find contact details for colleges within 25 miles.</p>
       <input class="govuk-input fe-page__search-input" type="text" aria-label="College postcode">
       <button type="button" class="govuk-button">Search</button>
@@ -649,7 +971,7 @@
       <div class="fe-page__footer-cta-grid">
         <div>
           <p class="fe-page__footer-cta-copy">Our FE advisers can help answer any questions you have about moving into a career in Further Education.</p>
-          <div class="fe-page__footer-cta-links">
+          <div class="fe-page__footer-cta-links fe-page__chevron-link">
             <a href="#">Talk to an adviser</a>
           </div>
         </div>
