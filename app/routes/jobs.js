@@ -1,6 +1,107 @@
 
 const _ = require('lodash');
 
+function getHomepageLocationOptions() {
+  return [
+    {
+      label: 'North West',
+      items: [
+        'Liverpool',
+        'Greater Manchester',
+        'Lancashire, Blackburn and Blackpool',
+        'Cheshire East',
+        'Cheshire West and Chester'
+      ]
+    },
+    {
+      label: 'Yorkshire and The Humber',
+      items: [
+        'Sheffield',
+        'Leeds',
+        'Bradford',
+        'Doncaster',
+        'North Riding Of Yorkshire'
+      ]
+    },
+    {
+      label: 'North East',
+      items: [
+        'Newcastle Upon Tyne',
+        'Middlesbrough',
+        'Sunderland',
+        'North Tyneside',
+        'Northumberland'
+      ]
+    },
+    {
+      label: 'London',
+      items: [
+        'Bexley',
+        'Havering',
+        'Barnet',
+        'Enfield',
+        'Kensington and Chelsea'
+      ]
+    },
+    {
+      label: 'South East',
+      items: [
+        'Hampshire',
+        'Surrey',
+        'Kent and Medway',
+        'West Sussex',
+        'East Sussex, Brighton and Hove'
+      ]
+    },
+    {
+      label: 'South West',
+      items: [
+        'Bristol',
+        'Gloucestershire and Gloucester',
+        'Devon, Plymouth and Torbay',
+        'Cornwall',
+        'Dorset, Bournemouth, Christchurch and Poole'
+      ]
+    },
+    {
+      label: 'West Midlands',
+      items: [
+        'Birmingham',
+        'Worcestershire',
+        'Shropshire and Telford and Wrekin',
+        'Staffordshire and Stoke',
+        'Warwickshire'
+      ]
+    },
+    {
+      label: 'East Midlands',
+      items: [
+        'Derby',
+        'Nottingham',
+        'Leicester',
+        'Lincolnshire and Lincoln',
+        'Northamptonshire and Northampton'
+      ]
+    },
+    {
+      label: 'East Of England',
+      items: [
+        'Essex, Southend and Thurrock',
+        'Bedfordshire',
+        'Hertfordshire',
+        'Suffolk',
+        'Norfolk'
+      ]
+    }
+  ].map(group => ({
+    label: group.label,
+    items: [group.label, ...group.items].map(item => ({
+      value: item,
+      text: item
+    }))
+  }))
+}
+
 module.exports = router => {
 
   router.get('/', (req, res) => {
@@ -123,6 +224,19 @@ module.exports = router => {
     })
   })
 
+  router.get('/apply-with-cv', (req, res) => {
+    let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
+    res.render('jobs/apply-with-cv', {
+      jobs
+    })
+  })
+
+  router.post('/apply-with-cv', (req, res) => {
+    res.render('jobs/apply-with-cv', {
+      jobs: req.session.data.jobs.filter(job => job.status == 'Active')
+    })
+  })
+
   router.get('/primary', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/primary', {
@@ -147,14 +261,16 @@ module.exports = router => {
   router.get('/home', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/home', {
-      jobs
+      jobs,
+      locationOptions: getHomepageLocationOptions()
     })
   })
 
   router.get('/home-v2', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/home-v2', {
-      jobs
+      jobs,
+      locationOptions: getHomepageLocationOptions()
     })
   })
 
@@ -239,6 +355,48 @@ module.exports = router => {
   //FE ONLY SERVICE Option A
 
   const nonTeachingRolesData = require('../data/non-teaching-roles')
+  const feSubjectItems = [
+    { value: 'Accounting', text: 'Accounting', hint: 'includes Finance and accounting' },
+    { value: 'Art and design', text: 'Art and design' },
+    { value: 'Biology', text: 'Biology' },
+    { value: 'Business studies', text: 'Business studies' },
+    { value: 'Chemistry', text: 'Chemistry' },
+    { value: 'Citizenship', text: 'Citizenship' },
+    { value: 'Classics', text: 'Classics', hint: 'includes latin' },
+    { value: 'Computing', text: 'Computing', hint: 'includes Computer science, Information technology, and ICT' },
+    { value: 'Dance', text: 'Dance' },
+    { value: 'Design and technology', text: 'Design and technology', hint: 'includes Product design, Textiles and Systems and control' },
+    { value: 'Drama', text: 'Drama', hint: 'includes Theatre studies and Performing arts' },
+    { value: 'Economics', text: 'Economics' },
+    { value: 'Engineering', text: 'Engineering' },
+    { value: 'English', text: 'English', hint: 'includes English language and literature' },
+    { value: 'Food technology', text: 'Food technology', hint: 'includes Hospitality and catering' },
+    { value: 'French', text: 'French' },
+    { value: 'Geography', text: 'Geography' },
+    { value: 'German', text: 'German' },
+    { value: 'Health and social care', text: 'Health and social care' },
+    { value: 'History', text: 'History' },
+    { value: 'Humanities', text: 'Humanities' },
+    { value: 'ICT', text: 'ICT' },
+    { value: 'Languages', text: 'Languages', hint: 'includes MFL (Modern Foreign Languages)' },
+    { value: 'Law', text: 'Law' },
+    { value: 'Mandarin', text: 'Mandarin' },
+    { value: 'Mathematics', text: 'Mathematics' },
+    { value: 'Media studies', text: 'Media studies' },
+    { value: 'Music', text: 'Music' },
+    { value: 'Philosophy', text: 'Philosophy' },
+    { value: 'Physical education', text: 'Physical education' },
+    { value: 'Physics', text: 'Physics' },
+    { value: 'Politics', text: 'Politics' },
+    { value: 'PSHE', text: 'PSHE' },
+    { value: 'Psychology', text: 'Psychology' },
+    { value: 'Religious education', text: 'Religious education', hint: 'includes Religious studies' },
+    { value: 'Science', text: 'Science' },
+    { value: 'Social sciences', text: 'Social sciences' },
+    { value: 'Sociology', text: 'Sociology' },
+    { value: 'Spanish', text: 'Spanish' },
+    { value: 'Statistics', text: 'Statistics' }
+  ]
 
   router.get('/jobsfemerge', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
@@ -246,7 +404,7 @@ module.exports = router => {
       jobs,
       nonTeachingRoles: nonTeachingRolesData.roles,
       nonTeachingRoleCategories: nonTeachingRolesData.categories,
-      showNonTeachingRoles: true,
+      showNonTeachingRoles: false,
       filterFormAction: '/femerge',
       clearFiltersHref: '/femerge/clear-filters',
       showFeSubjects: true
@@ -259,7 +417,7 @@ module.exports = router => {
       jobs,
       nonTeachingRoles: nonTeachingRolesData.roles,
       nonTeachingRoleCategories: nonTeachingRolesData.categories,
-      showNonTeachingRoles: true,
+      showNonTeachingRoles: false,
       filterFormAction: '/femerge',
       clearFiltersHref: '/femerge/clear-filters',
       showFeSubjects: true
@@ -419,7 +577,52 @@ module.exports = router => {
     }
 
     req.session.data.feJob = {
+      ...(_.get(req, 'session.data.feJob') || {}),
       title
+    }
+
+    res.redirect('/fe/subjects')
+  })
+
+  router.get('/fe/subjects', (req, res) => {
+    res.render('jobs/fe/subjects', {
+      job: {
+        subjectSearch: '',
+        subjects: [],
+        ...(_.get(req, 'session.data.feJob') || {})
+      },
+      subjects: feSubjectItems
+    })
+  })
+
+  router.post('/fe/subjects', (req, res) => {
+    const subjectSearch = _.get(req, 'body.feJob.subjectSearch', '').trim()
+    const validSubjectIds = new Set(feSubjectItems.map(subject => subject.value))
+    const submittedSubjects = _.castArray(_.get(req, 'body.feJob.subjects', []))
+      .filter(subject => validSubjectIds.has(subject))
+    const normalisedSubjectSearch = subjectSearch.toLowerCase()
+    const selectedSubjectMatchesSearch = submittedSubjects.some(subject =>
+      subject.toLowerCase().includes(normalisedSubjectSearch)
+    )
+
+    if (!submittedSubjects.length || (subjectSearch && !selectedSubjectMatchesSearch)) {
+      return res.status(400).render('jobs/fe/subjects', {
+        job: {
+          ...(_.get(req, 'session.data.feJob') || {}),
+          subjectSearch,
+          subjects: submittedSubjects
+        },
+        subjects: feSubjectItems,
+        errors: {
+          subjects: 'Select a subject from the list, or leave this blank'
+        }
+      })
+    }
+
+    req.session.data.feJob = {
+      ...(_.get(req, 'session.data.feJob') || {}),
+      subjectSearch,
+      subjects: submittedSubjects
     }
 
     res.redirect('/fe/location')
@@ -439,11 +642,11 @@ module.exports = router => {
   router.get('/fehome', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/fe/homefe', {
-      jobs
+      jobs,
+      locationOptions: getHomepageLocationOptions()
     })
   })
 
-  
+
 
 }
-

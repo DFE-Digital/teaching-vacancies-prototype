@@ -42,9 +42,25 @@
       <div>
         <div class="app-jobs">
 
+          {% if data['sort'] %}
+            {% set currentSort = data['sort'] %}
+          {% elseif data['location'] %}
+            {% set currentSort = 'distance' %}
+          {% else %}
+            {% set currentSort = 'newest' %}
+          {% endif %}
+
           <div class="govuk-grid-column-one-full">
               <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">
+                  {% if currentSort == 'closing' %}
+                    Sorted by closing date
+                  {% elseif currentSort == 'distance' %}
+                    Sorted by distance
+                  {% else %}
+                    Sorted by newest job
+                  {% endif %}
+                </h2><br/>
               </div>
             <div style="display:inline-block; float:right">
               <form id="sortform" action="/jobs/search/postcode">
@@ -53,9 +69,9 @@
                     Sort by
                   </label>
                   <select class="govuk-select" id="sort" name="sort">
-                    <option value="newest" selected>Newest job</option>
-                    <option value="closing">Closing date</option>
-                    {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
+                    <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>
+                    <option value="distance" {% if currentSort == 'distance' %}selected{% endif %}>Distance</option>
+                    <option value="closing" {% if currentSort == 'closing' %}selected{% endif %}>Closing date</option>
                   </select>
                 </div>
               </form>
@@ -71,7 +87,15 @@
             
           </div>
 
-        {% for job in jobs|sort(attribute='startDate', reverse=false) %}
+        {% if currentSort == 'closing' %}
+          {% set job_list = jobs|sort(attribute='closingDate', reverse=false) %}
+        {% elseif currentSort == 'distance' and data['location'] %}
+          {% set job_list = jobs|sort(attribute='distance', reverse=false) %}
+        {% else %}
+          {% set job_list = jobs|sort(attribute='publishDate', reverse=true) %}
+        {% endif %}
+
+        {% for job in job_list %}
 
           {% if loop.index0 < 10 %} 
 
@@ -86,12 +110,6 @@
             {% endset %}
 
             <div class="app-jobs__item">
-              {% if job.organisation.logo != 'Not entered' %}
-              <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-              </div>
-              {% endif %}
               <h2 class="govuk-heading-m">
                 
                 <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;

@@ -1,52 +1,32 @@
-
 module.exports = router => {
 
-  //QTS STUFF
+  // QTS STUFF
 
   router.get('/profile/teaching-status/qts', (req, res) => {
     let profile = req.session.user.profile
 
-    let options = [{
-      value: 'Yes',
-      text: 'Yes',
-      checked: profile.qts && profile.qts.includes('Yes')
-    }, {
-      value: 'No',
-      text: 'No',
-      checked: profile.qts && profile.qts.includes('No')
-    }, {
-      value: 'I’m on track to or have requested QTS',
-      text: 'I’m on track to or have requested QTS',
-      checked: profile.qts && profile.qts.includes('I’m on track to or have requested QTS')
-    }]
-
-    let qtsAwardedYear = profile.qtsAwardedYear
-
     res.render('profile/teaching-status/qts', {
-      options,
-      qtsAwardedYear
+      profile
     })
   })
 
   router.post('/profile/teaching-status/qts', (req, res) => {
     let profile = req.session.user.profile
     profile.qts = req.body.profile.qts
+    profile.ect = req.body.profile.ect
     profile.qtsAwardedYear = req.body.profile.qtsAwardedYear
+    profile.skillsAndExperience = req.body.profile.skillsAndExperience
+    profile.whatSchoolOffers = req.body.profile.whatSchoolOffers
+    profile.addFurtherDetailsAboutRole = req.body.profile.addFurtherDetailsAboutRole
 
-    if( profile.qts == 'No' ){
-      res.redirect('/profile/teaching-status/trn_optional')
-    }
-    else if( profile.qts == "I’m on track to or have requested QTS" ){
-      res.redirect('/profile/teaching-status/trn_optional')
-    }else if( profile.qts == "I'm  not looking for a teaching job" ){
-      res.redirect('/profile/teaching-status/review')
-    }else{
+    if (profile.qts == 'Yes, QTS is required') {
       res.redirect('/profile/teaching-status/trn')
+    } else {
+      res.redirect('/profile/teaching-status/trn_optional')
     }
+  })
 
-  }) 
-
-  //TRN details
+  // TRN details
 
   router.get('/profile/teaching-status/trn_optional', (req, res) => {
     let trnNumber = req.session.user.profile.TRN
@@ -69,12 +49,11 @@ module.exports = router => {
 
     var addressData = req.body.profile.TRN
 
-    if( addressData == ""){
-
-      //create errorList array
+    if (addressData == "") {
+      // create errorList array
       let errorList = []
 
-      //if answer is blank, create an error message
+      // if answer is blank, create an error message
       errorList.push({
         href: '#profile-provideAddress',
         text: 'You must enter your Teacher reference number to continue'
@@ -85,13 +64,12 @@ module.exports = router => {
         errorList,
       })
 
-    }else{
+    } else {
       res.redirect('/profile/teaching-status/review')
     }
-
   })
 
-  //// // REVIEW:
+  //// REVIEW:
 
   router.get('/profile/teaching-status/review', (req, res) => {
     let profile = req.session.user.profile
@@ -100,6 +78,4 @@ module.exports = router => {
       profile
     })
   })
-
-
 }

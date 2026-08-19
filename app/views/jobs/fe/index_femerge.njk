@@ -74,12 +74,12 @@
             <div class="govuk-grid-column-full">
               <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
             </div>
-            
+
           </div>
 
         {% for job in jobs|sort(attribute='startDate', reverse=false) %}
 
-          {% if loop.index0 < 10 %} 
+          {% if loop.index0 < 10 %}
 
             {% set address %}
               {% for part, value in job.organisation.address %}
@@ -93,7 +93,7 @@
 
             <div class="app-jobs__item">
               <h2 class="govuk-heading-m">
-                
+
                 <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
                 {% if job.isUsingApplicationForm == 'Yes' %}
@@ -219,7 +219,7 @@
     classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
   }) }} #}
 
-{% endblock %} 
+{% endblock %}
 
 {% block pageScripts %}
   <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>

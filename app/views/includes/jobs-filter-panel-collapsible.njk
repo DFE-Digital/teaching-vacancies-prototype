@@ -165,10 +165,10 @@
       {% endif %}
 
 
-      <div class="app-c-option-select js-collapsible {% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support, assistants, cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+      <div class="app-c-option-select js-collapsible {% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support, assistants, cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole or 'Leadership and management' in filterRole or 'Business support, administration and corporate services' in filterRole or 'Student support, learning and progress' in filterRole or 'Marketing and communications' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
 
           <div class="app-c-option-select__heading js-container-heading">
-              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support, assistants, cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Support <span class="govuk-visually-hidden">jobs</span></button>
+              <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support, assistants, cover supervisor' in filterRole or 'Other support roles' in filterRole or 'Administration, HR, data and finance' in filterRole or 'Catering, cleaning and site management' in filterRole  or 'IT support' in filterRole or 'Leadership and management' in filterRole or 'Business support, administration and corporate services' in filterRole or 'Student support, learning and progress' in filterRole or 'Marketing and communications' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Support <span class="govuk-visually-hidden">jobs</span></button>
               <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
               <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
           </div>
@@ -212,6 +212,18 @@
                                       </label>
                                   </li>
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
+                                      <input {% if 'Leadership and management' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-leadership-and-management" value="Leadership and management">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-leadership-and-management">
+                                          Leadership and management
+                                      </label>
+                                  </li>
+                                  <li class="govuk-checkboxes__item" data-testid="job-name">
+                                      <input {% if 'Business support, administration and corporate services' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-business-support-administration-and-corporate-services" value="Business support, administration and corporate services">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-business-support-administration-and-corporate-services">
+                                          Business support, administration and corporate services
+                                      </label>
+                                  </li>
+                                  <li class="govuk-checkboxes__item" data-testid="job-name">
                                       <input {% if 'IT support' in filterRole  %} checked {% endif %}  type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-it" value="IT support">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-it">
                                           IT support
@@ -221,6 +233,30 @@
                                       <input {% if 'Pastoral, health and welfare' in filterRole  %} checked {% endif %}  type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-pastoral" value="Pastoral, health and welfare">
                                       <label class="govuk-label govuk-checkboxes__label" for="job-pastoral">
                                           Pastoral, health and welfare
+                                      </label>
+                                  </li>
+                                  <li class="govuk-checkboxes__item" data-testid="job-name">
+                                      <input {% if 'Leadership and management' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-leadership-and-management" value="Leadership and management">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-leadership-and-management">
+                                          Leadership and management
+                                      </label>
+                                  </li>
+                                  <li class="govuk-checkboxes__item" data-testid="job-name">
+                                      <input {% if 'Business support, administration and corporate services' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-business-support-administration-and-corporate-services" value="Business support, administration and corporate services">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-business-support-administration-and-corporate-services">
+                                          Business support, administration and corporate services
+                                      </label>
+                                  </li>
+                                  <li class="govuk-checkboxes__item" data-testid="job-name">
+                                      <input {% if 'Student support, learning and progress' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-student-support-learning-and-progress" value="Student support, learning and progress">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-student-support-learning-and-progress">
+                                          Student support, learning and progress
+                                      </label>
+                                  </li>
+                                  <li class="govuk-checkboxes__item" data-testid="job-name">
+                                      <input {% if 'Marketing and communications' in filterRole  %} checked {% endif %} type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-marketing-and-communications" value="Marketing and communications">
+                                      <label class="govuk-label govuk-checkboxes__label" for="job-marketing-and-communications">
+                                          Marketing and communications
                                       </label>
                                   </li>
                                   <li class="govuk-checkboxes__item" data-testid="job-name">
@@ -703,6 +739,18 @@
                 {% if 'Other support roles' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
                 {% endif %}
+                {% if 'Leadership and management' in filterRole %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Leadership and management</a></li>
+                {% endif %}
+                {% if 'Business support, administration and corporate services' in filterRole %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Business support, administration and corporate services</a></li>
+                {% endif %}
+                {% if 'Student support, learning and progress' in filterRole %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Student support, learning and progress</a></li>
+                {% endif %}
+                {% if 'Marketing and communications' in filterRole %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Marketing and communications</a></li>
+                {% endif %}
 
                 <!-- // other -->
 
@@ -718,7 +766,7 @@
                  {% if 'Pastoral, health and welfare' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Pastoral, health and welfare</a></li>
                 {% endif %}
-                 {% if 'Other support roles' in filterRole %}
+                {% if 'Other support roles' in filterRole %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
                 {% endif %}
 

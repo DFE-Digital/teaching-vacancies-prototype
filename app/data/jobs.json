@@ -692,5 +692,587 @@
         "closingTime": "5pm",
         "startDate": "2024-01-10T09:00:00.000Z",
         "distance": 2.0
+    },
+    {
+        "id": "676676690",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "london-borough-kensington-chelsea-001",
+            "name": "Chelsea Academy",
+            "address": {
+                "address1": "14 Chelsea Embankment",
+                "town": "Kensington and Chelsea",
+                "postcode": "SW10 0AB"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "800",
+            "website": "https://www.chelseaacademy.example",
+            "emailAddress": "jobs@chelseaacademy.example",
+            "about": "Chelsea Academy is a high-achieving secondary school with a strong focus on pupil progress and subject expertise.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/math",
+            "photo": "https://loremflickr.com/640/320/math"
+        },
+        "locations": [
+            {
+                "name": "Chelsea Academy",
+                "address": {
+                    "address1": "14 Chelsea Embankment",
+                    "town": "Kensington and Chelsea",
+                    "postcode": "SW10 0AB"
+                }
+            }
+        ],
+        "borough": "Kensington and Chelsea",
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Mathematics"],
+        "title": "Maths Teacher",
+        "searches": ["Maths", "Mathematics", "Maths Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "020 1111 2222",
+        "skillsAndExperience": "Strong subject knowledge in mathematics and the ability to teach across Key Stages 3 and 4.",
+        "publishDate": "2026-08-12T09:00:00.000Z",
+        "closingDate": "2026-09-18T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-11-01T09:00:00.000Z",
+        "distance": 1.8
+    },
+    {
+        "id": "676676691",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "london-borough-bexley-001",
+            "name": "Bexley Grammar School",
+            "address": {
+                "address1": "2 Russell Close",
+                "town": "Bexley",
+                "postcode": "DA5 1AA"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "1200",
+            "website": "https://www.bexleygrammar.example",
+            "emailAddress": "jobs@bexleygrammar.example",
+            "about": "A comprehensive secondary school committed to academic excellence and inclusive teaching.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/english",
+            "photo": "https://loremflickr.com/640/320/english"
+        },
+        "locations": [
+            {
+                "name": "Bexley Grammar School",
+                "address": {
+                    "address1": "2 Russell Close",
+                    "town": "Bexley",
+                    "postcode": "DA5 1AA"
+                }
+            }
+        ],
+        "borough": "Bexley",
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["English"],
+        "title": "English Teacher",
+        "searches": ["English", "English Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "020 2222 3333",
+        "skillsAndExperience": "Experience teaching English to Key Stages 3 and 4 with a passion for literacy.",
+        "publishDate": "2026-08-11T09:00:00.000Z",
+        "closingDate": "2026-09-25T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-11-01T09:00:00.000Z",
+        "distance": 8.7
+    },
+    {
+        "id": "676676692",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "london-borough-havering-001",
+            "name": "Havering Science School",
+            "address": {
+                "address1": "41 North Street",
+                "town": "Havering",
+                "postcode": "RM1 1AA"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "950",
+            "website": "https://www.haveringscience.example",
+            "emailAddress": "jobs@haveringscience.example",
+            "about": "A well regarded science specialist school serving East London families.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/science",
+            "photo": "https://loremflickr.com/640/320/science"
+        },
+        "locations": [
+            {
+                "name": "Havering Science School",
+                "address": {
+                    "address1": "41 North Street",
+                    "town": "Havering",
+                    "postcode": "RM1 1AA"
+                }
+            }
+        ],
+        "borough": "Havering",
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Science"],
+        "title": "Science Teacher",
+        "searches": ["Science", "Science Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time", "Part time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "020 3333 4444",
+        "skillsAndExperience": "Experience teaching science with practical laboratory work across KS3 and KS4.",
+        "publishDate": "2026-08-10T09:00:00.000Z",
+        "closingDate": "2026-09-22T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-10-01T09:00:00.000Z",
+        "distance": 6.4
+    },
+    {
+        "id": "676676693",
+        "jobtype": "Support",
+        "status": "Active",
+        "organisation": {
+            "id": "london-borough-enfield-001",
+            "name": "Enfield Learning Trust",
+            "address": {
+                "address1": "7 Green Lanes",
+                "town": "Enfield",
+                "postcode": "EN1 1AA"
+            },
+            "type": "Academy",
+            "phase": "Primary school",
+            "ageGroup": "4 to 11",
+            "size": "420",
+            "website": "https://www.enfieldlearning.example",
+            "emailAddress": "jobs@enfieldlearning.example",
+            "about": "A supportive primary school trust looking for a teaching assistant to join the classroom team.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/teaching",
+            "photo": "https://loremflickr.com/640/320/teaching"
+        },
+        "locations": [
+            {
+                "name": "Enfield Learning Trust",
+                "address": {
+                    "address1": "7 Green Lanes",
+                    "town": "Enfield",
+                    "postcode": "EN1 1AA"
+                }
+            }
+        ],
+        "borough": "Enfield",
+        "hybrid": "No",
+        "role": ["Teaching assistant"],
+        "subjects": ["Student Support"],
+        "title": "Teaching Assistant",
+        "searches": ["Teaching assistant", "Support"],
+        "phase": "Primary school",
+        "workingPatterns": ["Part time"],
+        "salaryDetails": ["Band 3"],
+        "actualSalaryDetails": "\u00a321,000 - \u00a323,000",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "No",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "020 4444 5555",
+        "skillsAndExperience": "A caring and proactive teaching assistant with strong classroom support skills.",
+        "publishDate": "2026-08-09T09:00:00.000Z",
+        "closingDate": "2026-09-28T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-10-15T09:00:00.000Z",
+        "distance": 4.2
+    },
+    {
+        "id": "6766766931",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "london-borough-barnet-001",
+            "name": "Barnet Academy",
+            "address": {
+                "address1": "12 Station Road",
+                "town": "Barnet",
+                "postcode": "EN5 1AA"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "900",
+            "website": "https://www.barnetacademy.example",
+            "emailAddress": "jobs@barnetacademy.example",
+            "about": "A large secondary school in north London with a strong focus on subject expertise and pupil support.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/book",
+            "photo": "https://loremflickr.com/640/320/book"
+        },
+        "locations": [
+            {
+                "name": "Barnet Academy",
+                "address": {
+                    "address1": "12 Station Road",
+                    "town": "Barnet",
+                    "postcode": "EN5 1AA"
+                }
+            }
+        ],
+        "borough": "Barnet",
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Mathematics"],
+        "title": "Maths Teacher",
+        "searches": ["Maths", "Mathematics", "Maths Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "020 5555 6666",
+        "skillsAndExperience": "Strong subject knowledge in mathematics and the ability to teach across Key Stages 3 and 4.",
+        "publishDate": "2026-08-08T09:00:00.000Z",
+        "closingDate": "2026-09-20T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-11-01T09:00:00.000Z",
+        "distance": 2.6
+    },
+    {
+        "id": "676676694",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "north-west-liverpool-001",
+            "name": "Liverpool Academy",
+            "address": {
+                "address1": "18 Hope Street",
+                "town": "Liverpool",
+                "postcode": "L1 9BY"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "780",
+            "website": "https://www.liverpoolacademy.example",
+            "emailAddress": "jobs@liverpoolacademy.example",
+            "about": "A welcoming Liverpool secondary school with a strong focus on progress and ambition.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/liverpool",
+            "photo": "https://loremflickr.com/640/320/liverpool"
+        },
+        "locations": [
+            {
+                "name": "Liverpool Academy",
+                "address": {
+                    "address1": "18 Hope Street",
+                    "town": "Liverpool",
+                    "postcode": "L1 9BY"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Mathematics"],
+        "title": "Maths Teacher",
+        "searches": ["Maths", "Mathematics", "Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0151 111 2222",
+        "publishDate": "2026-08-11T09:00:00.000Z",
+        "closingDate": "2026-09-20T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-11-01T09:00:00.000Z",
+        "distance": 9.2
+    },
+    {
+        "id": "676676695",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "north-east-newcastle-001",
+            "name": "Newcastle Primary School",
+            "address": {
+                "address1": "4 Grey Street",
+                "town": "Newcastle Upon Tyne",
+                "postcode": "NE1 4BB"
+            },
+            "type": "School",
+            "phase": "Primary school",
+            "ageGroup": "4 to 11",
+            "size": "410",
+            "website": "https://www.newcastleprimary.example",
+            "emailAddress": "jobs@newcastleprimary.example",
+            "about": "A friendly North East primary school looking to strengthen the team.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/school",
+            "photo": "https://loremflickr.com/640/320/school"
+        },
+        "locations": [
+            {
+                "name": "Newcastle Primary School",
+                "address": {
+                    "address1": "4 Grey Street",
+                    "town": "Newcastle Upon Tyne",
+                    "postcode": "NE1 4BB"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["English"],
+        "title": "Primary Teacher",
+        "searches": ["Primary teacher", "Teacher"],
+        "phase": "Primary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0191 111 3333",
+        "publishDate": "2026-08-10T09:00:00.000Z",
+        "closingDate": "2026-09-21T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-10-01T09:00:00.000Z",
+        "distance": 7.4
+    },
+    {
+        "id": "676676696",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "south-east-surrey-001",
+            "name": "Surrey Grammar School",
+            "address": {
+                "address1": "11 High Street",
+                "town": "Surrey",
+                "postcode": "GU1 1AA"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "1000",
+            "website": "https://www.surreyschool.example",
+            "emailAddress": "jobs@surreyschool.example",
+            "about": "A high performing South East school with a strong academic record.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/math",
+            "photo": "https://loremflickr.com/640/320/math"
+        },
+        "locations": [
+            {
+                "name": "Surrey Grammar School",
+                "address": {
+                    "address1": "11 High Street",
+                    "town": "Surrey",
+                    "postcode": "GU1 1AA"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Mathematics"],
+        "title": "Maths Teacher",
+        "searches": ["Maths", "Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "01483 111 444",
+        "publishDate": "2026-08-09T09:00:00.000Z",
+        "closingDate": "2026-09-24T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-11-01T09:00:00.000Z",
+        "distance": 12.6
+    },
+    {
+        "id": "676676697",
+        "jobtype": "Support",
+        "status": "Active",
+        "organisation": {
+            "id": "south-west-bristol-001",
+            "name": "Bristol College",
+            "address": {
+                "address1": "25 College Road",
+                "town": "Bristol",
+                "postcode": "BS1 1AA"
+            },
+            "type": "College",
+            "phase": "Further education",
+            "ageGroup": "16 to adult",
+            "size": "620",
+            "website": "https://www.bristolcollege.example",
+            "emailAddress": "jobs@bristolcollege.example",
+            "about": "A South West college seeking a student support assistant.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners.",
+            "logo": "https://loremflickr.com/100/100/college",
+            "photo": "https://loremflickr.com/640/320/college"
+        },
+        "locations": [
+            {
+                "name": "Bristol College",
+                "address": {
+                    "address1": "25 College Road",
+                    "town": "Bristol",
+                    "postcode": "BS1 1AA"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": ["Support"],
+        "subjects": ["Student Support"],
+        "title": "Student Support Assistant",
+        "searches": ["Support", "Student support"],
+        "phase": "Further education",
+        "workingPatterns": ["Part time"],
+        "salaryDetails": ["Band 3"],
+        "actualSalaryDetails": "\u00a321,000 - \u00a323,000",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "No",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0117 111 5555",
+        "publishDate": "2026-08-08T09:00:00.000Z",
+        "closingDate": "2026-09-26T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-10-15T09:00:00.000Z",
+        "distance": 4.1
+    },
+    {
+        "id": "676676698",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "west-midlands-birmingham-001",
+            "name": "Birmingham Secondary School",
+            "address": {
+                "address1": "8 Broad Street",
+                "town": "Birmingham",
+                "postcode": "B1 1AA"
+            },
+            "type": "School",
+            "phase": "Secondary school",
+            "ageGroup": "11 to 18",
+            "size": "850",
+            "website": "https://www.birminghamsecondary.example",
+            "emailAddress": "jobs@birminghamsecondary.example",
+            "about": "A city school recruiting a physics teacher.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/science",
+            "photo": "https://loremflickr.com/640/320/science"
+        },
+        "locations": [
+            {
+                "name": "Birmingham Secondary School",
+                "address": {
+                    "address1": "8 Broad Street",
+                    "town": "Birmingham",
+                    "postcode": "B1 1AA"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Physics"],
+        "title": "Physics Teacher",
+        "searches": ["Physics", "Teacher"],
+        "phase": "Secondary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "Yes",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "0121 111 6666",
+        "publishDate": "2026-08-07T09:00:00.000Z",
+        "closingDate": "2026-09-23T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-11-01T09:00:00.000Z",
+        "distance": 5.8
+    },
+    {
+        "id": "676676699",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "east-of-england-hertfordshire-001",
+            "name": "Hertfordshire Academy",
+            "address": {
+                "address1": "14 Park Lane",
+                "town": "Hertfordshire",
+                "postcode": "AL1 1AA"
+            },
+            "type": "Academy",
+            "phase": "Primary school",
+            "ageGroup": "4 to 11",
+            "size": "500",
+            "website": "https://www.hertsacademy.example",
+            "emailAddress": "jobs@hertsacademy.example",
+            "about": "A Hertfordshire primary school looking for a class teacher.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of children and young people.",
+            "logo": "https://loremflickr.com/100/100/teaching",
+            "photo": "https://loremflickr.com/640/320/teaching"
+        },
+        "locations": [
+            {
+                "name": "Hertfordshire Academy",
+                "address": {
+                    "address1": "14 Park Lane",
+                    "town": "Hertfordshire",
+                    "postcode": "AL1 1AA"
+                }
+            }
+        ],
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["English"],
+        "title": "Class Teacher",
+        "searches": ["Teacher", "Primary"],
+        "phase": "Primary school",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["MPS/UPS"],
+        "fullTimeEquivalentSalaryDetails": "\u00a334,514 - \u00a346,001",
+        "isUsingApplicationForm": "No",
+        "offersSchoolVisits": "Yes",
+        "hasContactPhoneNumber": "Yes",
+        "contactPhoneNumber": "01727 111 777",
+        "publishDate": "2026-08-06T09:00:00.000Z",
+        "closingDate": "2026-09-27T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2026-10-01T09:00:00.000Z",
+        "distance": 6.9
     }
 ]

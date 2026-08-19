@@ -16,7 +16,7 @@
   }) if flash and flash.length }}
 
 <div class="home_index">
-
+   
     <div class="search" style="padding-bottom:50px;">
 		<h1 class="govuk-heading-l">Find school and college jobs near you</h1>
 		<form id="filter" class="home" method="get" action="/search/home" novalidate>
@@ -25,9 +25,10 @@
 					<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
                     <input class="govuk-input" id="keywords" name="keywords" type="text">
 				</div>
-                <div class="govuk-form-group">
-					<label class="govuk-label govuk-label--s" for="keyword-field">City, county or postcode</label>
+				<div class="govuk-form-group">
+					<label class="govuk-label govuk-label--s" for="location-field">Location</label>
                     <input class="govuk-input" id="location-field" name="location" type="text">
+                    <p class="govuk-hint govuk-!-margin-top-1">For London searches, you can narrow down to a borough on the results page.</p>
 				</div>
 				<div class="govuk-form-group" style="display:none;">
 					<label class="govuk-label govuk-label--s" for="radius">
@@ -40,7 +41,7 @@
 				<button class="govuk-button govuk-button--start" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</button>
 			</div>
 		</form>
-		<!--
+		<!-- 
 			<h3 class="govuk-heading-s">Popular searches:</h3>
 		<div class="search__popular">
 			<a class="govuk-link govuk-link--no-visited-state"  href="/primary-school-jobs">Primary</a><a class="govuk-link govuk-link--no-visited-state"  href="/maths-teacher-jobs">Maths</a><a class="govuk-link govuk-link--no-visited-state"  href="/science-teacher-jobs">Science</a><a class="govuk-link govuk-link--no-visited-state"  href="/teaching-assistant-jobs">Teaching Assistant</a><a class="govuk-link govuk-link--no-visited-state"  href="/headteacher-jobs">Headteacher</a>
@@ -72,12 +73,12 @@
 			<div class="govuk-accordion__section-header">
 			<h2 class="govuk-accordion__section-heading">
 				<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-					School jobs by role, phase and subject
+					School jobs by role, phase and subject 
 				</span>
 			</h2>
 			</div>
 			<div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1" style="display: block !important;">
-
+				
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
 					<h3 class="govuk-heading-s">Teaching and leadership roles</h3>
 					<ul class="govuk-list">
@@ -131,7 +132,7 @@
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-role=Pastoral,+health+and+welfare">Pastoral, health and welfare<span class="govuk-visually-hidden">jobs</span></a>
 						</li>
-
+						
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-role=Other+support+roles">Other support roles<span class="govuk-visually-hidden">jobs</span></a>
 						</li>
@@ -142,22 +143,22 @@
 					<h3 class="govuk-heading-s">Education phases</h3>
 					<ul class="govuk-list">
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Nursery+school"><span class="govuk-visually-hidden">View 40</span> Nursery<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Nursery+school"><span class="govuk-visually-hidden">View 40</span> Nursery<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Primary+school">Primary<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Primary+school">Primary<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Secondary+school">Secondary<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state"  href="/search/applications?filter-phase=Secondary+school">Secondary<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Sixth+form+or+college">Sixth form or college<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Sixth+form+or+college">Sixth form or college<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 					</ul>
 					<h3 class="govuk-heading-s">Working patterns</h3>
 					<ul class="govuk-list">
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state"  href="#">Full time<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Full time<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="#">Part time<span class="govuk-visually-hidden">jobs</span></a>
@@ -165,10 +166,10 @@
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="#">Job share<span class="govuk-visually-hidden">jobs</span></a>
 						</li>
-
+						
 					</ul>
 				</div>
-
+				
 
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-full">
 					<h3 class="govuk-heading-s">Subjects</h3>
@@ -184,7 +185,7 @@
 						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/dance-drama-music-teacher-jobs">Dance, Drama and Music<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(67)</span>
 						</li>
 						<li>
-						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/english-media-studies-teacher-jobs">English and Media studies<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(191)</span>
+						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/english-media-studies-teacher-jobs">English and Media Studies<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(191)</span>
 						</li>
 						<li>
 						<a class="govuk-link" data-action="click-&gt;tracked-link#track auxclick-&gt;tracked-link#track contextmenu-&gt;tracked-link#track" data-controller="tracked-link" data-link-type="search_keyword_quick_link" data-tracked-link-target="link" href="/maths-teacher-jobs">Maths<span class="govuk-visually-hidden">jobs</span></a> <span aria-hidden="true">(159)</span>
@@ -291,12 +292,12 @@
 			<div class="govuk-accordion__section-header">
 			<h2 class="govuk-accordion__section-heading">
 				<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-					Further education jobs by role, phase and subject
+					Further education jobs by role, phase and subject 
 				</span>
 			</h2>
 			</div>
 			<div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1" style="display: block !important;">
-
+				
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
 					<h3 class="govuk-heading-s">Teaching and leadership roles</h3>
 					<ul class="govuk-list">
@@ -309,18 +310,18 @@
 					<h3 class="govuk-heading-s">Education phases</h3>
 					<ul class="govuk-list">
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Sixth+form">Sixth form or college<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?filter-phase=Sixth+form">Sixth form or college<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
-
+						
 					</ul>
 				</div>
 
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-one-third">
-
+					
 					<h3 class="govuk-heading-s">Working patterns</h3>
 					<ul class="govuk-list">
 						<li>
-							<a class="govuk-link govuk-link--no-visited-state"  href="#">Full time<span class="govuk-visually-hidden">jobs</span></a>
+							<a class="govuk-link govuk-link--no-visited-state"  href="#">Full time<span class="govuk-visually-hidden">jobs</span></a> 
 						</li>
 						<li>
 							<a class="govuk-link govuk-link--no-visited-state"  href="#">Part time<span class="govuk-visually-hidden">jobs</span></a>
@@ -330,7 +331,7 @@
 						</li>
 					</ul>
 				</div>
-
+				
 
 				<div class="homepage-landing-page-link-group-component govuk-grid-column-full">
 					<h3 class="govuk-heading-s">Subjects</h3>
@@ -429,14 +430,14 @@
 			</h2>
 			</div>
 			<div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-
-
+				
+				
 				<div class="govuk-grid-column-one-third">
 					<div class="homepage-landing-page-link-group-component">
 						<h3 class="govuk-heading-s govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 301</span> North West<span class="govuk-visually-hidden">jobs</span></a> </h3>
 						<ul class="govuk-list govuk-list--bullet">
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 3</span> Liverpool<span class="govuk-visually-hidden">jobs</span></a>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 3</span> Liverpool<span class="govuk-visually-hidden">jobs</span></a> 
 							</li>
 							<li>
 								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 133</span> Greater Manchester<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(133)</span>
@@ -495,22 +496,22 @@
 				</div>
 				<div class="govuk-grid-column-one-third">
 					<div class="homepage-landing-page-link-group-component">
-						<h3 class="govuk-heading-s govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 428</span> London<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(428)</span></h3>
+						<h3 class="govuk-heading-s govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=London"><span class="govuk-visually-hidden">View 428</span> London<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(428)</span></h3>
 						<ul class="govuk-list govuk-list--bullet">
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 48</span> Bexley<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(48)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=London&borough=Bexley"><span class="govuk-visually-hidden">View 48</span> Bexley<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(48)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 13</span> Havering<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(13)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=London&borough=Havering"><span class="govuk-visually-hidden">View 13</span> Havering<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(13)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 19</span> Barnet<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(19)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=London&borough=Barnet"><span class="govuk-visually-hidden">View 19</span> Barnet<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(19)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 21</span> Enfield<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(21)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=London&borough=Enfield"><span class="govuk-visually-hidden">View 21</span> Enfield<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(21)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 40</span> Bromley<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(40)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=London&borough=Bromley"><span class="govuk-visually-hidden">View 40</span> Bromley<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(40)</span>
 							</li>
 						</ul>
 					</div>
@@ -557,22 +558,22 @@
 				</div>
 				<div class="govuk-grid-column-one-third">
 					<div class="homepage-landing-page-link-group-component">
-						<h3 class="govuk-heading-s govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 407</span> West Midlands<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(407)</span></h3>
+						<h3 class="govuk-heading-s govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=West+Midlands"><span class="govuk-visually-hidden">View 407</span> West Midlands<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(407)</span></h3>
 						<ul class="govuk-list govuk-list--bullet">
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 101</span> Birmingham<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(101)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=West+Midlands&borough=Birmingham"><span class="govuk-visually-hidden">View 101</span> Birmingham<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(101)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 34</span> Worcestershire<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(34)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=West+Midlands&borough=Worcestershire"><span class="govuk-visually-hidden">View 34</span> Worcestershire<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(34)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 11</span> Shropshire and Telford and Wrekin<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(11)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=West+Midlands&borough=Shropshire+and+Telford+and+Wrekin"><span class="govuk-visually-hidden">View 11</span> Shropshire and Telford and Wrekin<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(11)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 79</span> Staffordshire and Stoke<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(79)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=West+Midlands&borough=Staffordshire+and+Stoke"><span class="govuk-visually-hidden">View 79</span> Staffordshire and Stoke<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(79)</span>
 							</li>
 							<li>
-								<a class="govuk-link govuk-link--no-visited-state"  href="/jobs"><span class="govuk-visually-hidden">View 33</span> Warwickshire<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(33)</span>
+								<a class="govuk-link govuk-link--no-visited-state"  href="/search/home?location=West+Midlands&borough=Warwickshire"><span class="govuk-visually-hidden">View 33</span> Warwickshire<span class="govuk-visually-hidden">jobs</span></a> <span style="display:none;" aria-hidden="true">(33)</span>
 							</li>
 						</ul>
 					</div>
@@ -621,13 +622,13 @@
 			</div>
 		</div>
 
-
+		
 
 </div>
 
 <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state govuk-link govuk-link--no-visited-state--no-visited-state" href="#">Browse all school and college jobs in England</a>.</p>
 
-
+    
   {# {{ govukDetails({
     summaryText: "Jobs by school, role, location and subject",
     text: "Text",

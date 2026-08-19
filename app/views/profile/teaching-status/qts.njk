@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'profile' %}
 
-{% set title = 'Do you have qualified teacher status (QTS)?' %}
+{% set title = 'About the role' %}
 
 {% block beforeContent %}
    {{ govukBackLink({
@@ -14,91 +14,160 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-      {% set h1 %}
-        <span class="govuk-caption-l">
-          Teaching status
-        </span>
-        {{title}}
-      {% endset %}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Create job listing - section 4 of 4</span>
+        {{ title }}
+      </h1>
 
       <form method="post" novalidate>
-
-        {% set year %}
-          {{ govukInput({
-            id: "profile[qtsAwardedYear]",
-            name: "profile[qtsAwardedYear]",
-            label: {
-              text: "Year QTS awarded",
-              classes: 'govuk-label--s'
-            },
-            classes: "govuk-input--width-5",
-            value: qtsAwardedYear
-          }) }}
-
-        {% endset %}
-
-        {% set qtsHint %}
-
-          <div class="govuk-!-margin-top-3 govuk-!-margin-bottom-7">
-            <p class="govuk-body">You're unlikely to get a teaching job in England unless you have QTS. Find out <a class="govuk-link--no-visited-state" target="_blank" href="https://apply-for-qts-in-england.education.gov.uk/eligibility/start">how to get QTS<span class="govuk-visually-hidden"> (opens in new tab)</span></a>.</p>
+        {% set ectQuestion %}
+          <div class="govuk-!-margin-top-4">
+            {{ govukRadios({
+              idPrefix: "profile[ect]",
+              name: "profile[ect]",
+              fieldset: {
+                legend: {
+                  text: "Is this role suitable for an early career teacher (ECT)",
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              hint: {
+                text: "Early career teachers were previously called newly qualified teachers (NQT)"
+              },
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: profile.ect == 'Yes'
+                },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: profile.ect == 'No'
+                }
+              ]
+            }) }}
           </div>
-                
         {% endset %}
+
+        <p class="govuk-body">Your organisation description from your college profile will be included in the job listing.</p>
+
+        {{ govukDetails({
+          summaryText: "View your school_group description",
+          html: "<p>This is a school</p>",
+          classes: "govuk-!-margin-bottom-4"
+        }) }}
+
+        <p class="govuk-body">Your commitment to safeguarding statement from your organisation profile will be included in the job listing.</p>
+
+        {{ govukDetails({
+          summaryText: "View your commitment to safeguarding statement",
+          html: "<p>Information about our commitment to safeguarding</p>",
+          classes: "govuk-!-margin-bottom-6"
+        }) }}
 
         {{ govukRadios({
           idPrefix: "profile[qts]",
           name: "profile[qts]",
           fieldset: {
             legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              text: "Does this job require qualified teacher status (QTS)?",
+              classes: "govuk-fieldset__legend--m"
             }
-          },
-          hint: {
-            html: qtsHint
           },
           items: [
             {
-              value: options[0].value,
-              text: options[0].text,
-              checked: options[0].checked,
+              value: "Yes, QTS is required",
+              text: "Yes, QTS is required",
+              checked: profile.qts == 'Yes, QTS is required',
               conditional: {
-                html: year
+                html: ectQuestion
               }
             },
             {
-              value: options[2].value,
-              text: options[2].text,
-              checked: options[2].checked
-            },
-            {
-              value: options[1].value,
-              text: options[1].text,
-              checked: options[1].checked
-            },
-            
-            {
-              divider: "or"
-            },
-            {
-              value: "I'm  not looking for a teaching job",
-              text: "I'm  not looking for a teaching job"
+              value: "No, QTS is not required",
+              text: "No, QTS is not required",
+              checked: profile.qts == 'No, QTS is not required'
             }
           ]
         }) }}
 
-        {{user | log}}
+        {{ govukTextarea({
+          name: "profile[skillsAndExperience]",
+          id: "profile-skills-and-experience",
 
-
-        {{ govukButton({
-          text: "Save and continue"
+          label: {
+            text: "What skills and experience are you looking for?",
+            classes: "govuk-label--m"
+          },
+          value: profile.skillsAndExperience or 'skills',
+          rows: 5
         }) }}
 
-        <p><a href="/profile">Cancel</a></p>
+        {{ govukTextarea({
+          name: "profile[whatSchoolOffers]",
+          id: "profile-what-school-offers",
 
+          label: {
+            text: "What does your college offer its staff?",
+            classes: "govuk-label--m"
+          },
+          value: profile.whatSchoolOffers or 'offer',
+          rows: 5
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "profile[addFurtherDetailsAboutRole]",
+          name: "profile[addFurtherDetailsAboutRole]",
+          fieldset: {
+            legend: {
+              text: "Do you want to add further details about the role?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: profile.addFurtherDetailsAboutRole == 'Yes',
+              conditional: {
+                html: govukTextarea({
+                  name: "profile[furtherDetailsAboutRole]",
+                  id: "profile-further-details-about-role",
+                  label: {
+                    text: "What further details do you want to add about the role?",
+                    classes: "govuk-label--m"
+                  },
+                  hint: {
+                    text: "For example, you could include information about the learner age group, learner profile, culture, and teaching environment"
+                  },
+                  rows: 10,
+                  value: profile.furtherDetailsAboutRole
+                })
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: profile.addFurtherDetailsAboutRole == 'No' or not profile.addFurtherDetailsAboutRole
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            text: "Save and finish later",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+        <p><a href="/profile">Cancel</a></p>
       </form>
 
     </div>

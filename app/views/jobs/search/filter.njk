@@ -9,6 +9,14 @@
     <span id="job-count">240</span> jobs found
   </h1>
 
+  {% if data['sort'] %}
+    {% set currentSort = data['sort'] %}
+  {% elseif data['location'] %}
+    {% set currentSort = 'distance' %}
+  {% else %}
+    {% set currentSort = 'newest' %}
+  {% endif %}
+
   <!-- set a 0 that we can loop through and + 1 to -->
 
   {% set countOfMatch = 0 %}
@@ -20,6 +28,51 @@
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
   {% if data['filter-international'] %}  {% set filterInternational %}Skilled Worker visas can be sponsored{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
+
+  {% if locationRefinements and locationRefinements.length and not data['borough'] %}
+    <div class="govuk-inset-text govuk-!-margin-bottom-6">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+        {% if isLondonSearch %}
+          Choose London
+        {% else %}
+          Choose an area
+        {% endif %}
+      </h2>
+      <p class="govuk-body govuk-!-margin-bottom-3">
+        {% if isLondonSearch %}
+          Pick a borough to narrow the London results before using the existing filters.
+        {% else %}
+          Pick an area to narrow the results before using the existing filters.
+        {% endif %}
+      </p>
+      <form method="get" action="/search/home" class="govuk-!-margin-bottom-0">
+        <input type="hidden" name="location" value="{{ data['location'] }}">
+        {% for key, value in query %}
+          {% if key != 'location' and key != 'borough' and value %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}">
+          {% endif %}
+        {% endfor %}
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="borough">
+          {% if isLondonSearch %}
+              London
+            {% else %}
+              Area
+            {% endif %}
+          </label>
+          <select class="govuk-select" id="borough" name="borough">
+            <option value="">Select an option</option>
+            {% for borough in locationRefinements %}
+              <option value="{{ borough.name }}">{{ borough.name }} ({{ borough.count }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        {{ govukButton({
+          text: 'Show jobs'
+        }) }}
+      </form>
+    </div>
+  {% endif %}
 
   <!-- each time there is a match, we plus 1 -->
 
@@ -142,7 +195,15 @@
 
              <div class="govuk-grid-column-one-full">
               <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by distance </h2><br/>
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">
+                  {% if currentSort == 'closing' %}
+                    Sorted by closing date
+                  {% elseif currentSort == 'distance' %}
+                    Sorted by distance
+                  {% else %}
+                    Sorted by newest job
+                  {% endif %}
+                </h2><br/>
               </div>
 
               <div style="display:inline-block; float:right">
@@ -152,18 +213,24 @@
                       Sort by
                     </label>
                     <select class="govuk-select" id="sort" name="sort">
-                      <option value="newest">Newest job</option>
-                      <option value="closing">Closing date</option>
-                      {% if data['location'] %}<option value="distance" selected>Distance</option>{% endif %}
+                      <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>
+                      <option value="distance" {% if currentSort == 'distance' %}selected{% endif %}>Distance</option>
+                      <option value="closing" {% if currentSort == 'closing' %}selected{% endif %}>Closing date</option>
                     </select>
-                    <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
+                    <button type="button" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
                       Update sort
                     </button>
                   </div>
                 </form>
               </div>
 
-              <p class="govuk-!-margin-top-2" style="display:inline-block; width:100%;">Jobs in or near <span style="text-transform:capitalise;">{{data['location']}}</span></p>
+              <p class="govuk-!-margin-top-2" style="display:inline-block; width:100%;">
+                {% if data['borough'] %}
+                  Jobs in <span style="text-transform:capitalize;">{{data['borough']}}</span>, London
+                {% else %}
+                  Jobs in or near <span style="text-transform:capitalize;">{{data['location']}}</span>
+                {% endif %}
+              </p>
             
             </div>
 
@@ -180,7 +247,15 @@
             <div class="govuk-grid-row">
 
               <div class="govuk-grid-column-one-half">
-                <h2 style="float:left;" class="govuk-heading-m govuk-!-margin-bottom-3 govuk-!-margin-top-1">Sorted by newest job </h2>
+                <h2 style="float:left;" class="govuk-heading-m govuk-!-margin-bottom-3 govuk-!-margin-top-1">
+                  {% if currentSort == 'closing' %}
+                    Sorted by closing date
+                  {% elseif currentSort == 'distance' %}
+                    Sorted by distance
+                  {% else %}
+                    Sorted by newest job
+                  {% endif %}
+                </h2>
               </div>
               
               <div class="govuk-grid-column-one-half">
@@ -189,10 +264,9 @@
                     Sort by
                   </label>
                   <select class="govuk-select" id="sort" name="sort">
-                    <option value="newest" selected>Newest job</option>
-                    {% if data['radius'] %}<option value="distance">distance</option>{% endif %}
-                    <option value="views">Most views</option>
-                    <option value="comments">Most comments</option>
+                    <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>
+                    <option value="distance" {% if currentSort == 'distance' %}selected{% endif %}>Distance</option>
+                    <option value="closing" {% if currentSort == 'closing' %}selected{% endif %}>Closing date</option>
                   </select>
                 </div>
               </div>
@@ -209,10 +283,12 @@
 
           {% endif %}
 
-          {% if data['location'] != '' %}
+          {% if currentSort == 'closing' %}
+              {% set job_list = jobs|sort(attribute='closingDate', reverse=false) %}
+          {% elseif currentSort == 'distance' and data['location'] %}
               {% set job_list = jobs|sort(attribute='distance', reverse=false) %}
           {% else %}
-              {% set job_list = jobs %}
+              {% set job_list = jobs|sort(attribute='publishDate', reverse=true) %}
           {% endif %}
 
           {% for job in job_list %}
@@ -253,7 +329,6 @@
             {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             {% if job.sponsorship in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-            
             <!-- each time there is a match, we plus 1 -->
 
             <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
@@ -263,14 +338,6 @@
             {% set jobItem %}
 
             <div class="app-jobs__item">
-
-                {% if job.organisation.logo != 'Not entered' %}
-                <div class="square" style="height: 65px; width: 65px; float:left; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
-                <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
-                <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
-                </div>
-                {% endif %}
-
                 <h2 class="govuk-heading-m">
                   <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
                   {% if job.isUsingApplicationForm == 'Yes' %}
@@ -283,7 +350,7 @@
 
                 <p class="app-jobs__item__roles" style="display:none;">{{job.role}}</p>
 
-                <p class="app-jobs__address">{{job.organisation.name}},{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span></p>
+                <p class="app-jobs__address">{{job.organisation.name}}, {{job.organisation.address.address1}}, {{job.organisation.address.town}}</p>
 
                 {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
@@ -362,17 +429,30 @@
 
             <!--LOOP -->
 
+            {% set useRadius = data['radius'] and data['radius'] != 'updated' %}
+
             {% if data['location'] %}
-                {% if job.distance <= data['radius'] %}
-                    <!-- Check if keywords exist and match with job searches -->
+                {% if useRadius %}
+                    {% if job.distance <= data['radius'] %}
+                        {% if data['keywords'] %}
+                            {% for item in job.searches %}
+                                {% if item in data['keywords'] %}
+                                    {{ jobItem | safe }}
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {{ jobItem | safe }}
+                        {% endif %}
+                    {% endif %}
+                {% else %}
                     {% if data['keywords'] %}
                         {% for item in job.searches %}
                             {% if item in data['keywords'] %}
-                                {{ jobItem | safe }}  <!-- Display job item -->
+                                {{ jobItem | safe }}
                             {% endif %}
                         {% endfor %}
                     {% else %}
-                        {{ jobItem | safe }}  <!-- Display job item if no specific keyword is required -->
+                        {{ jobItem | safe }}
                     {% endif %}
                 {% endif %}
             {% else %}            
