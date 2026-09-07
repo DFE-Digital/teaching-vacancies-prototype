@@ -11,7 +11,7 @@ If you already installed a previous version of the Prototype Kit, you can [updat
 
 ## Requirements
 
-node.js - version 16.x.x
+Node.js - version 22.x.x
 
 ## Install dependencies
 
