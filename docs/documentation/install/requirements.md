@@ -18,7 +18,7 @@ GDS staff can install the software themselves with the Self Service app.
 
 You'll need:
 
-* Node.js 16.x.x
+* Node.js 22.x.x
 * Git Bash (if you're using Windows, see below)
 
 ## Terminal
@@ -44,9 +44,9 @@ Download [Git Bash (direct download)](https://git-scm.com/download/win).
 
 Install with all the default options.
 
-## Node.js version 16 LTS
+## Node.js version 22 LTS
 
-The kit is designed to work with Node.js version 16 LTS. The kit works with any 16.x.x version.
+This project is designed to work with Node.js version 22 LTS. It works with any 22.x.x version.
 
 ### Check if you have Node.js
 
@@ -56,21 +56,21 @@ node --version
 ```
 If it says `command not found` or `Error 0x2 starting node.exe --version` you don’t have Node and will need to download and install it.
 
-If the version number starts with 16 you have the correct version installed.
+If the version number starts with 22 you have the correct version installed.
 
-If it says another number such as `0.12` or `5.x.x`, you need to download and install version 16.
+If it says another number, you need to download and install version 22.
 
 ### Download and install Node.js
 
 #### Mac / Windows users
 
-[Download version 16 from the Node.js website.](https://nodejs.org/en/)
+[Download version 22 from the Node.js website.](https://nodejs.org/en/)
 
 Run the installer with all default options.
 
 #### Linux users
 
-[Follow the Linux instructions on the Node.js. website.](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) Make sure you get version 16.
+[Follow the Linux instructions on the Node.js website.](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) Make sure you get version 22.
 
 ### Once Node is installed
 
@@ -81,6 +81,6 @@ To check it is installed correctly you can again run:
 node --version
 ```
 
-If it’s installed correctly it should show a number starting with 16.
+If it’s installed correctly it should show a number starting with 22.
 
 <a href="install-the-kit.md" class="button">Next (How to install the kit)</a>
