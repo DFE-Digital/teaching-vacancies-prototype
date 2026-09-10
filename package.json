@@ -39,7 +39,7 @@
     "lodash": "^4.17.21",
     "luxon": "^3.0.1",
     "marked": "^4.1.1",
-    "notifications-node-client": "^8.5.0",
+    "notifications-node-client": "^5.1.0",
     "nunjucks": "^3.2.1",
     "nunjucks-markdown": "^2.0.1",
     "portscanner": "^2.1.1",
