@@ -54,8 +54,5 @@
     "jest": "^30.5.1",
     "standard": "^17.1.2",
     "supertest": "^6.1.6"
-  },
-  "jest": {
-    "testRunner": "jest-jasmine2"
   }
 }
