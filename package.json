@@ -13,11 +13,11 @@
     "test": "gulp generate-assets && jest && npm run lint"
   },
   "dependencies": {
-    "@faker-js/faker": "^7.4.0",
+    "@faker-js/faker": "^10.5.0",
     "acorn": "^8.5.0",
     "ansi-colors": "^4.1.1",
     "body-parser": "^1.14.1",
-    "browser-sync": "^2.11.1",
+    "browser-sync": "^3.0.4",
     "client-sessions": "^0.8.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
@@ -32,7 +32,7 @@
     "govuk-elements-sass": "^3.1.3",
     "govuk-frontend": "^4.0.1",
     "gray-matter": "^4.0.3",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^5.0.0",
     "inquirer": "^8.2.0",
@@ -47,15 +47,24 @@
     "sass": "^1.49.9",
     "sync-request": "^6.0.0",
     "universal-analytics": "^0.5.4",
-    "uuid": "^8.3.2"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
-    "glob": "^7.1.4",
-    "jest": "^27.3.1",
-    "standard": "^14.3.3",
-    "supertest": "^6.1.6"
+    "glob": "^13.0.6",
+    "jest": "^30.5.1",
+    "standard": "^17.1.2",
+    "supertest": "^7.2.2"
   },
-  "jest": {
-    "testRunner": "jest-jasmine2"
+  "overrides": {
+    "gulp-nodemon": {
+      "gulp": "$gulp",
+      "nodemon": "^3.1.14"
+    },
+    "browser-sync": {
+      "immutable": "^4.3.9"
+    },
+    "browser-sync-ui": {
+      "immutable": "^4.3.9"
+    }
   }
 }
