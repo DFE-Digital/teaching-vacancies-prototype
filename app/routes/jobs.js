@@ -224,6 +224,48 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/application-status', (req, res) => {
+    res.render('jobs/application-status')
+  })
+
+  router.post('/jobs/application-status', (req, res) => {
+    res.redirect('/jobs/application-status')
+  })
+
+  // Teaching qualification prototype journey
+  router.get('/apply/professional-status', (req, res) => {
+    res.render('apply/professional-status')
+  })
+
+  router.post('/apply/professional-status', (req, res) => {
+    req.session.data.teachingQualification = req.body.teachingQualification
+    req.session.data.teachingQualificationType = req.body.teachingQualificationType
+    req.session.data.teachingQualificationName = req.body.teachingQualificationName
+    req.session.data.undertakeTeachingQualification = req.body.undertakeTeachingQualification
+    req.session.data.undertakeMentoring = req.body.undertakeMentoring
+    req.session.data.professionalStatusCompleted = req.body.professionalStatusCompleted
+    res.redirect('/apply/maths-and-english')
+  })
+
+  router.get('/apply/maths-and-english', (req, res) => {
+    res.render('apply/maths-and-english')
+  })
+
+  router.post('/apply/maths-and-english', (req, res) => {
+    req.session.data.mathsQualification = req.body.mathsQualification
+    req.session.data.englishQualification = req.body.englishQualification
+    res.redirect('/apply/references_nochildren')
+  })
+
+  router.get('/apply/teaching-role', (req, res) => {
+    res.redirect('/apply/references_nochildren')
+  })
+
+  router.post('/apply/teaching-role', (req, res) => {
+    req.session.data.teachingRole = req.body.teachingRole
+    res.redirect('/apply/references_nochildren')
+  })
+
   router.get('/apply-with-cv', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/apply-with-cv', {
