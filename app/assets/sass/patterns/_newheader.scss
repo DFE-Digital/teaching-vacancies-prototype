@@ -85,11 +85,10 @@
 
 
 
-/* Service navigation base styles */
 .govuk-service-navigation {
-  border-bottom:1px solid #8eb8dc;
-    background-color: #f4f8fb;
-    padding:0px 0px;
+  border-bottom: 1px solid #8eb8dc;
+  background-color: #f4f8fb;
+  padding: 0;
 }
 
 /* Rebranded template override */
@@ -112,14 +111,10 @@
   padding: 0;
 }
 
-/* Service name — matches GOV.UK service navigation (black, bold) */
 .govuk-service-navigation__service-name {
   position: relative;
-  display: inline-block;
-  float: none;
   margin: 0 30px 0 0;
   padding: 15px 0;
-  border: 0 solid #1a65a6;
   font-family: "GDS Transport", arial, sans-serif;
   font-size: 19px;
   font-weight: 700;
@@ -127,15 +122,11 @@
   color: #0b0c0c;
 }
 
-.govuk-service-navigation__service-name .govuk-service-navigation__link,
-.govuk-service-navigation__service-name .govuk-service-navigation__link:link,
-.govuk-service-navigation__service-name .govuk-service-navigation__link:visited,
-.govuk-service-navigation__service-name .govuk-service-navigation__link:hover,
-.govuk-service-navigation__service-name .govuk-service-navigation__link:active {
+.govuk-service-navigation__service-name .govuk-service-navigation__link {
   font-size: 19px;
   font-weight: 700;
   line-height: 1.52632;
-  color: #0b0c0c !important;
+  color: #0b0c0c;
   text-decoration: none;
 }
 
@@ -144,7 +135,7 @@
 }
 
 .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
-  color: #0b0c0c !important;
+  color: #0b0c0c;
 }
 
 /* Navigation links */
@@ -158,10 +149,8 @@
 
 .govuk-service-navigation__item {
   position: relative;
-  display: block;
   margin: 0 30px 0 0;
   padding: 15px 0;
-  border: 0 solid #1a65a6;
   font-size: 19px;
   font-weight: 400;
   line-height: 1.52632;
@@ -184,20 +173,13 @@
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 48em) {
   .govuk-service-navigation__container {
     flex-direction: column;
     align-items: flex-start;
+    padding: 10px 15px;
   }
-  .govuk-service-navigation__container {
-  padding: 10px 15px;
 }
-  
-}
-
-
-
 
 .govuk-service-navigation__item--active {
   padding-bottom: 10px;

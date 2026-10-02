@@ -1,103 +1,10 @@
 {% extends "layout.njk" %}
 
 {% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation" %}
 
 {% block pageTitle %}
   Documentation - Teaching Vacancies prototypes - GOV.UK
-{% endblock %}
-
-{% block head %}
-  {{ super() }}
-  <style>
-    .app-diagram {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
-    .app-diagram__expand {
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      right: 0;
-      width: 44px;
-      height: 44px;
-      padding: 7px;
-      border: 1px solid #b1b4b6;
-      background: #ffffff;
-      cursor: pointer;
-    }
-
-    .app-diagram__expand:hover {
-      background: #f3f2f1;
-    }
-
-    .app-diagram__expand:focus {
-      outline: 3px solid #fd0;
-      outline-offset: 0;
-      background: #fd0;
-    }
-
-    .app-diagram-fullscreen {
-      position: fixed;
-      z-index: 1000;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      padding: 15px;
-      background: #ffffff;
-    }
-
-    .app-diagram-fullscreen[hidden] {
-      display: none;
-    }
-
-    .app-diagram-fullscreen__toolbar {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 15px;
-    }
-
-    .app-diagram-fullscreen__stage {
-      flex: 1 1 auto;
-      overflow: auto;
-      padding: 10px 8px 20px;
-    }
-
-    .app-diagram-fullscreen__chart {
-      display: block;
-      width: 100%;
-      max-width: none;
-      height: auto;
-    }
-
-    .app-related {
-      margin-bottom: 30px;
-    }
-
-    .app-related__heading {
-      margin-top: 0;
-      margin-bottom: 10px;
-      padding-top: 15px;
-      border-top: 2px solid #1d70b8;
-      font-size: 19px;
-      line-height: 1.25;
-    }
-
-    .app-related__list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .app-related__item {
-      margin-top: 10px;
-    }
-
-    .app-related--topic {
-      margin-top: 30px;
-    }
-  </style>
 {% endblock %}
 
 {% block beforeContent %}
@@ -279,123 +186,20 @@
       </div>
     </div>
   </div>
+
+  <div class="app-diagram-fullscreen" data-module="app-diagram-fullscreen" hidden role="dialog" aria-modal="true" aria-label="Diagram full screen">
+    <div class="app-diagram-fullscreen__toolbar">
+      <button type="button" class="govuk-button govuk-button--secondary app-diagram-fullscreen__close">Close</button>
+    </div>
+    <div class="app-diagram-fullscreen__stage"></div>
+  </div>
 {% endblock %}
 
 {% block pageScripts %}
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="/public/javascripts/diagram-fullscreen.js"></script>
   <script>
-    var expandIcon = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 9V4h5v2H6v3H4zm10-5h5v5h-2V6h-3V4zM4 15h2v3h3v2H4v-5zm14 3v-3h2v5h-5v-2h3z"/></svg>'
-    var diagramOverlay
-    var diagramStage
-    var diagramReturnFocus
-
-    function closeDiagram () {
-      if (!diagramOverlay || diagramOverlay.hidden) {
-        return
-      }
-
-      diagramStage.replaceChildren()
-      diagramOverlay.hidden = true
-      document.body.style.overflow = ''
-
-      if (diagramReturnFocus) {
-        diagramReturnFocus.focus()
-      }
-    }
-
-    function openDiagram (frame, button) {
-      var source = frame.querySelector('svg.flowchart')
-      if (!source) {
-        return
-      }
-
-      closeDiagram()
-      var chart = source.cloneNode(true)
-      chart.removeAttribute('style')
-      chart.classList.add('app-diagram-fullscreen__chart')
-      diagramStage.replaceChildren(chart)
-      diagramOverlay.hidden = false
-      document.body.style.overflow = 'hidden'
-      diagramReturnFocus = button
-      diagramOverlay.querySelector('.app-diagram-fullscreen__close').focus()
-    }
-
-    function createDiagramOverlay () {
-      diagramOverlay = document.createElement('div')
-      diagramOverlay.className = 'app-diagram-fullscreen'
-      diagramOverlay.hidden = true
-      diagramOverlay.setAttribute('role', 'dialog')
-      diagramOverlay.setAttribute('aria-modal', 'true')
-      diagramOverlay.setAttribute('aria-label', 'Diagram full screen')
-
-      var toolbar = document.createElement('div')
-      toolbar.className = 'app-diagram-fullscreen__toolbar'
-
-      var closeButton = document.createElement('button')
-      closeButton.type = 'button'
-      closeButton.className = 'govuk-button govuk-button--secondary app-diagram-fullscreen__close'
-      closeButton.textContent = 'Close'
-      closeButton.addEventListener('click', closeDiagram)
-      toolbar.appendChild(closeButton)
-
-      diagramStage = document.createElement('div')
-      diagramStage.className = 'app-diagram-fullscreen__stage'
-
-      diagramOverlay.appendChild(toolbar)
-      diagramOverlay.appendChild(diagramStage)
-      document.body.appendChild(diagramOverlay)
-
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && !diagramOverlay.hidden) {
-          closeDiagram()
-        }
-      })
-    }
-
-    function widenClippedLabels (diagram) {
-      diagram.querySelectorAll('.node').forEach(function (node) {
-        var foreignObject = node.querySelector('foreignObject')
-        var label = foreignObject && foreignObject.querySelector('div')
-        var box = node.querySelector('rect, polygon')
-        if (!foreignObject || !label || !box || !box.getAttribute('width')) {
-          return
-        }
-
-        var needed = label.scrollWidth + 8
-        var current = parseFloat(foreignObject.getAttribute('width')) || 0
-        if (needed <= current + 1) {
-          return
-        }
-
-        var growth = needed - current
-        foreignObject.setAttribute('width', needed)
-        box.setAttribute('width', (parseFloat(box.getAttribute('width')) || 0) + growth)
-      })
-    }
-
-    function addExpandButtons () {
-      createDiagramOverlay()
-
-      document.querySelectorAll('pre.mermaid').forEach(function (diagram) {
-        widenClippedLabels(diagram)
-        var frame = document.createElement('div')
-        frame.className = 'app-diagram'
-        diagram.parentNode.insertBefore(frame, diagram)
-        frame.appendChild(diagram)
-
-        var button = document.createElement('button')
-        button.type = 'button'
-        button.className = 'app-diagram__expand'
-        button.setAttribute('aria-label', 'View diagram full screen')
-        button.innerHTML = expandIcon
-        frame.insertBefore(button, diagram)
-        button.addEventListener('click', function () {
-          openDiagram(frame, button)
-        })
-      })
-    }
-
     mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' })
-    mermaid.run({ querySelector: 'pre.mermaid' }).then(addExpandButtons)
+    mermaid.run({ querySelector: 'pre.mermaid' }).then(AppFrontend.diagramFullscreen)
   </script>
 {% endblock %}

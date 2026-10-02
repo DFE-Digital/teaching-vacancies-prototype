@@ -1,0 +1,88 @@
+.app-diagram {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.app-diagram__expand {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  padding: 7px;
+  border: 1px solid #b1b4b6;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.app-diagram__expand:hover {
+  background: #f3f2f1;
+}
+
+.app-diagram__expand:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  background: #fd0;
+}
+
+.app-diagram-fullscreen {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 15px;
+  background: #ffffff;
+}
+
+.app-diagram-fullscreen[hidden] {
+  display: none;
+}
+
+.app-diagram-fullscreen__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.app-diagram-fullscreen__stage {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 10px 8px 20px;
+}
+
+.app-diagram-fullscreen__chart {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+.app-documentation .app-related {
+  margin-bottom: 30px;
+}
+
+.app-documentation .app-related__heading {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  border-top: 2px solid #1d70b8;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.app-documentation .app-related__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-documentation .app-related__item {
+  margin-top: 10px;
+}
+
+.app-documentation .app-related--topic {
+  margin-top: 30px;
+}

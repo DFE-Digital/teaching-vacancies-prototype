@@ -183,8 +183,6 @@ module.exports = router => {
 
     if (previousApplication == "Yes"){
       req.flash('success', 'You have recently submitted a job application, so some of your details have been imported into your profile.')
-    } else {
-
     }
 
     res.redirect('/profile')

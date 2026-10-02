@@ -6,6 +6,9 @@ const _ = require('lodash');
 const phases = require('../app/data/phases.js')
 const { v4: uuidv4 } = require('uuid')
 
+const defaultLogo = '/public/images/logos/courtland.png'
+const defaultPhoto = '/public/images/photos/courtland.jpeg'
+
 const generateSchool = (params = {}) => {
   let school = {}
   school.id = uuidv4()
@@ -61,12 +64,12 @@ const generateSchool = (params = {}) => {
     school.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  school.logo = params.logo || '/public/images/logos/courtland.png'
+  school.logo = params.logo || defaultLogo
 
   if(params.photo === null) {
     school.photo = null
   } else {
-    school.photo = params.photo || '/public/images/photos/courtland.jpeg'
+    school.photo = params.photo || defaultPhoto
   }
 
   return school
@@ -112,13 +115,13 @@ const generateOrg = (params = {}) => {
   if(params.logo === null) {
     org.logo = null
   } else {
-    org.logo = params.logo || '/public/images/logos/courtland.png'
+    org.logo = params.logo || defaultLogo
   }
 
   if(params.photo === null) {
     org.photo = null
   } else {
-    org.photo = params.photo || '/public/images/photos/courtland.jpeg'
+    org.photo = params.photo || defaultPhoto
   }
 
   org.schools = params.schools
@@ -215,6 +218,7 @@ const generateOrgs = () => {
 
   let matSchool1 = generateSchool({ phase: 'Primary school', name: 'Draycott Primary School' })
   let matSchool2 = generateSchool({ phase: 'Secondary school', name: 'Erewash School' })
+  let matSchool3 = generateSchool({ phase: 'Primary school', name: 'Derwent Primary School' })
   let matSchool4 = generateSchool({ phase: 'Sixth form or college', name: 'Trent School' })
   let matSchool5 = generateSchool({ phase: 'Primary school', name: 'Applewood Primary School' })
 
