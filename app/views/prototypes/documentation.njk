@@ -1,0 +1,401 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+
+{% block pageTitle %}
+  Documentation - Teaching Vacancies prototypes - GOV.UK
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-diagram {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .app-diagram__expand {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      width: 44px;
+      height: 44px;
+      padding: 7px;
+      border: 1px solid #b1b4b6;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .app-diagram__expand:hover {
+      background: #f3f2f1;
+    }
+
+    .app-diagram__expand:focus {
+      outline: 3px solid #fd0;
+      outline-offset: 0;
+      background: #fd0;
+    }
+
+    .app-diagram-fullscreen {
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 15px;
+      background: #ffffff;
+    }
+
+    .app-diagram-fullscreen[hidden] {
+      display: none;
+    }
+
+    .app-diagram-fullscreen__toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+    }
+
+    .app-diagram-fullscreen__stage {
+      flex: 1 1 auto;
+      overflow: auto;
+      padding: 10px 8px 20px;
+    }
+
+    .app-diagram-fullscreen__chart {
+      display: block;
+      width: 100%;
+      max-width: none;
+      height: auto;
+    }
+
+    .app-related {
+      margin-bottom: 30px;
+    }
+
+    .app-related__heading {
+      margin-top: 0;
+      margin-bottom: 10px;
+      padding-top: 15px;
+      border-top: 2px solid #1d70b8;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+
+    .app-related__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .app-related__item {
+      margin-top: 10px;
+    }
+
+    .app-related--topic {
+      margin-top: 30px;
+    }
+  </style>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Teaching Vacancies prototypes",
+        href: "/"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Documentation</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body">How this prototype is built, what the mock data looks like, and how the main journeys move between pages.</p>
+
+      <h2 class="govuk-heading-l">Tech stack</h2>
+
+      <p class="govuk-body">This repository is a GOV.UK Prototype Kit copy of Teaching Vacancies. It is not the live service at <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/">teaching-vacancies.service.gov.uk</a>. The GOV.UK start page is <a class="govuk-link" href="https://www.gov.uk/find-teaching-job">Find a job in teaching</a>.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Prototype Kit 12.0.4, started with <code>npm run dev</code></li>
+        <li>Express routes in <code>app/routes</code></li>
+        <li>Nunjucks templates in <code>app/views</code></li>
+        <li>GOV.UK Frontend 4</li>
+        <li>Sass, compiled by Gulp, with BrowserSync on port 3000</li>
+        <li>In-memory sessions. Restarting the server signs you out</li>
+        <li>Form posts are stored on the session by the kit</li>
+        <li>JSON fixtures in <code>app/data</code>. There is no database and no call to the live API</li>
+      </ul>
+
+      <h2 class="govuk-heading-l">JSON mock data</h2>
+
+      <p class="govuk-body">Pages read these files through the session. <code>app/data/session-data-defaults.js</code> loads jobs and organisations. Sign-in looks up an email in <code>users.json</code>.</p>
+
+      <h3 class="govuk-heading-m">Job</h3>
+      <p class="govuk-body">One record from <code>app/data/jobs.json</code>. Search lists jobs where <code>status</code> is <code>Active</code>. A job page is <code>/jobs/:id</code>.</p>
+      {% raw %}
+      <pre class="govuk-body-s"><code>{
+  "id": "676686861",
+  "status": "Active",
+  "title": "Lecturer in construction",
+  "role": ["Teacher or lecturer"],
+  "phase": "Further education",
+  "subjects": ["Civil Engineering"],
+  "workingPatterns": ["Full time"],
+  "actualSalaryDetails": "£31,000 - £34,000",
+  "closingDate": "2026-12-15T17:00:00.000Z",
+  "organisation": {
+    "name": "Greenwood College",
+    "phase": "Further education",
+    "address": {
+      "address1": "32 Grove Street",
+      "town": "Nottingham",
+      "postcode": "NG1 2FQ"
+    }
+  }
+}</code></pre>
+      {% endraw %}
+
+      <h3 class="govuk-heading-m">Organisation</h3>
+      <p class="govuk-body">One record from <code>app/data/organisations.json</code>. School and college pages use the name, phase, and address.</p>
+      {% raw %}
+      <pre class="govuk-body-s"><code>{
+  "id": "90c2e716-7eca-438e-8581-4889afaeaf17",
+  "name": "Nightinghale Nursery",
+  "type": "Academy",
+  "phase": "Nursery school",
+  "address": {
+    "address1": "10 Seed Street",
+    "town": "London",
+    "postcode": "N19 4PT"
+  },
+  "emailAddress": "email@nightinghalenursery.org.uk"
+}</code></pre>
+      {% endraw %}
+
+      <h3 class="govuk-heading-m">User</h3>
+      <p class="govuk-body">One record from <code>app/data/users.json</code>. Choosing this email on sign-in stores the user on the session. An empty profile is a new jobseeker. A filled profile is someone returning.</p>
+      {% raw %}
+      <pre class="govuk-body-s"><code>{
+  "emailAddress": "anne.smith@example.com",
+  "accountType": "teacher",
+  "profile": {
+    "locations": {},
+    "qualifications": {},
+    "workHistory": {},
+    "hiddenPlaces": {}
+  }
+}</code></pre>
+      {% endraw %}
+
+      <h2 class="govuk-heading-l">Feature flows</h2>
+
+      <h3 class="govuk-heading-m">Prototype hub</h3>
+      <pre class="mermaid">flowchart LR
+  hub["/"] --> jobs["/home"]
+  hub --> fe["/fe"]
+  hub --> docs["/documentation"]</pre>
+
+      <h3 class="govuk-heading-m">Search</h3>
+      <p class="govuk-body">The jobs homepage form goes to <code>/search/home</code>. A result opens <code>/jobs/:id</code>. A location that contains a digit is treated as a postcode.</p>
+      <pre class="mermaid">flowchart LR
+  home["/home"] --> search["/search/home"]
+  search --> job["/jobs/:id"]
+  posted["POST /jobs"] --> postcode["/jobs/search/postcode"]
+  posted --> applications["/search/applications"]</pre>
+
+      <h3 class="govuk-heading-m">Sign in and profile</h3>
+      <p class="govuk-body">Sign-in matches an email in the user fixture. Profile sections are completed from <code>/profile</code>.</p>
+      <pre class="mermaid">flowchart TD
+  signIn["/account/sign-in"] --> profile["/profile"]
+  profile --> personal["Personal details"]
+  profile --> preferences["Job preferences"]
+  profile --> status["Teaching status"]
+  profile --> qualifications["Qualifications"]
+  profile --> work["Work history"]
+  profile --> references["References"]
+  profile --> about["About you"]
+  profile --> equality["Equal opportunities"]
+  profile --> hidden["Hide profile"]</pre>
+
+      <h3 class="govuk-heading-m">Further education</h3>
+      <p class="govuk-body"><code>/fe</code> is the Further Education prototype work page. Option A merges roles into the current jobs list. Option B keeps them separate. Option C is a dedicated service.</p>
+      <pre class="mermaid">flowchart TD
+  fe["/fe"] --> optionA["/jobsfemerge"]
+  fe --> optionAHome["/home"]
+  fe --> optionB["/jobsfe"]
+  fe --> optionBHome["/fehome"]
+  fe --> optionC["/jobsfeonly"]
+  title["/fe/job-title"] --> subjects["/fe/subjects"]
+  subjects --> location["/fe/location"]
+  location --> merged["/femerge"]</pre>
+
+      <h3 class="govuk-heading-m">Apply</h3>
+      <pre class="mermaid">flowchart LR
+  professional["/apply/professional-status"] --> maths["/apply/maths-and-english"]
+  maths --> references["/apply/references_nochildren"]</pre>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related">
+        <h2 class="govuk-heading-s app-related__heading" id="related-content">Related content</h2>
+        <nav aria-labelledby="related-content">
+          <ul class="app-related__list">
+            <li class="app-related__item">
+              <a class="govuk-link" href="/home">Find school and college jobs near you</a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="/fe">Further Education prototype work</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="app-related app-related--topic">
+        <h2 class="govuk-heading-s app-related__heading" id="explore-topic">Explore the topic</h2>
+        <nav aria-labelledby="explore-topic">
+          <ul class="app-related__list">
+            <li class="app-related__item">
+              <a class="govuk-link" href="/">Teaching Vacancies prototypes</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+    var expandIcon = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 9V4h5v2H6v3H4zm10-5h5v5h-2V6h-3V4zM4 15h2v3h3v2H4v-5zm14 3v-3h2v5h-5v-2h3z"/></svg>'
+    var diagramOverlay
+    var diagramStage
+    var diagramReturnFocus
+
+    function closeDiagram () {
+      if (!diagramOverlay || diagramOverlay.hidden) {
+        return
+      }
+
+      diagramStage.replaceChildren()
+      diagramOverlay.hidden = true
+      document.body.style.overflow = ''
+
+      if (diagramReturnFocus) {
+        diagramReturnFocus.focus()
+      }
+    }
+
+    function openDiagram (frame, button) {
+      var source = frame.querySelector('svg.flowchart')
+      if (!source) {
+        return
+      }
+
+      closeDiagram()
+      var chart = source.cloneNode(true)
+      chart.removeAttribute('style')
+      chart.classList.add('app-diagram-fullscreen__chart')
+      diagramStage.replaceChildren(chart)
+      diagramOverlay.hidden = false
+      document.body.style.overflow = 'hidden'
+      diagramReturnFocus = button
+      diagramOverlay.querySelector('.app-diagram-fullscreen__close').focus()
+    }
+
+    function createDiagramOverlay () {
+      diagramOverlay = document.createElement('div')
+      diagramOverlay.className = 'app-diagram-fullscreen'
+      diagramOverlay.hidden = true
+      diagramOverlay.setAttribute('role', 'dialog')
+      diagramOverlay.setAttribute('aria-modal', 'true')
+      diagramOverlay.setAttribute('aria-label', 'Diagram full screen')
+
+      var toolbar = document.createElement('div')
+      toolbar.className = 'app-diagram-fullscreen__toolbar'
+
+      var closeButton = document.createElement('button')
+      closeButton.type = 'button'
+      closeButton.className = 'govuk-button govuk-button--secondary app-diagram-fullscreen__close'
+      closeButton.textContent = 'Close'
+      closeButton.addEventListener('click', closeDiagram)
+      toolbar.appendChild(closeButton)
+
+      diagramStage = document.createElement('div')
+      diagramStage.className = 'app-diagram-fullscreen__stage'
+
+      diagramOverlay.appendChild(toolbar)
+      diagramOverlay.appendChild(diagramStage)
+      document.body.appendChild(diagramOverlay)
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !diagramOverlay.hidden) {
+          closeDiagram()
+        }
+      })
+    }
+
+    function widenClippedLabels (diagram) {
+      diagram.querySelectorAll('.node').forEach(function (node) {
+        var foreignObject = node.querySelector('foreignObject')
+        var label = foreignObject && foreignObject.querySelector('div')
+        var box = node.querySelector('rect, polygon')
+        if (!foreignObject || !label || !box || !box.getAttribute('width')) {
+          return
+        }
+
+        var needed = label.scrollWidth + 8
+        var current = parseFloat(foreignObject.getAttribute('width')) || 0
+        if (needed <= current + 1) {
+          return
+        }
+
+        var growth = needed - current
+        foreignObject.setAttribute('width', needed)
+        box.setAttribute('width', (parseFloat(box.getAttribute('width')) || 0) + growth)
+      })
+    }
+
+    function addExpandButtons () {
+      createDiagramOverlay()
+
+      document.querySelectorAll('pre.mermaid').forEach(function (diagram) {
+        widenClippedLabels(diagram)
+        var frame = document.createElement('div')
+        frame.className = 'app-diagram'
+        diagram.parentNode.insertBefore(frame, diagram)
+        frame.appendChild(diagram)
+
+        var button = document.createElement('button')
+        button.type = 'button'
+        button.className = 'app-diagram__expand'
+        button.setAttribute('aria-label', 'View diagram full screen')
+        button.innerHTML = expandIcon
+        frame.insertBefore(button, diagram)
+        button.addEventListener('click', function () {
+          openDiagram(frame, button)
+        })
+      })
+    }
+
+    mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' })
+    mermaid.run({ querySelector: 'pre.mermaid' }).then(addExpandButtons)
+  </script>
+{% endblock %}

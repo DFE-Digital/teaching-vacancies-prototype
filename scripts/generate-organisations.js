@@ -61,12 +61,12 @@ const generateSchool = (params = {}) => {
     school.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  school.logo = params.logo || faker.image.abstract(100, 100)
+  school.logo = params.logo || '/public/images/logos/courtland.png'
 
   if(params.photo === null) {
     school.photo = null
   } else {
-    school.photo = params.photo || faker.image.abstract(640, 320)
+    school.photo = params.photo || '/public/images/photos/courtland.jpeg'
   }
 
   return school
@@ -112,13 +112,13 @@ const generateOrg = (params = {}) => {
   if(params.logo === null) {
     org.logo = null
   } else {
-    org.logo = params.logo || faker.image.abstract(100, 100)
+    org.logo = params.logo || '/public/images/logos/courtland.png'
   }
 
   if(params.photo === null) {
     org.photo = null
   } else {
-    org.photo = params.photo || faker.image.abstract(640, 320)
+    org.photo = params.photo || '/public/images/photos/courtland.jpeg'
   }
 
   org.schools = params.schools

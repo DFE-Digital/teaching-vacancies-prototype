@@ -32,7 +32,7 @@
 <div class="govuk-header__container govuk-width-container">
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
-      <a href="/fe" class="govuk-header__link govuk-header__link--homepage">
+      <a href="/" class="govuk-header__link govuk-header__link--homepage">
         <svg
           focusable="false"
           role="img"
@@ -59,25 +59,29 @@
       </a>
     </div>
     <div class="govuk-header__content">
-
+      {% if not contentPage %}
           <nav class="govuk-header__navigation" aria-label="Top Menu">
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
             <ul id="navigation" class="govuk-header__navigation-list">
                 <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/new">Create account</a></li>
                 <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-in/">Sign in</a></li>
             </ul>
-          </nav>      
+          </nav>
+      {% endif %}
       </div>
   </div>
   </div>
 </header>
 
+{% if not contentPage %}
 <section aria-label="Service information" class="govuk-service-navigation"
   data-module="govuk-service-navigation">
   <div class="govuk-width-container">
     <div class="govuk-service-navigation__container">
       <span class="govuk-service-navigation__service-name">
+        <a href="/" class="govuk-service-navigation__link">
           Teaching Vacancies
+        </a>
       </span>
       <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
         <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
@@ -126,6 +130,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- ===== End header ===== -->
 

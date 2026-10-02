@@ -1,5 +1,14 @@
 const schools = require('../data/orgs.json')
 const users = require('../data/users.json')
+
+function isSameSitePath (value) {
+  return typeof value === 'string' &&
+    value.startsWith('/') &&
+    !value.startsWith('//') &&
+    !value.includes('\\') &&
+    !value.includes('://')
+}
+
 module.exports = router => {
 
   router.get('/account/sign-in', (req, res) => {
@@ -72,7 +81,7 @@ module.exports = router => {
       res.locals.user = req.session.user = users[0]
     }
 
-    if(req.body.returnUrl) {
+    if (isSameSitePath(req.body.returnUrl)) {
       res.redirect(req.body.returnUrl)
     } else {
 
@@ -167,20 +176,6 @@ module.exports = router => {
     })
   })
 
-
-  router.post('/account/new/confirmation2', (req, res) => {
-
-    var previousApplication = req.session.user.profile.previousApplication
-
-    if (previousApplication == "Yes"){
-      req.flash('success', 'You have recently submitted a job application, so some of your details have been imported into your profile.')
-    } else {
-
-    }
-
-    res.redirect('/profile')
-
-  })
 
   router.post('/account/new/confirmation2', (req, res) => {
 

@@ -595,17 +595,6 @@ module.exports = router => {
     res.redirect('/profile/job-preferences/alerts_location')
   })
 
-  router.get('/profile/job-preferences/location-check', (req, res) => {
-    let locations = req.session.user.profile.locations
-    let profile = req.session.user.profile
-
-
-    res.render('profile/job-preferences/location-check', {
-      locations,
-      profile
-    })
-  })
-
   router.post('/profile/job-preferences/location-check', (req, res) => {
 
     let profile = req.session.user.profile

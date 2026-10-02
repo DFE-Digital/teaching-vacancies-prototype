@@ -237,12 +237,9 @@ module.exports = router => {
         var numberPattern = /\d+/;
         // Check if the variable contains any number using test()
         if (numberPattern.test(location)) {
-            res.redirect('jobs/search/postcode')
-        } else if (location !== ''){
-            res.redirect('jobs/search/applications')
-        }
-        else {
-            res.redirect('jobs/search/applications')
+            res.redirect('/jobs/search/postcode')
+        } else {
+            res.redirect('/search/applications')
         }
     })
 

@@ -1,4 +1,6 @@
 
+const authenticaton = require('../middleware/authenticaton')
+
 module.exports = router => {
 
   //disability
@@ -290,10 +292,10 @@ module.exports = router => {
 
   //review equality
 
-  router.get('/profile/equality-opportunities/review', (req, res) => {
+  router.get('/profile/equal-opportunities/review', authenticaton.isAuthenticated, (req, res) => {
     const profile = req.session.user.profile
 
-    res.render('profile/equality-opportunities/review', {
+    res.render('profile/equal-opportunities/review', {
       profile
     })
   })
