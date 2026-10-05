@@ -16,14 +16,23 @@
 {% endif %}
 
 <div class="app-schools__item">
-  <h2 class="govuk-heading-m">
-    <a class="govuk-link" href="/schools/{{ organisation.id }}">{{ organisation.name }}</a>
-  </h2>
-  <p class="govuk-body">
-    {% for part, value in organisation.address %}
-      {{ value }}{% if not loop.last %}, {% endif %}
-    {% endfor %}
-  </p>
+  <div class="header-with-logo">
+    <div class="header-with-logo-title">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+        <a class="govuk-link" href="/schools/{{ organisation.id }}">{{ organisation.name }}</a>
+      </h2>
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        {% for part, value in organisation.address %}
+          {{ value }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+    {% if organisation.logo and organisation.logo != 'Not entered' %}
+      <div class="header-with-logo-logo--search-result">
+        <img src="{{ organisation.logo }}" alt="">
+      </div>
+    {% endif %}
+  </div>
   {{ govukSummaryList({
     classes: "govuk-summary-list--no-border app-summary-list--compact",
     rows: [

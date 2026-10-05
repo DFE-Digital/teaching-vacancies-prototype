@@ -19,6 +19,7 @@ $app-images-path: "/public/images/";
 @import "patterns/home";
 @import "patterns/cards";
 @import "patterns/newheader";
+@import "patterns/govuk-homepage";
 @import "patterns/documentation";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
@@ -28,22 +29,6 @@ $app-images-path: "/public/images/";
 
 // utilities
 @import "utilities/hidden";
-
-.govuk-header {
-  border-bottom: 10px solid #1d70b8;
-}
-
-.govuk-header__logo {
-  @include govuk-media-query($from: tablet) {
-    width: 45%;
-  }
-}
-
-.govuk-header__content {
-  @include govuk-media-query($from: tablet) {
-    width: 54%;
-  }
-}
 
 .app-panel {
   background-color: govuk-colour('light-grey');
@@ -169,6 +154,33 @@ h1 .govuk-tag {
 
 .app-jobs {
   margin-bottom: govuk-spacing(4);
+}
+
+.app-jobs__item,
+.app-schools__item {
+  .header-with-logo {
+    align-items: flex-start;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+  }
+
+  .header-with-logo-title {
+    min-width: 0;
+  }
+
+  .header-with-logo-logo--search-result {
+    flex: 0 0 auto;
+    margin-left: 15px;
+
+    img {
+      display: block;
+      height: auto;
+      max-height: 70px;
+      max-width: 100px;
+      width: auto;
+    }
+  }
 }
 
 .app-jobs__item {

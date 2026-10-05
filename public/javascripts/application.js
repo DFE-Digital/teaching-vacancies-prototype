@@ -29,7 +29,7 @@ $(document).ready(function () {
   if (serviceNavigation) {
     var serviceNavigationToggle = serviceNavigation.querySelector('.govuk-service-navigation__toggle')
     var serviceNavigationList = serviceNavigation.querySelector('.govuk-service-navigation__list')
-    var serviceNavigationQuery = window.matchMedia('(max-width: 48em)')
+    var serviceNavigationQuery = window.matchMedia('(max-width: 40.0525em)')
 
     var syncServiceNavigation = function () {
       if (!serviceNavigationToggle || !serviceNavigationList) return

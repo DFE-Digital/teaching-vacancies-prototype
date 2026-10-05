@@ -29,7 +29,6 @@
 
 <!-- ===== GOV.UK‑style header (hard‑coded) ===== -->
 <header class="govuk-header" data-module="govuk-header">
-<div class="govuk-header__container govuk-width-container">
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
       <a href="/" class="govuk-header__link govuk-header__link--homepage">
@@ -59,13 +58,12 @@
       </a>
     </div>
     <div class="govuk-header__content">
-      {% if not contentPage %}
-          <nav class="govuk-header__navigation" aria-label="Top Menu">
-            <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
+      {% if not contentPage and (data.signedIn or forceSignedIn or not homepage) %}
+          <nav class="govuk-header__navigation" aria-label="Account">
             <ul id="navigation" class="govuk-header__navigation-list">
               {% if data.signedIn or forceSignedIn %}
                 <li class="govuk-header__navigation-item">
-                  <a class="govuk-header__link{% if primaryNavId == 'account' %} govuk-header__link--active{% endif %}" href="/account"{% if primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
+                  <a class="govuk-header__link govuk-header__link--account{% if primaryNavId == 'account' %} govuk-header__link--active{% endif %}" href="/account"{% if primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
                 </li>
                 <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-out">Sign out</a></li>
               {% else %}
@@ -74,12 +72,11 @@
             </ul>
           </nav>
       {% endif %}
-      </div>
-  </div>
+    </div>
   </div>
 </header>
 
-{% if not contentPage %}
+{% if not contentPage and not homepage %}
 <section aria-label="Service information" class="govuk-service-navigation"
   data-module="govuk-service-navigation">
   <div class="govuk-width-container">
@@ -93,7 +90,7 @@
         <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="service-navigation" aria-expanded="false" hidden>
           Menu
         </button>
-        <ul class="govuk-service-navigation__list" id="service-navigation">
+        <ul class="govuk-service-navigation__list" id="service-navigation" hidden>
           <li class="govuk-service-navigation__item {% if activeNav == 'jobs' %} govuk-service-navigation__item--active {% endif %}">
             <a class="govuk-service-navigation__link" href="/jobsfemerge">
               Jobs

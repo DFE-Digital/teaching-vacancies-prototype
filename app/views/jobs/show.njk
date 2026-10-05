@@ -112,6 +112,8 @@
         <div class="timeline-component">
           {% if daysRemaining < 0 %}
             <h2 class="timeline-component__heading govuk-heading-s">This job expired on {{ job.closingDate | date }} – <a class="govuk-link" href="#similar-jobs">see similar jobs</a></h2>
+          {% elif daysRemaining == 0 %}
+            <h2 class="timeline-component__heading govuk-heading-s">Deadline is today</h2>
           {% else %}
             <h2 class="timeline-component__heading govuk-heading-s">
               {{ daysRemaining }} {{ "day" if daysRemaining == 1 else "days" }} remaining to apply
@@ -120,7 +122,7 @@
 
           <ul class="timeline-component__items">
             <li class="timeline-component__item">
-              <h3 class="timeline-component__key govuk-heading-s">Start date</h3>
+              <h3 class="timeline-component__key govuk-heading-s">Start date details</h3>
               <p class="timeline-component__value govuk-body">{{ job.startDate | date }}</p>
             </li>
             <li class="timeline-component__item">
@@ -188,8 +190,8 @@
           }) }}
 
           {% if job.skillsAndExperience %}
-            <h2 class="govuk-heading-m">What skills and experience we’re looking for</h2>
-            <div class="app-prose govuk-!-margin-bottom-6">
+            <h2 class="govuk-heading-m">{{ job.title }} job summary</h2>
+            <div class="govuk-body govuk-!-margin-bottom-6">
               {{ job.skillsAndExperience | markdown | safe }}
             </div>
           {% endif %}
@@ -233,10 +235,10 @@
                 href: applyHref
               }) }}
             {% else %}
-              <p class="govuk-body">Apply through the {{ organisationNoun }} website.</p>
-              <p class="govuk-body">You do not need a CV to apply for this job.</p>
+              <p class="govuk-body">This {{ organisationNoun }} accepts applications through their own website, where you may also find more information about this job.</p>
+              <p class="govuk-body">CVs will not be accepted for this application.</p>
               {{ govukButton({
-                text: "Apply for this job",
+                text: "View advert on external website (opens in new tab)",
                 href: job.organisation.website or "#"
               }) }}
             {% endif %}
@@ -269,7 +271,7 @@
             rows: [
               {
                 key: { text: "Organisation type" },
-                value: { text: job.organisation.type }
+                value: { text: job.organisation.type + (", ages " + job.organisation.ageGroup if job.organisation.ageGroup else "") }
               } if job.organisation.type,
               {
                 key: { text: "Education phase" },
@@ -301,7 +303,7 @@
               } if job.hasContactPhoneNumber == 'Yes' and job.contactPhoneNumber,
               {
                 key: { text: "See more jobs" },
-                value: { html: '<a class="govuk-link" href="/jobs">See all jobs at ' + job.organisation.name + '</a>' }
+                value: { html: '<a class="govuk-link" href="/schools/' + job.organisation.id + '">See all jobs at ' + job.organisation.name + '</a>' }
               }
             ]
           }) }}

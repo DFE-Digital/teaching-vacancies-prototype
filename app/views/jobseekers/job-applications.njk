@@ -29,7 +29,7 @@
     }
 
     .app-applications__pagination .govuk-pagination {
-      margin-top: 0;
+      margin-top: 40px;
     }
 
     .app-application {
@@ -54,6 +54,31 @@
 
     .app-application__tag {
       white-space: nowrap;
+    }
+
+    @media (max-width: 48em) {
+      .app-application {
+        grid-template-columns: minmax(0, 1fr) auto;
+        row-gap: 10px;
+      }
+
+      .app-application__job {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+      }
+
+      .app-application__tag {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        margin-top: 2px;
+      }
+
+      .app-application__dates {
+        grid-column: 1 / -1;
+        white-space: normal;
+      }
     }
   </style>
 {% endblock %}
@@ -82,20 +107,6 @@
     </div>
 
     <div class="govuk-grid-column-two-thirds">
-      {% if pageCount > 1 %}
-        <div class="app-applications__pagination">
-          {{ govukPagination({
-            previous: {
-              href: previousHref
-            } if previousHref,
-            next: {
-              href: nextHref
-            } if nextHref,
-            items: paginationItems
-          }) }}
-        </div>
-      {% endif %}
-
       <div class="app-applications">
         {% for application in applications %}
           <article class="app-application">
@@ -117,7 +128,22 @@
         {% endfor %}
       </div>
 
+      {% if pageCount > 1 %}
+        <div class="app-applications__pagination">
+          {{ govukPagination({
+            previous: {
+              href: previousHref
+            } if previousHref,
+            next: {
+              href: nextHref
+            } if nextHref,
+            items: paginationItems
+          }) }}
+        </div>
+      {% endif %}
+
       {{ govukDetails({
+        classes: "govuk-!-margin-top-7",
         summaryText: "Can't see your applications?",
         html: '<p class="govuk-body">If your Teaching Vacancies account used a different email address from your GOV.UK One Login account, your applications will not automatically appear here.</p><p class="govuk-body">You can request <a class="govuk-link" href="/onelogin/journey/import">a transfer of your existing profile</a>.</p>'
       }) }}

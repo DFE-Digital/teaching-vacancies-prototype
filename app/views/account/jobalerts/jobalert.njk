@@ -139,8 +139,11 @@
         <input type="hidden" name="jobAlertState" value="alert">
         {{ govukInput({
           label: {
-            text: "Keywords (optional)",
+            text: "Job title or keyword",
             classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Enter a job title, subject or keyword"
           },
           id: "jobseekers-subscription-form-keyword-field",
           name: "jobseekers_subscription_form[keyword]",
@@ -149,7 +152,7 @@
 
         {{ govukInput({
           label: {
-            text: "City, county or postcode (in England)",
+            text: "City, county, or postcode in England",
             classes: "govuk-label--s"
           },
           id: "jobseekers-subscription-form-location-field",
@@ -324,7 +327,7 @@
             }
           },
           items: [
-            { value: "visa", text: "Only send alerts for jobs with visa sponsorship" }
+            { value: "visa", text: "Only send alerts for jobs that offer visa sponsorship" }
           ]
         }) }}
 

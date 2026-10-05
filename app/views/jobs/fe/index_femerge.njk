@@ -35,7 +35,7 @@
     Jobs (341)
   </h1>
 
-  <p><a class="govuk-link govuk-link--no-visited-state" href="alert?role-type=fe-role">Receive a job alert</a> whenever new jobs match your search.</p>
+  <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/jobalerts/jobalert">Receive a job alert</a> whenever a job matching this search is listed.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -102,91 +102,7 @@
 
           {% if loop.index0 < 10 %}
 
-            {% set address %}
-              {% for part, value in job.organisation.address %}
-                {{value}}{% if not loop.last %}, {% endif %}
-              {% endfor %}
-            {% endset %}
-
-            {% set closingInformation %}
-              {{job.closingDate | date}} at {{job.closingTime}}
-            {% endset %}
-
-            <div class="app-jobs__item">
-              <h2 class="govuk-heading-m">
-
-                <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
-
-                {% if job.isUsingApplicationForm == 'Yes' %}
-                  <a class="govuk-tag govuk-tag--green" href="/jobs/{{ job.id }}/apply">Quick apply</a>
-                {% endif %}
-
-              </h2>
-
-              <p class="app-jobs__address">{{job.organisation.name}},{{address}}</p>
-
-              {{ govukSummaryList({
-                classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                rows: [
-                  {
-                    key: {
-                      text: "Full-time equivalent salary"
-                    },
-                    value: {
-                      html: job.fullTimeEquivalentSalaryDetails
-                    }
-                  } if job.fullTimeEquivalentSalaryDetails,
-                  {
-                    key: {
-                      text: "Actual salary"
-                    },
-                    value: {
-                      html: job.actualSalaryDetails
-                    }
-                  } if job.actualSalaryDetails,
-                  {
-                    key: {
-                      text: "Pay scale"
-                    },
-                    value: {
-                      html: job.payScaleDetails
-                    }
-                  } if job.payScaleDetails,
-                  {
-                    key: {
-                      text: "School type"
-                    },
-                    value: {
-                      html: job.schoolType
-                    }
-                  } if job.schoolType,
-                  {
-                    key: {
-                      text: "Working pattern"
-                    },
-                    value: {
-                      text: job.workingPatterns | join(', ') | capitalize
-                    }
-                  },
-                  {
-                    key: {
-                      text: "Closing date"
-                    },
-                    value: {
-                      html: closingInformation
-                    }
-                  } if job.closingDate,
-                  {
-                    key: {
-                      text: "Visa sponsorship"
-                    },
-                    value: {
-                      text: job.sponsorship
-                    }
-                  } if job.sponsorship
-                ]
-              }) }}
-            </div>
+            {% include "includes/job-listing-item.njk" %}
 
           {% endif %}
         {% endfor %}

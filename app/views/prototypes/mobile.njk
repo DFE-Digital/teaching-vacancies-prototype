@@ -9,6 +9,8 @@
       --screen-width: 402px;
       --screen-height: 874px;
       --bezel: 15px;
+      --device-radius: 54px;
+      --screen-radius: 46px;
       --phone-width: calc(var(--screen-width) + (var(--bezel) * 2));
       --phone-height: calc(var(--screen-height) + (var(--bezel) * 2));
     }
@@ -44,7 +46,41 @@
     .stage {
       flex: 0 0 auto;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stage--tablet {
+      --screen-width: 820px;
+      --screen-height: 1180px;
+      --bezel: 18px;
+      --device-radius: 28px;
+      --screen-radius: 18px;
+      --phone-width: calc(var(--screen-width) + (var(--bezel) * 2));
+      --phone-height: calc(var(--screen-height) + (var(--bezel) * 2));
+    }
+
+    .stage--tablet.stage--landscape {
+      --screen-width: 1180px;
+      --screen-height: 820px;
+    }
+
+    /* iPhone Duo inner display: 1878×2670 px at 430 ppi.
+       At the same @3x scale as iPhone (402×874), that is 626×890 CSS px.
+       Opened, the dual screen is landscape: 890×626. */
+    .stage--duo {
+      --screen-width: 626px;
+      --screen-height: 890px;
+      --bezel: 16px;
+      --device-radius: 32px;
+      --screen-radius: 22px;
+      --phone-width: calc(var(--screen-width) + (var(--bezel) * 2));
+      --phone-height: calc(var(--screen-height) + (var(--bezel) * 2));
+    }
+
+    .stage--duo.stage--landscape {
+      --screen-width: 890px;
+      --screen-height: 626px;
     }
 
     .phone {
@@ -52,7 +88,7 @@
       width: var(--phone-width);
       height: var(--phone-height);
       padding: var(--bezel);
-      border-radius: 54px;
+      border-radius: var(--device-radius);
       background:
         linear-gradient(145deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.04) 28%),
         linear-gradient(135deg, #2b3340, #06080d 48%, #1b202b);
@@ -79,7 +115,7 @@
       overflow: hidden;
       width: 100%;
       height: 100%;
-      border-radius: 46px;
+      border-radius: var(--screen-radius);
       background: #f1f2f6;
       box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.18),
@@ -94,6 +130,40 @@
       background: #ffffff;
     }
 
+    .stage--tablet .phone::after {
+      top: 90px;
+      height: 56px;
+    }
+
+    .stage--duo .screen::after {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      pointer-events: none;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 12px;
+      transform: translateY(-50%);
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35), transparent);
+    }
+
+    .stage--duo.stage--landscape .screen::after {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      right: auto;
+      width: 12px;
+      height: auto;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.35), transparent);
+    }
+
+    .stage--duo .phone::after {
+      top: 120px;
+      height: 64px;
+    }
+
     .home-indicator {
       position: absolute;
       z-index: 3;
@@ -106,31 +176,170 @@
       transform: translateX(-50%);
     }
 
-    @media (max-width: 980px) {
-      .demo-shell {
-        flex-direction: column;
-        align-items: center;
-        padding: 16px;
-      }
+    .stage--tablet .home-indicator,
+    .stage--duo .home-indicator {
+      width: 180px;
+    }
 
-      .phone {
-        width: min(432px, 100%);
-        height: auto;
-        aspect-ratio: 432 / 904;
-      }
+    .device-switch {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 20px;
+      margin: 40px 0 0;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .device-switch a {
+      color: #1d70b8;
+    }
+
+    .device-switch__home {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .device-switch a[aria-current="true"],
+    .device-switch a[aria-current="true"]:hover {
+      color: #0b0c0c;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .device-switch a:hover {
+      color: #003078;
+    }
+
+    .device-switch a:focus {
+      color: #0b0c0c;
+      background-color: #ffdd00;
+      outline: 3px solid transparent;
+      box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <main class="demo-shell">
-    <section class="stage">
-      <div class="phone">
+    <section class="stage" id="device-stage">
+      <div class="phone" id="device-frame">
         <div class="screen">
-          <iframe src="/home" title="Teaching Vacancies jobs prototype on a mobile screen"></iframe>
+          <iframe id="device-screen" src="/home" title="Teaching Vacancies jobs prototype on an iPhone screen"></iframe>
           <span class="home-indicator" aria-hidden="true"></span>
         </div>
       </div>
+      <p class="device-switch">
+        <a class="device-switch__home" href="/" aria-label="Home">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 9.2 10 3.5l7 5.7V17H12.5v-4.5h-5V17H3V9.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="#phone" id="device-phone" aria-current="true">iPhone</a>
+        <a href="#tablet" id="device-tablet">iPad</a>
+        <a href="#duo" id="device-duo">iPhone Duo</a>
+        <a href="#landscape" id="orientation-landscape" hidden>Landscape</a>
+        <a href="#portrait" id="orientation-portrait" hidden>Portrait</a>
+        <a href="/home">Desktop</a>
+      </p>
     </section>
   </main>
+  <script>
+    var stage = document.getElementById('device-stage')
+    var frame = document.getElementById('device-frame')
+    var screen = document.getElementById('device-screen')
+    var switchRow = document.querySelector('.device-switch')
+    var phoneLink = document.getElementById('device-phone')
+    var tabletLink = document.getElementById('device-tablet')
+    var duoLink = document.getElementById('device-duo')
+    var landscapeLink = document.getElementById('orientation-landscape')
+    var portraitLink = document.getElementById('orientation-portrait')
+    var deviceLinks = [phoneLink, tabletLink, duoLink]
+
+    var markCurrent = function (links, current) {
+      links.forEach(function (link) {
+        if (link === current) {
+          link.setAttribute('aria-current', 'true')
+        } else {
+          link.removeAttribute('aria-current')
+        }
+      })
+    }
+
+    var setOrientation = function (landscape) {
+      stage.classList.toggle('stage--landscape', landscape)
+      markCurrent([landscapeLink, portraitLink], landscape ? landscapeLink : portraitLink)
+      fitFrame()
+    }
+
+    var setDevice = function (device) {
+      stage.classList.remove('stage--tablet', 'stage--duo', 'stage--landscape')
+      var showOrientation = device !== 'phone'
+      landscapeLink.hidden = !showOrientation
+      portraitLink.hidden = !showOrientation
+
+      if (device === 'tablet') {
+        stage.classList.add('stage--tablet')
+        markCurrent(deviceLinks, tabletLink)
+        markCurrent([landscapeLink, portraitLink], portraitLink)
+        screen.title = 'Teaching Vacancies jobs prototype on an iPad screen'
+      } else if (device === 'duo') {
+        stage.classList.add('stage--duo', 'stage--landscape')
+        markCurrent(deviceLinks, duoLink)
+        markCurrent([landscapeLink, portraitLink], landscapeLink)
+        screen.title = 'Teaching Vacancies jobs prototype on an iPhone Duo screen'
+      } else {
+        markCurrent(deviceLinks, phoneLink)
+        screen.title = 'Teaching Vacancies jobs prototype on an iPhone screen'
+      }
+
+      fitFrame()
+    }
+
+    var fitFrame = function () {
+      frame.style.transform = 'none'
+      frame.style.marginBottom = '0px'
+      var width = frame.offsetWidth
+      var height = frame.offsetHeight
+      var switchSpace = switchRow.offsetHeight + 40
+      var scale = Math.min(
+        1,
+        (window.innerWidth - 48) / width,
+        (window.innerHeight - 48 - switchSpace) / height
+      )
+      frame.style.transformOrigin = 'top center'
+      frame.style.transform = 'scale(' + scale + ')'
+      frame.style.marginBottom = (-(height * (1 - scale))) + 'px'
+    }
+
+    phoneLink.addEventListener('click', function (event) {
+      event.preventDefault()
+      setDevice('phone')
+    })
+
+    tabletLink.addEventListener('click', function (event) {
+      event.preventDefault()
+      setDevice('tablet')
+    })
+
+    duoLink.addEventListener('click', function (event) {
+      event.preventDefault()
+      setDevice('duo')
+    })
+
+    landscapeLink.addEventListener('click', function (event) {
+      event.preventDefault()
+      setOrientation(true)
+    })
+
+    portraitLink.addEventListener('click', function (event) {
+      event.preventDefault()
+      setOrientation(false)
+    })
+
+    window.addEventListener('resize', fitFrame)
+    fitFrame()
+  </script>
 </body>
 </html>

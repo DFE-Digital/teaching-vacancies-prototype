@@ -53,12 +53,12 @@
 
 {% block header %}
   {% include "includes/header.njk" %}
-  {% if not contentPage %}
+  {% if not contentPage and not homepage %}
   {{ govukPhaseBanner({
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/feedback/new" target="_blank" rel="noopener noreferrer">give your feedback (opens in new tab)</a>.',
+    html: 'This is a new service - <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/feedback/new" target="_blank" rel="noopener noreferrer">your feedback</a> will help us to improve it.',
     classes: "govuk-width-container"
   }) }}
   {% endif %}

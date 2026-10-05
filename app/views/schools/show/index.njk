@@ -10,16 +10,25 @@
 
 {% if organisation.website != 'Not entered' %}
   {% set website %}
-    <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
+    <a class="govuk-link" href="{{ organisation.website }}" rel="noreferrer noopener" target="_blank">{{ organisation.website }} (opens in new tab)</a>
   {% endset %}
 {% endif %}
+
+{% set isCollege = organisation.type == 'College' or organisation.phase == 'College' or organisation.phase == 'Sixth form or college' or organisation.phase == 'Further education' %}
+{% set organisationNoun = 'college' if isCollege else 'school' %}
+{% set organisationNounTitle = 'College' if isCollege else 'School' %}
+{% set sizeNoun = 'learners' if isCollege else 'pupils' %}
+
+{% set organisationType %}
+  {{ organisation.type }}{% if organisation.ageGroup %}, ages {{ organisation.ageGroup }}{% endif %}
+{% endset %}
 
 {% block content %}
   {% set h1 %}
     <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
       {{title}}
     </h1>
-    <p>{{address}}</p>
+    <p class="govuk-body">{{address}}</p>
   {% endset %}
 
   <div class="app-logo-title">
@@ -51,70 +60,91 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if organisation.phase or organisation.size or organisation.ageGroup or organisation.website != 'Not entered' or organisation.emailAddress != 'Not entered' %}
+      <h2 class="govuk-heading-m">Summary</h2>
 
-        <h2 class="govuk-heading-m">
-          Summary
-        </h2>
-
-        {% if organisation.parentOrganisation %}
-          <p>Part of <a href="/schools/{{organisation.parentOrganisation.id}}">{{organisation.parentOrganisation.name}}</a>.</p>
-        {% endif %}
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Education phase"
-              },
-              value: {
-                text: organisation.phase
-              }
-            } if organisation.phase,
-            {
-              key: {
-                text: "School size"
-              },
-              value: {
-                text: organisation.size + ' pupils'
-              }
-            } if organisation.size,
-            {
-              key: {
-                text: "Age range"
-              },
-              value: {
-                text: organisation.ageGroup
-              }
-            } if organisation.ageGroup,
-            {
-              key: {
-                text: "Website"
-              },
-              value: {
-                html: website
-              }
-            } if organisation.website != 'Not entered',
-            {
-              key: {
-                text: "Ofsted report"
-              },
-              value: {
-                html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-              }
-            } if not organisation.schools,
-            {
-              key: {
-                text: "Email address"
-              },
-              value: {
-                html: '<a href="#">'+organisation.emailAddress+'</a>'
-              }
-            } if organisation.emailAddress != 'Not entered'
-          ]
-        }) }}
-
+      {% if organisation.parentOrganisation %}
+        <p class="govuk-body">Part of <a class="govuk-link" href="/schools/{{ organisation.parentOrganisation.id }}">{{ organisation.parentOrganisation.name }}</a></p>
       {% endif %}
+
+      {{ govukSummaryList({
+        attributes: {
+          id: "profile_summary"
+        },
+        rows: [
+          {
+            key: {
+              text: organisationNounTitle + " name"
+            },
+            value: {
+              text: organisation.name
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: address
+            }
+          },
+          {
+            key: {
+              text: organisationNounTitle + " type"
+            },
+            value: {
+              text: organisationType
+            }
+          } if organisation.type,
+          {
+            key: {
+              text: "Education phase"
+            },
+            value: {
+              text: organisation.phase
+            }
+          } if organisation.phase,
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: organisation.ageGroup
+            }
+          } if organisation.ageGroup,
+          {
+            key: {
+              text: "Size"
+            },
+            value: {
+              text: organisation.size + " " + sizeNoun + " enrolled"
+            }
+          } if organisation.size,
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: '<a class="govuk-link" href="mailto:' + organisation.emailAddress + '">' + organisation.emailAddress + '</a>'
+            }
+          } if organisation.emailAddress and organisation.emailAddress != 'Not entered',
+          {
+            key: {
+              text: "Website address"
+            },
+            value: {
+              html: website
+            }
+          } if organisation.website and organisation.website != 'Not entered',
+          {
+            key: {
+              text: "Ofsted report"
+            },
+            value: {
+              html: '<a class="govuk-link" href="https://reports.ofsted.gov.uk/" rel="noreferrer noopener" target="_blank">View Ofsted report (opens in new tab)</a>'
+            }
+          } if not isCollege and not organisation.schools
+        ]
+      }) }}
 
       {% if organisation.about != 'Not entered' or organisation.photo != 'Not entered' %}
         <h2 class="govuk-heading-m">
@@ -142,10 +172,10 @@
         Location and map
       </h2>
 
-      <p>{{address}}</p>
+      <p class="govuk-body">{{address}}</p>
 
       <div class="app-map">
-        <img src="/public/images/maps/courtland.png">
+        <img src="/public/images/maps/courtland.png" alt="Map showing {{ organisation.name }}">
       </div>
 
       <h2 class="govuk-heading-m">
@@ -159,18 +189,25 @@
           }
         })}}
       {% else %}
-        <p>There are no jobs - <a href="#">set up job alert</a>.</p>
+        <p class="govuk-body">There are currently no jobs at this {{ organisationNoun }}.</p>
+      {% endif %}
+
+      {% if organisation.parentOrganisation and trustJobCount %}
+        <p class="govuk-body">
+          <a class="govuk-link" href="/schools/{{ organisation.parentOrganisation.id }}">View {{ trustJobCount }} {{ "job" if trustJobCount == 1 else "jobs" }} across {{ organisation.parentOrganisation.name }}</a>
+        </p>
       {% endif %}
 
       <h2 class="govuk-heading-m">
         Set up a job alert
       </h2>
 
-      <p>Get a job alert whenever a role is listed at {{organisation.name}}.</p>
+      <p class="govuk-body">Get a job alert whenever a role is listed at {{ organisation.name }}.</p>
 
       {{ govukButton({
         text: "Set up job alert",
-        classes: 'govuk-button--secondary'
+        href: "/jobalerts/jobalert",
+        classes: "govuk-button--secondary"
       }) }}
     </div>
   </div>

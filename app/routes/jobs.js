@@ -1,5 +1,6 @@
 
-const _ = require('lodash');
+const _ = require('lodash')
+const users = require('../data/users.json')
 
 function getHomepageLocationOptions() {
   return [
@@ -114,6 +115,14 @@ module.exports = router => {
 
   router.get('/mobile', (req, res) => {
     res.render('prototypes/mobile')
+  })
+
+  router.get('/signed-in', (req, res) => {
+    req.session.data.signedIn = true
+    if (!req.session.user) {
+      req.session.user = users[0]
+    }
+    res.redirect('/home')
   })
 
   router.get('/jobs', (req, res) => {

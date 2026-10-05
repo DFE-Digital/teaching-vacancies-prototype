@@ -40,28 +40,37 @@ module.exports = router => {
   })
 
   router.get('/schools/:id', (req, res) => {
-    let organisations = req.session.data.organisations
-    let organisation = organisations.find(organisation => organisation.id == req.params.id)
+    const organisations = req.session.data.organisations || []
+    const organisation = organisations.find(item => item.id == req.params.id)
 
-    let jobs = req.session.data.jobs
+    if (!organisation) {
+      return res.redirect('/schools')
+    }
 
-    jobs = [jobs[0], jobs[1]]
+    const allJobs = (req.session.data.jobs || []).filter(job => job.status == 'Active')
+    const jobs = allJobs.filter(job => job.organisation && String(job.organisation.id) === String(organisation.id))
 
-    // Check to see if the school is part of a trust
-    let parentOrganisation = organisations
-      .filter(o => o.schools)
-      .find(o => o.schools.find(s => s.id == organisation.id))
+    const parentOrganisation = organisations
+      .filter(item => item.schools)
+      .find(item => item.schools.find(school => school.id == organisation.id))
 
-    if(parentOrganisation) {
+    let trustJobCount = 0
+
+    if (parentOrganisation) {
       organisation.parentOrganisation = {
         name: parentOrganisation.name,
         id: parentOrganisation.id
       }
+
+      const schoolIds = new Set((parentOrganisation.schools || []).map(school => String(school.id)))
+      schoolIds.add(String(parentOrganisation.id))
+      trustJobCount = allJobs.filter(job => job.organisation && schoolIds.has(String(job.organisation.id))).length
     }
 
     res.render('schools/show/index', {
       jobs,
-      organisation
+      organisation,
+      trustJobCount
     })
   })
 
