@@ -1,0 +1,47 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Declarations" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Declarations</h2>
+      <p class="govuk-body">If you are successful, you will need to complete an enhanced <a class="govuk-link" href="https://www.gov.uk/government/organisations/disclosure-and-barring-service" target="_blank" rel="noreferrer noopener">Disclosure and Barring Service (DBS) check (opens in new tab)</a>. If you have lived or worked outside the UK, you may need to provide a criminal record check from another country.</p>
+      <p class="govuk-body">It’s a criminal offence to apply for a role working with children or young people if you are barred from doing so by the DBS or a court order.</p>
+      <p class="govuk-body">Not all convictions or cautions will stop you from working in a school or college. You must declare any convictions or cautions you are required to disclose.</p>
+      <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/tell-employer-or-college-about-criminal-record" target="_blank" rel="noreferrer noopener">Check when you need to tell someone about your criminal record (opens in new tab)</a></p>
+      <p class="govuk-body">Schools and colleges may also carry out online searches as part of their safeguarding checks.</p>
+
+      <form method="post">
+        {{ govukRadios({
+          name: "safeguarding",
+          fieldset: {
+            legend: {
+              text: "Do you need to declare any safeguarding issues, such as a criminal record or professional misconduct?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "Yes", text: "Yes, I need to declare something", checked: application.declarations.safeguarding == "Yes" },
+            { value: "No", text: "No", checked: application.declarations.safeguarding == "No" }
+          ]
+        }) }}
+        {{ govukRadios({
+          name: "relationship",
+          fieldset: {
+            legend: {
+              html: "Do you have a family or close relationship with anyone who works at " + job.organisation.name + ", or with any of its governors or trustees?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "Yes", text: "Yes", checked: application.declarations.relationship == "Yes" },
+            { value: "No", text: "No", checked: application.declarations.relationship == "No" }
+          ]
+        }) }}
+        {{ completedSection("declarations") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

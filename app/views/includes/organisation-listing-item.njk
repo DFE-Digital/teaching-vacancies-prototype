@@ -1,0 +1,56 @@
+{% if organisation.phase == 'Nursery school' %}
+  {% set phaseLabel = 'Nursery' %}
+  {% set keyStageLabel = 'Early years' %}
+{% elif organisation.phase == 'Primary school' %}
+  {% set phaseLabel = 'Primary school' %}
+  {% set keyStageLabel = 'Early years, Key stage 1, Key stage 2' %}
+{% elif organisation.phase == 'Secondary school' %}
+  {% set phaseLabel = 'Secondary school' %}
+  {% set keyStageLabel = 'Key stage 3, Key stage 4' %}
+{% elif organisation.phase == 'Through school' or organisation.phase == 'All through school' %}
+  {% set phaseLabel = 'All through school' %}
+  {% set keyStageLabel = 'Early years, Key stage 1, Key stage 2, Key stage 3, Key stage 4, Key stage 5' %}
+{% else %}
+  {% set phaseLabel = 'Sixth form or FE college' %}
+  {% set keyStageLabel = 'Key stage 5' %}
+{% endif %}
+
+<div class="app-schools__item">
+  <h2 class="govuk-heading-m">
+    <a class="govuk-link" href="/schools/{{ organisation.id }}">{{ organisation.name }}</a>
+  </h2>
+  <p class="govuk-body">
+    {% for part, value in organisation.address %}
+      {{ value }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+  </p>
+  {{ govukSummaryList({
+    classes: "govuk-summary-list--no-border app-summary-list--compact",
+    rows: [
+      {
+        key: {
+          text: "Key stage"
+        },
+        value: {
+          text: keyStageLabel
+        }
+      },
+      {
+        key: {
+          text: "Education phase"
+        },
+        value: {
+          text: phaseLabel
+        }
+      },
+      {
+        key: {
+          text: "Current jobs"
+        },
+        value: {
+          text: organisation.currentJobs
+        }
+      }
+    ]
+  }) }}
+</div>

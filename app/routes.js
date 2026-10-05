@@ -26,6 +26,7 @@ require('./routes/profile-references')(router)
 require('./routes/profile-equality')(router)
 require('./routes/profile-errors')(router)
 
+require('./routes/application-flow')(router)
 require('./routes/jobs')(router)
 require('./routes/schools')(router)
 

@@ -21,30 +21,41 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-        {{title}}
-        {{govukTag({
-          text: user.profile.status,
-          classes: 'govuk-tag--green'
-        }) if user.profile.status == 'Active'}}
-      </h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      {% if user.profile.status %}
-        <p>
-          {% if user.profile.status == 'Active' %}
-            <a class="govuk-!-margin-right-2" href="/profile/deactivate">Turn off profile</a>
-          {% else %}
-            <a class="govuk-!-margin-right-2" href="/profile/activate">Turn on profile</a>
-          {% endif %}
-          <a href="/profile/preview">Preview profile</a></p>
-        </p>
+      <ul class="app-profile-shortcuts">
+        <li class="app-profile-shortcuts__item">
+          <a class="govuk-link app-profile-shortcuts__link" href="/onelogin/journey/match">Your saved jobs</a>
+        </li>
+        <li class="app-profile-shortcuts__item">
+          <a class="govuk-link app-profile-shortcuts__link" href="/jobseekers/subscriptions">Your job alerts</a>
+        </li>
+        <li class="app-profile-shortcuts__item">
+          <a class="govuk-link app-profile-shortcuts__link" href="/jobalerts/jobalert">Create a job alert</a>
+        </li>
+      </ul>
+
+      <p class="govuk-body">
+        {% if user.profile.status == 'Active' %}
+          <a class="govuk-link govuk-!-margin-right-2" href="/profile/deactivate">Turn off your profile</a>
+        {% else %}
+          <a class="govuk-link govuk-!-margin-right-2" href="#turn-on-profile">Turn on your profile</a>
+        {% endif %}
+        <a class="govuk-link" href="/profile/preview">Preview profile</a>
+      </p>
+
+      <p class="govuk-body">Your profile allows schools, trusts and colleges to contact you, based on your profile details.</p>
+
+      {% if user.profile.status != 'Active' %}
+        {{ govukWarningText({
+          html: "Your profile is inactive. To make it active, select 'Turn on your profile'. When your profile is active, school, trust, and college hiring staff can view your details and contact you about jobs by email.",
+          iconFallbackText: "Warning"
+        }) }}
       {% endif %}
 
-      <p>Schools and trusts can find your profile and invite you to apply for roles.</p>
+      <div id="app-personal-details" class="app-profile__section">
 
-      <div id="app-personal-details" class="app-profile__section app-profile__section--first">
-
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
+        <h2 class="govuk-heading-m">
           Personal details
         </h2>
 
@@ -274,7 +285,7 @@
       </div>
       <div id="app-job-preferences" class="app-profile__section">
 
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
+        <h2 class="govuk-heading-m">
           Job preferences
         </h2>
 
@@ -421,7 +432,6 @@
           <div class="govuk-inset-text app-inset-text--incomplete-section app-inset-text--incomplete-section-error">
             <p class="app-instruction-text">You must complete your job preferences before you turn on your profile.</p>
         {% endif %}
-          <p>Choose which roles, phase, working patterns and locations you're interested in (and key stage for teaching roles).</p>
           <p><a class="govuk-link--no-visited-state next-location-8" href="/profile/job-preferences/roles_teaching">Add job preferences</a></p>
         {% if jobPreferencesIncomplete %}
           </div>
@@ -435,8 +445,8 @@
       <div class="app-profile__section">
 
 
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-        Teaching status
+        <h2 class="govuk-heading-m">
+        Professional status
         </h2>
 
         {% set fullTRN %}
@@ -544,13 +554,13 @@
           ]
         }) }}
         {% else %}
-          <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add teaching status</a></p>
+          <p><a class="govuk-link--no-visited-state" href="/profile/teaching-status/qts">Add qualified teacher status</a></p>
         {% endif %}
       </div>
 
       <div class="app-profile__section">
 
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
+        <h2 class="govuk-heading-m">
           Qualifications
         </h2>
 
@@ -683,108 +693,11 @@
       </div>
 
       <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Training and continuing professional development (CPD)
-        </h2>
-        <p><a class="govuk-link--no-visited-state" href="/profile/qualifications/training">Add training</a></p>
-
-
-      {% if data['training-subject'] !== '' %}
-
-        <div id="training-block">
-
-            <div class="app-page-header govuk-!-margin-bottom-1 govuk-!-margin-top-7">
-                <div class="app-page-header__title">
-                    <h2 class="govuk-heading-m">{{data ['training-subject']}}</h2>
-                </div>
-                <div class="app-page-header__actions">               
-                    <div class="app-button-menu">
-                        <div class="app-button-menu__wrapper">
-                            <a class="app-button-menu__item govuk-link" href="/profile/qualifications/training_delete">Delete training</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <dl class="govuk-summary-list">
-    
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Name of course or training
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{data ['training-subject']}}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">   
-                        <a class="govuk-link" href="/profile/qualifications/training">
-                            Change<span class="govuk-visually-hidden"> name of course or training</span>
-                        </a>
-                    </dd>
-                </div>
-            
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Training provider
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{data ['training-provider']}}
-                    </dd>
-                    <dd class="govuk-summary-list__actions"> 
-                        <a class="govuk-link" href="/profile/qualifications/training">
-                            Change<span class="govuk-visually-hidden"> training provider</span>
-                        </a> 
-                    </dd>
-                </div>
-
-                {% if data['training-grade'] !== '' %}
-
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                    Grade (optional)
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                    {{data ['training-grade']}}
-                    </dd>
-                
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="/profile/qualifications/training">
-                            Change<span class="govuk-visually-hidden"> grade</span>
-                        </a> 
-                    </dd>
-                </div>
-
-                {% endif %}
-
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                    Year awarded
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                    2013
-                    </dd>
-                    
-                    <dd class="govuk-summary-list__actions">  
-                        <a class="govuk-link" href="/profile/qualifications/training">
-                            Change<span class="govuk-visually-hidden"> year awarded</span>
-                        </a>  
-                    </dd>
-                </div>
-                    
-            </dl>
-
-        </div>
-
-      {% endif %}
-
-
-      </div>
-
-      <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
+        <h2 class="govuk-heading-m">
           Work history
         </h2>
 
-        <p><a class="govuk-link--no-visited-state" href="/profile/work-history">Add roles</a></p>
+        <p><a class="govuk-link--no-visited-state" href="/profile/work-history">Add a job or voluntary role</a></p>
 
         {% if user.profile.workHistory | length %}
           <div class="app-list">
@@ -830,7 +743,7 @@
       </div>
 
       <div class="app-profile__section" style="display:none;">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
+        <h2 class="govuk-heading-m">
           References
 
           {{govukTag({
@@ -886,8 +799,8 @@
       </div>
 
       <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          About you
+        <h2 class="govuk-heading-m">
+          Your personal statement
         </h2>
 
         {% if user.profile.about %}
@@ -920,7 +833,7 @@
       <div class="app-profile__section" style="display:none;">
 
 
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
+        <h2 class="govuk-heading-m">
           Equal opportunities and recruitment monitoring
 
           {{govukTag({
@@ -1055,8 +968,8 @@
       </div>
 
       <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Hide profile from schools or trusts
+        <h2 class="govuk-heading-m">
+          Hide profile from schools, trusts or colleges
         </h2>
 
         {% if user.profile.provideSchoolsToHideFrom == 'Yes'  %}
@@ -1067,7 +980,7 @@
 
         {% else %}
           <p>
-            <a href="/profile/hide-profile/">Set up who cannot view your profile</a>
+            <a href="/profile/hide-profile/">Choose who cannot view your profile</a>
           </p>
         {% endif %}
 
@@ -1146,33 +1059,34 @@
        
           {% if user.profile.status == 'Active' %}
 
-            <div class="app-profile__section">
-              <h2 class="govuk-heading-m govuk-!-font-size-27">
-                Preview and turn off profile
+            <div class="app-profile__section" id="turn-on-profile">
+              <h2 class="govuk-heading-m">
+                Preview and turn off your profile
               </h2>
 
-              <p><a href="/profile/preview">Preview profile</a></p>
+              <p><a class="govuk-link" href="/profile/preview">Preview profile</a></p>
+              <p class="govuk-body">When you turn off your profile, hiring staff can no longer view your details or contact you by email.</p>
 
               <a href="/profile/deactivate" class="govuk-button" data-module="govuk-button">
-                Turn off profile
+                Turn off your profile
               </a>
 
             </div>
            
           {% else %}
             
-            <div class="app-profile__section">
-              <h2 class="govuk-heading-m govuk-!-font-size-27">
-                Preview and turn on profile
+            <div class="app-profile__section" id="turn-on-profile">
+              <h2 class="govuk-heading-m">
+                Preview and turn on your profile
               </h2>
 
-              <p><a href="/profile/preview">Preview profile</a></p>
-              <p>When you turn on your profile it will be only be visible to hiring staff in schools and trusts. They can get in touch by email to invite you apply for roles.</p>
+              <p><a class="govuk-link" href="/profile/preview">Preview profile</a></p>
+              <p class="govuk-body">When you turn on your profile, hiring staff can view your details and contact you by email. You can <a class="govuk-link" href="/profile/hide-profile/">hide your profile</a> from specific schools, colleges or trusts.</p>
 
               <form method="post" novalidate>
 
                 {{ govukButton({
-                  text: "Turn on profile",
+                  text: "Turn on your profile",
                   classes:"next-location-4"
                 }) }}
 
@@ -1181,6 +1095,11 @@
             </div>
                 
           {% endif %}
+
+          {{ govukDetails({
+            summaryText: "Can't see your profile details?",
+            html: '<p class="govuk-body">If you had a Teaching Vacancies account using a different email address to your GOV.UK One Login account, your existing profile will not automatically be saved.</p><p class="govuk-body">You can request to <a class="govuk-link" href="/onelogin/journey/import">transfer your existing profile</a>.</p>'
+          }) }}
      </div>
 
   

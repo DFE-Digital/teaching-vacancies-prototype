@@ -68,6 +68,35 @@ h1 .govuk-tag {
   }
 }
 
+.app-profile-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.app-profile-shortcuts__item {
+  flex: 1 1 0;
+  margin: 0;
+  min-width: 140px;
+}
+
+.app-profile-shortcuts__link {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid $govuk-border-colour;
+  background: govuk-colour("white");
+  text-align: center;
+}
+
+@media (max-width: 40.0525em) {
+  .app-profile-shortcuts {
+    flex-direction: column;
+  }
+}
+
 .app-profile__section {
   // background: lightblue;
   margin-bottom: govuk-spacing(5);
@@ -355,8 +384,84 @@ hr {
     background-image: url(/../public/images/heart.svg);
   }
 
+  .icon--saved {
+    background-image: url(/../public/images/heart-saved.svg);
+    cursor: default;
+  }
 
+  .icon--apply {
+    background-image: url(/../public/images/icon-apply.svg);
+  }
 
+  .banner-button-component__button {
+    display: block;
+  }
+
+}
+
+.vacancies-show {
+  .header-with-logo {
+    align-items: center;
+    display: flex;
+  }
+
+  .header-with-logo-logo {
+    margin-right: 15px;
+  }
+
+  .header-with-logo-logo img {
+    max-height: 70px;
+    max-width: 70px;
+  }
+
+  .header-with-logo-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading--border-bottom {
+    border-bottom: 5px solid #b1b4b6;
+    padding-bottom: 10px;
+  }
+
+  .sidebar-info-box {
+    background-color: #f3f2f1;
+    margin-bottom: 25px;
+    padding: 30px;
+  }
+
+  .similar-jobs .govuk-grid-row {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .similar-jobs__job {
+    border-left: 5px solid #f47738;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 20px;
+  }
+
+  .grey-border-box--thin {
+    border: 1px solid #cecece;
+    margin-bottom: 25px;
+    padding: 15px;
+  }
+
+  .app-map img {
+    border: 1px solid #cecece;
+    max-width: 100%;
+  }
+
+  .icon--left {
+    background-repeat: no-repeat;
+    padding-left: 30px;
+  }
+
+  .icon--map-blue {
+    background-image: url(/../public/images/icon-map-blue.svg);
+  }
 }
 
 .filter-bottom{
@@ -1026,4 +1131,32 @@ hr {
 .govuk-task-list__hint {
   margin-top: 5px;
   color: #505a5f
+}
+
+.app-empty-section {
+  border: 3px dashed #b1b4b6;
+  padding: 15px 20px 5px;
+  margin-bottom: 30px;
+}
+
+.app-gap-warning {
+  border-left: 5px solid #d4351c;
+  padding-left: 15px;
+  margin-bottom: 25px;
+}
+
+.app-section-heading {
+  align-items: baseline;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+@import "patterns/tag";
+
+.govuk-header__navigation-item .govuk-header__link--active,
+.govuk-header__navigation-item .govuk-header__link--active:link,
+.govuk-header__navigation-item .govuk-header__link--active:visited,
+.govuk-header__navigation-item .govuk-header__link--active:hover {
+  font-weight: 700;
 }

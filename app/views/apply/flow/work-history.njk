@@ -1,0 +1,109 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Work history" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Work history</h2>
+      <p class="govuk-body">Add details of all jobs you’ve had since leaving full-time education. This should include:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>all paid roles</li>
+        <li>voluntary work, if relevant to your application</li>
+      </ul>
+      <p class="govuk-body">If you’re applying for a teaching job, you should include teaching and other experience, if you have it.</p>
+      <p class="govuk-body">You’ll also need to explain any gaps in your work history. This includes gaps between:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>school and university</li>
+        <li>university and employment</li>
+        <li>different jobs</li>
+      </ul>
+      <p class="govuk-body">You will need to give the reason you left each role.</p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Add a job or voluntary role",
+          classes: "govuk-button--secondary",
+          href: "/jobs/" + job.id + "/apply/work-history/job"
+        }) }}
+        {{ govukButton({
+          text: "Add a gap in work history",
+          classes: "govuk-button--secondary",
+          href: "/jobs/" + job.id + "/apply/work-history/gap?type=work"
+        }) }}
+      </div>
+
+      {% for item in application.jobs %}
+        <div class="govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">{{ item.title or "Job" }}</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/work-history/job/{{ item.id }}/edit">Change<span class="govuk-visually-hidden"> {{ item.title }}</span></a></li>
+              <li class="govuk-summary-card__action"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/work-history/job/{{ item.id }}/delete">Delete<span class="govuk-visually-hidden"> {{ item.title }}</span></a></li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-0",
+              rows: [
+                { key: { text: "Organisation" }, value: { text: item.organisation } },
+                { key: { text: "Job title" }, value: { text: item.title } },
+                { key: { text: "Start date" }, value: { text: item.startMonth + " " + item.startYear } },
+                { key: { text: "End date" }, value: { text: "I currently work in this role" if item.current else (item.endMonth + " " + item.endYear) } }
+              ]
+            }) }}
+            {% if item.subjects or item.duties or item.reason %}
+              {{ govukDetails({
+                summaryText: "Additional information",
+                html: "<p class='govuk-body govuk-!-font-weight-bold'>Subjects and key stages</p><p class='govuk-body'>" + (item.subjects or "Not provided") + "</p><p class='govuk-body govuk-!-font-weight-bold'>Main duties</p><p class='govuk-body'>" + (item.duties or "Not provided") + "</p><p class='govuk-body govuk-!-font-weight-bold'>Reason for leaving</p><p class='govuk-body'>" + (item.reason or "Not provided") + "</p>"
+              }) }}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+
+      <h2 class="govuk-heading-m">Gap between education and work history</h2>
+      <p class="govuk-body">This section explains the gap between my education and work experience.</p>
+      {{ govukButton({
+        text: "Add gap between education and work history",
+        classes: "govuk-button--secondary",
+        href: "/jobs/" + job.id + "/apply/work-history/gap?type=education"
+      }) }}
+
+      {% set workGaps = application.gaps | selectattr("type", "equalto", "work") | list %}
+      {% if workGaps | length %}
+        <div class="app-gap-warning">
+          <p class="govuk-body govuk-!-font-weight-bold">You have a gap in your work history from {{ workGaps[0].startMonth }} {{ workGaps[0].startYear }} to {{ workGaps[0].endMonth }} {{ workGaps[0].endYear }}</p>
+          <p class="govuk-body"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/work-history/gap?type=work">Add another job or explain this gap</a></p>
+        </div>
+      {% endif %}
+
+      {% for item in application.gaps %}
+        <div class="govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">{{ item.reason or "Gap" }}</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/work-history/gap/{{ item.id }}/edit">Change<span class="govuk-visually-hidden"> {{ item.reason }}</span></a></li>
+              <li class="govuk-summary-card__action"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/work-history/gap/{{ item.id }}/delete">Delete<span class="govuk-visually-hidden"> {{ item.reason }}</span></a></li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-0",
+              rows: [
+                { key: { text: "Organisation" }, value: { text: item.organisation or "Not provided" } },
+                { key: { text: "Start date" }, value: { text: item.startMonth + " " + item.startYear } },
+                { key: { text: "End date" }, value: { text: item.endMonth + " " + item.endYear } }
+              ]
+            }) }}
+          </div>
+        </div>
+      {% endfor %}
+
+      <form method="post">
+        {{ completedSection("work-history", "Make sure you have added all jobs and any gaps in your work history.") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

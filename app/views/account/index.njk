@@ -6,106 +6,47 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-
-    <div class="govuk-grid-column-full"> 
-
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            How you sign in to Teaching Vacancies is changing
-          </h3>
-          <p class="govuk-body">GOV.UK One Login is replacing all other ways to sign in to services on GOV.UK.</p>
-          
-          <p class="govuk-body">You'll be able to sign in to or create a GOV.UK One Login that will be linked to your Teaching Vacancies account from September.</p>
-        </div>
-      </div>
-
-    </div>
-  
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        {{title}}
-      </h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Email address"
-            },
-            value: {
-              text: user.emailAddress
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Email address"
-                }
-              ]
-            }
-          } if user.emailAddress,
-          {
-            key: {
-              text: "Email address"
-            },
-            value: {
-              text: faker.email
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Email address"
-                }
-              ]
-            }
-          } if user.emailAddress == '',
-          {
-            key: {
-              text: "Password"
-            },
-            value: {
-              text: '*************'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Password"
-                }
-              ]
-            }
-          }
-        ]
+      <h2 class="govuk-heading-m">Change your sign in details</h2>
 
-      }) }}
+      <p class="govuk-body">You can use your GOV.UK One Login to sign in to Teaching Vacancies.</p>
 
-      <h2 class="govuk-heading-m">
-        Import an old Teaching Vacancies account
-      </h2>
+      <p class="govuk-body">You can change these details in your GOV.UK One Login:</p>
 
-      <p>If you had an old Teaching Vacancies account you want to import data from. You can request an import by selecting import account.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>email address</li>
+        <li>password</li>
+        <li>how you get your security codes to sign in</li>
+      </ul>
 
-      <p><a class="govuk-link--no-visited-state" href="/onelogin/journey/import">Import account</a></p>
+      <p class="govuk-body"><a class="govuk-link" href="https://home.account.gov.uk/settings">Change your sign in details in your GOV.UK One Login</a>.</p>
 
-      <h2 class="govuk-heading-m">
-       Delete account
-      </h2>
+      <h2 class="govuk-heading-m">Can't find your account details?</h2>
 
-      <p>Select delete account to remove all your data and your account on Teaching Vacancies.</p>
+      <p class="govuk-body">If you had a Teaching Vacancies account using a different email address to your GOV.UK One Login account, your account details will not automatically be saved.</p>
 
-      <p><a class="govuk-link--no-visited-state" href="#">Delete account</a></p>
+      <p class="govuk-body">You can request to <a class="govuk-link" href="/onelogin/journey/import">transfer your existing account information</a>.</p>
 
+      <h2 class="govuk-heading-m">Close account</h2>
+
+      <p class="govuk-body">If you do not want to use your Teaching Vacancies account any more you can close your account.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="/account/delete-account">Close account</a></p>
+
+      <h2 class="govuk-heading-m">Opt out of emails</h2>
+
+      <p class="govuk-body">As well as emails about your account and applications, we may send you emails about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>website updates</li>
+        <li>tips to find your next role</li>
+      </ul>
+
+      <p class="govuk-body">You can choose to only receive emails about your account and applications, and opt out of any other email communication.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="/account/marketing">Opt out of additional email communication</a></p>
     </div>
   </div>
-
 {% endblock %}

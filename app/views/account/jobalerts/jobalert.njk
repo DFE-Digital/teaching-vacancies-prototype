@@ -1,773 +1,352 @@
-
-{% extends "layout_jobalerts.njk" %}
+{% extends "layout.njk" %}
 
 {% set title = 'Create your job alert' %}
+{% set activeNav = 'notifications' %}
+{% set forceSignedIn = true %}
+
+{% block header %}
+  {{ super() }}
+  {% include "includes/jobalerts_banner.njk" %}
+{% endblock %}
+
+{% set teachingRoles = [
+  { value: "Teacher or lecturer", text: "Teacher or lecturer" },
+  { value: "Head of year or phase", text: "Head of year or phase" },
+  { value: "Head of department or curriculum", text: "Head of department or curriculum" },
+  { value: "Assistant headteacher", text: "Assistant headteacher" },
+  { value: "Deputy headteacher", text: "Deputy headteacher" },
+  { value: "Headteacher", text: "Headteacher" },
+  { value: "SENCO (special educational needs coordinator)", text: "SENCO (special educational needs coordinator)" },
+  { value: "Other leadership roles", text: "Other leadership role" }
+] %}
+
+{% set supportRoles = [
+  { value: "Teaching assistant", text: "Teaching assistant" },
+  { value: "HLTA (Higher level teaching assistant)", text: "HLTA (higher level teaching assistant)" },
+  { value: "Learning support, assistants, cover supervisor", text: "Learning support or cover supervisor" },
+  { value: "Administration, HR, data and finance", text: "Administration, HR, data and finance" },
+  { value: "Catering, cleaning and site management", text: "Catering, cleaning and site management" },
+  { value: "IT support", text: "IT support" },
+  { value: "Pastoral, health and welfare", text: "Pastoral, health and welfare" },
+  { value: "Leadership and management", text: "Leadership and management" },
+  { value: "Business support, administration and corporate services", text: "Business support, administration and corporate services" },
+  { value: "Student support, learning and progress", text: "Student support, learning and progress" },
+  { value: "Marketing and communications", text: "Marketing and communications" },
+  { value: "Apprenticeships and commercial services", text: "Apprenticeships and commercial services" },
+  { value: "Other support roles", text: "Other support role" }
+] %}
+
+{% set subjects = [
+  ["Accounting", "includes finance and accounting"],
+  ["Agriculture, horticulture and land-based studies", ""],
+  ["Animal care", ""],
+  ["Art and design", ""],
+  ["Biology", ""],
+  ["British sign language", ""],
+  ["Building and construction", ""],
+  ["Business studies", ""],
+  ["Catering", ""],
+  ["Chemistry", ""],
+  ["Children's development and learning", ""],
+  ["Citizenship", ""],
+  ["Classics", "includes Latin"],
+  ["Computing", "includes computer science, information technology, and ICT"],
+  ["Counselling", ""],
+  ["Criminology", ""],
+  ["Customer service", ""],
+  ["Dance", ""],
+  ["Design and technology", "includes product design, textiles and systems and control"],
+  ["Drama", "includes theatre studies and performing arts"],
+  ["Early years", ""],
+  ["Economics", ""],
+  ["Economics and Business Studies", ""],
+  ["Electrics", ""],
+  ["Engineering", ""],
+  ["English", "includes English language and literature"],
+  ["English as a foreign language", ""],
+  ["Esports", ""],
+  ["Fabrication and welding", ""],
+  ["Farming", ""],
+  ["Fashion", ""],
+  ["Food technology", "includes hospitality and catering"],
+  ["Foreign languages", ""],
+  ["French", ""],
+  ["Functional skills", ""],
+  ["Games design", ""],
+  ["Geography", ""],
+  ["German", ""],
+  ["Graphic design", ""],
+  ["Hair and beauty", ""],
+  ["Health and social care", ""],
+  ["History", ""],
+  ["Hotel, catering and travel", ""],
+  ["Humanities", ""],
+  ["ICT", ""],
+  ["Land and property management", ""],
+  ["Languages", "includes MFL (modern foreign languages)"],
+  ["Law", ""],
+  ["Leadership and management", ""],
+  ["Logistics", ""],
+  ["Mandarin", ""],
+  ["Mathematics", ""],
+  ["Media studies", ""],
+  ["Motor vehicle", ""],
+  ["Music", ""],
+  ["People management", ""],
+  ["Philosophy", ""],
+  ["Photography", ""],
+  ["Physical education", ""],
+  ["Physics", ""],
+  ["Plumbing and heating", ""],
+  ["Politics", ""],
+  ["PSHE", ""],
+  ["Psychology", ""],
+  ["Public services", ""],
+  ["Religious education", "includes religious studies"],
+  ["Science", ""],
+  ["Social sciences", ""],
+  ["Sociology", ""],
+  ["Spanish", ""],
+  ["Sport and leisure", ""],
+  ["Sports science", ""],
+  ["Statistics", ""],
+  ["Tourism", ""],
+  ["Welsh", ""],
+  ["Woodworking, joinery and carpentry", ""]
+] %}
+
+{% block pageScripts %}
+  <script>
+    var subjectSearch = document.getElementById('subject-search')
+    if (subjectSearch) {
+      subjectSearch.addEventListener('input', function () {
+        var query = subjectSearch.value.trim().toLowerCase()
+        document.querySelectorAll('.app-subject-option').forEach(function (item) {
+          var label = item.textContent.toLowerCase()
+          item.style.display = query !== '' && label.indexOf(query) === -1 ? 'none' : ''
+        })
+      })
+    }
+  </script>
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Create your job alert</h1>
 
-      <form method="post">
+      <form method="post" action="/jobseekers/subscriptions?jobAlertState=alert">
+        <input type="hidden" name="jobAlertState" value="alert">
+        {{ govukInput({
+          label: {
+            text: "Keywords (optional)",
+            classes: "govuk-label--s"
+          },
+          id: "jobseekers-subscription-form-keyword-field",
+          name: "jobseekers_subscription_form[keyword]",
+          classes: "govuk-!-width-two-thirds"
+        }) }}
 
-        <div class="subscription-criteria">
-            <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-keyword-field">Keywords</label><input class="govuk-input" id="jobseekers-subscription-form-keyword-field" name="jobseekers_subscription_form[keyword]" type="text">
-            </div>
-            <div class="autocomplete" data-controller="autocomplete" data-source="getLocationSuggestions">
-                <div class="govuk-form-group location-finder__input govuk-!-margin-bottom-0">
-                    <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-location-field">City, county or postcode (in England)</label>
+        {{ govukInput({
+          label: {
+            text: "City, county or postcode (in England)",
+            classes: "govuk-label--s"
+          },
+          id: "jobseekers-subscription-form-location-field",
+          name: "jobseekers_subscription_form[location]",
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukSelect({
+          label: {
+            text: "Search radius",
+            classes: "govuk-label--s"
+          },
+          id: "jobseekers-subscription-form-radius-field",
+          name: "jobseekers_subscription_form[radius]",
+          items: [
+            { value: "0", text: "This area only", selected: true },
+            { value: "1", text: "1 mile" },
+            { value: "5", text: "5 miles" },
+            { value: "10", text: "10 miles" },
+            { value: "15", text: "15 miles" },
+            { value: "20", text: "20 miles" },
+            { value: "25", text: "25 miles" },
+            { value: "50", text: "50 miles" },
+            { value: "100", text: "100 miles" },
+            { value: "200", text: "200 miles" }
+          ]
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l govuk-!-margin-bottom-6">
+
+        <h2 class="govuk-heading-s">Job type</h2>
+
+        {% set teachingCheckboxes %}
+          {{ govukCheckboxes({
+            idPrefix: "teaching-role",
+            name: "jobseekers_subscription_form[teaching_job_roles][]",
+            classes: "govuk-checkboxes--small",
+            items: teachingRoles
+          }) }}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Teaching and leadership",
+          html: teachingCheckboxes
+        }) }}
+
+        {% set supportCheckboxes %}
+          {{ govukCheckboxes({
+            idPrefix: "support-role",
+            name: "jobseekers_subscription_form[support_job_roles][]",
+            classes: "govuk-checkboxes--small",
+            items: supportRoles
+          }) }}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Support",
+          html: supportCheckboxes
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "education-phase",
+          name: "jobseekers_subscription_form[phases][]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Education phase",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "nursery", text: "Nursery" },
+            { value: "primary", text: "Primary school" },
+            { value: "secondary", text: "Secondary school" },
+            { value: "sixth_form_or_college", text: "Sixth form or FE college" },
+            { value: "through", text: "All through school" }
+          ]
+        }) }}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Subject</legend>
+            <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="subject-search" type="search" aria-controls="subject-options" autocomplete="off">
+            <div class="govuk-checkboxes govuk-checkboxes--small" id="subject-options" data-module="govuk-checkboxes">
+              {% for subject in subjects %}
+                <div class="govuk-checkboxes__item app-subject-option">
+                  <input class="govuk-checkboxes__input" id="subject-{{ loop.index }}" name="jobseekers_subscription_form[subjects][]" type="checkbox" value="{{ subject[0] }}">
+                  <label class="govuk-label govuk-checkboxes__label" for="subject-{{ loop.index }}">{{ subject[0] }}</label>
+                  {% if subject[1] %}
+                    <div class="govuk-hint govuk-checkboxes__hint">{{ subject[1] }}</div>
+                  {% endif %}
                 </div>
-                <div class="autocomplete__suggestions govuk-body">
-                    <div class="autocomplete__wrapper">
-                        <div style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
-                            <div aria-atomic="true" aria-live="polite" id="jobseekers-subscription-form-location-field__status--A" role="status"></div>
-                            <div aria-atomic="true" aria-live="polite" id="jobseekers-subscription-form-location-field__status--B" role="status"></div>
-                        </div><input aria-autocomplete="list" aria-describedby="jobseekers-subscription-form-location-field__assistiveHint" aria-expanded="false" aria-owns="jobseekers-subscription-form-location-field__listbox" autocomplete="off" class="autocomplete__input autocomplete__input--default" id="jobseekers-subscription-form-location-field" name="jobseekers_subscription_form[location]" placeholder="" role="combobox" type="text">
-                        <ul class="autocomplete__menu autocomplete__menu--inline autocomplete__menu--hidden" id="jobseekers-subscription-form-location-field__listbox" role="listbox"></ul><span id="jobseekers-subscription-form-location-field__assistiveHint" style="display: none;">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>
-                        <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
-                    </div>
-                </div>
+              {% endfor %}
             </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-radius-field">Search radius</label><select class="govuk-select" data-change-submit="false" id="jobseekers-subscription-form-radius-field" name="jobseekers_subscription_form[radius]">
-                    <option selected="selected" value="0">
-                        This area only
-                    </option>
-                    <option value="1">
-                        1 mile
-                    </option>
-                    <option value="5">
-                        5 miles
-                    </option>
-                    <option value="10">
-                        10 miles
-                    </option>
-                    <option value="15">
-                        15 miles
-                    </option>
-                    <option value="20">
-                        20 miles
-                    </option>
-                    <option value="25">
-                        25 miles
-                    </option>
-                    <option value="50">
-                        50 miles
-                    </option>
-                    <option value="100">
-                        100 miles
-                    </option>
-                    <option value="200">
-                        200 miles
-                    </option>
-                </select>
-            </div>
-
-            <div class="divider-bottom govuk-!-margin-bottom-6"><hr class="govuk-section-break govuk-section-break--visible"></div>
-
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="education_phase">
-                <div>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-                            <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Education phase</legend></h3>
-                            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                                <input autocomplete="off" name="jobseekers_subscription_form[phases][]" type="hidden" value="">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-nursery-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="nursery"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-nursery-field">Nursery</label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-primary-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="primary"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-primary-field">Primary school</label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-secondary-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="secondary"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-secondary-field">Secondary school</label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-sixth-form-or-college-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="sixth_form_or_college"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-sixth-form-or-college-field">Sixth form or college</label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-phases-through-field" name="jobseekers_subscription_form[phases][]" type="checkbox" value="through"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-phases-through-field">All through school</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="working_patterns">
-                <div>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-                            <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Working pattern</legend></h3>
-                            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                                <input autocomplete="off" name="jobseekers_subscription_form[working_patterns][]" type="hidden" value="">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-working-patterns-full-time-field" name="jobseekers_subscription_form[working_patterns][]" type="checkbox" value="full_time"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-working-patterns-full-time-field">Full time</label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-working-patterns-part-time-field" name="jobseekers_subscription_form[working_patterns][]" type="checkbox" value="part_time"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-working-patterns-part-time-field">Part time</label>
-                                </div>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-working-patterns-part-time-field" name="jobseekers_subscription_form[working_patterns][]" type="checkbox" value="part_time"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-working-patterns-part-time-field">Job share</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="ect_statuses">
-                <div>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-                            <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Suitable for early career teachers</legend></h3>
-                            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                                <input autocomplete="off" name="jobseekers_subscription_form[ect_statuses][]" type="hidden" value="">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-ect-statuses-ect-suitable-field" name="jobseekers_subscription_form[ect_statuses][]" type="checkbox" value="ect_suitable"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-ect-statuses-ect-suitable-field">Suitable for early career teachers</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="international">
-                <div>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-                            <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Visa sponsorship</legend></h3>
-                            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                                <input autocomplete="off" name="jobseekers_subscription_form[international][]" type="hidden" value="">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-ect-statuses-ect-suitable-field" name="jobseekers_subscription_form[international][]" type="checkbox" value="ect_suitable"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-ect-statuses-ect-suitable-field">Only send alerts for jobs with visa sponsorship</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-
-            <!--
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="teaching_job_roles">
-                <div>
-                    <details class="govuk-details">
-                        <summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text"><span aria-label="Teaching and leadership job roles" title="Teaching and leadership roles">Teaching and leadership</span></span>
-                        </summary>
-                        <div class="govuk-details__text">
-                            <div class="govuk-form-group">
-                                <fieldset class="govuk-fieldset">
-                                    <div class="govuk-checkboxes govuk-checkboxes--small" data-govuk-checkboxes-init="" data-module="govuk-checkboxes">
-                                        <input autocomplete="off" name="jobseekers_subscription_form[teaching_job_roles][]" type="hidden" value="">
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-teacher-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="teacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-teacher-field">Teacher or lecturer</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-head-of-year-or-phase-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="head_of_year_or_phase"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-head-of-year-or-phase-field">Head of year or phase</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-head-of-department-or-curriculum-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="head_of_department_or_curriculum"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-head-of-department-or-curriculum-field">Head of department or curriculum</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-assistant-headteacher-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="assistant_headteacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-assistant-headteacher-field">Assistant headteacher</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-deputy-headteacher-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="deputy_headteacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-deputy-headteacher-field">Deputy headteacher</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-headteacher-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="headteacher"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-headteacher-field">Headteacher</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-senco-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="senco"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-senco-field">SENCO (special educational needs coordinator)</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-teaching-job-roles-other-leadership-field" name="jobseekers_subscription_form[teaching_job_roles][]" type="checkbox" value="other_leadership"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-teaching-job-roles-other-leadership-field">Other leadership roles</label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="support_job_roles">
-                <div>
-                    <details class="govuk-details">
-                        <summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text"><span aria-label="Support job roles" title="Support roles">Support</span></span>
-                        </summary>
-                        <div class="govuk-details__text">
-                            <div class="govuk-form-group">
-                                <fieldset class="govuk-fieldset">
-                                    <div class="govuk-checkboxes govuk-checkboxes--small" data-govuk-checkboxes-init="" data-module="govuk-checkboxes">
-                                        <input autocomplete="off" name="jobseekers_subscription_form[support_job_roles][]" type="hidden" value="">
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-teaching-assistant-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="teaching_assistant"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-teaching-assistant-field">Teaching assistant</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-higher-level-teaching-assistant-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="higher_level_teaching_assistant"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-higher-level-teaching-assistant-field">HLTA (higher level teaching assistant)</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-education-support-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="education_support"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-education-support-field">Learning support or cover supervisor</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-administration-hr-data-and-finance-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="administration_hr_data_and_finance"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-administration-hr-data-and-finance-field">Administration, HR, data and finance</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-catering-cleaning-and-site-management-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="catering_cleaning_and_site_management"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-catering-cleaning-and-site-management-field">Catering, cleaning and site management</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-it-support-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="it_support"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-it-support-field">IT support</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-pastoral-health-and-welfare-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="pastoral_health_and_welfare"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-pastoral-health-and-welfare-field">Pastoral, health and welfare</label>
-                                        </div>
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="jobseekers-subscription-form-support-job-roles-other-support-field" name="jobseekers_subscription_form[support_job_roles][]" type="checkbox" value="other_support"><label class="govuk-label govuk-checkboxes__label" for="jobseekers-subscription-form-support-job-roles-other-support-field">Other support roles</label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="filters-component__groups__group" data-filters-target="group" data-group="subjects">
-                <div>
-                    <details class="govuk-details">
-                        <summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text"><span aria-label="Subjects" title="Subjects">Subjects</span></span>
-                        </summary>
-                        <div class="govuk-details__text">
-
-                            <div class="govuk-form-group">
-                                <fieldset class="govuk-fieldset">
-                                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-
-                                    <input autocomplete="off" name="jobseekers_subscription_form[subjects][]" type="hidden" value="">
-
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-accounting" name="filters[subjects]" type="checkbox" value="Accounting">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-accounting">Accounting</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-agriculture" name="filters[subjects]" type="checkbox" value="Agriculture / horticulture / land-based studies">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-agriculture">Agriculture / horticulture / land-based studies</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-animal-care" name="filters[subjects]" type="checkbox" value="Animal care">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-animal-care">Animal care</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-art-design" name="filters[subjects]" type="checkbox" value="Art and design">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-art-design">Art and design</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-biology" name="filters[subjects]" type="checkbox" value="Biology">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-biology">Biology</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-bsl" name="filters[subjects]" type="checkbox" value="British Sign Language">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-bsl">British Sign Language</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-building-construction" name="filters[subjects]" type="checkbox" value="Building and construction">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-building-construction">Building and construction</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-business-studies" name="filters[subjects]" type="checkbox" value="Business studies">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-business-studies">Business studies</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-catering" name="filters[subjects]" type="checkbox" value="Catering">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-catering">Catering</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-chemistry" name="filters[subjects]" type="checkbox" value="Chemistry">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-chemistry">Chemistry</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-child-development" name="filters[subjects]" type="checkbox" value="Children's development and learning">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-child-development">Children's development and learning</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-classics" name="filters[subjects]" type="checkbox" value="Classics">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-classics">Classics</label>
-                                        <div class="govuk-hint govuk-checkboxes__hint">Includes Latin</div>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-computing" name="filters[subjects]" type="checkbox" value="Computing">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-computing">Computing</label>
-                                        <div class="govuk-hint govuk-checkboxes__hint">Includes Computer science, Information technology, and ICT</div>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-counselling" name="filters[subjects]" type="checkbox" value="Counselling">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-counselling">Counselling</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-criminology" name="filters[subjects]" type="checkbox" value="Criminology">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-criminology">Criminology</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-customer-service" name="filters[subjects]" type="checkbox" value="Customer service">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-customer-service">Customer service</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-dance" name="filters[subjects]" type="checkbox" value="Dance">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-dance">Dance</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-design-technology" name="filters[subjects]" type="checkbox" value="Design and technology">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-design-technology">Design and technology</label>
-                                        <div class="govuk-hint govuk-checkboxes__hint">Includes Product design, Textiles and Systems and control</div>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-drama" name="filters[subjects]" type="checkbox" value="Drama">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-drama">Drama</label>
-                                        <div class="govuk-hint govuk-checkboxes__hint">Includes Theatre studies and Performing arts</div>
-                                    </div>
-
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-early-years" name="filters[subjects]" type="checkbox" value="Early years">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-early-years">Early years</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-electrics" name="filters[subjects]" type="checkbox" value="Electrics">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-electrics">Electrics</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-engineering" name="filters[subjects]" type="checkbox" value="Engineering">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-engineering">Engineering</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-english" name="filters[subjects]" type="checkbox" value="English">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-english">English</label>
-                                        <div class="govuk-hint govuk-checkboxes__hint">Includes English language and literature</div>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-religious-education" name="filters[subjects]" type="checkbox" value="Religious education">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-religious-education">Religious education</label>
-                                        <div class="govuk-hint govuk-checkboxes__hint">Includes Religious studies</div>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-welsh" name="filters[subjects]" type="checkbox" value="Welsh">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-welsh">Welsh</label>
-                                    </div>
-
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="subjects-woodworking" name="filters[subjects]" type="checkbox" value="Woodworking, joinery and carpentry">
-                                        <label class="govuk-label govuk-checkboxes__label" for="subjects-woodworking">Woodworking, joinery and carpentry</label>
-                                    </div>
-
-
-                                    </div>
-                                </fieldset>
-                                </div>
-
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-
-            -->
-
-
-
-
-
-
-            <div class="app-c-option-select js-collapsible js-closed" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
-
-                <div class="app-c-option-select__heading js-container-heading">
-                    <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="false" id="option-teaching-and-leadership" aria-controls="list-of-key-stage-1">
-                        Teaching and leadership <span class="govuk-visually-hidden">jobs</span>
-                    </button>
-                    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
-                    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
-                </div>
-
-                <div id="list-of-key-stage-1" role="group" aria-labelledby="option-teaching-and-leadership" class="app-c-option-select__container js-options-container" tabindex="-1">
-                    <div class="app-c-option-select__container-inner">
-                        <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
-                            <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
-                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Teaching</legend>
-
-                                <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-teacher" value="Teacher or lecturer">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
-                                                Teacher or lecturer
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-head-of-year" value="Head of year or phase">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-head-of-year">
-                                                Head of year or phase
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-head-of-department-or-curriculum" value="Head of department or curriculum">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-head-of-department-or-curriculum">
-                                                Head of department or curriculum
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-assistant-headteacher" value="Assistant headteacher">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-assistant-headteacher">
-                                                Assistant headteacher
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-deputy-headteacher" value="Deputy headteacher">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-deputy-headteacher">
-                                                Deputy headteacher
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-headteacher" value="Headteacher">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-headteacher">
-                                                Headteacher
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-senco" value="SENCO (special educational needs coordinator)">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-senco">
-                                                SENCO (special educational needs coordinator)
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-other" value="Other leadership roles">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-other">
-                                                Other leadership roles
-                                            </label>
-                                        </li>
-                                </ul>
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-            <div class="app-c-option-select js-collapsible js-closed" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
-
-                <div class="app-c-option-select__heading js-container-heading">
-                    <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="false" id="option-teaching-support" aria-controls="list-of-key-stage-1">Support <span class="govuk-visually-hidden">jobs</span></button>
-                    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
-                    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
-                </div>
-
-                <div id="list-of-key-stage-1" role="group" aria-labelledby="option-teaching-support" class="app-c-option-select__container js-options-container" tabindex="-1">
-                    <div class="app-c-option-select__container-inner">
-                        <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
-                            <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
-                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Support</legend>
-
-                                <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-teaching-assistant" value="Teaching assistant">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-teaching-assistant">
-                                                Teaching assistant
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-hlta" value="HLTA (Higher level teaching assistant)">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-hlta">
-                                                HLTA (Higher level teaching assistant)
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-learning-support" value="Learning support, assistants, cover supervisor">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-learning-support">
-                                                Learning support, assistants, cover supervisor
-                                            </label>
-                                        </li>
-
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-admin" value="Administration, HR, data and finance">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-admin">
-                                                Administration, HR, data and finance
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-catering" value="Catering, cleaning and site management">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-catering">
-                                                Catering, cleaning and site management
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-it" value="IT support">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-it">
-                                                IT support
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-pastoral" value="Pastoral, health and welfare">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-pastoral">
-                                                Pastoral, health and welfare
-                                            </label>
-                                        </li>
-                                        <li class="govuk-checkboxes__item" data-testid="job-name">
-                                            <input type="checkbox" name="filter-role" class="govuk-checkboxes__input" id="job-other-support" value="Other support roles">
-                                            <label class="govuk-label govuk-checkboxes__label" for="job-other-support">
-                                                Other support roles
-                                            </label>
-                                        </li>
-                                </ul>
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="app-c-option-select js-collapsible js-closed" data-testid="subjects" data-module="option-select" data-closed-on-load="true">
-
-                <div class="app-c-option-select__heading js-container-heading">
-                    <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="false" id="option-teaching-support" aria-controls="list-of-key-stage-1">Subjects <span class="govuk-visually-hidden">jobs</span></button>
-                    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
-                    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
-                </div>
-
-                <div id="list-of-subjects" role="group" aria-labelledby="option-subjects"
-                    class="app-c-option-select__container js-options-container" tabindex="-1">
-
-                    <div class="app-c-option-select__container-inner">
-                    <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small">
-                        <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
-
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">
-                            Subject
-                        </legend>
-
-                        <ul class="govuk-checkboxes gem-c-checkboxes__list">
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-accounting" name="filters[subjects]" type="checkbox" value="Accounting"><label class="govuk-label govuk-checkboxes__label" for="subject-accounting">Accounting</label><div class="govuk-hint govuk-checkboxes__hint">includes religious studies</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-agriculture-horticulture-land-based-studies" name="filters[subjects]" type="checkbox" value="Agriculture / horticulture / land-based studies"><label class="govuk-label govuk-checkboxes__label" for="subject-agriculture-horticulture-land-based-studies">Agriculture / horticulture / land-based studies</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-animal-care" name="filters[subjects]" type="checkbox" value="Animal care"><label class="govuk-label govuk-checkboxes__label" for="subject-animal-care">Animal care</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-art-and-design" name="filters[subjects]" type="checkbox" value="Art and design"><label class="govuk-label govuk-checkboxes__label" for="subject-art-and-design">Art and design</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-biology" name="filters[subjects]" type="checkbox" value="Biology"><label class="govuk-label govuk-checkboxes__label" for="subject-biology">Biology</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-british-sign-language" name="filters[subjects]" type="checkbox" value="British Sign Language"><label class="govuk-label govuk-checkboxes__label" for="subject-british-sign-language">British Sign Language</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-building-and-construction" name="filters[subjects]" type="checkbox" value="Building and construction"><label class="govuk-label govuk-checkboxes__label" for="subject-building-and-construction">Building and construction</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-business-studies" name="filters[subjects]" type="checkbox" value="Business studies"><label class="govuk-label govuk-checkboxes__label" for="subject-business-studies">Business studies</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-catering" name="filters[subjects]" type="checkbox" value="Catering"><label class="govuk-label govuk-checkboxes__label" for="subject-catering">Catering</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-chemistry" name="filters[subjects]" type="checkbox" value="Chemistry"><label class="govuk-label govuk-checkboxes__label" for="subject-chemistry">Chemistry</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-childrens-development-and-learning" name="filters[subjects]" type="checkbox" value="Children’s development and learning"><label class="govuk-label govuk-checkboxes__label" for="subject-childrens-development-and-learning">Children’s development and learning</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-classics" name="filters[subjects]" type="checkbox" value="Classics"><label class="govuk-label govuk-checkboxes__label" for="subject-classics">Classics</label><div class="govuk-hint govuk-checkboxes__hint">includes Latin</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-computing" name="filters[subjects]" type="checkbox" value="Computing"><label class="govuk-label govuk-checkboxes__label" for="subject-computing">Computing</label><div class="govuk-hint govuk-checkboxes__hint">includes Computer science, Information technology, and ICT</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-counselling" name="filters[subjects]" type="checkbox" value="Counselling"><label class="govuk-label govuk-checkboxes__label" for="subject-counselling">Counselling</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-criminology" name="filters[subjects]" type="checkbox" value="Criminology"><label class="govuk-label govuk-checkboxes__label" for="subject-criminology">Criminology</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-customer-service" name="filters[subjects]" type="checkbox" value="Customer service"><label class="govuk-label govuk-checkboxes__label" for="subject-customer-service">Customer service</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-dance" name="filters[subjects]" type="checkbox" value="Dance"><label class="govuk-label govuk-checkboxes__label" for="subject-dance">Dance</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-design-and-technology" name="filters[subjects]" type="checkbox" value="Design and technology"><label class="govuk-label govuk-checkboxes__label" for="subject-design-and-technology">Design and technology</label><div class="govuk-hint govuk-checkboxes__hint">includes Product design, Textiles and Systems and control</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-drama" name="filters[subjects]" type="checkbox" value="Drama"><label class="govuk-label govuk-checkboxes__label" for="subject-drama">Drama</label><div class="govuk-hint govuk-checkboxes__hint">includes Theatre studies and Performing arts</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-early-years" name="filters[subjects]" type="checkbox" value="Early years"><label class="govuk-label govuk-checkboxes__label" for="subject-early-years">Early years</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-electrics" name="filters[subjects]" type="checkbox" value="Electrics"><label class="govuk-label govuk-checkboxes__label" for="subject-electrics">Electrics</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-engineering" name="filters[subjects]" type="checkbox" value="Engineering"><label class="govuk-label govuk-checkboxes__label" for="subject-engineering">Engineering</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-english" name="filters[subjects]" type="checkbox" value="English"><label class="govuk-label govuk-checkboxes__label" for="subject-english">English</label><div class="govuk-hint govuk-checkboxes__hint">includes English language and literature</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-esports" name="filters[subjects]" type="checkbox" value="Esports"><label class="govuk-label govuk-checkboxes__label" for="subject-esports">Esports</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-fabrication-and-welding" name="filters[subjects]" type="checkbox" value="Fabrication and welding"><label class="govuk-label govuk-checkboxes__label" for="subject-fabrication-and-welding">Fabrication and welding</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-farming" name="filters[subjects]" type="checkbox" value="Farming"><label class="govuk-label govuk-checkboxes__label" for="subject-farming">Farming</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-food-technology" name="filters[subjects]" type="checkbox" value="Food technology"><label class="govuk-label govuk-checkboxes__label" for="subject-food-technology">Food technology</label><div class="govuk-hint govuk-checkboxes__hint">includes Hospitality and catering</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-french" name="filters[subjects]" type="checkbox" value="French"><label class="govuk-label govuk-checkboxes__label" for="subject-french">French</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-functional-skills" name="filters[subjects]" type="checkbox" value="Functional skills"><label class="govuk-label govuk-checkboxes__label" for="subject-functional-skills">Functional skills</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-games-design" name="filters[subjects]" type="checkbox" value="Games design"><label class="govuk-label govuk-checkboxes__label" for="subject-games-design">Games design</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-geography" name="filters[subjects]" type="checkbox" value="Geography"><label class="govuk-label govuk-checkboxes__label" for="subject-geography">Geography</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-german" name="filters[subjects]" type="checkbox" value="German"><label class="govuk-label govuk-checkboxes__label" for="subject-german">German</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-graphic-design" name="filters[subjects]" type="checkbox" value="Graphic design"><label class="govuk-label govuk-checkboxes__label" for="subject-graphic-design">Graphic design</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-hair-and-beauty" name="filters[subjects]" type="checkbox" value="Hair and beauty"><label class="govuk-label govuk-checkboxes__label" for="subject-hair-and-beauty">Hair and beauty</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-health-and-social-care" name="filters[subjects]" type="checkbox" value="Health and social care"><label class="govuk-label govuk-checkboxes__label" for="subject-health-and-social-care">Health and social care</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-history" name="filters[subjects]" type="checkbox" value="History"><label class="govuk-label govuk-checkboxes__label" for="subject-history">History</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-hotel-catering-and-travel" name="filters[subjects]" type="checkbox" value="Hotel, catering and travel"><label class="govuk-label govuk-checkboxes__label" for="subject-hotel-catering-and-travel">Hotel, catering and travel</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-humanities" name="filters[subjects]" type="checkbox" value="Humanities"><label class="govuk-label govuk-checkboxes__label" for="subject-humanities">Humanities</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-land-and-property-management" name="filters[subjects]" type="checkbox" value="Land and property management"><label class="govuk-label govuk-checkboxes__label" for="subject-land-and-property-management">Land and property management</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-languages" name="filters[subjects]" type="checkbox" value="Languages"><label class="govuk-label govuk-checkboxes__label" for="subject-languages">Languages</label><div class="govuk-hint govuk-checkboxes__hint">includes MFL (Modern Foreign Languages)</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-leadership-and-management" name="filters[subjects]" type="checkbox" value="Leadership and management"><label class="govuk-label govuk-checkboxes__label" for="subject-leadership-and-management">Leadership and management</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-logistics" name="filters[subjects]" type="checkbox" value="Logistics"><label class="govuk-label govuk-checkboxes__label" for="subject-logistics">Logistics</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-mandarin" name="filters[subjects]" type="checkbox" value="Mandarin"><label class="govuk-label govuk-checkboxes__label" for="subject-mandarin">Mandarin</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-mathematics" name="filters[subjects]" type="checkbox" value="Mathematics"><label class="govuk-label govuk-checkboxes__label" for="subject-mathematics">Mathematics</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-motor-vehicle" name="filters[subjects]" type="checkbox" value="Motor vehicle"><label class="govuk-label govuk-checkboxes__label" for="subject-motor-vehicle">Motor vehicle</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-music" name="filters[subjects]" type="checkbox" value="Music"><label class="govuk-label govuk-checkboxes__label" for="subject-music">Music</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-people-management" name="filters[subjects]" type="checkbox" value="People management"><label class="govuk-label govuk-checkboxes__label" for="subject-people-management">People management</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-philosophy" name="filters[subjects]" type="checkbox" value="Philosophy"><label class="govuk-label govuk-checkboxes__label" for="subject-philosophy">Philosophy</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-photography" name="filters[subjects]" type="checkbox" value="Photography"><label class="govuk-label govuk-checkboxes__label" for="subject-photography">Photography</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-physical-education" name="filters[subjects]" type="checkbox" value="Physical education"><label class="govuk-label govuk-checkboxes__label" for="subject-physical-education">Physical education</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-physics" name="filters[subjects]" type="checkbox" value="Physics"><label class="govuk-label govuk-checkboxes__label" for="subject-physics">Physics</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-plumbing-and-heating" name="filters[subjects]" type="checkbox" value="Plumbing and heating"><label class="govuk-label govuk-checkboxes__label" for="subject-plumbing-and-heating">Plumbing and heating</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-politics" name="filters[subjects]" type="checkbox" value="Politics"><label class="govuk-label govuk-checkboxes__label" for="subject-politics">Politics</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-pshe" name="filters[subjects]" type="checkbox" value="PSHE"><label class="govuk-label govuk-checkboxes__label" for="subject-pshe">PSHE</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-psychology" name="filters[subjects]" type="checkbox" value="Psychology"><label class="govuk-label govuk-checkboxes__label" for="subject-psychology">Psychology</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-public-services" name="filters[subjects]" type="checkbox" value="Public services"><label class="govuk-label govuk-checkboxes__label" for="subject-public-services">Public services</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-religious-education" name="filters[subjects]" type="checkbox" value="Religious education"><label class="govuk-label govuk-checkboxes__label" for="subject-religious-education">Religious education</label><div class="govuk-hint govuk-checkboxes__hint">includes Religious studies</div></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-science" name="filters[subjects]" type="checkbox" value="Science"><label class="govuk-label govuk-checkboxes__label" for="subject-science">Science</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-sociology" name="filters[subjects]" type="checkbox" value="Sociology"><label class="govuk-label govuk-checkboxes__label" for="subject-sociology">Sociology</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-spanish" name="filters[subjects]" type="checkbox" value="Spanish"><label class="govuk-label govuk-checkboxes__label" for="subject-spanish">Spanish</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-sport-and-leisure" name="filters[subjects]" type="checkbox" value="Sport and leisure"><label class="govuk-label govuk-checkboxes__label" for="subject-sport-and-leisure">Sport and leisure</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-sports-science" name="filters[subjects]" type="checkbox" value="Sports science"><label class="govuk-label govuk-checkboxes__label" for="subject-sports-science">Sports science</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-tourism" name="filters[subjects]" type="checkbox" value="Tourism"><label class="govuk-label govuk-checkboxes__label" for="subject-tourism">Tourism</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-welsh" name="filters[subjects]" type="checkbox" value="Welsh"><label class="govuk-label govuk-checkboxes__label" for="subject-welsh">Welsh</label></li>
-
-                            <li class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="subject-woodworking-joinery-and-carpentry" name="filters[subjects]" type="checkbox" value="Woodworking, joinery and carpentry"><label class="govuk-label govuk-checkboxes__label" for="subject-woodworking-joinery-and-carpentry">Woodworking, joinery and carpentry</label></li>
-
-                        </ul>
-
-                        </fieldset>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="govuk-form-group govuk-!-margin-top-5">
-                <label class="govuk-label govuk-label--s" for="jobseekers-subscription-form-email-field">Email address</label>
-                <div class="govuk-hint" id="jobseekers-subscription-form-email-hint">
-                    Enter your email address.
-                </div><input aria-describedby="jobseekers-subscription-form-email-hint" class="govuk-input" id="jobseekers-subscription-form-email-field" name="jobseekers_subscription_form[email]" required="required" type="email">
-            </div>
-
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-                    <h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">When do you want to receive alerts?</legend></h3><input autocomplete="off" id="jobseekers_subscription_form_frequency" name="jobseekers_subscription_form[frequency]" type="hidden" value="">
-                    <div class="govuk-radios" data-module="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="jobseekers-subscription-form-frequency-daily-field" name="jobseekers_subscription_form[frequency]" type="radio" value="daily"><label class="govuk-label govuk-radios__label" for="jobseekers-subscription-form-frequency-daily-field">Daily, at around 3 pm</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="jobseekers-subscription-form-frequency-weekly-field" name="jobseekers_subscription_form[frequency]" type="radio" value="weekly"><label class="govuk-label govuk-radios__label" for="jobseekers-subscription-form-frequency-weekly-field">Weekly (Friday evening at around 6 pm)</label>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-
-
-
-
+          </fieldset>
         </div>
 
+        {{ govukCheckboxes({
+          idPrefix: "teaching-requirements",
+          name: "jobseekers_subscription_form[ect_statuses][]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Teaching role requirements",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "ect_suitable", text: "Suitable for early career teachers" },
+            { value: "qts_not_required", text: "Qualified teacher status not required (further education)" }
+          ]
+        }) }}
 
+        {{ govukCheckboxes({
+          idPrefix: "organisation-type",
+          name: "jobseekers_subscription_form[organisation_types][]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Organisation type",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "academy", text: "Academy", hint: { text: "includes free schools" } },
+            { value: "local_authority", text: "Local authority maintained schools" },
+            { value: "colleges", text: "FE Colleges" }
+          ]
+        }) }}
 
+        {{ govukCheckboxes({
+          idPrefix: "school-type",
+          name: "jobseekers_subscription_form[school_types][]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "School type",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "faith", text: "Faith school" },
+            { value: "special", text: "Special school" }
+          ]
+        }) }}
 
-    {{ govukButton({
-        text: 'Subscribe'
-    }) }}
+        {{ govukCheckboxes({
+          idPrefix: "working-pattern",
+          name: "jobseekers_subscription_form[working_patterns][]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Working pattern",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "full_time", text: "Full time" },
+            { value: "part_time", text: "Part time" },
+            { value: "job_share", text: "Job share" }
+          ]
+        }) }}
 
+        {{ govukCheckboxes({
+          idPrefix: "visa",
+          name: "jobseekers_subscription_form[international][]",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Visa sponsorship",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "visa", text: "Only send alerts for jobs with visa sponsorship" }
+          ]
+        }) }}
 
-    </form>
+        {{ govukRadios({
+          idPrefix: "frequency",
+          name: "jobseekers_subscription_form[frequency]",
+          fieldset: {
+            legend: {
+              text: "How often do you want to get job alerts?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "daily", text: "Daily" },
+            { value: "weekly", text: "Weekly", checked: true }
+          ]
+        }) }}
 
-
-
-
+        {{ govukButton({
+          text: "Create job alert"
+        }) }}
+      </form>
     </div>
   </div>
-
 {% endblock %}

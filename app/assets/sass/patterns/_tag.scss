@@ -1,0 +1,85 @@
+// Match the GOV.UK Design System tag (GOV.UK Frontend 6.5.1).
+// This kit ships Frontend 4, which still renders tags as bold uppercase text
+// on a solid background.
+
+.govuk-tag {
+  color: #0f385c;
+  background-color: #d2e2f1;
+  max-width: 160px;
+  margin-top: -2px;
+  margin-bottom: -3px;
+  padding: 2px 8px 3px;
+  border-radius: 1px;
+  outline: none;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  overflow-wrap: break-word;
+
+  @media print {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+
+  @media screen and (forced-colors: active) {
+    font-weight: 700;
+  }
+}
+
+.govuk-tag--green {
+  color: #083d29;
+  background-color: #cfe4dc;
+}
+
+a.govuk-tag--green,
+a.govuk-tag--green:hover,
+a.govuk-tag--green:focus,
+a.govuk-tag--green:visited,
+a.govuk-tag--green:active {
+  color: #083d29;
+  text-decoration: none;
+}
+
+.govuk-tag--purple {
+  color: #2a1950;
+  background-color: #ddd6ec;
+}
+
+.govuk-tag--red {
+  color: #651b1b;
+  background-color: #f4d7d7;
+}
+
+.govuk-tag--orange {
+  color: #7a3c1c;
+  background-color: #fde4d7;
+}
+
+.govuk-tag--teal,
+.govuk-tag--turquoise {
+  color: #0b4144;
+  background-color: #d0e6e7;
+}
+
+.govuk-tag--magenta,
+.govuk-tag--pink {
+  color: #651b3e;
+  background-color: #f4d7e5;
+}
+
+.govuk-tag--yellow {
+  color: #7a3c1c;
+  background-color: #ffee80;
+}
+
+.govuk-tag--grey {
+  color: #0b0c0c;
+  background-color: #cecece;
+}
+
+.govuk-phase-banner__content__tag {
+  font-size: inherit;
+  line-height: inherit;
+}

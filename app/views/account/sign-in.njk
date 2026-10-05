@@ -1,63 +1,27 @@
-
 {% extends "layout.njk" %}
 
-{% set title = 'Jobseeker sign in' %}
+{% set title = 'Sign in to Teaching Vacancies' %}
 
 {% block content %}
   <div class="govuk-grid-row">
-
-  
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        {{title}}
-      </h1>
+      <h1 class="govuk-heading-l">Sign in to Teaching Vacancies</h1>
 
-      <p>
-        Sign in here if you are a teacher, aspiring teacher or work in education support. Once signed in you'll be able to save and apply for jobs.
-      </p>
+      <h2 class="govuk-heading-m">Jobseeker sign-in</h2>
+      <p class="govuk-body">Sign in here to save and apply for jobs.</p>
+      {{ govukButton({
+        text: "Jobseeker sign-in",
+        href: "/account/sign-in/jobseeker"
+      }) }}
 
-      <form method="post">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-        {% if returnUrl %}
-          <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
-        {% endif %}
-
-        {{ govukInput({
-          label: {
-            text: "Email address",
-            classes: "govuk-label--m"
-          },
-          id: "email",
-          name: "email",
-          type: "email",
-          autocomplete: "email",
-          spellcheck: false
-        }) }}
-
-        {{ govukInput({
-          id: "password",
-          name: "password",
-          label: {
-            text: "Password",
-            classes: "govuk-label--m"
-          },
-          type: "password"
-        }) }}
-
-        <p><a href="#">Forgotten your password?</a></p>
-
-        {{ govukButton({
-          text: 'Sign in'
-        }) }}
-      </form>
-
+      <h2 class="govuk-heading-m">Hiring staff sign-in</h2>
+      <p class="govuk-body">Sign in here to manage your job listings and applicants.</p>
+      {{ govukButton({
+        text: "Hiring staff sign-in",
+        href: "/account/sign-in/hiring-staff"
+      }) }}
     </div>
-
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Don't have an account yet?</h2>
-      <p class="govuk-body"><a class="govuk-link" href="/jobseekers/sign_up">Create an account</a> to save and apply for jobs you are interested in.</p>
-    </div>
-
   </div>
-
 {% endblock %}

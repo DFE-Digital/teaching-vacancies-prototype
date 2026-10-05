@@ -25,6 +25,46 @@ window.addEventListener('load', function () {
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 
+  var serviceNavigation = document.querySelector('[data-module="govuk-service-navigation"]')
+  if (serviceNavigation) {
+    var serviceNavigationToggle = serviceNavigation.querySelector('.govuk-service-navigation__toggle')
+    var serviceNavigationList = serviceNavigation.querySelector('.govuk-service-navigation__list')
+    var serviceNavigationQuery = window.matchMedia('(max-width: 48em)')
+
+    var syncServiceNavigation = function () {
+      if (!serviceNavigationToggle || !serviceNavigationList) return
+
+      if (serviceNavigationQuery.matches) {
+        serviceNavigationToggle.removeAttribute('hidden')
+        if (serviceNavigationToggle.getAttribute('aria-expanded') === 'true') {
+          serviceNavigationList.removeAttribute('hidden')
+        } else {
+          serviceNavigationToggle.setAttribute('aria-expanded', 'false')
+          serviceNavigationList.setAttribute('hidden', 'hidden')
+        }
+      } else {
+        serviceNavigationToggle.setAttribute('hidden', 'hidden')
+        serviceNavigationToggle.setAttribute('aria-expanded', 'false')
+        serviceNavigationList.removeAttribute('hidden')
+      }
+    }
+
+    if (serviceNavigationToggle) {
+      serviceNavigationToggle.addEventListener('click', function () {
+        var expanded = serviceNavigationToggle.getAttribute('aria-expanded') === 'true'
+        serviceNavigationToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true')
+        syncServiceNavigation()
+      })
+    }
+
+    syncServiceNavigation()
+    if (serviceNavigationQuery.addEventListener) {
+      serviceNavigationQuery.addEventListener('change', syncServiceNavigation)
+    } else if (serviceNavigationQuery.addListener) {
+      serviceNavigationQuery.addListener(syncServiceNavigation)
+    }
+  }
+
 
   ///////
 
@@ -97,13 +137,17 @@ $(document).ready(function () {
   });
 
   $('#sort').on('change', function (e) {
-    var optionSelected = $("option:selected", this);
     var valueSelected = this.value;
-    
+
+    if (this.form && this.form.getAttribute('data-sort-stay') === 'true') {
+      this.form.submit();
+      return;
+    }
+
     if (valueSelected == 'newest'){
       $('#sortform').attr('action', '/jobs');
       document.getElementById("sortform").submit();
-    }else if (valueSelected == 'closing'){
+    }else if (valueSelected == 'closing' || valueSelected == 'ending'){
       $('#sortform').attr('action', '/jobs/search/closing');
       document.getElementById("sortform").submit();
     }else{

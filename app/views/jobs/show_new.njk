@@ -15,10 +15,7 @@
   {% endset %}
 
   {% if job.isUsingApplicationForm == 'Yes' %}
-    {{govukTag({
-      text: "QUICK APPLY",
-      classes: "govuk-tag--green govuk-!-margin-bottom-3"
-    })}}
+    <a class="govuk-tag govuk-tag--green govuk-!-margin-bottom-3" href="/jobs/{{ job.id }}/apply">Quick apply</a>
    {% endif %}
 
   <div class="app-logo-title">

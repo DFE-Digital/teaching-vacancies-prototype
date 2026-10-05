@@ -1,0 +1,63 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Equal opportunities" %}
+{% set eq = application.equalOpportunities %}
+
+{% macro choice(name, legend, hint, options) %}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">{{ legend }}</legend>
+      {% if hint %}<div class="govuk-hint">{{ hint }}</div>{% endif %}
+      <div class="govuk-radios" data-module="govuk-radios">
+        {% for option in options %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="{{ name }}-{{ loop.index }}" name="{{ name }}" type="radio" value="{{ option }}" {% if eq[name] == option %}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="{{ name }}-{{ loop.index }}">{{ option }}</label>
+          </div>
+        {% endfor %}
+      </div>
+    </fieldset>
+  </div>
+{% endmacro %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Equal opportunities and recruitment monitoring</h2>
+      <p class="govuk-body">We collect this information to help us check that we are recruiting a diverse workforce. The information you give is confidential and will not be used to decide who gets the job.</p>
+      <p class="govuk-body">The questions are optional and you can select ‘Prefer not to say’.</p>
+
+      <form method="post">
+        {{ choice("disability", "Do you consider yourself to have a disability?", "This includes a physical or mental impairment which has a substantial and long-term effect on your ability to carry out normal day-to-day activities.", ["Yes", "No", "Prefer not to say"]) }}
+        {{ choice("age", "What is your age group?", "", ["Under 25", "25 to 29", "30 to 39", "40 to 49", "50 to 59", "60 and over", "Prefer not to say"]) }}
+        {{ choice("sex", "What is your sex?", "", ["Female", "Male", "Prefer not to say"]) }}
+        {{ choice("genderIdentity", "Is the gender you identify with the same as your sex registered at birth?", "", ["Yes", "No", "Prefer not to say"]) }}
+        {{ choice("ethnicity", "What is your ethnic group?", "", [
+          "English, Welsh, Scottish, Northern Irish or British",
+          "Irish",
+          "Gypsy or Irish Traveller",
+          "Any other White background",
+          "White and Black Caribbean",
+          "White and Black African",
+          "White and Asian",
+          "Any other mixed or multiple ethnic background",
+          "Indian",
+          "Pakistani",
+          "Bangladeshi",
+          "Chinese",
+          "Any other Asian background",
+          "Caribbean",
+          "African",
+          "Any other Black, Black British or Caribbean background",
+          "Arab",
+          "Any other ethnic group",
+          "Prefer not to say"
+        ]) }}
+        {{ choice("orientation", "Which of the following best describes your sexual orientation?", "", ["Heterosexual or straight", "Gay or lesbian", "Bisexual", "Other", "Prefer not to say"]) }}
+        {{ choice("religion", "What is your religion?", "", ["No religion", "Christian", "Buddhist", "Hindu", "Jewish", "Muslim", "Sikh", "Any other religion", "Prefer not to say"]) }}
+        {{ completedSection("equal-opportunities") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

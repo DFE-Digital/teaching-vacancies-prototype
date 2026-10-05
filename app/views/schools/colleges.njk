@@ -7,7 +7,7 @@
 {% block content %}
 
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Colleges (200)
+    Colleges ({{ organisations.length }})
   </h1>
 
     <div class="app-filter-layout">
@@ -24,73 +24,17 @@
       <div class="app-schools">
 
         {% for organisation in organisations %}
-
-        {% if organisation.phase == 'College' %}
-
-            {% set phase %}
-                {% if organisation.phase %}
-                {{organisation.phase}}
-                {% else %}
-                Multiple phases
-                {% endif %}
-            {% endset %}
-
-
-          <div class="app-schools__item">
-            <div>
-
-              {% if organisation.logo != 'Not entered' %}
-                <img src="{{organisation.logo}}" width="60" style="float: left; margin-right: 15px;">
-              {% endif %}
-              <h2 class="govuk-heading-m">
-                <a href="/schools/{{organisation.id}}">{{organisation.name}}</a>
-              </h2>
-              <p>
-                {% for part, value in organisation.address %}
-                  {{value}}{% if not loop.last %}, {% endif %}
-                {% endfor %}
-              </p>
-            </div>
-            {{ govukSummaryList({
-              classes: 'govuk-summary-list--no-border',
-              rows: [
-                {
-                  key: {
-                    text: "Key stages"
-                  },
-                  value: {
-                    text: ['KS1, KS2', 'KS3, KS4'] | random
-                  }
-                },
-                {
-                  key: {
-                    text: "Education phase"
-                  },
-                  value: {
-                    text: phase
-                  }
-                },
-                {
-                  key: {
-                    text: "Active jobs"
-                  },
-                  value: {
-                    text: [0, 1, 2, 3, 4] | random
-                  }
-                }
-              ]
-            }) }}
-
-          </div>
-        {% else %}
-        {% endif %}
+          {% if loop.index0 < 10 %}
+            {% include "includes/organisation-listing-item.njk" %}
+          {% endif %}
         {% endfor %}
 
       </div>
+      {% set shownCount = 10 if organisations.length > 10 else organisations.length %}
       {{ govukPagination({
           next: {
             href: "#"
-          },
+          } if organisations.length > 10,
           items: [
             {
               number: 1,
@@ -100,13 +44,10 @@
             {
               number: 2,
               href: "#"
-            },
-            {
-              number: 3,
-              href: "#"
-            }
+            } if organisations.length > 10
           ]
         }) }}
+      <p class="govuk-body">Showing 1 to {{ shownCount }} of {{ organisations.length }} results</p>
     </div>
   </div>
 

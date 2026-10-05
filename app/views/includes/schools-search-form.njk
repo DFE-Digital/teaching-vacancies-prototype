@@ -1,21 +1,23 @@
 <div class="app-search-form">
-  <form>
+  <form method="get" action="/schools">
     {{ govukInput({
       id: "keywords",
       name: "keywords",
       label: {
         text: "Name of school",
         classes: "govuk-label--s"
-      }
+      },
+      value: data["keywords"]
     }) }}
 
     {{ govukInput({
       id: "location",
       name: "location",
       label: {
-        text: "City, county or postcode",
+        text: "City, county, or postcode (in England)",
         classes: "govuk-label--s"
-      }
+      },
+      value: data["location"]
     }) }}
 
     {{ govukSelect({
@@ -25,34 +27,23 @@
         text: "Search radius",
         classes: "govuk-label--s"
       },
+      value: data["radius"],
       items: [
-        {
-          value: "updated",
-          text: "This area only"
-        }
+        { value: "updated", text: "This area only" },
+        { value: "1", text: "1 mile" },
+        { value: "5", text: "5 miles" },
+        { value: "10", text: "10 miles" },
+        { value: "15", text: "15 miles" },
+        { value: "20", text: "20 miles" },
+        { value: "25", text: "25 miles" },
+        { value: "50", text: "50 miles" },
+        { value: "100", text: "100 miles" },
+        { value: "200", text: "200 miles" }
       ]
     }) }}
 
     {{ govukButton({
-      text: 'Search',
-      href: '/schools'
+      text: "Search"
     }) }}
   </form>
 </div>
-
-{# {{ appSearch({
-  label: {
-    text: 'Search by job title or description',
-    classes: 'govuk-label--s'
-  },
-  input: {
-    id: 'keywords',
-    name: 'keywords',
-    value: data.keywords
-  },
-  action: '/jobs',
-  buttons: [{
-    text: 'Search',
-    classes: 'app-search__button'
-  }]
-}) }} #}

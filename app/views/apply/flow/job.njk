@@ -1,0 +1,84 @@
+{% extends "layout.njk" %}
+{% set title = "Add a job or voluntary role" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Current role and employment history</span>
+      <h1 class="govuk-heading-l">Add a job or voluntary role</h1>
+      <form method="post" action="/jobs/{{ job.id }}/apply/work-history/{{ formAction }}">
+        {{ govukInput({
+          label: { text: "Organisation name" },
+          hint: { text: "For example, the name of the school, company or organisation" },
+          name: "organisation",
+          value: item.organisation
+        }) }}
+        {{ govukInput({ label: { text: "Job title" }, name: "title", value: item.title }) }}
+        {{ govukInput({ label: { text: "Subjects and key stages you taught (optional)" }, name: "subjects", value: item.subjects }) }}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group">
+            <legend class="govuk-fieldset__legend">Start date</legend>
+            <div id="start-hint" class="govuk-hint">For example, 7 2025</div>
+            <div class="govuk-date-input" aria-describedby="start-hint">
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label" for="start-month">Month</label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="startMonth" inputmode="numeric" value="{{ item.startMonth }}">
+              </div>
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label" for="start-year">Year</label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="startYear" inputmode="numeric" value="{{ item.startYear }}">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group">
+            <legend class="govuk-fieldset__legend">End date</legend>
+            <div id="end-hint" class="govuk-hint">For example, 7 2026</div>
+            <div class="govuk-date-input" aria-describedby="end-hint">
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label" for="end-month">Month</label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-month" name="endMonth" inputmode="numeric" value="{{ item.endMonth }}">
+              </div>
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label" for="end-year">Year</label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-year" name="endYear" inputmode="numeric" value="{{ item.endYear }}">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <p class="govuk-body">Or</p>
+        {{ govukCheckboxes({
+          name: "current",
+          items: [
+            { value: "yes", text: "I currently work in this role", checked: item.current == "yes" }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          name: "duties",
+          label: { text: "Main duties" },
+          hint: { text: "Give a brief summary of your main responsibilities" },
+          value: item.duties
+        }) }}
+        <p class="govuk-hint">You have 150 words remaining</p>
+
+        {{ govukTextarea({
+          name: "reason",
+          label: { text: "Reason for leaving this role" },
+          hint: { text: "If you are still in this role, give a brief summary of your reasons for wanting to leave" },
+          value: item.reason
+        }) }}
+        <p class="govuk-hint">You have 50 words remaining</p>
+
+        <div class="govuk-button-group">
+          {{ govukButton({ text: "Save job or voluntary role" }) }}
+          <a class="govuk-button govuk-button--secondary" href="/jobs/{{ job.id }}/apply/work-history" role="button" data-module="govuk-button">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

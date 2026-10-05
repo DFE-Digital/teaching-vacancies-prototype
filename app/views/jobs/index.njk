@@ -115,10 +115,7 @@
                 <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
                 {% if job.isUsingApplicationForm == 'Yes' %}
-                  {{ govukTag({
-                    text: "Quick apply",
-                    classes: 'govuk-tag--green'
-                  }) }}
+                  <a class="govuk-tag govuk-tag--green" href="/jobs/{{ job.id }}/apply">Quick apply</a>
                 {% endif %}
 
               </h2>

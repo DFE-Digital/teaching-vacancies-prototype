@@ -63,8 +63,14 @@
           <nav class="govuk-header__navigation" aria-label="Top Menu">
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
             <ul id="navigation" class="govuk-header__navigation-list">
-                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/new">Create account</a></li>
+              {% if data.signedIn or forceSignedIn %}
+                <li class="govuk-header__navigation-item">
+                  <a class="govuk-header__link{% if primaryNavId == 'account' %} govuk-header__link--active{% endif %}" href="/account"{% if primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
+                </li>
+                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-out">Sign out</a></li>
+              {% else %}
                 <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-in/">Sign in</a></li>
+              {% endif %}
             </ul>
           </nav>
       {% endif %}
@@ -79,12 +85,12 @@
   <div class="govuk-width-container">
     <div class="govuk-service-navigation__container">
       <span class="govuk-service-navigation__service-name">
-        <a href="/" class="govuk-service-navigation__link">
+        <a href="/home" class="govuk-service-navigation__link">
           Teaching Vacancies
         </a>
       </span>
       <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
-        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="service-navigation" hidden>
+        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="service-navigation" aria-expanded="false" hidden>
           Menu
         </button>
         <ul class="govuk-service-navigation__list" id="service-navigation">
@@ -106,24 +112,22 @@
             </a>
           </li>
 
-          {% if user %}
-          <!--
-            <li class="govuk-service-navigation__item {% if activeNav == 'schools' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="#">
+          {% if data.signedIn or forceSignedIn %}
+            <li class="govuk-service-navigation__item {% if activeNav == 'applications' %} govuk-service-navigation__item--active {% endif %}">
+              <a class="govuk-service-navigation__link" href="/jobseekers/job_applications">
                 Applications
               </a>
             </li>
-            <li class="govuk-service-navigation__item {% if activeNav == 'schools' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="#">
+            <li class="govuk-service-navigation__item {% if activeNav == 'notifications' %} govuk-service-navigation__item--active {% endif %}">
+              <a class="govuk-service-navigation__link" href="/jobalerts/jobalert">
                 Notifications
               </a>
             </li>
-            <li class="govuk-service-navigation__item {% if activeNav == 'schools' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="#">
-                Profile
+            <li class="govuk-service-navigation__item {% if primaryNavId == 'profile' %} govuk-service-navigation__item--active {% endif %}">
+              <a class="govuk-service-navigation__link" href="/profile">
+                Your profile
               </a>
             </li>
-          -->
           {% endif %}
         </ul>
       </nav>

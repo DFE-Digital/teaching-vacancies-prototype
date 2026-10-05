@@ -55,7 +55,11 @@
               <ul class="govuk-footer__list">
 
                 <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link" href="#">Jobseeker sign in</a>
+                  {% if data.signedIn or user %}
+                    <a class="govuk-footer__link" href="/jobalerts/jobalert">Create a job alert</a>
+                  {% else %}
+                    <a class="govuk-footer__link" href="/account/sign-in">Jobseeker sign in</a>
+                  {% endif %}
                 </li>
                 <li class="govuk-footer__list-item">
                   <a class="govuk-footer__link" href="#">Find a job</a>
@@ -96,7 +100,7 @@
             </div>
 
             <div class="govuk-footer__section govuk-grid-column-full">
-              <h2 class="govuk-footer__heading govuk-heading-m">Feedback</h2>
+              <h2 class="govuk-footer__heading govuk-heading-m">Support and feedback</h2>
               <ul class="govuk-footer__list">
                 <li class="govuk-footer__list-item">
                   <a class="govuk-footer__link" href="#">Get help or report a problem</a>
@@ -159,6 +163,22 @@
       {% endif %}
 
 			<hr class="govuk-footer__section-break">
+
+			{% if showJobAlertToggle %}
+				<p class="app-state-toggle">
+					<a class="govuk-footer__link" href="/jobseekers/subscriptions?jobAlertState=empty"{% if data.jobAlertState != 'alert' %} aria-current="true"{% endif %}>Empty state</a>
+					<span aria-hidden="true"> | </span>
+					<a class="govuk-footer__link" href="/jobseekers/subscriptions?jobAlertState=alert"{% if data.jobAlertState == 'alert' %} aria-current="true"{% endif %}>Alert state</a>
+				</p>
+			{% endif %}
+
+			{% if showSavedJobsToggle %}
+				<p class="app-state-toggle">
+					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=empty"{% if data.savedJobState != 'saved' %} aria-current="true"{% endif %}>Empty state</a>
+					<span aria-hidden="true"> | </span>
+					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=saved"{% if data.savedJobState == 'saved' %} aria-current="true"{% endif %}>Saved state</a>
+				</p>
+			{% endif %}
 
 			<div class="govuk-footer__meta">
 				<div class="govuk-footer__meta-item govuk-footer__meta-item--grow">

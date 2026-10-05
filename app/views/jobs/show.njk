@@ -1,627 +1,368 @@
-
-
-
 {% extends "layout.njk" %}
-{% set activeNav = 'feonlyjobs' %}  
-
-
-
 {% set primaryNavId = 'jobs' %}
+{% set title = job.title if job else "Job" %}
 
-
-{% if job.organisation.type == 'College' %}{% set joeFEtype = 'college' %}{% elseif job.organisation.type == 'Corporate' %}{% set joeFEtype = 'company' %}{% elseif job.organisation.type == 'Academy' %}{% set joeFEtype = 'academy' %}{% else %}{% set joeFEtype = 'school' %}{% endif %}
+{% if job and job.organisation.type == 'College' %}
+  {% set organisationNoun = 'college' %}
+{% elif job and job.organisation.type == 'Corporate' %}
+  {% set organisationNoun = 'organisation' %}
+{% else %}
+  {% set organisationNoun = 'school' %}
+{% endif %}
 
 {% block content %}
 
-  {% set h1 %}
+{% if not job %}
+  <h1 class="govuk-heading-l">Job not found</h1>
+  <p class="govuk-body"><a class="govuk-link" href="/jobs">Back to jobs</a></p>
+{% else %}
 
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
-      {{job.title}}
-    </h1>
-    <span class="govuk-caption-l">
-      {{job.organisation.name}}
-    </span>
-    
+  {% set locationCaption %}
+    {{ job.organisation.name }}{% if job.organisation.address.town %}, {{ job.organisation.address.town }}{% endif %}{% if job.organisation.address.postcode %}, {{ job.organisation.address.postcode }}{% endif %}
   {% endset %}
 
-  {% set sponsorshipInset %}
-    {% if job.sponsorship == 'Skilled Worker visas can be sponsored' %}
-      {{ govukInsetText({
-        text: "Skilled worker visa sponsorship is available for this job."
-      }) }}
+  {% if job.jobtype == 'support' %}
+    {% set alertHref = '/jobalerts/support' %}
+  {% elif data['optionPrototype'] == 'b' %}
+    {% set alertHref = '/jobs/fe/jobalert_fe?role-type=fe-role' %}
+  {% elif data['optionPrototype'] == 'a' %}
+    {% set alertHref = '/alert?role-type=fe-role' %}
+  {% else %}
+    {% set alertHref = '/jobsfeonly_alert' %}
+  {% endif %}
+
+  {% if job.isUsingApplicationForm == 'Yes' %}
+    {% if user.profile.provideWork == 'No' %}
+      {% set applyHref = '/apply/unhappy' %}
     {% else %}
-      {{ govukInsetText({
-        text: 'Skilled worker visa sponsorship is not available for this job.'
-      }) }}
+      {% set applyHref = '/jobs/' + job.id + '/apply' %}
+    {% endif %}
+  {% else %}
+    {% set applyHref = '#applying' %}
+  {% endif %}
+
+  {% set roleText = job.role | join(', ') if job.role and job.role.join else job.role %}
+
+  {% set workingPatternsHtml %}
+    {% for workingPattern in job.workingPatterns %}
+      <p class="govuk-body govuk-!-margin-bottom-1">
+        {{ workingPattern }}{% if workingPattern == 'Full time' and job.fullTimeDetails %}: {{ job.fullTimeDetails }}{% elif workingPattern != 'Full time' and job.partTimeDetails %}: {{ job.partTimeDetails }}{% endif %}
+      </p>
+    {% endfor %}
+  {% endset %}
+
+  {% set visaText %}
+    {% if job.sponsorship == 'Skilled Worker visas can be sponsored' or job.sponsorship == 'Skilled worker visa can be sponsored' %}
+      Skilled Worker visas can be sponsored
+    {% else %}
+      Visas cannot be sponsored
     {% endif %}
   {% endset %}
 
+  {% set addressLine %}
+    {{ job.organisation.address.address1 }}{% if job.organisation.address.town %}, {{ job.organisation.address.town }}{% endif %}{% if job.organisation.address.postcode %}, {{ job.organisation.address.postcode }}{% endif %}
+  {% endset %}
 
-  <div class="govuk-grid-row old-design">
-    <div class="govuk-grid-column-full">
-      
-      {% if job.isUsingApplicationForm == 'Yes' %}
-        {{govukTag({
-          text: "QUICK APPLY",
-          classes: "govuk-tag--green govuk-!-margin-bottom-3"
-        })}}
-      {% endif %}
+  <div class="vacancies-show old-design">
 
-      <div class="app-logo-title">
-
-        {% if job.organisation.logo != 'Not entered' %}
-          <div class="app-logo-title__image">
-            <img src="{{job.organisation.logo}}">
-          </div>
-          <div class="app-logo-title__tex">
-            {{h1 | safe}}
-          </div>
-        {% else %}
-          {{h1 | safe}}
-        {% endif %}
-      </div>
-
-      <div class="govuk-grid-row banner-buttons  govuk-!-margin-bottom-7">
-        <div class="govuk-grid-column-one-third">
-          {% if data ['optionPrototype'] == 'a' %}
-             <form action="/alert?role-type=fe-role">
-              <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
-            </form>
-          {% elseif data ['optionPrototype'] == 'b' %}
-            <form action="/jobs/fe/jobalert_fe?role-type=fe-role">
-              <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
-            </form>
-          {% else %}   
-            <form action="/jobsfeonly_alert">
-              <button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
-            </form>
-          {% endif %}
-        </div>
-        {% if data ['optionPrototype'] !== 'c' %}
-        <div class="govuk-grid-column-one-third">
-            <button class="banner-button-component__button icon icon--left icon--save" type="submit">Save this job for later</button>
-        </div>
-        {% endif %}
-      </div>
-
-
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-
-      
-      <div class="timeline-component">
-
-      <h3 class="govuk-heading-s">16 days remaining to apply</h3>
-
-      <ul class="timeline-component__items">
-        <li class="timeline-component__item">
-          <h4 class="timeline-component__key govuk-heading-s">Closing date</h4>
-          <p class="timeline-component__value govuk-body">{{job.closingDate | date}} at {{job.closingTime}}</p>
-        </li>
-        <li class="timeline-component__item">
-          <h4 class="timeline-component__key govuk-heading-s">Date listed</h4>
-          <p class="timeline-component__value govuk-body">{{job.startDate | date}}</p>
-        </li>
-      </ul>
-
-      </div>
-
-
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-
-
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-5">
-        Job details
-        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-2">
-
-      </h2>
-
-
-
-      {% set workingPatterns %}
-        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-
-          {% for workingPattern in job.workingPatterns %}
-            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-              {{workingPattern}} -
-              {% if workingPattern == 'Full time' %}
-                {{job.fullTimeDetails}}
-              {% else %}
-                {{job.partTimeDetails}}
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      {% endset %}
-
-      {% set additionalDocuments %}
-        <ul class="govuk-list govuk-list--bullet">
-          {% for document in job.additionalDocuments %}
-            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-              <a href="#">{{document.file}}, {{document.size}}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endset %}
-
-      {% set contract %}
-        {{job.contractType}}
-
-        {% if job.contractLength %}
-          - {{job.contractLength}}
-        {% endif %}
-      {% endset %}
-
-
-      {% set offerVisa %}
-        {% if job.sponsorship == 'Skilled worker visa can be sponsored' %}
-          Skilled worker visa can be sponsored
-        {% else %}
-          Visas cannot be sponsored
-        {% endif %}
-      {% endset %}
-
-    
-      {{job | log}}
-
-       {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Job role"
-            },
-            value: {
-              text: job.role
-            }
-          },
-          {
-            key: {
-              text: "Suitability for early career teachers (ECT)"
-            },
-            value: {
-              text: job.isRoleSuitableForEarlyCareeerTeachers
-            }
-          }if job.isRoleSuitableForEarlyCareeerTeachers,
-          {
-            key: {
-              text: "Visa sponsorship"
-            },
-            value: {
-              text: job.sponsorship
-            }
-          }if job.sponsorship,
-          {
-            key: {
-              text: "Key stage"
-            },
-            value: {
-              text: job.keyStages | join(', ')
-            }
-          } if job.keyStages,
-          {
-            key: {
-              text: "Subject"
-            },
-            value: {
-              text: job.subjects | join(', ')
-            }
-          } if job.subjects.length > 0,
-          {
-            key: {
-              text: "Working pattern"
-            },
-            value: {
-              html: workingPatterns
-            }
-          },
-          {
-            key: {
-              text: "Contract"
-            },
-            value: {
-              html: contract
-            }
-          }if  job.contractLength,
-          {
-            key: {
-              text: "Job start date"
-            },
-            value: {
-              html: job.startDate | date
-            }
-          },
-          {
-            key: {
-              text: "Full-time equivalent salary"
-            },
-            value: {
-              html: job.fullTimeEquivalentSalaryDetails
-            }
-          } if job.fullTimeEquivalentSalaryDetails,
-          {
-            key: {
-              text: "Actual salary"
-            },
-            value: {
-              html: job.actualSalaryDetails
-            }
-          } if job.actualSalaryDetails,
-          {
-            key: {
-              text: "Pay scale"
-            },
-            value: {
-              html: job.payScaleDetails
-            }
-          } if job.payScaleDetails
-        ]
+    {% if flash and flash[0] == 'job-saved' %}
+      {{ govukNotificationBanner({
+        html: '<p class="govuk-notification-banner__heading">You have saved this job. <a class="govuk-notification-banner__link" href="/onelogin/journey/match">View all your saved jobs</a> on your account.</p>',
+        type: "success"
       }) }}
+    {% endif %}
 
-
-      <h2 class="govuk-heading-m">
-        What skills and experience we’re looking for
-      </h2>
-
-      <div class="app-prose govuk-!-margin-bottom-6">
-        {{job.skillsAndExperience | markdown | safe}}
-      </div>
-
-      <h2 class="govuk-heading-m">
-        What the <span style="text-transform:lowercase;"> {{joeFEtype}}</span> offers its staff
-      </h2>
-
-      <div class="app-prose govuk-!-margin-bottom-6">
-        {{job.whatSchoolOffers | markdown | safe}}
-      </div>
-
-      {% if job.offersSchoolVisits == 'Yes' %}
-        <h2 class="govuk-heading-m">
-          Arrange a visit
-        </h2>
-
-        <p>To arrange a visit and increase the chance of a successful application, email <a href="mailto:{{job.contactEmailAddress}}">{{job.contactEmailAddress}}</a>.</p>
-      {% endif %}
-
-
-      {% if job.hasFurtherDetailsAboutTheRole == 'Yes' %}
-        <h2 class="govuk-heading-m">
-          Further information about the job
-        </h2>
-
-        <div class="app-prose">
-          {{job.furtherDetailsAboutTheRole | markdown | safe}}
+    <div class="header-with-logo govuk-!-margin-bottom-5">
+      {% if job.organisation.logo and job.organisation.logo != 'Not entered' %}
+        <div class="header-with-logo-logo">
+          <img src="{{ job.organisation.logo }}" alt="">
         </div>
       {% endif %}
-
-       {% if job.isUsingApplicationForm == 'Yes' %}
-
-          <h2 class="govuk-heading-m">
-            Applying for the job
-          </h2>
-
-          {% if job.jobtype == 'support' %}
-          {% else %}   
-            {{sponsorshipInset | safe }}
-          {% endif %}
-
-          {% set href %}
-              {% if job.isUsingApplicationForm == 'No' %}
-                #apply
-              {% else %}
-                jobs/{{job.id}}/apply
-              {% endif %}
-            {% endset %}
-
-            {% if job.sponsorship == 'Skilled Worker visas can be sponsored' %}
-
-              {{ govukButton({
-                text: "Apply for job",
-                href: href,
-                classes: "govuk-!-margin-bottom-7"
-              }) }}
-
-            {% else %}
-
-              {% if user.profile.provideWork == 'No' %}
-
-                {{ govukButton({
-                  text: "Apply for job",
-                  href: '../apply/unhappy',
-                  classes: "govuk-!-margin-bottom-7"
-                }) }}
-
-              {% else %}
-
-                {{ govukButton({
-                  text: "Apply for job",
-                  href: href,
-                  classes: "govuk-!-margin-bottom-7"
-                }) }}
-              
-              {% endif %}
-
-          {% endif %}
-
-        {% endif %}
-
-
-         {% if job.isUsingApplicationForm == 'No' %}
-          <h2 class="govuk-heading-m" id="apply">
-            Apply for the job
-          </h2>
-
-          {% if job.applicationMethod == 'By email' %}
-            <p>Download application form and send it to <a href="mailto:{{job.emailAddressForApplications}}">{{job.emailAddressForApplications}}</a>.</p>
-            
-            {{sponsorshipInset | safe }}
-
-            {{ govukButton({
-              text: "Application form (PDF), 7MB"
-            }) }}
-
-          {% else %}
-            {# <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p> #}
-            <p>Apply through the <span style="text-transform:lowercase;"> {{joeFEtype}}</span> website.</p>
-
-            {{sponsorshipInset | safe }}
-
-            {# {{ govukButton({
-              text: job.linkToWebsite
-            }) }} #}
-
-            {{ govukButton({
-              text: "Apply for job (opens in new tab)",
-              text: "Continue to school website",
-              text: "Go to school website",
-              text: "Apply through website"
-            }) }}
-          {% endif %}
-
-      {% endif %}
-
-
-      
-
-      {% if job.hasAdditionalDocuments == 'Yes' %}
-        <h2 class="govuk-heading-m">
-          Additional documents
-        </h2>
-
-        {{additionalDocuments | safe }}
-      {% endif %}
-
-      {% set address %}
-        {% for part, value in job.organisation.address %}
-          {{value}}{% if not loop.last %}, {% endif %}
-        {% endfor %}
-      {% endset %}
-
-      {% set emailAddress %}
-        <a href="{{job.organisation.emailAddress}}">{{job.organisation.emailAddress}}</a>
-      {% endset %}
-
-      {% set website %}
-        <a href="{{job.organisation.website}}">{{job.organisation.website}} (opens in new tab)</a>
-      {% endset %}
-
-      {% if job.locations.length == 1 %}
-        <h2 class="govuk-heading-l">
-          About the <span style="text-transform:lowercase;"> {{joeFEtype}}</span>
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Name"
-              },
-              value: {
-                text: job.organisation.name
-              }
-            },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                text: job.organisation.address.address1
-              }
-            },
-            {
-              key: {
-                text: "Type"
-              },
-              value: {
-                text: job.organisation.type
-              }
-            },
-            {
-              key: {
-                text: "Education phase"
-              },
-              value: {
-                html: job.organisation.phase
-              }
-            } if job.organisation.phase,
-            {
-              key: {
-                text: "Age group"
-              },
-              value: {
-                text: job.organisation.ageGroup
-              }
-            } if job.organisation.ageGroup,
-            {
-              key: {
-                text: "Size"
-              },
-              value: {
-                text: job.organisation.size + ' pupils enrolled'
-              }
-            } if job.organisation.size,
-            {
-              key: {
-                text: "Ofsted report"
-              },
-              value: {
-                html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-              }
-            },
-            {
-              key: {
-                text: "Email address"
-              },
-              value: {
-                html: emailAddress
-              }
-            },
-            {
-              key: {
-                text: "Website"
-              },
-              value: {
-                html: website
-              }
-            }
-          ]
-        }) }}
-
-
-        <h2 class="govuk-heading-m">
-          Location and map
-        </h2>
-
-        <p>{{job.organisation.address.address1}}, <span style="text-transform: uppercase;">{{ data['location'] | truncate(2, true, "") }}{{ [1,2,3,4,5,6,7,8,9,11,12,13,14] | random }} {{ [1,2,3,4,5,6,7,8,9] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}{{ ['A','B','C','D','E','F','G','H','I'] | random }}</span>.</p>
-
-        <div class="app-map">
-          <img src="/public/images/maps/single.png">
-        </div>
-      {% else %}
-        
-        <h2 class="govuk-heading-m">
-          About the schools
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Name"
-              },
-              value: {
-                text: job.organisation.name
-              }
-            },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                text: address
-              }
-            },
-            {
-              key: {
-                text: "School type"
-              },
-              value: {
-                html: job.schoolType
-              }
-            } if job.schoolType,
-            {
-              key: {
-                text: "Email address"
-              },
-              value: {
-                html: emailAddress
-              }
-            } if job.organisation.emailAddress != 'Not entered',
-            {
-              key: {
-                text: "Website"
-              },
-              value: {
-                html: website
-              }
-            } if job.organisation.website != 'Not entered'
-          ]
-        }) }}
-
-        {% if job.organisation.about != 'Not entered' %}
-          <div class="app-prose govuk-!-margin-bottom-6">
-            {{job.organisation.about | markdown | safe}}
+      <div class="header-with-logo-title">
+        {% if job.isUsingApplicationForm == 'Yes' %}
+          <div class="govuk-!-margin-bottom-2">
+            <a class="govuk-tag govuk-tag--green" href="{{ applyHref }}">Quick apply</a>
           </div>
         {% endif %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">{{ job.title }}</h1>
+        <span class="govuk-caption-l govuk-!-margin-top-0">{{ locationCaption }}</span>
+      </div>
+    </div>
 
-        <p>You can find out more information about:</p>
+    <div class="govuk-grid-row banner-buttons">
+      {% if data.signedIn or user or forceSignedIn or (job.isUsingApplicationForm == 'Yes' and daysRemaining >= 0) %}
+        <div class="govuk-grid-column-one-third">
+          <a class="banner-button-component__button icon icon--left icon--apply" href="{{ applyHref }}">Apply for this job</a>
+        </div>
+      {% endif %}
+      <div class="govuk-grid-column-one-third">
+        <a class="banner-button-component__button icon icon--left icon--alert-blue" href="{{ alertHref }}">Get a job alert for similar jobs</a>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        {% if (job.id | string) in (data.savedJobs or []) %}
+          <span class="banner-button-component__button icon icon--left icon--saved">Job saved</span>
+        {% else %}
+          <a class="banner-button-component__button icon icon--left icon--save" href="/jobs/{{ job.id }}/save">Save this job for later</a>
+        {% endif %}
+      </div>
+    </div>
 
-        <ul class="govuk-list govuk-list--bullet">
-          {% for location in job.locations %}
-            {% if location.name != job.organisation.name %}
-              <li>
-                <a href="/schools/{{location.id}}">{{location.name}}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
+    <div class="govuk-grid-row govuk-!-margin-top-6">
+      <div class="govuk-grid-column-one-third">
+        <div class="timeline-component">
+          {% if daysRemaining < 0 %}
+            <h2 class="timeline-component__heading govuk-heading-s">This job expired on {{ job.closingDate | date }} – <a class="govuk-link" href="#similar-jobs">see similar jobs</a></h2>
+          {% else %}
+            <h2 class="timeline-component__heading govuk-heading-s">
+              {{ daysRemaining }} {{ "day" if daysRemaining == 1 else "days" }} remaining to apply
+            </h2>
+          {% endif %}
 
-        <h2 class="govuk-heading-m">
-          Location and map
-        </h2>
-
-        <div class="app-map">
-          <img src="/public/images/maps/multiple.png">
+          <ul class="timeline-component__items">
+            <li class="timeline-component__item">
+              <h3 class="timeline-component__key govuk-heading-s">Start date</h3>
+              <p class="timeline-component__value govuk-body">{{ job.startDate | date }}</p>
+            </li>
+            <li class="timeline-component__item">
+              <h3 class="timeline-component__key govuk-heading-s">Closing date</h3>
+              <p class="timeline-component__value govuk-body">{{ job.closingDate | date }} at {{ job.closingTime }}</p>
+            </li>
+            <li class="timeline-component__item">
+              <h3 class="timeline-component__key govuk-heading-s">Date listed</h3>
+              <p class="timeline-component__value govuk-body">{{ job.publishDate | date }}</p>
+            </li>
+          </ul>
         </div>
 
-      {% endif %}
-
-
-     
-      <hr>
-
-      <section>
-        <p class="icon icon--left icon--alert-blue govuk-!-margin-top-7" style="background-repeat: no-repeat; padding-left:30px">
-        {% if job.jobtype == 'support' %}
-           <a class="govuk-link" href="/jobalerts/support">Get a job alert</a> when similar jobs are listed
-        {% elseif data ['optionPrototype'] == 'b' %}
-           <a class="govuk-link" href="/jobs/fe/jobalert_fe??role-type=fe-role">Get a job alert</a> when similar jobs are listed
-          {% else %}   
-           <a class="govuk-link" href="/jobsfeonly_alert">Get a job alert</a> when similar jobs are listed
+        {% if job.isUsingApplicationForm == 'Yes' or job.isRoleSuitableForEarlyCareeerTeachers %}
+          <div class="sidebar-info-box">
+            <h2 class="govuk-heading-s">Help with your personal statement</h2>
+            <p class="govuk-body">Use the <a class="govuk-link" href="https://personalstatementbuilder.co.uk/" rel="noreferrer noopener" target="_blank">personal statement builder (opens in new tab)</a> to help you write a personal statement for this job.</p>
+          </div>
         {% endif %}
-      </section>
+      </div>
 
-      {# {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Role"
-            },
-            value: {
-              text: job.role
-            }
-          },
-          {
-            key: {
-              text: "Location"
-            },
-            value: {
-              text: "Near " + job.organisation.address.postcode
-            }
-          }
-        ]
-      }) }} #}
+      <div class="govuk-grid-column-two-thirds">
+        <section id="job-details" class="govuk-!-margin-bottom-5">
+          <h2 class="govuk-heading-l heading--border-bottom">Job details</h2>
 
-      {# <p><a href="#">Set up a job alert</a></p> #}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Job role</h3>' },
+                value: { html: roleText }
+              } if roleText,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>' },
+                value: { text: visaText }
+              },
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Key stage</h3>' },
+                value: { text: job.keyStages | join(', ') }
+              } if job.keyStages and job.keyStages.length,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Subjects</h3>' },
+                value: { text: job.subjects | join(', ') }
+              } if job.subjects and job.subjects.length,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Working pattern</h3>' },
+                value: { html: workingPatternsHtml }
+              } if job.workingPatterns,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Contract type</h3>' },
+                value: { text: job.contractType }
+              } if job.contractType,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Actual salary</h3>' },
+                value: { text: job.actualSalaryDetails }
+              } if job.actualSalaryDetails,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Pay scale</h3>' },
+                value: { text: job.salaryDetails | join(', ') }
+              } if job.salaryDetails and job.salaryDetails.length,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Pay scale</h3>' },
+                value: { html: job.payScaleDetails }
+              } if job.payScaleDetails and not job.salaryDetails
+            ]
+          }) }}
 
-      
+          {% if job.skillsAndExperience %}
+            <h2 class="govuk-heading-m">What skills and experience we’re looking for</h2>
+            <div class="app-prose govuk-!-margin-bottom-6">
+              {{ job.skillsAndExperience | markdown | safe }}
+            </div>
+          {% endif %}
 
+          {% if job.whatSchoolOffers %}
+            <h2 class="govuk-heading-m">What the {{ organisationNoun }} offers its staff</h2>
+            <div class="app-prose govuk-!-margin-bottom-6">
+              {{ job.whatSchoolOffers | markdown | safe }}
+            </div>
+          {% endif %}
 
+          {% if job.hybrid == 'Yes' %}
+            <h2 class="govuk-heading-m">Flexible working opportunities</h2>
+            <p class="govuk-body">This role can include hybrid working. Contact the {{ organisationNoun }} for the working pattern.</p>
+          {% endif %}
+
+          <h2 class="govuk-heading-m">Further information about the job</h2>
+          <p class="govuk-body">The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.</p>
+          {{ govukInsetText({
+            text: visaText
+          }) }}
+          <p class="govuk-body">If you’re interested in teaching or training to teach in England as an international citizen, we can help you <a class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers">understand your next steps</a>.</p>
+          {% if job.hasFurtherDetailsAboutTheRole == 'Yes' and job.furtherDetailsAboutTheRole %}
+            <div class="app-prose govuk-!-margin-bottom-6">
+              {{ job.furtherDetailsAboutTheRole | markdown | safe }}
+            </div>
+          {% endif %}
+
+          {% if job.safeguardingCommitment or job.organisation.safeguardingCommitment %}
+            <h2 class="govuk-heading-m">Commitment to safeguarding</h2>
+            <p class="govuk-body">{{ job.safeguardingCommitment or job.organisation.safeguardingCommitment }}</p>
+          {% endif %}
+
+          {% if daysRemaining >= 0 %}
+            <h2 class="govuk-heading-m" id="applying">Applying for the job</h2>
+            {% if job.isUsingApplicationForm == 'Yes' %}
+              <p class="govuk-body">Please complete the online application.</p>
+              <p class="govuk-body">CVs will not be accepted for this application.</p>
+              {{ govukButton({
+                text: "Apply for this job",
+                href: applyHref
+              }) }}
+            {% else %}
+              <p class="govuk-body">Apply through the {{ organisationNoun }} website.</p>
+              <p class="govuk-body">You do not need a CV to apply for this job.</p>
+              {{ govukButton({
+                text: "Apply for this job",
+                href: job.organisation.website or "#"
+              }) }}
+            {% endif %}
+          {% else %}
+            {{ govukInsetText({
+              text: "This job post has expired.",
+              classes: "govuk-!-font-weight-bold"
+            }) }}
+          {% endif %}
+
+          {% if job.hasAdditionalDocuments == 'Yes' and job.additionalDocuments %}
+            <section id="supporting-documents">
+              <h2 class="govuk-heading-l heading--border-bottom">Additional documents</h2>
+              <p class="govuk-body">If you need these documents in an accessible format, please contact the {{ organisationNoun }}.</p>
+              <div class="grey-border-box--thin">
+                <ul class="govuk-list">
+                  {% for document in job.additionalDocuments %}
+                    <li><a class="govuk-link" href="#">{{ document.file }}{% if document.size %}, {{ document.size }}{% endif %} (opens in new tab)</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </section>
+          {% endif %}
+        </section>
+
+        <section id="school-overview">
+          <h2 class="govuk-heading-l heading--border-bottom">About {{ job.organisation.name }}</h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Organisation type" },
+                value: { text: job.organisation.type }
+              } if job.organisation.type,
+              {
+                key: { text: "Education phase" },
+                value: { text: job.organisation.phase }
+              } if job.organisation.phase,
+              {
+                key: { text: "Size" },
+                value: { text: job.organisation.size + (" learners" if organisationNoun == "college" else " pupils enrolled") }
+              } if job.organisation.size,
+              {
+                key: { text: "Age range" },
+                value: { text: job.organisation.ageGroup }
+              } if job.organisation.ageGroup,
+              {
+                key: { text: "Ofsted report" },
+                value: { html: '<a class="govuk-link" href="https://reports.ofsted.gov.uk/" rel="noreferrer noopener" target="_blank">View Ofsted report (opens in new tab)</a>' }
+              } if organisationNoun != "organisation",
+              {
+                key: { text: "Website" },
+                value: { html: '<a class="govuk-link" href="' + job.organisation.website + '" rel="noreferrer noopener" target="_blank">' + job.organisation.name + ' website (opens in new tab)</a>' }
+              } if job.organisation.website and job.organisation.website != 'Not entered',
+              {
+                key: { text: "Email address" },
+                value: { html: '<a class="govuk-link" href="mailto:' + job.organisation.emailAddress + '">' + job.organisation.emailAddress + '</a>' }
+              } if job.organisation.emailAddress and job.organisation.emailAddress != 'Not entered',
+              {
+                key: { text: "Phone number" },
+                value: { html: '<a class="govuk-link" href="tel:' + job.contactPhoneNumber + '">' + job.contactPhoneNumber + '</a>' }
+              } if job.hasContactPhoneNumber == 'Yes' and job.contactPhoneNumber,
+              {
+                key: { text: "See more jobs" },
+                value: { html: '<a class="govuk-link" href="/jobs">See all jobs at ' + job.organisation.name + '</a>' }
+              }
+            ]
+          }) }}
+
+          {% if job.organisation.about and job.organisation.about != 'Not entered' %}
+            <div class="app-prose govuk-!-margin-bottom-6">
+              {{ job.organisation.about | markdown | safe }}
+            </div>
+          {% endif %}
+
+          {% if job.offersSchoolVisits == 'Yes' %}
+            <h3 class="govuk-heading-m">Arrange a visit to {{ job.organisation.name }}</h3>
+            <p class="govuk-body">To arrange a visit, email <a class="govuk-link" href="mailto:{{ job.organisation.emailAddress }}">{{ job.organisation.emailAddress }}</a>.</p>
+          {% endif %}
+        </section>
+
+        <section id="school-location">
+          <h2 class="govuk-heading-l heading--border-bottom">
+            {% if organisationNoun == 'college' %}College location{% elif organisationNoun == 'organisation' %}Location{% else %}School location{% endif %}
+          </h2>
+          <p class="govuk-body">{{ addressLine }}</p>
+          <div class="app-map">
+            <img src="/public/images/maps/single.png" alt="Map showing {{ job.organisation.name }}">
+          </div>
+        </section>
+
+        {% if similarJobs and similarJobs.length %}
+          <section class="similar-jobs" id="similar-jobs">
+            <h2 class="govuk-heading-m">Similar jobs nearby</h2>
+            <div class="govuk-grid-row govuk-!-margin-left-0">
+              {% for similarJob in similarJobs %}
+                <div class="similar-jobs__job govuk-grid-column-one-half">
+                  <p class="govuk-body govuk-!-margin-bottom-1">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/jobs/{{ similarJob.id }}">{{ similarJob.title }}</a>
+                  </p>
+                  {% if similarJob.isUsingApplicationForm == 'Yes' %}
+                    <p class="govuk-body govuk-!-margin-bottom-1">
+                      <a class="govuk-tag govuk-tag--green" href="/jobs/{{ similarJob.id }}/apply">Quick apply</a>
+                    </p>
+                  {% endif %}
+                  <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-font-weight-bold">{{ similarJob.organisation.name }}</p>
+                  <p class="govuk-body govuk-!-margin-bottom-0">
+                    {{ similarJob.organisation.address.address1 }}{% if similarJob.organisation.address.town %}, {{ similarJob.organisation.address.town }}{% endif %}{% if similarJob.organisation.address.postcode %}, {{ similarJob.organisation.address.postcode }}{% endif %}
+                  </p>
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+        {% endif %}
+
+        <p class="govuk-body icon icon--left icon--alert-blue">
+          <a class="govuk-link" href="{{ alertHref }}">Get a job alert</a> when similar jobs are listed
+        </p>
+        {% if job.organisation.address.town %}
+          <p class="govuk-body icon icon--left icon--map-blue">
+            Find more {{ organisationNoun }} jobs in <a class="govuk-link" href="/jobs">{{ job.organisation.address.town }}</a>
+          </p>
+        {% endif %}
+      </div>
     </div>
-    
-
   </div>
+{% endif %}
 
 {% endblock %}

@@ -11,12 +11,31 @@
 {% set clearFiltersHref = clearFiltersHref or '/femerge/clear-filters' %}
 {% set showFeSubjects = showFeSubjects or true %}
 
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-search-sort {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin: 10px 0 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-search-sort .govuk-heading-m {
+      margin-bottom: 0;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     Jobs (341)
   </h1>
 
-  <p><a class="govuk-link govuk-link--no-visited-state" href="alert?role-type=fe-role">Receive a job alert</a> whenever a job matching this search is listed.</p>
+  <p><a class="govuk-link govuk-link--no-visited-state" href="alert?role-type=fe-role">Receive a job alert</a> whenever new jobs match your search.</p>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -48,36 +67,38 @@
       <div>
         <div class="app-jobs">
 
-          <div class="govuk-grid-column-one-full">
-              <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+          {% if data['sort'] == 'newest' %}
+            {% set currentSort = 'newest' %}
+          {% else %}
+            {% set currentSort = 'ending' %}
+          {% endif %}
+
+          <div class="app-search-sort">
+            <h2 class="govuk-heading-m">
+              {% if currentSort == 'newest' %}
+                Sorted by newest job
+              {% else %}
+                Sorted by ending soon
+              {% endif %}
+            </h2>
+            <form id="sortform" method="get" action="/femerge" data-sort-stay="true">
+              <div class="govuk-form-group govuk-!-margin-bottom-0">
+                <label class="govuk-label" for="sort">Sort by</label>
+                <select class="govuk-select" id="sort" name="sort">
+                  <option value="ending" {% if currentSort == 'ending' %}selected{% endif %}>Ending soon</option>
+                  <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>
+                </select>
               </div>
-            <div style="display:inline-block; float:right">
-              <form id="sortform" action="/jobs/search/postcode">
-                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
-                  <label class="govuk-label" for="sort" style="display:inline-block;">
-                    Sort by
-                  </label>
-                  <select class="govuk-select" id="sort" name="sort">
-                    <option value="newest" selected>Newest job</option>
-                    <option value="closing">Closing date</option>
-                    {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
-                  </select>
-                </div>
-              </form>
-            </div>
-
+            </form>
           </div>
 
-          <div class="govuk-grid-row">
+        {% if currentSort == 'newest' %}
+          {% set job_list = jobs|sort(attribute='publishDate', reverse=true) %}
+        {% else %}
+          {% set job_list = jobs|sort(attribute='closingDate', reverse=false) %}
+        {% endif %}
 
-            <div class="govuk-grid-column-full">
-              <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
-            </div>
-
-          </div>
-
-        {% for job in jobs|sort(attribute='startDate', reverse=false) %}
+        {% for job in job_list %}
 
           {% if loop.index0 < 10 %}
 
@@ -97,10 +118,7 @@
                 <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
 
                 {% if job.isUsingApplicationForm == 'Yes' %}
-                  {{ govukTag({
-                    text: "Quick apply",
-                    classes: 'govuk-tag--green'
-                  }) }}
+                  <a class="govuk-tag govuk-tag--green" href="/jobs/{{ job.id }}/apply">Quick apply</a>
                 {% endif %}
 
               </h2>
@@ -144,28 +162,12 @@
                   } if job.schoolType,
                   {
                     key: {
-                      text: "Education phase"
-                    },
-                    value: {
-                      text: job.phase | capitalize
-                    }
-                  } if job.phase,
-                  {
-                    key: {
                       text: "Working pattern"
                     },
                     value: {
                       text: job.workingPatterns | join(', ') | capitalize
                     }
                   },
-                  {
-                    key: {
-                      text: "Subject"
-                    },
-                    value: {
-                      html: job.subjects | join(', ') | capitalize
-                    }
-                  } if job.subjects.length,
                   {
                     key: {
                       text: "Closing date"

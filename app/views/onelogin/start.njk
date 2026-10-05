@@ -12,7 +12,8 @@
 
       <p>You can now continue to use Teaching Vacancies.</p>
 
-      <form action="/onelogin/journey/choice">
+      <form method="post" action="/onelogin/journey/choice">
+        <input type="hidden" name="match" value="match">
 
         {{ govukButton({
           text: 'Continue'

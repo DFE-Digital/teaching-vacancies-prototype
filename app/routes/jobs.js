@@ -112,6 +112,10 @@ module.exports = router => {
     res.render('prototypes/documentation')
   })
 
+  router.get('/mobile', (req, res) => {
+    res.render('prototypes/mobile')
+  })
+
   router.get('/jobs', (req, res) => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/index', {
@@ -222,6 +226,106 @@ module.exports = router => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/download-app-job-example-loggedin-filledin', {
       jobs
+    })
+  })
+
+  router.get('/jobseekers/subscriptions', (req, res) => {
+    res.render('jobseekers/subscriptions')
+  })
+
+  router.get('/jobseekers/job_applications', (req, res) => {
+    const statuses = [
+      { status: 'Draft', tagClass: 'govuk-tag--pink', activityLabel: 'Last edited' },
+      { status: 'Offered', tagClass: 'govuk-tag--green' },
+      { status: 'Interviewing', tagClass: 'govuk-tag--turquoise', activityLabel: 'Interviewing' },
+      { status: 'Shortlisted', tagClass: 'govuk-tag--yellow', activityLabel: 'Shortlisted' },
+      { status: 'Submitted', tagClass: '', activityLabel: 'Submitted' }
+    ]
+    const activityDates = [
+      '2 October 2026 at 11:12am',
+      '30 September 2026 at 11:00am',
+      '29 September 2026 at 11:17am',
+      '29 September 2026 at 4:04pm',
+      '28 September 2026 at 11:09am'
+    ]
+    const formatDay = value => {
+      const date = new Date(value)
+      if (Number.isNaN(date.getTime())) return ''
+      return date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC'
+      })
+    }
+    const jobs = req.session.data.jobs || []
+    const stored = req.session.data.applications || {}
+    const removed = req.session.data.deletedApplications || {}
+    const summarise = job => {
+      const address = job.organisation && job.organisation.address
+      return {
+        id: job.id,
+        title: job.title,
+        reference: String(job.id).slice(-3),
+        organisation: [
+          job.organisation && job.organisation.name,
+          address && address.address1,
+          address && address.town
+        ].filter(Boolean).join(', '),
+        closingDate: `${formatDay(job.closingDate)} at ${job.closingTime || '5pm'}`
+      }
+    }
+    const real = Object.keys(stored).map(id => {
+      if (removed[id]) return null
+      const job = jobs.find(item => String(item.id) === String(id))
+      if (!job) return null
+      const submitted = !!stored[id].submitted
+      return Object.assign(summarise(job), {
+        status: submitted ? 'Submitted' : 'Draft',
+        tagClass: submitted ? '' : 'govuk-tag--pink',
+        activity: submitted ? 'Submitted' : 'Draft application',
+        href: submitted
+          ? `/jobs/${job.id}/apply/submitted`
+          : `/jobs/${job.id}/apply/task-list`
+      })
+    }).filter(Boolean)
+    const realIds = new Set(real.map(application => String(application.id)))
+    const sample = jobs
+      .filter(job => job.status === 'Active' && !realIds.has(String(job.id)) && !removed[String(job.id)])
+      .map((job, index) => {
+        const status = statuses[index % statuses.length]
+        const href = status.status === 'Draft' && job.isUsingApplicationForm === 'Yes'
+          ? `/jobs/${job.id}/apply/task-list`
+          : `/jobs/${job.id}`
+        return Object.assign(summarise(job), {
+          status: status.status,
+          tagClass: status.tagClass,
+          activity: status.activityLabel ? `${status.activityLabel}: ${activityDates[index % activityDates.length]}` : '',
+          href
+        })
+      })
+    const applications = real.concat(sample)
+    const pageSize = 10
+    const pageCount = Math.max(1, Math.ceil(applications.length / pageSize))
+    const requestedPage = parseInt(req.query.page, 10)
+    const currentPage = Math.min(pageCount, Math.max(1, requestedPage || 1))
+    const start = (currentPage - 1) * pageSize
+
+    res.render('jobseekers/job-applications', {
+      applications: applications.slice(start, start + pageSize),
+      applicationCount: applications.length,
+      currentPage,
+      pageCount,
+      previousHref: currentPage > 1 ? `/jobseekers/job_applications?page=${currentPage - 1}` : '',
+      nextHref: currentPage < pageCount ? `/jobseekers/job_applications?page=${currentPage + 1}` : '',
+      paginationItems: Array.from({ length: pageCount }, (_, index) => {
+        const number = index + 1
+        return {
+          number,
+          href: `/jobseekers/job_applications?page=${number}`,
+          current: number === currentPage
+        }
+      })
     })
   })
 
@@ -345,11 +449,42 @@ module.exports = router => {
     res.render('apply/unhappy')
   })
 
+  router.get('/apply/unhappy', (req, res) => {
+    res.render('apply/unhappy')
+  })
+
+  router.get('/jobs/:id/save', (req, res) => {
+    const jobs = req.session.data.jobs || []
+    const job = jobs.find(item => String(item.id) === String(req.params.id))
+    if (!job) {
+      return res.redirect('/jobs')
+    }
+    if (!Array.isArray(req.session.data.savedJobs)) req.session.data.savedJobs = []
+    const jobId = String(job.id)
+    if (!req.session.data.savedJobs.map(String).includes(jobId)) {
+      req.session.data.savedJobs.push(jobId)
+    }
+    req.flash('success', 'job-saved')
+    res.redirect('/jobs/' + job.id)
+  })
+
   router.get('/jobs/:id', (req, res) => {
-    let jobs = req.session.data.jobs
-    let job = jobs.find(job => job.id == req.params.id)
+    const jobs = req.session.data.jobs || []
+    const job = jobs.find(item => item.id == req.params.id)
+    const similarJobs = jobs.filter(item => item.status == 'Active' && item.id != req.params.id).slice(0, 4)
+    let daysRemaining = 0
+
+    if (job && job.closingDate) {
+      const closing = new Date(job.closingDate)
+      const today = new Date()
+      today.setHours(0, 0, 0, 0)
+      daysRemaining = Math.ceil((closing - today) / 86400000)
+    }
+
     res.render('jobs/show', {
-      job
+      job,
+      similarJobs,
+      daysRemaining
     })
   })
 

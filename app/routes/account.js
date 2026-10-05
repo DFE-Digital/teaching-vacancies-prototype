@@ -11,6 +11,16 @@ function isSameSitePath (value) {
 
 module.exports = router => {
 
+  router.get('/account/sign-in/hiring-staff', (req, res) => {
+    res.render('account/sign-in-hiring-staff')
+  })
+
+  router.get('/account/sign-in/jobseeker', (req, res) => {
+    res.render('account/sign-in-jobseeker', {
+      returnUrl: req.query.returnUrl
+    })
+  })
+
   router.get('/account/sign-in', (req, res) => {
     var options = users.map(user => {
       return {
@@ -34,9 +44,18 @@ module.exports = router => {
   })
 
   router.get('/jobalerts/jobalert', (req, res) => {
+    req.session.data.signedIn = true
+    if (!req.session.user) {
+      res.locals.user = req.session.user = users[0]
+    }
     res.render('account/jobalerts/jobalert', {
       users
     })
+  })
+
+  router.post('/jobalerts/jobalert', (req, res) => {
+    req.session.data.jobAlertState = 'alert'
+    res.redirect('/jobseekers/subscriptions')
   })
 
   router.get('/jobalerts/jobalert_new_banner', (req, res) => {
@@ -93,8 +112,15 @@ module.exports = router => {
     }
   })
 
+  router.get('/account', (req, res) => {
+    res.render('account/index', {
+      user: req.session.user
+    })
+  })
+
   router.get('/account/sign-out', (req, res) => {
     res.locals.user = req.session.user = null
+    req.session.data.signedIn = false
     res.redirect('/')
   })
 
@@ -234,9 +260,8 @@ module.exports = router => {
   })
 
   router.post('/account/delete-account', (req, res) => {
-  
-    res.redirect('/account/delete-account-confirmation')
-
+    req.flash('success', 'Your account has been closed. If you want to reactivate your account at any point, you can just sign back in with your email address.')
+    res.redirect('/home')
   })
 
   router.post('/account/delete-account-confirmation', (req, res) => {

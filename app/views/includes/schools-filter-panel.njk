@@ -1,35 +1,35 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[phase]",
+    idPrefix: "filters-phase",
     name: "filters[phase]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Phase of education",
+        text: "Education phase",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Nursery school',
-      text: 'Nursery school'
+      value: "Nursery",
+      text: "Nursery"
     }, {
-      value: 'Primary school',
-      text: 'Primary school'
+      value: "Primary school",
+      text: "Primary school"
     }, {
-      value: 'Secondary school',
-      text: 'Secondary school'
+      value: "Secondary school",
+      text: "Secondary school"
     }, {
-      value: 'Sixth form or college',
-      text: 'Sixth form or college'
+      value: "Sixth form or FE college",
+      text: "Sixth form or FE college"
     }, {
-      value: 'Through school',
-      text: 'Through school'
+      value: "All through school",
+      text: "All through school"
     }]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[keyStages]",
+    idPrefix: "filters-key-stage",
     name: "filters[keyStages]",
     classes: "govuk-checkboxes--small",
     fieldset: {
@@ -39,44 +39,69 @@
       }
     },
     items: [{
-      value: 'Early years',
-      text: 'Early years'
+      value: "Early years",
+      text: "Early years"
     }, {
-      value: 'KS1',
-      text: 'KS1'
+      value: "Key stage 1",
+      text: "Key stage 1"
     }, {
-      value: 'KS2',
-      text: 'KS2'
+      value: "Key stage 2",
+      text: "Key stage 2"
     }, {
-      value: 'KS3',
-      text: 'KS3'
+      value: "Key stage 3",
+      text: "Key stage 3"
     }, {
-      value: 'KS4',
-      text: 'KS4'
+      value: "Key stage 4",
+      text: "Key stage 4"
     }, {
-      value: 'KS5',
-      text: 'KS5'
+      value: "Key stage 5",
+      text: "Key stage 5"
     }]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[special]",
-    name: "filters[special]",
+    idPrefix: "filters-organisation-type",
+    name: "filters[organisationType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Special school",
+        text: "Organisation type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Special school',
-      text: 'Special school'
+      value: "Academy",
+      text: "Academy",
+      hint: {
+        text: "includes free schools"
+      }
+    }, {
+      value: "Local authority maintained schools",
+      text: "Local authority maintained schools"
     }]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[jobs]",
+    idPrefix: "filters-school-type",
+    name: "filters[schoolType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "School type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Faith school",
+      text: "Faith school"
+    }, {
+      value: "Special school",
+      text: "Special school"
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-jobs",
     name: "filters[jobs]",
     classes: "govuk-checkboxes--small",
     fieldset: {
@@ -86,11 +111,8 @@
       }
     },
     items: [{
-      value: 'Has jobs',
-      text: 'Has jobs'
-    }, {
-      value: 'Does not have any jobs',
-      text: 'Does not have any jobs'
+      value: "Has jobs",
+      text: "Only show school with jobs available"
     }]
   }) }}
 
@@ -101,35 +123,14 @@
     <div class="app-filter__header-title">
       <h2 class="govuk-heading-m">Filter</h2>
     </div>
-    <div class="app-filter__header-action">
-
-    </div>
+    <div class="app-filter__header-action"></div>
   </div>
   <div class="app-filter__content">
-    {% if selectedFilters %}
-      <div class="app-filter__selected">
-        <div class="app-filter__selected-heading">
-          <div class="app-filter__heading-title">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
-            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/applications/remove-all-filters">Clear filters</a></p>
-          </div>
-        </div>
-        {% for category in selectedFilters.categories %}
-          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
-          <ul class="app-filter-tags">
-            {% for item in category.items %}
-              <li><a class="app-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
-            {% endfor %}
-          </ul>
-        {% endfor %}
-      </div>
-    {% endif %}
     <div class="app-filter__options">
-      <form method="get" action="/applications" novalidate>
-        <button class="govuk-button" data-module="govuk-button">
-          Apply filters
-        </button>
-        {{filterOptionsHtml | safe}}
+      <form method="get" action="/schools" novalidate>
+        <button class="govuk-button" data-module="govuk-button">Apply filters</button>
+        {{ filterOptionsHtml | safe }}
+        <button class="govuk-button" data-module="govuk-button">Apply filters</button>
       </form>
     </div>
   </div>

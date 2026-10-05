@@ -1,0 +1,126 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Applications' %}
+{% set activeNav = 'applications' %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-account-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 15px;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-account-nav__item {
+      margin: 0 0 20px;
+    }
+
+    .app-account-nav__item:last-child {
+      margin-bottom: 15px;
+    }
+
+    .app-account-nav__link[aria-current="page"] {
+      display: inline-block;
+      padding-bottom: 6px;
+      border-bottom: 4px solid #1d70b8;
+      text-decoration: none;
+    }
+
+    .app-applications__pagination .govuk-pagination {
+      margin-top: 0;
+    }
+
+    .app-application {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) max-content auto;
+      column-gap: 20px;
+      align-items: start;
+      padding: 15px 0;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-application__dates {
+      font-size: 16px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .app-application__dates .govuk-body {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .app-application__tag {
+      white-space: nowrap;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">Applications ({{ applicationCount }})</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <nav aria-label="Account">
+        <ul class="app-account-nav">
+          <li class="app-account-nav__item">
+            <a class="govuk-link app-account-nav__link" href="/jobseekers/job_applications" aria-current="page">Applications</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/onelogin/journey/match">Your saved jobs</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobseekers/subscriptions">Your job alerts</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobalerts/jobalert">Create a job alert</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      {% if pageCount > 1 %}
+        <div class="app-applications__pagination">
+          {{ govukPagination({
+            previous: {
+              href: previousHref
+            } if previousHref,
+            next: {
+              href: nextHref
+            } if nextHref,
+            items: paginationItems
+          }) }}
+        </div>
+      {% endif %}
+
+      <div class="app-applications">
+        {% for application in applications %}
+          <article class="app-application">
+            <div class="app-application__job">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-font-weight-regular">
+                <a class="govuk-link" href="{{ application.href or '/jobs/' + application.id }}">{{ application.title }}</a>
+                {{ application.reference }}
+              </h2>
+              <p class="govuk-body govuk-!-margin-bottom-0">{{ application.organisation }}</p>
+            </div>
+            <div class="app-application__dates">
+              {% if application.activity %}
+                <p class="govuk-body govuk-!-margin-bottom-1">{{ application.activity }}</p>
+              {% endif %}
+              <p class="govuk-body govuk-!-margin-bottom-0">Closing date: {{ application.closingDate }}</p>
+            </div>
+            <strong class="govuk-tag app-application__tag {{ application.tagClass }}">{{ application.status }}</strong>
+          </article>
+        {% endfor %}
+      </div>
+
+      {{ govukDetails({
+        summaryText: "Can't see your applications?",
+        html: '<p class="govuk-body">If your Teaching Vacancies account used a different email address from your GOV.UK One Login account, your applications will not automatically appear here.</p><p class="govuk-body">You can request <a class="govuk-link" href="/onelogin/journey/import">a transfer of your existing profile</a>.</p>'
+      }) }}
+    </div>
+  </div>
+{% endblock %}

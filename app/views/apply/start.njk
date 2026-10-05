@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+{% set primaryNavId = 'jobs' %}
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if not job %}
+        <h1 class="govuk-heading-l">Application</h1>
+        <p class="govuk-body"><a class="govuk-link" href="/jobs">Back to jobs</a></p>
+      {% else %}
+        <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+        <h1 class="govuk-heading-l">Application</h1>
+
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p class="govuk-body">Your details have been imported from your last job application.</p>
+        <p class="govuk-body">You will need to provide:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your full employment history</li>
+          <li>your qualifications</li>
+          <li>a personal statement</li>
+          <li>two referees</li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Saving your application details</h2>
+        <p class="govuk-body">Your details will be saved every time you make an application so that you can re-use them for future applications.</p>
+        <p class="govuk-body">You should review this information before submitting.</p>
+        <p class="govuk-body">You should read the job description and application pack before beginning your application.</p>
+        <p class="govuk-body">You can save your application at any point and return to it later.</p>
+
+        <form method="post" action="/jobs/{{ job.id }}/apply">
+          {{ govukButton({
+            text: "Start application"
+          }) }}
+        </form>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

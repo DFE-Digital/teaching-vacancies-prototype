@@ -15,7 +15,7 @@
       id: "location",
       name: "location",
       label: {
-        text: "City, county or postcode (in England)",
+        text: "City, county, or postcode (in England)",
         classes: "govuk-label--s"
       },
       value: data['location']
@@ -29,6 +29,10 @@
         classes: "govuk-label--s"
       },
       items: [
+        {
+          value: "updated",
+          text: "This area only"
+        },
         {
           value: "1",
           text: "1 mile"
