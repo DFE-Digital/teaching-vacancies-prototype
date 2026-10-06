@@ -181,42 +181,9 @@
           ]
         }) }}
 
-        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l govuk-!-margin-bottom-6">
-
-        <h2 class="govuk-heading-s">Job type</h2>
-
-        {% set teachingCheckboxes %}
-          {{ govukCheckboxes({
-            idPrefix: "teaching-role",
-            name: "jobseekers_subscription_form[teaching_job_roles][]",
-            classes: "govuk-checkboxes--small",
-            items: teachingRoles
-          }) }}
-        {% endset %}
-
-        {{ govukDetails({
-          summaryText: "Teaching and leadership",
-          html: teachingCheckboxes
-        }) }}
-
-        {% set supportCheckboxes %}
-          {{ govukCheckboxes({
-            idPrefix: "support-role",
-            name: "jobseekers_subscription_form[support_job_roles][]",
-            classes: "govuk-checkboxes--small",
-            items: supportRoles
-          }) }}
-        {% endset %}
-
-        {{ govukDetails({
-          summaryText: "Support",
-          html: supportCheckboxes
-        }) }}
-
         {{ govukCheckboxes({
           idPrefix: "education-phase",
           name: "jobseekers_subscription_form[phases][]",
-          classes: "govuk-checkboxes--small",
           fieldset: {
             legend: {
               text: "Education phase",
@@ -232,77 +199,9 @@
           ]
         }) }}
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Subject</legend>
-            <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="subject-search" type="search" aria-controls="subject-options" autocomplete="off">
-            <div class="govuk-checkboxes govuk-checkboxes--small" id="subject-options" data-module="govuk-checkboxes">
-              {% for subject in subjects %}
-                <div class="govuk-checkboxes__item app-subject-option">
-                  <input class="govuk-checkboxes__input" id="subject-{{ loop.index }}" name="jobseekers_subscription_form[subjects][]" type="checkbox" value="{{ subject[0] }}">
-                  <label class="govuk-label govuk-checkboxes__label" for="subject-{{ loop.index }}">{{ subject[0] }}</label>
-                  {% if subject[1] %}
-                    <div class="govuk-hint govuk-checkboxes__hint">{{ subject[1] }}</div>
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </div>
-          </fieldset>
-        </div>
-
-        {{ govukCheckboxes({
-          idPrefix: "teaching-requirements",
-          name: "jobseekers_subscription_form[ect_statuses][]",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              text: "Teaching role requirements",
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          items: [
-            { value: "ect_suitable", text: "Suitable for early career teachers" },
-            { value: "qts_not_required", text: "Qualified teacher status not required (further education)" }
-          ]
-        }) }}
-
-        {{ govukCheckboxes({
-          idPrefix: "organisation-type",
-          name: "jobseekers_subscription_form[organisation_types][]",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              text: "Organisation type",
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          items: [
-            { value: "academy", text: "Academy", hint: { text: "includes free schools" } },
-            { value: "local_authority", text: "Local authority maintained schools" },
-            { value: "colleges", text: "FE Colleges" }
-          ]
-        }) }}
-
-        {{ govukCheckboxes({
-          idPrefix: "school-type",
-          name: "jobseekers_subscription_form[school_types][]",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              text: "School type",
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          items: [
-            { value: "faith", text: "Faith school" },
-            { value: "special", text: "Special school" }
-          ]
-        }) }}
-
         {{ govukCheckboxes({
           idPrefix: "working-pattern",
           name: "jobseekers_subscription_form[working_patterns][]",
-          classes: "govuk-checkboxes--small",
           fieldset: {
             legend: {
               text: "Working pattern",
@@ -317,9 +216,23 @@
         }) }}
 
         {{ govukCheckboxes({
+          idPrefix: "teaching-requirements",
+          name: "jobseekers_subscription_form[ect_statuses][]",
+          fieldset: {
+            legend: {
+              text: "Teaching role requirements",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "ect_suitable", text: "Suitable for early career teachers" },
+            { value: "qts_not_required", text: "Qualified teacher status not required (further education)" }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
           idPrefix: "visa",
           name: "jobseekers_subscription_form[international][]",
-          classes: "govuk-checkboxes--small",
           fieldset: {
             legend: {
               text: "Visa sponsorship",
@@ -331,23 +244,90 @@
           ]
         }) }}
 
+        {% set teachingCheckboxes %}
+          {{ govukCheckboxes({
+            idPrefix: "teaching-role",
+            name: "jobseekers_subscription_form[teaching_job_roles][]",
+            items: teachingRoles
+          }) }}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Teaching and leadership",
+          html: teachingCheckboxes
+        }) }}
+
+        {% set supportCheckboxes %}
+          {{ govukCheckboxes({
+            idPrefix: "support-role",
+            name: "jobseekers_subscription_form[support_job_roles][]",
+            items: supportRoles
+          }) }}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Support",
+          html: supportCheckboxes
+        }) }}
+
+        {% set subjectCheckboxes %}
+          <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="subject-search" type="search" aria-controls="subject-options" autocomplete="off">
+          <div class="govuk-checkboxes" id="subject-options" data-module="govuk-checkboxes">
+            {% for subject in subjects %}
+              <div class="govuk-checkboxes__item app-subject-option">
+                <input class="govuk-checkboxes__input" id="subject-{{ loop.index }}" name="jobseekers_subscription_form[subjects][]" type="checkbox" value="{{ subject[0] }}">
+                <label class="govuk-label govuk-checkboxes__label" for="subject-{{ loop.index }}">{{ subject[0] }}</label>
+                {% if subject[1] %}
+                  <div class="govuk-hint govuk-checkboxes__hint">{{ subject[1] }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Subjects",
+          html: subjectCheckboxes
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Enter your email address. We'll only use it to send you job alerts."
+          },
+          id: "jobseekers-subscription-form-email-field",
+          name: "jobseekers_subscription_form[email]",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
         {{ govukRadios({
           idPrefix: "frequency",
           name: "jobseekers_subscription_form[frequency]",
           fieldset: {
             legend: {
-              text: "How often do you want to get job alerts?",
+              text: "How often do you want to receive alerts?",
               classes: "govuk-fieldset__legend--s"
             }
           },
           items: [
-            { value: "daily", text: "Daily" },
-            { value: "weekly", text: "Weekly", checked: true }
+            { value: "daily", text: "Daily, around 3pm" },
+            { value: "weekly", text: "Weekly, on Friday around 6pm" }
           ]
         }) }}
 
+        {{ govukDetails({
+          summaryText: "Want to unsubscribe?",
+          text: "You can unsubscribe at any time by clicking the unsubscribe link at the bottom of your job alerts email."
+        }) }}
+
         {{ govukButton({
-          text: "Create job alert"
+          text: "Get jobs sent to you",
+          classes: "govuk-!-padding-left-8 govuk-!-padding-right-8"
         }) }}
       </form>
     </div>
