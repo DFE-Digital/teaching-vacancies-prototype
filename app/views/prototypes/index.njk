@@ -11,8 +11,18 @@
   {{ super() }}
   <header class="homepage-header">
     <div class="govuk-width-container">
-      <span class="govuk-caption-xl homepage-header__caption">Prototype</span>
+      <span class="govuk-caption-xl homepage-header__caption">Jobseeker prototype</span>
       <h1 class="homepage-header__title govuk-!-margin-bottom-0">Teaching Vacancies Service</h1>
+      <p class="homepage-header__link">
+        <a class="govuk-link" href="https://manage-teaching-jobs-prototype.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+          Hiring staff prototype
+          <svg class="homepage-header__external" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3z"></path>
+            <path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"></path>
+          </svg>
+          <span class="govuk-visually-hidden">(opens in new tab)</span>
+        </a>
+      </p>
     </div>
   </header>
 {% endblock %}
@@ -91,7 +101,7 @@
         <section class="app-prototype-index" aria-labelledby="current-version">
           <div class="app-prototype-index__heading-row">
             <h2 class="govuk-heading-m app-prototype-index__heading" id="current-version">Current version</h2>
-            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-05">5 October 2026</time></p>
+            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-06">6 October 2026</time></p>
           </div>
           <ul class="app-prototype-list">
             {{ prototypeItem("/home", "Find school and college jobs near you", "The current Teaching Vacancies homepage, search, and job listings.", "user") }}
@@ -110,6 +120,7 @@
         <section class="app-prototype-index" aria-labelledby="references">
           <h2 class="govuk-heading-m app-prototype-index__heading" id="references">References</h2>
           <ul class="app-prototype-list">
+            {{ prototypeItem("https://tv-design-history.herokuapp.com/", "Teaching Vacancies design history", "Analysis, design and research from the Teaching Vacancies service.", "docs") }}
             {{ prototypeItem("/documentation", "Documentation", "Tech stack, mock JSON, and page flows.", "docs") }}
             {{ prototypeItem("https://design-system.service.gov.uk/components/", "GOV.UK Design System", "Reusable components for building consistent government services.", "crown") }}
             {{ prototypeItem("https://design.education.gov.uk/standards", "DfE design standards", "Principles and guidelines for accessible DfE digital services.", "crown") }}

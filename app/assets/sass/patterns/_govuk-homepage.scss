@@ -21,6 +21,34 @@
   line-height: 1.07;
 }
 
+.homepage-header__link {
+  margin: 15px 0 0;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.homepage-header__link a:link,
+.homepage-header__link a:visited {
+  color: #fff;
+}
+
+.homepage-header__link a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.homepage-header__link a:focus {
+  color: #0b0c0c;
+}
+
+.homepage-header__external {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  vertical-align: -2px;
+}
+
 .homepage-header__search {
   box-sizing: border-box;
   width: 100%;
