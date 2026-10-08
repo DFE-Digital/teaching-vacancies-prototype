@@ -1,0 +1,108 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set activeNav = 'jobs' %}
+{% set forceSignedIn = true %}
+{% set title = 'You have ' + filteredAlerts.length + ' new job alerts' %}
+
+{% block pageTitle %}
+  {{ title }} - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-filter__close-bottom {
+      text-align: center;
+    }
+
+    @media (min-width: 48.0625em) {
+      .app-filter__apply-bottom {
+        margin-top: 30px;
+      }
+
+      .app-filter__close-bottom {
+        display: none;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+    {{ title }}
+  </h1>
+  <p class="govuk-body">
+    Jobs listed since yesterday that match your alerts.
+    <a class="govuk-link" href="/1-1/jobseekers/subscriptions?jobAlertState=alert">Edit alert</a>.
+    {% if filteredAlerts.length != alerts.length %}
+      Showing {{ filteredAlerts.length }} of {{ alerts.length }} jobs.
+    {% endif %}
+  </p>
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/job-alert-filter-panel.njk" %}
+    </div>
+
+    <div class="app-filter-layout__content">
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      {% if filteredAlerts.length %}
+        {% for alert in filteredAlerts %}
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="{{ alert.href }}">{{ alert.title }}</a>
+          </h2>
+          <p class="govuk-body govuk-!-margin-bottom-1">{{ alert.location }}</p>
+          <p class="govuk-hint govuk-!-margin-bottom-1">
+            {{ alert.phase }} · {{ alert.contract }} · {{ alert.workingPattern }}{% if alert.hours %}, {{ alert.hours }}{% endif %}
+          </p>
+          <p class="govuk-hint govuk-!-margin-bottom-2">{{ alert.salary }}</p>
+          {% if alert.flags.length %}
+            <p class="govuk-body govuk-!-margin-bottom-2">{{ alert.flags | join(' · ') }}</p>
+          {% endif %}
+          <p class="govuk-body govuk-visually-hidden">
+            <a class="govuk-link" href="{{ alert.alertHref }}">Get alerts for similar jobs</a>
+          </p>
+        {% endfor %}
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      {% else %}
+        <p class="govuk-body">No jobs match the filters you selected.</p>
+        <p class="govuk-body">
+          <a class="govuk-link" href="/job-alert-via-email/clear-filters">Clear filters</a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    $('#filter-close-bottom').on('click', function (e) {
+      e.preventDefault()
+      var close = document.querySelector('.app-filter__close')
+      if (close) close.click()
+    })
+  </script>
+{% endblock %}

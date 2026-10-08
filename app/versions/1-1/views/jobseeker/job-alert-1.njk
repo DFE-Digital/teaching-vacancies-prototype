@@ -1,0 +1,34 @@
+{% extends "layout_email.njk" %}
+
+{% set title = 'You have ' + alerts.length + ' new job alerts' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+      <p class="govuk-body">Jobs listed since yesterday that match your alerts.</p>
+      <p class="govuk-body">
+        <a class="govuk-link" href="/job-alert-via-email">Filter this alert</a>
+      </p>
+
+      {% for alert in alerts %}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="{{ alert.href }}">{{ alert.title }}</a>
+        </h2>
+        <p class="govuk-body govuk-!-margin-bottom-1">{{ alert.location }}</p>
+        <p class="govuk-hint govuk-!-margin-bottom-1">
+          {{ alert.phase }} · {{ alert.contract }} · {{ alert.workingPattern }}{% if alert.hours %}, {{ alert.hours }}{% endif %}
+        </p>
+        <p class="govuk-hint govuk-!-margin-bottom-2">{{ alert.salary }}</p>
+        {% if alert.flags.length %}
+          <p class="govuk-hint govuk-!-margin-bottom-2">{{ alert.flags | join(' · ') }}</p>
+        {% endif %}
+      {% endfor %}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    </div>
+  </div>
+{% endblock %}

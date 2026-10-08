@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 const path = require('path')
 const nunjucks = require('nunjucks')
 const extensions = require('../../lib/extensions/extensions')
@@ -170,6 +171,14 @@ function bindVersionResponse (req, res, next, version, env) {
   }
 }
 
+function viewExists (version, view) {
+  const viewsRoot = path.join(versionDir(version), 'views')
+  const file = path.resolve(viewsRoot, view)
+  if (file !== viewsRoot && !file.startsWith(viewsRoot + path.sep)) return false
+  return ['.njk', '.html'].some(ext => fs.existsSync(file + ext)) ||
+    ['index.njk', 'index.html'].some(name => fs.existsSync(path.join(file, name)))
+}
+
 function createRouter (version) {
   const router = express.Router()
   const env = createEnv(version)
@@ -180,6 +189,11 @@ function createRouter (version) {
     next()
   })
   router.use(versionRoutes)
+  router.get(/^\/([^.]+)$/, (req, res, next) => {
+    const view = req.params[0]
+    if (!view || view.includes('..') || !viewExists(version, view)) return next()
+    res.render(view)
+  })
   return router
 }
 

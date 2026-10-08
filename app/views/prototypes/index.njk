@@ -107,6 +107,7 @@
             {{ prototypeItem("/1-1/home", "Find school and college jobs near you", "A separate copy of 1-0. Page and mock data changes stay in this version.", "user") }}
             {{ prototypeItem("/1-1/mobile", "View on mobile and tablet layouts", "Preview the 1-1 pages on phone and tablet screens.", "devices") }}
             {{ prototypeItem("/1-1/signed-in", "View signed in", "Open the 1-1 prototype as a signed-in user.", "signed-in") }}
+            {{ prototypeItem("/1-1/jobseeker/job-alert-1", "Jobs alert by email", "Preview the job alert email with 69 new jobs.", "docs") }}
           </ul>
         </section>
 
@@ -128,15 +129,23 @@
         </section>
 
         <section class="app-prototype-index" aria-labelledby="version-1-0">
-          <div class="app-prototype-index__heading-row">
-            <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-0">Version 1.0</h2>
-            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-06">6 October 2026</time></p>
-          </div>
-          <ul class="app-prototype-list">
-            {{ prototypeItem("/1-0/home", "Find school and college jobs near you", "The current Teaching Vacancies homepage, search, and job listings.", "user") }}
-            {{ prototypeItem("/1-0/mobile", "View on mobile and tablet layouts", "Preview the pages on phone and tablet screens.", "devices") }}
-            {{ prototypeItem("/1-0/signed-in", "View signed in", "Open the prototype as a signed-in user.", "signed-in") }}
-          </ul>
+          <details class="govuk-details app-prototype-index__details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="app-prototype-index__heading-row">
+                <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-0">
+                  <span class="govuk-details__summary-text">Version 1.0</span>
+                </h2>
+                <span class="app-prototype-index__updated">Last updated: <time datetime="2026-10-06">6 October 2026</time></span>
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <ul class="app-prototype-list">
+                {{ prototypeItem("/1-0/home", "Find school and college jobs near you", "The current Teaching Vacancies homepage, search, and job listings.", "user") }}
+                {{ prototypeItem("/1-0/mobile", "View on mobile and tablet layouts", "Preview the pages on phone and tablet screens.", "devices") }}
+                {{ prototypeItem("/1-0/signed-in", "View signed in", "Open the prototype as a signed-in user.", "signed-in") }}
+              </ul>
+            </div>
+          </details>
         </section>
       </div>
     </div>

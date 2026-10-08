@@ -1,0 +1,192 @@
+{% macro removeFilterHref(name, value) -%}
+/job-alert-via-email/remove-filter?name={{ name | urlencode }}&value={{ value | urlencode }}
+{%- endmacro %}
+
+{% set filterPhase = data['filter-alert-phase'] or [] %}
+{% set filterContract = data['filter-alert-contract'] or [] %}
+{% set filterPatterns = data['filter-alert-workingPatterns'] or [] %}
+{% set filterFlags = data['filter-alert-flag'] or [] %}
+
+{% if filterPhase and filterPhase is string %}{% set filterPhase = [filterPhase] %}{% endif %}
+{% if filterContract and filterContract is string %}{% set filterContract = [filterContract] %}{% endif %}
+{% if filterPatterns and filterPatterns is string %}{% set filterPatterns = [filterPatterns] %}{% endif %}
+{% if filterFlags and filterFlags is string %}{% set filterFlags = [filterFlags] %}{% endif %}
+
+{% set hasSelectedFilters = filterPhase.length or filterContract.length or filterPatterns.length or filterFlags.length %}
+
+<div class="app-filter">
+  <div class="app-filter__header govuk-!-margin-bottom-4">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter this alert</h2>
+    </div>
+    <div class="app-filter__header-action"></div>
+  </div>
+  <div class="govuk-!-padding-right-3 govuk-!-padding-bottom-1 govuk-!-padding-left-3">
+    <button class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" data-prevent-double-click="true" form="filter" formnovalidate="formnovalidate" type="submit">
+      Apply filters
+    </button>
+  </div>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <div class="app-filter__content">
+    {% if hasSelectedFilters %}
+      <div class="app-filter__selected">
+        <div class="app-filter__selected-heading">
+          <div class="app-filter__heading-title" style="width:100%;">
+            <p class="govuk-body govuk-!-margin-bottom-1" style="float:left;">Selected filters</p>
+            <p class="govuk-body" style="float:right;"><a class="govuk-link govuk-link--no-visited-state" href="/job-alert-via-email/clear-filters">Clear filters</a></p>
+          </div>
+        </div>
+
+        {% if filterPhase.length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h3>
+          <ul class="app-filter-tags">
+            {% for value in filterPhase %}
+              <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-alert-phase', value) }}"><span class="govuk-visually-hidden">Remove this filter</span>{{ value }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if filterContract.length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Contract type</h3>
+          <ul class="app-filter-tags">
+            {% for value in filterContract %}
+              <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-alert-contract', value) }}"><span class="govuk-visually-hidden">Remove this filter</span>{{ value }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if filterPatterns.length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Working pattern</h3>
+          <ul class="app-filter-tags">
+            {% for value in filterPatterns %}
+              <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-alert-workingPatterns', value) }}"><span class="govuk-visually-hidden">Remove this filter</span>{{ value }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if filterFlags.length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Role requirements</h3>
+          <ul class="app-filter-tags">
+            {% for value in filterFlags %}
+              <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-alert-flag', value) }}"><span class="govuk-visually-hidden">Remove this filter</span>{{ value }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="app-filter__options">
+      <form id="filter" method="get" action="/job-alert-via-email" novalidate>
+        <input type="hidden" name="filters-applied" value="true">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Education phase
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-phase-primary" name="filter-alert-phase" type="checkbox" value="Primary school"{% if 'Primary school' in filterPhase %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-phase-primary">
+                  Primary school
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-phase-secondary" name="filter-alert-phase" type="checkbox" value="Secondary school"{% if 'Secondary school' in filterPhase %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-phase-secondary">
+                  Secondary school
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Contract type
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-contract-permanent" name="filter-alert-contract" type="checkbox" value="Permanent"{% if 'Permanent' in filterContract %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-contract-permanent">
+                  Permanent
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-contract-fixed" name="filter-alert-contract" type="checkbox" value="Fixed term"{% if 'Fixed term' in filterContract %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-contract-fixed">
+                  Fixed term
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-contract-yearly" name="filter-alert-contract" type="checkbox" value="Yearly contract"{% if 'Yearly contract' in filterContract %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-contract-yearly">
+                  Yearly contract
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Working pattern
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-working-full" name="filter-alert-workingPatterns" type="checkbox" value="Full time"{% if 'Full time' in filterPatterns %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-working-full">
+                  Full time
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-working-part" name="filter-alert-workingPatterns" type="checkbox" value="Part time"{% if 'Part time' in filterPatterns %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-working-part">
+                  Part time
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Role requirements
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-flag-ect" name="filter-alert-flag" type="checkbox" value="ECT friendly"{% if 'ECT friendly' in filterFlags %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-flag-ect">
+                  ECT friendly
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-flag-overseas" name="filter-alert-flag" type="checkbox" value="Accepts overseas qualifications"{% if 'Accepts overseas qualifications' in filterFlags %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-flag-overseas">
+                  Accepts overseas qualifications
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-flag-driving" name="filter-alert-flag" type="checkbox" value="Driving required"{% if 'Driving required' in filterFlags %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-flag-driving">
+                  Driving required
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <button class="govuk-button app-filter__apply-bottom" data-module="govuk-button" data-prevent-double-click="true" type="submit">
+          Apply filters
+        </button>
+        <p class="govuk-body app-filter__close-bottom">
+          <a class="govuk-link govuk-link--no-visited-state" href="#" id="filter-close-bottom">Close</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

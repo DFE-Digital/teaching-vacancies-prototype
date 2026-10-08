@@ -100,7 +100,7 @@
 {% endblock %}
 
 {% block content %}
-  {% if data.jobAlertState == 'alert' %}
+  {% if showJobAlertCreatedBanner %}
     {{ govukNotificationBanner({
       type: "success",
       text: "Your job alert has been created"

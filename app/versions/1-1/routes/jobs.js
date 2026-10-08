@@ -239,7 +239,17 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/subscriptions', (req, res) => {
-    res.render('jobseekers/subscriptions')
+    const showJobAlertCreatedBanner = req.session.data.jobAlertCreated === true || req.session.data.jobAlertCreated === 'true'
+    delete req.session.data.jobAlertCreated
+    res.render('jobseekers/subscriptions', {
+      showJobAlertCreatedBanner
+    })
+  })
+
+  router.post('/jobseekers/subscriptions', (req, res) => {
+    req.session.data.jobAlertState = 'alert'
+    req.session.data.jobAlertCreated = true
+    res.redirect('/jobseekers/subscriptions')
   })
 
   router.get('/jobseekers/job_applications', (req, res) => {

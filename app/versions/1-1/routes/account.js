@@ -55,6 +55,7 @@ module.exports = router => {
 
   router.post('/jobalerts/jobalert', (req, res) => {
     req.session.data.jobAlertState = 'alert'
+    req.session.data.jobAlertCreated = true
     res.redirect('/jobseekers/subscriptions')
   })
 

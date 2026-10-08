@@ -135,8 +135,9 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Create your job alert</h1>
 
-      <form method="post" action="/jobseekers/subscriptions?jobAlertState=alert">
+      <form method="post" action="/jobseekers/subscriptions">
         <input type="hidden" name="jobAlertState" value="alert">
+        <input type="hidden" name="jobAlertCreated" value="true">
         {{ govukInput({
           label: {
             text: "Job title or keyword",
