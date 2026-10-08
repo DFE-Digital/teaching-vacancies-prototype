@@ -1,0 +1,71 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'What roles are you interested in?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Job preferences
+        </span>
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate="">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="accountType-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <span class="govuk-caption-l">Job preferences</span> 
+                    <h1 class="govuk-fieldset__heading">
+                        What type of job are you looking for?
+                    </h1>
+                </legend>
+                
+                <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="accountType" name="accountType" type="radio" value="teaching">
+                        <label class="govuk-label govuk-radios__label" for="accountType">
+                            Teaching, teaching support and headteacher jobs
+                        </label>
+                        <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                            This includes teacher, teaching assistant, learning support or cover supervisor, SEND and headteacher jobs.
+                        </div>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="accountType-2" name="accountType" type="radio" value="non-teaching">
+                        <label class="govuk-label govuk-radios__label" for="accountType-2">
+                            Non-teaching support jobs
+                        </label>
+                        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            This includes all other schools jobs, for example, administration, HR, data and finance jobs.
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+          
+        
+        <button class="govuk-button govuk-!-margin-top-1" data-module="govuk-button">Save and continue</button>
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

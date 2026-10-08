@@ -1,0 +1,194 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Job alerts' %}
+{% set showJobAlertToggle = true %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-account-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 15px;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-account-nav__item {
+      margin: 0 0 20px;
+    }
+
+    .app-account-nav__item:last-child {
+      margin-bottom: 15px;
+    }
+
+    .app-account-nav__link[aria-current="page"] {
+      display: inline-block;
+      padding-bottom: 6px;
+      border-bottom: 4px solid #1d70b8;
+      text-decoration: none;
+    }
+
+    .app-job-alerts-empty {
+      margin-bottom: 30px;
+      padding: 25px 20px 15px;
+      border: 3px dashed #b1b4b6;
+      background: #f8f8f8;
+    }
+
+    .app-job-alerts-empty .govuk-heading-m {
+      margin-bottom: 15px;
+    }
+
+    .app-job-alert {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 20px;
+      margin-top: 30px;
+    }
+
+    .app-job-alert__summary {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    @media (min-width: 40.0625em) {
+      .app-job-alert {
+        grid-template-columns: minmax(0, 1fr) 280px;
+        column-gap: 20px;
+        align-items: start;
+      }
+    }
+
+    .app-job-alert__frequency .govuk-fieldset,
+    .app-job-alert__frequency .govuk-radios {
+      margin-bottom: 0;
+    }
+
+    .app-job-alert__frequency .govuk-radios--inline {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .app-job-alert__frequency .govuk-radios__item {
+      margin-right: 15px;
+    }
+
+    .app-job-alert__actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0 30px;
+    }
+
+    .app-job-alert__actions .govuk-button {
+      margin-bottom: 0;
+    }
+
+    .app-state-toggle {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .app-state-toggle a[aria-current="true"] {
+      font-weight: bold;
+      text-decoration: none;
+      pointer-events: none;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% if data.jobAlertState == 'alert' %}
+    {{ govukNotificationBanner({
+      type: "success",
+      text: "Your job alert has been created"
+    }) }}
+  {% endif %}
+
+  <h1 class="govuk-heading-l">Job alerts</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <nav aria-label="Account">
+        <ul class="app-account-nav">
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobseekers/job_applications">Applications</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/onelogin/journey/match">Your saved jobs</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link app-account-nav__link" href="/jobseekers/subscriptions" aria-current="page">Your job alerts</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobalerts/jobalert">Create a job alert</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      {% if data.jobAlertState == 'alert' %}
+        {{ govukButton({
+          text: "Create a job alert",
+          href: "/jobalerts/jobalert",
+          classes: "govuk-!-margin-bottom-0"
+        }) }}
+
+        <div class="app-job-alert">
+          <p class="govuk-body app-job-alert__summary">
+            Keyword: design, teacher, arts<br>
+            Location:<br>
+            Within 200 miles of Islington, London<br>
+            Suitable for early career teachers: Yes<br>
+            Fe qts required: No<br>
+            Visa sponsorship availability: Yes<br>
+            Subjects: Design and technology, ICT<br>
+            Education phases:<br>
+            Nursery, Primary school, Secondary school, Sixth form or FE college, All through school<br>
+            Working patterns:<br>
+            Full time, Part time, Job share
+          </p>
+
+          <div class="app-job-alert__frequency">
+            {{ govukRadios({
+              classes: "govuk-radios--inline",
+              name: "alert-frequency",
+              fieldset: {
+                legend: {
+                  text: "When do you want to receive alerts?",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                { value: "daily", text: "Daily" },
+                { value: "weekly", text: "Weekly", checked: true }
+              ]
+            }) }}
+          </div>
+        </div>
+
+        <div class="app-job-alert__actions">
+          {{ govukButton({
+            text: "Manage alert",
+            href: "/jobalerts/jobalert",
+            classes: "govuk-button--secondary"
+          }) }}
+          <a class="govuk-link" href="/jobseekers/subscriptions?jobAlertState=empty">Unsubscribe</a>
+        </div>
+      {% else %}
+        <div class="app-job-alerts-empty">
+          <h2 class="govuk-heading-m">You have no job alerts set up</h2>
+          <p class="govuk-body"><a class="govuk-link" href="/jobalerts/jobalert">Create a job alert</a> to be made aware of future listings.</p>
+        </div>
+      {% endif %}
+
+      {{ govukDetails({
+        summaryText: "Can't see your job alerts?",
+        html: '<p class="govuk-body">If your Teaching Vacancies account used a different email address from your GOV.UK One Login account, your job alerts will not automatically appear here.</p><p class="govuk-body">You can request <a class="govuk-link" href="/onelogin/journey/import">a transfer of your existing profile</a>.</p>'
+      }) }}
+    </div>
+  </div>
+{% endblock %}

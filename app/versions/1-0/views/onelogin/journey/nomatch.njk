@@ -1,0 +1,52 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'You have created a new Teaching Vacancies account' %}
+
+{% set h2 = 'If you already had a Teaching Vacancies account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <h1 class="govuk-heading-l">
+          {{title}}
+      </h1>
+
+        <p class="govuk-body">
+            You can now search and apply for jobs.
+        </p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Search for jobs'
+        }) }}
+
+      </form>
+
+      <h2 class="govuk-heading-m">
+          {{h2}}
+      </h2>
+        
+        <p class="govuk-body">
+           If you had a Teaching Vacancies account using a different email address, you can transfer your account information to your new account.
+        </p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Transfer account'
+        }) }}
+
+      </form>
+
+
+
+      
+
+
+    </div>
+  </div>
+
+{% endblock %}

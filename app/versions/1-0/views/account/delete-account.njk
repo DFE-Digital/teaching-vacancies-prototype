@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set title = 'Close account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Close account</h1>
+
+      <p class="govuk-body">You will no longer receive any job alerts you have subscribed to, and any job applications you have made will be withdrawn.</p>
+
+      <form method="post">
+        {{ govukRadios({
+          name: "closeAccountReason",
+          fieldset: {
+            legend: {
+              text: "Tell us why you are closing your account",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "too_many_emails",
+              text: "I'm getting too many emails"
+            },
+            {
+              value: "not_getting_value",
+              text: "I'm not getting any value from the service"
+            },
+            {
+              value: "not_looking_for_job",
+              text: "I'm not looking for a teaching, leadership or school-based support job"
+            },
+            {
+              value: "other",
+              text: "Other"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Submit",
+            classes: "govuk-button--warning"
+          }) }}
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "/account"
+          }) }}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

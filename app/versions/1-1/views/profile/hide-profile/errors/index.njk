@@ -1,0 +1,76 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to hide your profile from a school or trust? ' %}
+
+{% if user.profile.provideSchoolsToHideFrom == 'Yes' %}
+  {% set itsYes = 'true' %}
+  {% set itsNo = '' %}
+{% elseif user.profile.provideSchoolsToHideFrom == 'No' %}
+  {% set itsYes = '' %}
+  {% set itsNo = 'true' %}
+{% endif %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukErrorSummary({
+titleText: "There is a problem",
+errorList: [
+  {
+    text: "Select Yes if you want to hide your profile from a school or trust",
+    href: "#profile[firstName]"
+  }
+]
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "profile[provideSchoolsToHideFrom]",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          errorMessage: {
+            text: "Select Yes if you want to hide your profile from a school or trust"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: itsYes
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: itsNo
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

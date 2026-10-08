@@ -1,0 +1,226 @@
+{% if data.realFooter == '1' %}
+  {% set items = [{
+      href: "#",
+      text: "Get help or report a problem"
+    },{
+      href: "#",
+      text: "Give feedback"
+    }, {
+      href: "#",
+      text: "Cookies"
+    },
+    {
+      href: "#",
+      text: "Privacy policy"
+    },
+    {
+      href: "#",
+      text: "Terms and conditions"
+    },
+    {
+      href: "#",
+      text: "Accessibililtiy"
+    }] %}
+  {% set html = '<a href="?realFooter=0">Turn off real footer</a>' %}
+{% else %}
+  {% set items = [{
+    href: "https://govuk-prototype-kit.herokuapp.com/",
+    text: "GOV.UK Prototype Kit " + releaseVersion
+  },
+  {
+    href: '/account/sign-in-as-profile',
+    text: 'Sign in as profile'
+  }] %}
+  {% set html = '<a href="?realFooter=1">Turn on real footer</a>' %}
+{% endif %}
+
+{# {{ govukFooter({
+  meta: {
+    items: items,
+    visuallyHiddenTitle: "Footer links"
+  }
+}) }} #}
+
+<footer class="govuk-footer" role="contentinfo">
+		<div class="govuk-width-container">
+			<div class="govuk-footer__navigation">
+
+      {% if data ['optionPrototype'] !== 'c' %}
+
+        <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Jobseekers</h2>
+              <ul class="govuk-footer__list">
+
+                <li class="govuk-footer__list-item">
+                  {% if data.signedIn or user %}
+                    <a class="govuk-footer__link" href="/jobalerts/jobalert">Create a job alert</a>
+                  {% else %}
+                    <a class="govuk-footer__link" href="/account/sign-in">Jobseeker sign-in</a>
+                  {% endif %}
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Find a job</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Jobseeker guides</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Return to teaching</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Teach in England if you trained overseas</a>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of first half --> 
+      
+
+        <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            
+
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Hiring staff</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Hiring staff sign-in</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Hiring guides</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Support and feedback</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Get help or report a problem</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Provide feedback on Teaching Vacancies</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of second half -->
+
+			</div>
+
+      {% else %}
+
+      <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Hiring staff</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Hiring staff sign-in</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Hiring guides</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of first half --> 
+      
+
+        <div class="govuk-footer__section govuk-grid-column-one-half">
+          <div class="govuk-grid-row">
+            
+            <div class="govuk-footer__section govuk-grid-column-full">
+              <h2 class="govuk-footer__heading govuk-heading-m">Feedback</h2>
+              <ul class="govuk-footer__list">
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Get help or report a problem</a>
+                </li>
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link" href="#">Provide feedback</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of second half -->
+
+			</div>
+
+      {% endif %}
+
+			<hr class="govuk-footer__section-break">
+
+			{% if showJobAlertToggle %}
+				<p class="app-state-toggle">
+					<a class="govuk-footer__link" href="/jobseekers/subscriptions?jobAlertState=empty"{% if data.jobAlertState != 'alert' %} aria-current="true"{% endif %}>Empty state</a>
+					<span aria-hidden="true"> | </span>
+					<a class="govuk-footer__link" href="/jobseekers/subscriptions?jobAlertState=alert"{% if data.jobAlertState == 'alert' %} aria-current="true"{% endif %}>Alert state</a>
+				</p>
+			{% endif %}
+
+			{% if showSavedJobsToggle %}
+				<p class="app-state-toggle">
+					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=empty"{% if data.savedJobState != 'saved' %} aria-current="true"{% endif %}>Empty state</a>
+					<span aria-hidden="true"> | </span>
+					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=saved"{% if data.savedJobState == 'saved' %} aria-current="true"{% endif %}>Saved state</a>
+				</p>
+			{% endif %}
+
+			<div class="govuk-footer__meta">
+				<div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+					<h2 class="govuk-visually-hidden">Support links</h2>
+          <ul class="govuk-footer__inline-list">
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/cookies-preferences">Cookies</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/government/publications/privacy-information-education-providers-workforce-including-teachers/privacy-information-education-providers-workforce-including-teachers">Privacy policy</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/terms-and-conditions">Terms and conditions</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/accessibility">Accessibility</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/savings-methodology">Savings methodology</a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/pages/vision-statement">Vision statement</a>
+                </li>
+            </ul>
+					<ul class="govuk-footer__inline-list">
+						<li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit v12.0.4</a>
+						</li>
+						<li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="/account/sign-in-as-profile">Sign in as profile</a>
+						</li>
+						<li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="/prototype-admin/clear-data">Clear data</a>
+						</li>
+            <li class="govuk-footer__inline-list-item">
+							<a class="govuk-footer__link" href="/prototype-admin/clear-data">Prototype option: {{data['optionPrototype']}}</a>
+						</li>
+          </ul>
+					</div>
+				<div class="govuk-footer__meta-item">
+					<a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+				</div>
+			</div>
+		</div>
+	</footer>

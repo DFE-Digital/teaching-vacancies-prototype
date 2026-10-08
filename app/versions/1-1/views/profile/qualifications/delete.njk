@@ -1,0 +1,68 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Confirm that you want to delete this qualification' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Delete qualification
+      </span>
+      <h1 class="govuk-heading-xl">
+        {{title}}
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type"
+            },
+            value: {
+              text: qualification.type
+            }
+          },
+          {
+            key: {
+              text: "Subject"
+            },
+            value: {
+              text: qualification.subject
+            }
+          },
+          {
+            key: {
+              text: "Grade"
+            },
+            value: {
+              text: qualification.grade
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post" novalidate>
+
+        {{ govukButton({
+          text: "Delete qualification"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+
+{% set title = "What was the email address on your Teaching Vacancies account?"
+ %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+          titleText: 'There’s a problem',
+          errorList: errorSummary.items
+        }) }}
+      {% endif %}
+
+      <span class="govuk-caption-l">
+        Transfer account details
+      </span>
+      
+      <form method="post" id="name-form" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: title,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+            hint: {
+    text: "If you have an account associated with this email address, we'll send you an email to verify your details."
+  },
+          id: "oneloginemail",
+          name: "oneloginemail",
+          errorMessage: inlineErrors['onelogin'].oneloginemail
+        }) }}
+
+  
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+        <p><a class="govuk-link--no-visited-state" href="../account">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

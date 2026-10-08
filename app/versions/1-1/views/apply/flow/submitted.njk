@@ -1,0 +1,85 @@
+{% extends "layout.njk" %}
+{% set title = "Application submitted" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if feedbackSent %}
+        {{ govukNotificationBanner({
+          type: "success",
+          html: "<p class='govuk-notification-banner__heading'>Thank you for your feedback</p>"
+        }) }}
+      {% endif %}
+
+      {{ govukPanel({
+        titleText: "Your application has been submitted",
+        html: "We have sent an email confirmation to<br>" + application.personalDetails.email
+      }) }}
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p class="govuk-body">If you are shortlisted for an interview {{ job.organisation.name }} will be in touch to let you know.</p>
+      <p class="govuk-body">Your application information will be saved so that you can use it when you next apply for a role.</p>
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Print or download your application",
+          classes: "govuk-button--secondary",
+          href: "/jobs/" + job.id + "/apply/review"
+        }) }}
+        {{ govukButton({
+          text: "Return to all applications",
+          classes: "govuk-button--secondary",
+          href: "/jobseekers/job_applications"
+        }) }}
+      </div>
+
+      <h2 class="govuk-heading-m">Your candidate profile</h2>
+      <p class="govuk-body">Your application information is also saved in your candidate profile. If you turn on your profile, schools will be able to view it and contact you about roles.</p>
+      {{ govukButton({
+        text: "View your profile",
+        classes: "govuk-button--secondary",
+        href: "/profile"
+      }) }}
+
+      <h2 class="govuk-heading-m">Have time to share some feedback?</h2>
+      <p class="govuk-body">Your feedback can help us improve the service to better support you as well as schools across England.</p>
+      <form method="post">
+        {{ govukRadios({
+          name: "satisfaction",
+          fieldset: {
+            legend: {
+              text: "How satisfied are you with your experience of using Teaching Vacancies?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "Highly satisfied", text: "Highly satisfied" },
+            { value: "Somewhat satisfied", text: "Somewhat satisfied" },
+            { value: "Neither satisfied nor dissatisfied", text: "Neither satisfied nor dissatisfied" },
+            { value: "Somewhat dissatisfied", text: "Somewhat dissatisfied" },
+            { value: "Highly dissatisfied", text: "Highly dissatisfied" }
+          ]
+        }) }}
+        {{ govukTextarea({
+          name: "suggestions",
+          label: { text: "Do you have any suggestions on how we should improve the service? (optional)" },
+          value: application.feedback.suggestions if application.feedback else ""
+        }) }}
+        <p class="govuk-hint">You have 1,200 characters remaining</p>
+        {{ govukRadios({
+          name: "research",
+          fieldset: {
+            legend: {
+              text: "Would you like to participate in our research?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "Yes", text: "Yes" },
+            { value: "No", text: "No" }
+          ]
+        }) }}
+        {{ govukButton({ text: "Submit feedback" }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

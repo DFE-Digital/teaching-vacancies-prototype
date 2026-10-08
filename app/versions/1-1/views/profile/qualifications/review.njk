@@ -1,0 +1,174 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Qualifications' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukButton({
+        text: "Add qualification",
+        classes: 'govuk-button--secondary',
+        href: '/profile/qualifications/type'
+      }) }}
+
+      {{ govukButton({
+        text: "Add education gap",
+        classes: 'govuk-button--secondary govuk-!-margin-left-2',
+        href: '/profile/qualifications/gap'
+      }) }}
+
+      {% for id, qualification in profile.qualifications %}
+
+        {{appPageHeader({
+          classes: 'govuk-!-margin-bottom-1 govuk-!-margin-top-7',
+          heading: {
+            level: 2,
+            text: qualification.subject or ('Qualification ' + user.profile.qualifications | length),
+            classes: 'govuk-heading-m'
+          },
+          items: [{
+            text: 'Delete qualification',
+            href: "/profile/qualifications/"+id+"/delete",
+            type: 'link'
+          }]
+        })}}
+
+        {% set incomplete = not qualification.subject or not qualification.grade or not qualification.year %}
+
+        {% if incomplete %}
+          <div class="govuk-inset-text app-inset-text--incomplete-section govuk-!-margin-top-2">
+        {% endif %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Type"
+              },
+              value: {
+                text: qualification.type
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/type",
+                    text: "Change",
+                    visuallyHiddenText: "Type"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Subject"
+              },
+              value: {
+                text: qualification.subject
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            } if qualification.subject,
+            {
+              key: {
+                text: "Country where you studied"
+              },
+              value: {
+                text: qualification.country
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            } if qualification.country,
+            {
+              key: {
+                text: "Grade (optional)"
+              },
+              value: {
+                text: qualification.grade or 'Not entered'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            } if qualification.grade,
+            {
+              key: {
+                text: "Year awarded"
+              },
+              value: {
+                text: qualification.year
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/profile/qualifications/"+id+"/details/",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            } if qualification.year
+          ]
+        }) }}
+        {% if incomplete %}
+          <p>You have not completed this qualification.</p>
+          {{ govukButton({
+            text: "Complete qualification"
+          }) }}
+        {% endif %}
+
+        {% if incomplete %}
+          </div>
+        {% endif %}
+      {% endfor %}
+
+
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

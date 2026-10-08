@@ -1,4 +1,7 @@
 
+// Node warns when both are set. Colour output is forced below for the kit logs.
+delete process.env.NO_COLOR
+
 // NPM dependencies
 const browserSync = require('browser-sync')
 
@@ -21,7 +24,7 @@ utils.findAvailablePort(server, function (port) {
         proxy: 'localhost:' + (port - 50),
         port: port,
         ui: false,
-        files: ['public/**/*.*', 'app/views/**/*.*'],
+        files: ['public/**/*.*', 'app/views/**/*.*', 'app/versions/**/*.*'],
         ghostMode: false,
         open: false,
         notify: false,

@@ -1,0 +1,88 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Add a referee' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">References</span>
+          {{title}}
+      </h1>
+
+<div class="govuk-form-group">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">Name</label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">Job title</label>
+  <input class="govuk-input" type="text">
+</div>
+
+<div class="govuk-form-group">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">Organisation</label>
+  <input class="govuk-input" type="text">
+</div>
+
+<div class="govuk-form-group">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">Relationship to applicant</label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">Email address</label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">Phone number (optional)</label>
+  <div id="event-name-hint" class="govuk-hint">
+Please only give a phone number that your referee is happy to be contacted on.
+  </div>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+<label for="jobseekers-job-application-details-reference-form-name-field" class="govuk-label govuk-label--s">I would prefer the school to wait until after the interview before contacting this reference</label>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="yese" name="yes" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="yes">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="no" name="whereDoYouLive" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="no">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-button-group">
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+    Save referee
+  </button>
+  <a class="govuk-link" href="#">Cancel</a>
+</div>
+  
+
+
+
+
+
+
+
+</div>
+
+
+
+  
+    </div>
+  </div>
+
+{% endblock %}

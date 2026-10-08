@@ -1,0 +1,460 @@
+{% extends "layout.njk" %}
+
+{% block pageTitle %}
+  Teaching, leadership and support jobs - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'home' %}
+
+{% macro jobLink(label, count) %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="#">{{ label }} ({{ count }})</a>
+  </li>
+{% endmacro %}
+
+{% macro placeLink(label, count, heading) %}
+  {% if heading %}
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+      <a class="govuk-link govuk-link--no-visited-state" href="#">{{ label }}<span class="govuk-visually-hidden"> jobs</span></a><span aria-hidden="true"> ({{ count }})</span>
+    </h3>
+  {% else %}
+    <li>
+      <a class="govuk-link govuk-link--no-visited-state" href="#">{{ label }}<span class="govuk-visually-hidden"> jobs</span></a><span aria-hidden="true"> ({{ count }})</span>
+    </li>
+  {% endif %}
+{% endmacro %}
+
+{% block content %}
+
+{{ govukNotificationBanner({
+    html: '<p class="govuk-notification-banner__heading">' + flash + '</p>',
+    type: "success"
+  }) if flash and flash.length }}
+
+<div class="home_index">
+
+    <div class="search">
+		<h1 class="govuk-heading-l">Find school and college jobs near you</h1>
+		<form id="filter" class="home" method="get" action="/search/home" novalidate>
+			<div class="search__form">
+				<div class="search__field">
+					<div class="govuk-form-group">
+						<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
+						<input class="govuk-input" id="keyword-field" name="keyword" type="text" autocomplete="off">
+					</div>
+				</div>
+				<div class="search__field">
+					<div class="govuk-form-group">
+						<label class="govuk-label govuk-label--s" for="location-field">City, county, or postcode</label>
+						<input class="govuk-input" id="location-field" name="location" type="text" autocomplete="off">
+					</div>
+				</div>
+				<div class="search__submit">
+					<button class="govuk-button govuk-button--start govuk-button--inverse" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</button>
+				</div>
+			</div>
+		</form>
+		<h2 class="govuk-heading-s">Popular keyword searches:</h2>
+		<div class="search__popular">
+			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Primary">Primary</a>
+			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Maths">Maths</a>
+			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Science">Science</a>
+			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Teaching%20Assistant">Teaching Assistant</a>
+			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Headteacher">Headteacher</a>
+		</div>
+	</div>
+
+    <div class="govuk-grid-row govuk-!-margin-top-6">
+		<div class="govuk-grid-column-one-third">
+			<h2 class="govuk-heading-m">Create a job alert</h2>
+			<p class="govuk-body">Get emails about jobs you're interested in.</p>
+			<a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/jobalerts/jobalert">Set up job alerts</a>
+		</div>
+		<div class="govuk-grid-column-one-third">
+			<h2 class="govuk-heading-m">For jobseekers</h2>
+			<p class="govuk-body">Save and apply for jobs in schools and colleges.</p>
+			<a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/account/sign-in">Jobseeker sign-in</a>
+			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/jobseeker">create a jobseeker account</a>.</p>
+		</div>
+		<div class="govuk-grid-column-one-third">
+			<h2 class="govuk-heading-m">For hiring staff</h2>
+			<p class="govuk-body">Post your jobs and manage applications.</p>
+			<a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/account/sign-in/hiring-staff">Hiring staff sign-in</a>
+			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/hiring-staff">create a hiring staff account</a>.</p>
+		</div>
+	</div>
+
+    <div class="landing-page-links">
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
+		<div class="govuk-accordion__section">
+			<div class="govuk-accordion__section-header">
+			<h2 class="govuk-accordion__section-heading">
+				<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+					School jobs by role, phase and subject
+				</span>
+			</h2>
+			</div>
+			<div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1" style="display: block !important;">
+				<div class="govuk-grid-row">
+					<div class="govuk-grid-column-one-third">
+						<h3 class="govuk-heading-s">Teaching and leadership roles</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Teacher or lecturer", 1905) }}
+							{{ jobLink("Head of year or phase", 20) }}
+							{{ jobLink("Head of department or curriculum", 100) }}
+							{{ jobLink("Assistant headteacher", 149) }}
+							{{ jobLink("Deputy headteacher", 77) }}
+							{{ jobLink("Headteacher", 88) }}
+							{{ jobLink("SENCO (special educational needs coordinator)", 59) }}
+							{{ jobLink("Other leadership roles", 143) }}
+						</ul>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<h3 class="govuk-heading-s">Support roles</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Teaching assistant", 1352) }}
+							{{ jobLink("HLTA (higher level teaching assistant)", 67) }}
+							{{ jobLink("Learning support or cover supervisor", 108) }}
+							{{ jobLink("Administration, HR, data and finance", 489) }}
+							{{ jobLink("Catering, cleaning and site management", 547) }}
+							{{ jobLink("IT support", 30) }}
+							{{ jobLink("Pastoral, health and welfare", 319) }}
+							{{ jobLink("Other support roles", 907) }}
+						</ul>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<h3 class="govuk-heading-s">School phases</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Nursery", 156) }}
+							{{ jobLink("Primary", 2674) }}
+							{{ jobLink("Secondary", 2713) }}
+							{{ jobLink("Sixth form and college", 200) }}
+							{{ jobLink("All through school", 829) }}
+						</ul>
+						<h3 class="govuk-heading-s">Working patterns</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Full time", 3668) }}
+							{{ jobLink("Part time", 2831) }}
+							{{ jobLink("Job share", 99) }}
+							{{ jobLink("Term time", 2831) }}
+							{{ jobLink("Flexible working", 2831) }}
+						</ul>
+					</div>
+				</div>
+
+				<div class="govuk-!-margin-top-6">
+					<h3 class="govuk-heading-s">Subjects</h3>
+					<div class="govuk-grid-row">
+						<div class="govuk-grid-column-one-third">
+							<ul class="govuk-list">
+								{{ jobLink("Maths", 120) }}
+								{{ jobLink("English and media studies", 195) }}
+								{{ jobLink("Physical education", 21) }}
+								{{ jobLink("Dance, drama and music", 62) }}
+								<li>
+									<a class="govuk-link govuk-link--no-visited-state" href="#">Science (75)</a>
+									<ul class="govuk-list govuk-list--bullet">
+										{{ jobLink("Biology", 23) }}
+										{{ jobLink("Chemistry", 26) }}
+										{{ jobLink("Physics", 26) }}
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="govuk-grid-column-one-third">
+							<ul class="govuk-list">
+								{{ jobLink("History", 27) }}
+								{{ jobLink("Geography", 46) }}
+								<li>
+									<a class="govuk-link govuk-link--no-visited-state" href="#">Foreign languages (21)</a>
+									<ul class="govuk-list govuk-list--bullet">
+										{{ jobLink("French", 7) }}
+										{{ jobLink("Spanish", 10) }}
+										{{ jobLink("German", 4) }}
+										{{ jobLink("Mandarin", 0) }}
+										{{ jobLink("Classics", 0) }}
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="govuk-grid-column-one-third">
+							<ul class="govuk-list">
+								{{ jobLink("ICT and computer science", 12) }}
+								{{ jobLink("Economics and business studies", 19) }}
+								{{ jobLink("Art and design", 38) }}
+								{{ jobLink("Design and technology", 57) }}
+								{{ jobLink("Food technology", 30) }}
+								{{ jobLink("Politics, Humanities and Social Sciences", 0) }}
+								{{ jobLink("Psychology, Sociology and RE", 0) }}
+								{{ jobLink("Health and social care", 14) }}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="govuk-accordion__section">
+			<div class="govuk-accordion__section-header">
+			<h2 class="govuk-accordion__section-heading">
+				<span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+					Further education jobs by role, phase and subject
+				</span>
+			</h2>
+			</div>
+			<div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2" style="display: block !important;">
+				<div class="govuk-grid-row">
+					<div class="govuk-grid-column-one-third">
+						<h3 class="govuk-heading-s">Teaching and leadership roles</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Teacher or lecturer", 61) }}
+							{{ jobLink("Head of year or phase", 0) }}
+							{{ jobLink("Head of department or curriculum", 0) }}
+							{{ jobLink("Assistant headteacher", 0) }}
+							{{ jobLink("Deputy headteacher", 0) }}
+							{{ jobLink("Headteacher", 0) }}
+							{{ jobLink("SENCo (special educational needs and disabilities coordinator)", 0) }}
+							{{ jobLink("Other leadership roles", 0) }}
+						</ul>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<h3 class="govuk-heading-s">Support roles</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Teaching assistant", 0) }}
+							{{ jobLink("HLTA (higher level teaching assistant)", 0) }}
+							{{ jobLink("Learning support or cover supervisor", 6) }}
+							{{ jobLink("Administration, HR, data and finance", 9) }}
+							{{ jobLink("Catering, cleaning and site management", 3) }}
+							{{ jobLink("IT support", 0) }}
+							{{ jobLink("Pastoral, health and welfare", 9) }}
+							{{ jobLink("Leadership and management", 7) }}
+							{{ jobLink("Business support, administration and corporate services", 4) }}
+							{{ jobLink("Student support, learning and progress", 10) }}
+							{{ jobLink("Marketing and communications", 1) }}
+							{{ jobLink("Apprenticeships and commercial services", 5) }}
+							{{ jobLink("Other support roles", 26) }}
+						</ul>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<h3 class="govuk-heading-s">Working patterns</h3>
+						<ul class="govuk-list">
+							{{ jobLink("Full time", 87) }}
+							{{ jobLink("Part time", 48) }}
+							{{ jobLink("Job share", 16) }}
+						</ul>
+					</div>
+				</div>
+
+				<div class="govuk-!-margin-top-6">
+					<h3 class="govuk-heading-s">Subjects</h3>
+					<div class="govuk-grid-row">
+						<div class="govuk-grid-column-one-third">
+							<ul class="govuk-list">
+								{{ jobLink("Accounting", 3) }}
+								{{ jobLink("Agriculture, horticulture and land based studies", 0) }}
+								{{ jobLink("Animal care", 3) }}
+								{{ jobLink("Art and design", 0) }}
+								{{ jobLink("British sign language", 0) }}
+								{{ jobLink("Building and construction", 3) }}
+								{{ jobLink("Catering", 5) }}
+								{{ jobLink("Children's development and learning", 1) }}
+								{{ jobLink("Computing", 2) }}
+								{{ jobLink("Counselling", 0) }}
+								{{ jobLink("Criminology", 1) }}
+								{{ jobLink("Customer service", 0) }}
+								{{ jobLink("Dance, drama and music", 0) }}
+								{{ jobLink("Design and technology", 0) }}
+								{{ jobLink("Early years", 3) }}
+								{{ jobLink("Economics and business studies", 0) }}
+								{{ jobLink("Electrics", 5) }}
+								{{ jobLink("Engineering", 8) }}
+								{{ jobLink("English and media studies", 3) }}
+								{{ jobLink("English as a foreign language", 0) }}
+								{{ jobLink("Esports", 0) }}
+								{{ jobLink("Fabrication and welding", 2) }}
+							</ul>
+						</div>
+						<div class="govuk-grid-column-one-third">
+							<ul class="govuk-list">
+								{{ jobLink("Farming", 2) }}
+								{{ jobLink("Fashion", 0) }}
+								{{ jobLink("Food technology", 0) }}
+								<li>
+									<a class="govuk-link govuk-link--no-visited-state" href="#">Foreign languages (3)</a>
+									<ul class="govuk-list govuk-list--bullet">
+										{{ jobLink("French", 1) }}
+										{{ jobLink("Spanish", 1) }}
+										{{ jobLink("German", 0) }}
+										{{ jobLink("Mandarin", 0) }}
+										{{ jobLink("Classics", 1) }}
+										{{ jobLink("Welsh", 0) }}
+									</ul>
+								</li>
+								{{ jobLink("Functional skills", 2) }}
+								{{ jobLink("Games design", 1) }}
+								{{ jobLink("Geography", 0) }}
+								{{ jobLink("Graphic design", 0) }}
+								{{ jobLink("Hair and beauty", 4) }}
+								{{ jobLink("Health and social care", 1) }}
+								{{ jobLink("History", 0) }}
+								{{ jobLink("Hotel catering and travel", 0) }}
+								{{ jobLink("Humanities", 0) }}
+								{{ jobLink("Land and property management", 0) }}
+								{{ jobLink("Leadership and management", 1) }}
+								{{ jobLink("Logistics", 1) }}
+								{{ jobLink("Maths", 3) }}
+							</ul>
+						</div>
+						<div class="govuk-grid-column-one-third">
+							<ul class="govuk-list">
+								{{ jobLink("Motor vehicles", 3) }}
+								{{ jobLink("Music", 0) }}
+								{{ jobLink("People management", 1) }}
+								{{ jobLink("Philosophy", 0) }}
+								{{ jobLink("Photography", 0) }}
+								{{ jobLink("Physical education", 0) }}
+								{{ jobLink("Plumbing and heating", 1) }}
+								{{ jobLink("Politics", 0) }}
+								{{ jobLink("Personal, social, health and economic (PSHE) education", 1) }}
+								{{ jobLink("Psychology", 0) }}
+								{{ jobLink("Public services", 1) }}
+								{{ jobLink("Religious education", 0) }}
+								<li>
+									<a class="govuk-link govuk-link--no-visited-state" href="#">Science (0)</a>
+									<ul class="govuk-list govuk-list--bullet">
+										{{ jobLink("Biology", 0) }}
+										{{ jobLink("Chemistry", 0) }}
+										{{ jobLink("Physics", 0) }}
+									</ul>
+								</li>
+								{{ jobLink("Sociology", 0) }}
+								{{ jobLink("Sport and leisure", 3) }}
+								{{ jobLink("Sports science", 4) }}
+								{{ jobLink("Tourism", 1) }}
+								{{ jobLink("Woodwork joinery and carpentry", 0) }}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="govuk-accordion__section">
+			<div class="govuk-accordion__section-header">
+			<h2 class="govuk-accordion__section-heading">
+				<span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+					School and college jobs by location
+				</span>
+			</h2>
+			</div>
+			<div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3" style="display: block !important;">
+				<div class="govuk-grid-row">
+					<div class="govuk-grid-column-one-third">
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("North West", 559, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Liverpool", 22) }}
+								{{ placeLink("Greater Manchester", 255) }}
+								{{ placeLink("Lancashire, Blackburn and Blackpool", 109) }}
+								{{ placeLink("Cheshire East", 35) }}
+								{{ placeLink("Cheshire West and Chester", 33) }}
+							</ul>
+						</div>
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("Yorkshire and the Humber", 793, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Sheffield", 100) }}
+								{{ placeLink("Leeds", 158) }}
+								{{ placeLink("Bradford", 96) }}
+								{{ placeLink("Doncaster", 40) }}
+								{{ placeLink("North Riding of Yorkshire", 196) }}
+							</ul>
+						</div>
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("North East", 222, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Newcastle upon Tyne", 17) }}
+								{{ placeLink("Middlesbrough", 32) }}
+								{{ placeLink("Sunderland", 30) }}
+								{{ placeLink("North Tyneside", 9) }}
+								{{ placeLink("Northumberland", 25) }}
+							</ul>
+						</div>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("London", 580, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Bexley", 20) }}
+								{{ placeLink("Havering", 19) }}
+								{{ placeLink("Barnet", 34) }}
+								{{ placeLink("Enfield", 22) }}
+								{{ placeLink("Bromley", 50) }}
+							</ul>
+						</div>
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("South East", 1017, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Hampshire", 83) }}
+								{{ placeLink("Surrey", 123) }}
+								{{ placeLink("Kent and Medway", 162) }}
+								{{ placeLink("West Sussex", 38) }}
+								{{ placeLink("East Sussex, Brighton and Hove", 56) }}
+							</ul>
+						</div>
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("South West", 721, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Bristol", 46) }}
+								{{ placeLink("Gloucestershire and Gloucester", 66) }}
+								{{ placeLink("Devon, Plymouth and Torbay", 207) }}
+								{{ placeLink("Cornwall", 85) }}
+								{{ placeLink("Dorset, Bournemouth, Christchurch and Poole", 66) }}
+							</ul>
+						</div>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("West Midlands", 769, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Birmingham", 211) }}
+								{{ placeLink("Worcestershire", 55) }}
+								{{ placeLink("Shropshire and Telford and Wrekin", 45) }}
+								{{ placeLink("Staffordshire and Stoke", 122) }}
+								{{ placeLink("Warwickshire", 90) }}
+							</ul>
+						</div>
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("East Midlands", 662, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Derby", 57) }}
+								{{ placeLink("Nottingham", 42) }}
+								{{ placeLink("Leicester", 12) }}
+								{{ placeLink("Lincolnshire and Lincoln", 156) }}
+								{{ placeLink("Northamptonshire and Northampton", 154) }}
+							</ul>
+						</div>
+						<div class="homepage-landing-page-link-group-component">
+							{{ placeLink("East of England", 949, true) }}
+							<ul class="govuk-list govuk-list--bullet">
+								{{ placeLink("Essex, Southend and Thurrock", 188) }}
+								{{ placeLink("Bedfordshire", 140) }}
+								{{ placeLink("Hertfordshire", 179) }}
+								{{ placeLink("Suffolk", 78) }}
+								{{ placeLink("Norfolk", 177) }}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </div>
+    </div>
+
+	<p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state govuk-!-font-size-19" href="/jobs">Browse all school and college jobs in England</a></p>
+
+</div>
+
+{% endblock %}

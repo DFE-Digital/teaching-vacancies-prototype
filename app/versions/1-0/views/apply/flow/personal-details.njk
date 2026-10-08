@@ -1,0 +1,158 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Personal details" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Personal details</h2>
+      <p class="govuk-body">Provide some basic details about yourself. We will use this to contact you about the application.</p>
+
+      <form method="post">
+        {{ govukInput({
+          label: { text: "First name" },
+          name: "firstName",
+          value: application.personalDetails.firstName,
+          autocomplete: "given-name"
+        }) }}
+        {{ govukInput({
+          label: { text: "Last name" },
+          name: "lastName",
+          value: application.personalDetails.lastName,
+          autocomplete: "family-name"
+        }) }}
+        {{ govukInput({
+          label: { text: "Previous names (optional)" },
+          hint: { text: "For example, a maiden name or name at birth. If this is different from the name you use now." },
+          name: "previousNames",
+          value: application.personalDetails.previousNames
+        }) }}
+
+        {% call govukFieldset({
+          legend: { text: "Your address", classes: "govuk-fieldset__legend--s" }
+        }) %}
+          {{ govukInput({
+            label: { text: "Building and street" },
+            name: "addressLine1",
+            value: application.personalDetails.addressLine1,
+            autocomplete: "address-line1"
+          }) }}
+          {{ govukInput({
+            label: { text: "Address line 2 (optional)" },
+            name: "addressLine2",
+            value: application.personalDetails.addressLine2
+          }) }}
+          {{ govukInput({
+            label: { text: "Town or city" },
+            classes: "govuk-!-width-two-thirds",
+            name: "town",
+            value: application.personalDetails.town
+          }) }}
+          {{ govukInput({
+            label: { text: "County (optional)" },
+            classes: "govuk-!-width-two-thirds",
+            name: "county",
+            value: application.personalDetails.county
+          }) }}
+          {{ govukInput({
+            label: { text: "Postcode" },
+            classes: "govuk-input--width-10",
+            name: "postcode",
+            value: application.personalDetails.postcode,
+            autocomplete: "postal-code"
+          }) }}
+          {{ govukInput({
+            label: { text: "Country" },
+            classes: "govuk-!-width-two-thirds",
+            name: "country",
+            value: application.personalDetails.country
+          }) }}
+        {% endcall %}
+
+        {{ govukInput({
+          label: { text: "Phone number" },
+          hint: { text: "For international numbers include the country code. For example +44 1234 567890." },
+          classes: "govuk-input--width-20",
+          name: "phone",
+          value: application.personalDetails.phone,
+          autocomplete: "tel"
+        }) }}
+        {{ govukInput({
+          label: { text: "Email address" },
+          name: "email",
+          value: application.personalDetails.email,
+          autocomplete: "email",
+          type: "email"
+        }) }}
+
+        {{ govukRadios({
+          name: "skilledWorker",
+          fieldset: {
+            legend: {
+              text: "Do you need Skilled Worker visa sponsorship to work in the UK?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: { text: "If you are a citizen of the UK, Ireland or you have settled or pre-settled status, you do not need sponsorship." },
+          items: [
+            { value: "No", text: "No, I already have the right to work in the UK", checked: application.personalDetails.skilledWorker == "No" },
+            { value: "Yes", text: "Yes, I need Skilled Worker visa sponsorship", checked: application.personalDetails.skilledWorker == "Yes" }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "nationalInsurance",
+          fieldset: {
+            legend: {
+              text: "Do you have a National Insurance number?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: { text: "You can find this on your National Insurance card, benefit letter, payslip or P60. It’s made up of 2 letters, 6 numbers and a final letter." },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: application.personalDetails.nationalInsurance == "Yes",
+              conditional: {
+                html: govukInput({
+                  label: { text: "National Insurance number" },
+                  classes: "govuk-input--width-20",
+                  name: "niNumber",
+                  value: application.personalDetails.niNumber
+                })
+              }
+            },
+            { value: "No", text: "No, I do not have one or I do not know it", checked: application.personalDetails.nationalInsurance == "No" }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          name: "workingPatterns",
+          fieldset: {
+            legend: {
+              text: "Working pattern preferences",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: { text: "Select all the employment patterns you would consider. You will only be contacted about jobs that match what you select." },
+          items: [
+            { value: "Full time", text: "Full time", checked: "Full time" in application.personalDetails.workingPatterns },
+            { value: "Part time", text: "Part time", checked: "Part time" in application.personalDetails.workingPatterns },
+            { value: "Job share", text: "Job share", checked: "Job share" in application.personalDetails.workingPatterns }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          name: "extraDetails",
+          label: { text: "Provide more details about your working pattern or references (optional)" },
+          hint: { text: "For example, 3 days a week or a job share. Maximum 100 words." },
+          value: application.personalDetails.extraDetails
+        }) }}
+
+        {{ completedSection("personal-details") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

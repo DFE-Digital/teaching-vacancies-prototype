@@ -1,0 +1,52 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set title = 'Your account' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <h2 class="govuk-heading-m">Change your sign in details</h2>
+
+      <p class="govuk-body">You can use your GOV.UK One Login to sign in to Teaching Vacancies.</p>
+
+      <p class="govuk-body">You can change these details in your GOV.UK One Login:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>email address</li>
+        <li>password</li>
+        <li>how you get your security codes to sign in</li>
+      </ul>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://home.account.gov.uk/settings">Change your sign in details in your GOV.UK One Login</a>.</p>
+
+      <h2 class="govuk-heading-m">Can't find your account details?</h2>
+
+      <p class="govuk-body">If you had a Teaching Vacancies account using a different email address to your GOV.UK One Login account, your account details will not automatically be saved.</p>
+
+      <p class="govuk-body">You can request to <a class="govuk-link" href="/onelogin/journey/import">transfer your existing account information</a>.</p>
+
+      <h2 class="govuk-heading-m">Close account</h2>
+
+      <p class="govuk-body">If you do not want to use your Teaching Vacancies account any more you can close your account.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="/account/delete-account">Close account</a></p>
+
+      <h2 class="govuk-heading-m">Opt out of emails</h2>
+
+      <p class="govuk-body">As well as emails about your account and applications, we may send you emails about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>website updates</li>
+        <li>tips to find your next role</li>
+      </ul>
+
+      <p class="govuk-body">You can choose to only receive emails about your account and applications, and opt out of any other email communication.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="/account/marketing">Opt out of additional email communication</a></p>
+    </div>
+  </div>
+{% endblock %}

@@ -24,7 +24,7 @@ const config = require('./app/config.js')
 const documentationRoutes = require('./docs/documentation_routes.js')
 const prototypeAdminRoutes = require('./lib/prototype-admin-routes.js')
 const packageJson = require('./package.json')
-const routes = require('./app/routes.js')
+const prototypeVersions = require('./app/versions/mount')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -194,9 +194,15 @@ if (useV6) {
   app.use('/public/v6/javascripts/govuk/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit/javascripts/govuk/')))
 }
 
+// Version paths keep their own session data. Other pages use the kit store.
+app.use(prototypeVersions.session)
+
 // Automatically store all data users enter
 if (useAutoStoreData === 'true') {
-  app.use(utils.autoStoreData)
+  app.use(function (req, res, next) {
+    if (req.prototypeVersion) return next()
+    utils.autoStoreData(req, res, next)
+  })
   utils.addCheckedFunction(nunjucksAppEnv)
   if (useDocumentation) {
     utils.addCheckedFunction(nunjucksDocumentationEnv)
@@ -255,14 +261,8 @@ if (promoMode === 'true') {
   })
 }
 
-// Load routes (found in app/routes.js)
-if (typeof (routes) !== 'function') {
-  console.log(routes.bind)
-  console.log('Warning: the use of bind in routes is deprecated - please check the Prototype Kit documentation for writing routes.')
-  routes.bind(app)
-} else {
-  app.use('/', routes)
-}
+// 1-0 and 1-1 each have their own views, routes, and mock data.
+prototypeVersions.mount(app)
 
 if (useDocumentation) {
   // Clone app locals to documentation app locals

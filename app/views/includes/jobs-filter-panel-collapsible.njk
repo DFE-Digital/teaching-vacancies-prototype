@@ -10,11 +10,7 @@
   {% if data['filter-international'] %}  {% set filterInternational %}Skilled Worker visas can be sponsored{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
 
 {% macro removeFilterHref(name, value) -%}
-  {%- if filterFormAction -%}
-    /femerge/remove-filter?name={{ name | urlencode }}&value={{ value | urlencode }}
-  {%- else -%}
-    #
-  {%- endif -%}
+/femerge/remove-filter?name={{ name | urlencode }}&value={{ value | urlencode }}
 {%- endmacro %}
 
 {% set filterOptionsHtml %}
@@ -590,6 +586,11 @@
 
     </div>
   </div>
+  <div class="govuk-!-padding-right-3 govuk-!-padding-bottom-1 govuk-!-padding-left-3">
+    <button class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" data-prevent-double-click="true" form="filter" formnovalidate="formnovalidate" type="submit">
+      Apply filters
+    </button>
+  </div>
   <div class="app-filter__content">
 
     {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length or filterInternational.length %}
@@ -791,7 +792,7 @@
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Application method</h3>
                 <ul class="app-filter-tags">
                 {% if 'Apply online' in filterQuick %}
-                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Only show quick apply jobs</a></li>
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-quick', 'Apply online') }}"><span class="govuk-visually-hidden">Remove this filter</span>Only show quick apply jobs</a></li>
                 {% endif %}
                 </ul>
 
@@ -804,10 +805,10 @@
 
     <div class="app-filter__options">
       <form id="filter" method="get" action="{{ filterFormAction or '/search/applications' }}" novalidate>
-        <button class="govuk-button" data-module="govuk-button">
+        {{filterOptionsHtml | safe}}
+        <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">
           Apply filters
         </button>
-        {{filterOptionsHtml | safe}}
       </form>
     </div>
   </div>

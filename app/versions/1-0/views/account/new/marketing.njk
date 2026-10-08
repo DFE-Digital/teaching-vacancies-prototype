@@ -1,0 +1,54 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Marketing preferences' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          {{title}}
+      </h1>
+
+      <form method="post" novalidate>
+
+
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="marketingPreferences-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">
+                      Are you interested in hearing about the latest features and news from Teaching Vacancies?
+                  </h2>
+              </legend>
+              <div id="changedName-hint" class="govuk-hint">
+                You can change this at anytime in your account.
+              </div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="marketingPreferences" name="marketingPreferences" type="radio" value="Yes, open to receiving marketing messages">
+                      <label class="govuk-label govuk-radios__label" for="marketingPreferences">
+                          Yes, open to receiving marketing messages
+                      </label>
+                  </div>
+                  
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="marketingPreferences-2" name="marketingPreferences" type="radio" value="No, do not send marketing messages">
+                      <label class="govuk-label govuk-radios__label" for="marketingPreferences-2">
+                          No, do not send marketing messages
+                      </label>
+                  </div>
+              </div>
+          </fieldset>
+      </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

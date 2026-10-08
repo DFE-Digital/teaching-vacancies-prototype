@@ -1,0 +1,157 @@
+{% extends "layout.njk" %}
+{% set title = "Review your application" %}
+{% set details = application.personalDetails %}
+{% set status = application.professionalStatus %}
+
+{% macro sectionHeading(text, href) %}
+  <div class="app-section-heading">
+    <h2 class="govuk-heading-m">{{ text }}</h2>
+    <a class="govuk-link" href="{{ href }}">Change<span class="govuk-visually-hidden"> {{ text }}</span></a>
+  </div>
+{% endmacro %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+      <h1 class="govuk-heading-l">Review your application</h1>
+      <p class="govuk-body">Check your answers before you submit your application.</p>
+
+      {{ sectionHeading("Personal details", "/jobs/" + job.id + "/apply/personal-details") }}
+      {{ govukSummaryList({
+        rows: [
+          { key: { text: "Name" }, value: { text: details.firstName + " " + details.lastName } },
+          { key: { text: "Previous names" }, value: { text: details.previousNames or "Not provided" } },
+          { key: { text: "Address" }, value: { html: details.addressLine1 + "<br>" + (details.addressLine2 + "<br>" if details.addressLine2 else "") + details.town + "<br>" + details.county + "<br>" + details.postcode + "<br>" + details.country } },
+          { key: { text: "Phone number" }, value: { text: details.phone } },
+          { key: { text: "Email address" }, value: { text: details.email } },
+          { key: { text: "Skilled Worker visa sponsorship" }, value: { text: details.skilledWorker } },
+          { key: { text: "National Insurance number" }, value: { text: details.niNumber if details.nationalInsurance == "Yes" else "Not provided" } },
+          { key: { text: "Working patterns" }, value: { text: details.workingPatterns | join(", ") } }
+        ]
+      }) }}
+
+      {{ sectionHeading("Professional status", "/jobs/" + job.id + "/apply/professional-status") }}
+      {{ govukSummaryList({
+        rows: [
+          { key: { text: "Qualified teacher status" }, value: { text: status.qts } },
+          { key: { text: "Year QTS was gained" }, value: { text: status.qtsYear or "Not provided" } },
+          { key: { text: "Age range and subject" }, value: { text: status.ageRange or "Not provided" } },
+          { key: { text: "Teacher reference number" }, value: { text: status.trn or "Not provided" } },
+          { key: { text: "Induction period" }, value: { text: status.induction } }
+        ]
+      }) }}
+
+      {{ sectionHeading("Qualifications", "/jobs/" + job.id + "/apply/qualifications") }}
+      {% for item in application.qualifications %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Qualification" }, value: { text: item.type + ", " + item.subject } },
+            { key: { text: "Awarding body" }, value: { text: item.organisation } },
+            { key: { text: "Grade" }, value: { text: item.grade } },
+            { key: { text: "Year awarded" }, value: { text: item.year } }
+          ]
+        }) }}
+      {% else %}
+        <p class="govuk-body">No qualifications added.</p>
+      {% endfor %}
+
+      {{ sectionHeading("Training and CPD", "/jobs/" + job.id + "/apply/training") }}
+      {% for item in application.training %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Course" }, value: { text: item.name } },
+            { key: { text: "Provider" }, value: { text: item.provider } },
+            { key: { text: "Grade" }, value: { text: item.grade or "Not provided" } },
+            { key: { text: "Date completed" }, value: { text: item.date } }
+          ]
+        }) }}
+      {% else %}
+        <p class="govuk-body">No training added.</p>
+      {% endfor %}
+
+      {{ sectionHeading("Professional body memberships", "/jobs/" + job.id + "/apply/memberships") }}
+      {% for item in application.memberships %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Professional body" }, value: { text: item.name } },
+            { key: { text: "Exam" }, value: { text: item.exam } }
+          ]
+        }) }}
+      {% else %}
+        <p class="govuk-body">No memberships added.</p>
+      {% endfor %}
+
+      {{ sectionHeading("Work history", "/jobs/" + job.id + "/apply/work-history") }}
+      {% for item in application.jobs %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Job title" }, value: { text: item.title } },
+            { key: { text: "Organisation" }, value: { text: item.organisation } },
+            { key: { text: "Dates" }, value: { text: item.startMonth + " " + item.startYear + " to " + ("now" if item.current else item.endMonth + " " + item.endYear) } }
+          ]
+        }) }}
+      {% endfor %}
+      {% for item in application.gaps %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Gap" }, value: { text: item.reason } },
+            { key: { text: "Dates" }, value: { text: item.startMonth + " " + item.startYear + " to " + item.endMonth + " " + item.endYear } }
+          ]
+        }) }}
+      {% endfor %}
+
+      {{ sectionHeading("Personal statement", "/jobs/" + job.id + "/apply/personal-statement") }}
+      <p class="govuk-body">{{ application.personalStatement or "Not provided" }}</p>
+
+      {{ sectionHeading("References", "/jobs/" + job.id + "/apply/references") }}
+      {% for item in application.references %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Name" }, value: { text: item.name } },
+            { key: { text: "Role" }, value: { text: item.jobTitle + ", " + item.organisation } },
+            { key: { text: "Email" }, value: { text: item.email } },
+            { key: { text: "Phone" }, value: { text: item.phone } }
+          ]
+        }) }}
+      {% else %}
+        <p class="govuk-body">No referees added.</p>
+      {% endfor %}
+      <p class="govuk-body">Contact you before referees: {{ application.contactReferees or "Not answered" }}</p>
+
+      {{ sectionHeading("Equal opportunities", "/jobs/" + job.id + "/apply/equal-opportunities") }}
+      {{ govukSummaryList({
+        rows: [
+          { key: { text: "Disability" }, value: { text: application.equalOpportunities.disability or "Not answered" } },
+          { key: { text: "Age group" }, value: { text: application.equalOpportunities.age or "Not answered" } },
+          { key: { text: "Sex" }, value: { text: application.equalOpportunities.sex or "Not answered" } },
+          { key: { text: "Ethnic group" }, value: { text: application.equalOpportunities.ethnicity or "Not answered" } },
+          { key: { text: "Sexual orientation" }, value: { text: application.equalOpportunities.orientation or "Not answered" } },
+          { key: { text: "Religion" }, value: { text: application.equalOpportunities.religion or "Not answered" } }
+        ]
+      }) }}
+
+      {{ sectionHeading("Interview support", "/jobs/" + job.id + "/apply/support") }}
+      {{ govukSummaryList({
+        rows: [
+          { key: { text: "Support needed" }, value: { text: application.support.needed } },
+          { key: { text: "Details" }, value: { text: application.support.details or "Not provided" } }
+        ]
+      }) }}
+
+      {{ sectionHeading("Declarations", "/jobs/" + job.id + "/apply/declarations") }}
+      {{ govukSummaryList({
+        rows: [
+          { key: { text: "Safeguarding declaration" }, value: { text: application.declarations.safeguarding or "Not answered" } },
+          { key: { text: "Relationship with the organisation" }, value: { text: application.declarations.relationship or "Not answered" } }
+        ]
+      }) }}
+
+      <p class="govuk-body">By submitting this application you confirm that the information you have given is true and complete.</p>
+      <form method="post">
+        {{ govukButton({ text: "Submit application" }) }}
+      </form>
+      <p class="govuk-body"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/task-list">Back to your application</a></p>
+    </div>
+  </div>
+{% endblock %}

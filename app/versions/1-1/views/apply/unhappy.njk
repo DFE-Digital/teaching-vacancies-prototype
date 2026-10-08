@@ -1,0 +1,39 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'About your application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">Level 2 teaching assistant at Trent school</span>
+          {{title}}
+      </h1>
+
+      <div class="govuk-warning-text">
+			  <span aria-hidden="true" class="govuk-warning-text__icon">!</span> <strong class="govuk-warning-text__text"><span class="govuk-warning-text__assistive">Warning</span>This role cannot offer visa sponsorship.</strong>
+      </div>
+      
+      <p class="govuk-body">It is unlikely you will be considered for this job as it is not offering skilled worker visa sponsorship to non-UK citizens.</p>
+
+      <p class="govuk-body">Learn more about <a href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas">teaching in England as a non-UK citizen (opens in new tab)</a>.</p>
+      
+      <form action="/jobs">
+
+        <div class="govuk-button-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Search for other jobs
+          </button>
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+             Continue application
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

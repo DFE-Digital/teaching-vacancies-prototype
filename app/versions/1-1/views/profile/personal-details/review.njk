@@ -1,0 +1,208 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Personal details' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {% set emailAddress %}
+        <p>{{user.emailAddress}}</p>
+
+        {{ govukInsetText({
+          classes: 'govuk-!-margin-top-3',
+          html: 'Change your email address from within your <a href="#">account</a>.'
+        }) }}
+
+      {% endset %}
+
+      {% set fullAddress %}
+
+        <p>
+          {% if user.profile.address1 | length %}{{user.profile.address1}}, {% endif %}
+          {% if user.profile.address2 | length %}{{user.profile.address2}}, {% endif %}
+          {% if user.profile.addressTown | length %}{{user.profile.addressTown}}, {% endif %}
+          {% if user.profile.addressPostcode | length %}{{user.profile.addressPostcode}},{% endif %}
+          {% if user.profile.addressCounty | length %}{{user.profile.addressCounty}} {% endif %}
+        </p>
+
+      {% endset %}
+
+      {% set fullName %}{{profile.firstName}} {{profile.lastName}}{% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: fullName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/name",
+                  text: "Change",
+                  visuallyHiddenText: "First name and last name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: emailAddress
+            }
+          },
+          {
+            key: {
+              text: "Do you want to provide a phone number?"
+            },
+            value: {
+              text: profile.providePhoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "if you want to provide a phone number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: profile.phoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Phone number"
+                }
+              ]
+            }
+          } if profile.providePhoneNumber == 'Yes',
+          {
+            key: {
+              text: "Do you need Skilled worker visa sponsorship?"
+            },
+            value: {
+              text: profile.provideWork
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/work",
+                  text: "Change",
+                  visuallyHiddenText: "if you are an international teacher searching for a job that will sponsor you with a skilled worker visa"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to provide an address?"
+            },
+            value: {
+              text: profile.provideAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/address",
+                  text: "Change",
+                  visuallyHiddenText: "if you want to provide an address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: fullAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/address-details",
+                  text: "Change",
+                  visuallyHiddenText: "Address"
+                }
+              ]
+            }
+          } if profile.provideAddress == 'Yes',
+          {
+            key: {
+              text: "Do you want to provide your National Insurance number?"
+            },
+            value: {
+              text: profile.provideNI
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/ni",
+                  text: "Change",
+                  visuallyHiddenText: "if you want to provide your National Insurance number?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: profile.NI
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/personal-details/ni",
+                  text: "Change",
+                  visuallyHiddenText: "National Insurance number"
+                }
+              ]
+            }
+          } if profile.provideNI == 'Yes'
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile",
+        classes:"next-location-7"
+      }) }}
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

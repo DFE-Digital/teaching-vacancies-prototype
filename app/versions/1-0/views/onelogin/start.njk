@@ -1,0 +1,29 @@
+
+{% extends "layout_email.njk" %}
+
+{% set title = "You've signed in to your GOV.UK One Login account" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>You can now continue to use Teaching Vacancies.</p>
+
+      <form method="post" action="/onelogin/journey/choice">
+        <input type="hidden" name="match" value="match">
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

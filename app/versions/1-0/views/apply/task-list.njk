@@ -1,0 +1,72 @@
+{% extends "layout.njk" %}
+{% set primaryNavId = 'jobs' %}
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if not job %}
+        <h1 class="govuk-heading-l">Application</h1>
+        <p class="govuk-body"><a class="govuk-link" href="/jobs">Back to jobs</a></p>
+      {% else %}
+        {{ govukBreadcrumbs({
+          items: [
+            { text: "Your applications", href: "/jobseekers/job_applications" },
+            { text: job.title }
+          ]
+        }) }}
+
+        {{ govukNotificationBanner({
+          html: '<p class="govuk-notification-banner__heading">Your details have been imported from your last job application. You should review each section to make sure the information is still accurate.</p>'
+        }) }}
+
+        <h1 class="govuk-heading-l">{{ job.title }} at {{ job.organisation.name }}</h1>
+        <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-font-weight-bold">Closing date</p>
+        <p class="govuk-body">{{ job.closingDate | date }} at {{ job.closingTime }}</p>
+
+        {{ govukTag({
+          text: "Draft",
+          classes: "govuk-tag--pink govuk-!-margin-bottom-4"
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Delete application",
+            classes: "govuk-button--warning",
+            href: "/jobs/" + job.id + "/apply/delete"
+          }) }}
+          <a class="govuk-link" href="/jobs/{{ job.id }}" target="_blank" rel="noreferrer noopener">View job listing (opens in new tab)</a>
+        </div>
+
+        <h2 class="govuk-heading-m">Your application</h2>
+        <ul class="govuk-task-list">
+          {% for section in sections %}
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+                <a class="govuk-link govuk-task-list__link" href="/jobs/{{ job.id }}/apply/{{ section.id }}" aria-describedby="section-{{ loop.index }}-status">
+                  {{ section.text }}
+                </a>
+              </div>
+              <div class="govuk-task-list__status" id="section-{{ loop.index }}-status">
+                {% if section.status == "Incomplete" %}
+                  {{ govukTag({ text: "Incomplete", classes: "govuk-tag--yellow" }) }}
+                {% elif section.status == "Imported" %}
+                  {{ govukTag({ text: "Imported" }) }}
+                {% else %}
+                  Completed
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <h2 class="govuk-heading-m">Review and submit your application</h2>
+        <p class="govuk-body">You can review your application before you submit it.</p>
+        {{ govukButton({
+          text: "Review and submit application",
+          href: "/jobs/" + job.id + "/apply/review"
+        }) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

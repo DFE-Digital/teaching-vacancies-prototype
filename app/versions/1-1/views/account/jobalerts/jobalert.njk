@@ -1,0 +1,335 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Create your job alert' %}
+{% set activeNav = 'notifications' %}
+{% set forceSignedIn = true %}
+
+{% block header %}
+  {{ super() }}
+  {% include "includes/jobalerts_banner.njk" %}
+{% endblock %}
+
+{% set teachingRoles = [
+  { value: "Teacher or lecturer", text: "Teacher or lecturer" },
+  { value: "Head of year or phase", text: "Head of year or phase" },
+  { value: "Head of department or curriculum", text: "Head of department or curriculum" },
+  { value: "Assistant headteacher", text: "Assistant headteacher" },
+  { value: "Deputy headteacher", text: "Deputy headteacher" },
+  { value: "Headteacher", text: "Headteacher" },
+  { value: "SENCO (special educational needs coordinator)", text: "SENCO (special educational needs coordinator)" },
+  { value: "Other leadership roles", text: "Other leadership role" }
+] %}
+
+{% set supportRoles = [
+  { value: "Teaching assistant", text: "Teaching assistant" },
+  { value: "HLTA (Higher level teaching assistant)", text: "HLTA (higher level teaching assistant)" },
+  { value: "Learning support, assistants, cover supervisor", text: "Learning support or cover supervisor" },
+  { value: "Administration, HR, data and finance", text: "Administration, HR, data and finance" },
+  { value: "Catering, cleaning and site management", text: "Catering, cleaning and site management" },
+  { value: "IT support", text: "IT support" },
+  { value: "Pastoral, health and welfare", text: "Pastoral, health and welfare" },
+  { value: "Leadership and management", text: "Leadership and management" },
+  { value: "Business support, administration and corporate services", text: "Business support, administration and corporate services" },
+  { value: "Student support, learning and progress", text: "Student support, learning and progress" },
+  { value: "Marketing and communications", text: "Marketing and communications" },
+  { value: "Apprenticeships and commercial services", text: "Apprenticeships and commercial services" },
+  { value: "Other support roles", text: "Other support role" }
+] %}
+
+{% set subjects = [
+  ["Accounting", "includes finance and accounting"],
+  ["Agriculture, horticulture and land-based studies", ""],
+  ["Animal care", ""],
+  ["Art and design", ""],
+  ["Biology", ""],
+  ["British sign language", ""],
+  ["Building and construction", ""],
+  ["Business studies", ""],
+  ["Catering", ""],
+  ["Chemistry", ""],
+  ["Children's development and learning", ""],
+  ["Citizenship", ""],
+  ["Classics", "includes Latin"],
+  ["Computing", "includes computer science, information technology, and ICT"],
+  ["Counselling", ""],
+  ["Criminology", ""],
+  ["Customer service", ""],
+  ["Dance", ""],
+  ["Design and technology", "includes product design, textiles and systems and control"],
+  ["Drama", "includes theatre studies and performing arts"],
+  ["Early years", ""],
+  ["Economics", ""],
+  ["Economics and Business Studies", ""],
+  ["Electrics", ""],
+  ["Engineering", ""],
+  ["English", "includes English language and literature"],
+  ["English as a foreign language", ""],
+  ["Esports", ""],
+  ["Fabrication and welding", ""],
+  ["Farming", ""],
+  ["Fashion", ""],
+  ["Food technology", "includes hospitality and catering"],
+  ["Foreign languages", ""],
+  ["French", ""],
+  ["Functional skills", ""],
+  ["Games design", ""],
+  ["Geography", ""],
+  ["German", ""],
+  ["Graphic design", ""],
+  ["Hair and beauty", ""],
+  ["Health and social care", ""],
+  ["History", ""],
+  ["Hotel, catering and travel", ""],
+  ["Humanities", ""],
+  ["ICT", ""],
+  ["Land and property management", ""],
+  ["Languages", "includes MFL (modern foreign languages)"],
+  ["Law", ""],
+  ["Leadership and management", ""],
+  ["Logistics", ""],
+  ["Mandarin", ""],
+  ["Mathematics", ""],
+  ["Media studies", ""],
+  ["Motor vehicle", ""],
+  ["Music", ""],
+  ["People management", ""],
+  ["Philosophy", ""],
+  ["Photography", ""],
+  ["Physical education", ""],
+  ["Physics", ""],
+  ["Plumbing and heating", ""],
+  ["Politics", ""],
+  ["PSHE", ""],
+  ["Psychology", ""],
+  ["Public services", ""],
+  ["Religious education", "includes religious studies"],
+  ["Science", ""],
+  ["Social sciences", ""],
+  ["Sociology", ""],
+  ["Spanish", ""],
+  ["Sport and leisure", ""],
+  ["Sports science", ""],
+  ["Statistics", ""],
+  ["Tourism", ""],
+  ["Welsh", ""],
+  ["Woodworking, joinery and carpentry", ""]
+] %}
+
+{% block pageScripts %}
+  <script>
+    var subjectSearch = document.getElementById('subject-search')
+    if (subjectSearch) {
+      subjectSearch.addEventListener('input', function () {
+        var query = subjectSearch.value.trim().toLowerCase()
+        document.querySelectorAll('.app-subject-option').forEach(function (item) {
+          var label = item.textContent.toLowerCase()
+          item.style.display = query !== '' && label.indexOf(query) === -1 ? 'none' : ''
+        })
+      })
+    }
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Create your job alert</h1>
+
+      <form method="post" action="/jobseekers/subscriptions?jobAlertState=alert">
+        <input type="hidden" name="jobAlertState" value="alert">
+        {{ govukInput({
+          label: {
+            text: "Job title or keyword",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Enter a job title, subject or keyword"
+          },
+          id: "jobseekers-subscription-form-keyword-field",
+          name: "jobseekers_subscription_form[keyword]",
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "City, county, or postcode in England",
+            classes: "govuk-label--s"
+          },
+          id: "jobseekers-subscription-form-location-field",
+          name: "jobseekers_subscription_form[location]",
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukSelect({
+          label: {
+            text: "Search radius",
+            classes: "govuk-label--s"
+          },
+          id: "jobseekers-subscription-form-radius-field",
+          name: "jobseekers_subscription_form[radius]",
+          items: [
+            { value: "0", text: "This area only", selected: true },
+            { value: "1", text: "1 mile" },
+            { value: "5", text: "5 miles" },
+            { value: "10", text: "10 miles" },
+            { value: "15", text: "15 miles" },
+            { value: "20", text: "20 miles" },
+            { value: "25", text: "25 miles" },
+            { value: "50", text: "50 miles" },
+            { value: "100", text: "100 miles" },
+            { value: "200", text: "200 miles" }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "education-phase",
+          name: "jobseekers_subscription_form[phases][]",
+          fieldset: {
+            legend: {
+              text: "Education phase",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "nursery", text: "Nursery" },
+            { value: "primary", text: "Primary school" },
+            { value: "secondary", text: "Secondary school" },
+            { value: "sixth_form_or_college", text: "Sixth form or FE college" },
+            { value: "through", text: "All through school" }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "working-pattern",
+          name: "jobseekers_subscription_form[working_patterns][]",
+          fieldset: {
+            legend: {
+              text: "Working pattern",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "full_time", text: "Full time" },
+            { value: "part_time", text: "Part time" },
+            { value: "job_share", text: "Job share" }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "teaching-requirements",
+          name: "jobseekers_subscription_form[ect_statuses][]",
+          fieldset: {
+            legend: {
+              text: "Teaching role requirements",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "ect_suitable", text: "Suitable for early career teachers" },
+            { value: "qts_not_required", text: "Qualified teacher status not required (further education)" }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "visa",
+          name: "jobseekers_subscription_form[international][]",
+          fieldset: {
+            legend: {
+              text: "Visa sponsorship",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "visa", text: "Only send alerts for jobs that offer visa sponsorship" }
+          ]
+        }) }}
+
+        {% set teachingCheckboxes %}
+          {{ govukCheckboxes({
+            idPrefix: "teaching-role",
+            name: "jobseekers_subscription_form[teaching_job_roles][]",
+            items: teachingRoles
+          }) }}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Teaching and leadership",
+          html: teachingCheckboxes
+        }) }}
+
+        {% set supportCheckboxes %}
+          {{ govukCheckboxes({
+            idPrefix: "support-role",
+            name: "jobseekers_subscription_form[support_job_roles][]",
+            items: supportRoles
+          }) }}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Support",
+          html: supportCheckboxes
+        }) }}
+
+        {% set subjectCheckboxes %}
+          <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="subject-search" type="search" aria-controls="subject-options" autocomplete="off">
+          <div class="govuk-checkboxes" id="subject-options" data-module="govuk-checkboxes">
+            {% for subject in subjects %}
+              <div class="govuk-checkboxes__item app-subject-option">
+                <input class="govuk-checkboxes__input" id="subject-{{ loop.index }}" name="jobseekers_subscription_form[subjects][]" type="checkbox" value="{{ subject[0] }}">
+                <label class="govuk-label govuk-checkboxes__label" for="subject-{{ loop.index }}">{{ subject[0] }}</label>
+                {% if subject[1] %}
+                  <div class="govuk-hint govuk-checkboxes__hint">{{ subject[1] }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Subjects",
+          html: subjectCheckboxes
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Enter your email address. We'll only use it to send you job alerts."
+          },
+          id: "jobseekers-subscription-form-email-field",
+          name: "jobseekers_subscription_form[email]",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "frequency",
+          name: "jobseekers_subscription_form[frequency]",
+          fieldset: {
+            legend: {
+              text: "How often do you want to receive alerts?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "daily", text: "Daily, around 3pm" },
+            { value: "weekly", text: "Weekly, on Friday around 6pm" }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Want to unsubscribe?",
+          text: "You can unsubscribe at any time by clicking the unsubscribe link at the bottom of your job alerts email."
+        }) }}
+
+        {{ govukButton({
+          text: "Get jobs sent to you",
+          classes: "govuk-!-padding-left-8 govuk-!-padding-right-8"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

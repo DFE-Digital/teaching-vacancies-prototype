@@ -1,0 +1,61 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "References" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">References</h2>
+      <p class="govuk-body">You must include details for a referee from your current or most recent employer. If you did not work with children in this role, you must include at least one referee from the last job where you worked with children. Schools and colleges may contact referees to follow up on the information you provide.</p>
+
+      {% for item in application.references %}
+        <div class="govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">{{ item.name }}</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/references/{{ item.id }}/edit">Change<span class="govuk-visually-hidden"> {{ item.name }}</span></a></li>
+              <li class="govuk-summary-card__action"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/references/{{ item.id }}/delete">Delete<span class="govuk-visually-hidden"> {{ item.name }}</span></a></li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-0",
+              rows: [
+                { key: { text: "Job title" }, value: { text: item.jobTitle } },
+                { key: { text: "Organisation" }, value: { text: item.organisation } },
+                { key: { text: "Relationship to you" }, value: { text: item.relationship } },
+                { key: { text: "Email address" }, value: { text: item.email } },
+                { key: { text: "Phone number" }, value: { text: item.phone } },
+                { key: { text: "Current or most recent employer" }, value: { text: item.current } }
+              ]
+            }) }}
+          </div>
+        </div>
+      {% else %}
+        <p class="govuk-body">You have not added any referees.</p>
+      {% endfor %}
+
+      <form method="post">
+        <p>
+          <a class="govuk-button" href="/jobs/{{ job.id }}/apply/references/new" role="button" data-module="govuk-button">Add another referee</a>
+        </p>
+        {{ govukRadios({
+          name: "contactReferees",
+          fieldset: {
+            legend: {
+              text: "Do you want the school or college to contact you before they contact your referees?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: { text: "We will ask the school or college to contact you before they contact your referees, but we cannot guarantee they will do this." },
+          items: [
+            { value: "Yes", text: "Yes", checked: application.contactReferees == "Yes" },
+            { value: "No", text: "No", checked: application.contactReferees == "No" }
+          ]
+        }) }}
+        {{ completedSection("references") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

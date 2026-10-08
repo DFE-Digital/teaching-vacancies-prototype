@@ -1,0 +1,95 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Reference' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        References
+      </span>
+      <h1 class="govuk-heading-xl">
+        {{title}}
+      </h1>
+
+      {{ govukInsetText({
+        text: "References must include your current or recent employer. If you have recently left school or further education, this must be your headteacher or course leader."
+      }) }}
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "profile[referenceName]",
+          name: "profile[referenceName]",
+          label: {
+            text: 'Name',
+            classes: 'govuk-label--s'
+          },
+          value: referenceName
+        }) }}
+
+        {{ govukInput({
+          id: "profile[referenceTitle]",
+          name: "profile[referenceTitle]",
+          label: {
+            text: "Job title",
+            classes: 'govuk-label--s'
+          },
+          value: referenceTitle
+        }) }}
+
+        {{ govukInput({
+          id: "profile[referenceOrganisation]",
+          name: "profile[referenceOrganisation]",
+          label: {
+            text: "Organisation",
+            classes: 'govuk-label--s'
+          },
+          value: referenceOrganisation
+        }) }}
+
+        {{ govukInput({
+          id: "profile[referenceEmail]",
+          name: "profile[referenceEmail]",
+          label: {
+            text: "Email address",
+            classes: 'govuk-label--s'
+          },
+          value: referenceEmail
+        }) }}
+
+        {{ govukInput({
+          id: "profile[referenceNumber]",
+          name: "profile[referenceNumber]",
+          type: number,
+          label: {
+            text: "Phone number (optional)",
+            classes: 'govuk-label--s'
+          },
+          value: referenceNumber
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

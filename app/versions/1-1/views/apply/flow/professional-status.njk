@@ -1,0 +1,73 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Professional status" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Professional status</h2>
+      <p class="govuk-body">If you’re applying for a support role and do not have teaching experience, answer ‘No’ to these questions.</p>
+
+      <form method="post">
+        {{ govukRadios({
+          name: "qts",
+          fieldset: {
+            legend: {
+              text: "Do you have qualified teacher status (QTS)?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: { text: "You are unlikely to get a teaching job in England unless you have qualified teacher status (QTS). If you answer ‘Yes’, we’ll ask for your teacher reference number (TRN)." },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: application.professionalStatus.qts == "Yes",
+              conditional: {
+                html: govukInput({
+                  label: { text: "Year you gained QTS" },
+                  classes: "govuk-input--width-4",
+                  name: "qtsYear",
+                  value: application.professionalStatus.qtsYear
+                }) + govukInput({
+                  label: { text: "Age range and subject you trained to teach" },
+                  name: "ageRange",
+                  value: application.professionalStatus.ageRange
+                })
+              }
+            },
+            { value: "No", text: "No", checked: application.professionalStatus.qts == "No" },
+            { value: "On track", text: "I’m on track to get QTS", checked: application.professionalStatus.qts == "On track" }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: { text: "What is your teacher reference number?" },
+          hint: { html: "Your teacher reference number (TRN) is 7 digits long. You can <a class=\"govuk-link\" href=\"https://www.gov.uk/guidance/teacher-reference-number-trn\" target=\"_blank\" rel=\"noreferrer noopener\">find your TRN</a> if you do not know it or have forgotten it." },
+          classes: "govuk-input--width-10",
+          name: "trn",
+          value: application.professionalStatus.trn
+        }) }}
+
+        {{ govukRadios({
+          name: "induction",
+          fieldset: {
+            legend: {
+              text: "Have you completed your induction period?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: { text: "Early career teachers (ECTs) have to complete a 2 year induction period. This used to be 1 year for newly qualified teachers (NQTs)." },
+          items: [
+            { value: "Yes", text: "Yes, I have completed my induction period", checked: application.professionalStatus.induction == "Yes" },
+            { value: "No", text: "No, I have not completed my induction period", checked: application.professionalStatus.induction == "No" }
+          ]
+        }) }}
+
+        {{ completedSection("professional-status") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

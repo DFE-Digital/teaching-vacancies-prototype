@@ -1,0 +1,37 @@
+{% set filterOptionsHtml %}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-jobs",
+    name: "filters[jobs]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Job availability",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Has jobs",
+      text: "Only show colleges with jobs available"
+    }]
+  }) }}
+
+{% endset %}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action"></div>
+  </div>
+  <div class="app-filter__content">
+    <div class="app-filter__options">
+      <form method="get" action="/colleges" novalidate>
+        <button class="govuk-button" data-module="govuk-button">Apply filters</button>
+        {{ filterOptionsHtml | safe }}
+        <button class="govuk-button" data-module="govuk-button">Apply filters</button>
+      </form>
+    </div>
+  </div>
+</div>

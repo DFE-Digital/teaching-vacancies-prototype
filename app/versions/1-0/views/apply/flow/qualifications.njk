@@ -1,0 +1,50 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Qualifications" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Qualifications</h2>
+
+      {% for item in application.qualifications %}
+        <div class="govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">{{ item.type }}</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="/jobs/{{ job.id }}/apply/qualifications/{{ item.id }}/edit">Change<span class="govuk-visually-hidden"> {{ item.subject }}</span></a>
+              </li>
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="/jobs/{{ job.id }}/apply/qualifications/{{ item.id }}/delete">Delete<span class="govuk-visually-hidden"> {{ item.subject }}</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-0",
+              rows: [
+                { key: { text: "Subject" }, value: { text: item.subject } },
+                { key: { text: "Awarding body" }, value: { text: item.organisation } },
+                { key: { text: "Grade" }, value: { text: item.grade } },
+                { key: { text: "Year qualification was awarded" }, value: { text: item.year } }
+              ]
+            }) }}
+          </div>
+        </div>
+      {% else %}
+        <p class="govuk-body">You have not added any qualifications.</p>
+      {% endfor %}
+
+      <form method="post">
+        {{ govukButton({
+          text: "Add another qualification" if application.qualifications | length else "Add a qualification",
+          href: "/jobs/" + job.id + "/apply/qualifications/new"
+        }) }}
+
+        {{ completedSection("qualifications") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

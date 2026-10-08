@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Personal statement" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Personal statement</h2>
+      <p class="govuk-body">Your personal statement is your opportunity to explain why you are suitable for this role. Schools typically expect personal statements to be about 500 to 1,000 words.</p>
+      <p class="govuk-body">You may find it helpful to refer to the <a class="govuk-link" href="/jobs/{{ job.id }}" target="_blank" rel="noreferrer noopener">{{ job.title }} job description (opens in new tab)</a>. You should include any skills, qualities and experience that are relevant to this role.</p>
+
+      <h3 class="govuk-heading-m">If you’re applying for a teaching role</h3>
+      <p class="govuk-body">You could include:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your teaching style and approach to classroom management</li>
+        <li>your knowledge of the curriculum</li>
+        <li>your understanding of safeguarding and pupil wellbeing</li>
+        <li>additional responsibilities you have taken on in school</li>
+        <li>experience in special educational needs and disability (SEND)</li>
+        <li>any relevant interests or extra-curricular activities</li>
+      </ul>
+      <p class="govuk-body">Get advice from experienced teachers and school leaders on <a class="govuk-link" href="https://getintoteaching.education.gov.uk/" target="_blank" rel="noreferrer noopener">writing your personal statement (opens in new tab)</a>. You can also use the <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/" target="_blank" rel="noreferrer noopener">personal statement builder (opens in new tab)</a> for prompts and tips to help you get started.</p>
+
+      <form method="post">
+        {{ govukTextarea({
+          name: "personalStatement",
+          label: { text: "Personal statement", classes: "govuk-visually-hidden" },
+          rows: 12,
+          value: application.personalStatement
+        }) }}
+        <p class="govuk-body">You have written {{ wordCount }} words. The word limit is 1,500 words. Schools typically expect personal statements to be 500 to 1,000 words.</p>
+        {{ completedSection("personal-statement") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

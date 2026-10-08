@@ -1,0 +1,121 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Custom file upload' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Custom pattern</span>
+      Share links
+    </h1>
+    <p>Below are two examples of the share link component: one includes social media sharing options, while the other allows users to copy the URL directly. Please note, the details component should always be collapsed by default; however, for the purpose of this example, they are shown in an expanded view.</p>
+    <h2 class="govuk-heading-m">
+      Share page URL
+    </h2>
+
+    <div class="govuk-form-group">
+      <details class="govuk-details" open>
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Share this page
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="page-url">
+              Share page URL
+            </label>
+
+            <!-- Flex container for input and button -->
+            <div style="display: flex; align-items: center;">
+              <!-- Disabled input box to display the URL but not be editable -->
+              <input class="govuk-input govuk-input--width-50" id="page-url" type="text" value="https://example.com/page" disabled style="flex: 1; margin-right: 10px; height: 40px; line-height: 40px;">
+
+              <!-- Copy button placed next to input -->
+              <button class="govuk-button govuk-button--secondary no-bottom-margin" type="button" onclick="copyURL()">
+                Copy URL
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </details>
+    </div>
+
+    <h2 class="govuk-heading-m">
+      Share page URL and social media
+    </h2>
+    <div class="govuk-form-group">
+      <details class="govuk-details" open>
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Share this page
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="page-url">
+              Share page URL
+            </label>
+
+            <!-- Flex container for input and button -->
+            <div style="display: flex; align-items: center;">
+              <!-- Disabled input box to display the URL but not be editable -->
+              <input class="govuk-input govuk-input--width-50" id="page-url" type="text" value="https://example.com/page" disabled style="flex: 1; margin-right: 10px; height: 40px; line-height: 40px;">
+
+              <!-- Copy button placed next to input -->
+              <button class="govuk-button govuk-button--secondary no-bottom-margin" type="button" onclick="copyURL()">
+                Copy URL
+              </button>
+            </div>
+          </div>
+
+          <div class="share-links govuk-body">
+            <a href="#" class="share-link facebook" title="Share on Facebook" onclick="shareOnFacebook(event)" style="display: flex; align-items: center; margin-bottom: 20px;">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="30" height="30" class="gem-c-share-links__svg" style="margin-right: 8px;">
+                <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+              </svg>
+              Share on Facebook
+            </a>
+            <a href="#" class="share-link x" title="Share on X" onclick="shareOnX(event)" style="display: flex; align-items: center;">
+              <svg viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="30" height="30" class="gem-c-share-links__svg">
+                <path fill="currentColor" d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"></path>
+              </svg>
+              Share on X
+            </a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript to copy the URL and share on social media -->
+<script>
+  function copyURL() {
+    const url = document.getElementById('page-url');
+    navigator.clipboard.writeText(url.value);
+    alert("URL copied to clipboard: " + url.value);
+  }
+
+  function shareOnFacebook(event) {
+    event.preventDefault();
+    const url = document.getElementById('page-url').value;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    window.open(facebookShareUrl, '_blank', 'width=600,height=400');
+  }
+
+  function shareOnX(event) {
+    event.preventDefault();
+    const url = document.getElementById('page-url').value;
+    const xShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`;
+    window.open(xShareUrl, '_blank', 'width=600,height=400');
+  }
+</script>
+
+
+{% endblock %}

@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node start.js",
     "dev": "node start.js",
+    "postinstall": "node scripts/patch-http-proxy.js",
     "lint": "standard",
     "rapidtest": "jest --bail",
     "test": "gulp generate-assets && jest && npm run lint"

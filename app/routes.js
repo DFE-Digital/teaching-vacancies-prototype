@@ -1,3 +1,5 @@
+// Served copies live in app/versions/1-0 and app/versions/1-1.
+// This file is the baseline that was copied. The server no longer mounts it.
 const express = require('express')
 const router = express.Router()
 const flash = require('connect-flash')

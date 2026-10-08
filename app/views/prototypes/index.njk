@@ -98,22 +98,22 @@
   <div class="app-home">
     <div class="govuk-grid-row govuk-!-margin-top-4">
       <div class="govuk-grid-column-full">
-        <section class="app-prototype-index" aria-labelledby="current-version">
+        <section class="app-prototype-index" aria-labelledby="version-1-1">
           <div class="app-prototype-index__heading-row">
-            <h2 class="govuk-heading-m app-prototype-index__heading" id="current-version">Current version</h2>
-            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-06">6 October 2026</time></p>
+            <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-1">Version 1.1</h2>
+            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-08">8 October 2026</time></p>
           </div>
           <ul class="app-prototype-list">
-            {{ prototypeItem("/home", "Find school and college jobs near you", "The current Teaching Vacancies homepage, search, and job listings.", "user") }}
-            {{ prototypeItem("/mobile", "View on mobile and tablet layouts", "Preview the pages on phone and tablet screens.", "devices") }}
-            {{ prototypeItem("/signed-in", "View signed in", "Open the prototype as a signed-in user.", "signed-in") }}
+            {{ prototypeItem("/1-1/home", "Find school and college jobs near you", "A separate copy of 1-0. Page and mock data changes stay in this version.", "user") }}
+            {{ prototypeItem("/1-1/mobile", "View on mobile and tablet layouts", "Preview the 1-1 pages on phone and tablet screens.", "devices") }}
+            {{ prototypeItem("/1-1/signed-in", "View signed in", "Open the 1-1 prototype as a signed-in user.", "signed-in") }}
           </ul>
         </section>
 
         <section class="app-prototype-index" aria-labelledby="other-prototypes">
           <h2 class="govuk-heading-m app-prototype-index__heading" id="other-prototypes">Other prototypes</h2>
           <ul class="app-prototype-list">
-            {{ prototypeItem("/fe", "Further Education prototype work", "Options for merging, separating, or dedicating further education roles.", "design") }}
+            {{ prototypeItem("/1-0/fe", "Further Education prototype work", "Options for merging, separating, or dedicating further education roles.", "design") }}
           </ul>
         </section>
 
@@ -121,9 +121,21 @@
           <h2 class="govuk-heading-m app-prototype-index__heading" id="references">References</h2>
           <ul class="app-prototype-list">
             {{ prototypeItem("https://tv-design-history.herokuapp.com/", "Teaching Vacancies design history", "Analysis, design and research from the Teaching Vacancies service.", "docs") }}
-            {{ prototypeItem("/documentation", "Documentation", "Tech stack, mock JSON, and page flows.", "docs") }}
+            {{ prototypeItem("/1-0/documentation", "Documentation", "Tech stack, mock JSON, and page flows.", "docs") }}
             {{ prototypeItem("https://design-system.service.gov.uk/components/", "GOV.UK Design System", "Reusable components for building consistent government services.", "crown") }}
             {{ prototypeItem("https://design.education.gov.uk/standards", "DfE design standards", "Principles and guidelines for accessible DfE digital services.", "crown") }}
+          </ul>
+        </section>
+
+        <section class="app-prototype-index" aria-labelledby="version-1-0">
+          <div class="app-prototype-index__heading-row">
+            <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-0">Version 1.0</h2>
+            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-06">6 October 2026</time></p>
+          </div>
+          <ul class="app-prototype-list">
+            {{ prototypeItem("/1-0/home", "Find school and college jobs near you", "The current Teaching Vacancies homepage, search, and job listings.", "user") }}
+            {{ prototypeItem("/1-0/mobile", "View on mobile and tablet layouts", "Preview the pages on phone and tablet screens.", "devices") }}
+            {{ prototypeItem("/1-0/signed-in", "View signed in", "Open the prototype as a signed-in user.", "signed-in") }}
           </ul>
         </section>
       </div>

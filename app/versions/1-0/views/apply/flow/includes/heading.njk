@@ -1,0 +1,37 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% macro applicationHeading(backHref) %}
+  {{ govukBackLink({
+    text: "Back",
+    href: backHref or ("/jobs/" + job.id + "/apply/task-list")
+  }) }}
+  <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+  <h1 class="govuk-heading-l">Application</h1>
+{% endmacro %}
+
+{% macro completedSection(section, hint) %}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Have you completed this section?</legend>
+      {% if hint %}
+        <div class="govuk-hint">{{ hint }}</div>
+      {% endif %}
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="completed" name="completed" type="radio" value="yes" {% if application.statuses[section] != "Incomplete" %}checked{% endif %}>
+          <label class="govuk-label govuk-radios__label" for="completed">Yes, I’ve completed this section</label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="completed-2" name="completed" type="radio" value="no" {% if application.statuses[section] == "Incomplete" %}checked{% endif %}>
+          <label class="govuk-label govuk-radios__label" for="completed-2">No, I’ll come back to it later</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="govuk-button-group">
+    {{ govukButton({ text: "Save and continue" }) }}
+    <a class="govuk-link" href="/jobs/{{ job.id }}/apply/task-list">Cancel and return to your account</a>
+  </div>
+  <p class="govuk-body">If you select ‘Cancel and return to your account’, you will lose any unsaved information from this step. Information from previous steps will be saved in your draft application.</p>
+{% endmacro %}

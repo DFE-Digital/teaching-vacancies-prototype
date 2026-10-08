@@ -1,0 +1,34 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Link has expired' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ govukNotificationBanner({
+                html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+                type: "success",
+                icon: false
+            }) if flash and flash.length }}
+
+            <h1 class="govuk-heading-xl">
+                {{title}}
+            </h1>
+
+            <p>We need to email another link to alex.lee@education.gov.uk so you can activate your account.</p>
+
+            <form method="post" novalidate>
+
+                <button class="govuk-button" data-module="govuk-button">
+                    Resend email
+                </button>
+
+            </form>
+
+        </div>
+  </div>
+
+{% endblock %}
+

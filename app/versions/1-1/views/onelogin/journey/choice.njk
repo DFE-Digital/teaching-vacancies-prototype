@@ -1,0 +1,38 @@
+
+{% extends "layout_email.njk" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Take user back to Teaching Vacancies...
+      </h1>
+
+      <p>Make choice:</p>
+
+      <form method="post">
+
+        <input class="govuk-input" id="match" name="match" type="hidden" value="match">
+
+        {{ govukButton({
+          text: 'Email matches an old account'
+        }) }}
+
+      </form>
+
+      <form method="post">
+
+        <input class="govuk-input" id="match" name="match" type="hidden" value="nomatch">
+
+        {{ govukButton({
+          text: 'Email does not match an old account'
+        }) }}
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

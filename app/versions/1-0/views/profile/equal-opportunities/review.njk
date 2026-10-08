@@ -1,0 +1,141 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Equal opportunities and recruitment monitoring' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?"
+            },
+            value: {
+              text: user.profile.disability
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/equal-opportunities/disability",
+                  text: "Change",
+                  visuallyHiddenText: "disability preference"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How old are you?"
+            },
+            value: {
+              text: user.profile.age
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/equal-opportunities/age",
+                  text: "Change",
+                  visuallyHiddenText: "age"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you describe your gender?"
+            },
+            value: {
+              text: user.profile.gender
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/equal-opportunities/gender",
+                  text: "Change",
+                  visuallyHiddenText: "gender"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you describe your sexual orientation?"
+            },
+            value: {
+              text: user.profile.orientation
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/equal-opportunities/orientation",
+                  text: "Change",
+                  visuallyHiddenText: "sexual orientation"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your ethnic group?"
+            },
+            value: {
+              text: user.profile.ethnicGroup
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/equal-opportunities/ethnic-group",
+                  text: "Change",
+                  visuallyHiddenText: "ethnic group"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your religion or belief?"
+            },
+            value: {
+              text: user.profile.religion
+            },
+            actions: {
+              items: [
+                {
+                  href: "/profile/equal-opportunities/religion",
+                  text: "Change",
+                  visuallyHiddenText: "religion"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to profile",
+        href: "/profile"
+      }) }}
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

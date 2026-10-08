@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading with context %}
+{% set title = "Add training or CPD" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading("/jobs/" + job.id + "/apply/training") }}
+      <h2 class="govuk-heading-l">Add training or CPD</h2>
+      <form method="post" action="/jobs/{{ job.id }}/apply/training/{{ formAction }}">
+        {{ govukInput({ label: { text: "Name of training or course" }, name: "name", value: item.name }) }}
+        {{ govukInput({ label: { text: "Training provider" }, name: "provider", value: item.provider }) }}
+        {{ govukInput({ label: { text: "Grade (optional)" }, classes: "govuk-!-width-one-half", name: "grade", value: item.grade }) }}
+        {{ govukInput({ label: { text: "Date completed" }, hint: { text: "For example, 2020" }, classes: "govuk-input--width-4", name: "date", value: item.date }) }}
+        {{ govukInput({ label: { text: "Course length (optional)" }, classes: "govuk-!-width-one-half", name: "length", value: item.length }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({ text: "Save and continue" }) }}
+          <a class="govuk-link" href="/jobs/{{ job.id }}/apply/training">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

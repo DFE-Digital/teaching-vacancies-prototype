@@ -1,0 +1,27 @@
+.app-logo-title {
+  margin-bottom: govuk-spacing(6);
+
+  @include govuk-media-query($from: desktop) {
+    overflow: hidden;
+  }
+
+  .app-logo-title__image {
+    width: 70px;
+    margin-bottom: govuk-spacing(1);
+
+    img {
+      width: 70px;
+    }
+    @include govuk-media-query($from: desktop) {
+      float: left;
+      margin-right: govuk-spacing(3);
+    }
+  }
+
+  .app-logo-title__text {
+    @include govuk-media-query($from: desktop) {
+      float: left;
+      max-width: calc(66.6666% - 85px);
+    }
+  }
+}

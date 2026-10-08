@@ -1,0 +1,78 @@
+{%- from "govuk/components/summary-list/macro.njk" import govukSummaryList -%}
+
+
+
+<div class="app-job-list {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  {% for job in params.jobs %}
+
+    <div class="app-job-list__item">
+      <h{{ params.heading.level | default(2) }} class="{{params.heading.classes | default('govuk-heading-s')}}">
+        <a href="/jobs/{{job.id}}">{{job.title}}</a>
+      </h{{ params.heading.level | default(2) }}>
+
+      {% set salaryDetails %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 govuk-!-font-size-16">
+          {% for salaryDetail in job.salaryDetails %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+                {{salaryDetail}}:<br>
+                {% if salaryDetail == 'Full-time equivalent salary' %}
+                  {{job.fullTimeEquivalentSalaryDetails}}
+                {% elseif salaryDetail == 'Actual salary' %}
+                  {{job.actualSalaryDetails}}
+                {% else %}
+                  {{job.payScaleDetails}}
+                {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Role"
+            },
+            value: {
+              text: job.role
+            }
+          },
+          {
+            key: {
+              text: "Full-time equivalent salary"
+            },
+            value: {
+              html: job.fullTimeEquivalentSalaryDetails
+            }
+          } if job.fullTimeEquivalentSalaryDetails,
+          {
+            key: {
+              text: "Actual salary"
+            },
+            value: {
+              html: job.actualSalaryDetails
+            }
+          } if job.actualSalaryDetails,
+          {
+            key: {
+              text: "Pay scale"
+            },
+            value: {
+              html: job.payScaleDetails
+            }
+          } if job.payScaleDetails,
+          {
+            key: {
+              text: "Working pattern"
+            },
+            value: {
+              text: job.workingPatterns | join(', ') | capitalize
+            }
+          }
+        ]
+      }) }}
+    </div>
+  {% endfor %}
+</div>

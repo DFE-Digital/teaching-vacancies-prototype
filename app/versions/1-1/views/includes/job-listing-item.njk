@@ -1,0 +1,108 @@
+{% set address %}
+  {% for part, value in job.organisation.address %}
+    {{ value }}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set closingInformation %}
+  {{ job.closingDate | date }}{% if job.closingTime %} at {{ job.closingTime }}{% endif %}
+{% endset %}
+
+{% set schoolType %}
+  {% if job.schoolType %}
+    {{ job.schoolType }}
+  {% else %}
+    {{ job.organisation.type }}{% if job.organisation.ageGroup %}, ages {{ job.organisation.ageGroup }}{% endif %}
+  {% endif %}
+{% endset %}
+
+{% set visaText %}
+  {% if job.sponsorship %}
+    {{ job.sponsorship }}
+  {% else %}
+    Visas cannot be sponsored
+  {% endif %}
+{% endset %}
+
+<div class="app-jobs__item">
+  <div class="header-with-logo">
+    <div class="header-with-logo-title">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+        <span class="govuk-!-margin-right-2">
+          <a class="govuk-link" href="/jobs/{{ job.id }}">{{ job.title }}</a>
+        </span>
+        {% if job.isUsingApplicationForm == 'Yes' %}
+          <a class="govuk-tag govuk-tag--green" href="/jobs/{{ job.id }}/apply">Quick apply</a>
+        {% endif %}
+      </h2>
+      <p class="govuk-body address govuk-!-margin-bottom-0 govuk-!-margin-top-0">{{ job.organisation.name }}, {{ address }}</p>
+    </div>
+    {% if job.organisation.logo and job.organisation.logo != 'Not entered' %}
+      <div class="header-with-logo-logo--search-result">
+        <img src="{{ job.organisation.logo }}" alt="">
+      </div>
+    {% endif %}
+  </div>
+
+  {{ govukSummaryList({
+    classes: 'govuk-summary-list--no-border app-summary-list--compact',
+    rows: [
+      {
+        key: {
+          text: "Full time equivalent salary"
+        },
+        value: {
+          html: job.fullTimeEquivalentSalaryDetails
+        }
+      } if job.fullTimeEquivalentSalaryDetails,
+      {
+        key: {
+          text: "Actual salary"
+        },
+        value: {
+          html: job.actualSalaryDetails
+        }
+      } if job.actualSalaryDetails,
+      {
+        key: {
+          text: "Pay scale"
+        },
+        value: {
+          html: job.payScaleDetails
+        }
+      } if job.payScaleDetails,
+      {
+        key: {
+          text: "School type"
+        },
+        value: {
+          html: schoolType
+        }
+      } if schoolType | trim,
+      {
+        key: {
+          text: "Working pattern"
+        },
+        value: {
+          text: job.workingPatterns | join(', ') | capitalize
+        }
+      } if job.workingPatterns,
+      {
+        key: {
+          text: "Closing date"
+        },
+        value: {
+          html: closingInformation
+        }
+      } if job.closingDate,
+      {
+        key: {
+          text: "Visa sponsorship"
+        },
+        value: {
+          text: visaText
+        }
+      }
+    ]
+  }) }}
+</div>

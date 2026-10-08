@@ -1,0 +1,215 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Saved jobs' %}
+{% set showSavedJobsToggle = true %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-account-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 15px;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-account-nav__item {
+      margin: 0 0 20px;
+    }
+
+    .app-account-nav__item:last-child {
+      margin-bottom: 15px;
+    }
+
+    .app-account-nav__link[aria-current="page"] {
+      display: inline-block;
+      padding-bottom: 6px;
+      border-bottom: 4px solid #1d70b8;
+      text-decoration: none;
+    }
+
+    .app-saved-jobs-empty {
+      margin-bottom: 30px;
+      padding: 25px 20px 15px;
+      border: 3px dashed #b1b4b6;
+      background: #f8f8f8;
+    }
+
+    .app-saved-jobs-empty .govuk-heading-m {
+      margin-bottom: 15px;
+    }
+
+    .app-saved-jobs-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 20px;
+    }
+
+    .app-saved-jobs-heading {
+      margin-bottom: 15px;
+    }
+
+    .app-saved-jobs-sort {
+      margin-bottom: 25px;
+    }
+
+    .app-saved-jobs-sort__sep {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .app-saved-jobs-help {
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+
+    .app-saved-job {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 10px;
+      padding: 0 0 15px;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-saved-job + .app-saved-job {
+      padding-top: 15px;
+    }
+
+    .app-saved-job__title {
+      max-width: 15em;
+      margin-bottom: 5px;
+    }
+
+    .app-saved-job__location {
+      margin-bottom: 0;
+      color: #505a5f;
+    }
+
+    .app-saved-job__dates,
+    .app-saved-job__actions {
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .app-saved-job__actions {
+      margin-top: 0;
+      white-space: nowrap;
+    }
+
+    .app-saved-job__actions a:last-child {
+      display: block;
+      margin-top: 5px;
+    }
+
+    @media (min-width: 40.0625em) {
+      .app-saved-jobs-layout {
+        grid-template-columns: 200px minmax(0, 1fr);
+        column-gap: 30px;
+      }
+
+      .app-saved-job {
+        grid-template-columns: minmax(18em, 26em) max-content minmax(max-content, 1fr);
+        column-gap: 30px;
+        align-items: start;
+      }
+
+      .app-saved-job__actions {
+        justify-self: end;
+        text-align: left;
+      }
+    }
+
+    .app-state-toggle {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .app-state-toggle a[aria-current="true"] {
+      font-weight: bold;
+      text-decoration: none;
+      pointer-events: none;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l app-saved-jobs-heading">Saved jobs</h1>
+
+  {% if savedJobList and savedJobList.length %}
+    <p class="govuk-body app-saved-jobs-sort">
+      <span class="govuk-!-font-weight-bold">Sort by:</span>
+      {% if savedJobSort == 'added' %}
+        <span class="govuk-!-font-weight-bold">Date added (most recent)</span>
+      {% else %}
+        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort=added">Date added (most recent)</a>
+      {% endif %}<span class="app-saved-jobs-sort__sep" aria-hidden="true">|</span>
+      {%- if savedJobSort == 'deadline' %}
+        <span class="govuk-!-font-weight-bold">Application deadline (soonest)</span>
+      {% else %}
+        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort=deadline">Application deadline (soonest)</a>
+      {% endif %}<span class="app-saved-jobs-sort__sep" aria-hidden="true">|</span>
+      {%- if savedJobSort == 'title' %}
+        <span class="govuk-!-font-weight-bold">Job title (a to z)</span>
+      {% else %}
+        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort=title">Job title (a to z)</a>
+      {% endif %}
+    </p>
+  {% endif %}
+
+  <div class="app-saved-jobs-layout">
+    <div>
+      <nav aria-label="Account">
+        <ul class="app-account-nav">
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobseekers/job_applications">Applications</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link app-account-nav__link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'empty' }}" aria-current="page">Your saved jobs</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobseekers/subscriptions">Your job alerts</a>
+          </li>
+          <li class="app-account-nav__item">
+            <a class="govuk-link" href="/jobalerts/jobalert">Create a job alert</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      {% if savedJobList and savedJobList.length %}
+        {% for job in savedJobList %}
+          <article class="app-saved-job">
+            <div>
+              <h2 class="govuk-heading-s app-saved-job__title">
+                <a class="govuk-link" href="{{ job.href }}">{{ job.title }}</a>
+              </h2>
+              <p class="govuk-body app-saved-job__location">{{ job.organisation }}{% if job.location %}, {{ job.location }}{% endif %}</p>
+            </div>
+            <p class="govuk-body app-saved-job__dates govuk-!-margin-bottom-0">
+              Added: {{ job.added }}<br>
+              Application deadline:<br>
+              {{ job.deadline }}
+            </p>
+            <p class="govuk-body app-saved-job__actions govuk-!-margin-bottom-0">
+              <a class="govuk-link" href="{{ job.href }}">Apply for this job</a><span class="app-saved-job__sep" aria-hidden="true"> |</span>
+              <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort={{ savedJobSort }}&amp;deleteJob={{ job.id }}">Delete</a>
+            </p>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="app-saved-jobs-empty">
+          <h2 class="govuk-heading-m">You have no saved jobs</h2>
+          <p class="govuk-body"><a class="govuk-link" href="/home">Find jobs</a> and save the ones you want to review or apply for later.</p>
+        </div>
+      {% endif %}
+
+      {{ govukDetails({
+        classes: "app-saved-jobs-help",
+        summaryText: "Can't see your saved jobs?",
+        html: '<p class="govuk-body">If your Teaching Vacancies account used a different email address from your GOV.UK One Login account, your saved jobs will not automatically appear here.</p><p class="govuk-body">You can request <a class="govuk-link" href="/onelogin/journey/import">a transfer of your existing profile</a>.</p>'
+      }) }}
+    </div>
+  </div>
+{% endblock %}

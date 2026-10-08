@@ -1,0 +1,27 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Sign in to Teaching Vacancies' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Sign in to Teaching Vacancies</h1>
+
+      <h2 class="govuk-heading-m">Jobseeker sign-in</h2>
+      <p class="govuk-body">Sign in here to save and apply for jobs.</p>
+      {{ govukButton({
+        text: "Jobseeker sign-in",
+        href: "/account/sign-in/jobseeker"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Hiring staff sign-in</h2>
+      <p class="govuk-body">Sign in here to manage your job listings and applicants.</p>
+      {{ govukButton({
+        text: "Hiring staff sign-in",
+        href: "/account/sign-in/hiring-staff"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

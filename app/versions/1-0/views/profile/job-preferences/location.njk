@@ -1,0 +1,67 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Location' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">
+          Job preferences
+        </span>
+        {{title}}
+      </h1>
+
+
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "profile[location]",
+          name: "profile[location]",
+          label: {
+            text: "Where do you want to work?",
+            classes: 'govuk-label--m'
+          },
+          hint:{
+            text: "Enter a city, county or postcode in England. You'll be able to add more locations afterwards."
+          },
+          value: location
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "profile[radius]",
+          name: "profile[radius]",
+          fieldset: {
+            legend: {
+              text: "Search radius",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: searchRadiusOptions
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

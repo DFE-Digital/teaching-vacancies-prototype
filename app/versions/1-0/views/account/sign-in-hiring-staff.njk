@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Hiring staff sign-in' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Hiring staff sign-in</h1>
+      <p class="govuk-body">Use DfE Sign-in to access your Teaching Vacancies account.</p>
+
+      <h2 class="govuk-heading-m">Get a Teaching Vacancies account</h2>
+      <p class="govuk-body">Create a DfE Sign-in account or log in to your existing one, then select 'Request access to a service' and choose Teaching Vacancies.</p>
+
+      <h2 class="govuk-heading-m">List a role at trust or local authority level</h2>
+      <p class="govuk-body">To list a role across multiple schools or at trust or local authority level, you need to make sure you have the right level of access. Continue to DfE Sign-in and select 'Request access to an organisation'.</p>
+
+      {{ govukButton({
+        text: "Continue to DfE Sign-in",
+        href: "https://services.signin.education.gov.uk/"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

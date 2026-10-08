@@ -1,0 +1,78 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'schools' %}
+{% set activeNav = 'schools' %}
+
+
+{% block content %}
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Schools ({{ organisations.length }})
+  </h1>
+
+    <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/schools-filter-panel.njk" %}
+    </div>
+
+    <div class="app-filter-layout__content">
+      {% include "includes/schools-search-form.njk" %}
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div class="app-schools">
+
+        {% for organisation in organisations %}
+          {% if loop.index0 < 10 %}
+            {% include "includes/organisation-listing-item.njk" %}
+          {% endif %}
+        {% endfor %}
+
+      </div>
+      {% set shownCount = 10 if organisations.length > 10 else organisations.length %}
+      {{ govukPagination({
+          next: {
+            href: "#"
+          } if organisations.length > 10,
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            } if organisations.length > 10
+          ]
+        }) }}
+      <p class="govuk-body">Showing 1 to {{ shownCount }} of {{ organisations.length }} results</p>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
+{% endblock %}
