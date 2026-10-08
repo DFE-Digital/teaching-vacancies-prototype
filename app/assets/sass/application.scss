@@ -416,9 +416,52 @@ hr {
     }
   }
 
+  .is-hidden-on-v2 {
+    display: none !important;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .banner-buttons--v2 > .is-hidden-on-v2 + .govuk-grid-column-one-third {
+      margin-left: 33.3333333333%;
+    }
+  }
+
 }
 
 .vacancies-show {
+  .vacancies-show__intro .header-with-logo {
+    margin-bottom: 15px;
+  }
+
+  .vacancies-show__header-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
+
+  .vacancies-show__header-action .govuk-button,
+  .vacancies-show__banner-apply .govuk-button {
+    margin-bottom: 0;
+  }
+
+  .vacancies-show__banner-apply .govuk-button {
+    margin-top: 15px;
+  }
+
+  .vacancies-show__new-tab-icon {
+    display: inline-block;
+    height: 16px;
+    margin-left: 8px;
+    vertical-align: -2px;
+    width: 16px;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    .vacancies-show__header-action .govuk-button {
+      width: 100%;
+    }
+  }
+
   .header-with-logo {
     align-items: center;
     display: flex;
