@@ -410,8 +410,10 @@ hr {
   }
 
   .banner-button-component__button.icon--apply {
-    display: inline-block;
-    width: auto;
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      width: auto;
+    }
   }
 
 }
