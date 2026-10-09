@@ -82,14 +82,14 @@
   </span>
 {% endmacro %}
 
-{% macro prototypeItem(href, title, meta, icon) %}
+{% macro prototypeItem(href, title, meta, icon, extra) %}
   <li class="app-prototype-list__item">
     {{ prototypeIcon(icon) }}
     <div class="app-prototype-list__text">
       <h3 class="app-prototype-list__title">
         <a class="govuk-link" href="{{ href }}">{{ title }}</a>
       </h3>
-      <p class="app-prototype-list__meta">{{ meta }}</p>
+      <p class="app-prototype-list__meta">{{ meta }}{% if extra %} {{ extra | safe }}{% endif %}</p>
     </div>
   </li>
 {% endmacro %}
@@ -101,11 +101,11 @@
         <section class="app-prototype-index" aria-labelledby="version-1-1">
           <div class="app-prototype-index__heading-row">
             <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-1">Version 1.1</h2>
-            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-08">8 October 2026</time></p>
+            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-09">9 October 2026</time></p>
           </div>
           <ul class="app-prototype-list">
             {{ prototypeItem("/1-1/home", "Find school and college jobs near you", "A separate copy of 1-0. Page and mock data changes stay in this version.", "user") }}
-            {{ prototypeItem("/1-1/mobile", "View on mobile and tablet layouts", "Preview the 1-1 pages on phone and tablet screens.", "devices") }}
+            {{ prototypeItem("/1-1/mobile", "View on mobile and tablet layouts", "Preview the 1-1 pages on phone and tablet screens.", "devices", '<a class="govuk-link" href="/1-1/compare">Compare</a>') }}
             {{ prototypeItem("/1-1/signed-in", "View signed in", "Open the 1-1 prototype as a signed-in user.", "signed-in") }}
             {{ prototypeItem("/1-1/jobseeker/job-alert-1", "Jobs alert by email", "Preview the job alert email with 69 new jobs.", "docs") }}
           </ul>

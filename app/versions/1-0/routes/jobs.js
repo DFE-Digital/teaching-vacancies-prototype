@@ -454,13 +454,15 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobs/unhappy', (req, res) => {
-    res.render('apply/unhappy')
-  })
+  function renderUnhappy (req, res) {
+    const jobs = (req.session.data && req.session.data.jobs) || []
+    const job = jobs.find(item => String(item.id) === String(req.query.job))
+    res.render('apply/unhappy', { job: job })
+  }
 
-  router.get('/apply/unhappy', (req, res) => {
-    res.render('apply/unhappy')
-  })
+  router.get('/jobs/unhappy', renderUnhappy)
+
+  router.get('/apply/unhappy', renderUnhappy)
 
   router.get('/jobs/:id/save', (req, res) => {
     const jobs = req.session.data.jobs || []

@@ -29,8 +29,6 @@
 {% if not resultSalary and job.salaryDetails %}
   {% set resultSalary = job.salaryDetails | join(', ') %}
 {% endif %}
-{% set resultKeywords = job.subjects | join(', ') if job.subjects else '' %}
-
 <div class="app-jobs__item">
   <div class="header-with-logo">
     <div class="header-with-logo-title">
@@ -66,10 +64,6 @@
         key: { text: "Contract type" },
         value: { text: job.contractType if job.contractType else "Not stated" }
       },
-      {
-        key: { text: "Keywords" },
-        value: { text: resultKeywords }
-      } if resultKeywords,
       {
         key: { text: "Early career teachers" },
         value: { text: "Suitable" if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" else "Not suitable" }

@@ -376,7 +376,6 @@
 
                 {% set resultPhase = job.phase or job.organisation.phase %}
                 {% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails or (job.salaryDetails | join(', ') if job.salaryDetails else '') %}
-                {% set resultKeywords = job.subjects | join(', ') if job.subjects else '' %}
 
                 {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
@@ -393,10 +392,6 @@
                     key: { text: "Contract type" },
                     value: { text: job.contractType if job.contractType else "Not stated" }
                     },
-                    {
-                    key: { text: "Keywords" },
-                    value: { text: resultKeywords }
-                    } if resultKeywords,
                     {
                     key: { text: "Pay scale" },
                     value: { text: job.salaryDetails | join(', ') }

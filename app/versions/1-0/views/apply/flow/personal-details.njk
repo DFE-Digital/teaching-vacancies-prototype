@@ -86,6 +86,14 @@
           type: "email"
         }) }}
 
+        {% set offersVisaSponsorship = job.sponsorship == "Skilled Worker visas can be sponsored" or job.sponsorship == "Skilled worker visa can be sponsored" %}
+        {% set visaHint %}
+          If you are a citizen of the UK or Ireland, or you have settled or pre-settled status, you do not need sponsorship.
+          <a class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas" rel="noreferrer noopener" target="_blank">Find out what visa you need (opens in a new tab)</a>.
+        {% endset %}
+        {% set visaWarning %}
+          {% include "apply/includes/visa-sponsorship-warning.njk" %}
+        {% endset %}
         {{ govukRadios({
           name: "skilledWorker",
           fieldset: {
@@ -94,10 +102,15 @@
               classes: "govuk-fieldset__legend--s"
             }
           },
-          hint: { text: "If you are a citizen of the UK, Ireland or you have settled or pre-settled status, you do not need sponsorship." },
+          hint: { html: visaHint },
           items: [
             { value: "No", text: "No, I already have the right to work in the UK", checked: application.personalDetails.skilledWorker == "No" },
-            { value: "Yes", text: "Yes, I need Skilled Worker visa sponsorship", checked: application.personalDetails.skilledWorker == "Yes" }
+            {
+              value: "Yes",
+              text: "Yes, I need Skilled Worker visa sponsorship",
+              checked: application.personalDetails.skilledWorker == "Yes",
+              conditional: { html: visaWarning } if not offersVisaSponsorship
+            }
           ]
         }) }}
 

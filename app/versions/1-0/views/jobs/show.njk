@@ -33,7 +33,7 @@
 
   {% if job.isUsingApplicationForm == 'Yes' %}
     {% if user.profile.provideWork == 'No' %}
-      {% set applyHref = '/apply/unhappy' %}
+      {% set applyHref = '/apply/unhappy?job=' + job.id %}
     {% else %}
       {% set applyHref = '/jobs/' + job.id + '/apply' %}
     {% endif %}

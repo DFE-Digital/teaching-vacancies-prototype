@@ -23,7 +23,9 @@ window.addEventListener('load', function () {
   });
 
 $(document).ready(function () {
-  window.GOVUKFrontend.initAll()
+  if (window.GOVUKFrontend && window.GOVUKFrontend.initAll) {
+    window.GOVUKFrontend.initAll()
+  }
 
   var serviceNavigation = document.querySelector('[data-module="govuk-service-navigation"]')
   if (serviceNavigation) {

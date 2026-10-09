@@ -148,7 +148,7 @@ function bindVersionResponse (req, res, next, version, env) {
       callback = options
       options = {}
     }
-    const context = Object.assign({}, res.locals, options || {})
+    const context = Object.assign({}, sharedApp ? sharedApp.locals : {}, res.locals, options || {})
 
     const finish = (err, html) => {
       if (err) {
@@ -198,6 +198,7 @@ function createRouter (version) {
 }
 
 const routers = {}
+let sharedApp = null
 VERSIONS.forEach(version => {
   routers[version] = createRouter(version)
 })
@@ -216,6 +217,7 @@ function legacyRedirect (req, res, next) {
 }
 
 function mount (app) {
+  sharedApp = app
   VERSIONS.forEach(version => {
     app.use(`/${version}`, routers[version])
   })

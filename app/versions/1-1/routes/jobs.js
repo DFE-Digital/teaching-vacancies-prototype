@@ -1,6 +1,17 @@
 
+const fs = require('fs')
+const path = require('path')
 const _ = require('lodash')
 const users = require('../data/users.json')
+const liveProxy = require('./live-proxy')
+
+function prototypeVersions () {
+  const versionsDir = path.join(__dirname, '..', '..')
+  return fs.readdirSync(versionsDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory() && /^\d+-\d+$/.test(entry.name))
+    .map(entry => entry.name)
+    .sort()
+}
 
 function getHomepageLocationOptions() {
   return [
@@ -105,6 +116,9 @@ function getHomepageLocationOptions() {
 
 module.exports = router => {
 
+  router.all('/compare/live', liveProxy)
+  router.all('/compare/live/*', liveProxy)
+
   router.get('/', (req, res) => {
     res.render('prototypes/index')
   })
@@ -115,6 +129,22 @@ module.exports = router => {
 
   router.get('/mobile', (req, res) => {
     res.render('prototypes/mobile')
+  })
+
+  router.get('/compare', (req, res) => {
+    const versions = prototypeVersions().map(function (version) {
+      return {
+        id: version,
+        label: 'v' + version.replace('-', '.'),
+        url: '/' + version + '/home'
+      }
+    })
+    res.render('prototypes/compare', {
+      versions: versions,
+      liveUrl: '/1-1/compare/live',
+      leftVersion: versions.find(function (version) { return version.id === '1-0' }) || versions[0],
+      rightVersion: versions.find(function (version) { return version.id === '1-1' }) || versions[versions.length - 1]
+    })
   })
 
   router.get('/signed-in', (req, res) => {
@@ -464,13 +494,15 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobs/unhappy', (req, res) => {
-    res.render('apply/unhappy')
-  })
+  function renderUnhappy (req, res) {
+    const jobs = (req.session.data && req.session.data.jobs) || []
+    const job = jobs.find(item => String(item.id) === String(req.query.job))
+    res.render('apply/unhappy', { job: job })
+  }
 
-  router.get('/apply/unhappy', (req, res) => {
-    res.render('apply/unhappy')
-  })
+  router.get('/jobs/unhappy', renderUnhappy)
+
+  router.get('/apply/unhappy', renderUnhappy)
 
   router.get('/jobs/:id/save', (req, res) => {
     const jobs = req.session.data.jobs || []
