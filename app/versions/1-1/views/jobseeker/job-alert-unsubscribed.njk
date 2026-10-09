@@ -1,0 +1,15 @@
+{% extends "layout_email.njk" %}
+
+{% set title = 'You have unsubscribed' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">You have unsubscribed</h1>
+      <p class="govuk-body">You will no longer receive these job alert emails.</p>
+      <p class="govuk-body">
+        <a class="govuk-link" href="/">Go to Teaching Vacancies</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

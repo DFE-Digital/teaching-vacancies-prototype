@@ -78,6 +78,17 @@ router.get('/jobseeker/job-alert-1', (req, res) => {
   })
 })
 
+router.get('/jobseeker/job-alert-feedback', (req, res) => {
+  const answer = req.query.answer === 'no' ? 'no' : 'yes'
+  res.render('jobseeker/job-alert-feedback', {
+    answer
+  })
+})
+
+router.get('/jobseeker/job-alert-unsubscribed', (req, res) => {
+  res.render('jobseeker/job-alert-unsubscribed')
+})
+
 router.get('/job-alert-via-email', (req, res) => {
   if (req.query['filters-applied'] === 'true') {
     alertFilterKeys.forEach(key => {
