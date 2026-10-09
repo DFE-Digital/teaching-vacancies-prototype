@@ -7,6 +7,10 @@
     href: backHref or ("/jobs/" + job.id + "/apply/task-list")
   }) }}
   <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+  {% set educationPhase = job.phase or job.organisation.phase %}
+  {% if educationPhase %}
+    <p class="govuk-body govuk-!-margin-bottom-2">Education phase: {{ educationPhase }}</p>
+  {% endif %}
   <h1 class="govuk-heading-l">Application</h1>
 {% endmacro %}
 

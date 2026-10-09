@@ -10,6 +10,10 @@
         <p class="govuk-body"><a class="govuk-link" href="/jobs">Back to jobs</a></p>
       {% else %}
         <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+        {% set educationPhase = job.phase or job.organisation.phase %}
+        {% if educationPhase %}
+          <p class="govuk-body govuk-!-margin-bottom-2">Education phase: {{ educationPhase }}</p>
+        {% endif %}
         <h1 class="govuk-heading-l">Application</h1>
 
         <h2 class="govuk-heading-m">Before you start</h2>

@@ -531,8 +531,15 @@
         ],
         "title": "SEN Teaching Assistant",
         "searches": [
-            "SEN"
+            "SEN",
+            "SENCO"
         ],
+        "contractType": "Fixed term",
+        "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+        "acceptsOverseasQualifications": "Yes",
+        "drivingRequired": "No",
+        "suitableForDisabledApplicants": "Yes",
+        "workplaceAdjustments": "Yes",
         "phase": "Further education",
         "workingPatterns": [
             "Part time"
@@ -732,6 +739,10 @@
         "subjects": ["Mathematics"],
         "title": "Maths Teacher",
         "searches": ["Maths", "Mathematics", "Maths Teacher"],
+        "contractType": "Permanent",
+        "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+        "acceptsOverseasQualifications": "No",
+        "drivingRequired": "No",
         "phase": "Secondary school",
         "workingPatterns": ["Full time"],
         "salaryDetails": ["MPS/UPS"],
@@ -1274,5 +1285,50 @@
         "closingTime": "5pm",
         "startDate": "2026-12-30T09:00:00.000Z",
         "distance": 6.9
+    },
+    {
+        "id": "676686900",
+        "jobtype": "Teacher or lecturer",
+        "status": "Active",
+        "organisation": {
+            "id": "p1q2r3s4-t5u6-v7w8-x9y0-computing01",
+            "name": "Riverside College",
+            "address": {
+                "address1": "18 Quay Street",
+                "town": "Manchester",
+                "postcode": "M3 3JE"
+            },
+            "type": "College",
+            "phase": "Further education",
+            "ageGroup": "16 to 19",
+            "size": "900",
+            "website": "http://riversidecollege.example",
+            "emailAddress": "jobs@riversidecollege.example",
+            "about": "Riverside College teaches vocational and academic courses, including computing.",
+            "safeguardingCommitment": "We are committed to safeguarding and promoting the welfare of all learners.",
+            "logo": "/public/images/logos/Bushey_Meads_School.png",
+            "photo": "/public/images/banner/secondary_desktop_mini_banner.jpg"
+        },
+        "hybrid": "No",
+        "role": ["Teacher or lecturer"],
+        "subjects": ["Computing", "Computer science", "ICT"],
+        "title": "Lecturer in computing",
+        "searches": ["Computer", "Computing", "ICT", "Computer science", "Lecturer"],
+        "contractType": "Permanent",
+        "phase": "Further education",
+        "workingPatterns": ["Full time"],
+        "salaryDetails": ["Band 6"],
+        "actualSalaryDetails": "£32,000 - £38,000",
+        "isUsingApplicationForm": "No",
+        "acceptsOverseasQualifications": "Yes",
+        "drivingRequired": "No",
+        "isRoleSuitableForEarlyCareeerTeachers": "No",
+        "suitableForDisabledApplicants": "Yes",
+        "workplaceAdjustments": "Yes",
+        "publishDate": "2026-09-01T09:00:00.000Z",
+        "closingDate": "2026-12-20T17:00:00.000Z",
+        "closingTime": "5pm",
+        "startDate": "2027-01-06T09:00:00.000Z",
+        "distance": 3.2
     }
 ]

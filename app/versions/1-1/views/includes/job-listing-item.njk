@@ -24,6 +24,13 @@
   {% endif %}
 {% endset %}
 
+{% set resultPhase = job.phase or job.organisation.phase %}
+{% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails %}
+{% if not resultSalary and job.salaryDetails %}
+  {% set resultSalary = job.salaryDetails | join(', ') %}
+{% endif %}
+{% set resultKeywords = job.subjects | join(', ') if job.subjects else '' %}
+
 <div class="app-jobs__item">
   <div class="header-with-logo">
     <div class="header-with-logo-title">
@@ -48,29 +55,33 @@
     classes: 'govuk-summary-list--no-border app-summary-list--compact',
     rows: [
       {
-        key: {
-          text: "Full time equivalent salary"
-        },
-        value: {
-          html: job.fullTimeEquivalentSalaryDetails
-        }
-      } if job.fullTimeEquivalentSalaryDetails,
+        key: { text: "Education phase" },
+        value: { text: resultPhase if resultPhase else "Not stated" }
+      },
       {
-        key: {
-          text: "Actual salary"
-        },
-        value: {
-          html: job.actualSalaryDetails
-        }
-      } if job.actualSalaryDetails,
+        key: { text: "Salary" },
+        value: { text: resultSalary if resultSalary else "Not provided" }
+      },
       {
-        key: {
-          text: "Pay scale"
-        },
-        value: {
-          html: job.payScaleDetails
-        }
-      } if job.payScaleDetails,
+        key: { text: "Contract type" },
+        value: { text: job.contractType if job.contractType else "Not stated" }
+      },
+      {
+        key: { text: "Keywords" },
+        value: { text: resultKeywords }
+      } if resultKeywords,
+      {
+        key: { text: "Early career teachers" },
+        value: { text: "Suitable" if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" else "Not suitable" }
+      } if job.isRoleSuitableForEarlyCareeerTeachers,
+      {
+        key: { text: "Overseas qualifications" },
+        value: { text: "Accepted" if job.acceptsOverseasQualifications == "Yes" else "Not accepted" }
+      } if job.acceptsOverseasQualifications,
+      {
+        key: { text: "Driving" },
+        value: { text: "Required" if job.drivingRequired == "Yes" else "Not required" }
+      } if job.drivingRequired,
       {
         key: {
           text: "School type"

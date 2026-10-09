@@ -8,6 +8,8 @@
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
   {% if data['filter-international'] %}  {% set filterInternational %}Skilled Worker visas can be sponsored{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
+  {% if data['filter-access'] %}  {% set filterAccess %} {{ data['filter-access'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterAccess %}{% endset %} {% endif %}
+  {% if data['filter-pay'] %}  {% set filterPay %} {{ data['filter-pay'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPay %}{% endset %} {% endif %}
 
 {% macro removeFilterHref(name, value) -%}
 /femerge/remove-filter?name={{ name | urlencode }}&value={{ value | urlencode }}
@@ -538,6 +540,43 @@
         }) }}
 
         {{ govukCheckboxes({
+          idPrefix: "filter-pay",
+          name: "filter-pay",
+          classes: "govuk-checkboxes--small filter-bottom",
+          fieldset: {
+            legend: {
+              text: "Pay scale",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "MPS/UPS", text: "MPS/UPS", checked: data['filter-pay'] and ('MPS/UPS' in data['filter-pay']) },
+            { value: "Band 3", text: "Band 3", checked: data['filter-pay'] and ('Band 3' in data['filter-pay']) },
+            { value: "Band 5", text: "Band 5", checked: data['filter-pay'] and ('Band 5' in data['filter-pay']) },
+            { value: "Band 6", text: "Band 6", checked: data['filter-pay'] and ('Band 6' in data['filter-pay']) }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "filter-access",
+          name: "filter-access",
+          classes: "govuk-checkboxes--small filter-bottom",
+          fieldset: {
+            legend: {
+              text: "Accessibility",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For applicants with disabilities"
+          },
+          items: [
+            { value: "Suitable for applicants with disabilities", text: "Suitable for applicants with disabilities", checked: data['filter-access'] and ('Suitable for applicants with disabilities' in data['filter-access']) },
+            { value: "Workplace adjustments available", text: "Workplace adjustments available", checked: data['filter-access'] and ('Workplace adjustments available' in data['filter-access']) }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
           idPrefix: "filter-quick",
           name: "filter-quick",
           classes: "govuk-checkboxes--small",
@@ -601,7 +640,7 @@
   </div>
   <div class="app-filter__content">
 
-    {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length or filterInternational.length %}
+    {% if filterRole.length or filterPhase.length or filterSuitability.length or filterStages.length or filterPatterns.length or filterQuick.length or filterInternational.length or filterAccess.length or filterPay.length %}
 
         <div class="app-filter__selected">
         <div class="app-filter__selected-heading">
@@ -740,6 +779,29 @@
 
             {% endif %}
 
+
+            {% if filterPay.length %}
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Pay scale</h3>
+                <ul class="app-filter-tags">
+                {% for pay in ['MPS/UPS', 'Band 3', 'Band 5', 'Band 6'] %}
+                  {% if pay in filterPay %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-pay', pay) }}"><span class="govuk-visually-hidden">Remove this filter</span>{{ pay }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if filterAccess.length %}
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Accessibility</h3>
+                <ul class="app-filter-tags">
+                {% if 'Suitable for applicants with disabilities' in filterAccess %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-access', 'Suitable for applicants with disabilities') }}"><span class="govuk-visually-hidden">Remove this filter</span>Suitable for applicants with disabilities</a></li>
+                {% endif %}
+                {% if 'Workplace adjustments available' in filterAccess %}
+                    <li><a class="app-filter__tag" href="{{ removeFilterHref('filter-access', 'Workplace adjustments available') }}"><span class="govuk-visually-hidden">Remove this filter</span>Workplace adjustments available</a></li>
+                {% endif %}
+                </ul>
+            {% endif %}
 
             {% if filterSuitability.length %}
 

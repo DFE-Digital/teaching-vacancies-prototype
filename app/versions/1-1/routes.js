@@ -34,6 +34,10 @@ router.get('/documentation/fe-changes-1', (req, res) => {
   res.render('documentation/fe-changes-1.html')
 })
 
+router.get('/documentation/fe-mobile-exp-1', (req, res) => {
+  res.render('documentation/fe-mobile-exp-1.html')
+})
+
 //routing for filters
 require('./routes/filtering')(router)
 

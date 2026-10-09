@@ -3,6 +3,20 @@
 
 {% set primaryNavId = 'jobs' %}
 
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-show-filter {
+      font-weight: 700;
+    }
+
+    @media (max-width: 48.0525em) {
+      .app-action-bar__filter .govuk-button {
+        width: 100%;
+      }
+    }
+  </style>
+{% endblock %}
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
@@ -28,6 +42,8 @@
   {% if data['filter-keyStages'] %}  {% set filterStages %} {{data['filter-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filter-quick'] %}  {% set filterQuick %} {{data['filter-quick'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQuick %}{% endset %} {% endif %}
   {% if data['filter-international'] %}  {% set filterInternational %}Skilled Worker visas can be sponsored{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterInternational %}{% endset %} {% endif %}
+  {% if data['filter-access'] %}  {% set filterAccess %} {{ data['filter-access'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterAccess %}{% endset %} {% endif %}
+  {% if data['filter-pay'] %}  {% set filterPay %} {{ data['filter-pay'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPay %}{% endset %} {% endif %}
 
   {% if locationRefinements and locationRefinements.length and not data['borough'] %}
     <div class="govuk-inset-text govuk-!-margin-bottom-6">
@@ -79,6 +95,9 @@
   <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
 
   <p><a href="#" class="govuk-link--no-visited-state">Get a job alert</a> whenever a job matching this search is listed.</p>
+  {% if data['keywords'] %}
+    <p class="govuk-body">Results match your keywords. Role and education phase filters are only applied if you select them.</p>
+  {% endif %}
 
   <div class="app-filter-layout">
 
@@ -329,6 +348,12 @@
             {% if job.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             {% if jobQuick in filterQuick %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             {% if job.sponsorship in filterInternational %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% set jobPay = job.salaryDetails | join(', ') if job.salaryDetails else '' %}
+            {% if jobPay and jobPay in filterPay %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+            {% set accessMatch = false %}
+            {% if 'Suitable for applicants with disabilities' in filterAccess and job.suitableForDisabledApplicants == 'Yes' %}{% set accessMatch = true %}{% endif %}
+            {% if 'Workplace adjustments available' in filterAccess and job.workplaceAdjustments == 'Yes' %}{% set accessMatch = true %}{% endif %}
+            {% if accessMatch %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
             <!-- each time there is a match, we plus 1 -->
 
             <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
@@ -349,74 +374,57 @@
 
                 <p class="app-jobs__address">{{job.organisation.name}}, {{job.organisation.address.address1}}, {{job.organisation.address.town}}</p>
 
+                {% set resultPhase = job.phase or job.organisation.phase %}
+                {% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails or (job.salaryDetails | join(', ') if job.salaryDetails else '') %}
+                {% set resultKeywords = job.subjects | join(', ') if job.subjects else '' %}
+
                 {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
                     {
-                    key: {
-                        text: "Full-time equivalent salary"
-                    },
-                    value: {
-                        html: job.fullTimeEquivalentSalaryDetails
-                    }
-                    } if job.fullTimeEquivalentSalaryDetails,
-                    {
-                    key: {
-                        text: "Actual salary"
-                    },
-                    value: {
-                        html: job.actualSalaryDetails
-                    }
-                    } if job.actualSalaryDetails,
-                    {
-                    key: {
-                        text: "Pay scale"
-                    },
-                    value: {
-                        html: job.payScaleDetails
-                    }
-                    } if job.payScaleDetails,
-                    {
-                    key: {
-                        text: "School type"
-                    },
-                    value: {
-                        html: job.schoolType
-                    }
-                    } if job.schoolType,
-                    {
-                    key: {
-                        text: "Education phase"
-                    },
-                    value: {
-                        text: job.phase | capitalize
-                    }
-                    } if job.phase,
-                    {
-                    key: {
-                        text: "Working pattern"
-                    },
-                    value: {
-                        text: job.workingPatterns | join(', ') | capitalize
-                    }
+                    key: { text: "Education phase" },
+                    value: { text: resultPhase }
                     },
                     {
-                    key: {
-                        text: "Location"
+                    key: { text: "Salary" },
+                    value: { text: resultSalary if resultSalary else "Not provided" }
                     },
-                    value: {
-                        text: job.distance + ' miles from you'
-                    }
+                    {
+                    key: { text: "Contract type" },
+                    value: { text: job.contractType if job.contractType else "Not stated" }
+                    },
+                    {
+                    key: { text: "Keywords" },
+                    value: { text: resultKeywords }
+                    } if resultKeywords,
+                    {
+                    key: { text: "Pay scale" },
+                    value: { text: job.salaryDetails | join(', ') }
+                    } if job.salaryDetails,
+                    {
+                    key: { text: "Working pattern" },
+                    value: { text: job.workingPatterns | join(', ') | capitalize }
+                    } if job.workingPatterns,
+                    {
+                    key: { text: "Early career teachers" },
+                    value: { text: "Suitable" if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" else "Not suitable" }
+                    } if job.isRoleSuitableForEarlyCareeerTeachers,
+                    {
+                    key: { text: "Overseas qualifications" },
+                    value: { text: "Accepted" if job.acceptsOverseasQualifications == "Yes" else "Not accepted" }
+                    } if job.acceptsOverseasQualifications,
+                    {
+                    key: { text: "Driving" },
+                    value: { text: "Required" if job.drivingRequired == "Yes" else "Not required" }
+                    } if job.drivingRequired,
+                    {
+                    key: { text: "Location" },
+                    value: { text: job.distance + ' miles from you' }
                     } if job.distance,
                     {
-                      key: {
-                        text: "Visa sponsorship"
-                      },
-                      value: {
-                        text: job.sponsorship | capitalize
-                      }
+                      key: { text: "Visa sponsorship" },
+                      value: { text: job.sponsorship | capitalize }
                     } if job.sponsorship
-                    
                 ]
                 }) }}
 
@@ -428,43 +436,13 @@
 
             {% set useRadius = data['radius'] and data['radius'] != 'updated' %}
 
-            {% if data['location'] %}
-                {% if useRadius %}
+            {% if job._keywordHit != false %}
+                {% if data['location'] and useRadius %}
                     {% if job.distance <= data['radius'] %}
-                        {% if data['keywords'] %}
-                            {% for item in job.searches %}
-                                {% if item in data['keywords'] %}
-                                    {{ jobItem | safe }}
-                                {% endif %}
-                            {% endfor %}
-                        {% else %}
-                            {{ jobItem | safe }}
-                        {% endif %}
-                    {% endif %}
-                {% else %}
-                    {% if data['keywords'] %}
-                        {% for item in job.searches %}
-                            {% if item in data['keywords'] %}
-                                {{ jobItem | safe }}
-                            {% endif %}
-                        {% endfor %}
-                    {% else %}
                         {{ jobItem | safe }}
                     {% endif %}
-                {% endif %}
-            {% else %}            
-                <!-- If location data does not exist, check for keyword match -->
-                {% if data['keywords'] %}
-                    {% for item in job.searches %}
-                        {% if item in data['keywords'] %}
-                          {{ jobItem | safe }}  <!-- Display job item -->
-                        {% endif %}
-                    {% endfor %}
-                
                 {% else %}
-                   
-                   {{ jobItem | safe }}  <!-- Display job item -->
-
+                    {{ jobItem | safe }}
                 {% endif %}
             {% endif %}
 
@@ -513,7 +491,7 @@
         container: $('.app-action-bar__filter'),
         showText: 'Show filter',
         hideText: 'Hide filter',
-        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+        classes: 'app-show-filter govuk-!-margin-bottom-3'
       },
       closeButton: {
         container: $('.app-filter__header-action'),

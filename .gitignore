@@ -1,5 +1,6 @@
 # local working document, not for circulation
 app/versions/1-1/views/documentation/fe-changes-1.html
+app/versions/1-1/views/documentation/fe-mobile-exp-1.html
 
 # ignore tracking usage data config - we want a different one for each user
 usage-data-config.json

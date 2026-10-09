@@ -194,6 +194,63 @@ function buildLocationRefinements(location, jobs) {
     })
 }
 
+const keywordAliases = [
+    ['teacher of the deaf', 'deaf', 'senco', 'sen'],
+    ['computer science lecture', 'computer science lecturer', 'computer science', 'computing', 'computer', 'ict'],
+    ['senco', 'sen'],
+    ['maths', 'mathematics'],
+    ['english', 'literacy', 'esol']
+]
+
+const keywordStopWords = new Set([
+    'teacher', 'teachers', 'lecture', 'lecturer', 'lectures',
+    'school', 'schools', 'college', 'colleges', 'job', 'jobs',
+    'role', 'roles', 'the', 'and', 'for', 'with', 'from'
+])
+
+function normaliseSearchText (value) {
+    return String(value || '').toLowerCase()
+}
+
+function jobSearchText (job) {
+    const organisation = job.organisation || {}
+    const parts = [
+        job.title,
+        job.phase,
+        job.contractType,
+        organisation.name,
+        organisation.phase,
+        ...(job.subjects || []),
+        ...(job.searches || []),
+        ...(Array.isArray(job.role) ? job.role : [job.role])
+    ]
+    return normaliseSearchText(parts.filter(Boolean).join(' '))
+}
+
+function jobMatchesKeywords (job, keywords) {
+    const query = normaliseSearchText(keywords).trim()
+    if (!query) return true
+
+    const haystack = jobSearchText(job)
+    if (haystack.includes(query)) return true
+
+    const aliasMatch = keywordAliases.some(group => {
+        return group.some(term => query.includes(term)) && group.some(term => haystack.includes(term))
+    })
+    if (aliasMatch) return true
+
+    const words = query.split(/[^a-z0-9+]+/).filter(word => word.length > 3 && !keywordStopWords.has(word))
+    if (!words.length) return false
+    return words.every(word => haystack.includes(word))
+}
+
+function annotateKeywordHits (jobs, keywords) {
+    jobs.forEach(job => {
+        job._keywordHit = jobMatchesKeywords(job, keywords)
+    })
+    return jobs
+}
+
 function redirectToCleanLocationQuery(req, res, location, borough) {
     const params = new URLSearchParams(req.query)
     let shouldRedirect = false
@@ -370,6 +427,11 @@ module.exports = router => {
         req.session.data.borough = borough
 
         const visibleJobs = filterJobsByLocation(jobs, location, borough)
+        const keywords = req.query.keywords !== undefined ? req.query.keywords : req.session.data.keywords
+        if (req.query.keywords !== undefined) {
+            req.session.data.keywords = req.query.keywords
+        }
+        annotateKeywordHits(visibleJobs, keywords)
 
         res.render('jobs/search/filter', {
             jobs: visibleJobs,
@@ -430,6 +492,11 @@ module.exports = router => {
         req.session.data.borough = borough
 
         const visibleJobs = filterJobsByLocation(jobs, location, borough)
+        const keywords = req.query.keywords !== undefined ? req.query.keywords : (req.query.keyword !== undefined ? req.query.keyword : req.session.data.keywords)
+        if (keywords !== undefined) {
+            req.session.data.keywords = keywords
+        }
+        annotateKeywordHits(visibleJobs, keywords)
 
         res.render('jobs/search/filter', {
             jobs: visibleJobs,
@@ -450,6 +517,9 @@ module.exports = router => {
         req.session.data['filter-workingPatterns'] = '';
         req.session.data['filter-keyStages'] = '';
         req.session.data['keywords'] = '';
+        req.session.data['keyword'] = '';
+        req.session.data['filter-access'] = '';
+        req.session.data['filter-pay'] = '';
         req.session.data['location'] = '';
 
         res.redirect('/jobs')
