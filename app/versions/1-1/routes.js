@@ -30,6 +30,10 @@ require('./routes/application-flow')(router)
 require('./routes/jobs')(router)
 require('./routes/schools')(router)
 
+router.get('/documentation/fe-changes-1', (req, res) => {
+  res.render('documentation/fe-changes-1.html')
+})
+
 //routing for filters
 require('./routes/filtering')(router)
 

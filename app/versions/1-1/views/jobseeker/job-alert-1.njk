@@ -1,6 +1,6 @@
 {% extends "layout_email.njk" %}
 
-{% set title = 'You have ' + alerts.length + ' new job alerts' %}
+{% set title = 'You have ' + alerts.length + ' new job matches' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -8,9 +8,8 @@
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
-      <p class="govuk-body">Jobs listed since yesterday that match your alerts.</p>
       <p class="govuk-body">
-        <a class="govuk-link" href="/job-alert-via-email">Filter this alert</a>
+        <a class="govuk-link" href="/job-alert-via-email">Filter this list</a>
       </p>
 
       <ul class="govuk-list">

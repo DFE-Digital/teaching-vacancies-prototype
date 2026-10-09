@@ -3,7 +3,7 @@
 {% set primaryNavId = 'jobs' %}
 {% set activeNav = 'jobs' %}
 {% set forceSignedIn = true %}
-{% set title = 'You have ' + filteredAlerts.length + ' new job alerts' %}
+{% set title = 'You have ' + filteredAlerts.length + ' new job matches' %}
 
 {% block pageTitle %}
   {{ title }} - Teaching Vacancies - GOV.UK
@@ -12,6 +12,10 @@
 {% block head %}
   {{ super() }}
   <style>
+    .app-filter__header {
+      position: static;
+    }
+
     .app-filter__close-bottom {
       text-align: center;
     }
@@ -33,7 +37,6 @@
     {{ title }}
   </h1>
   <p class="govuk-body">
-    Jobs listed since yesterday that match your alerts.
     <a class="govuk-link" href="/1-1/jobseekers/subscriptions?jobAlertState=alert">Edit alert</a>.
     {% if filteredAlerts.length != alerts.length %}
       Showing {{ filteredAlerts.length }} of {{ alerts.length }} jobs.
