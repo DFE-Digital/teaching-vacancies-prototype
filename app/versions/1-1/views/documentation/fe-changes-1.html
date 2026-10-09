@@ -136,11 +136,11 @@ flowchart LR
 
       <h2 class="govuk-heading-l">6. Prioritised FE jobseeker backlog</h2>
 
-      <h3 class="govuk-heading-m">P0 — content bugs (do first)</h3>
+      <h3 class="govuk-heading-m">P0 — content bugs (done in v1.1)</h3>
       <ul class="govuk-list govuk-list--bullet">
-        <li><strong>TV3</strong> — <code>views/apply/start.njk</code>: change “two referees” to “Referee details”; strengthen save / reuse copy</li>
-        <li><strong>School → school and college</strong> — <code>flow/personal-statement.njk</code>, <code>flow/work-history.njk</code>, <code>flow/job.njk</code>, <code>flow/submitted.njk</code> (personal-details working patterns already neutral)</li>
-        <li><strong>RC / RQ ethos</strong> — orphan <code>views/apply/religion_*.njk</code>: “school or college’s ethos”; decide whether to mount on live apply</li>
+        <li><strong>TV3</strong> — <code>views/apply/start.njk</code>: last bullet is “Referee details”. Save copy now says Quick Apply reuses details so the next application is faster.</li>
+        <li><strong>School → school and college</strong> — done in <code>flow/personal-statement.njk</code>, <code>flow/job.njk</code> and <code>flow/submitted.njk</code>. <code>flow/work-history.njk</code> only says “school and university” for an education gap, so that line stays. Personal-details working patterns were already neutral.</li>
+        <li><strong>RC / RQ ethos</strong> — <code>religion_cofe_1.njk</code> asks how you will support the school or college’s ethos and aims. Matching “the school has asked” hints on the faith templates now say “school or college”. <strong>Not mounted</strong> on live Quick Apply: these screens stay orphans until hiring staff choose a faith form at HS16. The live journey still only asks religion inside equal opportunities.</li>
       </ul>
 
       <h3 class="govuk-heading-m">P1 — design / product decisions</h3>
@@ -251,7 +251,7 @@ flowchart LR
       </ul>
 
       <h2 class="govuk-heading-l">10. Next step for the prototype</h2>
-      <p class="govuk-body">This page is the analysis and change plan only. Execute P0 content updates in the apply Nunjucks next, then resolve the TV6 architecture decision before wiring FE-specific professional status into live Quick Apply.</p>
+      <p class="govuk-body">P0 content updates are in the v1.1 apply templates. Faith screens stay off the live router until HS16 can choose a faith form. Next, resolve the TV6 architecture decision before wiring FE-specific professional status into live Quick Apply.</p>
     </div>
 
     <div class="govuk-grid-column-one-third">

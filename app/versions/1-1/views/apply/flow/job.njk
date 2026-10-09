@@ -9,7 +9,7 @@
       <form method="post" action="/jobs/{{ job.id }}/apply/work-history/{{ formAction }}">
         {{ govukInput({
           label: { text: "Organisation name" },
-          hint: { text: "For example, the name of the school, company or organisation" },
+          hint: { text: "For example, the name of the school, college, company or organisation" },
           name: "organisation",
           value: item.organisation
         }) }}
