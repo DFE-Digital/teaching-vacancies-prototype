@@ -6,6 +6,26 @@
 
 {% set primaryNavId = 'home' %}
 
+{% block head %}
+  {{ super() }}
+  <style>
+    .home_index .search {
+      box-sizing: border-box;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding-left: calc(30px + 50vw - 50%);
+      padding-right: calc(30px + 50vw - 50%);
+    }
+
+    @media (max-width: 40.0525em) {
+      .home_index .search {
+        padding-left: calc(20px + 50vw - 50%);
+        padding-right: calc(20px + 50vw - 50%);
+      }
+    }
+  </style>
+{% endblock %}
+
 {% macro jobLink(label, count) %}
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="#">{{ label }} ({{ count }})</a>
