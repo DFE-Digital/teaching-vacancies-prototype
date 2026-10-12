@@ -4,12 +4,65 @@
 {% set primaryNavId = 'schools' %}
 {% set activeNav = 'schools' %}
 
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-filter-layout .app-search-form {
+      background-color: #f3f3f3;
+    }
+
+    .app-filter-layout .app-search-form .govuk-button {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1;
+      width: 11.5rem;
+      height: 40px;
+      height: 2.5rem;
+    }
+
+    @media (min-width: 40.0625em) {
+      .app-filter-layout .app-search-form .govuk-button {
+        width: 13.65625rem;
+      }
+    }
+
+    .app-results-heading {
+      align-items: center;
+      display: flex;
+      gap: 15px;
+      justify-content: space-between;
+    }
+
+    .app-results-heading .govuk-heading-l {
+      margin-bottom: 0;
+    }
+
+    .app-results-heading .app-action-bar__filter {
+      float: none;
+      margin-bottom: 0;
+      width: auto;
+    }
+
+    .app-results-heading .app-show-filter {
+      margin-bottom: 0;
+    }
+
+    .app-action-bar__filter .govuk-button {
+      width: auto;
+    }
+  </style>
+{% endblock %}
 
 {% block content %}
 
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Schools ({{ organisations.length }})
-  </h1>
+  <div class="app-results-heading govuk-!-margin-bottom-6">
+    <h1 class="govuk-heading-l">
+      Schools ({{ organisations.length }})
+    </h1>
+    <div class="app-action-bar">
+      <div class="app-action-bar__filter"></div>
+    </div>
+  </div>
 
     <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -18,9 +71,6 @@
 
     <div class="app-filter-layout__content">
       {% include "includes/schools-search-form.njk" %}
-      <div class="app-action-bar">
-        <div class="app-action-bar__filter"></div>
-      </div>
 
       <div class="app-schools">
 
@@ -64,7 +114,7 @@
         container: $('.app-action-bar__filter'),
         showText: 'Show filter',
         hideText: 'Hide filter',
-        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+        classes: 'app-show-filter govuk-!-margin-bottom-3'
       },
       closeButton: {
         container: $('.app-filter__header-action'),
