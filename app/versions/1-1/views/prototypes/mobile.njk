@@ -34,6 +34,7 @@
     }
 
     .demo-shell {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -41,6 +42,34 @@
       min-height: 100dvh;
       margin: 0;
       padding: 24px;
+    }
+
+    .demo-refresh {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #1d70b8;
+      cursor: pointer;
+    }
+
+    .demo-refresh:hover {
+      color: #003078;
+    }
+
+    .demo-refresh:focus {
+      color: #0b0c0c;
+      background-color: #ffdd00;
+      outline: 3px solid transparent;
+      box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
     }
 
     .stage {
@@ -223,10 +252,16 @@
 </head>
 <body>
   <main class="demo-shell">
+    <button class="demo-refresh" type="button" id="device-refresh" aria-label="Refresh">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20 12a8 8 0 1 1-2.3-5.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M20 4v5h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
     <section class="stage" id="device-stage">
       <div class="phone" id="device-frame">
         <div class="screen">
-          <iframe id="device-screen" src="/home" title="Teaching Vacancies jobs prototype on an iPhone screen"></iframe>
+          <iframe id="device-screen" src="/1-1/home" title="Teaching Vacancies jobs prototype on an iPhone screen"></iframe>
           <span class="home-indicator" aria-hidden="true"></span>
         </div>
       </div>
@@ -335,6 +370,10 @@
     portraitLink.addEventListener('click', function (event) {
       event.preventDefault()
       setOrientation(false)
+    })
+
+    document.getElementById('device-refresh').addEventListener('click', function () {
+      screen.src = screen.src
     })
 
     window.addEventListener('resize', fitFrame)

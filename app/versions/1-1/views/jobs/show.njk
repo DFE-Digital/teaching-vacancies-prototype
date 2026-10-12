@@ -13,6 +13,10 @@
 {% block head %}
   {{ super() }}
   <style>
+    #main-content.govuk-main-wrapper {
+      padding-top: 20px;
+    }
+
     @media (min-width: 40.0625em) {
       .old-design .banner-buttons--v2 > .is-hidden-on-v2 + .govuk-grid-column-one-third {
         margin-left: 33.3333333333%;
@@ -80,6 +84,19 @@
 
   <div class="vacancies-show old-design">
 
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: "/home"
+        },
+        {
+          text: "Search results",
+          href: "/search/applications"
+        }
+      ]
+    }) }}
+
     {% if flash and flash[0] == 'job-saved' %}
       {{ govukNotificationBanner({
         html: '<p class="govuk-notification-banner__heading">You have saved this job. <a class="govuk-notification-banner__link" href="/onelogin/journey/match">View all your saved jobs</a> on your account.</p>',
@@ -87,9 +104,8 @@
       }) }}
     {% endif %}
 
-    {% set showHeaderAction = query and query.v2 is defined and daysRemaining >= 0 %}
-    <div class="{% if showHeaderAction %}vacancies-show__intro{% endif %}">
-      <div class="header-with-logo{% if not showHeaderAction %} govuk-!-margin-bottom-5{% endif %}">
+    <div class="vacancies-show__intro">
+      <div class="header-with-logo">
         {% if job.organisation.logo and job.organisation.logo != 'Not entered' %}
           <div class="header-with-logo-logo">
             <img src="{{ job.organisation.logo }}" alt="">
@@ -108,24 +124,18 @@
       </div>
     </div>
 
-    <div class="govuk-grid-row banner-buttons{% if showHeaderAction %} banner-buttons--v2{% endif %}">
+    <div class="govuk-grid-row banner-buttons banner-buttons--v2">
       {% if daysRemaining >= 0 or data.signedIn or user or forceSignedIn %}
-        {% if showHeaderAction %}
-          <div class="govuk-grid-column-one-third vacancies-show__banner-apply">
-            {% if job.isUsingApplicationForm == 'Yes' %}
-              {{ govukButton({
-                text: primaryActionText,
-                href: primaryActionHref
-              }) }}
-            {% else %}
-              <a class="govuk-button" href="#applying">Apply for this job</a>
-            {% endif %}
-          </div>
-        {% else %}
-          <div class="govuk-grid-column-one-third">
-            <a class="banner-button-component__button icon icon--left icon--apply" href="{{ applyHref }}">Apply for this job</a>
-          </div>
-        {% endif %}
+        <div class="govuk-grid-column-one-third vacancies-show__banner-apply">
+          {% if job.isUsingApplicationForm == 'Yes' %}
+            {{ govukButton({
+              text: primaryActionText,
+              href: primaryActionHref
+            }) }}
+          {% else %}
+            <a class="govuk-button" href="#applying">Apply for this job</a>
+          {% endif %}
+        </div>
       {% endif %}
       <div class="govuk-grid-column-one-third">
         <a class="banner-button-component__button icon icon--left icon--alert-blue" href="{{ alertHref }}">Get a job alert for similar jobs</a>

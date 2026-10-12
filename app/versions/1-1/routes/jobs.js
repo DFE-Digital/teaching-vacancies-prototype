@@ -131,6 +131,10 @@ module.exports = router => {
     res.render('prototypes/mobile')
   })
 
+  router.get('/mobile-email', (req, res) => {
+    res.render('prototypes/mobile-email')
+  })
+
   router.get('/compare', (req, res) => {
     const versions = prototypeVersions().map(function (version) {
       return {
