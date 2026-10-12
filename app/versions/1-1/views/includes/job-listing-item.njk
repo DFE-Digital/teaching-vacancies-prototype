@@ -53,12 +53,12 @@
     classes: 'govuk-summary-list--no-border app-summary-list--compact',
     rows: [
       {
-        key: { text: "Education phase" },
-        value: { text: resultPhase if resultPhase else "Not stated" }
-      },
-      {
         key: { text: "Salary" },
         value: { text: resultSalary if resultSalary else "Not provided" }
+      },
+      {
+        key: { text: "Education phase" },
+        value: { text: resultPhase if resultPhase else "Not stated" }
       },
       {
         key: { text: "Contract type" },

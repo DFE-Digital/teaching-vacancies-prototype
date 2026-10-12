@@ -10,6 +10,25 @@
       font-weight: 700;
     }
 
+    .app-filter-layout .app-jobs__address {
+      margin-bottom: 20px;
+    }
+
+    .app-filter-layout .app-jobs__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .app-filter-layout .app-jobs__quick-apply {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      font-size: 16px;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
     @media (max-width: 48.0525em) {
       .app-action-bar__filter .govuk-button {
         width: 100%;
@@ -363,10 +382,10 @@
             {% set jobItem %}
 
             <div class="app-jobs__item">
-                <h2 class="govuk-heading-m">
-                  <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+                <h2 class="govuk-heading-m app-jobs__title">
+                  <a href="/jobs/{{job.id}}">{{job.title}}</a>
                   {% if job.isUsingApplicationForm == 'Yes' %}
-                    <a class="govuk-tag govuk-tag--green" href="/jobs/{{ job.id }}/apply">Quick apply</a>
+                    <a class="govuk-tag govuk-tag--green app-jobs__quick-apply" href="/jobs/{{ job.id }}/apply">Quick apply</a>
                   {% endif %}
                 </h2>
 
@@ -381,12 +400,12 @@
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
                     {
-                    key: { text: "Education phase" },
-                    value: { text: resultPhase }
-                    },
-                    {
                     key: { text: "Salary" },
                     value: { text: resultSalary if resultSalary else "Not provided" }
+                    },
+                    {
+                    key: { text: "Education phase" },
+                    value: { text: resultPhase }
                     },
                     {
                     key: { text: "Contract type" },
