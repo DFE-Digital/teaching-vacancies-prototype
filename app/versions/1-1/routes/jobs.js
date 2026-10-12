@@ -508,6 +508,12 @@ module.exports = router => {
 
   router.get('/apply/unhappy', renderUnhappy)
 
+  router.get('/jobs/external-advert', (req, res) => {
+    const jobs = (req.session.data && req.session.data.jobs) || []
+    const job = jobs.find(item => String(item.id) === String(req.query.job))
+    res.render('jobs/external-advert', { job: job })
+  })
+
   router.get('/jobs/:id/save', (req, res) => {
     const jobs = req.session.data.jobs || []
     const job = jobs.find(item => String(item.id) === String(req.params.id))

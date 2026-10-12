@@ -32,13 +32,13 @@
 <div class="app-jobs__item">
   <div class="header-with-logo">
     <div class="header-with-logo-title">
+      {% if job.isUsingApplicationForm == 'Yes' %}
+        <a class="govuk-tag govuk-tag--green govuk-!-margin-bottom-2" href="/jobs/{{ job.id }}/apply">Quick apply</a>
+      {% endif %}
       <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
         <span class="govuk-!-margin-right-2">
           <a class="govuk-link" href="/jobs/{{ job.id }}">{{ job.title }}</a>
         </span>
-        {% if job.isUsingApplicationForm == 'Yes' %}
-          <a class="govuk-tag govuk-tag--green" href="/jobs/{{ job.id }}/apply">Quick apply</a>
-        {% endif %}
       </h2>
       <p class="govuk-body address govuk-!-margin-bottom-0 govuk-!-margin-top-0">{{ job.organisation.name }}, {{ address }}</p>
     </div>

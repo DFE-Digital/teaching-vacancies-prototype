@@ -17,7 +17,16 @@
       padding-top: 20px;
     }
 
+    .vacancies-show .header-with-logo-title .govuk-tag {
+      font-size: 16px;
+      font-size: 1rem;
+    }
+
     @media (min-width: 40.0625em) {
+      .vacancies-show .govuk-breadcrumbs {
+        margin-bottom: 20px;
+      }
+
       .old-design .banner-buttons--v2 > .is-hidden-on-v2 + .govuk-grid-column-one-third {
         margin-left: 33.3333333333%;
       }
@@ -57,7 +66,7 @@
   {% else %}
     {% set applyHref = '#applying' %}
     {% set primaryActionText = "View advert on external website (opens in new tab)" %}
-    {% set primaryActionHref = job.organisation.website or "#" %}
+    {% set primaryActionHref = '/jobs/external-advert?job=' + job.id %}
   {% endif %}
 
   {% set roleText = job.role | join(', ') if job.role and job.role.join else job.role %}
@@ -133,7 +142,7 @@
               href: primaryActionHref
             }) }}
           {% else %}
-            <a class="govuk-button" href="#applying">Apply for this job</a>
+            <a class="govuk-button" href="{{ primaryActionHref }}">Apply for this job</a>
           {% endif %}
         </div>
       {% endif %}
@@ -190,8 +199,14 @@
         <section id="job-details" class="govuk-!-margin-bottom-5">
           <h2 class="govuk-heading-l heading--border-bottom">Job details</h2>
 
+          {% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails or (job.salaryDetails | join(', ') if job.salaryDetails else '') %}
+
           {{ govukSummaryList({
             rows: [
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Salary</h3>' },
+                value: { text: resultSalary if resultSalary else "Not provided" }
+              },
               {
                 key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Education phase</h3>' },
                 value: { text: educationPhase if educationPhase else "Not stated" }

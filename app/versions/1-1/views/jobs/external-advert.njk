@@ -1,0 +1,14 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set title = "Job advert" %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">Job advert</h1>
+  {% if job %}
+    <p class="govuk-body">This is the job advert page for {{ job.title }}{% if job.organisation.name %} at {{ job.organisation.name }}{% endif %}.</p>
+  {% else %}
+    <p class="govuk-body">This is the job advert page.</p>
+  {% endif %}
+  <p class="govuk-body">It is not available in this prototype.</p>
+{% endblock %}
