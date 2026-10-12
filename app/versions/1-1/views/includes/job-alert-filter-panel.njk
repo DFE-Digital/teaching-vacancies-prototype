@@ -142,9 +142,21 @@
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-working-term" name="filter-alert-workingPatterns" type="checkbox" value="Term time"{% if 'Term time' in filterPatterns %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-working-term">
+                  Term time
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="filter-alert-working-part" name="filter-alert-workingPatterns" type="checkbox" value="Part time"{% if 'Part time' in filterPatterns %} checked{% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="filter-alert-working-part">
                   Part time
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filter-alert-working-share" name="filter-alert-workingPatterns" type="checkbox" value="Job share"{% if 'Job share' in filterPatterns %} checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="filter-alert-working-share">
+                  Job share
                 </label>
               </div>
             </div>

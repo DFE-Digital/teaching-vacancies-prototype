@@ -531,6 +531,9 @@
             value: 'Full time',
             text: 'Full time'
           }, {
+            value: 'Term time',
+            text: 'Term time'
+          }, {
             value: 'Part time',
             text: 'Part time'
           },{
@@ -849,6 +852,9 @@
                 <ul class="app-filter-tags">
                 {% if 'Full time' in filterPatterns %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Full time</a></li>
+                {% endif %}
+                {% if 'Term time' in filterPatterns %}
+                    <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Term time</a></li>
                 {% endif %}
                 {% if 'Part time' in filterPatterns %}
                     <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Part time</a></li>
