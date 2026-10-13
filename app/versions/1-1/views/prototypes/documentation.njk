@@ -31,6 +31,14 @@
 
       <p class="govuk-body">How this prototype is built, what the mock data looks like, and how the main journeys move between pages.</p>
 
+      <h2 class="govuk-heading-l">Documentation pages</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" href="/documentation/project-structure">Project structure</a> — versioning (<code>/1-0</code>, <code>/1-1</code>), route modules, views, mock data, and the hiring staff sibling repo</li>
+        <li><a class="govuk-link" href="/documentation/fe-changes-1">Further Education changes</a></li>
+        <li><a class="govuk-link" href="/documentation/fe-mobile-exp-1">Further Education mobile experiment</a></li>
+      </ul>
+
       <h2 class="govuk-heading-l">Tech stack</h2>
 
       <p class="govuk-body">This repository is a GOV.UK Prototype Kit copy of Teaching Vacancies. It is not the live service at <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/">teaching-vacancies.service.gov.uk</a>. The GOV.UK start page is <a class="govuk-link" href="https://www.gov.uk/find-teaching-job">Find a job in teaching</a>.</p>
@@ -44,7 +52,11 @@
         <li>In-memory sessions. Restarting the server signs you out</li>
         <li>Form posts are stored on the session by the kit</li>
         <li>JSON fixtures in <code>app/versions/1-1/data</code>. There is no database and no call to the live API</li>
+        <li>Parallel versions mounted at <code>/1-0</code> and <code>/1-1</code> via <code>app/versions/mount.js</code>. Unprefixed URLs redirect to <code>/1-0</code></li>
+        <li>Hiring staff journeys live in a separate repo: <code>manage-teaching-jobs-prototype</code> (linked from the prototype hub)</li>
       </ul>
+
+      <p class="govuk-body">See <a class="govuk-link" href="/documentation/project-structure">Project structure</a> for the full repository layout, route module list, and where to edit.</p>
 
       <h2 class="govuk-heading-l">JSON mock data</h2>
 
@@ -165,6 +177,9 @@
             </li>
             <li class="app-related__item">
               <a class="govuk-link" href="/fe">Further Education prototype work</a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="/documentation/project-structure">Project structure</a>
             </li>
           </ul>
         </nav>
