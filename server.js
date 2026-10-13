@@ -143,6 +143,11 @@ utils.addNunjucksFilters(nunjucksAppEnv)
 app.set('view engine', 'njk')
 
 // Middleware to serve static assets
+// Documentation screenshots live in app/assets (survives Heroku `gulp generate-assets` clean of public/)
+app.use(
+  '/public/images/documentation',
+  express.static(path.join(__dirname, 'app/assets/images/documentation'))
+)
 app.use('/public', express.static(path.join(__dirname, '/public')))
 
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)

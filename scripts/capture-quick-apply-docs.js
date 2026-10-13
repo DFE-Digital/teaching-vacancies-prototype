@@ -16,7 +16,8 @@ const { chromium } = require('playwright')
 const BASE = process.env.PROTOTYPE_BASE_URL || 'http://localhost:3000'
 const PREFIX = '/1-1'
 const JOB_ID = process.env.QA_DOC_JOB_ID || '67663'
-const OUT_DIR = path.join(__dirname, '../public/images/documentation/quick-apply-1')
+// Written under app/assets so Heroku `gulp generate-assets` copies them to public/
+const OUT_DIR = path.join(__dirname, '../app/assets/images/documentation/quick-apply-1')
 
 const CAPTURES = [
   { file: 'tv3-before-you-start.png', path: `/jobs/${JOB_ID}/apply` },

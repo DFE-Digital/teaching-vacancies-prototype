@@ -31,7 +31,7 @@
       {{ guide.prototypeJob.organisation }} ({{ guide.prototypeJob.phase }} · ID {{ guide.prototypeJob.id }}).
     </p>
     <p class="govuk-body govuk-!-margin-bottom-6">
-      Screenshots show the implemented prototype. After local changes, run <code class="govuk-body-s">npm run capture:quick-apply-docs</code> with the kit on port 3000.
+      Screenshots show the implemented prototype. After local changes, run <code class="govuk-body-s">npm run capture:quick-apply-docs</code> (writes to <code class="govuk-body-s">app/assets/images/documentation/quick-apply-1/</code>) with the kit on port 3000.
     </p>
 
     <div class="app-guide__main">
@@ -63,7 +63,7 @@
           {% if section.screenshot %}
             <figure class="app-guide__figure">
               <img
-                src="/public/images/documentation/quick-apply-1/{{ section.screenshot }}"
+                src="{{ asset_path }}images/documentation/quick-apply-1/{{ section.screenshot }}"
                 alt="Screenshot: {{ section.title }} in the v1.1 prototype"
                 width="960"
                 loading="lazy"

@@ -1,6 +1,6 @@
 /**
  * Quick Apply FE design review — /documentation/quick-apply-1
- * Screenshot files: public/images/documentation/quick-apply-1/{id}.png
+ * Screenshot files: app/assets/images/documentation/quick-apply-1/{id}.png (copied to public/ on build)
  * Re-run npm run capture:quick-apply-docs after prototype changes (kit on port 3000).
  */
 
