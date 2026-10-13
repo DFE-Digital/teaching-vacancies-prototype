@@ -1,0 +1,137 @@
+// GOV.UK multi-page guide layout (similar to gov.uk/winter-fuel-payment)
+
+.app-guide {
+  margin-bottom: govuk-spacing(6);
+}
+
+.app-guide__title {
+  margin-bottom: govuk-spacing(2);
+}
+
+.app-guide__description {
+  margin-bottom: govuk-spacing(6);
+  color: govuk-colour("dark-grey");
+}
+
+.app-guide__skip {
+  margin-bottom: govuk-spacing(4);
+}
+
+.app-guide__layout {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: govuk-spacing(6);
+  }
+}
+
+.app-guide__main {
+  flex: 1 1 auto;
+  min-width: 0;
+
+  @include govuk-media-query($from: tablet) {
+    max-width: 66.666%;
+  }
+}
+
+.app-guide__sidebar {
+  flex: 0 0 auto;
+  width: 100%;
+
+  @include govuk-media-query($from: tablet) {
+    width: 33.333%;
+    max-width: govuk-pixel-to-rem(285px);
+  }
+}
+
+.app-guide__contents {
+  @include govuk-media-query($from: tablet) {
+    position: sticky;
+    top: govuk-spacing(4);
+  }
+}
+
+.app-guide__contents-title {
+  margin-top: 0;
+  margin-bottom: govuk-spacing(2);
+  font-size: govuk-font-size(19);
+  line-height: govuk-line-height(19);
+}
+
+.app-guide__contents-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 4px solid govuk-colour("mid-grey");
+}
+
+.app-guide__contents-item {
+  margin: 0;
+  padding: govuk-spacing(1) govuk-spacing(3);
+  font-size: govuk-font-size(16);
+
+  &--active {
+    border-left: 4px solid govuk-colour("blue");
+    margin-left: -4px;
+    font-weight: bold;
+  }
+}
+
+.app-guide__section {
+  margin-bottom: govuk-spacing(8);
+  padding-bottom: govuk-spacing(6);
+  border-bottom: 1px solid govuk-colour("mid-grey");
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.app-guide__map-id {
+  margin-bottom: govuk-spacing(2);
+}
+
+.app-guide__figure {
+  margin: govuk-spacing(5) 0 govuk-spacing(6);
+  padding: govuk-spacing(3);
+  background: govuk-colour("white");
+  border: 1px solid $govuk-border-colour;
+}
+
+.app-guide__figure img {
+  display: block;
+  width: 80%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 0;
+  box-shadow: none;
+}
+
+.app-guide__figure-caption {
+  margin-top: govuk-spacing(3);
+  margin-bottom: 0;
+  color: govuk-colour("dark-grey");
+}
+
+.app-guide__next {
+  margin-top: govuk-spacing(6);
+  padding-top: govuk-spacing(4);
+  border-top: 1px solid govuk-colour("mid-grey");
+}
+
+.app-documentation.app-guide-wrapper {
+  padding-top: govuk-spacing(4);
+}
+
+.app-guide--full-width {
+  .app-guide__main {
+    max-width: none;
+  }
+
+  .app-guide__figure {
+    max-width: none;
+  }
+
+}

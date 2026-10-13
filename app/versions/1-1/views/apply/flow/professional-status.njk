@@ -1,73 +1,122 @@
 {% extends "layout.njk" %}
 {% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
 {% set title = "Professional status" %}
+{% set ps = application.professionalStatus %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ applicationHeading() }}
       <h2 class="govuk-heading-l">Professional status</h2>
-      <p class="govuk-body">If you’re applying for a support role and do not have teaching, or lecturing experience, answer ‘No’ to these questions.</p>
 
-      <form method="post">
-        {{ govukRadios({
-          name: "qts",
-          fieldset: {
-            legend: {
-              text: "Do you have qualified teacher status (QTS)?",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          hint: { text: "You are unlikely to get a teaching job in England unless you have qualified teacher status (QTS). If you answer ‘Yes’, we’ll ask for your teacher reference number (TRN)." },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              checked: application.professionalStatus.qts == "Yes",
-              conditional: {
-                html: govukInput({
-                  label: { text: "Year you gained QTS" },
-                  classes: "govuk-input--width-4",
-                  name: "qtsYear",
-                  value: application.professionalStatus.qtsYear
-                }) + govukInput({
-                  label: { text: "Age range and subject you trained to teach" },
-                  name: "ageRange",
-                  value: application.professionalStatus.ageRange
-                })
+      {% if isFeJob %}
+        <p class="govuk-body">For further education roles we ask about qualifications that are relevant to the job. You do not need qualified teacher status (QTS) or a teacher reference number (TRN) unless the role requires it.</p>
+        <p class="govuk-body">If you are applying for a support role with no teaching or training experience, you can answer ‘No’ to the qualification question.</p>
+
+        <form method="post">
+          {{ govukRadios({
+            name: "relevantQualification",
+            fieldset: {
+              legend: {
+                text: "Do you hold a teaching or training qualification relevant to this role?",
+                classes: "govuk-fieldset__legend--m"
               }
             },
-            { value: "No", text: "No", checked: application.professionalStatus.qts == "No" },
-            { value: "On track", text: "I’m on track to get QTS", checked: application.professionalStatus.qts == "On track" }
-          ]
-        }) }}
+            hint: { text: "For example, a teaching qualification, assessor award, or vocational qualification in your subject area." },
+            items: [
+              { value: "Yes", text: "Yes", checked: ps.relevantQualification == "Yes" },
+              { value: "No", text: "No", checked: ps.relevantQualification == "No" },
+              { value: "Working towards", text: "I am working towards a relevant qualification", checked: ps.relevantQualification == "Working towards" }
+            ]
+          }) }}
 
-        {{ govukInput({
-          label: { text: "What is your teacher reference number?" },
-          hint: { html: "Your teacher reference number (TRN) is 7 digits long. You can <a class=\"govuk-link\" href=\"https://www.gov.uk/guidance/teacher-reference-number-trn\" target=\"_blank\" rel=\"noreferrer noopener\">find your TRN</a> if you do not know it or have forgotten it." },
-          classes: "govuk-input--width-10",
-          name: "trn",
-          value: application.professionalStatus.trn
-        }) }}
+          {{ govukTextarea({
+            name: "qualificationDetails",
+            label: { text: "Describe your qualification (optional if you answered No)" },
+            hint: { text: "Include the awarding body and subject or occupational area, if applicable." },
+            value: ps.qualificationDetails
+          }) }}
 
-        {{ govukRadios({
-          name: "induction",
-          fieldset: {
-            legend: {
-              text: "Have you completed your induction period?",
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          hint: { text: "Early career teachers (ECTs) have to complete a 2 year induction period. This used to be 1 year for newly qualified teachers (NQTs)." },
-          items: [
-            { value: "Yes", text: "Yes, I have completed my induction period", checked: application.professionalStatus.induction == "Yes" },
-            { value: "No", text: "No, I have not completed my induction period", checked: application.professionalStatus.induction == "No" }
-          ]
-        }) }}
+          {{ govukRadios({
+            name: "mathsEnglish",
+            fieldset: {
+              legend: {
+                text: "If this is a teaching or training role, do you meet maths and English requirements for the role?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              { value: "Yes", text: "Yes", checked: ps.mathsEnglish == "Yes" },
+              { value: "No", text: "No", checked: ps.mathsEnglish == "No" },
+              { value: "Not applicable", text: "Not applicable to this role", checked: ps.mathsEnglish == "Not applicable" }
+            ]
+          }) }}
 
-        {{ completedSection("professional-status") }}
-      </form>
+          {{ completedSection("professional-status") }}
+        </form>
+      {% else %}
+        <p class="govuk-body">If you’re applying for a support role and do not have teaching, or lecturing experience, answer ‘No’ to these questions.</p>
+
+        <form method="post">
+          {{ govukRadios({
+            name: "qts",
+            fieldset: {
+              legend: {
+                text: "Do you have qualified teacher status (QTS)?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: { text: "You are unlikely to get a teaching job in England unless you have qualified teacher status (QTS). If you answer ‘Yes’, we’ll ask for your teacher reference number (TRN)." },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: ps.qts == "Yes",
+                conditional: {
+                  html: govukInput({
+                    label: { text: "Year you gained QTS" },
+                    classes: "govuk-input--width-4",
+                    name: "qtsYear",
+                    value: ps.qtsYear
+                  }) + govukInput({
+                    label: { text: "Age range and subject you trained to teach" },
+                    name: "ageRange",
+                    value: ps.ageRange
+                  })
+                }
+              },
+              { value: "No", text: "No", checked: ps.qts == "No" },
+              { value: "On track", text: "I’m on track to get QTS", checked: ps.qts == "On track" }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: { text: "What is your teacher reference number?" },
+            hint: { html: "Your teacher reference number (TRN) is 7 digits long. You can <a class=\"govuk-link\" href=\"https://www.gov.uk/guidance/teacher-reference-number-trn\" target=\"_blank\" rel=\"noreferrer noopener\">find your TRN</a> if you do not know it or have forgotten it." },
+            classes: "govuk-input--width-10",
+            name: "trn",
+            value: ps.trn
+          }) }}
+
+          {{ govukRadios({
+            name: "induction",
+            fieldset: {
+              legend: {
+                text: "Have you completed your induction period?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: { text: "Early career teachers (ECTs) have to complete a 2 year induction period. This used to be 1 year for newly qualified teachers (NQTs)." },
+            items: [
+              { value: "Yes", text: "Yes, I have completed my induction period", checked: ps.induction == "Yes" },
+              { value: "No", text: "No, I have not completed my induction period", checked: ps.induction == "No" }
+            ]
+          }) }}
+
+          {{ completedSection("professional-status") }}
+        </form>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

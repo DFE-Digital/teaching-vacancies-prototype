@@ -23,11 +23,11 @@
       {% endif %}
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="completed" name="completed" type="radio" value="yes" {% if application.statuses[section] != "Incomplete" %}checked{% endif %}>
+          <input class="govuk-radios__input" id="completed" name="completed" type="radio" value="yes" {% if application.statuses[section] == "Completed" %}checked{% endif %}>
           <label class="govuk-label govuk-radios__label" for="completed">Yes, I’ve completed this section</label>
         </div>
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="completed-2" name="completed" type="radio" value="no" {% if application.statuses[section] == "Incomplete" %}checked{% endif %}>
+          <input class="govuk-radios__input" id="completed-2" name="completed" type="radio" value="no" {% if application.statuses[section] != "Completed" %}checked{% endif %}>
           <label class="govuk-label govuk-radios__label" for="completed-2">No, I’ll come back to it later</label>
         </div>
       </div>

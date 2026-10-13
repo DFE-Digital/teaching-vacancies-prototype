@@ -42,6 +42,11 @@ router.get('/documentation/fe-mobile-exp-1', (req, res) => {
   res.render('documentation/fe-mobile-exp-1.html')
 })
 
+router.get('/documentation/quick-apply-1', (req, res) => {
+  const guide = require('./data/quick-apply-1-changes')
+  res.render('documentation/quick-apply-1.html', { guide })
+})
+
 //routing for filters
 require('./routes/filtering')(router)
 

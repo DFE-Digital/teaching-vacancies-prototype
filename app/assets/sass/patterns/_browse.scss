@@ -1,0 +1,50 @@
+// GOV.UK browse layout (similar to gov.uk/browse/benefits)
+
+.app-browse__lead {
+  max-width: govuk-pixel-to-rem(630px);
+  margin-bottom: govuk-spacing(6);
+}
+
+.app-browse__section {
+  margin-bottom: govuk-spacing(6);
+
+  .govuk-heading-l {
+    margin-bottom: govuk-spacing(3);
+  }
+
+  &--compact {
+    margin-bottom: govuk-spacing(8);
+  }
+}
+
+.app-browse__recent-work,
+.app-browse__most-viewed {
+  max-width: govuk-pixel-to-rem(630px);
+}
+
+.app-browse__topics {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: govuk-pixel-to-rem(630px);
+}
+
+.app-browse__topic {
+  margin: 0;
+  padding: govuk-spacing(4) 0;
+  border-top: 1px solid $govuk-border-colour;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.app-browse__topic-title {
+  margin-top: 0;
+  margin-bottom: govuk-spacing(2);
+}
+
+.app-browse__topic-description {
+  margin-bottom: 0;
+  color: govuk-colour("dark-grey");
+}

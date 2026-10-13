@@ -1,0 +1,52 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-browse" %}
+
+{% block pageTitle %}
+  Documentation - Teaching Vacancies prototypes - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Teaching Vacancies prototypes", href: "/" },
+      { text: "Documentation" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Documentation</h1>
+
+  <p class="govuk-body-l app-browse__lead">{{ browse.lead }}</p>
+
+  <section class="app-browse__section" aria-labelledby="recent-work-heading">
+    <h2 class="govuk-heading-l" id="recent-work-heading">Recent work</h2>
+    <ul class="govuk-list govuk-list--bullet app-browse__recent-work">
+      {% for item in browse.recentWork %}
+        <li>
+          <a class="govuk-link" href="{{ item.href }}">{{ item.text }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="app-browse__section" aria-labelledby="topics-heading">
+    <h2 class="govuk-heading-l" id="topics-heading">Topics</h2>
+    <ul class="app-browse__topics">
+      {% for topic in browse.topics %}
+        <li class="app-browse__topic">
+          <h3 class="govuk-heading-m app-browse__topic-title">
+            <a class="govuk-link" href="{{ topic.href }}"{% if topic.external %} rel="noopener noreferrer" target="_blank"{% endif %}>
+              {{ topic.title }}{% if topic.external %}<span class="govuk-visually-hidden"> (opens in new tab)</span>{% endif %}
+            </a>
+          </h3>
+          <p class="govuk-body app-browse__topic-description">{{ topic.description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}

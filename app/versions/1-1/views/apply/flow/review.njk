@@ -17,6 +17,13 @@
       <h1 class="govuk-heading-l">Review your application</h1>
       <p class="govuk-body">Check your answers before you submit your application.</p>
 
+      {% if submitErrors and submitErrors.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: submitErrors
+        }) }}
+      {% endif %}
+
       {{ sectionHeading("Personal details", "/jobs/" + job.id + "/apply/personal-details") }}
       {{ govukSummaryList({
         rows: [
@@ -32,15 +39,25 @@
       }) }}
 
       {{ sectionHeading("Professional status", "/jobs/" + job.id + "/apply/professional-status") }}
-      {{ govukSummaryList({
-        rows: [
-          { key: { text: "Qualified teacher status" }, value: { text: status.qts } },
-          { key: { text: "Year QTS was gained" }, value: { text: status.qtsYear or "Not provided" } },
-          { key: { text: "Age range and subject" }, value: { text: status.ageRange or "Not provided" } },
-          { key: { text: "Teacher reference number" }, value: { text: status.trn or "Not provided" } },
-          { key: { text: "Induction period" }, value: { text: status.induction } }
-        ]
-      }) }}
+      {% if isFeJob or status.fe %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Relevant teaching or training qualification" }, value: { text: status.relevantQualification or "Not answered" } },
+            { key: { text: "Qualification details" }, value: { text: status.qualificationDetails or "Not provided" } },
+            { key: { text: "Maths and English requirements" }, value: { text: status.mathsEnglish or "Not answered" } }
+          ]
+        }) }}
+      {% else %}
+        {{ govukSummaryList({
+          rows: [
+            { key: { text: "Qualified teacher status" }, value: { text: status.qts } },
+            { key: { text: "Year QTS was gained" }, value: { text: status.qtsYear or "Not provided" } },
+            { key: { text: "Age range and subject" }, value: { text: status.ageRange or "Not provided" } },
+            { key: { text: "Teacher reference number" }, value: { text: status.trn or "Not provided" } },
+            { key: { text: "Induction period" }, value: { text: status.induction } }
+          ]
+        }) }}
+      {% endif %}
 
       {{ sectionHeading("Qualifications", "/jobs/" + job.id + "/apply/qualifications") }}
       {% for item in application.qualifications %}
@@ -149,7 +166,12 @@
 
       <p class="govuk-body">By submitting this application you confirm that the information you have given is true and complete.</p>
       <form method="post">
-        {{ govukButton({ text: "Submit application" }) }}
+        {% if submitErrors and submitErrors.length %}
+          {{ govukButton({ text: "Submit application", disabled: true }) }}
+          <p class="govuk-body govuk-!-margin-top-3">Fix the problems listed above before you submit.</p>
+        {% else %}
+          {{ govukButton({ text: "Submit application" }) }}
+        {% endif %}
       </form>
       <p class="govuk-body"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/task-list">Back to your application</a></p>
     </div>

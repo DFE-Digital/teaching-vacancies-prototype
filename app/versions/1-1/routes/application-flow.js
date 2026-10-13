@@ -1,16 +1,9 @@
-const SECTIONS = [
-  { id: 'personal-details', text: 'Personal details' },
-  { id: 'professional-status', text: 'Professional status' },
-  { id: 'qualifications', text: 'Qualifications' },
-  { id: 'training', text: 'Training and continuing professional development (CPD)' },
-  { id: 'memberships', text: 'Professional body memberships' },
-  { id: 'work-history', text: 'Work history' },
-  { id: 'personal-statement', text: 'Personal statement' },
-  { id: 'references', text: 'References' },
-  { id: 'equal-opportunities', text: 'Equal opportunities and recruitment monitoring' },
-  { id: 'support', text: 'Do you need support or adjustments for your interview?' },
-  { id: 'declarations', text: 'Declarations' }
-]
+const {
+  SECTIONS,
+  isFurtherEducationJob,
+  validateApplicationForSubmit,
+  canSubmitApplication
+} = require('../lib/quick-apply-fe')
 
 function asArray (value) {
   if (!value) return []
@@ -27,16 +20,16 @@ function defaultApplication (user) {
   return {
     submitted: false,
     statuses: {
-      'personal-details': 'Imported',
-      'professional-status': 'Imported',
-      qualifications: 'Imported',
-      training: 'Imported',
-      memberships: 'Imported',
-      'work-history': 'Imported',
+      'personal-details': 'Needs review',
+      'professional-status': 'Needs review',
+      qualifications: 'Needs review',
+      training: 'Needs review',
+      memberships: 'Needs review',
+      'work-history': 'Needs review',
       'personal-statement': 'Incomplete',
-      references: 'Imported',
+      references: 'Needs review',
       'equal-opportunities': 'Incomplete',
-      support: 'Imported',
+      support: 'Needs review',
       declarations: 'Incomplete'
     },
     personalDetails: {
@@ -135,7 +128,13 @@ function getApplication (req, jobId) {
   if (!req.session.data.applications[jobId]) {
     req.session.data.applications[jobId] = defaultApplication(req.session.user)
   }
-  return req.session.data.applications[jobId]
+  const application = req.session.data.applications[jobId]
+  Object.keys(application.statuses || {}).forEach((key) => {
+    if (application.statuses[key] === 'Imported') {
+      application.statuses[key] = 'Needs review'
+    }
+  })
+  return application
 }
 
 function renderApply (req, res, template, extra) {
@@ -144,9 +143,12 @@ function renderApply (req, res, template, extra) {
     return res.status(404).render('apply/start', { job: null })
   }
   const application = getApplication(req, String(job.id))
+  const isFeJob = isFurtherEducationJob(job)
   res.render(template, Object.assign({
     job,
     application,
+    isFeJob,
+    canSubmitApplication: canSubmitApplication(application),
     sections: SECTIONS.map(section => ({
       id: section.id,
       text: section.text,
@@ -169,7 +171,11 @@ function findItem (list, id) {
 
 module.exports = function (router) {
   router.get('/jobs/:id/apply', (req, res) => {
-    res.render('apply/start', { job: getJob(req) })
+    const job = getJob(req)
+    res.render('apply/start', {
+      job,
+      isFeJob: isFurtherEducationJob(job)
+    })
   })
 
   router.post('/jobs/:id/apply', (req, res) => {
@@ -222,12 +228,23 @@ module.exports = function (router) {
 
   router.post('/jobs/:id/apply/professional-status', (req, res) => {
     const application = getApplication(req, String(req.params.id))
-    application.professionalStatus = {
-      qts: req.body.qts || '',
-      qtsYear: req.body.qtsYear || '',
-      ageRange: req.body.ageRange || '',
-      trn: req.body.trn || '',
-      induction: req.body.induction || ''
+    const job = getJob(req)
+    if (isFurtherEducationJob(job)) {
+      application.professionalStatus = {
+        fe: true,
+        relevantQualification: req.body.relevantQualification || '',
+        qualificationDetails: req.body.qualificationDetails || '',
+        mathsEnglish: req.body.mathsEnglish || ''
+      }
+    } else {
+      application.professionalStatus = {
+        fe: false,
+        qts: req.body.qts || '',
+        qtsYear: req.body.qtsYear || '',
+        ageRange: req.body.ageRange || '',
+        trn: req.body.trn || '',
+        induction: req.body.induction || ''
+      }
     }
     setStatus(application, 'professional-status', req.body.completed)
     res.redirect(taskListPath(req.params.id))
@@ -631,11 +648,19 @@ module.exports = function (router) {
   })
 
   router.get('/jobs/:id/apply/review', (req, res) => {
-    renderApply(req, res, 'apply/flow/review')
+    const jobId = String(req.params.id)
+    const application = getApplication(req, jobId)
+    const submitErrors = validateApplicationForSubmit(application, jobId)
+    renderApply(req, res, 'apply/flow/review', { submitErrors })
   })
 
   router.post('/jobs/:id/apply/review', (req, res) => {
-    const application = getApplication(req, String(req.params.id))
+    const jobId = String(req.params.id)
+    const application = getApplication(req, jobId)
+    const submitErrors = validateApplicationForSubmit(application, jobId)
+    if (submitErrors.length) {
+      return renderApply(req, res, 'apply/flow/review', { submitErrors })
+    }
     application.submitted = true
     res.redirect('/jobs/' + req.params.id + '/apply/submitted')
   })

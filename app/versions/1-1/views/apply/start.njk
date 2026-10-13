@@ -16,14 +16,20 @@
         {% endif %}
         <h1 class="govuk-heading-l">Application</h1>
 
+        {% if isFeJob %}
+          {{ govukInsetText({
+            text: "This is a further education application. You will be asked about college-relevant qualifications and referees — not school-only questions such as QTS, unless they apply to your role."
+          }) }}
+        {% endif %}
+
         <h2 class="govuk-heading-m">Before you start</h2>
-        <p class="govuk-body">Your details have been imported from your last job application.</p>
+        <p class="govuk-body">Your details have been imported from your last job application. Review each section and mark it complete when the information is accurate.</p>
         <p class="govuk-body">You will need to provide:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>your full employment history</li>
           <li>your qualifications</li>
           <li>a personal statement</li>
-          <li>Referee details</li>
+          <li>referee details (employer and, where required, someone who can comment on work with learners aged 16 to 18)</li>
         </ul>
 
         <h2 class="govuk-heading-m">Saving your application details</h2>

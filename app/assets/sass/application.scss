@@ -21,6 +21,8 @@ $app-images-path: "/public/images/";
 @import "patterns/newheader";
 @import "patterns/govuk-homepage";
 @import "patterns/documentation";
+@import "patterns/guide";
+@import "patterns/browse";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 // Import local component styles

@@ -124,7 +124,12 @@ module.exports = router => {
   })
 
   router.get('/documentation', (req, res) => {
-    res.render('prototypes/documentation')
+    const browse = require('../data/documentation-index')
+    res.render('prototypes/documentation-index', { browse })
+  })
+
+  router.get('/documentation/about', (req, res) => {
+    res.render('prototypes/documentation-about')
   })
 
   router.get('/mobile', (req, res) => {

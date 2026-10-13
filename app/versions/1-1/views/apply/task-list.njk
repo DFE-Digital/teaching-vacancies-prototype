@@ -17,7 +17,7 @@
         }) }}
 
         {{ govukNotificationBanner({
-          html: '<p class="govuk-notification-banner__heading">Your details have been imported from your last job application. You should review each section to make sure the information is still accurate.</p>'
+          html: '<p class="govuk-notification-banner__heading">Your details have been imported from your last job application. Sections marked <strong>Needs review</strong> should be checked and marked complete before you submit.</p>'
         }) }}
 
         <h1 class="govuk-heading-l">{{ job.title }} at {{ job.organisation.name }}</h1>
@@ -50,10 +50,12 @@
               <div class="govuk-task-list__status" id="section-{{ loop.index }}-status">
                 {% if section.status == "Incomplete" %}
                   {{ govukTag({ text: "Incomplete", classes: "govuk-tag--yellow" }) }}
-                {% elif section.status == "Imported" %}
-                  {{ govukTag({ text: "Imported" }) }}
+                {% elif section.status == "Imported" or section.status == "Needs review" %}
+                  {{ govukTag({ text: "Needs review", classes: "govuk-tag--blue" }) }}
+                {% elif section.status == "Completed" %}
+                  {{ govukTag({ text: "Completed", classes: "govuk-tag--green" }) }}
                 {% else %}
-                  Completed
+                  {{ govukTag({ text: section.status }) }}
                 {% endif %}
               </div>
             </li>
@@ -61,11 +63,20 @@
         </ul>
 
         <h2 class="govuk-heading-m">Review and submit your application</h2>
-        <p class="govuk-body">You can review your application before you submit it.</p>
-        {{ govukButton({
-          text: "Review and submit application",
-          href: "/jobs/" + job.id + "/apply/review"
-        }) }}
+        {% if canSubmitApplication %}
+          <p class="govuk-body">You can review your application before you submit it.</p>
+          {{ govukButton({
+            text: "Review and submit application",
+            href: "/jobs/" + job.id + "/apply/review"
+          }) }}
+        {% else %}
+          {{ govukInsetText({
+            text: "Complete every section and answer both declaration questions before you can review and submit."
+          }) }}
+          <p class="govuk-body">
+            <a class="govuk-link" href="/jobs/{{ job.id }}/apply/review">Preview review page</a> (submit will stay blocked until all sections are complete)
+          </p>
+        {% endif %}
       {% endif %}
     </div>
   </div>

@@ -7,7 +7,13 @@
     <div class="govuk-grid-column-two-thirds">
       {{ applicationHeading() }}
       <h2 class="govuk-heading-l">References</h2>
-      <p class="govuk-body">You must include details for a referee from your current or most recent employer. If you did not work with children in this role, you must include at least one referee from the last job where you worked with children. Schools or colleges must contact referees in line with keeping children safe in education (KCSIE) statutory guidance.</p>
+      <p class="govuk-body">You must include details for a referee from your current or most recent employer.</p>
+      {% if isFeJob %}
+        <p class="govuk-body">For college roles, include at least one referee who can comment on your work with learners. If the role involves contact with under-18s, include a referee from a role where you worked with children or young people, in line with keeping children safe in education (KCSIE) guidance.</p>
+        <p class="govuk-body">Employers may ask for a mix of employer and professional referees depending on the role — check the job description.</p>
+      {% else %}
+        <p class="govuk-body">If you did not work with children in this role, you must include at least one referee from the last job where you worked with children. Schools or colleges must contact referees in line with keeping children safe in education (KCSIE) statutory guidance.</p>
+      {% endif %}
 
       {% for item in application.references %}
         <div class="govuk-summary-card govuk-!-margin-bottom-6">
