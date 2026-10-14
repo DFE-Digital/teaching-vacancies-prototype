@@ -49,7 +49,8 @@ module.exports = {
         'Copy prompts review of imported sections; Start application primary action retained.'
       ],
       screenshot: 'tv3-before-you-start.png',
-      screenshotCaption: 'Further education vacancy — Before you start (job 67663).'
+      screenshotCaption: 'Further education vacancy — Before you start (job 67663).',
+      prototypePath: '/apply'
     },
     {
       id: 'tv4-task-list',
@@ -67,7 +68,8 @@ module.exports = {
         'All sections still shown for FE support roles — product may later hide school-only tasks.'
       ],
       screenshot: 'tv4-task-list.png',
-      screenshotCaption: 'Task list with Needs review tags and submit gate.'
+      screenshotCaption: 'Task list with Needs review tags and submit gate.',
+      prototypePath: '/apply/task-list'
     },
     {
       id: 'tv6-professional-status',
@@ -84,7 +86,8 @@ module.exports = {
         'Review page shows FE summary rows when isFeJob or status.fe.'
       ],
       screenshot: 'tv6-professional-status.png',
-      screenshotCaption: 'Professional status on an FE vacancy — college qualification questions.'
+      screenshotCaption: 'Professional status on an FE vacancy — college qualification questions.',
+      prototypePath: '/apply/professional-status'
     },
     {
       id: 'tv13-work-history',
@@ -100,7 +103,8 @@ module.exports = {
         'FE jobs: “Curriculum area or subjects (optional)” on add job (job.njk).'
       ],
       screenshot: 'tv13-work-history.png',
-      screenshotCaption: 'Work history intro with inclusive gap examples.'
+      screenshotCaption: 'Work history intro with inclusive gap examples.',
+      prototypePath: '/apply/work-history'
     },
     {
       id: 'tv16-personal-statement',
@@ -117,7 +121,8 @@ module.exports = {
         'govukCharacterCount (10,000 characters) plus word count line retained.'
       ],
       screenshot: 'tv16-personal-statement.png',
-      screenshotCaption: 'Personal statement with FE role guidance and character count.'
+      screenshotCaption: 'Personal statement with FE role guidance and character count.',
+      prototypePath: '/apply/personal-statement'
     },
     {
       id: 'tv17-references',
@@ -133,7 +138,8 @@ module.exports = {
         'School branch keeps previous KCSIE wording.'
       ],
       screenshot: 'tv17-references.png',
-      screenshotCaption: 'References intro for further education.'
+      screenshotCaption: 'References intro for further education.',
+      prototypePath: '/apply/references'
     },
     {
       id: 'tv22-declarations',
@@ -151,7 +157,8 @@ module.exports = {
         'Both declaration answers required before submit (validation).'
       ],
       screenshot: 'tv22-declarations.png',
-      screenshotCaption: 'Declarations with warning text and college relationship wording.'
+      screenshotCaption: 'Declarations with warning text and college relationship wording.',
+      prototypePath: '/apply/declarations'
     },
     {
       id: 'gds-validation',
@@ -168,7 +175,8 @@ module.exports = {
         'Task list hides primary review until canSubmitApplication.'
       ],
       screenshot: 'gds-validation.png',
-      screenshotCaption: 'Review page with error summary when sections are incomplete.'
+      screenshotCaption: 'Review page with error summary when sections are incomplete.',
+      prototypePath: '/apply/review'
     },
     {
       id: 'tv2-apply-entry',
@@ -184,7 +192,8 @@ module.exports = {
         'Education phase line on start and apply section headings (unchanged pattern, FE inset added on start).'
       ],
       screenshot: 'tv2-apply-entry.png',
-      screenshotCaption: 'FE job listing with Apply for this job.'
+      screenshotCaption: 'FE job listing with Apply for this job.',
+      prototypePath: ''
     }
   ]
 }

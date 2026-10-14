@@ -61,6 +61,11 @@
             </ul>
 
           {% if section.screenshot %}
+            <p class="govuk-body app-guide__prototype-link">
+              <a class="govuk-link" href="/jobs/{{ guide.prototypeJob.id }}{{ section.prototypePath }}" target="_blank" rel="noopener noreferrer">
+                Open this page in the prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+              </a>
+            </p>
             <figure class="app-guide__figure">
               <img
                 src="{{ asset_path }}images/documentation/quick-apply-1/{{ section.screenshot }}"
