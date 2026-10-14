@@ -10,14 +10,6 @@ module.exports = {
     {
       href: '/documentation/quick-apply-1',
       text: 'Quick Apply for further education'
-    },
-    {
-      href: '/documentation/fe-changes-1',
-      text: 'Further Education changes'
-    },
-    {
-      href: '/documentation/fe-mobile-exp-1',
-      text: 'Further Education mobile experience'
     }
   ],
 
@@ -27,16 +19,6 @@ module.exports = {
       title: 'Quick Apply for further education',
       description:
         'Design review with analysis, suggested changes, and Playwright screenshots in a GOV.UK guide layout.'
-    },
-    {
-      href: '/documentation/fe-changes-1',
-      title: 'Further Education changes',
-      description: 'Detailed change plan and backlog for FE jobseeker journeys and Quick Apply.'
-    },
-    {
-      href: '/documentation/fe-mobile-exp-1',
-      title: 'Further Education mobile experience',
-      description: 'Notes and prototypes for mobile-first FE exploration.'
     },
     {
       href: 'https://manage-teaching-jobs-prototype.herokuapp.com/documentation/about',

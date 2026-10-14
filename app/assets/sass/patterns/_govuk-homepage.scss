@@ -4,11 +4,21 @@
   color: #fff;
 }
 
-.homepage-header__caption {
-  display: block;
-  margin-bottom: 5px;
+// MOJ Badge–style label on blue header (outline variant — see MOJ Design System badge)
+.homepage-header__badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 10px 4px;
+  border: 2px solid #fff;
+  background: transparent;
   color: #fff;
   font-family: "GDS Transport", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: baseline;
 }
 
 .homepage-header__title {
