@@ -1,0 +1,82 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation" %}
+
+{% block pageTitle %}
+  FE mobile experience — search, results and apply (v1.1) - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Teaching Vacancies prototypes", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: "FE mobile experience 1" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Working document, not for circulation</span>
+      <h1 class="govuk-heading-xl">FE mobile experience — search, results and apply</h1>
+      <p class="govuk-body">Findings from sessions with 5 further education jobseekers using a phone for search, vacancy review, job alerts and applying. This note covers only the v1.1 job search, search results and apply journey.</p>
+
+      <h2 class="govuk-heading-l">Insights</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>People search and browse on a phone, then often move to a laptop to write a CV or personal statement and submit.</li>
+        <li>Quick apply on a phone is used when someone is away from a computer. Writing a CV is still done on a computer. Limited keyboard space and spelling make long mobile forms harder, especially for older participants.</li>
+        <li>Some people use an AI tool to gather vacancies, then follow the links. One participant said a friend searches for jobs that way.</li>
+        <li>The facts used to decide whether to open a vacancy are location, contract type, pay, required qualifications and closing date.</li>
+        <li>Education phase is missing at the top of a vacancy. People cannot tell if a role is primary or secondary, and secondary can need a different qualification.</li>
+        <li>Salary is not shown in the same way on every result. Some listings have a salary and others skip it.</li>
+        <li>Keyword search is hard to get right. “Computer science lecture” returned nothing until the word “computer” was used. “Teacher of the deaf” returned nothing, while “SENCO” returned results.</li>
+        <li>Search matching can feel irrelevant. One vacancy read as headteacher in the list and SENDCo on the vacancy. Doing both was not credible.</li>
+        <li>A suggestion was to show keywords on each vacancy in the list. That was already being looked at in a ticket.</li>
+        <li>There is no filter for applicants with disabilities.</li>
+        <li>The “Show filter” button is easy to miss. One participant was not interested in using it.</li>
+        <li>Filters can appear to turn on by themselves when someone searches for a particular job, which is confusing.</li>
+        <li>Job alerts are valued, but a large number of new jobs feels stressful, and the email is noisy. Filters, including distance, were liked. Pay scale and tighter alert settings were suggested.</li>
+        <li>People wanted each listing to say whether it accepts overseas qualifications, is suitable for early career teachers, and requires driving.</li>
+        <li>A per-job alert was hard to find. People expected a clear action on the listing to subscribe to similar jobs.</li>
+        <li>Alert timing is only daily or weekly. People wanted more choice about when alerts arrive.</li>
+        <li>Leaving the service to apply on a school or college website is tiring. People want to know the destination and the next step before they go. Some vacancies have no direct apply action and only tell people to apply elsewhere.</li>
+        <li>Further education jobseekers want travel and commuting information for the site.</li>
+        <li>A participant with an eye condition preferred the phone because they can zoom and the interaction is simpler.</li>
+        <li>Everyone in the sessions could set up a job alert on a phone. Alerts were easier than repeating a web search, and the email had enough information to decide whether to open the vacancy.</li>
+      </ul>
+
+      <h2 class="govuk-heading-l">Actioned in v1.1</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>The homepage keyword field submits as keywords, the same name the results page uses. No extra hint is shown under the field.</li>
+        <li>Keyword matching is no longer an exact token inside the whole query. It is case-insensitive, uses words from the title, subjects and search terms, and treats “teacher of the deaf” like SEN or SENCO, and “computer science lecture” like computer, computing, ICT or lecturer.</li>
+        <li>Search results always show salary first, then education phase and contract type. Salary uses the actual salary, full-time equivalent, pay scale, or “Not provided”.</li>
+        <li>Where the vacancy data has them, results show early career teacher suitability, overseas qualifications and whether driving is required.</li>
+        <li>Results say that role and education phase filters are only applied when the user selects them. Keyword search does not tick those filters.</li>
+        <li>“Show filter” is a primary button and full width on a small screen.</li>
+        <li>Filters include pay scale (MPS/UPS and bands 3, 5 and 6) and accessibility (suitable for applicants with disabilities, workplace adjustments available).</li>
+        <li>The vacancy page states the education phase as the first job detail. The same phase is repeated at the top of each apply step. It is not repeated under the job title.</li>
+        <li>Contract type is always in the job details.</li>
+        <li>External applications stay on the vacancy first. The page says you will leave Teaching Vacancies, names the organisation, and says the next step is their form. The button is “Apply on the [organisation] website (opens in new tab)”.</li>
+        <li>The vacancy location includes travel and commuting, using the site postcode.</li>
+        <li>The vacancy page already has “Get a job alert for similar jobs”. That action was left in place.</li>
+      </ul>
+
+      <h2 class="govuk-heading-l">Pending</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Job alert email volume, including a stressful count such as 60 new jobs, and tighter alert settings beyond the filters already on the alert email.</li>
+        <li>More choices for when an alert is sent. The form still offers daily around 3pm or weekly on Friday around 6pm.</li>
+        <li>A per-listing alert action inside the job alert email. The vacancy page has the action; the email does not.</li>
+        <li>Making every alert listing the same length when some include hours of duty and others do not.</li>
+        <li>Vacancies whose list title and page title describe two different roles, such as headteacher and SENDCo.</li>
+        <li>Support for people who arrive from an AI summary rather than from search.</li>
+        <li>A shorter apply journey for people who will finish the application on a laptop.</li>
+        <li>Subject keywords on each result in the list.</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

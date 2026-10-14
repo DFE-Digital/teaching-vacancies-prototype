@@ -167,7 +167,8 @@ function bindVersionResponse (req, res, next, version, env) {
       })
     }
 
-    renderName(view, () => renderName(`${view}/index`))
+    const tryIndexFallback = !/\.(njk|html)$/.test(view)
+    renderName(view, tryIndexFallback ? () => renderName(`${view}/index`) : undefined)
   }
 }
 

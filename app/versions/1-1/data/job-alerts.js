@@ -11,6 +11,8 @@ const researched = [
     county: 'Berkshire',
     postcode: 'SL1 4AA',
     phase: 'Secondary school',
+    organisationType: 'Academy',
+    ageRange: 'Ages 11 to 18',
     contract: 'Fixed term',
     workingPattern: 'Full time',
     hours: '32.5 hours',
@@ -26,6 +28,8 @@ const researched = [
     county: 'West Yorkshire',
     postcode: 'WF2 0NP',
     phase: 'Primary school',
+    organisationType: 'Academy',
+    ageRange: 'Ages 4 to 11',
     contract: 'Fixed term',
     workingPattern: 'Full time',
     salary: '£31,650 to £43,607',
@@ -164,12 +168,96 @@ function flags (alert) {
   return items
 }
 
+// Matches hiring filter grouping: Academy (includes free schools) vs LA maintained
+const schoolOrganisationTypes = [
+  'Academy',
+  'Academy',
+  'Academy',
+  'Local authority maintained school',
+  'Voluntary aided school'
+]
+
+function phaseFromJob (job, index) {
+  const raw = job.phase || (job.organisation && job.organisation.phase) || ''
+  if (/primary/i.test(raw)) return 'Primary school'
+  if (/secondary/i.test(raw)) return 'Secondary school'
+  if (/further education|college|sixth form/i.test(raw)) return 'Further education'
+  return schoolPhases[index % 2]
+}
+
+function normalizeOrganisationType (type) {
+  if (!type) return ''
+  if (type === 'School' || type === 'Maintained school') {
+    return 'Local authority maintained school'
+  }
+  if (type === 'Free school') return 'Academy'
+  if (type === 'College' || type === 'Corporate') return ''
+  return type
+}
+
+function isAgeRangeIncompatibleWithPhase (text, phase) {
+  const lower = String(text).toLowerCase()
+  if (lower.includes('adult')) return true
+  if (phase === 'Primary school' && /11\s*to\s*18/.test(lower) && !/4\s*to\s*19/.test(lower)) {
+    return true
+  }
+  if (phase === 'Secondary school' && /4\s*to\s*11/.test(lower) && !/4\s*to\s*19/.test(lower)) {
+    return true
+  }
+  if (phase === 'Primary school' && /16/.test(lower)) return true
+  return false
+}
+
+function formatSchoolAgeRange (value, phase) {
+  if (phase !== 'Primary school' && phase !== 'Secondary school') return ''
+
+  let text = ''
+  if (value) {
+    const v = String(value).trim()
+    if (/^ages\s/i.test(v)) text = v
+    else if (/^\d+\s*-\s*\d+/.test(v)) {
+      const parts = v.split('-').map(s => s.trim())
+      text = 'Ages ' + parts[0] + ' to ' + parts[1]
+    } else if (/^\d/.test(v)) text = 'Ages ' + v
+    else text = v
+  }
+
+  if (text && isAgeRangeIncompatibleWithPhase(text, phase)) text = ''
+  if (!text) {
+    return phase === 'Primary school' ? 'Ages 4 to 11' : 'Ages 11 to 18'
+  }
+  return text
+}
+
+function defaultOrganisationType (phase, index) {
+  if (phase === 'Primary school' || phase === 'Secondary school') {
+    return schoolOrganisationTypes[index % schoolOrganisationTypes.length]
+  }
+  return ''
+}
+
+function schoolJobDetails (alert, index) {
+  const phase = alert.phase
+  if (phase !== 'Primary school' && phase !== 'Secondary school') {
+    return { organisationType: '', ageRange: '' }
+  }
+  const organisationType = normalizeOrganisationType(alert.organisationType) ||
+    defaultOrganisationType(phase, index)
+  return {
+    organisationType,
+    ageRange: formatSchoolAgeRange(alert.ageRange, phase)
+  }
+}
+
 function listing (alert, index) {
+  const details = schoolJobDetails(alert, index)
   return {
     title: alert.title,
     href: '/jobs/' + (alert.id || jobs[index % jobs.length].id),
     location: location(alert),
     phase: alert.phase,
+    organisationType: details.organisationType,
+    ageRange: details.ageRange,
     contract: alert.contract,
     workingPattern: alert.workingPattern,
     hours: alert.hours || '',
@@ -179,10 +267,10 @@ function listing (alert, index) {
   }
 }
 
-function fromJob (job, index, overrides) {
+function fromJob (job, index, overrides = {}) {
   const org = job.organisation || {}
   const address = (job.locations && job.locations[0] && job.locations[0].address) || org.address || {}
-  const phase = schoolPhases[index % 2]
+  const phase = overrides.phase || phaseFromJob(job, index)
   return Object.assign({
     id: job.id,
     title: job.title,
@@ -191,6 +279,8 @@ function fromJob (job, index, overrides) {
     county: '',
     postcode: address.postcode,
     phase: phase,
+    organisationType: org.type || '',
+    ageRange: org.ageGroup || '',
     contract: contracts[index % contracts.length],
     workingPattern: (job.workingPatterns || ['Full time']).join(', '),
     salary: job.actualSalaryDetails || 'Salary to be confirmed',
@@ -219,6 +309,8 @@ while (alerts.length < 69) {
     town: school[1],
     postcode: school[2],
     phase: school[3],
+    organisationType: '',
+    ageRange: '',
     contract: contracts[alerts.length % contracts.length],
     workingPattern: extraIndex % 2 === 0 ? 'Part time' : 'Full time'
   }), alerts.length))
