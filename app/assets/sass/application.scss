@@ -453,7 +453,9 @@ hr {
   .vacancies-show__banner-apply .govuk-button--external-advert {
     align-items: center;
     display: inline-flex;
+    font-size: 1.1875rem;
     gap: 8px;
+    line-height: 1.25;
   }
 
   .vacancies-show__new-tab-icon {
@@ -473,6 +475,7 @@ hr {
     .vacancies-show__header-action .govuk-button {
       width: 100%;
     }
+
   }
 
   .header-with-logo {

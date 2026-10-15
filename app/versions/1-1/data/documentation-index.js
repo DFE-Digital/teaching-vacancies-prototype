@@ -10,6 +10,10 @@ module.exports = {
     {
       href: '/documentation/quick-apply-1',
       text: 'Quick Apply for further education'
+    },
+    {
+      href: '/documentation/fe-content-changes-1',
+      text: 'FE Quick Apply content parity'
     }
   ],
 
@@ -19,6 +23,12 @@ module.exports = {
       title: 'Quick Apply for further education',
       description:
         'Design review with analysis, suggested changes, and Playwright screenshots in a GOV.UK guide layout.'
+    },
+    {
+      href: '/documentation/fe-content-changes-1',
+      title: 'FE Quick Apply content parity',
+      description:
+        'Design change log from 9 October 2026 with section-by-section screenshots of schools and colleges copy updates.'
     },
     {
       href: 'https://manage-teaching-jobs-prototype.herokuapp.com/documentation/about',

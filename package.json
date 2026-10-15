@@ -13,7 +13,8 @@
     "lint": "standard",
     "rapidtest": "jest --bail",
     "test": "gulp generate-assets && jest && npm run lint",
-    "capture:quick-apply-docs": "node scripts/capture-quick-apply-docs.js"
+    "capture:quick-apply-docs": "node scripts/capture-quick-apply-docs.js",
+    "capture:fe-content-changes-docs": "node scripts/capture-fe-content-changes-docs.js"
   },
   "dependencies": {
     "@faker-js/faker": "^10.5.0",
