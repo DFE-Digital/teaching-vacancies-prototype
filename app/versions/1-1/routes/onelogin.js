@@ -111,6 +111,11 @@ module.exports = router => {
       req.session.data.savedJobState = 'saved'
     }
 
+    const allowedSavedJobSorts = ['added', 'deadline', 'title']
+    if (req.query.savedJobSort && allowedSavedJobSorts.includes(req.query.savedJobSort)) {
+      req.session.data.savedJobSort = req.query.savedJobSort
+    }
+
     const sampleSavedJobs = buildSampleSavedJobs()
     const hidden = (req.session.data.hiddenSampleSavedJobs || []).map(String)
     const state = req.session.data.savedJobState

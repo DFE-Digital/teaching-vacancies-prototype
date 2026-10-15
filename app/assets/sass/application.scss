@@ -24,6 +24,9 @@ $app-images-path: "/public/images/";
 @import "patterns/guide";
 @import "patterns/browse";
 @import "patterns/moj-sub-navigation";
+@import "patterns/notification-message";
+@import "patterns/notifications-inbox";
+@import "patterns/moj-badge";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 // Import local component styles

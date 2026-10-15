@@ -1,0 +1,112 @@
+// Inbox list (ATS notifications). 19px type; colours meet WCAG 2.2 AA on white and light grey.
+
+$app-notifications-inbox-border: $govuk-border-colour;
+$app-notifications-inbox-surface: govuk-colour("light-grey");
+$app-notifications-inbox-text: govuk-colour("black");
+$app-notifications-inbox-link: govuk-colour("black");
+$app-notifications-inbox-unread: govuk-colour("blue");
+
+.app-notifications-inbox {
+  margin-top: govuk-spacing(5);
+  border: 1px solid $app-notifications-inbox-border;
+  background: govuk-colour("white");
+  @include govuk-font(19);
+}
+
+.app-notifications-inbox__toolbar {
+  margin: 0;
+  padding: govuk-spacing(3) govuk-spacing(3);
+  border-bottom: 1px solid $app-notifications-inbox-border;
+  background: $app-notifications-inbox-surface;
+  color: $app-notifications-inbox-text;
+  @include govuk-font(19);
+}
+
+.app-notifications-inbox__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-notifications-inbox__row {
+  display: grid;
+  grid-template-columns: 11em minmax(0, 1fr);
+  column-gap: govuk-spacing(3);
+  align-items: start;
+  padding: govuk-spacing(3);
+  border-bottom: 1px solid $app-notifications-inbox-border;
+  text-decoration: none;
+  color: $app-notifications-inbox-link;
+  @include govuk-font(19);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:link,
+  &:visited {
+    color: $app-notifications-inbox-link;
+  }
+
+  &:hover {
+    background: $app-notifications-inbox-surface;
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+    background: $app-notifications-inbox-surface;
+  }
+}
+
+.app-notifications-inbox__date {
+  color: $app-notifications-inbox-text;
+  @include govuk-font(19);
+}
+
+.app-notifications-inbox__message {
+  min-width: 0;
+}
+
+.app-notifications-inbox__subject {
+  display: block;
+  margin-bottom: govuk-spacing(1);
+  color: $app-notifications-inbox-text;
+  @include govuk-font(19);
+
+  .app-notifications-inbox__row--unread & {
+    @include govuk-font(19, $weight: bold);
+  }
+}
+
+.app-notifications-inbox__preview {
+  display: block;
+  overflow: hidden;
+  color: $app-notifications-inbox-text;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @include govuk-font(19);
+}
+
+.app-notifications-inbox__unread-marker {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: govuk-spacing(2);
+  border-radius: 50%;
+  background: $app-notifications-inbox-unread;
+  vertical-align: middle;
+}
+
+@include govuk-media-query($until: tablet) {
+  .app-notifications-inbox__row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: govuk-spacing(2);
+  }
+
+  .app-notifications-inbox__preview {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

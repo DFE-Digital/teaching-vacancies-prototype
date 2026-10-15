@@ -287,6 +287,7 @@ module.exports = router => {
     ensureSignedInJobseeker
   } = require('../lib/jobseeker-session')
   const jobseekerNotifications = require('../data/jobseeker-notifications')
+  const { withMetadataBadges } = require('../lib/notification-metadata')
 
   router.get('/jobseekers/subscriptions', (req, res) => {
     ensureSignedInJobseeker(req, users)
@@ -355,7 +356,8 @@ module.exports = router => {
   router.get('/jobseekers/notifications', (req, res) => {
     ensureSignedInJobseeker(req, users)
     res.render('jobseekers/notifications', {
-      notifications: jobseekerNotifications
+      notifications: jobseekerNotifications,
+      unreadCount: jobseekerNotifications.filter(item => item.unread).length
     })
   })
 
@@ -366,7 +368,8 @@ module.exports = router => {
       return res.redirect('/jobseekers/notifications')
     }
     res.render('jobseekers/notification-detail', {
-      notification
+      notification: withMetadataBadges(notification),
+      user: req.session.user
     })
   })
 
@@ -441,12 +444,46 @@ module.exports = router => {
           href
         })
       })
-    const applications = real.concat(sample)
+    const allApplications = real.concat(sample)
+    const statusOrder = ['Draft', 'Submitted', 'Shortlisted', 'Interviewing', 'Offered']
+    const statusCounts = allApplications.reduce((counts, application) => {
+      const key = application.status
+      counts[key] = (counts[key] || 0) + 1
+      return counts
+    }, {})
+    const statusFilter = typeof req.query.status === 'string' ? req.query.status.trim() : ''
+    const applications = statusFilter
+      ? allApplications.filter(application => application.status === statusFilter)
+      : allApplications
+
+    const applicationsQuery = (pageNumber) => {
+      const params = new URLSearchParams()
+      if (statusFilter) params.set('status', statusFilter)
+      if (pageNumber && pageNumber > 1) params.set('page', String(pageNumber))
+      const query = params.toString()
+      return query ? `?${query}` : ''
+    }
+
     const pageSize = 10
     const pageCount = Math.max(1, Math.ceil(applications.length / pageSize))
     const requestedPage = parseInt(req.query.page, 10)
     const currentPage = Math.min(pageCount, Math.max(1, requestedPage || 1))
     const start = (currentPage - 1) * pageSize
+
+    const statusFilterItems = [
+      {
+        value: '',
+        text: `Show all (${allApplications.length})`,
+        selected: !statusFilter
+      },
+      ...statusOrder
+        .filter(status => statusCounts[status])
+        .map(status => ({
+          value: status,
+          text: `${status} (${statusCounts[status]})`,
+          selected: statusFilter === status
+        }))
+    ]
 
     res.render('jobseekers/job-applications', {
       activeNav: 'applications',
@@ -454,15 +491,17 @@ module.exports = router => {
       jobseekerSubNavSection: 'applications',
       applications: applications.slice(start, start + pageSize),
       applicationCount: applications.length,
+      statusFilter,
+      statusFilterItems,
       currentPage,
       pageCount,
-      previousHref: currentPage > 1 ? `/jobseekers/job_applications?page=${currentPage - 1}` : '',
-      nextHref: currentPage < pageCount ? `/jobseekers/job_applications?page=${currentPage + 1}` : '',
+      previousHref: currentPage > 1 ? `/jobseekers/job_applications${applicationsQuery(currentPage - 1)}` : '',
+      nextHref: currentPage < pageCount ? `/jobseekers/job_applications${applicationsQuery(currentPage + 1)}` : '',
       paginationItems: Array.from({ length: pageCount }, (_, index) => {
         const number = index + 1
         return {
           number,
-          href: `/jobseekers/job_applications?page=${number}`,
+          href: `/jobseekers/job_applications${applicationsQuery(number)}`,
           current: number === currentPage
         }
       })

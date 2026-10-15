@@ -35,6 +35,25 @@
       margin: 0 10px;
     }
 
+    .app-saved-jobs-sort--select {
+      display: none;
+      max-width: 100%;
+    }
+
+    .app-saved-jobs-sort--select .govuk-form-group {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 40.0625em) {
+      .app-saved-jobs-sort--links {
+        display: none;
+      }
+
+      .app-saved-jobs-sort--select {
+        display: block;
+      }
+    }
+
     .app-saved-jobs-help {
       margin-top: 15px;
       margin-bottom: 0;
@@ -55,25 +74,43 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-l app-saved-jobs-heading">Saved jobs</h1>
+  {% set savedJobCount = savedJobList.length if savedJobList else 0 %}
+  <h1 class="govuk-heading-l app-saved-jobs-heading">Saved jobs ({{ savedJobCount }})</h1>
 
   {% if savedJobList and savedJobList.length %}
-    <p class="govuk-body app-saved-jobs-sort">
+    {% set savedJobStateParam = data.savedJobState or 'saved' %}
+
+    <form method="get" action="/onelogin/journey/match" class="app-saved-jobs-sort app-saved-jobs-sort--select">
+      <input type="hidden" name="savedJobState" value="{{ savedJobStateParam }}">
+      {{ govukSelect({
+        label: { text: "Sort by" },
+        id: "savedJobSort",
+        name: "savedJobSort",
+        attributes: { onchange: "this.form.submit()" },
+        items: [
+          { value: "added", text: "Date added (most recent)", selected: savedJobSort == 'added' },
+          { value: "deadline", text: "Application deadline (soonest)", selected: savedJobSort == 'deadline' },
+          { value: "title", text: "Job title (a to z)", selected: savedJobSort == 'title' }
+        ]
+      }) }}
+    </form>
+
+    <p class="govuk-body app-saved-jobs-sort app-saved-jobs-sort--links">
       <span class="govuk-!-font-weight-bold">Sort by:</span>
       {% if savedJobSort == 'added' %}
         <span class="govuk-!-font-weight-bold">Date added (most recent)</span>
       {% else %}
-        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort=added">Date added (most recent)</a>
+        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ savedJobStateParam }}&amp;savedJobSort=added">Date added (most recent)</a>
       {% endif %}<span class="app-saved-jobs-sort__sep" aria-hidden="true">|</span>
       {%- if savedJobSort == 'deadline' %}
         <span class="govuk-!-font-weight-bold">Application deadline (soonest)</span>
       {% else %}
-        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort=deadline">Application deadline (soonest)</a>
+        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ savedJobStateParam }}&amp;savedJobSort=deadline">Application deadline (soonest)</a>
       {% endif %}<span class="app-saved-jobs-sort__sep" aria-hidden="true">|</span>
       {%- if savedJobSort == 'title' %}
         <span class="govuk-!-font-weight-bold">Job title (a to z)</span>
       {% else %}
-        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'saved' }}&amp;savedJobSort=title">Job title (a to z)</a>
+        <a class="govuk-link" href="/onelogin/journey/match?savedJobState={{ savedJobStateParam }}&amp;savedJobSort=title">Job title (a to z)</a>
       {% endif %}
     </p>
 

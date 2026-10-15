@@ -3,6 +3,7 @@
 {% set title = notification.title %}
 {% set activeNav = 'notifications' %}
 {% set forceSignedIn = true %}
+{% set recipientEmail = user.emailAddress if user and user.emailAddress else 'your account email' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -11,45 +12,50 @@
   }) }}
 {% endblock %}
 
-{% block head %}
-  {{ super() }}
-  <style>
-    .app-notification-email {
-      margin-top: 30px;
-      padding: 25px 20px 20px;
-      border: 1px solid #b1b4b6;
-      background: #f3f2f1;
-    }
-    .app-notification-email__subject {
-      margin: 0 0 20px;
-      font-size: 19px;
-      font-weight: 700;
-    }
-    .app-notification-email__meta {
-      margin: 0 0 15px;
-      color: #505a5f;
-      font-size: 16px;
-    }
-  </style>
-{% endblock %}
-
 {% block content %}
-  <h1 class="govuk-heading-l">{{ notification.title }}</h1>
-  <p class="govuk-body govuk-!-margin-bottom-0">{{ notification.date }}</p>
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-2">{{ notification.title }}</h1>
+  <p class="govuk-body govuk-!-margin-bottom-6">Received {{ notification.date }}</p>
 
-  <div class="app-notification-email">
-    <p class="app-notification-email__meta">Subject: {{ notification.emailSubject }}</p>
-    <p class="govuk-body">{{ notification.detail.introduction }}</p>
-    {% for paragraph in notification.detail.paragraphs %}
-      <p class="govuk-body">{{ paragraph }}</p>
-    {% endfor %}
-  </div>
+  <article class="app-notification-message" aria-labelledby="notification-message-subject">
+    <dl class="app-notification-message__headers">
+      <div class="app-notification-message__header-row">
+        <dt>From</dt>
+        <dd>{{ notification.detail.from or 'Teaching Vacancies' }}</dd>
+      </div>
+      <div class="app-notification-message__header-row">
+        <dt>To</dt>
+        <dd>{{ recipientEmail }}</dd>
+      </div>
+      <div class="app-notification-message__header-row">
+        <dt>Date</dt>
+        <dd>{{ notification.date }}</dd>
+      </div>
+      <div class="app-notification-message__header-row app-notification-message__header-row--subject">
+        <dt>Subject</dt>
+        <dd id="notification-message-subject">{{ notification.emailSubject }}</dd>
+      </div>
+    </dl>
 
-  <dl class="govuk-summary-list govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+    <div class="app-notification-message__body">
+      <p class="govuk-body">{{ notification.detail.introduction }}</p>
+      {% for paragraph in notification.detail.paragraphs %}
+        <p class="govuk-body">{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+  </article>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-4">About this application</h2>
+  <dl class="govuk-summary-list govuk-!-margin-bottom-6">
     {% for row in notification.detail.metadata %}
-      <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
         <dt class="govuk-summary-list__key">{{ row.key }}</dt>
-        <dd class="govuk-summary-list__value">{{ row.value }}</dd>
+        <dd class="govuk-summary-list__value">
+          {% if row.mojBadge %}
+            <strong class="moj-badge {{ row.mojBadge }}">{{ row.value }}</strong>
+          {% else %}
+            {{ row.value }}
+          {% endif %}
+        </dd>
       </div>
     {% endfor %}
   </dl>

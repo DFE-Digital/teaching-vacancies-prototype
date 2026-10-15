@@ -1,0 +1,63 @@
+// MOJ Design System badge (outline)
+// https://design-patterns.service.justice.gov.uk/components/badge/
+
+$moj-badge-brand: govuk-colour("blue");
+
+.moj-badge {
+  display: inline-block;
+  padding: 0 govuk-spacing(1);
+  border: 2px solid $moj-badge-brand;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  color: $moj-badge-brand;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  @include govuk-font($size: 14, $weight: bold);
+
+  @include govuk-media-query($from: tablet) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &--purple {
+    border-color: govuk-colour("purple");
+    color: govuk-colour("purple");
+  }
+
+  &--red {
+    border-color: govuk-colour("red");
+    color: govuk-colour("red");
+  }
+
+  &--green {
+    border-color: govuk-colour("green");
+    color: govuk-colour("green");
+  }
+
+  &--blue {
+    border-color: govuk-colour("blue");
+    color: govuk-colour("blue");
+  }
+
+  &--grey {
+    border-color: govuk-colour("dark-grey");
+    color: govuk-colour("dark-grey");
+  }
+
+  &--pink {
+    border-color: govuk-colour("pink");
+    color: govuk-colour("pink");
+  }
+
+  // Aligns with application status (Shortlisted) elsewhere in the prototype
+  &--yellow {
+    border-color: govuk-colour("yellow");
+    color: govuk-colour("black");
+  }
+
+  &--large {
+    @include govuk-font(16, $weight: bold);
+  }
+}

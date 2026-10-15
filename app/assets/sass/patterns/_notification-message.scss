@@ -1,0 +1,56 @@
+.app-notification-message {
+  margin-top: govuk-spacing(2);
+  border: 1px solid $govuk-border-colour;
+  background: govuk-colour("white");
+  @include govuk-font(16);
+}
+
+.app-notification-message__headers {
+  margin: 0;
+  padding: govuk-spacing(3) govuk-spacing(4);
+  border-bottom: 1px solid $govuk-border-colour;
+  background: govuk-colour("light-grey");
+  @include govuk-font(16);
+}
+
+.app-notification-message__header-row {
+  display: grid;
+  grid-template-columns: 5.5em minmax(0, 1fr);
+  column-gap: govuk-spacing(3);
+  margin: 0 0 govuk-spacing(2);
+  @include govuk-font(16);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  dt {
+    margin: 0;
+    @include govuk-font(16, $weight: bold);
+    color: govuk-colour("black");
+  }
+
+  dd {
+    margin: 0;
+    @include govuk-font(16);
+    color: govuk-colour("black");
+    word-break: break-word;
+  }
+
+  &--subject dd {
+    @include govuk-font(16, $weight: bold);
+  }
+
+  @include govuk-media-query($until: tablet) {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: govuk-spacing(1);
+  }
+}
+
+.app-notification-message__body {
+  padding: govuk-spacing(5) govuk-spacing(4) govuk-spacing(6);
+
+  .govuk-body:last-child {
+    margin-bottom: 0;
+  }
+}

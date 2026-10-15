@@ -10,6 +10,57 @@
 {% block head %}
   {{ super() }}
   <style>
+    .app-applications-page-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      column-gap: 20px;
+      row-gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .app-applications-page-header__title {
+      margin-bottom: 0;
+    }
+
+    .app-applications-filter {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      column-gap: 15px;
+      row-gap: 0;
+      margin-left: auto;
+    }
+
+    .app-applications-filter .govuk-form-group {
+      margin-bottom: 0;
+    }
+
+    .app-applications-filter .govuk-select {
+      min-width: 14em;
+    }
+
+    .app-applications-filter .govuk-button {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 40.0625em) {
+      .app-applications-filter {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .app-applications-filter .govuk-form-group {
+        margin-bottom: 10px;
+      }
+
+      .app-applications-filter .govuk-select {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
     .app-applications__pagination .govuk-pagination {
       margin-top: 40px;
     }
@@ -17,12 +68,36 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-l">Applications ({{ applicationCount }})</h1>
+  <div class="app-applications-page-header">
+    <h1 class="govuk-heading-l app-applications-page-header__title">Applications ({{ applicationCount }})</h1>
+
+    <form method="get" action="/jobseekers/job_applications" class="app-applications-filter">
+      {{ govukSelect({
+        id: "status",
+        name: "status",
+        label: {
+          text: "Filter by status",
+          classes: "govuk-label--s"
+        },
+        items: statusFilterItems
+      }) }}
+      {{ govukButton({
+        text: "Apply filter",
+        classes: "govuk-button--secondary"
+      }) }}
+    </form>
+  </div>
 
   <div class="app-applications">
-    {% for application in applications %}
-      {{ applicationSummaryCard(application) }}
-    {% endfor %}
+    {% if applications.length %}
+      {% for application in applications %}
+        {{ applicationSummaryCard(application) }}
+      {% endfor %}
+    {% else %}
+      {{ govukInsetText({
+        text: "No applications match this filter. Select Show all and apply the filter to see every application."
+      }) }}
+    {% endif %}
   </div>
 
   {% if pageCount > 1 %}
