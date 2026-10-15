@@ -1,0 +1,57 @@
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+{% macro jobAlertCriteriaSummaryList(alert) %}
+  {% set frequencyText = "Daily" if alert.frequency == 'daily' else "Weekly" %}
+
+  <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Status</dt>
+      <dd class="govuk-summary-list__value">
+        {% if alert.status == 'active' %}
+          {{ govukTag({ text: "Active", classes: "govuk-tag--green" }) }}
+        {% else %}
+          {{ govukTag({ text: "Inactive", classes: "govuk-tag--grey" }) }}
+        {% endif %}
+        {% if alert.imported %}
+          {{ govukTag({ text: "Imported" }) }}
+        {% endif %}
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Keyword</dt>
+      <dd class="govuk-summary-list__value">{{ alert.keyword }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Location</dt>
+      <dd class="govuk-summary-list__value">{{ alert.location }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Suitable for early career teachers</dt>
+      <dd class="govuk-summary-list__value">{{ alert.criteria.ect }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">FE QTS required</dt>
+      <dd class="govuk-summary-list__value">{{ alert.criteria.feQts }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Visa sponsorship availability</dt>
+      <dd class="govuk-summary-list__value">{{ alert.criteria.visa }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Subjects</dt>
+      <dd class="govuk-summary-list__value">{{ alert.criteria.subjects }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Education phases</dt>
+      <dd class="govuk-summary-list__value">{{ alert.criteria.phases }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Working patterns</dt>
+      <dd class="govuk-summary-list__value">{{ alert.criteria.workingPatterns }}</dd>
+    </div>
+    <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+      <dt class="govuk-summary-list__key">Alert frequency</dt>
+      <dd class="govuk-summary-list__value">{{ frequencyText }}</dd>
+    </div>
+  </dl>
+{% endmacro %}

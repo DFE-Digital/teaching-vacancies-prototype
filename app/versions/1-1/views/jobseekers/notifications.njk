@@ -1,0 +1,45 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Notifications' %}
+{% set activeNav = 'notifications' %}
+{% set forceSignedIn = true %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-notification-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #b1b4b6;
+    }
+    .app-notification-item__date {
+      color: #505a5f;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">Notifications</h1>
+  <p class="govuk-body">Updates about your applications and messages from hiring teams.</p>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if notifications.length %}
+        <ul class="govuk-list govuk-!-margin-top-4">
+          {% for item in notifications %}
+            <li class="app-notification-item">
+              <p class="app-notification-item__date">{{ item.date }}</p>
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+                <a class="govuk-link" href="{{ item.href }}">{{ item.title }}</a>
+              </h2>
+              <p class="govuk-body govuk-!-margin-bottom-0">{{ item.body }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        {{ govukInsetText({ text: "You have no notifications yet." }) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

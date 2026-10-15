@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set accountSection = 'personal-details' %}
+{% set title = 'Change your TRN' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({ text: "Back to personal details", href: "/account/personal-details" }) }}
+
+      {% if errorList and errorList.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <p class="govuk-body">Your teacher reference number (TRN) is stored in Teaching Vacancies. Schools can only see it if you apply for a role.</p>
+
+      <form method="post" action="/account/personal-details/trn" novalidate>
+        {{ govukInput({
+          label: { text: "Teacher reference number (TRN)" },
+          hint: {
+            text: "Your TRN is 7 digits long. Leave blank if you do not have one. You can find a lost TRN on GOV.UK."
+          },
+          id: "trn",
+          name: "trn",
+          classes: "govuk-input--width-10",
+          value: trnValue,
+          errorMessage: { text: errors.trn } if errors.trn,
+          attributes: { inputmode: "numeric", pattern: "[0-9]*", maxlength: "7" }
+        }) }}
+        {{ govukButton({ text: "Save changes" }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

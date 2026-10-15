@@ -8,6 +8,10 @@ module.exports = {
 
   recentWork: [
     {
+      href: '/documentation/profile-changes',
+      text: 'Profile changes'
+    },
+    {
       href: '/documentation/quick-apply-1',
       text: 'Quick Apply for further education'
     },
@@ -18,6 +22,12 @@ module.exports = {
   ],
 
   topics: [
+    {
+      href: '/documentation/profile-changes',
+      title: 'Profile changes',
+      description:
+        'Job alerts, notifications, Applications and saved jobs (summary cards), and personal details under Your account (RP01–RP07).'
+    },
     {
       href: '/documentation/quick-apply-1',
       title: 'Quick Apply for further education',

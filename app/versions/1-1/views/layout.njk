@@ -61,6 +61,11 @@
     html: 'This is a new service - <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/feedback/new" target="_blank" rel="noopener noreferrer">your feedback</a> will help us to improve it.',
     classes: "govuk-width-container"
   }) }}
+  {% if jobseekerSubNavigation %}
+    <div class="govuk-width-container govuk-!-margin-top-4 govuk-!-margin-bottom-2">
+      {% include "includes/jobseeker-account-nav.njk" %}
+    </div>
+  {% endif %}
   {% endif %}
 
 

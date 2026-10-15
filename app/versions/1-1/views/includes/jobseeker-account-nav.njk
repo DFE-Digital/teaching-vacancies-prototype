@@ -1,0 +1,13 @@
+{# Applications area — MOJ sub navigation (below phase banner) #}
+{% set applicationsSubNavActive = jobseekerSubNavSection == 'applications' %}
+{% set savedJobsSubNavActive = jobseekerSubNavSection == 'saved-jobs' %}
+<nav class="moj-sub-navigation" aria-label="Applications">
+  <ul class="moj-sub-navigation__list">
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="/jobseekers/job_applications"{% if applicationsSubNavActive %} aria-current="page"{% endif %}>Applications</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="/onelogin/journey/match?savedJobState=saved"{% if savedJobsSubNavActive %} aria-current="page"{% endif %}>Your saved jobs</a>
+    </li>
+  </ul>
+</nav>

@@ -19,8 +19,9 @@
     "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "status": "Active",
-      "firstName": "Adam",
-      "lastName": "Silver",
+      "firstName": "Joe",
+      "lastName": "Bloggs",
+      "trn": "1234567",
       "providePhoneNumber": null,
       "provideWork": "Yes",
       "roles": [
@@ -69,8 +70,8 @@
     "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "status": "Active",
-      "firstName": "Adam",
-      "lastName": "Silver",
+      "firstName": "Joe",
+      "lastName": "Bloggs",
       "providePhoneNumber": "Yes",
       "phoneNumber": "01928 376 453",
       "provideWork": "Yes",

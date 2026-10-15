@@ -1,0 +1,122 @@
+// MOJ Design System sub navigation
+// https://design-patterns.service.justice.gov.uk/components/sub-navigation/
+
+$moj-sub-nav-link-colour: govuk-colour("blue");
+$moj-sub-nav-link-hover-colour: #003078;
+$moj-sub-nav-link-active-colour: govuk-colour("black");
+
+.moj-sub-navigation {
+  margin-bottom: govuk-spacing(7);
+}
+
+.moj-sub-navigation__list {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  list-style: none;
+
+  @include govuk-media-query($from: tablet) {
+    width: 100%;
+    box-shadow: inset 0 -1px 0 $govuk-border-colour;
+  }
+}
+
+.moj-sub-navigation__item {
+  display: block;
+  margin-top: -1px;
+  box-shadow: inset 0 -1px 0 $govuk-border-colour;
+  @include govuk-font(19);
+
+  &:last-child {
+    box-shadow: none;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    margin-top: 0;
+    margin-right: govuk-spacing(4);
+    box-shadow: none;
+  }
+}
+
+.moj-sub-navigation__link {
+  display: block;
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: govuk-spacing(3);
+
+  @include govuk-media-query($from: tablet) {
+    padding-left: 0;
+  }
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:link,
+  &:visited {
+    color: $moj-sub-nav-link-colour;
+  }
+
+  &:hover {
+    color: $moj-sub-nav-link-hover-colour;
+  }
+
+  &:focus {
+    position: relative;
+    color: govuk-colour("black");
+    box-shadow: none;
+    outline: $govuk-focus-colour solid 3px;
+    outline-offset: 0;
+  }
+
+  &:focus::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: govuk-colour("black");
+
+    @include govuk-media-query($from: tablet) {
+      width: 100%;
+      height: 5px;
+    }
+  }
+}
+
+.moj-sub-navigation__link[aria-current="page"] {
+  position: relative;
+  color: $moj-sub-nav-link-active-colour;
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: $moj-sub-nav-link-colour;
+
+    @include govuk-media-query($from: tablet) {
+      width: 100%;
+      height: 5px;
+    }
+  }
+
+  &:hover {
+    color: $moj-sub-nav-link-hover-colour;
+  }
+
+  &:focus::before {
+    background-color: govuk-colour("black");
+  }
+}

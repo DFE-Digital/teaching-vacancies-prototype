@@ -59,15 +59,19 @@
     </div>
     <div class="govuk-header__content">
       {% if not contentPage and (data.signedIn or forceSignedIn or not homepage) %}
-          <nav class="govuk-header__navigation" aria-label="Account">
+          <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Account navigation">
             <ul id="navigation" class="govuk-header__navigation-list">
               {% if data.signedIn or forceSignedIn %}
-                <li class="govuk-header__navigation-item">
-                  <a class="govuk-header__link govuk-header__link--account{% if primaryNavId == 'account' %} govuk-header__link--active{% endif %}" href="/account"{% if primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
+                <li class="govuk-header__navigation-item{% if primaryNavId == 'account' %} govuk-header__navigation-item--active{% endif %}">
+                  <a class="govuk-header__link" href="/account/personal-details"{% if primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
                 </li>
-                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-out">Sign out</a></li>
+                <li class="govuk-header__navigation-item">
+                  <a class="govuk-header__link" href="/account/sign-out">Sign out</a>
+                </li>
               {% else %}
-                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-in/">Sign in</a></li>
+                <li class="govuk-header__navigation-item">
+                  <a class="govuk-header__link" href="/account/sign-in/">Sign in</a>
+                </li>
               {% endif %}
             </ul>
           </nav>
@@ -115,14 +119,14 @@
                 Applications
               </a>
             </li>
-            <li class="govuk-service-navigation__item {% if activeNav == 'notifications' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="/jobalerts/jobalert">
-                Notifications
+            <li class="govuk-service-navigation__item {% if activeNav == 'jobalerts' %} govuk-service-navigation__item--active {% endif %}">
+              <a class="govuk-service-navigation__link" href="/jobseekers/subscriptions">
+                Job alerts
               </a>
             </li>
-            <li class="govuk-service-navigation__item {% if primaryNavId == 'profile' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="/profile">
-                Your profile
+            <li class="govuk-service-navigation__item {% if activeNav == 'notifications' %} govuk-service-navigation__item--active {% endif %}">
+              <a class="govuk-service-navigation__link" href="/jobseekers/notifications">
+                Notifications
               </a>
             </li>
           {% endif %}

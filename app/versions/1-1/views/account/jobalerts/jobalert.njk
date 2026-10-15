@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Create your job alert' %}
-{% set activeNav = 'notifications' %}
+{% set form = jobAlertForm or {} %}
+{% set radius = form.radius | default('0') %}
+{% set title = 'Edit your job alert' if editingAlertId else 'Create your job alert' %}
+{% set activeNav = 'jobalerts' %}
 {% set forceSignedIn = true %}
 
 {% block header %}
@@ -133,11 +135,12 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Create your job alert</h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <form method="post" action="/jobseekers/subscriptions">
-        <input type="hidden" name="jobAlertState" value="alert">
-        <input type="hidden" name="jobAlertCreated" value="true">
+      <form method="post" action="/jobalerts/jobalert">
+        {% if editingAlertId %}
+          <input type="hidden" name="alertId" value="{{ editingAlertId }}">
+        {% endif %}
         {{ govukInput({
           label: {
             text: "Job title or keyword",
@@ -148,7 +151,8 @@
           },
           id: "jobseekers-subscription-form-keyword-field",
           name: "jobseekers_subscription_form[keyword]",
-          classes: "govuk-!-width-two-thirds"
+          classes: "govuk-!-width-two-thirds",
+          value: form.keyword
         }) }}
 
         {{ govukInput({
@@ -158,7 +162,8 @@
           },
           id: "jobseekers-subscription-form-location-field",
           name: "jobseekers_subscription_form[location]",
-          classes: "govuk-!-width-two-thirds"
+          classes: "govuk-!-width-two-thirds",
+          value: form.location
         }) }}
 
         {{ govukSelect({
@@ -169,16 +174,16 @@
           id: "jobseekers-subscription-form-radius-field",
           name: "jobseekers_subscription_form[radius]",
           items: [
-            { value: "0", text: "This area only", selected: true },
-            { value: "1", text: "1 mile" },
-            { value: "5", text: "5 miles" },
-            { value: "10", text: "10 miles" },
-            { value: "15", text: "15 miles" },
-            { value: "20", text: "20 miles" },
-            { value: "25", text: "25 miles" },
-            { value: "50", text: "50 miles" },
-            { value: "100", text: "100 miles" },
-            { value: "200", text: "200 miles" }
+            { value: "0", text: "This area only", selected: radius == '0' },
+            { value: "1", text: "1 mile", selected: radius == '1' },
+            { value: "5", text: "5 miles", selected: radius == '5' },
+            { value: "10", text: "10 miles", selected: radius == '10' },
+            { value: "15", text: "15 miles", selected: radius == '15' },
+            { value: "20", text: "20 miles", selected: radius == '20' },
+            { value: "25", text: "25 miles", selected: radius == '25' },
+            { value: "50", text: "50 miles", selected: radius == '50' },
+            { value: "100", text: "100 miles", selected: radius == '100' },
+            { value: "200", text: "200 miles", selected: radius == '200' }
           ]
         }) }}
 
@@ -192,11 +197,11 @@
             }
           },
           items: [
-            { value: "nursery", text: "Nursery" },
-            { value: "primary", text: "Primary school" },
-            { value: "secondary", text: "Secondary school" },
-            { value: "sixth_form_or_college", text: "Sixth form or FE college" },
-            { value: "through", text: "All through school" }
+            { value: "nursery", text: "Nursery", checked: form.phases and ('nursery' in form.phases) },
+            { value: "primary", text: "Primary school", checked: form.phases and ('primary' in form.phases) },
+            { value: "secondary", text: "Secondary school", checked: form.phases and ('secondary' in form.phases) },
+            { value: "sixth_form_or_college", text: "Sixth form or FE college", checked: form.phases and ('sixth_form_or_college' in form.phases) },
+            { value: "through", text: "All through school", checked: form.phases and ('through' in form.phases) }
           ]
         }) }}
 
@@ -210,9 +215,9 @@
             }
           },
           items: [
-            { value: "full_time", text: "Full time" },
-            { value: "part_time", text: "Part time" },
-            { value: "job_share", text: "Job share" }
+            { value: "full_time", text: "Full time", checked: form.workingPatterns and ('full_time' in form.workingPatterns) },
+            { value: "part_time", text: "Part time", checked: form.workingPatterns and ('part_time' in form.workingPatterns) },
+            { value: "job_share", text: "Job share", checked: form.workingPatterns and ('job_share' in form.workingPatterns) }
           ]
         }) }}
 
@@ -226,8 +231,8 @@
             }
           },
           items: [
-            { value: "ect_suitable", text: "Suitable for early career teachers" },
-            { value: "qts_not_required", text: "Qualified teacher status not required (further education)" }
+            { value: "ect_suitable", text: "Suitable for early career teachers", checked: form.ectStatuses and ('ect_suitable' in form.ectStatuses) },
+            { value: "qts_not_required", text: "Qualified teacher status not required (further education)", checked: form.ectStatuses and ('qts_not_required' in form.ectStatuses) }
           ]
         }) }}
 
@@ -241,7 +246,7 @@
             }
           },
           items: [
-            { value: "visa", text: "Only send alerts for jobs that offer visa sponsorship" }
+            { value: "visa", text: "Only send alerts for jobs that offer visa sponsorship", checked: form.international and ('visa' in form.international) }
           ]
         }) }}
 
@@ -276,7 +281,7 @@
           <div class="govuk-checkboxes" id="subject-options" data-module="govuk-checkboxes">
             {% for subject in subjects %}
               <div class="govuk-checkboxes__item app-subject-option">
-                <input class="govuk-checkboxes__input" id="subject-{{ loop.index }}" name="jobseekers_subscription_form[subjects][]" type="checkbox" value="{{ subject[0] }}">
+                <input class="govuk-checkboxes__input" id="subject-{{ loop.index }}" name="jobseekers_subscription_form[subjects][]" type="checkbox" value="{{ subject[0] }}"{% if form.subjects and (subject[0] in form.subjects) %} checked{% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="subject-{{ loop.index }}">{{ subject[0] }}</label>
                 {% if subject[1] %}
                   <div class="govuk-hint govuk-checkboxes__hint">{{ subject[1] }}</div>
@@ -303,7 +308,8 @@
           name: "jobseekers_subscription_form[email]",
           type: "email",
           autocomplete: "email",
-          spellcheck: false
+          spellcheck: false,
+          value: form.email
         }) }}
 
         {{ govukRadios({
@@ -316,8 +322,8 @@
             }
           },
           items: [
-            { value: "daily", text: "Daily, around 3pm" },
-            { value: "weekly", text: "Weekly, on Friday around 6pm" }
+            { value: "daily", text: "Daily, around 3pm", checked: form.frequency == 'daily' },
+            { value: "weekly", text: "Weekly, on Friday around 6pm", checked: form.frequency == 'weekly' or not form.frequency }
           ]
         }) }}
 
@@ -327,7 +333,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Get jobs sent to you",
+          text: "Save job alert" if editingAlertId else "Get jobs sent to you",
           classes: "govuk-!-padding-left-8 govuk-!-padding-right-8"
         }) }}
       </form>

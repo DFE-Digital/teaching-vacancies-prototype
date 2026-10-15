@@ -23,6 +23,7 @@ $app-images-path: "/public/images/";
 @import "patterns/documentation";
 @import "patterns/guide";
 @import "patterns/browse";
+@import "patterns/moj-sub-navigation";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 // Import local component styles
@@ -1235,6 +1236,10 @@ hr {
 .govuk-header__navigation-item .govuk-header__link--active,
 .govuk-header__navigation-item .govuk-header__link--active:link,
 .govuk-header__navigation-item .govuk-header__link--active:visited,
-.govuk-header__navigation-item .govuk-header__link--active:hover {
+.govuk-header__navigation-item .govuk-header__link--active:hover,
+.govuk-header__navigation-item--active .govuk-header__link,
+.govuk-header__navigation-item--active .govuk-header__link:link,
+.govuk-header__navigation-item--active .govuk-header__link:visited,
+.govuk-header__navigation-item--active .govuk-header__link:hover {
   font-weight: 700;
 }

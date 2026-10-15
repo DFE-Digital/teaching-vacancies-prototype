@@ -173,10 +173,11 @@
 			{% endif %}
 
 			{% if showSavedJobsToggle %}
+				{% set savedJobsPrototypeState = data.savedJobState or 'saved' %}
 				<p class="app-state-toggle">
-					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=empty"{% if data.savedJobState != 'saved' %} aria-current="true"{% endif %}>Empty state</a>
+					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=empty"{% if savedJobsPrototypeState == 'empty' %} aria-current="true"{% endif %}>Empty state</a>
 					<span aria-hidden="true"> | </span>
-					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=saved"{% if data.savedJobState == 'saved' %} aria-current="true"{% endif %}>Saved state</a>
+					<a class="govuk-footer__link" href="/onelogin/journey/match?savedJobState=saved"{% if savedJobsPrototypeState == 'saved' %} aria-current="true"{% endif %}>Saved state</a>
 				</p>
 			{% endif %}
 

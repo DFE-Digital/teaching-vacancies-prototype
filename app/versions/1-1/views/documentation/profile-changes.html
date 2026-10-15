@@ -1,0 +1,216 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper" %}
+
+{% block pageTitle %}
+  {{ guide.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: guide.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="app-guide app-guide--full-width">
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      <span class="govuk-caption-xl">Design change · v1.1 prototype</span>
+    </p>
+    <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
+    <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+
+    <div class="app-guide__main govuk-!-margin-top-6">
+      <h2 class="govuk-heading-l" id="business-requirements">Business requirements</h2>
+      <table class="govuk-table govuk-!-margin-bottom-8">
+        <caption class="govuk-table__caption govuk-table__caption--m">{{ guide.requirementsCaption }}</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Req no</th>
+            <th scope="col" class="govuk-table__header">Requirement name</th>
+            <th scope="col" class="govuk-table__header">Requirement description</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for req in guide.requirements %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">{{ req.id }}</td>
+              <td class="govuk-table__cell">{{ req.name }}</td>
+              <td class="govuk-table__cell">{{ req.description }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-l" id="information-architecture">Service navigation</h2>
+      <p class="govuk-body">Jobseeker areas are separated in the header: Applications, Job alerts, and Notifications. Profile is not in this navigation.</p>
+      {% if guide.serviceNavScreenshot %}
+        <figure class="app-guide__figure govuk-!-margin-bottom-8">
+          <img
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.serviceNavScreenshot }}"
+            alt="Service navigation for jobseeker areas in the v1.1 prototype"
+            width="960"
+            loading="lazy"
+          >
+          <figcaption class="govuk-body-s app-guide__figure-caption">Applications, Job alerts, and Notifications in service navigation.</figcaption>
+        </figure>
+      {% endif %}
+
+      <h2 class="govuk-heading-l" id="applications-area">{{ guide.applicationsArea.title }}</h2>
+      <p class="govuk-body">{{ guide.applicationsArea.intro }}</p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for note in guide.applicationsArea.annotations %}
+          <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+      <h3 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2">Changes in v1.1 prototype</h3>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-4">
+        {% for item in guide.applicationsArea.implemented %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% if guide.applicationsSubNavScreenshot %}
+        <figure class="app-guide__figure govuk-!-margin-bottom-6">
+          <img
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.applicationsSubNavScreenshot }}"
+            alt="MOJ sub navigation for Applications and Your saved jobs"
+            width="960"
+            loading="lazy"
+          >
+          <figcaption class="govuk-body-s app-guide__figure-caption">MOJ sub navigation below the phase banner on Applications pages.</figcaption>
+        </figure>
+      {% endif %}
+      {% for shot in guide.applicationsArea.screenshots %}
+        <p class="govuk-body app-guide__prototype-link">
+          <a class="govuk-link" href="{{ shot.prototypePath }}" target="_blank" rel="noopener noreferrer">
+            Open this page in the prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+          </a>
+        </p>
+        <figure class="app-guide__figure govuk-!-margin-bottom-8">
+          <img
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ shot.screenshot }}"
+            alt="Screenshot: {{ guide.applicationsArea.title }}"
+            width="960"
+            loading="lazy"
+          >
+          <figcaption class="govuk-body-s app-guide__figure-caption">{{ shot.screenshotCaption }}</figcaption>
+        </figure>
+      {% endfor %}
+
+      <h2 class="govuk-heading-l" id="personal-details-design">Personal details (RP03–RP05)</h2>
+      <p class="govuk-body">Implemented under <strong>Your account</strong> → <strong>Personal details</strong> (not in service navigation).</p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+        {% for note in guide.personalDetailsNotes %}
+          <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+      {% if guide.personalDetailsScreenshot %}
+        <figure class="app-guide__figure govuk-!-margin-bottom-8">
+          <img
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.personalDetailsScreenshot }}"
+            alt="Personal details in the v1.1 prototype"
+            width="960"
+            loading="lazy"
+          >
+        </figure>
+      {% endif %}
+
+      <h2 class="govuk-heading-l" id="user-stories">User stories</h2>
+      {% for story in guide.userStories %}
+        <section class="app-guide__section govuk-!-margin-bottom-8" id="user-story-{{ story.id }}" aria-labelledby="heading-us-{{ story.id }}">
+          {% if story.requirementIds %}
+            {% for reqId in story.requirementIds %}
+              {{ govukTag({ text: reqId, classes: "govuk-tag--grey govuk-!-margin-right-1" }) }}
+            {% endfor %}
+          {% endif %}
+          {{ govukTag({
+            text: "User story " + story.id,
+            classes: "govuk-tag--grey govuk-!-margin-bottom-2"
+          }) }}
+          <h3 class="govuk-heading-m" id="heading-us-{{ story.id }}">{{ story.story }}</h3>
+
+          <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Acceptance criteria</h4>
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in story.acceptanceCriteria %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+
+          <h4 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2">Success criteria</h4>
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in story.successCriteria %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+
+          {% if story.design %}
+            <h4 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2">Design</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              {% for note in story.design.annotations %}
+                <li>{{ note }}</li>
+              {% endfor %}
+            </ul>
+            <h4 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2">Changes in v1.1 prototype</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              {% for item in story.design.implemented %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            {% if story.design.screenshot %}
+              <p class="govuk-body app-guide__prototype-link">
+                <a class="govuk-link" href="{{ story.design.prototypePath }}" target="_blank" rel="noopener noreferrer">
+                  Open this page in the prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+                </a>
+              </p>
+              <figure class="app-guide__figure">
+                <img
+                  src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ story.design.screenshot }}"
+                  alt="Screenshot: user story {{ story.id }}"
+                  width="960"
+                  loading="lazy"
+                >
+                <figcaption class="govuk-body-s app-guide__figure-caption">{{ story.design.screenshotCaption }}</figcaption>
+              </figure>
+            {% endif %}
+            {% if story.design.extraScreenshots %}
+              {% for extra in story.design.extraScreenshots %}
+                <p class="govuk-body app-guide__prototype-link">
+                  <a class="govuk-link" href="{{ extra.prototypePath }}" target="_blank" rel="noopener noreferrer">
+                    Open related prototype page<span class="govuk-visually-hidden"> (opens in new tab)</span>
+                  </a>
+                </p>
+                <figure class="app-guide__figure">
+                  <img
+                    src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ extra.screenshot }}"
+                    alt="Additional screenshot: user story {{ story.id }}"
+                    width="960"
+                    loading="lazy"
+                  >
+                  <figcaption class="govuk-body-s app-guide__figure-caption">{{ extra.screenshotCaption }}</figcaption>
+                </figure>
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+        </section>
+      {% endfor %}
+
+      <aside class="app-related app-related--topic">
+        <h2 class="govuk-heading-s app-related__heading">Related content</h2>
+        <ul class="app-related__list">
+          <li class="app-related__item"><a class="govuk-link" href="/documentation">Documentation contents</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/jobseekers/job_applications">Open prototype: Applications</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/onelogin/journey/match?savedJobState=saved">Open prototype: Saved jobs</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/jobseekers/subscriptions">Open prototype: Job alerts</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/jobseekers/notifications">Open prototype: Notifications</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/account/personal-details">Open prototype: Personal details</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

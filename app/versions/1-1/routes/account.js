@@ -1,5 +1,23 @@
 const schools = require('../data/orgs.json')
 const users = require('../data/users.json')
+const {
+  ensureJobseekerAlerts,
+  importGuestAlertOnRegister,
+  addJobAlertFromForm,
+  updateAlertFromForm,
+  findAlert,
+  getAlertEditForm,
+  ensureSignedInJobseeker
+} = require('../lib/jobseeker-session')
+const {
+  getTrn,
+  setTrn,
+  formatTrnForDisplay,
+  validateTrn,
+  validateName,
+  nameErrorSummaryList,
+  trnErrorSummaryList
+} = require('../lib/personal-details')
 
 function isSameSitePath (value) {
   return typeof value === 'string' &&
@@ -44,18 +62,39 @@ module.exports = router => {
   })
 
   router.get('/jobalerts/jobalert', (req, res) => {
-    req.session.data.signedIn = true
-    if (!req.session.user) {
-      res.locals.user = req.session.user = users[0]
+    const user = ensureSignedInJobseeker(req, users)
+    let jobAlertForm = {}
+    let editingAlertId = null
+
+    if (req.query.alertId) {
+      const alert = findAlert(req.session, req.query.alertId)
+      const editForm = getAlertEditForm(alert)
+      if (alert && editForm) {
+        jobAlertForm = editForm
+        editingAlertId = alert.id
+      }
     }
+
+    if (!jobAlertForm.email && user && user.emailAddress) {
+      jobAlertForm = { ...jobAlertForm, email: user.emailAddress }
+    }
+
     res.render('account/jobalerts/jobalert', {
-      users
+      users,
+      jobAlertForm,
+      editingAlertId
     })
   })
 
   router.post('/jobalerts/jobalert', (req, res) => {
-    req.session.data.jobAlertState = 'alert'
-    req.session.data.jobAlertCreated = true
+    ensureSignedInJobseeker(req, users)
+    const alertId = req.body.alertId
+    if (alertId && updateAlertFromForm(req.session, alertId, req.body)) {
+      req.session.data.jobAlertUpdated = true
+    } else {
+      addJobAlertFromForm(req.session, req.body)
+      req.session.data.jobAlertCreated = true
+    }
     res.redirect('/jobseekers/subscriptions')
   })
 
@@ -100,6 +139,8 @@ module.exports = router => {
     } else {
       res.locals.user = req.session.user = users[0]
     }
+    req.session.data.signedIn = true
+    ensureJobseekerAlerts(req.session)
 
     if (isSameSitePath(req.body.returnUrl)) {
       res.redirect(req.body.returnUrl)
@@ -114,9 +155,96 @@ module.exports = router => {
   })
 
   router.get('/account', (req, res) => {
+    res.redirect('/account/personal-details')
+  })
+
+  router.get('/account/your-account', (req, res) => {
+    ensureSignedInJobseeker(req, users)
     res.render('account/index', {
       user: req.session.user
     })
+  })
+
+  router.get('/account/personal-details', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    const nameUpdated = req.session.data.personalDetailsNameUpdated === true
+    const trnUpdated = req.session.data.personalDetailsTrnUpdated === true
+    delete req.session.data.personalDetailsNameUpdated
+    delete req.session.data.personalDetailsTrnUpdated
+    res.render('account/personal-details/index', {
+      user: req.session.user,
+      nameUpdated,
+      trnUpdated,
+      trnDisplay: formatTrnForDisplay(req.session.user && req.session.user.profile)
+    })
+  })
+
+  router.get('/account/personal-details/name', (req, res) => {
+    if (!req.session.user) {
+      return res.redirect('/account/sign-in?returnUrl=/account/personal-details/name')
+    }
+    const profile = req.session.user.profile || {}
+    res.render('account/personal-details/name', {
+      user: req.session.user,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      errors: {}
+    })
+  })
+
+  router.post('/account/personal-details/name', (req, res) => {
+    if (!req.session.user) {
+      return res.redirect('/account/sign-in')
+    }
+    const firstName = (req.body.firstName || '').trim()
+    const lastName = (req.body.lastName || '').trim()
+    const errors = validateName(firstName, lastName)
+    if (Object.keys(errors).length) {
+      return res.render('account/personal-details/name', {
+        user: req.session.user,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        errors,
+        errorList: nameErrorSummaryList(errors)
+      })
+    }
+    if (!req.session.user.profile) req.session.user.profile = {}
+    req.session.user.profile.firstName = firstName
+    req.session.user.profile.lastName = lastName
+    req.session.data.personalDetailsNameUpdated = true
+    res.redirect('/account/personal-details')
+  })
+
+  router.get('/account/personal-details/trn', (req, res) => {
+    if (!req.session.user) {
+      return res.redirect('/account/sign-in?returnUrl=/account/personal-details/trn')
+    }
+    res.render('account/personal-details/trn', {
+      user: req.session.user,
+      trnValue: getTrn(req.session.user.profile),
+      errors: {},
+      errorList: []
+    })
+  })
+
+  router.post('/account/personal-details/trn', (req, res) => {
+    if (!req.session.user) {
+      return res.redirect('/account/sign-in')
+    }
+    const trnValue = (req.body.trn || '').trim()
+    const trnError = validateTrn(trnValue)
+    if (trnError) {
+      return res.render('account/personal-details/trn', {
+        user: req.session.user,
+        trnValue: req.body.trn,
+        errors: { trn: trnError },
+        errorList: trnErrorSummaryList(trnError)
+      })
+    }
+    if (!req.session.user.profile) req.session.user.profile = {}
+    setTrn(req.session.user.profile, trnValue)
+    req.session.data.personalDetailsTrnUpdated = true
+    res.redirect('/account/personal-details')
   })
 
   router.get('/account/sign-out', (req, res) => {
@@ -151,7 +279,7 @@ module.exports = router => {
 
     req.session.user.accountType = req.session.data['accountType']
     
-    res.redirect('/account')
+    res.redirect('/account/your-account')
   })
 
   router.get('/account/new/confirmation', (req, res) => {
@@ -193,7 +321,7 @@ module.exports = router => {
 
     req.session.user.marketingPreferences = req.session.data['marketingPreferences']
     
-    res.redirect('/account')
+    res.redirect('/account/your-account')
   })
 
   router.get('/account/new/confirmation2', (req, res) => {
@@ -205,6 +333,8 @@ module.exports = router => {
 
 
   router.post('/account/new/confirmation2', (req, res) => {
+    req.session.data.signedIn = true
+    importGuestAlertOnRegister(req.session)
 
     var previousApplication = req.session.user.profile.previousApplication
 
@@ -212,7 +342,8 @@ module.exports = router => {
       req.flash('success', 'You have recently submitted a job application, so some of your details have been imported into your profile.')
     }
 
-    res.redirect('/profile')
+    req.session.data.jobAlertsImported = true
+    res.redirect('/jobseekers/subscriptions')
 
   })
 

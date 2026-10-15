@@ -1,0 +1,93 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set accountSection = 'personal-details' %}
+{% set forceSignedIn = true %}
+{% set title = 'Personal details' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      {% include "includes/account-sub-nav.njk" %}
+
+      {% if nameUpdated %}
+        {{ govukNotificationBanner({ type: "success", text: "Your name has been updated" }) }}
+      {% endif %}
+      {% if trnUpdated %}
+        {{ govukNotificationBanner({ type: "success", text: "Your TRN has been updated" }) }}
+      {% endif %}
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Name</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details/name">Change<span class="govuk-visually-hidden"> name</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "First name" },
+                value: { text: user.profile.firstName or '—' }
+              },
+              {
+                key: { text: "Last name" },
+                value: { text: user.profile.lastName or '—' }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Teacher reference number (TRN)</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details/trn">Change<span class="govuk-visually-hidden"> teacher reference number (TRN)</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "TRN" },
+                value: { text: trnDisplay }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Email address</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "Email address" },
+                value: { text: user.emailAddress or '—' }
+              }
+            ]
+          }) }}
+          <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-4">You change your email address in GOV.UK One Login. Updates will apply when you next sign in to Teaching Vacancies.</p>
+          <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-2">
+            <a class="govuk-link" href="https://home.account.gov.uk/settings" rel="noopener noreferrer" target="_blank">
+              GOV.UK One Login (opens in a new tab)
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

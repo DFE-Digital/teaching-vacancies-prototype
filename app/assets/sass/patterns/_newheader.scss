@@ -24,7 +24,7 @@
 .govuk-header__logo {
   display: block;
   margin: 0;
-  padding: 16px 0 12px;
+  padding: 16px 0 14px;
 }
 
 .govuk-header__content {
@@ -35,38 +35,49 @@
   text-align: left;
 }
 
-.govuk-header__navigation {
+// Account links (MOJ header navigation layout on GOV.UK header colours)
+.govuk-header__navigation--end {
   margin: 0;
+  color: #fff;
 }
 
-.govuk-header__navigation-list,
-.govuk-header__navigation-list[hidden] {
+.govuk-header__navigation--end .govuk-header__navigation-list,
+.govuk-header__navigation--end .govuk-header__navigation-list[hidden] {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 20px;
   margin: 0;
-  padding: 0 0 12px;
+  padding: 0 0 16px;
   list-style: none;
+  font-size: 0; // inline-block gap fix (MOJ header pattern)
 }
 
-.govuk-header__navigation-item,
+.govuk-header__navigation--end .govuk-header__navigation-item,
 .govuk-header__content ul li {
-  display: block;
-  margin: 0;
+  display: inline-block;
+  margin: 0 govuk-spacing(4) 0 0;
   padding: 0;
   border: 0;
   line-height: 1.25;
+  font-size: 19px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
-.govuk-header__navigation-item a,
+.govuk-header__navigation--end .govuk-header__navigation-item a,
 .govuk-header__content ul li a,
 .govuk-header__link {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.25;
   color: #fff;
   text-decoration: none;
+}
+
+.govuk-header__navigation--end .govuk-header__navigation-item--active .govuk-header__link {
+  font-weight: 700;
 }
 
 .govuk-header__link:link,
@@ -99,13 +110,14 @@
   .govuk-header__container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   .govuk-header__logo {
-    flex-grow: 1;
+    flex: 1 1 auto;
     width: auto;
     margin-bottom: 0;
-    padding-right: 15px;
+    padding: 16px 15px 14px 0;
     float: none;
   }
 
@@ -114,12 +126,24 @@
     width: auto;
     float: none;
     padding-left: 0;
+    align-self: center;
   }
 
-  .govuk-header__navigation-list,
-  .govuk-header__navigation-list[hidden] {
+  .govuk-header__navigation--end {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+
+  .govuk-header__navigation--end .govuk-header__navigation-list,
+  .govuk-header__navigation--end .govuk-header__navigation-list[hidden] {
     justify-content: flex-end;
-    padding: 5px 0;
+    padding: 0;
+  }
+
+  .govuk-header__navigation--end .govuk-header__navigation-item {
+    margin-right: govuk-spacing(4);
+    padding: 0;
   }
 }
 

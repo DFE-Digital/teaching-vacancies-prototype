@@ -277,18 +277,97 @@ module.exports = router => {
     })
   })
 
+  const {
+    ensureJobseekerAlerts,
+    seedJobseekerAlerts,
+    mergeMissingDefaultAlerts,
+    updateAlert,
+    deleteAlert,
+    findAlert,
+    ensureSignedInJobseeker
+  } = require('../lib/jobseeker-session')
+  const jobseekerNotifications = require('../data/jobseeker-notifications')
+
   router.get('/jobseekers/subscriptions', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    if (req.query.jobAlertState === 'empty') {
+      seedJobseekerAlerts(req.session, { empty: true })
+    } else if (req.query.jobAlertState === 'alert') {
+      seedJobseekerAlerts(req.session)
+    } else {
+      mergeMissingDefaultAlerts(req.session)
+    }
+    const alerts = ensureJobseekerAlerts(req.session)
     const showJobAlertCreatedBanner = req.session.data.jobAlertCreated === true || req.session.data.jobAlertCreated === 'true'
+    const showJobAlertUpdatedBanner = req.session.data.jobAlertUpdated === true
+    const showJobAlertDeletedBanner = req.session.data.jobAlertDeleted === true
+    const showJobAlertsImportedBanner = req.session.data.jobAlertsImported === true
     delete req.session.data.jobAlertCreated
+    delete req.session.data.jobAlertUpdated
+    delete req.session.data.jobAlertDeleted
+    delete req.session.data.jobAlertsImported
     res.render('jobseekers/subscriptions', {
-      showJobAlertCreatedBanner
+      jobseekerAlerts: alerts,
+      showJobAlertCreatedBanner,
+      showJobAlertUpdatedBanner,
+      showJobAlertDeletedBanner,
+      showJobAlertsImportedBanner
     })
   })
 
-  router.post('/jobseekers/subscriptions', (req, res) => {
-    req.session.data.jobAlertState = 'alert'
-    req.session.data.jobAlertCreated = true
+  router.post('/jobseekers/subscriptions/update', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    const alertId = req.body.alertId
+    const frequency = req.body.frequency
+    if (alertId && frequency) {
+      updateAlert(req.session, alertId, { frequency })
+      req.session.data.jobAlertUpdated = true
+    }
     res.redirect('/jobseekers/subscriptions')
+  })
+
+  router.post('/jobseekers/subscriptions/toggle-status', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    const alert = findAlert(req.session, req.body.alertId)
+    if (alert) {
+      alert.status = alert.status === 'active' ? 'inactive' : 'active'
+      req.session.data.jobAlertUpdated = true
+    }
+    res.redirect('/jobseekers/subscriptions')
+  })
+
+  const deleteJobAlert = (req, res, alertId) => {
+    ensureSignedInJobseeker(req, users)
+    if (deleteAlert(req.session, alertId)) {
+      req.session.data.jobAlertDeleted = true
+    }
+    res.redirect('/jobseekers/subscriptions')
+  }
+
+  router.get('/jobseekers/subscriptions/delete', (req, res) => {
+    deleteJobAlert(req, res, req.query.alertId)
+  })
+
+  router.post('/jobseekers/subscriptions/delete', (req, res) => {
+    deleteJobAlert(req, res, req.body.alertId)
+  })
+
+  router.get('/jobseekers/notifications', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    res.render('jobseekers/notifications', {
+      notifications: jobseekerNotifications
+    })
+  })
+
+  router.get('/jobseekers/notifications/:id', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    const notification = jobseekerNotifications.find(item => item.id === req.params.id)
+    if (!notification) {
+      return res.redirect('/jobseekers/notifications')
+    }
+    res.render('jobseekers/notification-detail', {
+      notification
+    })
   })
 
   router.get('/jobseekers/job_applications', (req, res) => {
@@ -370,6 +449,9 @@ module.exports = router => {
     const start = (currentPage - 1) * pageSize
 
     res.render('jobseekers/job-applications', {
+      activeNav: 'applications',
+      jobseekerSubNavigation: true,
+      jobseekerSubNavSection: 'applications',
       applications: applications.slice(start, start + pageSize),
       applicationCount: applications.length,
       currentPage,

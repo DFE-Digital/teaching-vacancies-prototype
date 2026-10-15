@@ -23,17 +23,9 @@
 
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <ul class="app-profile-shortcuts">
-        <li class="app-profile-shortcuts__item">
-          <a class="govuk-link app-profile-shortcuts__link" href="/onelogin/journey/match">Your saved jobs</a>
-        </li>
-        <li class="app-profile-shortcuts__item">
-          <a class="govuk-link app-profile-shortcuts__link" href="/jobseekers/subscriptions">Your job alerts</a>
-        </li>
-        <li class="app-profile-shortcuts__item">
-          <a class="govuk-link app-profile-shortcuts__link" href="/jobalerts/jobalert">Create a job alert</a>
-        </li>
-      </ul>
+      {{ govukInsetText({
+        html: 'Job alerts are managed separately from your profile. <a class="govuk-link" href="/jobseekers/subscriptions">View your job alerts</a> or <a class="govuk-link" href="/jobalerts/jobalert">create a job alert</a>.'
+      }) }}
 
       <p class="govuk-body">
         {% if user.profile.status == 'Active' %}

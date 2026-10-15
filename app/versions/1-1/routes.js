@@ -8,6 +8,18 @@ router.all('*', (req, res, next) => {
   res.locals.query = req.query
   res.locals.user = req.session.user
   res.locals.flash = req.flash('success') // pass through 'success' messages only
+
+  const requestPath = (req.baseUrl || '') + req.path
+  if (requestPath.includes('/jobseekers/job_applications')) {
+    res.locals.activeNav = 'applications'
+    res.locals.jobseekerSubNavigation = true
+    res.locals.jobseekerSubNavSection = 'applications'
+  } else if (requestPath.includes('/onelogin/journey/match')) {
+    res.locals.activeNav = 'applications'
+    res.locals.jobseekerSubNavigation = true
+    res.locals.jobseekerSubNavSection = 'saved-jobs'
+  }
+
   next()
 })
 
@@ -50,6 +62,11 @@ router.get('/documentation/quick-apply-1', (req, res) => {
 router.get('/documentation/fe-content-changes-1', (req, res) => {
   const guide = require('./data/fe-content-changes-1')
   res.render('documentation/fe-content-changes-1.html', { guide })
+})
+
+router.get('/documentation/profile-changes', (req, res) => {
+  const guide = require('./data/profile-changes')
+  res.render('documentation/profile-changes.html', { guide })
 })
 
 //routing for filters

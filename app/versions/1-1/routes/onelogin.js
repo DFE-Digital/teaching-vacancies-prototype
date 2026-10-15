@@ -1,5 +1,88 @@
 const users = require('../data/users.json')
+const listingJobs = require('../data/jobs.json')
 const Validator = require('../helpers/validator')
+
+const SAMPLE_LISTING_SAVED_JOB_IDS = [
+  '676686861',
+  '67668686122',
+  '676676691',
+  '676676692',
+  '6766766931',
+  '676676694',
+  '676676695',
+  '676676696'
+]
+
+const SAMPLE_LISTING_ADDED_DATES = [
+  { added: '4 October 2026', addedSort: '2026-10-04' },
+  { added: '3 October 2026', addedSort: '2026-10-03' },
+  { added: '2 October 2026', addedSort: '2026-10-02' },
+  { added: '1 October 2026', addedSort: '2026-10-01' },
+  { added: '30 September 2026', addedSort: '2026-09-30' },
+  { added: '29 September 2026', addedSort: '2026-09-29' },
+  { added: '28 September 2026', addedSort: '2026-09-28' },
+  { added: '27 September 2026', addedSort: '2026-09-27' }
+]
+
+function formatClosingDay (value) {
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return ''
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC'
+  })
+}
+
+function savedJobFromListingJob (job, addedMeta) {
+  const address = job.organisation && job.organisation.address
+  const closingDay = formatClosingDay(job.closingDate)
+  return {
+    id: String(job.id),
+    title: job.title,
+    organisation: job.organisation && job.organisation.name,
+    location: [address && address.town, address && address.postcode].filter(Boolean).join(', '),
+    added: addedMeta.added,
+    addedSort: addedMeta.addedSort,
+    deadline: closingDay ? `${closingDay} at ${job.closingTime || '5pm'}` : '',
+    deadlineSort: job.closingDate ? String(job.closingDate).slice(0, 10) : '',
+    href: '/jobs/' + job.id
+  }
+}
+
+function buildSampleSavedJobs () {
+  const fixed = [
+    {
+      id: 'sample-hlta',
+      title: 'HLTA (higher level teaching assistant) 8',
+      organisation: 'Lift Bexleyheath',
+      location: 'Bexleyheath, Kent',
+      added: '5 October 2026',
+      addedSort: '2026-10-05',
+      deadline: '2 April 2027 at 9am',
+      deadlineSort: '2027-04-02',
+      href: '/jobs/676676693'
+    },
+    {
+      id: 'sample-headteacher',
+      title: 'Headteacher (Health and social care, Law, Psychology) 1',
+      organisation: 'Lift Bexleyheath',
+      location: 'Bexleyheath, Kent',
+      added: '5 October 2026',
+      addedSort: '2026-10-05',
+      deadline: '2 April 2027 at 9am',
+      deadlineSort: '2027-04-02',
+      href: '/jobs/676676690'
+    }
+  ]
+  const fromListing = SAMPLE_LISTING_SAVED_JOB_IDS.map((jobId, index) => {
+    const job = listingJobs.find(item => String(item.id) === jobId && item.status === 'Active')
+    if (!job) return null
+    return savedJobFromListingJob(job, SAMPLE_LISTING_ADDED_DATES[index])
+  }).filter(Boolean)
+  return fixed.concat(fromListing)
+}
 
 module.exports = router => {
 
@@ -15,71 +98,26 @@ module.exports = router => {
       }
       delete req.session.data.deleteJob
       const params = new URLSearchParams()
-      if (req.session.data.savedJobState) params.set('savedJobState', req.session.data.savedJobState)
+      params.set('savedJobState', req.session.data.savedJobState || 'saved')
       if (req.session.data.savedJobSort) params.set('savedJobSort', req.session.data.savedJobSort)
       const query = params.toString()
       return res.redirect('/onelogin/journey/match' + (query ? '?' + query : ''))
     }
 
-    const sampleSavedJobs = [
-      {
-        id: 'sample-hlta',
-        title: 'HLTA (higher level teaching assistant) 8',
-        organisation: 'Lift Bexleyheath',
-        location: 'Bexleyheath, Kent',
-        added: '5 October 2026',
-        addedSort: '2026-10-05',
-        deadline: '2 April 2027 at 9am',
-        deadlineSort: '2027-04-02',
-        href: '/jobs/676676693'
-      },
-      {
-        id: 'sample-headteacher',
-        title: 'Headteacher (Health and social care, Law, Psychology) 1',
-        organisation: 'Lift Bexleyheath',
-        location: 'Bexleyheath, Kent',
-        added: '5 October 2026',
-        addedSort: '2026-10-05',
-        deadline: '2 April 2027 at 9am',
-        deadlineSort: '2027-04-02',
-        href: '/jobs/676676690'
-      }
-    ]
-    const formatDay = value => {
-      const date = new Date(value)
-      if (Number.isNaN(date.getTime())) return ''
-      return date.toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-        timeZone: 'UTC'
-      })
+    // Saved jobs page uses prototype mock data unless footer empty-state toggle is used.
+    if (req.query.savedJobState === 'empty') {
+      req.session.data.savedJobState = 'empty'
+    } else {
+      req.session.data.savedJobState = 'saved'
     }
-    const jobs = req.session.data.jobs || []
+
+    const sampleSavedJobs = buildSampleSavedJobs()
     const hidden = (req.session.data.hiddenSampleSavedJobs || []).map(String)
     const state = req.session.data.savedJobState
     let savedJobList = []
 
     if (state === 'saved') {
       savedJobList = sampleSavedJobs.filter(job => !hidden.includes(job.id))
-    } else if (state !== 'empty') {
-      const savedIds = (req.session.data.savedJobs || []).map(String)
-      savedJobList = savedIds.map(id => {
-        const job = jobs.find(item => String(item.id) === id)
-        if (!job) return null
-        const address = job.organisation && job.organisation.address
-        return {
-          id: String(job.id),
-          title: job.title,
-          organisation: job.organisation && job.organisation.name,
-          location: [address && address.town, address && address.postcode].filter(Boolean).join(', '),
-          added: '5 October 2026',
-          addedSort: '2026-10-05',
-          deadline: `${formatDay(job.closingDate)} at ${job.closingTime || '5pm'}`,
-          deadlineSort: job.closingDate || '',
-          href: '/jobs/' + job.id
-        }
-      }).filter(Boolean)
     }
 
     const savedJobSort = req.session.data.savedJobSort || 'added'
@@ -90,6 +128,9 @@ module.exports = router => {
     })
 
     res.render('onelogin/journey/match', {
+      activeNav: 'applications',
+      jobseekerSubNavigation: true,
+      jobseekerSubNavSection: 'saved-jobs',
       savedJobList,
       savedJobSort
     })

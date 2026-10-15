@@ -1,0 +1,61 @@
+{% extends "layout.njk" %}
+
+{% set title = notification.title %}
+{% set activeNav = 'notifications' %}
+{% set forceSignedIn = true %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back to notifications",
+    href: "/jobseekers/notifications"
+  }) }}
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-notification-email {
+      margin-top: 30px;
+      padding: 25px 20px 20px;
+      border: 1px solid #b1b4b6;
+      background: #f3f2f1;
+    }
+    .app-notification-email__subject {
+      margin: 0 0 20px;
+      font-size: 19px;
+      font-weight: 700;
+    }
+    .app-notification-email__meta {
+      margin: 0 0 15px;
+      color: #505a5f;
+      font-size: 16px;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">{{ notification.title }}</h1>
+  <p class="govuk-body govuk-!-margin-bottom-0">{{ notification.date }}</p>
+
+  <div class="app-notification-email">
+    <p class="app-notification-email__meta">Subject: {{ notification.emailSubject }}</p>
+    <p class="govuk-body">{{ notification.detail.introduction }}</p>
+    {% for paragraph in notification.detail.paragraphs %}
+      <p class="govuk-body">{{ paragraph }}</p>
+    {% endfor %}
+  </div>
+
+  <dl class="govuk-summary-list govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+    {% for row in notification.detail.metadata %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">{{ row.key }}</dt>
+        <dd class="govuk-summary-list__value">{{ row.value }}</dd>
+      </div>
+    {% endfor %}
+  </dl>
+
+  {{ govukButton({
+    text: notification.detail.primaryAction.text,
+    href: notification.detail.primaryAction.href
+  }) }}
+{% endblock %}

@@ -159,25 +159,6 @@
 
   <div class="app-saved-jobs-layout">
     <div>
-      <nav aria-label="Account">
-        <ul class="app-account-nav">
-          <li class="app-account-nav__item">
-            <a class="govuk-link" href="/jobseekers/job_applications">Applications</a>
-          </li>
-          <li class="app-account-nav__item">
-            <a class="govuk-link app-account-nav__link" href="/onelogin/journey/match?savedJobState={{ data.savedJobState or 'empty' }}" aria-current="page">Your saved jobs</a>
-          </li>
-          <li class="app-account-nav__item">
-            <a class="govuk-link" href="/jobseekers/subscriptions">Your job alerts</a>
-          </li>
-          <li class="app-account-nav__item">
-            <a class="govuk-link" href="/jobalerts/jobalert">Create a job alert</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-    <div>
       {% if savedJobList and savedJobList.length %}
         {% for job in savedJobList %}
           <article class="app-saved-job">
