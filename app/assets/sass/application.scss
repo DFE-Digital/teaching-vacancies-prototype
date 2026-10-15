@@ -450,12 +450,23 @@ hr {
     margin-top: 15px;
   }
 
+  .vacancies-show__banner-apply .govuk-button--external-advert {
+    align-items: center;
+    display: inline-flex;
+    gap: 8px;
+  }
+
   .vacancies-show__new-tab-icon {
     display: inline-block;
+    flex-shrink: 0;
     height: 16px;
     margin-left: 8px;
     vertical-align: -2px;
     width: 16px;
+  }
+
+  .govuk-button--external-advert .vacancies-show__new-tab-icon {
+    margin-left: 0;
   }
 
   @include govuk-media-query($until: tablet) {
