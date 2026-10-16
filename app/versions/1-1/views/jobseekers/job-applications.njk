@@ -5,7 +5,7 @@
 {% set activeNav = 'applications' %}
 {% set jobseekerSubNavigation = true %}
 {% set jobseekerSubNavSection = 'applications' %}
-{% set mainClasses = "govuk-main-wrapper--auto-spacing govuk-!-padding-top-0" %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing" %}
 
 {% block head %}
   {{ super() }}
@@ -68,8 +68,11 @@
 {% endblock %}
 
 {% block content %}
+  {% include "includes/applications-page-header.njk" %}
+  {% include "includes/jobseeker-account-nav.njk" %}
+
   <div class="app-applications-page-header">
-    <h1 class="govuk-heading-l app-applications-page-header__title">Applications ({{ applicationCount }})</h1>
+    <h2 class="govuk-heading-m app-applications-page-header__title govuk-!-margin-top-0">Applications ({{ applicationCount }})</h2>
 
     <form method="get" action="/jobseekers/job_applications" class="app-applications-filter">
       {{ govukSelect({

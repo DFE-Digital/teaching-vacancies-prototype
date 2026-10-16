@@ -83,7 +83,7 @@ module.exports = {
   applicationsArea: {
     title: 'Applications and saved jobs',
     intro:
-      'The Applications service navigation item covers two related pages. MOJ sub navigation (below the phase banner) links Applications and Your saved jobs. Job alerts and Notifications do not use this sub navigation.',
+      'The Applications service navigation item covers two related pages. Shared H1 Applications, intro copy, then MOJ sub navigation (Applications | Your saved jobs), then an H2 for the current tab. Job alerts and Notifications do not use this pattern.',
     annotations: [
       'Service navigation Applications stays active for both sub pages (route sets activeNav).',
       'Sub navigation: Applications | Your saved jobs — current page indicated with aria-current="page" and MOJ active styling.',
@@ -93,6 +93,7 @@ module.exports = {
       'Your saved jobs sub-nav link includes ?savedJobState=saved so mock data always loads.'
     ],
     implemented: [
+      'includes/applications-page-header.njk and includes/jobseeker-account-nav.njk on both Applications and Your saved jobs.',
       'GET /jobseekers/job_applications — summary cards via application-summary-card.njk.',
       'GET /onelogin/journey/match — buildSampleSavedJobs() from jobs.json plus two fixed demo titles; saved state unless empty query.',
       'Nav state in routes.js middleware and render locals for activeNav / jobseekerSubNavSection.'
@@ -105,7 +106,7 @@ module.exports = {
       },
       {
         screenshot: 'us-saved-jobs.png',
-        screenshotCaption: 'Saved jobs — summary cards with default saved mock state.',
+        screenshotCaption: 'Your saved jobs — H2, sort controls, and summary cards with default saved mock state.',
         prototypePath: '/onelogin/journey/match?savedJobState=saved'
       }
     ]
@@ -279,7 +280,7 @@ module.exports = {
           'Your profile removed from service navigation; /profile kept for direct links only.',
           'Service navigation when signed in: Applications, Job alerts, Notifications (activeNav on each route).',
           'Your account only in GOV.UK header → /account/personal-details; not duplicated in service navigation.',
-          'MOJ sub navigation under Applications: Applications + Your saved jobs only (not on Job alerts, Notifications, or Your account).',
+          'MOJ sub navigation under Applications area H1: Applications + Your saved jobs only (not on Job alerts, Notifications, or Your account).',
           'Job alerts and Notifications: service navigation only; distinct intro copy on each page.',
           'Notifications: page header (H1 + intro distinguishing from job alerts), inbox toolbar with total and unread count, read/unread rows.',
           'Notification detail: email-style message, metadata, and primary CTA to the related application task.'
