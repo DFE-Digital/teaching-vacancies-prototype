@@ -80,7 +80,7 @@ module.exports = {
     ]
   },
   personalDetailsNotes: [
-    'MOJ sub navigation under Your account: Personal details first, then Your account.',
+    'MOJ sub navigation under Your account: Personal details first, then Account settings.',
     'Summary cards for name, TRN, and email with summary lists.',
     'Change name and TRN in Teaching Vacancies; demo user Joe Bloggs in users.json.',
     'Email card: no Change action in the header; link to GOV.UK One Login settings with visible text “GOV.UK One Login (opens in a new tab)” (target="_blank", rel="noopener noreferrer").'
