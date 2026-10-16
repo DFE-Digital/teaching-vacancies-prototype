@@ -12,6 +12,22 @@ module.exports = {
   headerAccountScreenshot: 'header-your-account.png',
   applicationsSubNavScreenshot: 'applications-sub-nav.png',
   accountSubNavScreenshot: 'account-sub-nav.png',
+  applicationsSubNavCaption:
+    'MOJ sub navigation in main content under the Applications H1 and intro (Applications | Your saved jobs).',
+  accountSubNavCaption:
+    'MOJ sub navigation in main content under the Your account H1 and intro (Personal details | Account settings).',
+  subAreaPageLayout: {
+    title: 'Tabbed areas — shared page hierarchy',
+    intro:
+      'Applications (with Your saved jobs) and Your account (with Account settings) use the same pattern. Job alerts and Notifications use a single H1 and intro only — no MOJ sub navigation.',
+    items: [
+      'H1 (govuk-heading-l): area title — “Applications” or “Your account”.',
+      'Intro paragraph: explains what each sub-navigation tab is for.',
+      'MOJ sub navigation in #main-content (removed from below the phase banner).',
+      'H2 (govuk-heading-m): current tab (e.g. Personal details, Account settings, Applications (count), Your saved jobs (count)).',
+      'Content below the H2: summary cards, filters, or H3 sections on Account settings.'
+    ]
+  },
   requirementsCaption: 'Jobseeker UX requirements (RP01–RP07)',
   requirements: [
     {
@@ -58,7 +74,7 @@ module.exports = {
         name: 'Applications',
         prototypePath: '/jobseekers/job_applications',
         description:
-          'Application list with status filter and summary cards. MOJ sub navigation links Applications and Your saved jobs; service nav stays on Applications for both.'
+          'Shared H1 Applications + intro + MOJ sub navigation; H2 Applications (count) with status filter and summary cards. Service nav stays on Applications for Your saved jobs too.'
       },
       {
         name: 'Job alerts',
@@ -77,7 +93,7 @@ module.exports = {
       name: 'Your account',
       prototypePath: '/account/personal-details',
       description:
-        'Header link to /account/personal-details (GET /account redirects there). H1 Your account and shared intro on both tabs; MOJ sub navigation: Personal details | Account settings; H2 page title below sub-nav on each tab.'
+        'Header link to /account/personal-details (GET /account redirects there). Same tabbed layout as Applications: H1 Your account, intro, MOJ sub navigation (Personal details | Account settings), H2 (govuk-heading-m) for the active tab.'
     }
   },
   applicationsArea: {
@@ -85,8 +101,10 @@ module.exports = {
     intro:
       'The Applications service navigation item covers two related pages. Shared H1 Applications, intro copy, then MOJ sub navigation (Applications | Your saved jobs), then an H2 for the current tab. Job alerts and Notifications do not use this pattern.',
     annotations: [
+      'Intro copy: track submissions on Applications; review saved vacancies on Your saved jobs.',
       'Service navigation Applications stays active for both sub pages (route sets activeNav).',
-      'Sub navigation: Applications | Your saved jobs — current page indicated with aria-current="page" and MOJ active styling.',
+      'Sub navigation: Applications | Your saved jobs — in main content; aria-current="page" and MOJ active styling.',
+      'Tab H2 uses govuk-heading-m (Applications (count) with filter row; Your saved jobs (count) with sort controls).',
       'Applications list: each application is a GOV.UK summary card (title + reference, card action, summary list with organisation, activity, closing date, status tag).',
       'Saved jobs: each saved job is a summary card with Apply and Delete card actions; sort by date added, deadline, or title.',
       'Saved jobs prototype defaults to saved mock data (10 jobs from jobs listing); footer toggles empty state only when ?savedJobState=empty.',
@@ -101,12 +119,14 @@ module.exports = {
     screenshots: [
       {
         screenshot: 'us-applications-list.png',
-        screenshotCaption: 'Applications list using summary cards and MOJ sub navigation.',
+        screenshotCaption:
+          'Applications — H1, intro, sub navigation, H2 with filter, and application summary cards.',
         prototypePath: '/jobseekers/job_applications'
       },
       {
         screenshot: 'us-saved-jobs.png',
-        screenshotCaption: 'Your saved jobs — H2, sort controls, and summary cards with default saved mock state.',
+        screenshotCaption:
+          'Your saved jobs — H1, intro, sub navigation, H2 with sort controls, and summary cards (saved mock state).',
         prototypePath: '/onelogin/journey/match?savedJobState=saved'
       }
     ]
@@ -116,7 +136,7 @@ module.exports = {
     intro:
       'Personal details and sign-in or account options are grouped under Your account in the header, separate from Applications, Job alerts, and Notifications.',
     annotations: [
-      'Shared layout: app-page-header H1 “Your account”, intro paragraph, then MOJ sub navigation (Personal details | Account settings), then H2 for the current tab.',
+      'Shared layout: H1 “Your account” (govuk-heading-l), intro paragraph, MOJ sub navigation (Personal details | Account settings), then H2 (govuk-heading-m) for the current tab.',
       'Intro: use Personal details for name, TRN and email; Account settings for sign-in, email preferences and closing your account.',
       'Personal details: summary cards for name, TRN, and email; change name and TRN in Teaching Vacancies (demo user Joe Bloggs in users.json).',
       'Email card: link to GOV.UK One Login settings with visible text “GOV.UK One Login (opens in a new tab)” (target="_blank", rel="noopener noreferrer").',
@@ -130,12 +150,14 @@ module.exports = {
     screenshots: [
       {
         screenshot: 'rp-personal-details.png',
-        screenshotCaption: 'Personal details — summary cards under Your account H1 and sub navigation.',
+        screenshotCaption:
+          'Personal details — H1, intro, sub navigation, H2, and name/TRN/email summary cards.',
         prototypePath: '/account/personal-details'
       },
       {
         screenshot: 'rp-account-settings.png',
-        screenshotCaption: 'Account settings — sign-in, close account and email preferences.',
+        screenshotCaption:
+          'Account settings — H1, intro, sub navigation, H2, and H3 sections (sign-in, close account, emails).',
         prototypePath: '/account/your-account'
       }
     ]
@@ -280,7 +302,7 @@ module.exports = {
           'Your profile removed from service navigation; /profile kept for direct links only.',
           'Service navigation when signed in: Applications, Job alerts, Notifications (activeNav on each route).',
           'Your account only in GOV.UK header → /account/personal-details; not duplicated in service navigation.',
-          'MOJ sub navigation under Applications area H1: Applications + Your saved jobs only (not on Job alerts, Notifications, or Your account).',
+          'MOJ sub navigation under Applications H1 and Your account H1 only (not on Job alerts or Notifications).',
           'Job alerts and Notifications: service navigation only; distinct intro copy on each page.',
           'Notifications: page header (H1 + intro distinguishing from job alerts), inbox toolbar with total and unread count, read/unread rows.',
           'Notification detail: email-style message, metadata, and primary CTA to the related application task.'

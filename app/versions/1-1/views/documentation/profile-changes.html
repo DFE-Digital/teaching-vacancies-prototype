@@ -25,6 +25,11 @@
     </p>
     <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
     <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+    <p class="govuk-body govuk-!-margin-bottom-0">
+      Screenshots show the implemented prototype. After layout changes, run
+      <code class="govuk-body-s">npm run capture:profile-changes-docs</code>
+      (writes to <code class="govuk-body-s">app/assets/images/documentation/profile-changes/</code>) with the kit on port 3000.
+    </p>
 
     <div class="app-guide__main govuk-!-margin-top-6">
       <h2 class="govuk-heading-l" id="business-requirements">Business requirements</h2>
@@ -89,6 +94,16 @@
         </figure>
       {% endif %}
 
+      {% if guide.subAreaPageLayout %}
+        <h2 class="govuk-heading-l" id="sub-area-layout">{{ guide.subAreaPageLayout.title }}</h2>
+        <p class="govuk-body">{{ guide.subAreaPageLayout.intro }}</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+          {% for item in guide.subAreaPageLayout.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
       <h2 class="govuk-heading-l" id="applications-area">{{ guide.applicationsArea.title }}</h2>
       <p class="govuk-body">{{ guide.applicationsArea.intro }}</p>
       <ul class="govuk-list govuk-list--bullet">
@@ -111,7 +126,7 @@
             loading="eager"
             decoding="async"
           >
-          <figcaption class="govuk-body-s app-guide__figure-caption">MOJ sub navigation below the phase banner on Applications pages.</figcaption>
+          <figcaption class="govuk-body-s app-guide__figure-caption">{{ guide.applicationsSubNavCaption }}</figcaption>
         </figure>
       {% endif %}
       {% for shot in guide.applicationsArea.screenshots %}
@@ -154,7 +169,7 @@
             loading="eager"
             decoding="async"
           >
-          <figcaption class="govuk-body-s app-guide__figure-caption">MOJ sub navigation under Your account.</figcaption>
+          <figcaption class="govuk-body-s app-guide__figure-caption">{{ guide.accountSubNavCaption }}</figcaption>
         </figure>
       {% endif %}
       {% for shot in guide.yourAccountArea.screenshots %}

@@ -12,6 +12,34 @@ const BASE = process.env.PROTOTYPE_BASE_URL || 'http://localhost:3000'
 const PREFIX = '/1-1'
 const OUT_DIR = path.join(__dirname, '../app/assets/images/documentation/profile-changes')
 
+async function screenshotMainRegion (page, outPath, { from, to, padding = 16 }) {
+  const start = page.locator(from).first()
+  const end = page.locator(to).first()
+  await start.scrollIntoViewIfNeeded()
+  await page.waitForTimeout(200)
+  const startBox = await start.boundingBox()
+  const endBox = await end.boundingBox()
+  if (!startBox || !endBox) {
+    await page.screenshot({ path: outPath, fullPage: false })
+    return
+  }
+  const y = Math.max(0, startBox.y - padding)
+  const height = Math.min(
+    endBox.y + endBox.height - y + padding,
+    (await page.viewportSize()).height - y
+  )
+  await page.screenshot({
+    path: outPath,
+    fullPage: false,
+    clip: {
+      x: 0,
+      y,
+      width: (await page.viewportSize()).width,
+      height
+    }
+  })
+}
+
 const CAPTURES = [
   { file: 'service-nav.png', path: '/jobseekers/subscriptions?jobAlertState=alert', clipNav: true },
   {
@@ -19,8 +47,24 @@ const CAPTURES = [
     path: '/jobseekers/job_applications',
     clipSelector: '.moj-sub-navigation'
   },
-  { file: 'us-applications-list.png', path: '/jobseekers/job_applications' },
-  { file: 'us-saved-jobs.png', path: '/onelogin/journey/match?savedJobState=saved' },
+  {
+    file: 'us-applications-list.png',
+    path: '/jobseekers/job_applications',
+    waitSelector: 'h2.govuk-heading-m',
+    mainRegion: {
+      from: '.app-applications-area-page-header',
+      to: '.govuk-summary-card'
+    }
+  },
+  {
+    file: 'us-saved-jobs.png',
+    path: '/onelogin/journey/match?savedJobState=saved',
+    waitSelector: 'h2.govuk-heading-m',
+    mainRegion: {
+      from: '.app-applications-area-page-header',
+      to: '.govuk-summary-card'
+    }
+  },
   {
     file: 'us1-job-alerts-list.png',
     path: '/jobseekers/subscriptions?jobAlertState=alert',
@@ -45,7 +89,7 @@ const CAPTURES = [
     file: 'rp-account-settings.png',
     path: '/account/your-account',
     clipSelector: '#main-content',
-    waitSelector: 'h2.govuk-heading-l'
+    waitSelector: 'h2.govuk-heading-m'
   },
   {
     file: 'account-sub-nav.png',
@@ -68,6 +112,7 @@ async function main () {
     const url = `${BASE}${PREFIX}${capture.path}`
     process.stdout.write(`Capturing ${capture.file} … `)
     await page.goto(url, { waitUntil: 'load', timeout: 60000 })
+    await page.evaluate(() => window.scrollTo(0, 0))
     if (capture.waitSelector) {
       await page.waitForSelector(capture.waitSelector, { timeout: 60000 })
     }
@@ -88,6 +133,8 @@ async function main () {
       } else {
         await page.screenshot({ path: path.join(OUT_DIR, capture.file), fullPage: false })
       }
+    } else if (capture.mainRegion) {
+      await screenshotMainRegion(page, path.join(OUT_DIR, capture.file), capture.mainRegion)
     } else if (capture.viewportOnly) {
       await page.screenshot({ path: path.join(OUT_DIR, capture.file), fullPage: false })
     } else {

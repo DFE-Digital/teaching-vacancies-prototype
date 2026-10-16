@@ -26,7 +26,7 @@ module.exports = {
       href: '/documentation/profile-changes',
       title: 'Profile changes',
       description:
-        'Service navigation (Applications, Job alerts, Notifications), Your account in the header, and MOJ sub navigation for account settings and personal details (RP01–RP07).'
+        'Four signed-in areas, shared H1/sub-nav/H2 layout for Applications and Your account, job alerts and notifications (RP01–RP07).'
     },
     {
       href: '/documentation/quick-apply-1',
