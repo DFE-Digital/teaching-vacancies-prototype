@@ -48,17 +48,44 @@
         </tbody>
       </table>
 
-      <h2 class="govuk-heading-l" id="information-architecture">Service navigation</h2>
-      <p class="govuk-body">Jobseeker areas are separated in the header: Applications, Job alerts, and Notifications. Profile is not in this navigation.</p>
+      <h2 class="govuk-heading-l" id="information-architecture">Four signed-in areas</h2>
+      <p class="govuk-body">{{ guide.serviceNavigation.intro }}</p>
+      <h3 class="govuk-heading-m govuk-!-margin-top-4" id="service-navigation">Service navigation</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in guide.serviceNavigation.items %}
+          <li>
+            <a class="govuk-link" href="{{ item.prototypePath }}" target="_blank" rel="noopener noreferrer">{{ item.name }}</a>
+            — {{ item.description }}
+          </li>
+        {% endfor %}
+      </ul>
       {% if guide.serviceNavScreenshot %}
-        <figure class="app-guide__figure govuk-!-margin-bottom-8">
+        <figure class="app-guide__figure govuk-!-margin-bottom-6">
           <img
             src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.serviceNavScreenshot }}"
-            alt="Service navigation for jobseeker areas in the v1.1 prototype"
+            alt="Service navigation for Applications, Job alerts and Notifications in the v1.1 prototype"
             width="960"
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           >
           <figcaption class="govuk-body-s app-guide__figure-caption">Applications, Job alerts, and Notifications in service navigation.</figcaption>
+        </figure>
+      {% endif %}
+      <h3 class="govuk-heading-m govuk-!-margin-top-4" id="header-your-account">GOV.UK header — Your account</h3>
+      <p class="govuk-body">
+        <a class="govuk-link" href="{{ guide.serviceNavigation.headerAccount.prototypePath }}" target="_blank" rel="noopener noreferrer">{{ guide.serviceNavigation.headerAccount.name }}</a>
+        — {{ guide.serviceNavigation.headerAccount.description }}
+      </p>
+      {% if guide.headerAccountScreenshot %}
+        <figure class="app-guide__figure app-guide__figure--compact govuk-!-margin-bottom-8">
+          <img
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.headerAccountScreenshot }}"
+            alt="Your account link in the GOV.UK header"
+            width="480"
+            loading="eager"
+            decoding="async"
+          >
+          <figcaption class="govuk-body-s app-guide__figure-caption">Your account in the header (links to Personal details).</figcaption>
         </figure>
       {% endif %}
 
@@ -81,7 +108,8 @@
             src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.applicationsSubNavScreenshot }}"
             alt="MOJ sub navigation for Applications and Your saved jobs"
             width="960"
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           >
           <figcaption class="govuk-body-s app-guide__figure-caption">MOJ sub navigation below the phase banner on Applications pages.</figcaption>
         </figure>
@@ -97,29 +125,55 @@
             src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ shot.screenshot }}"
             alt="Screenshot: {{ guide.applicationsArea.title }}"
             width="960"
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           >
           <figcaption class="govuk-body-s app-guide__figure-caption">{{ shot.screenshotCaption }}</figcaption>
         </figure>
       {% endfor %}
 
-      <h2 class="govuk-heading-l" id="personal-details-design">Personal details (RP03–RP05)</h2>
-      <p class="govuk-body">Implemented under <strong>Your account</strong> → <strong>Personal details</strong> (not in service navigation).</p>
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
-        {% for note in guide.personalDetailsNotes %}
+      <h2 class="govuk-heading-l" id="your-account-design">{{ guide.yourAccountArea.title }}</h2>
+      <p class="govuk-body">{{ guide.yourAccountArea.intro }}</p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for note in guide.yourAccountArea.annotations %}
           <li>{{ note }}</li>
         {% endfor %}
       </ul>
-      {% if guide.personalDetailsScreenshot %}
-        <figure class="app-guide__figure govuk-!-margin-bottom-8">
+      <h3 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2">Changes in v1.1 prototype (RP03–RP05)</h3>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-4">
+        {% for item in guide.yourAccountArea.implemented %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% if guide.accountSubNavScreenshot %}
+        <figure class="app-guide__figure govuk-!-margin-bottom-6">
           <img
-            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.personalDetailsScreenshot }}"
-            alt="Personal details in the v1.1 prototype"
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ guide.accountSubNavScreenshot }}"
+            alt="MOJ sub navigation for Personal details and Account settings"
             width="960"
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           >
+          <figcaption class="govuk-body-s app-guide__figure-caption">MOJ sub navigation under Your account.</figcaption>
         </figure>
       {% endif %}
+      {% for shot in guide.yourAccountArea.screenshots %}
+        <p class="govuk-body app-guide__prototype-link">
+          <a class="govuk-link" href="{{ shot.prototypePath }}" target="_blank" rel="noopener noreferrer">
+            Open this page in the prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+          </a>
+        </p>
+        <figure class="app-guide__figure govuk-!-margin-bottom-8">
+          <img
+            src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ shot.screenshot }}"
+            alt="Screenshot: {{ guide.yourAccountArea.title }}"
+            width="960"
+            loading="eager"
+            decoding="async"
+          >
+          <figcaption class="govuk-body-s app-guide__figure-caption">{{ shot.screenshotCaption }}</figcaption>
+        </figure>
+      {% endfor %}
 
       <h2 class="govuk-heading-l" id="user-stories">User stories</h2>
       {% for story in guide.userStories %}
@@ -173,7 +227,8 @@
                   src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ story.design.screenshot }}"
                   alt="Screenshot: user story {{ story.id }}"
                   width="960"
-                  loading="lazy"
+                  loading="eager"
+            decoding="async"
                 >
                 <figcaption class="govuk-body-s app-guide__figure-caption">{{ story.design.screenshotCaption }}</figcaption>
               </figure>
@@ -190,7 +245,8 @@
                     src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ extra.screenshot }}"
                     alt="Additional screenshot: user story {{ story.id }}"
                     width="960"
-                    loading="lazy"
+                    loading="eager"
+            decoding="async"
                   >
                   <figcaption class="govuk-body-s app-guide__figure-caption">{{ extra.screenshotCaption }}</figcaption>
                 </figure>
@@ -209,6 +265,7 @@
           <li class="app-related__item"><a class="govuk-link" href="/jobseekers/subscriptions">Open prototype: Job alerts</a></li>
           <li class="app-related__item"><a class="govuk-link" href="/jobseekers/notifications">Open prototype: Notifications</a></li>
           <li class="app-related__item"><a class="govuk-link" href="/account/personal-details">Open prototype: Personal details</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/account/your-account">Open prototype: Account settings</a></li>
         </ul>
       </aside>
     </div>

@@ -113,6 +113,12 @@
   box-shadow: none;
 }
 
+// Narrow UI clips (e.g. header navigation) — half the default display width
+.app-guide__figure--compact img {
+  width: 40%;
+  max-width: 480px;
+}
+
 .app-guide__figure-caption {
   margin-top: govuk-spacing(3);
   margin-bottom: 0;

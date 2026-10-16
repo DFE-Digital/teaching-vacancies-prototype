@@ -21,13 +21,42 @@ const CAPTURES = [
   },
   { file: 'us-applications-list.png', path: '/jobseekers/job_applications' },
   { file: 'us-saved-jobs.png', path: '/onelogin/journey/match?savedJobState=saved' },
-  { file: 'us1-job-alerts-list.png', path: '/jobseekers/subscriptions?jobAlertState=alert' },
-  { file: 'us2-create-alert.png', path: '/jobalerts/jobalert' },
-  { file: 'us2-edit-alert.png', path: '/jobalerts/jobalert?alertId=alert-design-london' },
-  { file: 'us3-manage-alert.png', path: '/jobseekers/subscriptions?jobAlertState=alert' },
-  { file: 'us4-notifications-inbox.png', path: '/jobseekers/notifications' },
-  { file: 'us4-notification-detail.png', path: '/jobseekers/notifications/notif-1' },
-  { file: 'rp-personal-details.png', path: '/account/personal-details' }
+  {
+    file: 'us1-job-alerts-list.png',
+    path: '/jobseekers/subscriptions?jobAlertState=alert',
+    viewportOnly: true
+  },
+  { file: 'us2-create-alert.png', path: '/jobalerts/jobalert', viewportOnly: true },
+  { file: 'us2-edit-alert.png', path: '/jobalerts/jobalert?alertId=alert-design-london', viewportOnly: true },
+  {
+    file: 'us3-manage-alert.png',
+    path: '/jobseekers/subscriptions?jobAlertState=alert',
+    clipSelector: '.govuk-summary-card:has(.app-job-alert-frequency-form)'
+  },
+  { file: 'us4-notifications-inbox.png', path: '/jobseekers/notifications', viewportOnly: true },
+  { file: 'us4-notification-detail.png', path: '/jobseekers/notifications/notif-1', viewportOnly: true },
+  {
+    file: 'rp-personal-details.png',
+    path: '/account/personal-details',
+    clipSelector: '#main-content',
+    waitSelector: '.govuk-summary-card'
+  },
+  {
+    file: 'rp-account-settings.png',
+    path: '/account/your-account',
+    clipSelector: '#main-content',
+    waitSelector: 'h2.govuk-heading-l'
+  },
+  {
+    file: 'account-sub-nav.png',
+    path: '/account/personal-details',
+    clipSelector: '.moj-sub-navigation'
+  },
+  {
+    file: 'header-your-account.png',
+    path: '/account/personal-details',
+    clipSelector: '.govuk-header__navigation'
+  }
 ]
 
 async function main () {
@@ -39,6 +68,9 @@ async function main () {
     const url = `${BASE}${PREFIX}${capture.path}`
     process.stdout.write(`Capturing ${capture.file} … `)
     await page.goto(url, { waitUntil: 'load', timeout: 60000 })
+    if (capture.waitSelector) {
+      await page.waitForSelector(capture.waitSelector, { timeout: 60000 })
+    }
     await page.waitForTimeout(500)
     if (capture.clipNav) {
       const nav = page.locator('.govuk-service-navigation')
@@ -50,10 +82,14 @@ async function main () {
     } else if (capture.clipSelector) {
       const el = page.locator(capture.clipSelector)
       if (await el.count()) {
+        await el.first().scrollIntoViewIfNeeded()
+        await page.waitForTimeout(200)
         await el.first().screenshot({ path: path.join(OUT_DIR, capture.file) })
       } else {
         await page.screenshot({ path: path.join(OUT_DIR, capture.file), fullPage: false })
       }
+    } else if (capture.viewportOnly) {
+      await page.screenshot({ path: path.join(OUT_DIR, capture.file), fullPage: false })
     } else {
       await page.screenshot({ path: path.join(OUT_DIR, capture.file), fullPage: true })
     }

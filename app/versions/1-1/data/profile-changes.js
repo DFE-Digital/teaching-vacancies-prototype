@@ -6,11 +6,12 @@
 module.exports = {
   guideTitle: 'Profile changes',
   guideDescription:
-    'Business requirements and user stories for separating job alerts from the jobseeker profile, personal details under Your account, distinct ATS notifications, and the Applications area (applications list and saved jobs) in the v1.1 prototype. Date captured: 15 Oct 2026.',
+    'Business requirements and user stories for the v1.1 jobseeker information architecture: Applications, Job alerts, and Notifications in service navigation; Your account in the GOV.UK header; personal details and account settings under MOJ sub navigation. Date captured: 16 Oct 2026.',
   imageDir: 'profile-changes',
-  personalDetailsScreenshot: 'rp-personal-details.png',
   serviceNavScreenshot: 'service-nav.png',
+  headerAccountScreenshot: 'header-your-account.png',
   applicationsSubNavScreenshot: 'applications-sub-nav.png',
+  accountSubNavScreenshot: 'account-sub-nav.png',
   requirementsCaption: 'Jobseeker UX requirements (RP01–RP07)',
   requirements: [
     {
@@ -49,6 +50,36 @@ module.exports = {
       description: 'There is a need to remove Profile from the jobseeker journey.'
     }
   ],
+  serviceNavigation: {
+    intro:
+      'When signed in, jobseekers reach four main areas. Three are in GOV.UK service navigation below the phase banner: Applications, Job alerts, and Notifications. The fourth — Your account — is in the GOV.UK header (top right), not in service navigation.',
+    items: [
+      {
+        name: 'Applications',
+        prototypePath: '/jobseekers/job_applications',
+        description:
+          'Application list with status filter and summary cards. MOJ sub navigation links Applications and Your saved jobs; service nav stays on Applications for both.'
+      },
+      {
+        name: 'Job alerts',
+        prototypePath: '/jobseekers/subscriptions?jobAlertState=alert',
+        description:
+          'Vacancy alerts only — summary cards, create/edit/delete, frequency controls. Page header (H1 + intro + Create a job alert); no MOJ sub navigation.'
+      },
+      {
+        name: 'Notifications',
+        prototypePath: '/jobseekers/notifications',
+        description:
+          'ATS-style inbox for application updates (page header, read/unread toolbar, detail pages with CTAs). No MOJ sub navigation; intro copy distinguishes notifications from job alerts.'
+      }
+    ],
+    headerAccount: {
+      name: 'Your account',
+      prototypePath: '/account/personal-details',
+      description:
+        'Header link to /account/personal-details (GET /account redirects there). H1 Your account and shared intro on both tabs; MOJ sub navigation: Personal details | Account settings; H2 page title below sub-nav on each tab.'
+    }
+  },
   applicationsArea: {
     title: 'Applications and saved jobs',
     intro:
@@ -79,12 +110,35 @@ module.exports = {
       }
     ]
   },
-  personalDetailsNotes: [
-    'MOJ sub navigation under Your account: Personal details first, then Account settings.',
-    'Summary cards for name, TRN, and email with summary lists.',
-    'Change name and TRN in Teaching Vacancies; demo user Joe Bloggs in users.json.',
-    'Email card: no Change action in the header; link to GOV.UK One Login settings with visible text “GOV.UK One Login (opens in a new tab)” (target="_blank", rel="noopener noreferrer").'
-  ],
+  yourAccountArea: {
+    title: 'Your account (Personal details and Account settings)',
+    intro:
+      'Personal details and sign-in or account options are grouped under Your account in the header, separate from Applications, Job alerts, and Notifications.',
+    annotations: [
+      'Shared layout: app-page-header H1 “Your account”, intro paragraph, then MOJ sub navigation (Personal details | Account settings), then H2 for the current tab.',
+      'Intro: use Personal details for name, TRN and email; Account settings for sign-in, email preferences and closing your account.',
+      'Personal details: summary cards for name, TRN, and email; change name and TRN in Teaching Vacancies (demo user Joe Bloggs in users.json).',
+      'Email card: link to GOV.UK One Login settings with visible text “GOV.UK One Login (opens in a new tab)” (target="_blank", rel="noopener noreferrer").',
+      'Account settings (/account/your-account): sign-in via One Login, import help, close account, opt out of marketing emails; section headings are H3 under the page H2.'
+    ],
+    implemented: [
+      'GET /account → redirect /account/personal-details; header Your account sets primaryNavId account.',
+      'includes/account-page-header.njk and includes/account-sub-nav.njk shared across account tabs.',
+      'GET /account/your-account — Account settings page title and sub-nav label.'
+    ],
+    screenshots: [
+      {
+        screenshot: 'rp-personal-details.png',
+        screenshotCaption: 'Personal details — summary cards under Your account H1 and sub navigation.',
+        prototypePath: '/account/personal-details'
+      },
+      {
+        screenshot: 'rp-account-settings.png',
+        screenshotCaption: 'Account settings — sign-in, close account and email preferences.',
+        prototypePath: '/account/your-account'
+      }
+    ]
+  },
   userStories: [
     {
       id: '1',
@@ -92,7 +146,7 @@ module.exports = {
       story:
         'As a job seeker, I want to view my configured job alerts, so that I can understand what vacancies I am being notified about.',
       acceptanceCriteria: [
-        'A Job Alerts section is available within the user account area.',
+        'A Job Alerts section is available from service navigation when signed in.',
         'Users can view all active job alerts.',
         'Each alert displays its search criteria.',
         'Users can distinguish between active and inactive alerts.',
@@ -106,8 +160,8 @@ module.exports = {
       ],
       design: {
         annotations: [
-          'Job alerts accessed from service navigation (not Your profile).',
-          'Full-width page: heading + Create a job alert button (page header pattern); no MOJ sub navigation on this page.',
+          'Job alerts accessed from service navigation Applications | Job alerts | Notifications (not Your profile or Your account).',
+          'Full-width page: H1 + intro (“Manage vacancy alerts separately from application notifications”) + Create a job alert button; no MOJ sub navigation on this page.',
           'Each alert is a GOV.UK summary card with criteria in a summary list, status tags, and frequency controls in the card body.',
           'Card title actions: Edit alert and Delete alert (GOV.UK summary card with actions pattern).',
           'Empty state when no alerts are configured; footer prototype toggles empty or default alert lists.'
@@ -119,7 +173,8 @@ module.exports = {
           'Imported alert tag after registration confirmation.'
         ],
         screenshot: 'us1-job-alerts-list.png',
-        screenshotCaption: 'Job alerts list — summary cards with Edit alert and Delete alert in the card title.',
+        screenshotCaption:
+          'Job alerts — service navigation, page header with Create a job alert, intro copy, and summary cards with Edit alert and Delete alert.',
         prototypePath: '/jobseekers/subscriptions?jobAlertState=alert'
       }
     },
@@ -196,7 +251,8 @@ module.exports = {
           'Success banners for updated and deleted alerts.'
         ],
         screenshot: 'us3-manage-alert.png',
-        screenshotCaption: 'Frequency form, Deactivate control, and Delete alert in the card title actions.',
+        screenshotCaption:
+          'Managing an active alert — frequency form, Save changes, Deactivate alert, and Delete alert in the card title.',
         prototypePath: '/jobseekers/subscriptions?jobAlertState=alert'
       }
     },
@@ -221,23 +277,27 @@ module.exports = {
       design: {
         annotations: [
           'Your profile removed from service navigation; /profile kept for direct links only.',
-          'MOJ sub navigation under Applications: Applications + Your saved jobs only (not on Job alerts or Notifications).',
-          'Job alerts and Notifications have no sub nav — service navigation only.',
-          'Notifications inbox links to detail pages; CTAs route to the relevant application task.',
-          'Intro copy on each area does not cross-link to the other feature.'
+          'Service navigation when signed in: Applications, Job alerts, Notifications (activeNav on each route).',
+          'Your account only in GOV.UK header → /account/personal-details; not duplicated in service navigation.',
+          'MOJ sub navigation under Applications: Applications + Your saved jobs only (not on Job alerts, Notifications, or Your account).',
+          'Job alerts and Notifications: service navigation only; distinct intro copy on each page.',
+          'Notifications: page header (H1 + intro distinguishing from job alerts), inbox toolbar with total and unread count, read/unread rows.',
+          'Notification detail: email-style message, metadata, and primary CTA to the related application task.'
         ],
         implemented: [
-          'GET /jobseekers/notifications with jobseeker-notifications.js mock inbox.',
+          'GET /jobseekers/notifications with jobseeker-notifications.js mock inbox (toolbar total + unread count).',
           'GET /jobseekers/notifications/:id email-style detail with summary metadata and primary action.',
-          'Header service nav: Applications | Job alerts | Notifications.'
+          'header.njk: service nav Applications | Job alerts | Notifications; header Your account + Sign out.'
         ],
         screenshot: 'us4-notifications-inbox.png',
-        screenshotCaption: 'Notifications inbox (ATS communications only).',
+        screenshotCaption:
+          'Notifications inbox — page header, intro, toolbar (8 notifications, unread count), and ATS-style list rows.',
         prototypePath: '/jobseekers/notifications',
         extraScreenshots: [
           {
             screenshot: 'us4-notification-detail.png',
-            screenshotCaption: 'Notification detail page with CTA to the related application task.',
+            screenshotCaption:
+              'Notification detail — back link, email-style body, application metadata badges, and primary action.',
             prototypePath: '/jobseekers/notifications/notif-1'
           }
         ]

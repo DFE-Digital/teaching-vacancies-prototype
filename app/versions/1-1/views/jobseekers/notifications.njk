@@ -5,8 +5,12 @@
 {% set forceSignedIn = true %}
 
 {% block content %}
-  <h1 class="govuk-heading-l">Notifications</h1>
-  <p class="govuk-body">Updates about your applications and messages from hiring teams.</p>
+  <div class="app-page-header app-notifications-page-header govuk-!-margin-bottom-4">
+    <div class="app-page-header__title">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Notifications</h1>
+    </div>
+  </div>
+  <p class="govuk-body">Application updates and messages from hiring teams — not vacancy job alerts.</p>
 
   {% if notifications.length %}
     <div class="app-notifications-inbox">
