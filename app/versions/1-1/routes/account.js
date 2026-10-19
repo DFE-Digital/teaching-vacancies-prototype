@@ -250,7 +250,7 @@ module.exports = router => {
   router.get('/account/sign-out', (req, res) => {
     res.locals.user = req.session.user = null
     req.session.data.signedIn = false
-    res.redirect('/')
+    res.redirect('/home')
   })
 
   router.post('/account/new', (req, res) => {
