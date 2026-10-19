@@ -4,17 +4,12 @@
 {% set accountSection = 'personal-details' %}
 {% set forceSignedIn = true %}
 {% set title = 'Personal details' %}
-{% set accountPageHeading = 'Personal details' %}
 
 {% block content %}
   {% include "includes/account-page-header.njk" %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% include "includes/account-sub-nav.njk" %}
-
-      <h2 class="govuk-heading-m govuk-!-margin-top-0">{{ accountPageHeading }}</h2>
-
       {% if nameUpdated %}
         {{ govukNotificationBanner({ type: "success", text: "Your name has been updated" }) }}
       {% endif %}

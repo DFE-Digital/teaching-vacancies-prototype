@@ -62,9 +62,6 @@
           <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Account navigation">
             <ul id="navigation" class="govuk-header__navigation-list">
               {% if data.signedIn or forceSignedIn %}
-                <li class="govuk-header__navigation-item{% if primaryNavId == 'account' %} govuk-header__navigation-item--active{% endif %}">
-                  <a class="govuk-header__link" href="/account/personal-details"{% if primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
-                </li>
                 <li class="govuk-header__navigation-item">
                   <a class="govuk-header__link" href="/account/sign-out">Sign out</a>
                 </li>
@@ -112,24 +109,6 @@
               Colleges
             </a>
           </li>
-
-          {% if data.signedIn or forceSignedIn %}
-            <li class="govuk-service-navigation__item {% if activeNav == 'applications' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="/jobseekers/job_applications">
-                Applications
-              </a>
-            </li>
-            <li class="govuk-service-navigation__item {% if activeNav == 'jobalerts' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="/jobseekers/subscriptions">
-                Job alerts
-              </a>
-            </li>
-            <li class="govuk-service-navigation__item {% if activeNav == 'notifications' %} govuk-service-navigation__item--active {% endif %}">
-              <a class="govuk-service-navigation__link" href="/jobseekers/notifications">
-                Notifications
-              </a>
-            </li>
-          {% endif %}
         </ul>
       </nav>
     </div>

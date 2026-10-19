@@ -54,6 +54,9 @@
 {% block header %}
   {% include "includes/header.njk" %}
   {% if not contentPage and not homepage %}
+  {% if data.signedIn or forceSignedIn %}
+    {% include "includes/jobseeker-primary-navigation.njk" %}
+  {% endif %}
   {{ govukPhaseBanner({
     tag: {
       text: "Prototype"

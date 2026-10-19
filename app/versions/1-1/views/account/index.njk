@@ -1,8 +1,8 @@
 
 {% extends "layout.njk" %}
 
-{% set primaryNavId = 'account' %}
 {% set accountSection = 'account' %}
+{% set forceSignedIn = true %}
 {% set title = 'Account settings' %}
 {% set accountPageHeading = 'Account settings' %}
 
@@ -11,11 +11,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% include "includes/account-sub-nav.njk" %}
-
-      <h2 class="govuk-heading-m govuk-!-margin-top-0">{{ accountPageHeading }}</h2>
-
-      <h3 class="govuk-heading-m">Change your sign in details</h3>
+      <h3 class="govuk-heading-m govuk-!-margin-top-0">Change your sign in details</h3>
 
       <p class="govuk-body">You can use your GOV.UK One Login to sign in to Teaching Vacancies.</p>
 

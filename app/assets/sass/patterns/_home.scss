@@ -2,8 +2,20 @@
 
 .home_index .search {
     background-color: #1d70b8;
+    box-sizing: border-box;
     color: #fff;
-    padding: 25px 30px 30px;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 25px 0 30px;
+}
+
+// Same width as .home_index / govuk-width-container content (960px), no horizontal inset
+.home_index .search__inner {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0;
+    width: 100%;
 }
 
 .home_index .search h1,
@@ -59,7 +71,7 @@
 
 @media (max-width: 40.0525em) {
     .home_index .search {
-        padding: 20px;
+        padding: 20px 0;
     }
 
     .home_index .search__form {

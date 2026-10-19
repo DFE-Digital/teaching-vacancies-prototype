@@ -1,7 +1,15 @@
-{# Section header for Your account area (matches Job alerts page pattern) #}
+{# Section header for account area (matches Applications page pattern) #}
 <div class="app-page-header app-account-page-header govuk-!-margin-bottom-4">
   <div class="app-page-header__title">
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Your account</h1>
+    {% if accountSection == 'account' %}
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Account settings</h1>
+    {% else %}
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Personal details</h1>
+    {% endif %}
   </div>
 </div>
-<p class="govuk-body">Use Personal details to update your name, TRN and email. Use Account settings to manage sign-in, email preferences and closing your account.</p>
+{% if accountSection == 'account' %}
+  <p class="govuk-body">Manage how you sign in with GOV.UK One Login, choose which emails you receive, and close your Teaching Vacancies account.</p>
+{% else %}
+  <p class="govuk-body">Update your name, teacher reference number (TRN) and the email address we use for your account.</p>
+{% endif %}

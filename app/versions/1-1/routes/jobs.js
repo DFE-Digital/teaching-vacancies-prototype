@@ -374,12 +374,21 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/job_applications', (req, res) => {
+    const tagClassForStatus = (status) => ({
+      Draft: 'govuk-tag--orange',
+      Shortlisted: 'govuk-tag--green',
+      Submitted: 'govuk-tag--green',
+      Offered: 'govuk-tag--green',
+      Rejected: 'govuk-tag--red',
+      Interviewing: 'govuk-tag--orange'
+    }[status] || '')
     const statuses = [
-      { status: 'Draft', tagClass: 'govuk-tag--pink', activityLabel: 'Last edited' },
-      { status: 'Offered', tagClass: 'govuk-tag--green' },
-      { status: 'Interviewing', tagClass: 'govuk-tag--turquoise', activityLabel: 'Interviewing' },
-      { status: 'Shortlisted', tagClass: 'govuk-tag--yellow', activityLabel: 'Shortlisted' },
-      { status: 'Submitted', tagClass: '', activityLabel: 'Submitted' }
+      { status: 'Draft', activityLabel: 'Last edited' },
+      { status: 'Offered' },
+      { status: 'Interviewing', activityLabel: 'Interviewing' },
+      { status: 'Shortlisted', activityLabel: 'Shortlisted' },
+      { status: 'Submitted', activityLabel: 'Submitted' },
+      { status: 'Rejected', activityLabel: 'Rejected' }
     ]
     const activityDates = [
       '2 October 2026 at 11:12am',
@@ -422,7 +431,7 @@ module.exports = router => {
       const submitted = !!stored[id].submitted
       return Object.assign(summarise(job), {
         status: submitted ? 'Submitted' : 'Draft',
-        tagClass: submitted ? '' : 'govuk-tag--pink',
+        tagClass: tagClassForStatus(submitted ? 'Submitted' : 'Draft'),
         activity: submitted ? 'Submitted' : 'Draft application',
         href: submitted
           ? `/jobs/${job.id}/apply/submitted`
@@ -439,13 +448,13 @@ module.exports = router => {
           : `/jobs/${job.id}`
         return Object.assign(summarise(job), {
           status: status.status,
-          tagClass: status.tagClass,
+          tagClass: tagClassForStatus(status.status),
           activity: status.activityLabel ? `${status.activityLabel}: ${activityDates[index % activityDates.length]}` : '',
           href
         })
       })
     const allApplications = real.concat(sample)
-    const statusOrder = ['Draft', 'Submitted', 'Shortlisted', 'Interviewing', 'Offered']
+    const statusOrder = ['Draft', 'Submitted', 'Shortlisted', 'Interviewing', 'Offered', 'Rejected']
     const statusCounts = allApplications.reduce((counts, application) => {
       const key = application.status
       counts[key] = (counts[key] || 0) + 1

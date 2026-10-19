@@ -68,13 +68,13 @@ module.exports = {
   ],
   serviceNavigation: {
     intro:
-      'When signed in, jobseekers reach four main areas. Three are in GOV.UK service navigation below the phase banner: Applications, Job alerts, and Notifications. The fourth — Your account — is in the GOV.UK header (top right), not in service navigation.',
+      'When signed in, MOJ primary navigation sits below service navigation; the phase banner is below primary navigation. Primary nav: Applications, Job alerts, Notifications, Personal details, Account settings. Service navigation keeps Jobs, Schools, and Colleges only; the header shows Sign out.',
     items: [
       {
         name: 'Applications',
         prototypePath: '/jobseekers/job_applications',
         description:
-          'Shared H1 Applications + intro + MOJ sub navigation; H2 Applications (count) with status filter and summary cards. Service nav stays on Applications for Your saved jobs too.'
+          'Primary navigation Applications item active. H1 Applications + intro + MOJ sub navigation; H2 Applications (count) with status filter and summary cards. Primary nav stays on Applications for Your saved jobs too.'
       },
       {
         name: 'Job alerts',
@@ -93,7 +93,7 @@ module.exports = {
       name: 'Your account',
       prototypePath: '/account/personal-details',
       description:
-        'Header link to /account/personal-details (GET /account redirects there). Same tabbed layout as Applications: H1 Your account, intro, MOJ sub navigation (Personal details | Account settings), H2 (govuk-heading-m) for the active tab.'
+        'GET /account redirects to /account/personal-details. Primary navigation Personal details | Account settings; page layout H1 Your account, intro, H2 (govuk-heading-m) for the active tab (no MOJ sub navigation).'
     }
   },
   applicationsArea: {
@@ -102,7 +102,7 @@ module.exports = {
       'The Applications service navigation item covers two related pages. Shared H1 Applications, intro copy, then MOJ sub navigation (Applications | Your saved jobs), then an H2 for the current tab. Job alerts and Notifications do not use this pattern.',
     annotations: [
       'Intro copy: track submissions on Applications; review saved vacancies on Your saved jobs.',
-      'Service navigation Applications stays active for both sub pages (route sets activeNav).',
+      'Primary navigation Applications stays active for both Applications sub pages (route sets activeNav).',
       'Sub navigation: Applications | Your saved jobs — in main content; aria-current="page" and MOJ active styling.',
       'Tab H2 uses govuk-heading-m (Applications (count) with filter row; Your saved jobs (count) with sort controls).',
       'Applications list: each application is a GOV.UK summary card (title + reference, card action, summary list with organisation, activity, closing date, status tag).',
@@ -300,7 +300,7 @@ module.exports = {
       design: {
         annotations: [
           'Your profile removed from service navigation; /profile kept for direct links only.',
-          'Service navigation when signed in: Applications, Job alerts, Notifications (activeNav on each route).',
+          'Primary navigation when signed in: Applications, Job alerts, Notifications, Personal details, Account settings (activeNav / accountSection on each route).',
           'Your account only in GOV.UK header → /account/personal-details; not duplicated in service navigation.',
           'MOJ sub navigation under Applications H1 and Your account H1 only (not on Job alerts or Notifications).',
           'Job alerts and Notifications: service navigation only; distinct intro copy on each page.',
