@@ -1,10 +1,4 @@
-const APPLICATION_STATUS_BADGES = {
-  Draft: 'moj-badge--pink',
-  Submitted: 'moj-badge--blue',
-  Shortlisted: 'moj-badge--yellow',
-  Interviewing: 'moj-badge--purple',
-  Offered: 'moj-badge--green'
-}
+const { tagClassForStatus } = require('./application-status-tags')
 
 function withMetadataBadges (notification) {
   if (!notification || !notification.detail || !Array.isArray(notification.detail.metadata)) {
@@ -12,14 +6,17 @@ function withMetadataBadges (notification) {
   }
 
   const metadata = notification.detail.metadata.map(row => {
-    if (row.mojBadge) return row
+    if (row.tagClass) return row
 
-    if (row.key === 'Application status' && APPLICATION_STATUS_BADGES[row.value]) {
-      return Object.assign({}, row, { mojBadge: APPLICATION_STATUS_BADGES[row.value] })
+    if (row.key === 'Application status') {
+      const tagClass = tagClassForStatus(row.value)
+      if (tagClass) {
+        return Object.assign({}, row, { tagClass })
+      }
     }
 
     if (row.key === 'Action required') {
-      return Object.assign({}, row, { mojBadge: 'moj-badge--red' })
+      return Object.assign({}, row, { tagClass: 'govuk-tag--red' })
     }
 
     return row
@@ -31,6 +28,5 @@ function withMetadataBadges (notification) {
 }
 
 module.exports = {
-  withMetadataBadges,
-  APPLICATION_STATUS_BADGES
+  withMetadataBadges
 }

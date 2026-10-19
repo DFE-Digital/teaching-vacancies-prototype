@@ -50,8 +50,8 @@
       <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
         <dt class="govuk-summary-list__key">{{ row.key }}</dt>
         <dd class="govuk-summary-list__value">
-          {% if row.mojBadge %}
-            <strong class="moj-badge {{ row.mojBadge }}">{{ row.value }}</strong>
+          {% if row.tagClass %}
+            {{ govukTag({ text: row.value, classes: row.tagClass }) }}
           {% else %}
             {{ row.value }}
           {% endif %}

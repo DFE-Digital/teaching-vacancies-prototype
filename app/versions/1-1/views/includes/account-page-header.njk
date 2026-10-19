@@ -2,14 +2,14 @@
 <div class="app-page-header app-account-page-header govuk-!-margin-bottom-4">
   <div class="app-page-header__title">
     {% if accountSection == 'account' %}
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Account settings</h1>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Your account</h1>
     {% else %}
       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Personal details</h1>
     {% endif %}
   </div>
 </div>
 {% if accountSection == 'account' %}
-  <p class="govuk-body">Manage how you sign in with GOV.UK One Login, choose which emails you receive, and close your Teaching Vacancies account.</p>
+  <p class="govuk-body">Change your GOV.UK One Login sign-in details, choose which emails you receive, and close your Teaching Vacancies account if you no longer need it.</p>
 {% else %}
   <p class="govuk-body">Update your name, teacher reference number (TRN) and the email address we use for your account.</p>
 {% endif %}

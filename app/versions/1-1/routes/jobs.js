@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const _ = require('lodash')
 const users = require('../data/users.json')
+const { tagClassForStatus } = require('../lib/application-status-tags')
 const liveProxy = require('./live-proxy')
 
 function prototypeVersions () {
@@ -355,9 +356,164 @@ module.exports = router => {
 
   router.get('/jobseekers/notifications', (req, res) => {
     ensureSignedInJobseeker(req, users)
+
+    const notificationDateValue = (dateLabel) => {
+      const parsed = Date.parse(dateLabel)
+      return Number.isNaN(parsed) ? 0 : parsed
+    }
+
+    const shortDisplayDate = (dateLabel) => {
+      const parsed = Date.parse(dateLabel)
+      if (Number.isNaN(parsed)) return dateLabel
+      return new Date(parsed).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      })
+    }
+
+    const enrichNotification = (item) => {
+      const meta = (item.detail && item.detail.metadata) || []
+      const organisationRow = meta.find(row => row.key === 'Organisation')
+      return Object.assign({}, item, {
+        from: (item.detail && item.detail.from) || (organisationRow && organisationRow.value) || 'Teaching Vacancies',
+        organisation: (organisationRow && organisationRow.value) || '',
+        displayDate: shortDisplayDate(item.date)
+      })
+    }
+
+    const allNotifications = jobseekerNotifications.map(enrichNotification)
+    const unreadCount = allNotifications.filter(item => item.unread).length
+    const readCount = allNotifications.length - unreadCount
+
+    const readFilter = typeof req.query.filter === 'string' ? req.query.filter.trim() : 'all'
+    const typeFilter = typeof req.query.type === 'string' ? req.query.type.trim() : ''
+    const sort = typeof req.query.sort === 'string' ? req.query.sort.trim() : 'date-desc'
+    const allowedReadFilters = new Set(['all', 'unread', 'read'])
+    const activeReadFilter = allowedReadFilters.has(readFilter) ? readFilter : 'all'
+    const allowedSorts = new Set(['date-desc', 'date-asc', 'subject-asc', 'subject-desc'])
+    const activeSort = allowedSorts.has(sort) ? sort : 'date-desc'
+
+    const typeLabels = {
+      application_status: 'Application updates',
+      interview: 'Interviews',
+      draft_application: 'Draft applications',
+      hiring_team_message: 'Messages from schools'
+    }
+
+    const typeCounts = allNotifications.reduce((counts, item) => {
+      if (item.type) counts[item.type] = (counts[item.type] || 0) + 1
+      return counts
+    }, {})
+
+    let filtered = allNotifications.slice()
+    if (activeReadFilter === 'unread') {
+      filtered = filtered.filter(item => item.unread)
+    } else if (activeReadFilter === 'read') {
+      filtered = filtered.filter(item => !item.unread)
+    }
+    if (typeFilter && typeLabels[typeFilter]) {
+      filtered = filtered.filter(item => item.type === typeFilter)
+    }
+
+    filtered.sort((a, b) => {
+      if (activeSort === 'date-asc') {
+        return notificationDateValue(a.date) - notificationDateValue(b.date)
+      }
+      if (activeSort === 'subject-asc') {
+        return a.title.localeCompare(b.title, 'en', { sensitivity: 'base' })
+      }
+      if (activeSort === 'subject-desc') {
+        return b.title.localeCompare(a.title, 'en', { sensitivity: 'base' })
+      }
+      return notificationDateValue(b.date) - notificationDateValue(a.date)
+    })
+
+    const notificationsQuery = (overrides = {}) => {
+      const params = new URLSearchParams()
+      const filterValue = overrides.filter !== undefined ? overrides.filter : activeReadFilter
+      const typeValue = overrides.type !== undefined ? overrides.type : typeFilter
+      const sortValue = overrides.sort !== undefined ? overrides.sort : activeSort
+      const pageValue = overrides.page !== undefined ? overrides.page : undefined
+
+      if (filterValue && filterValue !== 'all') params.set('filter', filterValue)
+      if (typeValue) params.set('type', typeValue)
+      if (sortValue && sortValue !== 'date-desc') params.set('sort', sortValue)
+      if (pageValue && pageValue > 1) params.set('page', String(pageValue))
+
+      const query = params.toString()
+      return query ? `?${query}` : ''
+    }
+
+    const pageSize = 10
+    const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize))
+    const requestedPage = parseInt(req.query.page, 10)
+    const currentPage = Math.min(pageCount, Math.max(1, requestedPage || 1))
+    const start = (currentPage - 1) * pageSize
+    const pageNotifications = filtered.slice(start, start + pageSize)
+
+    const mailboxFilterItems = [
+      {
+        value: 'all',
+        text: `All notifications (${allNotifications.length})`,
+        selected: activeReadFilter === 'all'
+      },
+      {
+        value: 'unread',
+        text: `Unread (${unreadCount})`,
+        selected: activeReadFilter === 'unread'
+      },
+      {
+        value: 'read',
+        text: `Read (${readCount})`,
+        selected: activeReadFilter === 'read'
+      }
+    ]
+
+    const typeFilterItems = [
+      {
+        value: '',
+        text: 'All types',
+        selected: !typeFilter
+      },
+      ...Object.keys(typeLabels)
+        .filter(typeId => typeCounts[typeId])
+        .map(typeId => ({
+          value: typeId,
+          text: `${typeLabels[typeId]} (${typeCounts[typeId]})`,
+          selected: typeFilter === typeId
+        }))
+    ]
+
+    const sortFilterItems = [
+      { value: 'date-desc', text: 'Newest first', selected: activeSort === 'date-desc' },
+      { value: 'date-asc', text: 'Oldest first', selected: activeSort === 'date-asc' },
+      { value: 'subject-asc', text: 'Subject (A to Z)', selected: activeSort === 'subject-asc' },
+      { value: 'subject-desc', text: 'Subject (Z to A)', selected: activeSort === 'subject-desc' }
+    ]
+
     res.render('jobseekers/notifications', {
-      notifications: jobseekerNotifications,
-      unreadCount: jobseekerNotifications.filter(item => item.unread).length
+      notifications: pageNotifications,
+      filteredCount: filtered.length,
+      unreadCount,
+      activeReadFilter,
+      typeFilter,
+      activeSort,
+      mailboxFilterItems,
+      typeFilterItems,
+      sortFilterItems,
+      currentPage,
+      pageCount,
+      previousHref: currentPage > 1 ? `/jobseekers/notifications${notificationsQuery({ page: currentPage - 1 })}` : '',
+      nextHref: currentPage < pageCount ? `/jobseekers/notifications${notificationsQuery({ page: currentPage + 1 })}` : '',
+      paginationItems: Array.from({ length: pageCount }, (_, index) => {
+        const number = index + 1
+        return {
+          number,
+          href: `/jobseekers/notifications${notificationsQuery({ page: number })}`,
+          current: number === currentPage
+        }
+      })
     })
   })
 
@@ -374,14 +530,6 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/job_applications', (req, res) => {
-    const tagClassForStatus = (status) => ({
-      Draft: 'govuk-tag--orange',
-      Shortlisted: 'govuk-tag--green',
-      Submitted: 'govuk-tag--green',
-      Offered: 'govuk-tag--green',
-      Rejected: 'govuk-tag--red',
-      Interviewing: 'govuk-tag--orange'
-    }[status] || '')
     const statuses = [
       { status: 'Draft', activityLabel: 'Last edited' },
       { status: 'Offered' },
