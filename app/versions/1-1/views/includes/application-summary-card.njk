@@ -20,6 +20,12 @@
     <div class="govuk-summary-card__content">
       <dl class="govuk-summary-list govuk-!-margin-bottom-0">
         <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">Status</dt>
+          <dd class="govuk-summary-list__value">
+            {{ govukTag({ text: application.status, classes: application.tagClass }) }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
           <dt class="govuk-summary-list__key">Organisation</dt>
           <dd class="govuk-summary-list__value">{{ application.organisation or '—' }}</dd>
         </div>
@@ -32,12 +38,6 @@
         <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
           <dt class="govuk-summary-list__key">Closing date</dt>
           <dd class="govuk-summary-list__value">{{ application.closingDate or '—' }}</dd>
-        </div>
-        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-          <dt class="govuk-summary-list__key">Status</dt>
-          <dd class="govuk-summary-list__value">
-            {{ govukTag({ text: application.status, classes: application.tagClass }) }}
-          </dd>
         </div>
       </dl>
     </div>
