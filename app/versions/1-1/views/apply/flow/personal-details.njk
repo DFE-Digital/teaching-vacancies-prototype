@@ -104,13 +104,13 @@
           },
           hint: { html: visaHint },
           items: [
-            { value: "No", text: "No, I already have the right to work in the UK", checked: application.personalDetails.skilledWorker == "No" },
             {
               value: "Yes",
               text: "Yes, I need Skilled Worker visa sponsorship",
               checked: application.personalDetails.skilledWorker == "Yes",
               conditional: { html: visaWarning } if not offersVisaSponsorship
-            }
+            },
+            { value: "No", text: "No, I already have the right to work in the UK", checked: application.personalDetails.skilledWorker == "No" }
           ]
         }) }}
 
