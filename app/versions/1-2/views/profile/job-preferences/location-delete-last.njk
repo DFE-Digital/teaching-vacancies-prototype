@@ -1,0 +1,72 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Locations' %}
+{% set caption = 'Job preferences' %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+
+        <span class="govuk-caption-xl">
+          Delete location
+        </span>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl govuk-!-margin-bottom-5">
+              <h1 class="govuk-fieldset__heading">
+                Are you sure you want to delete London (10 miles)?
+              </h1>
+            </legend>
+
+            {{ govukWarningText({
+              text: "If you delete this, there will be no location information on your profile. Schools will not be able to see your profile. Change the location to keep your profile active.",
+              iconFallbackText: "Warning"
+            }) }}
+
+            <div class="govuk-radios" data-module="govuk-radios">
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="delete-location" name="delete-location" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="delete-location">
+                  No, change the location
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="delete-location-2" name="delete-location" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="delete-location-2">
+                  Yes, delete this location and turn off my profile
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

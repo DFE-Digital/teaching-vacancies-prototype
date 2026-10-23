@@ -1,0 +1,13 @@
+{# Descoped: Applications / saved jobs are separate pages under /jobseekers (no MOJ sub navigation). #}
+{% set applicationsSubNavActive = jobseekerSubNavSection == 'applications' %}
+{% set savedJobsSubNavActive = jobseekerSubNavSection == 'saved-jobs' %}
+<nav class="moj-sub-navigation" aria-label="Applications">
+  <ul class="moj-sub-navigation__list">
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="/jobseekers/job_applications"{% if applicationsSubNavActive %} aria-current="page"{% endif %}>Your applications</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="/onelogin/journey/match?savedJobState=saved"{% if savedJobsSubNavActive %} aria-current="page"{% endif %}>Your saved jobs</a>
+    </li>
+  </ul>
+</nav>

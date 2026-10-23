@@ -1,0 +1,65 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Key stages' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukErrorSummary({
+titleText: "There is a problem",
+errorList: [
+  {
+    text: "Select what key stages you are interested in to continue",
+    href: "#profile[firstName]"
+  }
+]
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-xl">
+          Job preferences
+        </span>
+        {{title}}
+      {% endset %}
+
+      <form method="post" novalidate>
+
+        {{ govukCheckboxes({
+          idPrefix: "profile[keyStages]",
+          name: "profile[keyStages]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          errorMessage: {
+            text: "Select what key stages you are interested in to continue"
+          },
+          items: options
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

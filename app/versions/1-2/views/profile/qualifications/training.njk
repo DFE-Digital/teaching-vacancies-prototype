@@ -1,0 +1,85 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{{data | log}}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Training and continuing professional development (CPD)
+      </span>
+      <h1 class="govuk-heading-l">
+        Add training and continuing professional development (CPD)
+      </h1>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "training-subject",
+          name: "training-subject",
+          label: {
+            text: "Name of course or training",
+            classes: 'govuk-label--m'
+          },
+          value: subject
+        }) }}
+
+
+        {{ govukInput({
+          id: "training-provider",
+          name: "training-provider",
+          label: {
+            text: "Training provider",
+            classes: 'govuk-label--m'
+          },
+          value: provider
+        }) }}
+
+        {{ govukInput({
+          id: "training-grade",
+          name: "training-grade",
+          label: {
+            text: "Grade (optional)",
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: hint
+          } if hint,
+          classes: 'govuk-input--width-10',
+          value: grade
+        }) }}
+
+        {{ govukInput({
+          id: "training-year",
+          name: "training-year",
+          label: {
+            text: "Year completed",
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: 'For example, 1998'
+          },
+          classes: 'govuk-input--width-5',
+          value: year
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

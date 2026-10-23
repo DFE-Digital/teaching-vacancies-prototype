@@ -1,0 +1,59 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Jobseeker sign in' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            How you sign in has changed
+          </h3>
+          <p class="govuk-body">Sign in to or create a GOV.UK One Login account to save and apply for jobs on Teaching Vacancies.</p>
+        </div>
+      </div>
+
+
+
+      <p>Create your GOV.UK One Login account using the same email address as your Teaching Vacancies account to automatically save your account details.</p>
+
+      <p>If you use a different email address, you'll be able to transfer your account details after signing in.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: 'Continue to GOV.UK One Login'
+        }) }}
+
+      </form>
+
+      <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              How to find your registered email address
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+    
+            <p class="govuk-body">
+              We sent a message to the email address associated with your Teaching Vacancies account informing you about this change.
+            </p>
+            
+          </div>
+        </details>
+
+    </div>
+  </div>
+
+{% endblock %}

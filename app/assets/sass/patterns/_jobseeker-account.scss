@@ -1,0 +1,154 @@
+// Version 1.2 — account landing (Featured pattern). Loaded via version-1-2.scss only.
+.app-account-main-wrapper.govuk-main-wrapper--auto-spacing {
+  padding-top: 20px;
+}
+
+.app-account-hub {
+  margin-bottom: 35px;
+}
+
+.app-account-featured-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #b1b4b6;
+}
+
+.app-account-featured-list__item {
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.app-account-featured-list__item-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  min-height: 44px;
+  padding: 15px 0;
+  text-decoration: none;
+  color: #0b0c0c;
+}
+
+.app-account-featured-list__item-link:focus {
+  outline: 3px solid transparent;
+}
+
+.app-account-featured-list__item-link:focus-visible {
+  outline: 3px solid transparent;
+  background-color: #ffdd00;
+  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+}
+
+.app-account-featured-list__item-link:focus-visible .app-account-featured-list__title {
+  color: #0b0c0c;
+}
+
+.app-account-featured__icon {
+  display: flex;
+  flex: 0 0 56px;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+}
+
+.app-account-featured__icon-svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+.app-account-featured__icon--applications {
+  background: #f4dce5;
+  color: #942514;
+}
+
+.app-account-featured__icon--saved-jobs {
+  background: #e5f5fa;
+  color: #0b556c;
+}
+
+.app-account-featured__icon--job-alerts {
+  background: #cadbee;
+  color: #0b556c;
+}
+
+.app-account-featured__icon--notifications {
+  background: #cce2d8;
+  color: #00401a;
+}
+
+.app-account-featured__icon--personal-details {
+  background: #ddd6e8;
+  color: #3b0764;
+}
+
+.app-account-featured__icon--get-help {
+  background: #f3f2f1;
+  color: #0b0c0c;
+}
+
+.app-account-featured-list__text {
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.app-account-featured-list__title {
+  display: block;
+  margin: 0 0 5px;
+  color: #1a65a6;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.3157894737;
+  text-decoration: underline;
+  text-decoration-thickness: max(3px, 0.1875rem);
+  text-underline-offset: 0.1578em;
+}
+
+.app-account-featured-list__item-link:hover .app-account-featured-list__title {
+  color: #0f385c;
+}
+
+.app-account-featured-list__description {
+  display: block;
+  margin: 0;
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.3157894737;
+}
+
+@media (min-width: 40.0625em) {
+  .app-account-featured-list__item-link {
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .app-account-featured__icon {
+    flex-basis: 60px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .app-account-featured__icon-svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (forced-colors: active) {
+  .app-account-featured__icon {
+    border: 2px solid LinkText;
+    background: Canvas;
+    color: LinkText;
+  }
+
+  .app-account-featured-list__item-link:focus-visible {
+    outline: 3px solid Highlight;
+    background: Canvas;
+    box-shadow: none;
+  }
+}

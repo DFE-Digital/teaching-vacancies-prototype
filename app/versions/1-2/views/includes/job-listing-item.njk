@@ -1,0 +1,113 @@
+{% set address %}
+  {% for part, value in job.organisation.address %}
+    {{ value }}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set closingInformation %}
+  {{ job.closingDate | date }}{% if job.closingTime %} at {{ job.closingTime }}{% endif %}
+{% endset %}
+
+{% set schoolType %}
+  {% if job.schoolType %}
+    {{ job.schoolType }}
+  {% else %}
+    {{ job.organisation.type }}{% if job.organisation.ageGroup %}, ages {{ job.organisation.ageGroup }}{% endif %}
+  {% endif %}
+{% endset %}
+
+{% set visaText %}
+  {% if job.sponsorship %}
+    {{ job.sponsorship }}
+  {% else %}
+    Visas cannot be sponsored
+  {% endif %}
+{% endset %}
+
+{% set resultPhase = job.phase or job.organisation.phase %}
+{% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails %}
+{% if not resultSalary and job.salaryDetails %}
+  {% set resultSalary = job.salaryDetails | join(', ') %}
+{% endif %}
+<div class="app-jobs__item">
+  <div class="header-with-logo">
+    <div class="header-with-logo-title">
+      {% if job.isUsingApplicationForm == 'Yes' %}
+        <a class="govuk-tag govuk-tag--green govuk-!-margin-bottom-2" href="/jobs/{{ job.id }}/apply">Quick apply</a>
+      {% endif %}
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+        <span class="govuk-!-margin-right-2">
+          <a class="govuk-link" href="/jobs/{{ job.id }}">{{ job.title }}</a>
+        </span>
+      </h2>
+      <p class="govuk-body address govuk-!-margin-bottom-0 govuk-!-margin-top-0">{{ job.organisation.name }}, {{ address }}</p>
+    </div>
+    {% if job.organisation.logo and job.organisation.logo != 'Not entered' %}
+      <div class="header-with-logo-logo--search-result">
+        <img src="{{ job.organisation.logo }}" alt="">
+      </div>
+    {% endif %}
+  </div>
+
+  {{ govukSummaryList({
+    classes: 'govuk-summary-list--no-border app-summary-list--compact',
+    rows: [
+      {
+        key: { text: "Salary" },
+        value: { text: resultSalary if resultSalary else "Not provided" }
+      },
+      {
+        key: { text: "Education phase" },
+        value: { text: resultPhase if resultPhase else "Not stated" }
+      },
+      {
+        key: { text: "Contract type" },
+        value: { text: job.contractType if job.contractType else "Not stated" }
+      },
+      {
+        key: { text: "Early career teachers" },
+        value: { text: "Suitable" if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" else "Not suitable" }
+      } if job.isRoleSuitableForEarlyCareeerTeachers,
+      {
+        key: { text: "Overseas qualifications" },
+        value: { text: "Accepted" if job.acceptsOverseasQualifications == "Yes" else "Not accepted" }
+      } if job.acceptsOverseasQualifications,
+      {
+        key: { text: "Driving" },
+        value: { text: "Required" if job.drivingRequired == "Yes" else "Not required" }
+      } if job.drivingRequired,
+      {
+        key: {
+          text: "School type"
+        },
+        value: {
+          html: schoolType
+        }
+      } if schoolType | trim,
+      {
+        key: {
+          text: "Working pattern"
+        },
+        value: {
+          text: job.workingPatterns | join(', ') | capitalize
+        }
+      } if job.workingPatterns,
+      {
+        key: {
+          text: "Closing date"
+        },
+        value: {
+          html: closingInformation
+        }
+      } if job.closingDate,
+      {
+        key: {
+          text: "Visa sponsorship"
+        },
+        value: {
+          text: visaText
+        }
+      }
+    ]
+  }) }}
+</div>

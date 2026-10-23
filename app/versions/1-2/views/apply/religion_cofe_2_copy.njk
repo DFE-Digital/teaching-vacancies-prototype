@@ -1,0 +1,80 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-l">Teacher at Weydon Multi Academy Trust</span>
+            {{title}}
+        </h1>
+
+        <h2 class="govuk-heading-l">
+            Religious information
+        </h2>
+
+        <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">
+                        Are you currently following a religion or faith?
+                    </h2>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                            Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+                            No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+       
+
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="event-name">
+                    What is your religious denomination or faith?
+                </label>
+                <div id="event-name-hint" class="govuk-hint">
+               For example, Christian or Not applicable.
+                </div>
+                <input class="govuk-input" id="religion-name" name="religionName" type="text" aria-describedby="religion-name-hint">
+            </div> 
+        
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="address">
+                    Address of place of worship (optional)
+                </label>
+                <div id="event-name-hint" class="govuk-hint">
+                    For example, Westminster Abbey, Dean's Yard, London.
+                </div>
+                <textarea class="govuk-textarea" id="placeofworship" name="placeofworship" rows="5" autocomplete="street-address"></textarea>
+            </div>
+ 
+        
+    
+        <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+                Save and continue
+            </button>
+        </div>
+
+        <p><a href="#">Cancel</a></p>
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{{ appPrimaryNavigation({
+  items: [
+    {
+      href: "/teaching",
+      text: "Teaching jobs",
+      active: primaryNavId == 'teaching'
+    },
+     {
+      href: "/support",
+      text: "Support staff jobs",
+      active: primaryNavId == 'support'
+    },
+    {
+      href: "/schools",
+      text: "Schools",
+      active: primaryNavId == 'schools'
+    },
+    {
+      href: "/application",
+      text: "Applications",
+      active: primaryNavId == 'applications'
+    } if user,
+    {
+      href: "#",
+      text: "Job alerts",
+      active: primaryNavId == 'alerts'
+    } if user
+  ]
+}) if pageId != 'start'}}

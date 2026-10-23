@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Support at interview" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Do you need support or adjustments for your interview?</h2>
+      <p class="govuk-body">You can ask for support or adjustments to help you take part in an interview.</p>
+      <p class="govuk-body">This could be because of a disability, health condition, neurodivergence, temporary injury or another need.</p>
+      <p class="govuk-body">Tell us what would help. We’ll use this information to arrange support for your interview.</p>
+      <p class="govuk-body">Examples of support or adjustments include:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>having interview questions in writing</li>
+        <li>extra time to read or answer questions</li>
+        <li>taking a short break</li>
+        <li>using a quiet room</li>
+        <li>using captions, a hearing loop or a British Sign Language (BSL) interpreter</li>
+        <li>making sure the interview room has step-free access</li>
+        <li>changing how we contact you, for example by email instead of phone</li>
+        <li>using your own assistive technology</li>
+      </ul>
+
+      <form method="post">
+        {{ govukRadios({
+          name: "needed",
+          fieldset: {
+            legend: {
+              text: "Do you need support or adjustments for your interview?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes, I need support or adjustments",
+              checked: application.support.needed == "Yes",
+              conditional: {
+                html: govukTextarea({
+                  name: "details",
+                  label: { text: "Tell us what support or adjustments you need" },
+                  value: application.support.details
+                })
+              }
+            },
+            {
+              value: "No",
+              text: "No, I do not need support or adjustments",
+              checked: application.support.needed == "No"
+            }
+          ]
+        }) }}
+        {{ completedSection("support") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

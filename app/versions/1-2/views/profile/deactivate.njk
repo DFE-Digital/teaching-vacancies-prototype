@@ -1,0 +1,40 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Confirm that you want to turn off your profile' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Turn off profile
+      </span>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+        {{title}}
+      </h1>
+
+      <p>When you turn off your profile, it will no longer be visible to hiring staff.</p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: "Turn off profile"
+        }) }}
+      </form>
+      <p><a href="/profile">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{%- from "components/button-menu/macro.njk" import appButtonMenu %}
+
+<div class="app-page-header {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  <div class="app-page-header__title">
+    <h{{ params.heading.level | default(1) }} class="{{params.heading.classes | default('govuk-heading-xl')}}">
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </h{{ params.heading.level | default(1) }}>
+  </div>
+
+  {% if params.items %}
+    <div class="app-page-header__actions">
+      {{appButtonMenu({
+        buttonClasses: 'app-page-header__action',
+        items: params.items
+      })}}
+    </div>
+  {% endif %}
+
+</div>

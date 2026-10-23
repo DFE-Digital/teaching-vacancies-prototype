@@ -1,0 +1,37 @@
+{# Descoped: not rendered while showJobseekerPrimaryNavigation is false in layout.njk. Kept for a future IA with a second signed-in nav tier. #}
+{% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
+{# MOJ-style primary navigation for signed-in jobseekers (see MOJ Design System primary navigation) #}
+{% set personalDetailsActive = accountSection == 'personal-details' %}
+{% set accountSettingsActive = accountSection == 'account' %}
+
+{{ appPrimaryNavigation({
+  navigationLabel: 'Primary navigation',
+  items: [
+    {
+      text: 'Applications',
+      href: '/jobseekers/job_applications',
+      active: activeNav == 'applications'
+    },
+    {
+      text: 'Job alerts',
+      href: '/jobseekers/subscriptions',
+      active: activeNav == 'jobalerts'
+    },
+    {
+      text: 'Notifications',
+      href: '/jobseekers/notifications',
+      active: activeNav == 'notifications'
+    },
+    {
+      text: 'Personal details',
+      href: '/account/personal-details',
+      active: personalDetailsActive
+    },
+    {
+      text: 'Get help',
+      href: '/account/your-account',
+      active: accountSettingsActive,
+      classes: 'app-primary-navigation__item--align-right'
+    }
+  ]
+}) }}

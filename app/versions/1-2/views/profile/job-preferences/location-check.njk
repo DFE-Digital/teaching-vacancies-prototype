@@ -1,0 +1,150 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Locations' %}
+{% set caption = 'Job preferences' %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set htmlContent = "<h2 class=\"govuk-heading-m\">" + flash + "</h2><p class='govuk-body'>You can <a class='govuk-notification-banner__link' href='#'>manage your job alerts</a> if you want to make any changes.</p>" %}
+{% if 'alert' in flash %}
+  {% set htmlContent = htmlContent + '<p>hello</p>' %}
+{% endif %}
+
+
+  {{ govukNotificationBanner({
+    html: htmlContent,
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      </h1>
+
+      <form action="/profile/job-preferences/location-check" method="post">
+
+      {% if profile.allEnglandYes == 'Yes' %}
+
+         <h2 class="govuk-heading-m">Locations added</h2>
+        
+        <p class="">
+          Your profile is currently visible to schools across England.
+        </p>
+
+        {{ govukRadios({
+          idPrefix: "profile[addAnotherLocation]",
+          name: "profile[addAnotherLocation]",
+          fieldset: {
+            legend: {
+              text: "Do you want to look for jobs in a specific location?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }} 
+        
+      {% else %}
+       
+
+        <h2 class="govuk-heading-m">Locations added</h2>
+  
+
+          {% set englandFound = false %}
+
+          {% for key, location in profile.locations %}
+              {% if 'England' in location.location %}
+                  {% set englandFound = true %}
+              {% endif %}
+          {% endfor %}
+
+     
+
+        <div class="app-list">
+
+            {% for key, location in profile.locations %}
+
+              <div class="app-list__item">
+                <div class="app-page-header govuk-!-margin-bottom-0">
+                  <div class="app-page-header__title">
+                    <h3 class="govuk-heading-s">{{location.location}} ({{location.radius}})</h3>
+                  </div>
+                  <div class="app-page-header__actions">
+                    <div class="app-button-menu">
+                      <div class="app-button-menu__wrapper">
+                        <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location">Change</a> <a class="app-button-menu__item govuk-link" href="/profile/job-preferences/{{key}}/location-delete">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            {% endfor %}
+                   
+        </div>
+        
+              <p class="govuk-!-margin-bottom-7">
+                If you are interested in jobs across England, you can <a href="location-all-of-england-yes" class="govuk-link govuk-link--no-visited-state">set your location preference to across England</a>.
+              </p>
+
+              {{ govukRadios({
+                idPrefix: "profile[addAnotherLocation]",
+                name: "profile[addAnotherLocation]",
+                fieldset: {
+                  legend: {
+                    text: "Do you want to add another location?",
+                    classes: "govuk-fieldset__legend--m"
+                  }
+                },
+                items: [
+                  {
+                    value: "Yes",
+                    text: "Yes"
+                  },
+                  {
+                    value: "No",
+                    text: "No"
+                  }
+                ]
+              }) }} 
+
+
+        {% endif %}
+
+        
+      
+       {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+      
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

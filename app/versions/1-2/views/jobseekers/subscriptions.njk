@@ -1,0 +1,159 @@
+{% extends "layout.njk" %}
+{% from "includes/job-alert-criteria.njk" import jobAlertCriteriaSummaryList %}
+{% from "includes/jobseeker-account-breadcrumbs.njk" import jobseekerAccountBreadcrumbs %}
+
+{% set title = 'Job alerts' %}
+{% set activeNav = 'jobalerts' %}
+{% set forceSignedIn = true %}
+{% set accountAreaMain = true %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-job-alerts-empty {
+      margin-bottom: 30px;
+      padding: 25px 20px 15px;
+      border: 3px dashed #b1b4b6;
+      background: #f8f8f8;
+    }
+    .app-job-alert-card__manage {
+      margin-top: 30px;
+    }
+    .app-job-alert-frequency-form {
+      padding: 20px;
+      border: 1px solid #b1b4b6;
+      background: #ffffff;
+    }
+    .app-job-alert-frequency-form .govuk-form-group {
+      margin-bottom: 20px;
+    }
+    .app-job-alert-frequency-form .govuk-button {
+      margin-bottom: 0;
+    }
+    .app-job-alert-card__actions {
+      margin: 15px 0 0;
+    }
+    .app-job-alert-card__actions .govuk-button {
+      margin-bottom: 0;
+    }
+    @media (max-width: 40.0625em) {
+      .app-job-alert-card__actions {
+        margin-bottom: 20px;
+      }
+    }
+    .app-job-alerts-help {
+      margin-top: 50px;
+      margin-bottom: 0;
+    }
+    @media (max-width: 40.0625em) {
+      .app-job-alerts-page-header .app-page-header__title {
+        margin-bottom: 20px;
+      }
+      .app-job-alerts-page-header .app-page-header__actions {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  {{ jobseekerAccountBreadcrumbs("Job alerts") }}
+  {% if showJobAlertCreatedBanner %}
+    {{ govukNotificationBanner({ type: "success", text: "Your job alert has been created" }) }}
+  {% endif %}
+  {% if showJobAlertUpdatedBanner %}
+    {{ govukNotificationBanner({ type: "success", text: "Your job alert has been updated" }) }}
+  {% endif %}
+  {% if showJobAlertDeletedBanner %}
+    {{ govukNotificationBanner({ type: "success", text: "Your job alert has been deleted" }) }}
+  {% endif %}
+  {% if showJobAlertsImportedBanner %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: "<p class=\"govuk-body govuk-!-margin-bottom-0\">Your existing job alerts are now saved to your account.</p>"
+    }) }}
+  {% endif %}
+
+  <div class="app-page-header app-job-alerts-page-header govuk-!-margin-bottom-4">
+    <div class="app-page-header__title">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Job alerts</h1>
+    </div>
+    <div class="app-page-header__actions">
+      {{ govukButton({
+        text: "Create a job alert",
+        href: "/jobalerts/jobalert",
+        classes: "govuk-!-margin-bottom-0"
+      }) }}
+    </div>
+  </div>
+  <p class="govuk-body">Manage vacancy alerts separately from application notifications.</p>
+
+  {% if jobseekerAlerts.length %}
+        {% for alert in jobseekerAlerts %}
+          <div class="govuk-summary-card govuk-!-margin-bottom-6" aria-labelledby="alert-heading-{{ alert.id }}">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title" id="alert-heading-{{ alert.id }}">
+                {{ alert.keyword }}
+              </h2>
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="/jobalerts/jobalert?alertId={{ alert.id }}">
+                    Edit alert<span class="govuk-visually-hidden"> for {{ alert.keyword }}</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="/jobseekers/subscriptions/delete?alertId={{ alert.id }}">
+                    Delete alert<span class="govuk-visually-hidden"> for {{ alert.keyword }}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="govuk-summary-card__content">
+              {{ jobAlertCriteriaSummaryList(alert) }}
+
+              <div class="app-job-alert-card__manage">
+                {% if alert.status == 'active' %}
+                  <form method="post" action="/jobseekers/subscriptions/update" class="app-job-alert-frequency-form">
+                    <input type="hidden" name="alertId" value="{{ alert.id }}">
+                    {{ govukRadios({
+                      idPrefix: "frequency-" + alert.id,
+                      classes: "govuk-radios--inline",
+                      name: "frequency",
+                      fieldset: {
+                        legend: { text: "When do you want to receive alerts?", classes: "govuk-fieldset__legend--s" }
+                      },
+                      items: [
+                        { value: "daily", text: "Daily", checked: alert.frequency == 'daily' },
+                        { value: "weekly", text: "Weekly", checked: alert.frequency == 'weekly' }
+                      ]
+                    }) }}
+                    {{ govukButton({ text: "Save changes", classes: "govuk-button--secondary" }) }}
+                  </form>
+                {% endif %}
+
+                <div class="app-job-alert-card__actions{% if alert.status == 'active' %} govuk-!-margin-top-4{% endif %}">
+                  <form method="post" action="/jobseekers/subscriptions/toggle-status" class="govuk-!-margin-bottom-0">
+                    <input type="hidden" name="alertId" value="{{ alert.id }}">
+                    {{ govukButton({
+                      text: "Deactivate alert" if alert.status == 'active' else "Activate alert",
+                      classes: "govuk-button--secondary govuk-!-margin-bottom-0"
+                    }) }}
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="app-job-alerts-empty">
+          <h2 class="govuk-heading-m">You have no job alerts set up</h2>
+          <p class="govuk-body"><a class="govuk-link" href="/jobalerts/jobalert">Create a job alert</a> to be notified about future listings.</p>
+        </div>
+      {% endif %}
+
+  {{ govukDetails({
+    classes: "app-job-alerts-help",
+    summaryText: "Can't see your job alerts?",
+    html: '<p class="govuk-body">If your Teaching Vacancies account used a different email address from your GOV.UK One Login account, your job alerts will not automatically appear here.</p><p class="govuk-body">You can request <a class="govuk-link" href="/onelogin/journey/import">a transfer of your existing job alerts</a>.</p>'
+  }) }}
+{% endblock %}

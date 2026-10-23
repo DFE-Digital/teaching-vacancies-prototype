@@ -1,0 +1,276 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation" %}
+
+{% block pageTitle %}
+  Project structure - Documentation - Teaching Vacancies prototypes - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Documentation",
+        href: "/documentation"
+      },
+      {
+        text: "Project structure"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Project structure</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body">How the jobseeker and hiring staff prototypes are organised, how version <code>1-1</code> is mounted in this repository, and where to change routes, views, and mock data.</p>
+
+      <h2 class="govuk-heading-l">Two prototypes, one service</h2>
+
+      <p class="govuk-body">Teaching Vacancies is one DfE service with two audiences. Each has its own prototype repository, usually checked out side by side (for example under <code>github/</code>).</p>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Repository</th>
+            <th scope="col" class="govuk-table__header">Audience</th>
+            <th scope="col" class="govuk-table__header">Live service</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>teaching-vacancies-prototype</code> (this repo)</td>
+            <td class="govuk-table__cell">Jobseekers</td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/">teaching-vacancies.service.gov.uk</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>manage-teaching-jobs-prototype</code></td>
+            <td class="govuk-table__cell">Hiring staff</td>
+            <td class="govuk-table__cell">Sign in from the live jobseeker site (“Hiring staff sign-in”)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body">The prototype homepages link to each other. Jobseeker account pages can link to the hiring staff sign-in journey and vice versa.</p>
+
+      <h2 class="govuk-heading-l">Versioning in this repository</h2>
+
+      <p class="govuk-body">The server mounts two parallel copies of the jobseeker prototype. Only these prefixes run version-specific routes, views, and session data.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>/</code> — prototype hub (<code>app/views/prototypes/index.njk</code>), not versioned</li>
+        <li><code>/1-1/...</code> — current jobseeker work (default for new design and code)</li>
+        <li><code>/1-0/...</code> — previous baseline; Further Education experiments often live here</li>
+        <li>Unprefixed paths such as <code>/home</code> redirect to <code>/1-0/home</code> for backwards compatibility</li>
+      </ul>
+
+      <p class="govuk-body">Mounting logic lives in <code>app/versions/mount.js</code>. Each version has its own Express router, Nunjucks loader paths, and session bucket (<code>req.session.versions['1-1']</code>). Links in HTML responses are rewritten so in-version navigation stays under the same prefix.</p>
+
+      <pre class="mermaid">flowchart TD
+  root["/ prototype hub"]
+  v11["/1-1/* current work"]
+  v10["/1-0/* baseline"]
+  legacy["/home etc."]
+  root --> v11
+  root --> v10
+  legacy -->|redirect| v10</pre>
+
+      <h3 class="govuk-heading-m">Baseline vs version copies</h3>
+
+      <p class="govuk-body"><code>app/routes/</code> and <code>app/views/</code> at the repository root were the source copied into each version. The running app does <strong>not</strong> mount root <code>app/routes.js</code>. Change <code>app/versions/1-1/</code> (or <code>1-0</code>) for prototype behaviour.</p>
+
+      <h2 class="govuk-heading-l">Layout of version 1-1</h2>
+
+      <pre class="govuk-body-s"><code>app/versions/1-1/
+├── routes.js              # Wires route modules; extra doc and job-alert routes
+├── routes/                # Express handlers (one file per feature area)
+├── views/                 # Nunjucks templates
+├── data/                  # JSON fixtures and session defaults
+└── helpers/               # Shared helpers (for example validation)
+
+app/versions/mount.js      # Mount /1-0 and /1-1, session per version
+server.js                  # Prototype Kit entry; calls mount()
+app/views/prototypes/      # Hub at / (shared across versions)
+public/                    # Compiled CSS/JS and static assets (shared)</code></pre>
+
+      <h2 class="govuk-heading-l">Route modules (1-1)</h2>
+
+      <p class="govuk-body"><code>app/versions/1-1/routes.js</code> loads the modules below. Paths in this table are relative to <code>/1-1</code> (for example <code>/1-1/home</code>).</p>
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Module</th>
+            <th scope="col" class="govuk-table__header">Responsibility</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>jobs.js</code></td>
+            <td class="govuk-table__cell">Homepage, search entry, job lists and detail, campaigns, FE variants, signed-in shortcuts, compare/live proxy wiring</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>filtering.js</code></td>
+            <td class="govuk-table__cell">Search results, sort, filters, clear and remove filter</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>schools.js</code></td>
+            <td class="govuk-table__cell">Browse schools and colleges, organisation pages</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>account.js</code></td>
+            <td class="govuk-table__cell">Sign in and out, registration, marketing, job alerts, delete account</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>onelogin.js</code></td>
+            <td class="govuk-table__cell">GOV.UK One Login-style linking and import journeys</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>profile.js</code> and <code>profile-*.js</code></td>
+            <td class="govuk-table__cell">Jobseeker profile: personal details, preferences, QTS, qualifications, work history, about, hide from schools, references, equal opportunities</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>profile-errors.js</code></td>
+            <td class="govuk-table__cell">Validation and error-state pages for profile journeys</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>application-flow.js</code></td>
+            <td class="govuk-table__cell">Apply for a job: <code>/jobs/:id/apply/...</code> task list and sections</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body">Additional routes in <code>routes.js</code>: job alert email prototypes (<code>/jobseeker/job-alert-1</code>, <code>/job-alert-via-email</code>, …).</p>
+
+      <h2 class="govuk-heading-l">Views (1-1)</h2>
+
+      <p class="govuk-body">Templates mirror user journeys under <code>app/versions/1-1/views/</code>:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>jobs/</code>, <code>jobs/search/</code>, <code>jobs/fe/</code> — find jobs and FE experiments</li>
+        <li><code>schools/</code> — school and college listings and detail</li>
+        <li><code>profile/</code> — jobseeker profile task list and sub-journeys</li>
+        <li><code>apply/</code> and <code>apply/flow/</code> — application journey (legacy and task-list flows)</li>
+        <li><code>account/</code>, <code>jobalerts/</code>, <code>jobseeker/</code> — account and email alert prototypes</li>
+        <li><code>onelogin/</code> — One Login journeys and emails</li>
+        <li><code>guides/</code> — content pages linked from the service</li>
+        <li><code>prototypes/</code> — hub, documentation, mobile preview, compare</li>
+        <li><code>documentation/</code> — supplementary documentation pages</li>
+        <li><code>components/</code>, <code>includes/</code> — macros, filters, header, footer</li>
+      </ul>
+
+      <p class="govuk-body">Layouts: <code>layout.njk</code> (standard service), plus variants such as <code>layout_landingpages.njk</code>, <code>layout_jobalerts.njk</code>, <code>layout_unbranded.njk</code>.</p>
+
+      <h2 class="govuk-heading-l">Mock data (1-1)</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>session-data-defaults.js</code> — seeds <code>jobs</code> and <code>organisations</code> onto the version session</li>
+        <li><code>jobs.json</code>, <code>organisations.json</code>, <code>orgs.json</code> — listings and orgs</li>
+        <li><code>users.json</code> — sign-in picker and profile shape</li>
+        <li><code>roles.js</code>, <code>phases.js</code>, <code>non-teaching-roles.js</code> — option lists</li>
+        <li><code>job-alerts.js</code> — job alert email prototype content</li>
+      </ul>
+
+      <h2 class="govuk-heading-l">Authentication</h2>
+
+      <p class="govuk-body"><code>app/middleware/authenticaton.js</code> (shared) redirects to <code>/account/sign-in?returnUrl=...</code> when <code>req.session.user</code> is missing. Profile and some account pages use this guard. Mock sign-in stores a user from <code>users.json</code> on the session.</p>
+
+      <h2 class="govuk-heading-l">Compare with live and other versions</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>/1-1/compare</code> — side-by-side prototype versions (1-0 vs 1-1)</li>
+        <li><code>/1-1/compare/live/*</code> — proxied pages from the live jobseeker site for visual comparison (<code>routes/live-proxy.js</code>)</li>
+      </ul>
+
+      <h2 class="govuk-heading-l">Hiring staff prototype (<code>manage-teaching-jobs-prototype</code>)</h2>
+
+      <p class="govuk-body">Single-version Prototype Kit app (no <code>/1-0</code> prefix). Entry: <code>/</code> index → <code>/start</code> sign in. Deep links from the index often use <code>?userEmailAddress=...</code> to pick a mock hiring user.</p>
+
+      <pre class="govuk-body-s"><code>app/
+├── routes.js           # account, interruptions, organisation, jobs, job-create,
+│                       # job-edit, jobseekers, service-nav, filtering
+├── routes/
+├── views/
+│   ├── jobs/           # Lists, applications, interviews, feedback
+│   ├── jobs/new/       # Create listing journey
+│   ├── jobs/edit/      # Edit listing
+│   ├── jobseekers/     # Candidate profile search and invites
+│   ├── organisation/   # School or MAT profile and preview
+│   ├── account/
+│   ├── interruptions/  # Post sign-in gates (complete profile, choose profile)
+│   ├── messages/, notifications/, statistics/
+│   └── components/     # Shared UI (filters, job list, navigation)
+└── data/               # users.json (generated on npm install), fixtures on session user</code></pre>
+
+      <h3 class="govuk-heading-m">Main hiring staff URLs</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>/jobs</code>, <code>/jobs/draft</code>, <code>/jobs/scheduled</code>, <code>/jobs/closed</code>, <code>/jobs/awaiting-feedback</code>, <code>/jobs/templates</code></li>
+        <li><code>/jobs/new</code>, <code>/jobs/edit/:id/...</code>, <code>/jobs/:id/applications</code></li>
+        <li><code>/jobseekers</code> — search candidate profiles; invite flows under <code>/jobseekers/:id/invites/...</code></li>
+        <li><code>/organisation</code> — profile shown on listings</li>
+        <li><code>/messages</code>, <code>/notifications</code>, <code>/statistics</code></li>
+      </ul>
+
+      <p class="govuk-body">Auth: <code>app/middleware/authentication.js</code> (<code>checkIsAuthenticated</code>). Jobs and jobseekers on the signed-in user live on <code>req.session.user</code>.</p>
+
+      <p class="govuk-body">Full hiring staff documentation: <a class="govuk-link" href="https://manage-teaching-jobs-prototype.herokuapp.com/documentation/about" rel="noopener noreferrer" target="_blank">About this prototype<span class="govuk-visually-hidden"> (opens in new tab)</span></a> (<code>/documentation/about</code> in <code>manage-teaching-jobs-prototype</code>).</p>
+
+      <h2 class="govuk-heading-l">Where to make changes</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li>Jobseeker features in active development → edit <code>app/versions/1-1/routes/</code> and <code>views/</code>; test at <code>http://localhost:3000/1-1/...</code></li>
+        <li>FE-only or legacy baseline → <code>app/versions/1-0/</code></li>
+        <li>Hiring staff → sibling repo <code>manage-teaching-jobs-prototype/app/</code></li>
+        <li>Shared static assets and compiled Sass → <code>app/assets/</code>, output under <code>public/</code></li>
+        <li>Design history and published research → separate <code>teaching-vacancies-design-history</code> repo (linked from prototype hubs)</li>
+      </ol>
+
+      <p class="govuk-body">For JSON shapes and shorter journey diagrams, see <a class="govuk-link" href="/documentation/about">Tech stack, mock data, and page flows</a>.</p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related">
+        <h2 class="govuk-heading-s app-related__heading" id="related-content">Related content</h2>
+        <nav aria-labelledby="related-content">
+          <ul class="app-related__list">
+            <li class="app-related__item">
+              <a class="govuk-link" href="/documentation">Documentation contents</a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="/compare">Compare prototype versions</a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="https://manage-teaching-jobs-prototype.herokuapp.com/" rel="noopener noreferrer" target="_blank">Hiring staff prototype<span class="govuk-visually-hidden"> (opens in new tab)</span></a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <div class="app-diagram-fullscreen" data-module="app-diagram-fullscreen" hidden role="dialog" aria-modal="true" aria-label="Diagram full screen">
+    <div class="app-diagram-fullscreen__toolbar">
+      <button type="button" class="govuk-button govuk-button--secondary app-diagram-fullscreen__close">Close</button>
+    </div>
+    <div class="app-diagram-fullscreen__stage"></div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="/public/javascripts/diagram-fullscreen.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' })
+    mermaid.run({ querySelector: 'pre.mermaid' }).then(AppFrontend.diagramFullscreen)
+  </script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading with context %}
+{% set title = "Add a gap in work history" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading("/jobs/" + job.id + "/apply/work-history") }}
+      <h2 class="govuk-heading-l">
+        {% if item.type == "education" %}
+          Add a gap between education and work
+        {% else %}
+          Add a gap in work history
+        {% endif %}
+      </h2>
+      <form method="post" action="/jobs/{{ job.id }}/apply/work-history/{{ formAction }}">
+        <input type="hidden" name="type" value="{{ item.type or 'work' }}">
+        {{ govukInput({
+          label: { text: "Reason for this gap" },
+          hint: { text: "For example, career break, full-time education or caring responsibilities." },
+          name: "reason",
+          value: item.reason
+        }) }}
+        {{ govukInput({
+          label: { text: "Organisation (optional)" },
+          name: "organisation",
+          value: item.organisation
+        }) }}
+        {{ govukInput({ label: { text: "Start month" }, hint: { text: "For example, December" }, classes: "govuk-!-width-one-half", name: "startMonth", value: item.startMonth }) }}
+        {{ govukInput({ label: { text: "Start year" }, classes: "govuk-input--width-4", name: "startYear", value: item.startYear }) }}
+        {{ govukInput({ label: { text: "End month" }, classes: "govuk-!-width-one-half", name: "endMonth", value: item.endMonth }) }}
+        {{ govukInput({ label: { text: "End year" }, classes: "govuk-input--width-4", name: "endYear", value: item.endYear }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({ text: "Save gap" }) }}
+          <a class="govuk-button govuk-button--secondary" href="/jobs/{{ job.id }}/apply/work-history" role="button" data-module="govuk-button">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

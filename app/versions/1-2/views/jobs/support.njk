@@ -1,0 +1,314 @@
+
+{% extends "layout_support.njk" %}
+
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'support' %}
+
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    100 support staff jobs 
+  </h1>
+
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+
+      {% include "includes/jobs-filter-panel-support.njk" %}
+
+    </div>
+
+    <div class="app-filter-layout__content">
+
+      <div class="app-search-form">
+
+
+          <p class="govuk-body govuk-!-margin-bottom-0">
+            <b style="text-transform:capitalize;">{{data['keywords']}}</b>
+
+                jobs within  <b> {{data['radius']}} miles</b> of <b> {{data['location']}}</b>
+
+              <a id="toggleSearch" class="govuk-link govuk-link--no-visited-state govuk-!-margin-left-4" href="#home">
+                Change <span class="govuk-visually-hidden">keywords, location, type of job or search radius</span>
+              </a>
+          </p>
+
+        <form id="search-form" method="post" novalidate style="display:none;" class="govuk-!-margin-top-4"> 
+
+          {{ govukInput({
+            id: "keywords",
+            name: "keywords",
+            label: {
+              text: "Keywords",
+              classes: "govuk-label--s"
+            },
+            value: data['keywords']
+          }) }}
+
+          {{ govukInput({
+            id: "location",
+            name: "location",
+            label: {
+              text: "City, county or postcode (in England)",
+              classes: "govuk-label--s"
+            },
+            value: data['location']
+          }) }}
+
+          <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <label class="govuk-label govuk-label--s govuk-!-margin-bottom-3" for="keywords">
+                      Type of job
+                    </label>
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="typeofjob" name="typeofjob" type="radio" value="teaching">
+                            <label class="govuk-label govuk-radios__label" for="typeofjob">
+                                Teaching or leadership jobs
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="typeofjob-2" name="typeofjob" type="radio" value="support">
+                            <label class="govuk-label govuk-radios__label" for="typeofjob-2">
+                                Support staff jobs
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+          {{ govukSelect({
+            id: "radius",
+            name: "radius",
+            label: {
+              text: "Search radius",
+              classes: "govuk-label--s"
+            },
+            items: [
+              {
+                value: "1",
+                text: "1 mile"
+              },
+              {
+                value: "5",
+                text: "5 miles"
+              },
+              {
+                value: "10",
+                text: "10 miles"
+              },
+              {
+                value: "15",
+                text: "15 miles"
+              },
+              {
+                value: "20",
+                text: "20 miles"
+              },
+              {
+                value: "25",
+                text: "25 miles"
+              },
+              {
+                value: "50",
+                text: "50 miles"
+              },
+              {
+                value: "100",
+                text: "100 miles"
+              },
+              {
+                value: "200",
+                text: "200 miles"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: 'Search'
+          }) }}
+        </form>
+      </div>
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div>
+        <div class="app-jobs">
+
+          <div class="govuk-grid-column-one-full">
+              <div style="float:left;">
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">Sorted by newest job </h2><br/>
+              </div>
+            <div style="display:inline-block; float:right">
+              <form id="sortform" action="/jobs/search/postcode">
+                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                  <label class="govuk-label" for="sort" style="display:inline-block;">
+                    Sort by
+                  </label>
+                  <select class="govuk-select" id="sort" name="sort">
+                    <option value="newest" selected>Newest job</option>
+                    <option value="closing">Closing date</option>
+                    {% if data['location'] %}<option value="distance">Distance</option>{% endif %}
+                  </select>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+          <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-full">
+              <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
+            </div>
+            
+          </div>
+
+        {% for job in jobs|sort(attribute='startDate', reverse=false) %}
+
+          {% if job.jobtype == 'support' %}
+
+            {% set address %}
+              {% for part, value in job.organisation.address %}
+                {{value}}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% endset %}
+
+            {% set closingInformation %}
+              {{job.closingDate | date}} at {{job.closingTime}}
+            {% endset %}
+
+            <div class="app-jobs__item">
+              {% if job.organisation.logo != 'Not entered' %}
+              <div class="square" style="height: 65px; float: left;/*can be anything*/ width: 65px; /*can be anything*/ display: inline-block; vertical-align: top; /*not required*/ position: relative;  margin-right:10px;">
+                <span style="font-family: arial, sans-serif;  position: absolute;  bottom: 0;  left: 0;  right: 0;  text-align: center;  color: white;  background: rgba(0,0,0,0.4);  font-size: 12px;"></span>
+                <img src="{{job.organisation.logo}}" style="max-height: 100%;  max-width: 100%;  width: auto;  height: auto;  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  margin: auto;">
+              </div>
+              {% endif %}
+              <h2 class="govuk-heading-m">
+                
+                <a href="/jobs/{{job.id}}">{{job.title}}</a>&nbsp;
+
+              </h2>
+
+              <p class="app-jobs__address">{{job.organisation.name}},{{address}}</p>
+
+              {{ govukSummaryList({
+                classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                rows: [
+                  {
+                    key: {
+                      text: "Full-time equivalent salary"
+                    },
+                    value: {
+                      html: job.fullTimeEquivalentSalaryDetails
+                    }
+                  } if job.fullTimeEquivalentSalaryDetails,
+                  {
+                    key: {
+                      text: "Actual salary"
+                    },
+                    value: {
+                      html: job.actualSalaryDetails
+                    }
+                  } if job.actualSalaryDetails,
+                  {
+                    key: {
+                      text: "School type"
+                    },
+                    value: {
+                      html: job.schoolType
+                    }
+                  } if job.schoolType,
+                  {
+                    key: {
+                      text: "Working pattern"
+                    },
+                    value: {
+                      text: job.workingPatterns | join(', ') | capitalize
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Closing date"
+                    },
+                    value: {
+                      html: closingInformation
+                    }
+                  } if job.closingDate
+                ]
+              }) }}
+            </div>
+
+          {% else %}
+
+          {% endif %}
+
+
+        {% endfor %}
+      </div>
+
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+    </div>
+  </div>
+
+  {# {{ govukDetails({
+    summaryText: "Jobs by school, role, location and subject",
+    text: "Text",
+    classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
+  }) }} #}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

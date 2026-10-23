@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+  <meta charset="utf-8">
+  <title>Compare versions - Teaching Vacancies prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <style>
+    :root {
+      --screen-width: 402px;
+      --screen-height: 874px;
+      --bezel: 15px;
+      --device-radius: 54px;
+      --screen-radius: 46px;
+      --phone-width: calc(var(--screen-width) + (var(--bezel) * 2));
+      --phone-height: calc(var(--screen-height) + (var(--bezel) * 2));
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: #0b0c0c;
+      background: #ffffff;
+      font-family: "GDS Transport", arial, sans-serif;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .demo-shell {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0;
+      padding: 24px 16px 32px;
+    }
+
+    .compare {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px 32px;
+      width: 100%;
+    }
+
+    .compare-pane {
+      flex: 1 1 460px;
+      min-width: 0;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .stage {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .stage--tablet {
+      --screen-width: 820px;
+      --screen-height: 1180px;
+      --bezel: 18px;
+      --device-radius: 28px;
+      --screen-radius: 18px;
+      --phone-width: calc(var(--screen-width) + (var(--bezel) * 2));
+      --phone-height: calc(var(--screen-height) + (var(--bezel) * 2));
+    }
+
+    .stage--tablet.stage--landscape {
+      --screen-width: 1180px;
+      --screen-height: 820px;
+    }
+
+    .stage--duo {
+      --screen-width: 626px;
+      --screen-height: 890px;
+      --bezel: 16px;
+      --device-radius: 32px;
+      --screen-radius: 22px;
+      --phone-width: calc(var(--screen-width) + (var(--bezel) * 2));
+      --phone-height: calc(var(--screen-height) + (var(--bezel) * 2));
+    }
+
+    .stage--duo.stage--landscape {
+      --screen-width: 890px;
+      --screen-height: 626px;
+    }
+
+    .phone {
+      position: relative;
+      width: var(--phone-width);
+      height: var(--phone-height);
+      padding: var(--bezel);
+      border-radius: var(--device-radius);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.04) 28%),
+        linear-gradient(135deg, #2b3340, #06080d 48%, #1b202b);
+      box-shadow:
+        0 44px 120px rgba(0, 0, 0, 0.58),
+        0 18px 42px rgba(0, 0, 0, 0.46),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+    }
+
+    .phone::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 184px;
+      right: -3px;
+      width: 3px;
+      height: 86px;
+      border-radius: 0 3px 3px 0;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .screen {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--screen-radius);
+      background: #f1f2f6;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+        inset 0 0 24px rgba(0, 0, 0, 0.26);
+    }
+
+    .screen iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .stage--tablet .phone::after {
+      top: 90px;
+      height: 56px;
+    }
+
+    .stage--duo .screen::after {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      pointer-events: none;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 12px;
+      transform: translateY(-50%);
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35), transparent);
+    }
+
+    .stage--duo.stage--landscape .screen::after {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      right: auto;
+      width: 12px;
+      height: auto;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.35), transparent);
+    }
+
+    .stage--duo .phone::after {
+      top: 120px;
+      height: 64px;
+    }
+
+    .home-indicator {
+      position: absolute;
+      z-index: 3;
+      bottom: 8px;
+      left: 50%;
+      width: 132px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.72);
+      transform: translateX(-50%);
+    }
+
+    .stage--tablet .home-indicator,
+    .stage--duo .home-indicator {
+      width: 180px;
+    }
+
+    .device-switch {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 20px;
+      margin: 28px 0 0;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .device-switch a {
+      color: #1d70b8;
+    }
+
+    .device-switch__home {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .device-switch a[aria-current="true"],
+    .device-switch a[aria-current="true"]:hover {
+      color: #0b0c0c;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .device-switch a:hover {
+      color: #003078;
+    }
+
+    .device-switch a:focus,
+    .source-select:focus {
+      color: #0b0c0c;
+      background-color: #ffdd00;
+      outline: 3px solid transparent;
+      box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+      text-decoration: none;
+    }
+
+    .source-select {
+      min-width: 7.5em;
+      padding: 4px 8px;
+      border: 2px solid #0b0c0c;
+      border-radius: 0;
+      color: #0b0c0c;
+      background: #ffffff;
+      font: inherit;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .govuk-visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      border: 0;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <main class="demo-shell">
+    <div class="compare">
+      <section class="compare-pane">
+        <div class="stage" data-pane="left">
+          <div class="phone">
+            <div class="screen">
+              <iframe src="{{ liveUrl }}" title="Live Teaching Vacancies on an iPhone screen"></iframe>
+              <span class="home-indicator" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="device-switch">
+            <a class="device-switch__home" href="/" aria-label="Home">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M3 9.2 10 3.5l7 5.7V17H12.5v-4.5h-5V17H3V9.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <label>
+              <span class="govuk-visually-hidden">Left screen</span>
+              <select class="source-select">
+                <option value="{{ liveUrl }}" selected>Live</option>
+                {% if leftVersion %}
+                  <option value="{{ leftVersion.url }}">{{ leftVersion.label }}</option>
+                {% endif %}
+              </select>
+            </label>
+          </p>
+        </div>
+      </section>
+      <section class="compare-pane">
+        <div class="stage" data-pane="right">
+          <div class="phone">
+            <div class="screen">
+              <iframe src="{{ rightVersion.url }}" title="{{ rightVersion.label }} on an iPhone screen"></iframe>
+              <span class="home-indicator" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="device-switch">
+            <label>
+              <span class="govuk-visually-hidden">Right screen</span>
+              <select class="source-select">
+                {% for version in versions %}
+                  <option value="{{ version.url }}"{% if version.id == rightVersion.id %} selected{% endif %}>{{ version.label }}</option>
+                {% endfor %}
+              </select>
+            </label>
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    var setupPane = function (stage) {
+      var frame = stage.querySelector('.phone')
+      var screen = stage.querySelector('iframe')
+      var switchRow = stage.querySelector('.device-switch')
+      var source = stage.querySelector('.source-select')
+      var side = stage.getAttribute('data-pane') === 'left' ? 'Left' : 'Right'
+
+      var sourceLabel = function () {
+        return source.options[source.selectedIndex].text
+      }
+
+      var fitFrame = function () {
+        frame.style.transform = 'none'
+        frame.style.marginBottom = '0px'
+        var width = frame.offsetWidth
+        var height = frame.offsetHeight
+        var controls = switchRow.offsetHeight + 28
+        var pane = stage.parentElement
+        var availableWidth = Math.max(pane.clientWidth - 8, 280)
+        var scale = Math.min(
+          1,
+          availableWidth / width,
+          (window.innerHeight - 48 - controls) / height
+        )
+        frame.style.transformOrigin = 'center top'
+        frame.style.transform = 'scale(' + scale + ')'
+        frame.style.marginBottom = (-(height * (1 - scale))) + 'px'
+      }
+
+      source.addEventListener('change', function () {
+        screen.src = source.value
+        screen.title = side + ' screen, ' + sourceLabel() + ', on an iPhone screen'
+        fitFrame()
+      })
+
+      return fitFrame
+    }
+
+    var fitters = Array.prototype.map.call(document.querySelectorAll('.stage'), setupPane)
+    var fitAll = function () {
+      fitters.forEach(function (fitFrame) { fitFrame() })
+    }
+
+    window.addEventListener('resize', fitAll)
+    fitAll()
+  </script>
+</body>
+</html>

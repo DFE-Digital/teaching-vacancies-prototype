@@ -1,0 +1,129 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Training and continuing professional development (CPD)' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+
+
+        {{ govukButton({
+            text: "Add training",
+            classes: 'govuk-button--secondary',
+            href: '/profile/qualifications/training'
+        }) }}
+
+        <div id="training-block">
+
+            <div class="app-page-header govuk-!-margin-bottom-1 govuk-!-margin-top-7">
+                <div class="app-page-header__title">
+                    <h2 class="govuk-heading-m">{{data ['training-subject']}}</h2>
+                </div>
+                <div class="app-page-header__actions">               
+                    <div class="app-button-menu">
+                        <div class="app-button-menu__wrapper">
+                            <a class="app-button-menu__item govuk-link" href="/profile/qualifications/training_delete">Delete training</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <dl class="govuk-summary-list">
+    
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name of course or training
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data ['training-subject']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">   
+                        <a class="govuk-link" href="/profile/qualifications/training">
+                            Change<span class="govuk-visually-hidden"> name of course or training</span>
+                        </a>
+                    </dd>
+                </div>
+            
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Training provider
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data ['training-provider']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions"> 
+                        <a class="govuk-link" href="/profile/qualifications/training">
+                            Change<span class="govuk-visually-hidden"> training provider</span>
+                        </a> 
+                    </dd>
+                </div>
+
+                {% if data['training-grade'] !== '' %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                    Grade (optional)
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                    {{data ['training-grade']}}
+                    </dd>
+                
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="/profile/qualifications/training">
+                            Change<span class="govuk-visually-hidden"> grade</span>
+                        </a> 
+                    </dd>
+                </div>
+
+                {% endif %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                    Year awarded
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                    2013
+                    </dd>
+                    
+                    <dd class="govuk-summary-list__actions">  
+                        <a class="govuk-link" href="/profile/qualifications/training">
+                            Change<span class="govuk-visually-hidden"> year awarded</span>
+                        </a>  
+                    </dd>
+                </div>
+                    
+            </dl>
+
+        </div>
+
+      
+      {{ govukButton({
+        text: "Return to profile",
+        href: '/profile'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

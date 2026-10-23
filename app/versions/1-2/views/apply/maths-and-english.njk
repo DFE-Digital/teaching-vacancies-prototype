@@ -1,0 +1,34 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Add a qualification' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({ href: '/apply/professional-status', text: 'Back' }) }}
+      <span class="govuk-caption-l">Education and qualifications</span>
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+      <p class="govuk-hint">Academic FE teaching roles require a teaching qualification before teaching. For vocational FE teaching roles, a teaching qualification is helpful but can often be gained after employment.</p>
+      <p class="govuk-hint">Answer for each subject separately.</p>
+
+      <form method="post">
+        <h2 class="govuk-heading-m">Maths</h2>
+        <p class="govuk-body">Do you have a GCSE grade 4 (formerly grade C) or above in maths?</p>
+        {{ govukRadios({
+          name: 'mathsQualification',
+
+
+          items: [ { value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }, { value: 'working-towards', text: 'I am working towards one' } ]
+        }) }}
+        <h2 class="govuk-heading-m">English</h2>
+        <p class="govuk-body">Do you have a GCSE grade 4 (formerly grade C) or above in English?</p>
+        {{ govukRadios({
+          name: 'englishQualification',
+        
+          items: [ { value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }, { value: 'working-towards', text: 'I am working towards one' } ]
+        }) }}
+        {{ govukButton({ text: 'Create a Teaching Vacancies account now' }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

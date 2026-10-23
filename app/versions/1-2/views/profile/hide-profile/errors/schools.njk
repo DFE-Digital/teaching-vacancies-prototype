@@ -1,0 +1,108 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% if user.profile.hiddenPlaces | length %}
+  {% set question = 'Do you want to add another school or trust?' %}
+{% else %}
+  {% set question = 'Do you want to add a school or trust?' %}
+{% endif %}
+
+{% set title = 'Hide profile from schools or trusts' %}
+
+{% set countOfSchool = 1 %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukErrorSummary({
+titleText: "There is a problem",
+errorList: [
+  {
+    text: "Select Yes if you want to hide your profile from another school or trust",
+    href: "#profile[firstName]"
+  }
+]
+}) }}
+
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <dl class="govuk-summary-list">
+
+      {% for id, hiddenPlace in user.profile.hiddenPlaces %}
+
+        {% set rowloop = loop %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              School {{ loop.index }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{hiddenPlace.hiddenPlace}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              <a class="govuk-link" href="/profile/hide-profile/{{id}}/delete">
+                Delete<span class="govuk-visually-hidden"> {{hiddenPlace.hiddenPlace}}</span>
+              </a>
+
+            </dd>
+          </div>
+
+      {% endfor %}
+
+      </dl>
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "more-schools",
+          fieldset: {
+            legend: {
+              text: question,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          errorMessage: {
+            text: "Select Yes if you want to hide your profile from another school or trust"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

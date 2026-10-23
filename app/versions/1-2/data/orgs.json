@@ -1,0 +1,113 @@
+[
+  {
+    "type": "school",
+    "name": "Courtland Primary School",
+    "phase": "Primary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "84e47686-9d8c-4c0b-bd24-4f906f1f12e2",
+        "name": "Courtland Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "Friendship Way",
+      "town": "London",
+      "county": "London",
+      "postcode": "E15 2JQ"
+    }
+  },
+  {
+    "type": "mat",
+    "name": "Tamsin Academy",
+    "phase": "Secondary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "e0480f26-edb8-43fd-95c7-504db886cae9",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      },
+      {
+        "id": "c7e3e8ce-de7c-4627-bf11-9ff5f27a9063",
+        "name": "Town Primary School",
+        "address": {
+          "address1": "321 Main Street",
+          "town": "Some place",
+          "postcode": "AB2 3CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "c/o Tile Kiln Lane",
+      "town": "Palmers Green",
+      "county": "London",
+      "postcode": "N13 6BY"
+    }
+  },
+  {
+    "type": "school",
+    "name": "Leadenham Church of England Primary School",
+    "phase": "Primary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "9e1cae23-1dc9-469b-9008-5a79dd8038b4",
+        "name": "Leadenham Church of England Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "52 The Crescent",
+      "line2": "Tavistock",
+      "town": "Mill Hill",
+      "county": "Barnet",
+      "postcode": "NW7 4NA"
+    }
+  },
+  {
+    "type": "mat",
+    "name": "Sommerset Secondary School",
+    "phase": "Secondary",
+    "isSpecialSchool": false,
+    "locations": [
+      {
+        "id": "f311de3d-2739-469b-b6b3-bbfebf375ad0",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      },
+      {
+        "id": "37bf7341-3633-4cdf-8f51-aa7f0661cda8",
+        "name": "Town Primary School",
+        "address": {
+          "address1": "321 Main Street",
+          "town": "Some place",
+          "postcode": "AB2 3CD"
+        }
+      }
+    ],
+    "address": {
+      "line1": "tratford Road",
+      "town": "Henley-in-Arden",
+      "county": "Warwickshire",
+      "postcode": "C95 6AD"
+    }
+  }
+]

@@ -1,0 +1,47 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading with context %}
+{% set title = "Add a qualification" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading("/jobs/" + job.id + "/apply/qualifications") }}
+      <h2 class="govuk-heading-l">Add a qualification</h2>
+      <form method="post" action="/jobs/{{ job.id }}/apply/qualifications/{{ formAction }}">
+        {{ govukInput({
+          label: { text: "Type of qualification" },
+          hint: { text: "For example, undergraduate degree, A level or GCSE." },
+          name: "type",
+          value: item.type or "Undergraduate degree"
+        }) }}
+        {{ govukInput({
+          label: { text: "Subject" },
+          name: "subject",
+          value: item.subject
+        }) }}
+        {{ govukInput({
+          label: { text: "Awarding body" },
+          name: "organisation",
+          value: item.organisation
+        }) }}
+        {{ govukInput({
+          label: { text: "Grade" },
+          classes: "govuk-!-width-one-half",
+          name: "grade",
+          value: item.grade
+        }) }}
+        {{ govukInput({
+          label: { text: "Year qualification was awarded" },
+          hint: { text: "For example, December 2020" },
+          classes: "govuk-!-width-one-half",
+          name: "year",
+          value: item.year
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({ text: "Save qualification" }) }}
+          <a class="govuk-link" href="/jobs/{{ job.id }}/apply/qualifications">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

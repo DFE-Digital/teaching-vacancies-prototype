@@ -1,0 +1,13 @@
+{% macro jobAlertDetailsLine(alert) %}
+  {{ alert.phase }}
+  {%- if alert.phase == 'Primary school' or alert.phase == 'Secondary school' -%}
+    {%- if alert.organisationType -%}
+      · {{ alert.organisationType -}}
+      {%- if alert.ageRange -%}
+        , {{ alert.ageRange | lower -}}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif %}
+  · {{ alert.contract }} · {{ alert.workingPattern -}}
+  {%- if alert.hours %}, {{ alert.hours }}{% endif -%}
+{% endmacro %}

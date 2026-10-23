@@ -1,0 +1,58 @@
+// Styles for prototype version 1.2 only (linked from 1-2 layout).
+$govuk-assets-path: '/govuk/assets/';
+
+@import "lib/extensions/extensions";
+@import "patterns/jobseeker-account";
+
+.app-jobs-listing--has-results {
+  .app-jobs-search-details {
+    display: block;
+  }
+
+  .app-filter-layout__content > .app-search-form {
+    display: none;
+  }
+}
+
+.app-jobs-search-details {
+  display: none;
+
+  .app-search-form {
+    background-color: govuk-colour("light-grey");
+    margin-bottom: 0;
+    padding: govuk-spacing(4);
+  }
+
+  .app-search-form .govuk-button {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1;
+    width: 11.5rem;
+    height: 40px;
+    height: 2.5rem;
+
+    @include govuk-media-query($from: tablet) {
+      width: 13.65625rem;
+    }
+  }
+}
+
+@media (max-width: 40.0525em) {
+  .govuk-service-navigation__list {
+    display: none;
+  }
+
+  .govuk-service-navigation__toggle[aria-expanded="true"] + .govuk-service-navigation__list {
+    display: block;
+  }
+}
+
+.govuk-service-navigation__item--align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.home_index .search__inner {
+  padding-left: 10px;
+  padding-right: 10px;
+}
