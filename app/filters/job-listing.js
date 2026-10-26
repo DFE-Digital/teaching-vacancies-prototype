@@ -176,6 +176,10 @@ filters.jobListingAddress = function (job) {
     return ''
   }
   if (hasMultipleLocations(job)) {
+    const orgName = job.organisation && job.organisation.name
+    if (orgName) {
+      return orgName + ', Multiple locations…'
+    }
     return 'Multiple locations…'
   }
   if (!job.organisation) {

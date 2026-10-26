@@ -22,6 +22,23 @@ const researched = [
     driving: false
   },
   {
+    title: 'Trust-wide literacy lead',
+    organisation: 'Horizon Multi Academy Trust',
+    multipleLocations: true,
+    town: '',
+    county: '',
+    postcode: '',
+    phase: 'Primary school',
+    organisationType: 'Multi-academy trust',
+    ageRange: 'Ages 4 to 11',
+    contract: 'Permanent',
+    workingPattern: 'Full time',
+    salary: '£45,122 to £52,350',
+    ect: true,
+    overseas: false,
+    driving: true
+  },
+  {
     title: 'Teacher – maternity cover',
     organisation: 'Jerry Clay Academy',
     town: 'Wakefield',
