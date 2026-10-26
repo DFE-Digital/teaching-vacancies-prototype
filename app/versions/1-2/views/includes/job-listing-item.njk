@@ -28,10 +28,10 @@
 <div class="app-jobs__item">
   <div class="header-with-logo">
     <div class="header-with-logo-title">
-      <h2 class="govuk-heading-m app-jobs__title govuk-!-margin-bottom-1">
+      <h2 class="govuk-heading-m app-jobs__title">
         <a class="govuk-link" href="/jobs/{{ job.id }}">{{ job.title }}</a>
         {% if job.isUsingApplicationForm == 'Yes' %}
-          <a class="govuk-tag govuk-tag--green app-jobs__quick-apply" href="/jobs/{{ job.id }}/apply">Quick apply</a>
+          <strong class="govuk-tag govuk-tag--green app-jobs__quick-apply">Quick apply</strong>
         {% endif %}
       </h2>
       {% if listingAddress %}

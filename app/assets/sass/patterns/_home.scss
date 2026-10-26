@@ -9,12 +9,13 @@
     padding: 25px 0 30px;
 }
 
-// Same width as .home_index / govuk-width-container content (960px), no horizontal inset
+// Same width as .home_index / govuk-width-container content (960px)
 .home_index .search__inner {
     box-sizing: border-box;
     margin: 0 auto;
     max-width: 960px;
-    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
 }
 

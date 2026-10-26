@@ -269,7 +269,7 @@
         <div class="stage" data-pane="left">
           <div class="phone">
             <div class="screen">
-              <iframe src="{{ liveUrl }}" title="Live Teaching Vacancies on an iPhone screen"></iframe>
+              <iframe src="{{ leftVersion.url }}" title="{{ leftVersion.label }} on an iPhone screen"></iframe>
               <span class="home-indicator" aria-hidden="true"></span>
             </div>
           </div>
@@ -282,9 +282,9 @@
             <label>
               <span class="govuk-visually-hidden">Left screen</span>
               <select class="source-select">
-                <option value="{{ liveUrl }}" selected>Live</option>
+                <option value="{{ liveUrl }}">Live</option>
                 {% for version in versions %}
-                  <option value="{{ version.url }}">{{ version.label }}</option>
+                  <option value="{{ version.url }}"{% if version.id == leftVersion.id %} selected{% endif %}>{{ version.label }}</option>
                 {% endfor %}
               </select>
             </label>

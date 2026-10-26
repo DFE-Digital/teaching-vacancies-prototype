@@ -2,7 +2,9 @@
 // This kit ships Frontend 4, which still renders tags as bold uppercase text
 // on a solid background.
 
-.govuk-tag {
+// GDS Tag — status only; not links, buttons, or other interactive elements.
+.govuk-tag,
+strong.govuk-tag {
   color: #0f385c;
   background-color: #d2e2f1;
   max-width: 160px;
@@ -17,6 +19,8 @@
   font-size: 1.1875rem;
   line-height: 1.3157894737;
   overflow-wrap: break-word;
+  cursor: default;
+  text-decoration: none;
 
   @media print {
     font-size: 14pt;
@@ -28,18 +32,23 @@
   }
 }
 
-.govuk-tag--green {
+.govuk-tag.govuk-tag--green,
+strong.govuk-tag.govuk-tag--green {
   color: #083d29;
   background-color: #cfe4dc;
 }
 
-a.govuk-tag--green,
-a.govuk-tag--green:hover,
-a.govuk-tag--green:focus,
-a.govuk-tag--green:visited,
-a.govuk-tag--green:active {
+// Search results: GDS green status tag (overrides legacy Frontend 4 blue tag base)
+.app-filter-layout .govuk-tag.govuk-tag--green,
+.app-filter-layout strong.govuk-tag.govuk-tag--green {
   color: #083d29;
-  text-decoration: none;
+  background-color: #cfe4dc;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25;
+  text-transform: none;
 }
 
 .govuk-tag--purple {

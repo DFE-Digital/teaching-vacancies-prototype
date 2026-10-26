@@ -46,8 +46,30 @@ $app-images-path: "/public/images/";
   }
 }
 
-h1 .govuk-tag {
+h1 .govuk-tag,
+h2 .govuk-tag {
   vertical-align: middle;
+  white-space: nowrap;
+}
+
+.app-filter-layout .app-jobs__title {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.app-filter-layout .header-with-logo-title > .app-jobs__title {
+  width: 100%;
+}
+
+.app-filter-layout .app-jobs__quick-apply {
+  flex: 0 0 auto;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+  max-width: none;
   white-space: nowrap;
 }
 
