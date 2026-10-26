@@ -38,7 +38,6 @@
 {% from "components/checkbox-filter/macro.njk" import appCheckboxFilter %}
 {% from "components/filter/macro.njk" import appFilter %}
 {% from "components/page-header/macro.njk" import appPageHeader %}
-{% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 {% from "components/search/macro.njk" import appSearch %}
 {% from "components/job-list/macro.njk" import appJobList %}
@@ -55,9 +54,6 @@
 {% block header %}
   {% include "includes/header.njk" %}
   {% if not contentPage and not homepage %}
-  {% if data.signedIn or forceSignedIn %}
-    {% include "includes/jobseeker-primary-navigation.njk" %}
-  {% endif %}
   {{ govukPhaseBanner({
     tag: {
       text: "Prototype"
