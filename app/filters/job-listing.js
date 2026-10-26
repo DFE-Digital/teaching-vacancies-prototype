@@ -21,7 +21,7 @@ function hasAnnualMoney (text) {
 function isPartTime (job) {
   const patterns = job.workingPatterns || []
   return patterns.some(function (pattern) {
-    return /part\s*time/i.test(String(pattern))
+    return /part\s*time|job\s*share/i.test(String(pattern))
   })
 }
 

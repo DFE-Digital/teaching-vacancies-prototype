@@ -54,7 +54,8 @@ const researched = [
     ageRange: 'Ages 4 to 11',
     contract: 'Fixed term',
     workingPattern: 'Job share',
-    salary: '£31,650 to £43,607',
+    fullTimeEquivalentSalaryDetails: '£31,650 to £43,607',
+    actualSalaryDetails: '£15,825 to £21,804 pro rata per year',
     ect: true,
     overseas: false,
     driving: false
@@ -110,8 +111,27 @@ const researched = [
     postcode: 'CB23 7NX',
     phase: 'Secondary school',
     contract: 'Permanent',
-    workingPattern: 'Term time',
-    salary: '£23,114 to £24,294',
+    workingPattern: 'Part time',
+    fullTimeEquivalentSalaryDetails: '£23,114 to £24,294',
+    actualSalaryDetails: '£11,557 to £12,147 pro rata per year',
+    ect: false,
+    overseas: false,
+    driving: false
+  },
+  {
+    title: 'Catering Assistant',
+    organisation: 'Valley Academy',
+    town: 'Bradford',
+    county: 'West Yorkshire',
+    postcode: 'BD8 7DX',
+    phase: 'Secondary school',
+    organisationType: 'Academy',
+    ageRange: 'Ages 11 to 16',
+    contract: 'Permanent',
+    workingPattern: 'Part time',
+    fullTimeEquivalentSalaryDetails: '£25,614',
+    actualSalaryDetails: '£8,971 pro rata per year',
+    salaryDetails: ['Grade B Point 3'],
     ect: false,
     overseas: false,
     driving: false
@@ -292,7 +312,9 @@ function alertAsJob (alert, index) {
   }
 
   const salary = normalizeSalaryText(alert.salary)
-  const isHourly = /per hour/i.test(salary)
+  const fteSalary = normalizeSalaryText(alert.fullTimeEquivalentSalaryDetails)
+  const actualSalary = normalizeSalaryText(alert.actualSalaryDetails)
+  const isHourly = /per hour/i.test(salary) || /per hour/i.test(actualSalary)
   const hasMoney = /£/.test(salary) && !isHourly
 
   return {
@@ -314,9 +336,9 @@ function alertAsJob (alert, index) {
     workingPatterns: String(alert.workingPattern || 'Full time')
       .split(/,\s*/)
       .filter(Boolean),
-    fullTimeEquivalentSalaryDetails: hasMoney ? salary : '',
-    actualSalaryDetails: isHourly ? salary : '',
-    payScaleDetails: !hasMoney && !isHourly && salary ? salary : '',
+    fullTimeEquivalentSalaryDetails: fteSalary || (hasMoney && !actualSalary ? salary : ''),
+    actualSalaryDetails: actualSalary || (isHourly ? salary : ''),
+    payScaleDetails: !fteSalary && !actualSalary && !hasMoney && !isHourly && salary ? salary : '',
     salaryDetails: alert.salaryDetails || [],
     listingHours: alert.hours || ''
   }
@@ -356,7 +378,7 @@ function listing (alert, index) {
     contract: alert.contract,
     workingPattern: alert.workingPattern,
     hours: alert.hours || '',
-    salary: alert.salary,
+    salary: alert.actualSalaryDetails || alert.fullTimeEquivalentSalaryDetails || alert.salary,
     flags: flags(alert),
     alertHref: '/jobsfeonly_alert',
     job: job
