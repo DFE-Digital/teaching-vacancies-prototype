@@ -187,16 +187,25 @@ filters.jobListingAddress = function (job) {
   }
   const org = job.organisation
   const addr = org.address || {}
+  let postcode = addr.postcode || ''
+  if (!postcode && job.locations && job.locations[0] && job.locations[0].address) {
+    postcode = job.locations[0].address.postcode || ''
+  }
   const parts = []
   if (org.name) {
     parts.push(org.name)
   }
-  ;['address1', 'town', 'county', 'postcode'].forEach(function (key) {
-    if (addr[key]) {
-      parts.push(addr[key])
-    }
-  })
+  if (postcode) {
+    parts.push(postcode)
+  }
   return parts.join(', ')
+}
+
+function isCorporateAdultEducation (job) {
+  const org = (job && job.organisation) || {}
+  const phase = String((job && job.phase) || org.phase || '').trim()
+  const type = String(org.type || '').trim()
+  return /^corporate$/i.test(type) && /^adult$/i.test(phase)
 }
 
 filters.jobListingSchoolType = function (job) {
@@ -208,15 +217,19 @@ filters.jobListingSchoolType = function (job) {
   }
   const org = job.organisation || {}
   const bits = []
-  if (org.type) {
-    bits.push(org.type)
-  }
-  if (org.faith) {
-    bits.push(org.faith)
-  }
-  const phase = job.phase || org.phase
-  if (phase && !/^(Primary school|Secondary school)$/i.test(String(phase).trim())) {
-    bits.push(phase)
+  if (isCorporateAdultEducation(job)) {
+    bits.push('Adult education')
+  } else {
+    if (org.type) {
+      bits.push(org.type)
+    }
+    if (org.faith) {
+      bits.push(org.faith)
+    }
+    const phase = job.phase || org.phase
+    if (phase && !/^(Primary school|Secondary school)$/i.test(String(phase).trim())) {
+      bits.push(phase)
+    }
   }
   if (org.ageGroup) {
     bits.push('ages ' + String(org.ageGroup).replace(/-/g, ' to '))

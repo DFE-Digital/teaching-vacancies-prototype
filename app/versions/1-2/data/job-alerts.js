@@ -2,6 +2,11 @@ const jobs = require('./jobs.json')
 
 const contracts = ['Permanent', 'Fixed term', 'Yearly contract']
 const schoolPhases = ['Primary school', 'Secondary school']
+const workingPatternExamples = ['Term time', 'Job share', 'Part time', 'Full time']
+
+function demoWorkingPattern (index) {
+  return workingPatternExamples[index % workingPatternExamples.length]
+}
 
 const researched = [
   {
@@ -32,7 +37,7 @@ const researched = [
     organisationType: 'Multi-academy trust',
     ageRange: 'Ages 4 to 11',
     contract: 'Permanent',
-    workingPattern: 'Full time',
+    workingPattern: 'Term time',
     salary: '£45,122 to £52,350',
     ect: true,
     overseas: false,
@@ -48,7 +53,7 @@ const researched = [
     organisationType: 'Academy',
     ageRange: 'Ages 4 to 11',
     contract: 'Fixed term',
-    workingPattern: 'Full time',
+    workingPattern: 'Job share',
     salary: '£31,650 to £43,607',
     ect: true,
     overseas: false,
@@ -105,7 +110,7 @@ const researched = [
     postcode: 'CB23 7NX',
     phase: 'Secondary school',
     contract: 'Permanent',
-    workingPattern: 'Part time',
+    workingPattern: 'Term time',
     salary: '£23,114 to £24,294',
     ect: false,
     overseas: false,
@@ -119,7 +124,7 @@ const researched = [
     postcode: 'CB23 7NX',
     phase: 'Primary school',
     contract: 'Permanent',
-    workingPattern: 'Part time',
+    workingPattern: 'Job share',
     salary: '£12.21 per hour',
     ect: false,
     overseas: false,
@@ -327,6 +332,11 @@ function resolveJobForAlert (alert, index) {
       if (alert.hours) {
         copy.listingHours = alert.hours
       }
+      if (alert.workingPattern) {
+        copy.workingPatterns = String(alert.workingPattern)
+          .split(/,\s*/)
+          .filter(Boolean)
+      }
       return copy
     }
   }
@@ -368,7 +378,7 @@ function fromJob (job, index, overrides = {}) {
     organisationType: org.type || '',
     ageRange: org.ageGroup || '',
     contract: contracts[index % contracts.length],
-    workingPattern: (job.workingPatterns || ['Full time']).join(', '),
+    workingPattern: demoWorkingPattern(index + researched.length),
     salary: job.actualSalaryDetails || 'Salary to be confirmed',
     ect: index % 5 === 0,
     overseas: index % 6 === 0,
@@ -398,7 +408,7 @@ while (alerts.length < 69) {
     organisationType: '',
     ageRange: '',
     contract: contracts[alerts.length % contracts.length],
-    workingPattern: extraIndex % 2 === 0 ? 'Part time' : 'Full time'
+    workingPattern: demoWorkingPattern(alerts.length)
   }), alerts.length))
   extraIndex += 1
 }

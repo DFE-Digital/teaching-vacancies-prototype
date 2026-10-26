@@ -69,11 +69,6 @@
               <p class="govuk-body-s govuk-!-margin-bottom-2">
                 <span class="govuk-visually-hidden">Salary: </span>{{ alert.job | jobListingSalary if (alert.job | jobListingSalary) else "Not provided" }}
               </p>
-              {% if alert.flags.length %}
-                <p class="govuk-body-s govuk-!-font-size-16 govuk-!-margin-bottom-2">
-                  <span class="govuk-visually-hidden">Role requirements: </span>{{ alert.flags | join(', ') }}
-                </p>
-              {% endif %}
               <p class="govuk-body govuk-visually-hidden">
                 <a class="govuk-link" href="{{ alert.alertHref }}">Get alerts for similar jobs</a>
               </p>
