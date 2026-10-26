@@ -152,7 +152,7 @@ module.exports = router => {
     res.render('prototypes/compare', {
       versions: versions,
       liveUrl: '/1-2/compare/live',
-      leftVersion: versions.find(function (version) { return version.id === '1-0' }) || versions[0],
+      leftVersion: versions.find(function (version) { return version.id === '1-1' }) || versions[0],
       rightVersion: versions.find(function (version) { return version.id === '1-2' }) || versions[versions.length - 1]
     })
   })

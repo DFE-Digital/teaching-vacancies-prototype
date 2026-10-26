@@ -1,7 +1,12 @@
 // Styles for prototype version 1.2 only (linked from 1-2 layout).
+// Full GOV.UK Frontend lives in application.css (with blue masthead via patterns/newheader).
+// Do not @import lib/extensions/extensions here — it duplicated header rules and overrode the blue bar.
 $govuk-assets-path: '/govuk/assets/';
 
-@import "lib/extensions/extensions";
+@import "node_modules/govuk-frontend/govuk/settings/all";
+@import "node_modules/govuk-frontend/govuk/tools/all";
+@import "node_modules/govuk-frontend/govuk/helpers/all";
+
 @import "patterns/jobseeker-account";
 
 .app-jobs-listing--has-results {
@@ -35,21 +40,6 @@ $govuk-assets-path: '/govuk/assets/';
       width: 13.65625rem;
     }
   }
-}
-
-@media (max-width: 40.0525em) {
-  .govuk-service-navigation__list {
-    display: none;
-  }
-
-  .govuk-service-navigation__toggle[aria-expanded="true"] + .govuk-service-navigation__list {
-    display: block;
-  }
-}
-
-.govuk-service-navigation__item--align-right {
-  margin-left: auto;
-  margin-right: 0;
 }
 
 .app-documentation-job-listings .app-documentation-job-listings__examples {

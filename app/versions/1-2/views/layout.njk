@@ -55,10 +55,7 @@
 {% block header %}
   {% include "includes/header.njk" %}
   {% if not contentPage and not homepage %}
-  {# Descoped for now: signed-in MOJ primary nav (Applications, Job alerts, Notifications, Personal details, Get help).
-     Account areas are reached via service navigation “Your account” → /jobseekers/account. Set flag to true to restore. #}
-  {% set showJobseekerPrimaryNavigation = false %}
-  {% if showJobseekerPrimaryNavigation and (data.signedIn or forceSignedIn) %}
+  {% if data.signedIn or forceSignedIn %}
     {% include "includes/jobseeker-primary-navigation.njk" %}
   {% endif %}
   {{ govukPhaseBanner({
