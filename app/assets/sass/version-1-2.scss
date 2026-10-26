@@ -56,3 +56,46 @@ $govuk-assets-path: '/govuk/assets/';
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.app-documentation-job-listings .app-documentation-job-listings__examples {
+  max-width: 620px;
+}
+
+.app-documentation-job-listings .app-jobs__item {
+  margin-bottom: govuk-spacing(6);
+  padding-bottom: govuk-spacing(4);
+  border-bottom: 1px solid govuk-colour("mid-grey");
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.app-jobs-listing .app-jobs__item {
+  .header-with-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: govuk-spacing(3);
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .header-with-logo-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header-with-logo-logo--search-result img {
+    max-height: 48px;
+    max-width: 120px;
+    width: auto;
+    height: auto;
+  }
+
+  .app-jobs__salary {
+    display: block;
+    max-width: 36em;
+  }
+}

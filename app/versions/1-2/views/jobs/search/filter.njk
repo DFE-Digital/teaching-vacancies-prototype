@@ -318,93 +318,17 @@
             <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
 
             {% if countOfMatch == countOfJobMatch %}
-
-            {% set jobItem %}
-
-            <div class="app-jobs__item">
-                <h2 class="govuk-heading-m app-jobs__title">
-                  <a href="/jobs/{{job.id}}">{{job.title}}</a>
-                  {% if job.isUsingApplicationForm == 'Yes' %}
-                    <a class="govuk-tag govuk-tag--green app-jobs__quick-apply" href="/jobs/{{ job.id }}/apply">Quick apply</a>
-                  {% endif %}
-                </h2>
-
-                <p class="app-jobs__item__roles" style="display:none;">{{job.role}}</p>
-
-                <p class="app-jobs__address">{{job.organisation.name}}, {{job.organisation.address.address1}}, {{job.organisation.address.town}}</p>
-
-                {% set resultPhase = job.phase or job.organisation.phase %}
-                {% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails or (job.salaryDetails | join(', ') if job.salaryDetails else '') %}
-
-                {{ govukSummaryList({
-                classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                rows: [
-                    {
-                    key: { text: "Salary" },
-                    value: { text: resultSalary if resultSalary else "Not provided" }
-                    },
-                    {
-                    key: { text: "Education phase" },
-                    value: { text: resultPhase }
-                    },
-                    {
-                    key: { text: "Contract type" },
-                    value: { text: job.contractType if job.contractType else "Not stated" }
-                    },
-                    {
-                    key: { text: "Pay scale" },
-                    value: { text: job.salaryDetails | join(', ') }
-                    } if job.salaryDetails,
-                    {
-                    key: { text: "Working pattern" },
-                    value: { text: job.workingPatterns | join(', ') | capitalize }
-                    } if job.workingPatterns,
-                    {
-                    key: { text: "Early career teachers" },
-                    value: { text: "Suitable" if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" else "Not suitable" }
-                    } if job.isRoleSuitableForEarlyCareeerTeachers,
-                    {
-                    key: { text: "Overseas qualifications" },
-                    value: { text: "Accepted" if job.acceptsOverseasQualifications == "Yes" else "Not accepted" }
-                    } if job.acceptsOverseasQualifications,
-                    {
-                    key: { text: "Driving" },
-                    value: { text: "Required" if job.drivingRequired == "Yes" else "Not required" }
-                    } if job.drivingRequired,
-                    {
-                    key: { text: "Location" },
-                    value: { text: job.distance + ' miles from you' }
-                    } if job.distance,
-                    {
-                      key: { text: "Visa sponsorship" },
-                      value: { text: job.sponsorship | capitalize }
-                    } if job.sponsorship
-                ]
-                }) }}
-
-            </div>
-
-            {% endset %}
-
-            <!--LOOP -->
-
             {% set useRadius = data['radius'] and data['radius'] != 'updated' %}
 
             {% if job._keywordHit != false %}
                 {% if data['location'] and useRadius %}
                     {% if job.distance <= data['radius'] %}
-                        {{ jobItem | safe }}
+                        {% include "includes/job-listing-item.njk" %}
                     {% endif %}
                 {% else %}
-                    {{ jobItem | safe }}
+                    {% include "includes/job-listing-item.njk" %}
                 {% endif %}
             {% endif %}
-
-        
-            
-           
-           {% else %}
-           
            {% endif %}
           
         {% endfor %}

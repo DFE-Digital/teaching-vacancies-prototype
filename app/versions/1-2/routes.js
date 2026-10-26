@@ -63,6 +63,19 @@ router.get('/documentation/profile-changes', (req, res) => {
   res.render('documentation/profile-changes.html', { guide })
 })
 
+router.get('/documentation/job-advert-listing-styles', (req, res) => {
+  const guide = require('./data/job-advert-listing-styles')
+  const jobs = require('./data/jobs.json')
+  const referencePrototypeJobs = guide.prototypeReferenceJobIds
+    .map(function (id) {
+      return jobs.find(function (job) {
+        return job.id === id
+      })
+    })
+    .filter(Boolean)
+  res.render('documentation/job-advert-listing-styles.html', { guide, referencePrototypeJobs })
+})
+
 //routing for filters
 require('./routes/filtering')(router)
 

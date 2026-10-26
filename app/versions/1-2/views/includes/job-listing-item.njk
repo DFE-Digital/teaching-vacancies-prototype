@@ -1,21 +1,14 @@
-{% set address %}
-  {% for part, value in job.organisation.address %}
-    {{ value }}{% if not loop.last %}, {% endif %}
-  {% endfor %}
-{% endset %}
-
 {% set closingInformation %}
   {{ job.closingDate | date }}{% if job.closingTime %} at {{ job.closingTime }}{% endif %}
 {% endset %}
 
-{% set schoolType %}
-  {% if job.schoolType %}
-    {{ job.schoolType }}
-  {% else %}
-    {{ job.organisation.type }}{% if job.organisation.ageGroup %}, ages {{ job.organisation.ageGroup }}{% endif %}
-  {% endif %}
-{% endset %}
-
+{% set listingAddress = job | jobListingAddress %}
+{% set listingSchoolType = job | jobListingSchoolType %}
+{% set listingSalaryFull = job | jobListingSalaryFull %}
+{% set listingSalary = job | jobListingSalary %}
+{% set listingSalaryLabel = job | jobListingSalaryLabel %}
+{% set listingPayScale = job | jobListingPayScale %}
+{% set resultPhase = job.phase or job.organisation.phase %}
 {% set visaText %}
   {% if job.sponsorship %}
     {{ job.sponsorship }}
@@ -24,23 +17,26 @@
   {% endif %}
 {% endset %}
 
-{% set resultPhase = job.phase or job.organisation.phase %}
-{% set resultSalary = job.actualSalaryDetails or job.fullTimeEquivalentSalaryDetails or job.payScaleDetails %}
-{% if not resultSalary and job.salaryDetails %}
-  {% set resultSalary = job.salaryDetails | join(', ') %}
-{% endif %}
+{% set listingSalaryDisplay %}
+  {% if listingSalaryFull != listingSalary %}
+    <span class="app-jobs__salary" title="{{ listingSalaryFull }}">{{ listingSalary if listingSalary else "Not provided" }}</span>
+  {% else %}
+    <span class="app-jobs__salary">{{ listingSalary if listingSalary else "Not provided" }}</span>
+  {% endif %}
+{% endset %}
+
 <div class="app-jobs__item">
   <div class="header-with-logo">
     <div class="header-with-logo-title">
-      {% if job.isUsingApplicationForm == 'Yes' %}
-        <a class="govuk-tag govuk-tag--green govuk-!-margin-bottom-2" href="/jobs/{{ job.id }}/apply">Quick apply</a>
-      {% endif %}
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-        <span class="govuk-!-margin-right-2">
-          <a class="govuk-link" href="/jobs/{{ job.id }}">{{ job.title }}</a>
-        </span>
+      <h2 class="govuk-heading-m app-jobs__title govuk-!-margin-bottom-1">
+        <a class="govuk-link" href="/jobs/{{ job.id }}">{{ job.title }}</a>
+        {% if job.isUsingApplicationForm == 'Yes' %}
+          <a class="govuk-tag govuk-tag--green app-jobs__quick-apply" href="/jobs/{{ job.id }}/apply">Quick apply</a>
+        {% endif %}
       </h2>
-      <p class="govuk-body address govuk-!-margin-bottom-0 govuk-!-margin-top-0">{{ job.organisation.name }}, {{ address }}</p>
+      {% if listingAddress %}
+        <p class="app-jobs__address govuk-body govuk-!-margin-bottom-0">{{ listingAddress }}</p>
+      {% endif %}
     </div>
     {% if job.organisation.logo and job.organisation.logo != 'Not entered' %}
       <div class="header-with-logo-logo--search-result">
@@ -49,13 +45,23 @@
     {% endif %}
   </div>
 
+  <p class="app-jobs__item__roles" style="display:none;">{{ job.role }}</p>
+
   {{ govukSummaryList({
     classes: 'govuk-summary-list--no-border app-summary-list--compact',
     rows: [
       {
-        key: { text: "Salary" },
-        value: { text: resultSalary if resultSalary else "Not provided" }
+        key: { text: listingSalaryLabel },
+        value: { html: listingSalaryDisplay }
       },
+      {
+        key: { text: "Working pattern" },
+        value: { text: job.workingPatterns | join(', ') | capitalize }
+      } if job.workingPatterns and job.workingPatterns.length,
+      {
+        key: { text: "School type" },
+        value: { text: listingSchoolType }
+      } if listingSchoolType,
       {
         key: { text: "Education phase" },
         value: { text: resultPhase if resultPhase else "Not stated" }
@@ -64,6 +70,10 @@
         key: { text: "Contract type" },
         value: { text: job.contractType if job.contractType else "Not stated" }
       },
+      {
+        key: { text: "Pay scale" },
+        value: { text: listingPayScale }
+      } if listingPayScale,
       {
         key: { text: "Early career teachers" },
         value: { text: "Suitable" if job.isRoleSuitableForEarlyCareeerTeachers == "Yes" else "Not suitable" }
@@ -77,36 +87,16 @@
         value: { text: "Required" if job.drivingRequired == "Yes" else "Not required" }
       } if job.drivingRequired,
       {
-        key: {
-          text: "School type"
-        },
-        value: {
-          html: schoolType
-        }
-      } if schoolType | trim,
+        key: { text: "Location" },
+        value: { text: job.distance + ' miles from you' }
+      } if job.distance,
       {
-        key: {
-          text: "Working pattern"
-        },
-        value: {
-          text: job.workingPatterns | join(', ') | capitalize
-        }
-      } if job.workingPatterns,
-      {
-        key: {
-          text: "Closing date"
-        },
-        value: {
-          html: closingInformation
-        }
+        key: { text: "Closing date" },
+        value: { html: closingInformation }
       } if job.closingDate,
       {
-        key: {
-          text: "Visa sponsorship"
-        },
-        value: {
-          text: visaText
-        }
+        key: { text: "Visa sponsorship" },
+        value: { text: visaText | trim }
       }
     ]
   }) }}

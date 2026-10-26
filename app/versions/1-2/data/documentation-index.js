@@ -4,9 +4,13 @@
 
 module.exports = {
   lead:
-    'Further education design reviews and change plans for the jobseeker prototype (v1.1). Tech stack and project structure are listed under Topics.',
+    'Design reviews and change plans for the jobseeker prototype (v1.2). Tech stack and project structure are listed under Topics.',
 
   recentWork: [
+    {
+      href: '/documentation/job-advert-listing-styles',
+      text: 'Job advert listing styles'
+    },
     {
       href: '/documentation/profile-changes',
       text: 'Profile changes'
@@ -22,6 +26,12 @@ module.exports = {
   ],
 
   topics: [
+    {
+      href: '/documentation/job-advert-listing-styles',
+      title: 'Job advert listing styles',
+      description:
+        'Live production listing patterns for faith, special, and mainstream schools; salary variants; open questions for search and job alerts.'
+    },
     {
       href: '/documentation/profile-changes',
       title: 'Profile changes',

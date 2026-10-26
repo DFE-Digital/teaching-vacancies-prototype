@@ -1,0 +1,115 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper app-documentation-job-listings" %}
+
+{% block pageTitle %}
+  {{ guide.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: guide.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="app-guide app-guide--full-width">
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      <span class="govuk-caption-xl">Design discovery · v1.2 prototype</span>
+    </p>
+    <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
+    <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+    <p class="govuk-body">{{ guide.scopeIntro }}</p>
+
+    <div class="app-guide__main govuk-!-margin-top-6">
+      <h2 class="govuk-heading-l" id="confirmed">What is fine today</h2>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        {% for item in guide.confirmedFine %}
+          <li><strong>{{ item.label }}</strong> — {{ item.detail }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2 class="govuk-heading-l" id="constraints">Design constraints</h2>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+        {% for item in guide.designConstraints %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2 class="govuk-heading-l" id="taxonomy">Information types to support</h2>
+      <h3 class="govuk-heading-m">Organisation type</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in guide.taxonomy.organisationType %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      <h3 class="govuk-heading-m govuk-!-margin-top-4">Faith type</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in guide.taxonomy.faithType %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      <h3 class="govuk-heading-m govuk-!-margin-top-4">Type of school (phase)</h3>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        {% for item in guide.taxonomy.schoolPhase %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h3 class="govuk-heading-m">Salary representations (up to four fields in data)</h3>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+        {% for item in guide.salaryFieldTypes %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2 class="govuk-heading-l" id="prototype-component">Prototype search listing component</h2>
+      <p class="govuk-body">Same markup as search results (<code class="govuk-body-s">app-jobs__item</code> on <a class="govuk-link" href="/search/applications">/search/applications</a>).</p>
+      <div class="app-jobs app-documentation-job-listings__examples govuk-!-margin-bottom-8">
+        {% for job in referencePrototypeJobs %}
+          {% include "includes/documentation-job-listing.njk" %}
+        {% endfor %}
+      </div>
+
+      <h2 class="govuk-heading-l" id="production-examples">Live production content (coded listings)</h2>
+      <p class="govuk-body">Production copy rendered with the prototype search listing component. Job links are for documentation only.</p>
+
+      {% for section in guide.productionExamples %}
+        <h3 class="govuk-heading-m govuk-!-margin-top-6" id="{{ section.id }}">{{ section.title }}</h3>
+        <p class="govuk-body">{{ section.caption }}</p>
+        <div class="app-jobs app-documentation-job-listings__examples govuk-!-margin-bottom-4">
+          {% for ex in section.examples %}
+            {% set job = ex.job %}
+            {% include "includes/documentation-job-listing.njk" %}
+            {% if ex.baNote %}
+              {{ govukInsetText({
+                text: ex.baNote,
+                classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-6"
+              }) }}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <h2 class="govuk-heading-l govuk-!-margin-top-8" id="open-questions">Open questions</h2>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+        {% for q in guide.openQuestions %}
+          <li>{{ q }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2 class="govuk-heading-l" id="proposed-amends">Proposed amends (for design follow-up)</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in guide.proposedAmends %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

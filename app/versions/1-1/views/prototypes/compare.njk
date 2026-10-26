@@ -283,9 +283,9 @@
               <span class="govuk-visually-hidden">Left screen</span>
               <select class="source-select">
                 <option value="{{ liveUrl }}" selected>Live</option>
-                {% if leftVersion %}
-                  <option value="{{ leftVersion.url }}">{{ leftVersion.label }}</option>
-                {% endif %}
+                {% for version in versions %}
+                  <option value="{{ version.url }}">{{ version.label }}</option>
+                {% endfor %}
               </select>
             </label>
           </p>
