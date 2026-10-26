@@ -1,7 +1,6 @@
 {% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
 {# MOJ-style primary navigation for signed-in jobseekers (see MOJ Design System primary navigation) #}
 {% set personalDetailsActive = accountSection == 'personal-details' %}
-{% set accountSettingsActive = accountSection == 'account' %}
 
 {{ appPrimaryNavigation({
   navigationLabel: 'Primary navigation',
@@ -25,12 +24,6 @@
       text: 'Personal details',
       href: '/account/personal-details',
       active: personalDetailsActive
-    },
-    {
-      text: 'Your account',
-      href: '/account/your-account',
-      active: accountSettingsActive,
-      classes: 'app-primary-navigation__item--align-right'
     }
   ]
 }) }}

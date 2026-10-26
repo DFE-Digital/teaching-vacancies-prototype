@@ -199,8 +199,14 @@
 }
 
 .app-prototype-index__details .govuk-details__text {
-  padding-top: 0;
-  padding-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  border-left: none;
+}
+
+// GOV.UK .govuk-details__text p { margin-bottom: 20px } must not apply to prototype list meta.
+.app-prototype-index__details .govuk-details__text .app-prototype-list__meta {
+  margin-bottom: 0;
 }
 
 .app-prototype-list {
@@ -214,7 +220,7 @@
   display: flex;
   align-items: flex-start;
   gap: 15px;
-  padding: 15px 0 20px;
+  padding: 10px 0;
   border-bottom: 1px solid #b1b4b6;
 }
 
@@ -230,12 +236,13 @@
 }
 
 .app-prototype-list__text {
+  flex: 1;
   min-width: 0;
   padding-top: 2px;
 }
 
 .app-prototype-list__title {
-  margin: 0 0 5px;
+  margin: 0 0 2px;
   font-family: "GDS Transport", arial, sans-serif;
   font-size: 19px;
   font-weight: 400;

@@ -4,6 +4,8 @@
 {% set title = 'Job alerts' %}
 {% set activeNav = 'jobalerts' %}
 {% set forceSignedIn = true %}
+{% set jobseekerSubNavigation = true %}
+{% set jobseekerSubNavSection = 'job-alerts' %}
 
 {% block head %}
   {{ super() }}
@@ -71,9 +73,12 @@
     }) }}
   {% endif %}
 
+  {% include "includes/applications-page-header.njk" %}
+  {% include "includes/jobseeker-account-nav.njk" %}
+
   <div class="app-page-header app-job-alerts-page-header govuk-!-margin-bottom-4">
     <div class="app-page-header__title">
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Job alerts</h1>
+      <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-0">Your job alerts</h2>
     </div>
     <div class="app-page-header__actions">
       {{ govukButton({
@@ -83,7 +88,6 @@
       }) }}
     </div>
   </div>
-  <p class="govuk-body">Manage vacancy alerts separately from application notifications.</p>
 
   {% if jobseekerAlerts.length %}
         {% for alert in jobseekerAlerts %}

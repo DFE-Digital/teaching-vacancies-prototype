@@ -1,6 +1,6 @@
-{# Descoped: not rendered while showJobseekerPrimaryNavigation is false in layout.njk. Kept for a future IA with a second signed-in nav tier. #}
 {% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
-{# MOJ-style primary navigation for signed-in jobseekers (see MOJ Design System primary navigation) #}
+{% from "includes/version-path.njk" import versionPath %}
+{# Signed-in tier: Applications, Job alerts, Notifications, Personal details, Get help. Your account lives in the GOV.UK header only (same as v1.0). #}
 {% set personalDetailsActive = accountSection == 'personal-details' %}
 {% set accountSettingsActive = accountSection == 'account' %}
 
@@ -9,27 +9,27 @@
   items: [
     {
       text: 'Applications',
-      href: '/jobseekers/job_applications',
+      href: versionPath('/jobseekers/job_applications'),
       active: activeNav == 'applications'
     },
     {
       text: 'Job alerts',
-      href: '/jobseekers/subscriptions',
+      href: versionPath('/jobseekers/subscriptions'),
       active: activeNav == 'jobalerts'
     },
     {
       text: 'Notifications',
-      href: '/jobseekers/notifications',
+      href: versionPath('/jobseekers/notifications'),
       active: activeNav == 'notifications'
     },
     {
       text: 'Personal details',
-      href: '/account/personal-details',
+      href: versionPath('/account/personal-details'),
       active: personalDetailsActive
     },
     {
       text: 'Get help',
-      href: '/account/your-account',
+      href: versionPath('/account/your-account'),
       active: accountSettingsActive,
       classes: 'app-primary-navigation__item--align-right'
     }

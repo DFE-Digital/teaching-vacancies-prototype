@@ -59,7 +59,7 @@
     </div>
     <div class="govuk-header__content">
       {% if not contentPage and (data.signedIn or forceSignedIn or not homepage) %}
-          <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Account navigation">
+          <nav class="govuk-header__navigation" aria-label="Account">
             <ul id="navigation" class="govuk-header__navigation-list">
               {% if data.signedIn or forceSignedIn %}
                 <li class="govuk-header__navigation-item">

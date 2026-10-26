@@ -155,14 +155,14 @@ module.exports = router => {
   })
 
   router.get('/account', (req, res) => {
-    res.redirect('/account/personal-details')
-  })
-
-  router.get('/account/your-account', (req, res) => {
     ensureSignedInJobseeker(req, users)
     res.render('account/index', {
       user: req.session.user
     })
+  })
+
+  router.get('/account/your-account', (req, res) => {
+    res.redirect('/account')
   })
 
   router.get('/account/personal-details', (req, res) => {
