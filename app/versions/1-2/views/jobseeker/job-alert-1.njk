@@ -22,10 +22,10 @@
             <p class="govuk-body govuk-!-margin-bottom-1">
               <span class="govuk-visually-hidden">Location: </span>{{ alert.job | jobListingAddress }}
             </p>
-            <p class="govuk-body-s govuk-!-margin-bottom-1">
+            <p class="govuk-body govuk-!-margin-bottom-1">
               <span class="govuk-visually-hidden">Job details: </span>{{ alert.job | jobListingCompactDetails }}
             </p>
-            <p class="govuk-body-s govuk-!-margin-bottom-2">
+            <p class="govuk-body govuk-!-margin-bottom-2">
               <span class="govuk-visually-hidden">Salary: </span>{{ alert.job | jobListingSalary if (alert.job | jobListingSalary) else "Not provided" }}
             </p>
           </li>
