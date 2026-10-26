@@ -9,6 +9,15 @@ function isSimpleSalaryRange (text) {
   return /^£[\d,\.\s\-£]+$/.test(normalized)
 }
 
+function isHourlyRate (text) {
+  return /per hour/i.test(String(text || ''))
+}
+
+function hasAnnualMoney (text) {
+  const normalized = normalizeCurrencyText(text)
+  return /£/.test(normalized) && !isHourlyRate(normalized)
+}
+
 function isPartTime (job) {
   const patterns = job.workingPatterns || []
   return patterns.some(function (pattern) {
@@ -23,19 +32,73 @@ function joinSalaryDetails (job) {
   return job.salaryDetails.join(', ')
 }
 
+function isMpsUpsOnly (text) {
+  return /^MPS\/UPS$/i.test(String(text || '').trim())
+}
+
+function listingScaleForJob (job) {
+  const fromDetails = joinSalaryDetails(job)
+  const payScale = normalizeCurrencyText(job.payScaleDetails)
+  let scale = fromDetails || payScale
+  if (!scale || isMpsUpsOnly(scale)) {
+    return ''
+  }
+  scale = scale.replace(/\s*MPS\/UPS\s*/gi, ' ').replace(/\s+/g, ' ').trim()
+  if (isMpsUpsOnly(scale)) {
+    return ''
+  }
+  return scale
+}
+
+function hasMultipleLocations (job) {
+  if (!job) {
+    return false
+  }
+  if (job.multipleLocations) {
+    return true
+  }
+  if (job.locations && job.locations.length > 1) {
+    return true
+  }
+  const org = job.organisation || {}
+  const addr = org.address || {}
+  const locationHint = [addr.town, addr.address1, org.name].filter(Boolean).join(' ')
+  return /more than one location/i.test(locationHint)
+}
+
 function pickRawSalary (job) {
   const actual = normalizeCurrencyText(job.actualSalaryDetails)
   const fte = normalizeCurrencyText(job.fullTimeEquivalentSalaryDetails)
   const payScale = normalizeCurrencyText(job.payScaleDetails)
   const band = joinSalaryDetails(job)
+  const scaleForListing = listingScaleForJob(job)
 
-  if (actual) {
-    if (/per hour/i.test(actual) || /\(Actual\)/i.test(actual)) {
-      return actual
-    }
-    if (isPartTime(job) && fte) {
-      return actual
-    }
+  if (isPartTime(job) && hasAnnualMoney(actual) && fte) {
+    return actual
+  }
+
+  if (hasAnnualMoney(fte)) {
+    return fte
+  }
+  if (hasAnnualMoney(actual)) {
+    return actual
+  }
+
+  if (scaleForListing && !hasAnnualMoney(fte) && !hasAnnualMoney(actual)) {
+    return scaleForListing
+  }
+  if (payScale && !isMpsUpsOnly(payScale) && !hasAnnualMoney(fte) && !hasAnnualMoney(actual)) {
+    return payScale
+  }
+  if (band && !isMpsUpsOnly(band) && !hasAnnualMoney(fte) && !hasAnnualMoney(actual)) {
+    return band
+  }
+
+  if (isHourlyRate(actual)) {
+    return actual
+  }
+  if (isHourlyRate(fte)) {
+    return fte
   }
 
   if (fte) {
@@ -44,17 +107,11 @@ function pickRawSalary (job) {
   if (actual) {
     return actual
   }
-  if (payScale) {
-    return payScale
-  }
-  if (band) {
-    return band
-  }
   return ''
 }
 
 function appendPayScaleToSalaryLine (text, job) {
-  const scale = joinSalaryDetails(job)
+  const scale = listingScaleForJob(job)
   const normalized = normalizeCurrencyText(text)
   if (!scale || !normalized) {
     return normalized
@@ -62,10 +119,7 @@ function appendPayScaleToSalaryLine (text, job) {
   if (normalized.indexOf(scale) !== -1) {
     return normalized
   }
-  if (/MPS\/UPS/i.test(scale) && /MPS\/UPS/i.test(normalized)) {
-    return normalized
-  }
-  if (isSimpleSalaryRange(normalized)) {
+  if (isSimpleSalaryRange(normalized) || hasAnnualMoney(normalized)) {
     return normalized + ' (' + scale + ')'
   }
   return normalized
@@ -100,20 +154,31 @@ function shortenSalaryForListing (text) {
 }
 
 function salaryIncludedPayScale (listingText, job) {
-  const scale = joinSalaryDetails(job)
+  const scale = listingScaleForJob(job)
   if (!scale || !listingText) {
     return false
   }
-  if (listingText.indexOf(scale) !== -1) {
-    return true
+  return listingText.indexOf(scale) !== -1
+}
+
+function capitalizePattern (text) {
+  const s = String(text || '').trim()
+  if (!s) {
+    return ''
   }
-  return /MPS\/UPS/i.test(scale) && /MPS\/UPS/i.test(listingText)
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
 const filters = {}
 
 filters.jobListingAddress = function (job) {
-  if (!job || !job.organisation) {
+  if (!job) {
+    return ''
+  }
+  if (hasMultipleLocations(job)) {
+    return 'Multiple locations…'
+  }
+  if (!job.organisation) {
     return ''
   }
   const org = job.organisation
@@ -146,12 +211,46 @@ filters.jobListingSchoolType = function (job) {
     bits.push(org.faith)
   }
   const phase = job.phase || org.phase
-  if (phase) {
+  if (phase && !/^(Primary school|Secondary school)$/i.test(String(phase).trim())) {
     bits.push(phase)
-  } else if (org.ageGroup) {
-    bits.push('ages ' + org.ageGroup)
+  }
+  if (org.ageGroup) {
+    bits.push('ages ' + String(org.ageGroup).replace(/-/g, ' to '))
   }
   return bits.join(', ')
+}
+
+filters.jobListingCompactDetails = function (job) {
+  if (!job) {
+    return ''
+  }
+  const parts = []
+  const schoolType = filters.jobListingSchoolType(job)
+  if (schoolType) {
+    parts.push(schoolType)
+  }
+  if (job.workingPatterns && job.workingPatterns.length) {
+    parts.push(
+      job.workingPatterns
+        .map(function (pattern) {
+          return capitalizePattern(pattern)
+        })
+        .join(', ')
+    )
+  }
+  if (job.listingHours) {
+    parts.push(job.listingHours)
+  }
+  const raw = pickRawSalary(job)
+  const scale = listingScaleForJob(job)
+  const hasMoney = Boolean(
+    raw && (hasAnnualMoney(raw) || isHourlyRate(raw) || isSimpleSalaryRange(raw))
+  )
+  const hasScale = Boolean(scale)
+  if (!hasMoney && !hasScale && job.contractType) {
+    parts.push(job.contractType)
+  }
+  return parts.join(', ')
 }
 
 filters.jobListingSalaryFull = function (job) {
@@ -189,7 +288,7 @@ filters.jobListingPayScale = function (job) {
   if (salaryIncludedPayScale(filters.jobListingSalaryFull(job), job)) {
     return ''
   }
-  return joinSalaryDetails(job)
+  return listingScaleForJob(job)
 }
 
 exports.filters = filters

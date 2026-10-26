@@ -1,5 +1,4 @@
 {% extends "layout_email.njk" %}
-{% from "includes/job-alert-details-line.njk" import jobAlertDetailsLine %}
 
 {% set title = 'You have ' + alerts.length + ' new job matches' %}
 
@@ -21,17 +20,17 @@
               <a class="govuk-link" href="{{ alert.href }}">{{ alert.title }}</a>
             </h2>
             <p class="govuk-body govuk-!-margin-bottom-1">
-              <span class="govuk-visually-hidden">Location: </span>{{ alert.location }}
+              <span class="govuk-visually-hidden">Location: </span>{{ alert.job | jobListingAddress }}
             </p>
             <p class="govuk-body-s govuk-!-margin-bottom-1">
-              <span class="govuk-visually-hidden">Job details: </span>{{ jobAlertDetailsLine(alert) }}
+              <span class="govuk-visually-hidden">Job details: </span>{{ alert.job | jobListingCompactDetails }}
             </p>
             <p class="govuk-body-s govuk-!-margin-bottom-2">
-              <span class="govuk-visually-hidden">Salary: </span>{{ alert.salary }}
+              <span class="govuk-visually-hidden">Salary: </span>{{ alert.job | jobListingSalary if (alert.job | jobListingSalary) else "Not provided" }}
             </p>
             {% if alert.flags.length %}
               <p class="govuk-body-s govuk-!-font-size-16 govuk-!-margin-bottom-2">
-                <span class="govuk-visually-hidden">Role requirements: </span>{{ alert.flags | join(' · ') }}
+                <span class="govuk-visually-hidden">Role requirements: </span>{{ alert.flags | join(', ') }}
               </p>
             {% endif %}
           </li>

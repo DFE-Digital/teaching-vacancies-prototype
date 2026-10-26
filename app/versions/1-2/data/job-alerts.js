@@ -249,8 +249,76 @@ function schoolJobDetails (alert, index) {
   }
 }
 
+function normalizeSalaryText (text) {
+  return String(text || '').replace(/\u00a3/g, '£').trim()
+}
+
+function alertAsJob (alert, index) {
+  const details = schoolJobDetails(alert, index)
+  const organisationType = details.organisationType
+  const ageRange = details.ageRange
+  const town = alert.town || ''
+  const multipleLocations =
+    alert.multipleLocations || /more than one location/i.test(town)
+
+  const schoolTypeParts = []
+  if (organisationType) {
+    schoolTypeParts.push(organisationType)
+  }
+  if (ageRange) {
+    schoolTypeParts.push(String(ageRange).replace(/^Ages /, 'ages '))
+  }
+
+  const salary = normalizeSalaryText(alert.salary)
+  const isHourly = /per hour/i.test(salary)
+  const hasMoney = /£/.test(salary) && !isHourly
+
+  return {
+    organisation: {
+      name: alert.organisation,
+      address: {
+        town: multipleLocations ? '' : town,
+        county: alert.county || '',
+        postcode: alert.postcode || ''
+      },
+      type: organisationType,
+      ageGroup: ageRange ? String(ageRange).replace(/^ages\s/i, '').replace(/\s+to\s+/gi, '-') : ''
+    },
+    multipleLocations,
+    locations: multipleLocations ? [{ address: {} }, { address: {} }] : undefined,
+    schoolType: schoolTypeParts.length ? schoolTypeParts.join(', ') : undefined,
+    phase: alert.phase,
+    contractType: alert.contract,
+    workingPatterns: String(alert.workingPattern || 'Full time')
+      .split(/,\s*/)
+      .filter(Boolean),
+    fullTimeEquivalentSalaryDetails: hasMoney ? salary : '',
+    actualSalaryDetails: isHourly ? salary : '',
+    payScaleDetails: !hasMoney && !isHourly && salary ? salary : '',
+    salaryDetails: alert.salaryDetails || [],
+    listingHours: alert.hours || ''
+  }
+}
+
+function resolveJobForAlert (alert, index) {
+  if (alert.id) {
+    const fromData = jobs.find(function (job) {
+      return String(job.id) === String(alert.id)
+    })
+    if (fromData) {
+      const copy = Object.assign({}, fromData)
+      if (alert.hours) {
+        copy.listingHours = alert.hours
+      }
+      return copy
+    }
+  }
+  return alertAsJob(alert, index)
+}
+
 function listing (alert, index) {
   const details = schoolJobDetails(alert, index)
+  const job = resolveJobForAlert(alert, index)
   return {
     title: alert.title,
     href: '/jobs/' + (alert.id || jobs[index % jobs.length].id),
@@ -263,7 +331,8 @@ function listing (alert, index) {
     hours: alert.hours || '',
     salary: alert.salary,
     flags: flags(alert),
-    alertHref: '/jobsfeonly_alert'
+    alertHref: '/jobsfeonly_alert',
+    job: job
   }
 }
 
