@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% set primaryNavId = 'home' %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing govuk-!-padding-top-2" %}
 
 {% macro jobLink(label, count) %}
   <li>
@@ -34,37 +35,40 @@
 <div class="home_index">
 
     <div class="search">
-		<h1 class="govuk-heading-l">Find school and college jobs near you</h1>
-		<form id="filter" class="home" method="get" action="/search/home" novalidate>
-			<div class="search__form">
-				<div class="search__field">
-					<div class="govuk-form-group">
-						<label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
-						<input class="govuk-input" id="keyword-field" name="keyword" type="text" autocomplete="off">
-					</div>
-				</div>
-				<div class="search__field">
-					<div class="govuk-form-group">
-						<label class="govuk-label govuk-label--s" for="location-field">City, county, or postcode</label>
-						<input class="govuk-input" id="location-field" name="location" type="text" autocomplete="off">
-					</div>
-				</div>
-				<div class="search__submit">
-					<button class="govuk-button govuk-button--start govuk-button--inverse" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</button>
-				</div>
-			</div>
-		</form>
-		<h2 class="govuk-heading-s">Popular keyword searches:</h2>
-		<div class="search__popular">
-			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Primary">Primary</a>
-			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Maths">Maths</a>
-			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Science">Science</a>
-			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Teaching%20Assistant">Teaching Assistant</a>
-			<a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Headteacher">Headteacher</a>
-		</div>
-	</div>
+      <div class="search__inner">
+        <h1 class="govuk-heading-l">Find school and college jobs near you</h1>
+        <form id="filter" class="home" method="get" action="/search/home" novalidate>
+          <div class="search__form">
+            <div class="search__field">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="keyword-field">Keywords</label>
+                <input class="govuk-input" id="keyword-field" name="keywords" type="text" autocomplete="off">
+              </div>
+            </div>
+            <div class="search__field">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="location-field">City, county, or postcode</label>
+                <input class="govuk-input" id="location-field" name="location" type="text" autocomplete="off">
+              </div>
+            </div>
+            <div class="search__submit">
+              <button class="govuk-button govuk-button--inverse" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+        <h2 class="govuk-heading-s">Popular keyword searches:</h2>
+        <div class="search__popular">
+          <a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Primary">Primary</a>
+          <a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Maths">Maths</a>
+          <a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Science">Science</a>
+          <a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Teaching%20Assistant">Teaching Assistant</a>
+          <a class="govuk-link govuk-link--no-visited-state" href="/search/applications?keywords=Headteacher">Headteacher</a>
+        </div>
+      </div>
+    </div>
 
-    <div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="home_index__promos govuk-!-margin-top-6">
+      <div class="govuk-grid-row">
 		<div class="govuk-grid-column-one-third">
 			<h2 class="govuk-heading-m">Create a job alert</h2>
 			<p class="govuk-body">Get emails about jobs you're interested in.</p>
@@ -74,15 +78,16 @@
 			<h2 class="govuk-heading-m">For jobseekers</h2>
 			<p class="govuk-body">Save and apply for jobs in schools and colleges.</p>
 			<a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/account/sign-in">Jobseeker sign-in</a>
-			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/jobseeker">create a jobseeker account</a>.</p>
+			<p class="govuk-body govuk-!-margin-top-4">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/jobseeker">create a jobseeker account</a>.</p>
 		</div>
 		<div class="govuk-grid-column-one-third">
 			<h2 class="govuk-heading-m">For hiring staff</h2>
 			<p class="govuk-body">Post your jobs and manage applications.</p>
 			<a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/account/sign-in/hiring-staff">Hiring staff sign-in</a>
-			<p class="govuk-body">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/hiring-staff">create a hiring staff account</a>.</p>
+			<p class="govuk-body govuk-!-margin-top-4">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/hiring-staff">create a hiring staff account</a>.</p>
 		</div>
-	</div>
+      </div>
+    </div>
 
     <div class="landing-page-links">
     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">

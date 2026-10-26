@@ -1,4 +1,6 @@
 // Version 1.2 — account landing (Featured pattern). Loaded via version-1-2.scss only.
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+
 .app-account-main-wrapper.govuk-main-wrapper--auto-spacing {
   padding-top: 20px;
 }
@@ -52,11 +54,20 @@
   border: 0;
 }
 
-.app-account-featured__icon-svg {
+.app-account-featured__icon-glyph {
   display: block;
-  width: 32px;
-  height: 32px;
-  fill: currentColor;
+  font-family: "Material Symbols Outlined";
+  font-size: 32px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  -webkit-font-smoothing: antialiased;
 }
 
 .app-account-featured__icon--applications {
@@ -133,9 +144,9 @@
     height: 60px;
   }
 
-  .app-account-featured__icon-svg {
-    width: 36px;
-    height: 36px;
+  .app-account-featured__icon-glyph {
+    font-size: 36px;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 28;
   }
 }
 

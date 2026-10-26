@@ -63,6 +63,9 @@
             <ul id="navigation" class="govuk-header__navigation-list">
               {% if data.signedIn or forceSignedIn %}
                 <li class="govuk-header__navigation-item">
+                  <a class="govuk-header__link govuk-header__link--account{% if activeNav == 'account' or primaryNavId == 'account' %} govuk-header__link--active{% endif %}" href="/account"{% if activeNav == 'account' or primaryNavId == 'account' %} aria-current="page"{% endif %}>Your account</a>
+                </li>
+                <li class="govuk-header__navigation-item">
                   <a class="govuk-header__link" href="/account/sign-out">Sign out</a>
                 </li>
               {% else %}
