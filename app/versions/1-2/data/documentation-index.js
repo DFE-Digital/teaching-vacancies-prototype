@@ -8,6 +8,10 @@ module.exports = {
 
   recentWork: [
     {
+      href: '/documentation/navigation-ia',
+      text: 'Signed-in navigation and IA'
+    },
+    {
       href: '/documentation/job-advert-listing-styles',
       text: 'Job advert listing styles'
     },
@@ -26,6 +30,12 @@ module.exports = {
   ],
 
   topics: [
+    {
+      href: '/documentation/navigation-ia',
+      title: 'Signed-in navigation and IA',
+      description:
+        'Navigation options for signed-in jobseekers in versions 1.0, 1.1, 1.2 and 1.3 — service navigation, Your account hub, and MOJ sub navigation.'
+    },
     {
       href: '/documentation/job-advert-listing-styles',
       title: 'Job advert listing styles',

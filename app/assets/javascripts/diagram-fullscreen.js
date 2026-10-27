@@ -42,6 +42,67 @@ window.AppFrontend.diagramFullscreen = function () {
     closeButton.focus()
   }
 
+  function widenClusterRects (diagrams) {
+    diagrams.forEach(function (diagram) {
+      const minWidth = parseInt(diagram.getAttribute('data-cluster-min-width'), 10)
+      if (!minWidth) {
+        return
+      }
+
+      const svg = diagram.querySelector('svg')
+      if (!svg) {
+        return
+      }
+
+      let requiredWidth = 0
+
+      const clusters = svg.querySelectorAll('g.cluster').length
+        ? svg.querySelectorAll('g.cluster')
+        : svg.querySelectorAll('g[id$="-header"], g[id$="-serviceNav"]')
+
+      clusters.forEach(function (cluster) {
+        const rect = cluster.querySelector(':scope > rect')
+        if (!rect) {
+          return
+        }
+
+        const x = parseFloat(rect.getAttribute('x')) || 0
+        const width = parseFloat(rect.getAttribute('width')) || 0
+        if (width < minWidth) {
+          rect.setAttribute('width', minWidth)
+        }
+
+        requiredWidth = Math.max(requiredWidth, x + Math.max(width, minWidth))
+      })
+
+      if (!requiredWidth) {
+        return
+      }
+
+      const padding = 16
+      const targetWidth = requiredWidth + padding
+      const viewBox = svg.getAttribute('viewBox')
+
+      if (viewBox) {
+        const parts = viewBox.trim().split(/\s+/).map(Number)
+        if (parts.length === 4 && parts[2] < targetWidth) {
+          parts[2] = targetWidth
+          svg.setAttribute('viewBox', parts.join(' '))
+        }
+      }
+
+      const svgWidth = parseFloat(svg.getAttribute('width'))
+      if (svgWidth && svgWidth < targetWidth) {
+        svg.setAttribute('width', targetWidth)
+      }
+
+      const styleWidth = parseFloat(svg.style.width)
+      if (styleWidth && styleWidth < targetWidth) {
+        svg.style.width = targetWidth + 'px'
+      }
+    })
+  }
+
   function widenClippedLabels (diagrams) {
     const updates = []
 
@@ -98,6 +159,7 @@ window.AppFrontend.diagramFullscreen = function () {
   })
 
   const diagrams = Array.from(document.querySelectorAll('pre.mermaid'))
+  widenClusterRects(diagrams)
   widenClippedLabels(diagrams)
   addExpandButtons(diagrams)
 }

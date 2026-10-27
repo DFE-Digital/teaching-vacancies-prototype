@@ -40,6 +40,11 @@ router.get('/documentation/project-structure', (req, res) => {
   res.render('documentation/project-structure')
 })
 
+router.get('/documentation/navigation-ia', (req, res) => {
+  const doc = require('../../data/navigation-ia-signed-in')
+  res.render('documentation/navigation-ia', { doc })
+})
+
 router.get('/documentation/fe-changes-1', (req, res) => {
   res.render('documentation/fe-changes-1.html')
 })

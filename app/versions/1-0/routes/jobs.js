@@ -113,6 +113,11 @@ module.exports = router => {
     res.render('prototypes/documentation')
   })
 
+  router.get('/documentation/navigation-ia', (req, res) => {
+    const doc = require('../../../data/navigation-ia-signed-in')
+    res.render('documentation/navigation-ia', { doc })
+  })
+
   router.get('/mobile', (req, res) => {
     res.render('prototypes/mobile')
   })

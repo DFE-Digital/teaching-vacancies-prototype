@@ -1,0 +1,121 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper" %}
+
+{% block pageTitle %}
+  {{ doc.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: doc.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">{{ doc.guideTitle }}</h1>
+  <p class="govuk-body-l">{{ doc.guideDescription }}</p>
+  <p class="govuk-body">{{ doc.compareNote }}</p>
+
+  {% for version in doc.versions %}
+    <section class="govuk-!-margin-bottom-8" aria-labelledby="nav-ia-{{ version.id }}">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-2" id="nav-ia-{{ version.id }}">{{ version.label }}</h2>
+      <p class="govuk-body">{{ version.summary }}</p>
+      <p class="govuk-body">
+        <a class="govuk-link" href="{{ version.trySignedInHref }}">{{ version.trySignedInLabel }}</a>
+      </p>
+
+      {% if version.mermaidDiagrams or version.mermaid %}
+        <h3 class="govuk-heading-m govuk-!-margin-top-4 govuk-!-margin-bottom-2">Information architecture</h3>
+        {% if version.mermaidDiagrams %}
+          {% for diagram in version.mermaidDiagrams %}
+            <h4 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2">{{ diagram.title }}</h4>
+            <pre class="mermaid govuk-!-margin-bottom-6"{% if diagram.clusterMinWidth %} data-cluster-min-width="{{ diagram.clusterMinWidth }}"{% endif %}>{{ diagram.mermaid }}</pre>
+          {% endfor %}
+        {% else %}
+          <pre class="mermaid">{{ version.mermaid }}</pre>
+        {% endif %}
+      {% endif %}
+
+      {% for layer in version.layers %}
+        <h3 class="govuk-heading-m govuk-!-margin-top-4 govuk-!-margin-bottom-2">{{ layer.title }}</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for item in layer.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+
+      {% if version.screenshots %}
+        <h3 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-2">Screenshots</h3>
+        {% for shot in version.screenshots %}
+          <p class="govuk-body">
+            <a class="govuk-link" href="{{ shot.prototypePath }}" target="_blank" rel="noopener noreferrer">
+              Open in prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+            </a>
+          </p>
+          <figure class="app-guide__figure govuk-!-margin-bottom-8">
+            <img
+              src="{{ asset_path }}images/documentation/{{ version.imageDir or doc.imageDir }}/{{ shot.screenshot }}"
+              alt="{{ shot.screenshotCaption }}"
+              width="960"
+              loading="lazy"
+              decoding="async"
+            >
+            <figcaption class="govuk-body-s app-guide__figure-caption">{{ shot.screenshotCaption }}</figcaption>
+          </figure>
+        {% endfor %}
+      {% endif %}
+
+      {% if version.relatedHref %}
+        <p class="govuk-body govuk-!-margin-top-4">
+          <a class="govuk-link" href="{{ version.relatedHref }}">{{ version.relatedLabel }}</a>
+        </p>
+      {% endif %}
+    </section>
+  {% endfor %}
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-6">{{ doc.compareTable.title }}</h2>
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Version</th>
+        {% for header in doc.compareTable.headers %}
+          <th scope="col" class="govuk-table__header">{{ header }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for row in doc.compareTable.rows %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ row.version }}</td>
+          {% for cell in row.cells %}
+            <td class="govuk-table__cell">{{ cell }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="app-diagram-fullscreen" data-module="app-diagram-fullscreen" hidden role="dialog" aria-modal="true" aria-label="Diagram full screen">
+    <div class="app-diagram-fullscreen__toolbar">
+      <button type="button" class="govuk-button govuk-button--secondary app-diagram-fullscreen__close">Close</button>
+    </div>
+    <div class="app-diagram-fullscreen__stage"></div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="/public/javascripts/diagram-fullscreen.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' })
+    mermaid.run({ querySelector: 'pre.mermaid' }).then(AppFrontend.diagramFullscreen)
+  </script>
+{% endblock %}
