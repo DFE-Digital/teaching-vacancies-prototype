@@ -1,0 +1,8 @@
+{# Root-relative service paths; /1-0 or /1-1 is added on response by app/versions/mount.js prefixHtml. #}
+{% macro versionPath(path) -%}
+{%- if path and path[0] == '/' -%}
+{{ path }}
+{%- else -%}
+/{{ path }}
+{%- endif -%}
+{%- endmacro %}

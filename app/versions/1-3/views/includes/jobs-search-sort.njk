@@ -1,0 +1,27 @@
+<form id="sortform" class="app-jobs-sort-form" method="get" action="{{ filterFormAction or '/search/applications' }}" data-sort-stay="true">
+  {% if data['keywords'] %}
+    <input type="hidden" name="keywords" value="{{ data['keywords'] }}">
+  {% endif %}
+  {% if data['location'] %}
+    <input type="hidden" name="location" value="{{ data['location'] }}">
+  {% endif %}
+  {% if data['borough'] %}
+    <input type="hidden" name="borough" value="{{ data['borough'] }}">
+  {% endif %}
+  {% if data['radius'] %}
+    <input type="hidden" name="radius" value="{{ data['radius'] }}">
+  {% endif %}
+  <div class="govuk-form-group {{ sortFormGroupClasses or 'govuk-!-margin-bottom-4' }}" {% if sortFormFloatRight %}style="float:right"{% endif %}>
+    <label class="govuk-label" for="sort" style="display:inline-block;">
+      Sort by
+    </label>
+    <select class="govuk-select" id="sort" name="sort">
+      <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>
+      <option value="distance" {% if currentSort == 'distance' %}selected{% endif %}>Distance</option>
+      <option value="closing" {% if currentSort == 'closing' %}selected{% endif %}>Closing date</option>
+    </select>
+    <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
+      Update sort
+    </button>
+  </div>
+</form>

@@ -1,0 +1,186 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Custom file upload' %}
+
+{% block content %}
+ <style>
+    .custom-upload-button {
+      width: 200px; /* Fixed width for the button */
+      height: 40px; /* Fixed height for the button */
+      text-align: center; /* Center the button text */
+      vertical-align: top; /* Align the button to the top of its container */
+    }
+
+    .custom-upload-dropzone-text-container {
+      display: inline-block;
+      max-width: calc(100% - 220px); /* Ensure the text container fits next to the button */
+      vertical-align: top; /* Align with the top of the button */
+      padding-left: 10px; /* Add space between the button and the text */
+    }
+
+    .custom-upload-dropzone-text-container p {
+      margin: 0;
+      white-space: pre-wrap; /* Allow the text to wrap onto multiple lines */
+      text-align: left; /* Align text to the left */
+    }
+
+    .custom-upload-dropzone-text-container p.file-name {
+      margin-top: 5px; /* Add space between file names */
+      position: relative; /* Position relative for the "Cancel" link */
+    }
+
+    .custom-upload-dropzone-text-container p.file-name a {
+      margin-left: 10px; /* Space between file name and the "Cancel" link */
+      color: #005ea5; /* Link color */
+      text-decoration: none; /* Remove underline */
+    }
+
+    .custom-upload-dropzone-text-container p.file-name a:hover {
+      text-decoration: underline; /* Underline on hover */
+    }
+
+    .custom-upload-multi-file-upload {
+      margin-bottom: 40px;
+    }
+
+    .custom-upload-multi-file-upload__dropzone {
+      outline: 3px dashed #0b0c0c;
+      text-align: left;
+      padding: 60px 15px;
+      transition: outline-offset 0.1s ease-in-out, background-color 0.1s linear;
+    }
+
+    .custom-upload-multi-file-upload__dropzone label {
+      margin-bottom: 0;
+      display: inline-block;
+      width: auto;
+    }
+
+    .custom-upload-multi-file-upload__dropzone [type=file] {
+      position: absolute;
+      left: -9999em;
+    }
+
+    .custom-upload-multi-file-upload--dragover {
+      background: #b1b4b6;
+      outline-color: #6f777b;
+    }
+
+    .custom-upload-multi-file-upload__error {
+      color: #d4351c;
+      font-weight: bold;
+    }
+
+    .custom-upload-multi-file-upload__success {
+      color: #00703c;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Create a job listing - section 4 of 4</span>
+        Upload additional documents
+      </h1>
+      <p id="document-title" class="govuk-caption-l">You can only upload PDF or DOCX files under 10MB.</p>
+      <div class="govuk-!-padding-bottom-4"></div>
+      <div class="custom-upload-multi-file-upload__upload">
+        <div class="custom-upload-multi-file-upload__dropzone">
+          <label for="documents" class="govuk-button govuk-button--secondary custom-upload-button">Choose files</label>
+          <div id="dropzone-text-container" class="custom-upload-dropzone-text-container">
+            <p id="dropzone-text" class="govuk-body initial-text">or drag and drop files here</p>
+          </div>
+          <input class="govuk-file-upload custom-upload-multi-file-upload__input" id="documents" name="documents" type="file" multiple>
+          <div aria-live="polite" role="status" class="govuk-visually-hidden"></div>
+        </div>
+      </div>
+      <div class="govuk-!-padding-bottom-6"></div>
+    </div>
+  </div>
+
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+      Upload and continue
+    </button>
+    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Save and finish later
+    </button>
+  </div>
+  <a href="#" class="govuk-link">Cancel</a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropzone = document.querySelector('.custom-upload-multi-file-upload__dropzone');
+      const input = document.getElementById('documents');
+      const title = document.getElementById('document-title');
+      const dropzoneTextContainer = document.getElementById('dropzone-text-container');
+
+      const updateDropzoneText = () => {
+        dropzoneTextContainer.innerHTML = '<p id="dropzone-text" class="govuk-body initial-text">or drag and drop file here</p>';
+      };
+
+      const updateFileList = () => {
+        dropzoneTextContainer.innerHTML = '';
+        if (input.files.length > 0) {
+          title.textContent = 'Files Selected'; // Update title
+          Array.from(input.files).forEach(function(file, index) {
+            const fileNameElement = document.createElement('p');
+            fileNameElement.className = 'file-name govuk-body';
+            fileNameElement.innerHTML = `${file.name} <a href="#" data-name="${file.name}">Cancel</a>`;
+            dropzoneTextContainer.appendChild(fileNameElement);
+          });
+
+          // Add event listeners to "Cancel" links
+          dropzoneTextContainer.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+              event.preventDefault();
+              const fileName = this.getAttribute('data-name');
+              const dataTransfer = new DataTransfer();
+              Array.from(input.files).forEach((file) => {
+                if (file.name !== fileName) dataTransfer.items.add(file);
+              });
+              input.files = dataTransfer.files;
+              updateFileList(); // Update the file list display
+
+              // Check if no files remain and reset
+              if (input.files.length === 0) {
+                title.textContent = 'You can only upload PDF or DOCX files under 10MB'; // Reset title
+                updateDropzoneText();
+              }
+            });
+          });
+        } else {
+          title.textContent = 'You can only upload PDF or DOCX files under 10MB'; // Reset title if no files are selected
+          updateDropzoneText();
+        }
+      };
+
+      // Handle dragover event
+      dropzone.addEventListener('dragover', function(event) {
+        event.preventDefault();
+        dropzone.classList.add('custom-upload-multi-file-upload--dragover');
+      });
+
+      // Handle dragleave event
+      dropzone.addEventListener('dragleave', function(event) {
+        dropzone.classList.remove('custom-upload-multi-file-upload--dragover');
+      });
+
+      // Handle drop event
+      dropzone.addEventListener('drop', function(event) {
+        event.preventDefault();
+        dropzone.classList.remove('custom-upload-multi-file-upload--dragover');
+      });
+
+      // Handle file input change event
+      input.addEventListener('change', function() {
+        updateFileList(); // Update the file list display
+      });
+    });
+  </script>
+</body>
+
+{% endblock %}

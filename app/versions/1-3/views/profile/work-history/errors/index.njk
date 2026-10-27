@@ -1,0 +1,191 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Role' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukErrorSummary({
+titleText: "There is a problem",
+errorList: [
+  {
+    text: "Enter the name of the school or employer",
+    href: "#profile[providePhoneNumber]"
+  },
+  {
+    text: "Enter your role at this school or employer",
+    href: "#profile[phoneNumber]"
+  },
+  {
+    text: "Enter the start date for this role",
+    href: "#profile[phoneNumber]"
+  },
+  {
+    text: "Select Yes if you are still working in this role",
+    href: "#profile[phoneNumber]"
+  },
+  {
+    text: "Enter the end date for this role",
+    href: "#profile[phoneNumber]"
+  }
+]
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Work history
+      </span>
+      <h1 class="govuk-heading-xl">
+        {{title}}
+      </h1>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "profile[employer]",
+          name: "profile[employer]",
+          label: {
+            text: 'Name of school or employer',
+            classes: 'govuk-label--m'
+          },
+          errorMessage: {
+            text: "Enter the name of the school or employer"
+          },
+          hint: {
+            text: "If you worked for yourself, enter ‘self-employed’"
+          },
+          value: employer
+        }) }}
+
+        {{ govukInput({
+          id: "profile[role]",
+          name: "profile[role]",
+          label: {
+            text: 'Role',
+            classes: 'govuk-label--m'
+          },
+          errorMessage: {
+            text: "Enter your role at this school or employer"
+          },
+          hint: {
+            text: "If you had more than one role with this employer, enter your last role"
+          },
+          value: role
+        }) }}
+
+        {{ govukDateInput({
+          id: "profile[startDate]",
+          name: "profile[startDate]",
+          fieldset: {
+            legend: {
+              text: "Start date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 3 2011"
+          },
+          errorMessage: {
+            text: "Enter the start date for this role"
+          },
+          items: [{
+            name: "profile[startDate][month]",
+            label: "Month",
+            classes: "govuk-input--width-2",
+            errorMessage: {
+              text: "Enter the month you started this role"
+            },
+            value: startDate.month
+          }, {
+            name: "profile[startDate][year]",
+            label: "Year",
+            classes: "govuk-input--width-4",
+            errorMessage: {
+              text: "Enter the year you started this role"
+            },
+            value: startDate.year
+          }]
+        }) }}
+
+        {% set endDate %}
+          {{ govukDateInput({
+            id: "profile[endDate]",
+            name: "profile[endDate]",
+            fieldset: {
+              legend: {
+                text: "End date",
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            errorMessage: {
+              text: "Enter the end date for this role"
+            },
+            hint: {
+              text: "For example, 3 2011"
+            },
+            items: [{
+              name: "profile[endDate][month]",
+              label: "Month",
+              classes: "govuk-input--width-2",
+              errorMessage: {
+                text: "Enter the month you ended this role"
+              },
+              value: endDate.month if endDate
+            }, {
+              name: "profile[endDate][year]",
+              label: "Year",
+              classes: "govuk-input--width-4",
+              errorMessage: {
+                text: "Enter the year you ended this role"
+              },
+              value: endDate.year if endDate
+            }]
+          }) }}
+        {% endset %}
+        {{ govukRadios({
+          idPrefix: "profile[currentRole]",
+          name: "profile[currentRole]",
+          fieldset: {
+            legend: {
+              text: "Are you still working in this role?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          errorMessage: {
+            text: "Select Yes if you are still working in this role"
+          },
+          value: currentRole,
+          items: [{
+            value: currentRoleOptions[0].value,
+            text: currentRoleOptions[0].text
+          }, {
+            value: currentRoleOptions[1].value,
+            text: currentRoleOptions[1].text,
+            conditional: {
+              html: endDate
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+.app-job-list {
+
+  margin-bottom: govuk-spacing(7);
+
+  .app-job-list__item {
+    border-bottom: 1px solid $govuk-border-colour;
+    padding-top: govuk-spacing(3);
+    padding-bottom: govuk-spacing(4);
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    h2, h3 {
+      margin-bottom: govuk-spacing(1);
+    }
+
+    p {
+      margin-bottom: govuk-spacing(1);
+    }
+
+  }
+
+  .govuk-summary-list {
+    @include govuk-font(16);
+    margin-bottom: 0;
+  }
+
+  .govuk-summary-list__key, .govuk-summary-list__value {
+    padding-bottom: govuk-spacing(0);
+  }
+}

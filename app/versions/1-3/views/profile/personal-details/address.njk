@@ -1,0 +1,81 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% set title = 'Do you want to provide an address?' %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukErrorSummary({
+    titleText: "There’s a problem",
+    errorList: errorList
+  }) if errorList.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Personal details
+      </span>
+      {% set h1 %}
+        {{title}}
+      {% endset %}
+
+      <form method="post" id="address-form" novalidate>
+
+        <div class="govuk-form-group {% if errorList.length %} govuk-form-group--error{% endif %}">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 tabindex="0" class="govuk-fieldset__heading">
+                {{title}}
+              </h1>
+            </legend>
+
+            {{ govukInsetText({
+              text: "Your address will not be visible on your profile. Schools can only see it if you apply for a role."
+            }) }}
+
+            {% if errorList.length %} 
+            
+              <p id="passport-issued-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ errorList[0].text }}
+              </p>
+            
+            {% endif %}
+
+            {{ govukRadios({
+              idPrefix: "profile-provideAddress",
+              name: "profile-provideAddress",
+              items: [{
+                value: options[0].value,
+                text: options[0].text,
+                checked: options[0].checked
+              }, {
+                value: options[1].value,
+                text: options[1].text,
+                checked: options[1].checked
+              }]
+            }) }}
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button" id="formButton" tabindex="-1">
+          Save and continue
+        </button>
+
+        <p><a href="/profile">Cancel</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

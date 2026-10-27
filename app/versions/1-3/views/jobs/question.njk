@@ -1,0 +1,127 @@
+
+{% extends "layout_support.njk" %}
+
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'home' %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Find a job in a school</h1>
+        <form method="post">
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="keywords">
+                    Keywords
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="keywords" name="keywords" type="text">
+            </div>
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="location">
+                    City, county or postcode
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="location" name="location" type="text">
+            </div>
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <label class="govuk-label govuk-label--s govuk-!-margin-bottom-3" for="keywords">
+                    Type of job
+                    </label>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="typeofjob" name="typeofjob" type="radio" value="teaching">
+                            <label class="govuk-label govuk-radios__label" for="typeofjob">
+                                Teaching or leadership jobs
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="typeofjob-2" name="typeofjob" type="radio" value="support">
+                            <label class="govuk-label govuk-radios__label" for="typeofjob-2">
+                                Support staff jobs
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="govuk-form-group" style="display:none;">
+                <label class="govuk-label govuk-label--s" for="radius">
+                    Search radius
+                </label>
+                <select class="govuk-select" id="radius" name="radius">
+                    <option value="20">20 miles</option>
+                </select>
+            </div>
+            
+            <button class="govuk-button" data-module="govuk-button">
+                Search
+            </button>
+        </form>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <h2 class="govuk-heading-m">Welcome to Teaching Vacancies</h2>
+        <p class="govuk-body">Search for teaching, school leadership and education support jobs in England.</p>
+        <p class="govuk-body">You can also apply for jobs, set up job alerts and <a class="govuk-link govuk-link--no-visited-state" href="/jobseeker-guides/how-to-write-teacher-personal-statement">read advice for jobseekers</a>.</p>
+        
+        <div class="govuk-grid-row govuk-!-margin-top-6">
+            <div class="govuk-grid-column-full">
+                <h2 class="govuk-heading-m">For jobseekers</h2>
+                <p class="govuk-body">Save and apply for jobs in schools.</p>
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="#">sign in</a> or <a class="govuk-link govuk-link--no-visited-state" href="/pages/dsi-account-request">create an account</a>.</p>
+                <h2 class="govuk-heading-m">For hiring staff</h2>
+                <p class="govuk-body">Post jobs and manage applications.</p>
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="#">sign in</a> or <a class="govuk-link govuk-link--no-visited-state" href="/pages/dsi-account-request">create an account</a>.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+  {# {{ govukDetails({
+    summaryText: "Jobs by school, role, location and subject",
+    text: "Text",
+    classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
+  }) }} #}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

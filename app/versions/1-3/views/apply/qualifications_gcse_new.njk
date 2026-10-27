@@ -1,0 +1,85 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Add GCSEs' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quaters">
+   
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-l">Education and qualifications</span>
+            {{title}}
+        </h1>
+        <p>Add all your GCSEs.<p/>
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+    School, college, or other organisation
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+  <div class="govuk-form-group">
+  
+    <label class="govuk-label govuk-label--s" for="width-10">
+      Year awarded
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text">
+  </div>
+
+  
+
+
+<div style="display: flex; gap: 1rem; align-items: flex-start;">
+  <div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-10">
+      Subject 1
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text">
+  </div>
+  
+  <div class="govuk-form-group">
+
+    <label class="govuk-label" for="width-10">
+      Grade
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="width-10" name="width5" type="text">
+  </div>
+  
+
+  <!-- New Awarding Body Field -->
+  <div class="govuk-form-group">
+
+    <label class="govuk-label" for="width-10-awarding">
+      Awarding body (optional)
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="width-10-awarding" name="width10-awarding" type="text">
+  </div>
+</div>
+
+  
+  
+  
+
+</div>
+<div class="govuk-button-group">
+  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Add another subject
+  </button>
+  <a class="govuk-link" href="#">Or add a different school, college, or organisation</a>
+</div>
+
+  <div class="govuk-grid-column-three-quaters">
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-button-group">
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+    Save qualifications
+  </button>
+  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+   Cancel
+  </button>
+</div>
+
+
+
+</div>
+{% endblock %}

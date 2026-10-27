@@ -5,6 +5,7 @@
 {% set activeNav = 'notifications' %}
 {% set forceSignedIn = true %}
 {% set accountAreaMain = true %}
+{% set showNotificationsToggle = true %}
 
 {% block content %}
   {{ jobseekerAccountBreadcrumbs("Notifications") }}
@@ -15,6 +16,13 @@
   </div>
   <p class="govuk-body">Application updates and messages from hiring teams — not vacancy job alerts.</p>
 
+  {% if notificationsInboxEmpty %}
+    <div class="app-notifications-empty">
+      <h2 class="govuk-heading-m">You have no notifications</h2>
+      <p class="govuk-body">When schools send updates about your applications, they will appear here.</p>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-link" href="/home">Find teaching jobs</a> and apply to start receiving updates.</p>
+    </div>
+  {% else %}
   <div class="app-notifications-inbox-layout">
     <div class="app-notifications-inbox-layout__main">
       <div class="app-notifications-inbox">
@@ -117,4 +125,5 @@
       {% endif %}
     </div>
   </div>
+  {% endif %}
 {% endblock %}

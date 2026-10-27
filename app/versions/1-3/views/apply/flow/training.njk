@@ -1,0 +1,50 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Training and CPD" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Training and continuing professional development (CPD)</h2>
+
+      {% for item in application.training %}
+        <div class="govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">{{ item.name }}</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="/jobs/{{ job.id }}/apply/training/{{ item.id }}/edit">Change<span class="govuk-visually-hidden"> {{ item.name }}</span></a>
+              </li>
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="/jobs/{{ job.id }}/apply/training/{{ item.id }}/delete">Delete<span class="govuk-visually-hidden"> {{ item.name }}</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-0",
+              rows: [
+                { key: { text: "Name of training or course" }, value: { text: item.name } },
+                { key: { text: "Training provider" }, value: { text: item.provider } },
+                { key: { text: "Grade (optional)" }, value: { text: item.grade } },
+                { key: { text: "Date completed" }, value: { text: item.date } },
+                { key: { text: "Course length (optional)" }, value: { text: item.length } }
+              ]
+            }) }}
+          </div>
+        </div>
+      {% else %}
+        <p class="govuk-body">You have not added any training or CPD.</p>
+      {% endfor %}
+
+      <form method="post">
+        {{ govukButton({
+          text: "Add another training or CPD activity" if application.training | length else "Add training or CPD",
+          href: "/jobs/" + job.id + "/apply/training/new"
+        }) }}
+        {{ completedSection("training") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

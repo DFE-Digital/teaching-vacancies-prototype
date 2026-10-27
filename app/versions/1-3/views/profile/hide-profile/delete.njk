@@ -1,0 +1,58 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% if 'School' in hiddenPlace.hiddenPlace %}
+  {% set typeofPlace = 'school' %}
+  {% set typeofPlaceC = 'School' %}
+{% else %}
+  {% set typeofPlace = 'organisation' %}
+  {% set typeofPlaceC = 'Organisation' %}
+{% endif %}
+
+{% if organisation.website != 'Not entered' %}
+  {% set website %}
+    <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
+  {% endset %}
+{% endif %}
+
+{% set place = hiddenPlace.hiddenPlace  %}
+
+{% set justSchoolName = place.slice(',')  %}
+
+{% set justSchoolName = place.split('_,')[0]  %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Delete {{typeofPlace}}
+      </span>
+
+      <h1 class="govuk-heading-xl">
+        Confirm that you no longer want to hide your profile from {{hiddenPlace.hiddenPlace}}
+      </h1>
+
+      <form method="post" novalidate>
+
+        {{ govukButton({
+          text: "Delete " + typeofPlace
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

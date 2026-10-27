@@ -1,0 +1,4 @@
+{# Deprecated: use {{ alert.job | jobListingCompactDetails }} with job-listing filters. #}
+{% macro jobAlertDetailsLine(alert) %}
+  {{ alert.job | jobListingCompactDetails }}
+{% endmacro %}

@@ -61,6 +61,17 @@ $app-notifications-inbox-unread: govuk-colour("black");
   padding: govuk-spacing(3);
 }
 
+.app-notifications-empty {
+  margin-bottom: govuk-spacing(6);
+  padding: govuk-spacing(5) govuk-spacing(4) govuk-spacing(4);
+  border: 3px dashed $govuk-border-colour;
+  background: $app-notifications-inbox-surface;
+
+  .govuk-heading-m {
+    margin-bottom: govuk-spacing(3);
+  }
+}
+
 .app-notifications-inbox__list {
   margin: 0;
   padding: 0;

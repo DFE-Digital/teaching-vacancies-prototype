@@ -357,6 +357,18 @@ module.exports = router => {
   router.get('/jobseekers/notifications', (req, res) => {
     ensureSignedInJobseeker(req, users)
 
+    const {
+      applyNotificationPrototypeState,
+      isNotificationsInboxEmpty
+    } = require('../lib/notification-inbox-prototype')
+    applyNotificationPrototypeState(req)
+
+    if (isNotificationsInboxEmpty(req)) {
+      return res.render('jobseekers/notifications', {
+        notificationsInboxEmpty: true
+      })
+    }
+
     const notificationDateValue = (dateLabel) => {
       const parsed = Date.parse(dateLabel)
       return Number.isNaN(parsed) ? 0 : parsed

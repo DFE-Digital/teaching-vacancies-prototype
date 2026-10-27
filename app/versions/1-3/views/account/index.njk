@@ -1,0 +1,67 @@
+
+{% extends "layout.njk" %}
+{% from "includes/jobseeker-account-breadcrumbs.njk" import jobseekerAccountBreadcrumbs %}
+
+{% set accountSection = 'account' %}
+{% set forceSignedIn = true %}
+{% set title = 'Help with your account' %}
+{% set accountAreaMain = true %}
+{% set jobseekerAccountSubNavSection = 'get-help' %}
+
+{% block content %}
+  {{ jobseekerAccountBreadcrumbs("Help with your account", "get-help") }}
+  {% include "includes/account-page-header.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <nav class="govuk-!-margin-bottom-6" aria-label="On this page">
+        <h2 class="govuk-heading-m govuk-!-margin-top-0">On this page</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="#change-sign-in-details">Change your sign in details</a></li>
+          <li><a class="govuk-link" href="#account-details-transfer">Can't find your account details?</a></li>
+          <li><a class="govuk-link" href="#close-account">Close account</a></li>
+          <li><a class="govuk-link" href="#opt-out-emails">Opt out of emails</a></li>
+        </ul>
+      </nav>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-0" id="change-sign-in-details">Change your sign in details</h3>
+
+      <p class="govuk-body">You can use your GOV.UK One Login to sign in to Teaching Vacancies.</p>
+
+      <p class="govuk-body">You can change these details in your GOV.UK One Login:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>email address</li>
+        <li>password</li>
+        <li>how you get your security codes to sign in</li>
+      </ul>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://home.account.gov.uk/settings">Change your sign in details in your GOV.UK One Login</a>.</p>
+
+      <h3 class="govuk-heading-m" id="account-details-transfer">Can't find your account details?</h3>
+
+      <p class="govuk-body">If you had a Teaching Vacancies account using a different email address to your GOV.UK One Login account, your account details will not automatically be saved.</p>
+
+      <p class="govuk-body">You can request to <a class="govuk-link" href="/onelogin/journey/import">transfer your existing account information</a>.</p>
+
+      <h3 class="govuk-heading-m" id="close-account">Close account</h3>
+
+      <p class="govuk-body">If you do not want to use your Teaching Vacancies account any more you can close your account.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="/account/delete-account">Close account</a></p>
+
+      <h3 class="govuk-heading-m" id="opt-out-emails">Opt out of emails</h3>
+
+      <p class="govuk-body">As well as emails about your account and applications, we may send you emails about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>website updates</li>
+        <li>tips to find your next role</li>
+      </ul>
+
+      <p class="govuk-body">You can choose to only receive emails about your account and applications, and opt out of any other email communication.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="/account/marketing">Opt out of additional email communication</a></p>
+    </div>
+  </div>
+{% endblock %}

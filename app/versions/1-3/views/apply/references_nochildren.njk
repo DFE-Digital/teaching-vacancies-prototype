@@ -1,0 +1,86 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Application' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">Accounting teacher at Weydon Multi Academy Trust</span>
+          {{title}}
+      </h1>
+
+
+
+ <h2 class="govuk-heading-l">
+            References </h2>
+
+
+            <p class="govuk-body">
+              You must include details for a referee from your current or most recent employer.
+              If you did not work with children in this role, you must include at least one
+              referee from the last job where you worked with children.
+              Schools or colleges must contact referees in line with
+              <a class="govuk-link"
+                 href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">
+                keeping children safe in education (KCSIE) statutory guidance
+              </a>.
+            </p>
+      </form>
+
+<br>
+
+      {{ govukRadios({
+        name: 'teachingRole',
+        fieldset: { legend: { text: 'What type of teaching role are you applying for?', classes: 'govuk-fieldset__legend--m' } },
+        items: [
+          { value: 'academic', text: 'Academic', hint: { text: 'You will need to provide two references.' } },
+          { value: 'vocational', text: 'Vocational', hint: { text: 'You will need to provide references for the last 5 years.' } }
+        ]
+      }) }}
+
+      <div class="empty-section-component"><h3 class="govuk-heading-m">No referees added</h3>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" href="/toadd" data-govuk-button-init="">Add a referee</a></p></div>
+
+      {{ govukRadios({
+        name: 'contactBeforeReferees',
+        fieldset: { legend: { text: 'Do you want the school or college to contact you before they contact your referees?', classes: 'govuk-fieldset__legend--m' } },
+        hint: { text: 'We’ll ask the school or college to contact you before they contact your referees, but we cannot guarantee they will do this.' },
+        items: [
+          { value: 'yes', text: 'Yes', conditional: { html: '<p class="govuk-hint">We’ll ask the school or college to contact you before they contact your referees.</p>' } },
+          { value: 'no', text: 'No' }
+        ]
+      }) }}
+
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Have you completed this section?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="haveYouCompletedThisSection" name="haveYouCompletedThisSection" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="haveYouCompletedThisSection">
+          Yes, I’ve completed this section
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="haveYouCompletedThisSection-2" name="haveYouCompletedThisSection" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="haveYouCompletedThisSection-2">
+          No, I’ll come back to it later
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+
+    </div>
+  </div>
+
+{% endblock %}

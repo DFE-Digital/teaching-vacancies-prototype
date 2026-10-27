@@ -1,0 +1,37 @@
+{% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
+{% from "includes/version-path.njk" import versionPath %}
+{# Signed-in tier: Applications, Job alerts, Notifications, Personal details, Get help. Your account lives in the GOV.UK header only (same as v1.0). #}
+{% set personalDetailsActive = accountSection == 'personal-details' %}
+{% set accountSettingsActive = accountSection == 'account' %}
+
+{{ appPrimaryNavigation({
+  navigationLabel: 'Primary navigation',
+  items: [
+    {
+      text: 'Applications',
+      href: versionPath('/jobseekers/job_applications'),
+      active: activeNav == 'applications'
+    },
+    {
+      text: 'Job alerts',
+      href: versionPath('/jobseekers/subscriptions'),
+      active: activeNav == 'jobalerts'
+    },
+    {
+      text: 'Notifications',
+      href: versionPath('/jobseekers/notifications'),
+      active: activeNav == 'notifications'
+    },
+    {
+      text: 'Personal details',
+      href: versionPath('/account/personal-details'),
+      active: personalDetailsActive
+    },
+    {
+      text: 'Get help',
+      href: versionPath('/account/your-account'),
+      active: accountSettingsActive,
+      classes: 'app-primary-navigation__item--align-right'
+    }
+  ]
+}) }}

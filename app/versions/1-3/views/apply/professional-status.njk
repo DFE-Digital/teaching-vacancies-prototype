@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Do you have a UK teaching qualification?' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({ href: '/download-app-job-example-loggedin-filledin', text: 'Back' }) }}
+      <span class="govuk-caption-l">Accounting Teacher at Weydon Multi Academy Trust</span>
+
+<h1 class="govuk-heading-xl">Application</h1> <br>
+      <h2 class="govuk-heading-l">Professional status</h2>
+
+      <form method="post" data-module="qualification-form">
+        {{ govukRadios({
+          name: 'teachingQualification',
+          fieldset: { legend: { text: title, classes: 'govuk-fieldset__legend--m' } },
+          items: [
+            { value: 'yes', text: 'Yes', conditional: { html: govukInput({ label: { text: 'What is the name of your teaching qualification?' }, id: 'teachingQualificationName', name: 'teachingQualificationName' }) } },
+            { value: 'no', text: 'No' },
+            { value: 'working-towards', text: 'I am working towards a teaching qualification' }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: 'undertakeTeachingQualification',
+          fieldset: { legend: { text: 'Are you willing to undertake a teaching qualification as part of your role?', classes: 'govuk-fieldset__legend--m' } },
+          items: [
+            { value: 'yes', text: 'Yes' },
+            { value: 'no', text: 'No' }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: 'undertakeMentoring',
+          fieldset: { legend: { text: 'Are you willing to undertake mentoring as part of your role?', classes: 'govuk-fieldset__legend--m' } },
+          items: [
+            { value: 'yes', text: 'Yes' },
+            { value: 'no', text: 'No' }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: 'professionalStatusCompleted',
+          fieldset: { legend: { text: 'Have you completed this section?', classes: 'govuk-fieldset__legend--m' } },
+          items: [
+            { value: 'yes', text: 'Yes, I’ve completed this section' },
+            { value: 'no', text: 'No, I’ll come back to it later' }
+          ]
+        }) }}
+
+        {{ govukButton({ text: 'Continue' }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading with context %}
+{% set title = "Add a referee" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading("/jobs/" + job.id + "/apply/references") }}
+      <h2 class="govuk-heading-l">Add a referee</h2>
+      <form method="post" action="/jobs/{{ job.id }}/apply/references/{{ formAction }}">
+        {{ govukInput({ label: { text: "Name" }, name: "name", value: item.name }) }}
+        {{ govukInput({ label: { text: "Job title" }, name: "jobTitle", value: item.jobTitle }) }}
+        {{ govukInput({ label: { text: "Organisation" }, name: "organisation", value: item.organisation }) }}
+        {{ govukInput({ label: { text: "Relationship to you" }, hint: { text: "For example, line manager or headteacher." }, name: "relationship", value: item.relationship }) }}
+        {{ govukInput({ label: { text: "Email address" }, type: "email", name: "email", value: item.email }) }}
+        {{ govukInput({ label: { text: "Phone number" }, classes: "govuk-input--width-20", name: "phone", value: item.phone }) }}
+        {{ govukRadios({
+          name: "current",
+          fieldset: {
+            legend: {
+              text: "Is this your current or most recent employer?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "Yes", text: "Yes", checked: item.current == "Yes" },
+            { value: "No", text: "No", checked: item.current == "No" }
+          ]
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({ text: "Save and continue" }) }}
+          <a class="govuk-link" href="/jobs/{{ job.id }}/apply/references">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

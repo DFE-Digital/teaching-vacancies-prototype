@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+{% from "includes/jobseeker-account-hub-macros.njk" import accountHubFeaturedList %}
+
+{% set title = 'Your account' %}
+{% set activeNav = 'account' %}
+{% set forceSignedIn = true %}
+{% set accountAreaMain = true %}
+
+{% block content %}
+  <div class="app-page-header app-account-page-header govuk-!-margin-bottom-4">
+    <div class="app-page-header__title">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0" id="account-heading">Your account</h1>
+    </div>
+  </div>
+  <p class="govuk-body" id="account-intro">Manage applications, job alerts, notifications, profile and account help in one place.</p>
+
+  <div class="app-account-hub">
+    <section class="app-account-featured" aria-labelledby="account-heading" aria-describedby="account-intro">
+      <ul class="app-account-featured-list">
+        {{ accountHubFeaturedList() }}
+      </ul>
+    </section>
+  </div>
+{% endblock %}

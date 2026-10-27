@@ -1,0 +1,137 @@
+{% set filterOptionsHtml %}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-phase",
+    name: "filters[phase]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Education phase",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Nursery",
+      text: "Nursery"
+    }, {
+      value: "Primary school",
+      text: "Primary school"
+    }, {
+      value: "Secondary school",
+      text: "Secondary school"
+    }, {
+      value: "Sixth form or FE college",
+      text: "Sixth form or FE college"
+    }, {
+      value: "All through school",
+      text: "All through school"
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-key-stage",
+    name: "filters[keyStages]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Key stage",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Early years",
+      text: "Early years"
+    }, {
+      value: "Key stage 1",
+      text: "Key stage 1"
+    }, {
+      value: "Key stage 2",
+      text: "Key stage 2"
+    }, {
+      value: "Key stage 3",
+      text: "Key stage 3"
+    }, {
+      value: "Key stage 4",
+      text: "Key stage 4"
+    }, {
+      value: "Key stage 5",
+      text: "Key stage 5"
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-organisation-type",
+    name: "filters[organisationType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Organisation type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Academy",
+      text: "Academy",
+      hint: {
+        text: "includes free schools"
+      }
+    }, {
+      value: "Local authority maintained schools",
+      text: "Local authority maintained schools"
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-school-type",
+    name: "filters[schoolType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "School type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Faith school",
+      text: "Faith school"
+    }, {
+      value: "Special school",
+      text: "Special school"
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters-jobs",
+    name: "filters[jobs]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Job availability",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: "Has jobs",
+      text: "Only show school with jobs available"
+    }]
+  }) }}
+
+{% endset %}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action"></div>
+  </div>
+  <div class="app-filter__content">
+    <div class="app-filter__options">
+      <form method="get" action="/schools" novalidate>
+        <button class="govuk-button" data-module="govuk-button">Apply filters</button>
+        {{ filterOptionsHtml | safe }}
+        <button class="govuk-button" data-module="govuk-button">Apply filters</button>
+      </form>
+    </div>
+  </div>
+</div>

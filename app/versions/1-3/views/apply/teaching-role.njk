@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+
+{% set title = 'What type of teaching role are you applying for?' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({ href: '/apply/maths-and-english', text: 'Back' }) }}
+      <span class="govuk-caption-l">Application</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <form method="post">
+        {{ govukRadios({
+          name: 'teachingRole',
+          items: [
+            { value: 'academic', text: 'Academic', hint: { text: 'You will need to provide two references.' } },
+            { value: 'vocational', text: 'Vocational', hint: { text: 'You will need to provide references covering the last 5 years.' } }
+          ]
+        }) }}
+        {{ govukButton({ text: 'Continue' }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

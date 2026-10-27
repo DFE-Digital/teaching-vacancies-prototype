@@ -1,0 +1,167 @@
+
+{% extends "layout.njk" %}
+
+{% block pageTitle %}
+ 240 jobs found sorted by newest job - Find a job in teaching - Teaching Vacancies - GOV.UK
+{% endblock %}
+
+{% set primaryNavId = 'jobs' %}
+{% set activeNav = 'jobs' %}
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    240 Teaching and school jobs 
+  </h1>
+
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% if data['filtertype'] == '1' %}
+
+        {% include "includes/jobs-filter-panel-collapsible-nofe.njk" %}
+
+      {% elseif data['filtertype'] == '2' %}
+
+        {% include "includes/jobs-filter-panel.njk" %}
+
+      {% else %}
+
+        {% include "includes/jobs-filter-panel-collapsible-nofe.njk" %}
+
+      {% endif %}
+
+    </div>
+
+
+    <div class="app-filter-layout__content">
+      {% include "includes/jobs-search-form.njk" %}
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div>
+        <div class="app-jobs">
+
+          {% if data['sort'] %}
+            {% set currentSort = data['sort'] %}
+          {% elseif data['location'] %}
+            {% set currentSort = 'distance' %}
+          {% else %}
+            {% set currentSort = 'newest' %}
+          {% endif %}
+
+          <div class="govuk-grid-column-one-full">
+              <div style="float:left;">
+                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">
+                  {% if currentSort == 'closing' %}
+                    Sorted by closing date
+                  {% elseif currentSort == 'distance' %}
+                    Sorted by distance
+                  {% else %}
+                    Sorted by newest job
+                  {% endif %}
+                </h2><br/>
+              </div>
+            <div style="display:inline-block; float:right">
+              <form id="sortform" action="/jobs/search/postcode">
+                <div class="govuk-form-group govuk-!-margin-bottom-4" style="float:right">
+                  <label class="govuk-label" for="sort" style="display:inline-block;">
+                    Sort by
+                  </label>
+                  <select class="govuk-select" id="sort" name="sort">
+                    <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>
+                    <option value="distance" {% if currentSort == 'distance' %}selected{% endif %}>Distance</option>
+                    <option value="closing" {% if currentSort == 'closing' %}selected{% endif %}>Closing date</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+          <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-full">
+              <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-1">
+            </div>
+            
+          </div>
+
+        {% if currentSort == 'closing' %}
+          {% set job_list = jobs|sort(attribute='closingDate', reverse=false) %}
+        {% elseif currentSort == 'distance' and data['location'] %}
+          {% set job_list = jobs|sort(attribute='distance', reverse=false) %}
+        {% else %}
+          {% set job_list = jobs|sort(attribute='publishDate', reverse=true) %}
+        {% endif %}
+
+        {% for job in job_list %}
+
+          {% if loop.index0 < 10 %} 
+
+            {% include "includes/job-listing-item.njk" %}
+
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+    </div>
+  </div>
+
+  {# {{ govukDetails({
+    summaryText: "Jobs by school, role, location and subject",
+    text: "Text",
+    classes: 'govuk-!-margin-top-8 govuk-!-margin-bottom-0'
+  }) }} #}
+
+{% endblock %} 
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

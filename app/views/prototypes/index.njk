@@ -13,16 +13,21 @@
     <div class="govuk-width-container">
       <span class="moj-badge homepage-header__badge">Jobseeker prototype</span>
       <h1 class="homepage-header__title govuk-!-margin-bottom-0">Teaching Vacancies Service</h1>
-      <p class="homepage-header__link">
-        <a class="govuk-link" href="https://manage-teaching-jobs-prototype.herokuapp.com/" rel="noopener noreferrer" target="_blank">
-          Hiring staff prototype
-          <svg class="homepage-header__external" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3z"></path>
-            <path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"></path>
-          </svg>
-          <span class="govuk-visually-hidden">(opens in new tab)</span>
-        </a>
-      </p>
+      <div class="homepage-header__links">
+        <p class="homepage-header__link">
+          <a class="govuk-link" href="https://manage-teaching-jobs-prototype.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+            Hiring staff prototype
+            <svg class="homepage-header__external" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3z"></path>
+              <path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"></path>
+            </svg>
+            <span class="govuk-visually-hidden">(opens in new tab)</span>
+          </a>
+        </p>
+        <p class="homepage-header__link homepage-header__link--end">
+          <a class="govuk-link" href="/1-2/documentation">Documentation</a>
+        </p>
+      </div>
     </div>
   </header>
 {% endblock %}
@@ -100,10 +105,7 @@
       <div class="govuk-grid-column-full">
         <section class="app-prototype-index" aria-labelledby="version-1-2">
           <div class="app-prototype-index__heading-row">
-            <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-2">
-              Version 1.2
-              <span class="moj-tag moj-tag--grey govuk-!-margin-left-2">Kit {{ prototypeKitVersion }} · Frontend {{ govukFrontendVersion }}</span>
-            </h2>
+            <h2 class="govuk-heading-m app-prototype-index__heading" id="version-1-2">Version 1.2</h2>
             <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-27">27 October 2026</time></p>
           </div>
           <ul class="app-prototype-list">

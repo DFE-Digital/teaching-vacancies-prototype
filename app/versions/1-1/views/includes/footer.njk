@@ -181,6 +181,15 @@
 				</p>
 			{% endif %}
 
+			{% if showNotificationsToggle %}
+				{% set notificationsPrototypeState = data.notificationState or 'empty' %}
+				<p class="app-state-toggle">
+					<a class="govuk-footer__link" href="/jobseekers/notifications?notificationState=empty"{% if notificationsPrototypeState != 'populated' %} aria-current="true"{% endif %}>Empty state</a>
+					<span aria-hidden="true"> | </span>
+					<a class="govuk-footer__link" href="/jobseekers/notifications?notificationState=populated"{% if notificationsPrototypeState == 'populated' %} aria-current="true"{% endif %}>Populated state</a>
+				</p>
+			{% endif %}
+
 			<div class="govuk-footer__meta">
 				<div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
 					<h2 class="govuk-visually-hidden">Support links</h2>

@@ -1,0 +1,133 @@
+
+{% extends "layout.njk" %}
+
+{% set title = "One Login designs" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            {{title}}
+        </h1>
+
+        <p>All designs so far for One Login work. These are likely to change over time, but this index page will keep track of all the designs and link to them.</p>
+
+
+
+        <h2 class="govuk-heading-m">
+            Phase 1: before launch
+        </h2>
+
+        <p>Team discussions suggest we may not be considering any notifications upfront, due to what we can provide may be too vague. For example, jobseekers cannot go and create a One Login account beforehand or may not want to, therefore, does it make sense to just be clear once it has happened rather than confuse people before it has?</p>
+
+        <p>Old designs have been added to <a href="#not-moving-forward">concepts we're not moving forward with</a>.</p>
+
+        <h2 class="govuk-heading-m">
+            Phase 2: Launched
+        </h2>
+
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/create">Create account page</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/login_first_time">How you sign in has changed message</a>
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/emails/launch">Notify email telling people about change</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/profile">Banner on profile</a>
+            </li>
+        </ul>
+       
+
+        <h2 class="govuk-heading-m">
+            Phase 3: One Login journey
+        </h2>
+
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/start">End of GOV.UK One Loginjourney > take people back to service</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/match">Account DOES match page (if using same email as previous TV account)</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/nomatch">Email DOES NOT match an old account</a> 
+            </li>
+        </ul>
+
+        <h2 class="govuk-heading-m">
+            Phase 4: Account merging & post launch stuff
+        </h2>
+
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/account">Your account (start of import account journey)</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/import">Import account: what was your previous email?</a> 
+            </li>
+         
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/found">Import account: account found enter code</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/emails/code">Import account: authentication code email</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/code_match">Import account: code match page</a> 
+            </li>
+           
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/import_complete">Import account: import complete</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/journey/problem">Import account: There has been a problem importing your account</a> 
+            </li>
+        </ul>
+
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <h2 class="govuk-heading-m" id="not-moving-forward">
+            Concepts that we're not moving forward with
+        </h2>
+
+        <p>We've decided to go for a light touch approach and therefore are not planning to inform people to much about the switch unless they are active users. Decided to keep the concepts here for now for reference.</p>
+
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/account">(option 1) Add a notification banner once logged in</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in">(option 2) Add a notification banner to sign in page</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/emails/one">Initial Notify email</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/emails/two">Urgency Notify email</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/advice_before">Advice page before switch</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/notifications">Notifications for people logged in</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/advice">Advice page after switch</a> 
+            </li>
+            <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="/onelogin/login_second_time">Signing in message</a>
+            </li>
+        </ul>
+
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

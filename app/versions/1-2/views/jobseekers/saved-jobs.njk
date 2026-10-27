@@ -2,7 +2,7 @@
 {% from "includes/saved-job-summary-card.njk" import savedJobSummaryCard %}
 {% from "includes/jobseeker-account-breadcrumbs.njk" import jobseekerAccountBreadcrumbs %}
 
-{% set title = 'Your saved jobs' %}
+{% set title = 'Saved jobs' %}
 {% set showSavedJobsToggle = true %}
 {% set activeNav = 'applications' %}
 {% set forceSignedIn = true %}
@@ -76,10 +76,10 @@
 {% block content %}
   {% set savedJobCount = savedJobList.length if savedJobList else 0 %}
 
-  {{ jobseekerAccountBreadcrumbs("Your saved jobs") }}
+  {{ jobseekerAccountBreadcrumbs("Saved jobs") }}
   {% include "includes/saved-jobs-page-header.njk" %}
 
-  <h2 class="govuk-heading-m app-saved-jobs-heading govuk-!-margin-top-0">Your saved jobs ({{ savedJobCount }})</h2>
+  <h2 class="govuk-heading-m app-saved-jobs-heading govuk-!-margin-top-0">Saved jobs ({{ savedJobCount }})</h2>
 
   {% if savedJobList and savedJobList.length %}
     {% set savedJobStateParam = data.savedJobState or 'saved' %}

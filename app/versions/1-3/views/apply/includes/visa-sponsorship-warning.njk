@@ -1,0 +1,30 @@
+{{ govukWarningText({
+  text: "This job does not offer visa sponsorship",
+  iconFallbackText: "Warning"
+}) }}
+
+<p class="govuk-body">This job may not be for you if you need a Skilled Worker visa. You can still apply. The school or college will choose who to interview.</p>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="https://getintoteaching.education.gov.uk/non-uk-teachers/teach-in-england-if-you-trained-overseas" rel="noreferrer noopener" target="_blank">Teaching in England if you trained outside the UK (opens in a new tab)</a>
+</p>
+
+{% if visaContinueHref %}
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue application",
+      href: visaContinueHref
+    }) }}
+    {{ govukButton({
+      text: "Search for other jobs",
+      classes: "govuk-button--secondary",
+      href: "/jobs"
+    }) }}
+  </div>
+{% else %}
+  {{ govukButton({
+    text: "Search for other jobs",
+    classes: "govuk-button--secondary",
+    href: "/jobs"
+  }) }}
+{% endif %}

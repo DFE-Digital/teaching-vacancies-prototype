@@ -1,0 +1,21 @@
+{# GOV.UK sentence case — navigation labels for the signed-in account area (v1.3). #}
+{% macro accountNavLabel(section) -%}
+{%- if section == 'applications' -%}Applications
+{%- elif section == 'saved-jobs' -%}Saved jobs
+{%- elif section == 'job-alerts' -%}Job alerts
+{%- elif section == 'notifications' -%}Notifications
+{%- elif section == 'profile' or section == 'personal-details' -%}Profile
+{%- elif section == 'get-help' -%}Help with your account
+{%- endif -%}
+{%- endmacro %}
+
+{% macro accountNavSectionForPageLabel(pageLabel) -%}
+{# Keep in sync with accountNavLabel() strings and jobseekerAccountBreadcrumbs() calls. #}
+{%- if pageLabel == 'Applications' -%}applications
+{%- elif pageLabel == 'Saved jobs' -%}saved-jobs
+{%- elif pageLabel == 'Job alerts' -%}job-alerts
+{%- elif pageLabel == 'Notifications' -%}notifications
+{%- elif pageLabel == 'Profile' -%}profile
+{%- elif pageLabel == 'Help with your account' -%}get-help
+{%- endif -%}
+{%- endmacro %}

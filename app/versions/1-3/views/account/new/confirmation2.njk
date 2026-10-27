@@ -1,0 +1,52 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Account created' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+      <h1 class="govuk-heading-xl">
+          {{title}}
+      </h1>
+    
+        <p class="govuk-body">
+            You can now <a href="/jobs">search and apply for jobs</a> or <a href="#">create a profile</a>.
+        </p>
+
+        <p>Creating a profile will let you:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+            save your qualifcations and experience 
+            </li>
+            <li>
+            specifiy the types of jobs you're looking for
+            </li>
+            <li>
+            apply for roles quickly by pre-filling your information
+            </li>
+            <li>
+            share your details with schools
+            </li>
+        </ul>
+
+
+      <form method="post" novalidate>
+
+        {{ govukButton({
+          text: "Create a profile"
+        }) }}
+
+      </form>
+
+
+
+      
+
+
+    </div>
+  </div>
+
+{% endblock %}

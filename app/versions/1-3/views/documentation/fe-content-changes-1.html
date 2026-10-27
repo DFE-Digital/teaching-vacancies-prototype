@@ -1,0 +1,116 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper" %}
+
+{% block pageTitle %}
+  {{ guide.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: guide.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="app-guide app-guide--full-width">
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      <span class="govuk-caption-xl">Design review · v1.1 prototype</span>
+    </p>
+    <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
+    <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      Prototype job: <a class="govuk-link" href="/jobs/{{ guide.prototypeJob.id }}">{{ guide.prototypeJob.title }}</a>,
+      {{ guide.prototypeJob.organisation }} ({{ guide.prototypeJob.phase }} · ID {{ guide.prototypeJob.id }}).
+    </p>
+    <div class="app-guide__main govuk-!-margin-top-6">
+      <h2 class="govuk-heading-l" id="design-change-log">Design change log</h2>
+      <table class="govuk-table govuk-!-margin-bottom-8">
+        <caption class="govuk-table__caption govuk-table__caption--m">{{ guide.changeLogCaption }}</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Change</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for row in guide.changeLog %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">{{ row.html | safe }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% for section in guide.sections %}
+        <section class="app-guide__section" id="{{ section.id }}" aria-labelledby="heading-{{ section.id }}">
+          {% if section.mapId %}
+            {{ govukTag({
+              text: section.mapId,
+              classes: "app-guide__map-id govuk-tag--grey"
+            }) }}
+          {% endif %}
+          <h2 class="govuk-heading-l" id="heading-{{ section.id }}">{{ section.title }}</h2>
+          <p class="govuk-body-l">{{ section.summary }}</p>
+
+          <h3 class="govuk-heading-m">Analysis</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            {% for point in section.analysis %}
+              <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+
+          <h3 class="govuk-heading-m">Changes in v1.1 prototype</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            {% for point in section.implemented %}
+              <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+
+          {% if section.screenshot %}
+            <p class="govuk-body app-guide__prototype-link">
+              <a class="govuk-link" href="/jobs/{{ guide.prototypeJob.id }}{{ section.prototypePath }}" target="_blank" rel="noopener noreferrer">
+                Open this page in the prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+              </a>
+            </p>
+            <figure class="app-guide__figure">
+              <img
+                src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ section.screenshot }}"
+                alt="Screenshot: {{ section.title }} in the v1.1 prototype"
+                width="960"
+                loading="lazy"
+              >
+              <figcaption class="govuk-body-s app-guide__figure-caption">{{ section.screenshotCaption }}</figcaption>
+            </figure>
+          {% endif %}
+
+          {% if not loop.last %}
+            {% set nextSection = guide.sections[loop.index] %}
+            <nav class="app-guide__next" aria-label="Next section">
+              <p class="govuk-body govuk-!-margin-bottom-1">Next</p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <a class="govuk-link" href="#{{ nextSection.id }}">{{ nextSection.title }}</a>
+              </p>
+            </nav>
+          {% endif %}
+        </section>
+      {% endfor %}
+
+      <aside class="app-related app-related--topic">
+        <h2 class="govuk-heading-s app-related__heading">Related content</h2>
+        <ul class="app-related__list">
+          <li class="app-related__item"><a class="govuk-link" href="/documentation">Documentation contents</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/documentation/quick-apply-1">Quick Apply for further education (design review)</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/documentation/project-structure">Project structure</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/jobs/{{ guide.prototypeJob.id }}/apply">Open prototype: apply flow</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

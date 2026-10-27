@@ -1,0 +1,20 @@
+{% extends "layout_email.njk" %}
+
+{% set title = 'Thank you for your feedback' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Thank you for your feedback</h1>
+      {% if answer == 'no' %}
+        <p class="govuk-body">You told us these job listings are not relevant to your search.</p>
+      {% else %}
+        <p class="govuk-body">You told us these job listings are relevant to your search.</p>
+      {% endif %}
+      <p class="govuk-body">This helps us improve our service.</p>
+      <p class="govuk-body">
+        <a class="govuk-link" href="/jobseeker/job-alert-1">Back to your job matches</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

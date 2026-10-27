@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% set title = "Personal statement" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading() }}
+      <h2 class="govuk-heading-l">Personal statement</h2>
+      <p class="govuk-body">Your personal statement is your opportunity to explain why you are suitable for this role. Schools and colleges typically expect personal statements to be about 500 to 1,000 words.</p>
+      <p class="govuk-body">You may find it helpful to refer to the <a class="govuk-link" href="/jobs/{{ job.id }}" target="_blank" rel="noreferrer noopener">{{ job.title }} job description (opens in new tab)</a>. You should include any skills, qualities and experience that are relevant to this role.</p>
+
+      {% if isFeJob %}
+        <h3 class="govuk-heading-m">If you’re applying for a college lecturing or training role</h3>
+        <p class="govuk-body">You could include:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>industry or vocational experience and how it informs your teaching</li>
+          <li>approaches to teaching adults and young people aged 16 and over</li>
+          <li>employer engagement, work placements, or curriculum development</li>
+          <li>understanding of safeguarding for learners aged 16 to 18</li>
+        </ul>
+        <h3 class="govuk-heading-m">If you’re applying for a support role in a college</h3>
+        <p class="govuk-body">You could include experience supporting learners, teamwork with teaching staff, and any relevant qualifications.</p>
+      {% else %}
+        <h3 class="govuk-heading-m">If you’re applying for a teaching role</h3>
+        <p class="govuk-body">You could include:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your teaching style and approach to classroom management</li>
+          <li>your knowledge of the curriculum</li>
+          <li>your understanding of safeguarding and pupil wellbeing</li>
+          <li>additional responsibilities you’ve taken on in schools or colleges</li>
+          <li>experience in special educational needs and disability (SEND)</li>
+          <li>any relevant interests or extra-curricular activities</li>
+        </ul>
+        <p class="govuk-body">Get advice from experienced teachers, lecturers and educational leaders on <a class="govuk-link" href="https://getintoteaching.education.gov.uk/" target="_blank" rel="noreferrer noopener">writing your personal statement (opens in new tab)</a>. You can also use the <a class="govuk-link" href="https://teaching-vacancies.service.gov.uk/" target="_blank" rel="noreferrer noopener">personal statement builder (opens in new tab)</a> for prompts and tips to help you get started.</p>
+      {% endif %}
+
+      <form method="post">
+        {{ govukCharacterCount({
+          name: "personalStatement",
+          id: "personalStatement",
+          label: { text: "Personal statement", classes: "govuk-visually-hidden" },
+          maxlength: 10000,
+          rows: 12,
+          hint: { text: "The word limit is 1,500 words. Schools and colleges typically expect 500 to 1,000 words." },
+          value: application.personalStatement
+        }) }}
+        <p class="govuk-body">You have written {{ wordCount }} words.</p>
+        {{ completedSection("personal-statement") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

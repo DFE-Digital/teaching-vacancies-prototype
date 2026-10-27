@@ -1,0 +1,62 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'profile' %}
+
+{% if user.profile.hiddenPlaces | length %}
+  {% set question = 'Do you want to add another school?' %}
+{% else %}
+  {% set question = 'Do you want to add a school?' %}
+{% endif %}
+
+
+{% set title = "This school cannot be found" %}
+
+{% set countOfSchool = 1 %}
+
+{% block beforeContent %}
+   {{ govukBackLink({
+    text: "Back",
+    href: "/profile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>
+        This may be because:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the school is spelled incorrectly</li>
+        <li> the school is not in England</li>
+        <li> it is a private or independent school</li>
+      </ul>
+
+      <form method="post" novalidate>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Search again",
+            classes: "govuk-button--secondary",
+            href: '/profile/hide-profile/add'
+          }) }}
+
+          {{ govukButton({
+            text: "Return to profile",
+            href: '/profile'
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

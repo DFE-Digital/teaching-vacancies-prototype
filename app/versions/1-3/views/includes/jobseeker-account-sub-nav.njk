@@ -1,0 +1,28 @@
+{# MOJ sub navigation for signed-in account area (v1.3). Pass activeSection explicitly (macro-safe). #}
+{% from "includes/version-path.njk" import versionPath %}
+{% from "includes/jobseeker-account-section-labels.njk" import accountNavLabel %}
+
+{% macro jobseekerAccountSubNav(activeSection) %}
+<nav class="moj-sub-navigation govuk-!-margin-bottom-4" aria-label="Your account">
+  <ul class="moj-sub-navigation__list">
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="{{ versionPath('/jobseekers/job_applications') }}"{% if activeSection == 'applications' %} aria-current="page"{% endif %}>{{ accountNavLabel('applications') }}</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="{{ versionPath('/jobseekers/saved_jobs?savedJobState=saved') }}"{% if activeSection == 'saved-jobs' %} aria-current="page"{% endif %}>{{ accountNavLabel('saved-jobs') }}</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="{{ versionPath('/jobseekers/subscriptions') }}"{% if activeSection == 'job-alerts' %} aria-current="page"{% endif %}>{{ accountNavLabel('job-alerts') }}</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="{{ versionPath('/jobseekers/notifications') }}"{% if activeSection == 'notifications' %} aria-current="page"{% endif %}>{{ accountNavLabel('notifications') }}</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="{{ versionPath('/account/personal-details') }}"{% if activeSection == 'profile' %} aria-current="page"{% endif %}>{{ accountNavLabel('profile') }}</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="{{ versionPath('/account/your-account') }}"{% if activeSection == 'get-help' %} aria-current="page"{% endif %}>{{ accountNavLabel('get-help') }}</a>
+    </li>
+  </ul>
+</nav>
+{% endmacro %}

@@ -1,0 +1,21 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set title = "Job advert" %}
+
+{% block content %}
+  {{ govukBackLink({
+    text: "Back to job advert",
+    href: "/jobs/" + job.id if job else "javascript:history.back();"
+  }) }}
+  <h1 class="govuk-heading-l">Job advert</h1>
+  {% if job %}
+    <p class="govuk-body">This is the job advert page for {{ job.title }}{% if job.organisation.name %} at {{ job.organisation.name }}{% endif %}.</p>
+  {% else %}
+    <p class="govuk-body">This is the job advert page.</p>
+  {% endif %}
+  <p class="govuk-body">It is not available in this prototype.</p>
+  <p class="govuk-body">
+    <a class="govuk-link" href="/1-3/home">Return to main site</a>
+  </p>
+{% endblock %}

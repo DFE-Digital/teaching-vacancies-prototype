@@ -1,0 +1,97 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Locations' %}
+{% set caption = 'Job preferences' %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select yes if you want to add another location",
+      href: "#profile[firstName]"
+    }
+  ]
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      </h1>
+
+       <h2 class="govuk-heading-m">Locations added</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Location 1"
+            },
+            value: {
+              html: 'London (10 miles)'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Delete",
+                  visuallyHiddenText: "file 1"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/profile/job-preferences/location-check" method="post">
+
+        {{ govukRadios({
+          idPrefix: "profile[addAnotherLocation]",
+          name: "profile[addAnotherLocation]",
+          fieldset: {
+            legend: {
+              text: "Do you want to add another location?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          errorMessage: {
+            text: "Select yes if you want to add another location"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

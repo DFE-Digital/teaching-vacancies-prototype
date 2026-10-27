@@ -1,0 +1,20 @@
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "includes/version-path.njk" import versionPath %}
+{% from "includes/jobseeker-account-section-labels.njk" import accountNavSectionForPageLabel %}
+{% from "includes/jobseeker-account-sub-nav.njk" import jobseekerAccountSubNav %}
+
+{% macro jobseekerAccountBreadcrumbs(currentPageLabel, subNavSection) %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile govuk-!-margin-bottom-4",
+    items: [
+      {
+        text: "Your account",
+        href: versionPath("/jobseekers/account")
+      },
+      {
+        text: currentPageLabel
+      }
+    ]
+  }) }}
+  {{ jobseekerAccountSubNav(subNavSection or accountNavSectionForPageLabel(currentPageLabel)) }}
+{% endmacro %}

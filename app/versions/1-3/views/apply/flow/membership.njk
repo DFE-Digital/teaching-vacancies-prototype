@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+{% set title = "Add a professional body membership" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Professional body memberships</span>
+      <h1 class="govuk-heading-l">Add a professional body membership</h1>
+      <form method="post" action="/jobs/{{ job.id }}/apply/memberships/{{ formAction }}">
+        {{ govukInput({ label: { text: "Name of professional body" }, name: "name", value: item.name }) }}
+        {{ govukInput({ label: { text: "Membership type or level (optional)" }, name: "type", value: item.type }) }}
+        {{ govukInput({ label: { text: "Membership or registration number (optional)" }, name: "number", value: item.number }) }}
+        {{ govukInput({
+          label: { text: "Date you joined (optional)" },
+          classes: "govuk-input--width-4",
+          name: "joined",
+          value: item.joined
+        }) }}
+        {{ govukRadios({
+          name: "exam",
+          fieldset: {
+            legend: {
+              text: "Did you take an exam to get this membership?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            { value: "Yes", text: "Yes", checked: item.exam == "Yes" },
+            { value: "No", text: "No", checked: item.exam != "Yes" }
+          ]
+        }) }}
+        {{ govukButton({ text: "Save and continue" }) }}
+        <p class="govuk-body"><a class="govuk-link" href="/jobs/{{ job.id }}/apply/memberships">Cancel</a></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}

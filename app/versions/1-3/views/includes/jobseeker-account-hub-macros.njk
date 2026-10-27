@@ -1,0 +1,37 @@
+{% from "includes/version-path.njk" import versionPath %}
+{% from "includes/jobseeker-account-section-labels.njk" import accountNavLabel %}
+
+{% macro accountHubIcon(icon) %}
+  {% set glyphs = {
+    "applications": "work",
+    "saved-jobs": "bookmark",
+    "job-alerts": "notifications",
+    "notifications": "chat",
+    "personal-details": "person",
+    "get-help": "help"
+  } %}
+  <span class="app-account-featured__icon app-account-featured__icon--{{ icon }}" aria-hidden="true">
+    <span class="material-symbols-outlined app-account-featured__icon-glyph">{{ glyphs[icon] }}</span>
+  </span>
+{% endmacro %}
+
+{% macro accountHubFeaturedItem(href, linkTitle, description, icon) %}
+  <li class="app-account-featured-list__item">
+    <a class="app-account-featured-list__item-link" href="{{ versionPath(href) }}">
+      {{ accountHubIcon(icon) }}
+      <span class="app-account-featured-list__text">
+        <span class="app-account-featured-list__title">{{ linkTitle }}</span>
+        <span class="app-account-featured-list__description">{{ description }}</span>
+      </span>
+    </a>
+  </li>
+{% endmacro %}
+
+{% macro accountHubFeaturedList() %}
+  {{ accountHubFeaturedItem('/jobseekers/job_applications', accountNavLabel('applications'), 'View and track jobs you have applied for, including application status.', 'applications') }}
+  {{ accountHubFeaturedItem('/jobseekers/saved_jobs?savedJobState=saved', accountNavLabel('saved-jobs'), 'Review vacancies you have saved and apply when you are ready.', 'saved-jobs') }}
+  {{ accountHubFeaturedItem('/jobseekers/subscriptions', accountNavLabel('job-alerts'), 'Create, edit and delete email alerts for new jobs that match your search.', 'job-alerts') }}
+  {{ accountHubFeaturedItem('/jobseekers/notifications', accountNavLabel('notifications'), 'Read updates from schools about your applications and other account activity.', 'notifications') }}
+  {{ accountHubFeaturedItem('/account/personal-details', accountNavLabel('personal-details'), 'Update your name, teacher reference number (TRN) and contact email address.', 'personal-details') }}
+  {{ accountHubFeaturedItem('/account/your-account', accountNavLabel('get-help'), 'Sign-in help, transferring account details, closing your account and email preferences.', 'get-help') }}
+{% endmacro %}

@@ -1,0 +1,130 @@
+{% extends "layout.njk" %}
+{% from "includes/jobseeker-account-breadcrumbs.njk" import jobseekerAccountBreadcrumbs %}
+
+{% set title = 'Notifications' %}
+{% set activeNav = 'notifications' %}
+{% set forceSignedIn = true %}
+{% set accountAreaMain = true %}
+{% set jobseekerAccountSubNavSection = 'notifications' %}
+{% set showNotificationsToggle = true %}
+
+{% block content %}
+  {{ jobseekerAccountBreadcrumbs("Notifications", "notifications") }}
+  <div class="app-page-header app-notifications-page-header govuk-!-margin-bottom-4">
+    <div class="app-page-header__title">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Notifications</h1>
+    </div>
+  </div>
+  <p class="govuk-body">Application updates and messages from hiring teams — not vacancy job alerts.</p>
+
+  {% if notificationsInboxEmpty %}
+    <div class="app-notifications-empty">
+      <h2 class="govuk-heading-m">You have no notifications</h2>
+      <p class="govuk-body">When schools send updates about your applications, they will appear here.</p>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-link" href="/home">Find teaching jobs</a> and apply to start receiving updates.</p>
+    </div>
+  {% else %}
+  <div class="app-notifications-inbox-layout">
+    <div class="app-notifications-inbox-layout__main">
+      <div class="app-notifications-inbox">
+        <form method="get" action="/jobseekers/notifications" class="app-notifications-inbox__filters">
+          {{ govukSelect({
+            id: "notification-mailbox",
+            name: "filter",
+            label: {
+              text: "Status",
+              classes: "govuk-label--s"
+            },
+            items: mailboxFilterItems
+          }) }}
+          {{ govukSelect({
+            id: "notification-type",
+            name: "type",
+            label: {
+              text: "Notification type",
+              classes: "govuk-label--s"
+            },
+            items: typeFilterItems
+          }) }}
+          {{ govukSelect({
+            id: "notification-sort",
+            name: "sort",
+            label: {
+              text: "Sort by",
+              classes: "govuk-label--s"
+            },
+            items: sortFilterItems
+          }) }}
+          <div class="app-notifications-inbox__filter-action govuk-form-group">
+            <label class="govuk-label govuk-label--s govuk-visually-hidden" for="notification-apply-filters">
+              Apply filters
+            </label>
+            {{ govukButton({
+              text: "Apply filters",
+              classes: "govuk-button--secondary app-notifications-inbox__apply-button",
+              attributes: {
+                id: "notification-apply-filters"
+              }
+            }) }}
+          </div>
+        </form>
+
+        <div class="app-notifications-inbox__toolbar">
+          <p class="app-notifications-inbox__toolbar-text govuk-!-margin-bottom-0">
+            <span class="govuk-!-font-weight-bold">{{ filteredCount }}</span>
+            notification{{ "s" if filteredCount != 1 }}
+            {% if unreadCount and unreadCount > 0 %}
+              (<span class="govuk-!-font-weight-bold">{{ unreadCount }}</span> unread in total)
+            {% endif %}
+          </p>
+        </div>
+
+        {% if filteredCount %}
+          <ul class="app-notifications-inbox__list">
+            {% for item in notifications %}
+              <li class="app-notifications-inbox__item">
+                <a
+                  class="app-notifications-inbox__row{% if item.unread %} app-notifications-inbox__row--unread{% endif %}"
+                  href="{{ item.href }}"
+                >
+                  {% if item.unread %}
+                    <span class="govuk-visually-hidden">Unread. </span>
+                  {% endif %}
+                  <span class="app-notifications-inbox__content">
+                    <span class="app-notifications-inbox__meta">
+                      <span class="app-notifications-inbox__sender">{{ item.from }}</span>
+                      <time class="app-notifications-inbox__date" datetime="{{ item.date }}">{{ item.displayDate }}</time>
+                    </span>
+                    <span class="app-notifications-inbox__subject">{{ item.title }}</span>
+                    <span class="app-notifications-inbox__preview">{{ item.body }}</span>
+                  </span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="app-notifications-inbox__empty">
+            {{ govukInsetText({
+              text: "No notifications match this filter. Change the mailbox or type filters and apply again."
+            }) }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if filteredCount and pageCount > 1 %}
+        <div class="app-notifications-inbox__pagination">
+          {{ govukPagination({
+            previous: {
+              href: previousHref
+            } if previousHref,
+            next: {
+              href: nextHref
+            } if nextHref,
+            items: paginationItems
+          }) }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

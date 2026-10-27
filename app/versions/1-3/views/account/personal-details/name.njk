@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set accountSection = 'personal-details' %}
+{% set title = 'Change your name' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({ text: "Back to personal details", href: "/account/personal-details" }) }}
+
+      {% if errorList and errorList.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <p class="govuk-body">You can change your first name and last name in Teaching Vacancies. Your email address is managed in GOV.UK One Login.</p>
+
+      <form method="post" action="/account/personal-details/name" novalidate>
+        {{ govukInput({
+          label: { text: "First name" },
+          id: "firstName",
+          name: "firstName",
+          value: firstName,
+          autocomplete: "given-name",
+          errorMessage: { text: errors.firstName } if errors.firstName
+        }) }}
+        {{ govukInput({
+          label: { text: "Last name" },
+          id: "lastName",
+          name: "lastName",
+          value: lastName,
+          autocomplete: "family-name",
+          errorMessage: { text: errors.lastName } if errors.lastName
+        }) }}
+        {{ govukButton({ text: "Save changes" }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

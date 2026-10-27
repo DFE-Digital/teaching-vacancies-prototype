@@ -2,7 +2,7 @@
 {% from "includes/application-summary-card.njk" import applicationSummaryCard %}
 {% from "includes/jobseeker-account-breadcrumbs.njk" import jobseekerAccountBreadcrumbs %}
 
-{% set title = 'Your applications' %}
+{% set title = 'Applications' %}
 {% set activeNav = 'applications' %}
 {% set forceSignedIn = true %}
 {% set accountAreaMain = true %}
@@ -68,11 +68,11 @@
 {% endblock %}
 
 {% block content %}
-  {{ jobseekerAccountBreadcrumbs("Your applications") }}
+  {{ jobseekerAccountBreadcrumbs("Applications") }}
   {% include "includes/job-applications-page-header.njk" %}
 
   <div class="app-applications-page-header">
-    <h2 class="govuk-heading-m app-applications-page-header__title govuk-!-margin-top-0">Your applications ({{ applicationCount }})</h2>
+    <h2 class="govuk-heading-m app-applications-page-header__title govuk-!-margin-top-0">Applications ({{ applicationCount }})</h2>
 
     <form method="get" action="/jobseekers/job_applications" class="app-applications-filter">
       {{ govukSelect({

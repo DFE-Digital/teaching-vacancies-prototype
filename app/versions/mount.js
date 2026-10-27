@@ -5,7 +5,7 @@ const nunjucks = require('nunjucks')
 const extensions = require('../../lib/extensions/extensions')
 const utils = require('../../lib/utils')
 
-const VERSIONS = ['1-0', '1-1', '1-2']
+const VERSIONS = ['1-0', '1-1', '1-2', '1-3']
 
 const SHARED_ROOTS = ['/public', '/docs', '/prototype-admin', '/node_modules', '/govuk', '/extension-assets']
 
@@ -14,7 +14,7 @@ function versionDir (version) {
 }
 
 function versionFromRequest (req) {
-  const match = req.path.match(/^\/(1-0|1-1|1-2)(?:\/|$)/)
+  const match = req.path.match(/^\/(1-0|1-1|1-2|1-3)(?:\/|$)/)
   return match ? match[1] : null
 }
 
@@ -40,7 +40,7 @@ function shouldPrefix (address) {
 function prefixHtml (html, prefix) {
   const roots = SHARED_ROOTS.map(root => root.slice(1)).join('|')
   const pattern = new RegExp(
-    `(\\s(?:href|action|formaction)=["'])\\/(?!["']|\\/|1-0(?:\\/|["'?])|1-1(?:\\/|["'?])|1-2(?:\\/|["'?])|(?:${roots})(?:\\/|["'?]))`,
+    `(\\s(?:href|action|formaction)=["'])\\/(?!["']|\\/|1-0(?:\\/|["'?])|1-1(?:\\/|["'?])|1-2(?:\\/|["'?])|1-3(?:\\/|["'?])|(?:${roots})(?:\\/|["'?]))`,
     'gi'
   )
   return html.replace(pattern, `$1${prefix}/`)
