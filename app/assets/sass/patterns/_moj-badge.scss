@@ -11,10 +11,10 @@ $moj-badge-brand: govuk-colour("blue");
   outline-offset: -2px;
   color: $moj-badge-brand;
   font-size: 12px;
+  font-weight: bold;
   line-height: 15px;
   text-transform: uppercase;
   vertical-align: middle;
-  @include govuk-font($size: 14, $weight: bold);
 
   @include govuk-media-query($from: tablet) {
     font-size: 14px;

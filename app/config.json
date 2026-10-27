@@ -1,0 +1,10 @@
+{
+  "serviceName": "Teaching Vacancies",
+  "port": 3000,
+  "useAuth": true,
+  "useAutoStoreData": true,
+  "useCookieSessionStore": false,
+  "useDocumentation": true,
+  "useHttps": true,
+  "useBrowserSync": true
+}
