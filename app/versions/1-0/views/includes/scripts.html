@@ -17,8 +17,8 @@
   })
 </script>
 
-{% for scriptUrl in extensionConfig.scripts %}
-  <script src="{{scriptUrl}}"></script>
+{% for script in extensionConfig.scripts %}
+  <script src="{{ script.src }}"{% if script.type %} type="{{ script.type }}"{% endif %}></script>
 {% endfor %}
 
 <script src="/public/javascripts/application.js"></script>

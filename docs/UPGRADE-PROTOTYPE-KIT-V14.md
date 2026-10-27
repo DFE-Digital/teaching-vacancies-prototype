@@ -32,7 +32,7 @@ See `migrate.log` in the repo root for CLI output.
 1. **Dependencies** — Add `govuk-prototype-kit@14.0.2`; align Node in `package.json` engines with kit (≥ 22).
 2. **Config** — Introduce `app/config.json` (v13+ format); retire `app/config.js` when the app is served by the kit package.
 3. **Express 5** — Done for current custom routes (see below). Root `express` bumped to **^5.2.1** to match kit v14.
-4. **Frontend** — Plan GOV.UK Frontend **6.x** (kit v14 default) vs current Frontend 4 in Sass/CSS.
+4. **Frontend** — **GOV.UK Frontend 6.x** installed; Sass uses `dist/` + `$govuk-prototype-kit-major-version: 14`; ES module scripts via `extensionConfig.scripts`. Visual smoke on all versions still required.
 5. **Dev workflow** — Move from root `start.js` + Gulp to `npm run dev` via the kit CLI, preserving multi-version mounts and documentation routes.
 6. **Verify** — `npm test`, smoke-test `/`, `/1-0/home`, `/1-1/home`, `/1-2/home`, signed-in journeys.
 
@@ -47,6 +47,16 @@ See `migrate.log` in the repo root for CLI output.
 | Preflight script | `node scripts/check-express5-routes.js` |
 
 After `npm install`, run `node scripts/check-express5-routes.js` and `npm test` before merging the upgrade branch.
+
+### Frontend 6 (phase 4)
+
+| Area | Change |
+|------|--------|
+| `govuk-frontend` | **^6.5.1** (via npm; aligns with kit v14) |
+| Main Sass | `$govuk-prototype-kit-major-version: 14` before `lib/extensions/extensions` |
+| Patterns | Removed `$legacy` on `govuk-colour()`; dropped `govuk-if-ie8` in sub-navigation |
+| Scripts | `extensionConfig.scripts` is `{ src, type? }`; `type="module"` for kit JS |
+| Assets | `/dist/govuk/assets` served under `/extension-assets/govuk-frontend/...` |
 
 ## References
 

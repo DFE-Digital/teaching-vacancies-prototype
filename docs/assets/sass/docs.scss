@@ -1,9 +1,7 @@
-// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
-$govuk-assets-path: '/govuk/assets/';
+$govuk-extensions-url-context: "/extension-assets";
+$govuk-prototype-kit-major-version: 14;
 
-$govuk-new-link-styles: true;
-
-@import "node_modules/govuk-frontend/govuk/all";
+@import "node_modules/govuk-frontend/dist/govuk-prototype-kit/init.scss";
 
 img{
   max-width: 100%;
@@ -49,7 +47,7 @@ figure {
   overflow: auto;
   border: $govuk-focus-width solid transparent;
   outline: 1px solid $govuk-border-colour;
-  background-color: govuk-colour("light-grey", $legacy: "grey-4");
+  background-color: govuk-colour("light-grey");
   max-width: 38em;
   @include govuk-responsive-margin(5, "bottom");
 
@@ -116,7 +114,7 @@ figure {
   p code,
   li code {
     color: #d13118;
-    background-color: govuk-colour("light-grey", $legacy: "grey-4");
+    background-color: govuk-colour("light-grey");
     padding: 0 govuk-spacing(1);
   }
 

@@ -1,11 +1,11 @@
 // Styles for prototype version 1.2 only (linked from 1-2 layout).
 // Full GOV.UK Frontend lives in application.css (with blue masthead via patterns/newheader).
 // Do not @import lib/extensions/extensions here — it duplicated header rules and overrode the blue bar.
-$govuk-assets-path: '/govuk/assets/';
+$govuk-prototype-kit-major-version: 14;
 
-@import "node_modules/govuk-frontend/govuk/settings/all";
-@import "node_modules/govuk-frontend/govuk/tools/all";
-@import "node_modules/govuk-frontend/govuk/helpers/all";
+@import "node_modules/govuk-frontend/dist/govuk/settings/index";
+@import "node_modules/govuk-frontend/dist/govuk/tools/index";
+@import "node_modules/govuk-frontend/dist/govuk/helpers/index";
 
 @import "patterns/jobseeker-account";
 
