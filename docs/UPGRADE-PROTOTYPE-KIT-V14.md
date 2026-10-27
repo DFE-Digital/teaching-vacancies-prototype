@@ -29,7 +29,7 @@ See `migrate.log` in the repo root for CLI output.
 
 ## Planned phases (manual)
 
-1. **Dependencies** — Add `govuk-prototype-kit@14.0.2`; align Node in `package.json` engines with kit (≥ 22).
+1. **Dependencies** — Add `govuk-prototype-kit@14.0.2`; align Node in `package.json` engines with kit (≥ 22). Root `package.json` / `VERSION.txt` set to **14.0.2**; footers use `{{ releaseVersion }}`.
 2. **Config** — Introduce `app/config.json` (v13+ format); retire `app/config.js` when the app is served by the kit package.
 3. **Express 5** — Done for current custom routes (see below). Root `express` bumped to **^5.2.1** to match kit v14.
 4. **Frontend** — **GOV.UK Frontend 6.x** installed; Sass uses `dist/` + `$govuk-prototype-kit-major-version: 14`; ES module scripts via `extensionConfig.scripts`. Visual smoke on all versions still required.
