@@ -31,10 +31,22 @@ See `migrate.log` in the repo root for CLI output.
 
 1. **Dependencies** — Add `govuk-prototype-kit@14.0.2`; align Node in `package.json` engines with kit (≥ 22).
 2. **Config** — Introduce `app/config.json` (v13+ format); retire `app/config.js` when the app is served by the kit package.
-3. **Express 5** — Audit custom routes (`server.js`, `app/versions/*/routes`) for [Express 5 changes](https://expressjs.com/en/guide/migrating-5.html).
+3. **Express 5** — Done for current custom routes (see below). Root `express` bumped to **^5.2.1** to match kit v14.
 4. **Frontend** — Plan GOV.UK Frontend **6.x** (kit v14 default) vs current Frontend 4 in Sass/CSS.
 5. **Dev workflow** — Move from root `start.js` + Gulp to `npm run dev` via the kit CLI, preserving multi-version mounts and documentation routes.
 6. **Verify** — `npm test`, smoke-test `/`, `/1-0/home`, `/1-1/home`, `/1-2/home`, signed-in journeys.
+
+### Express 5 audit (phase 3)
+
+| Check | Result |
+|-------|--------|
+| `req.param(` | None |
+| `app.del` | None |
+| `router.all('*', …)` in version routers | Replaced with `router.use(…)` (same behaviour, Express 4/5 safe) |
+| `/compare/live/*` in v1.1 / v1.2 `jobs.js` | Renamed to `/compare/live/*splat` |
+| Preflight script | `node scripts/check-express5-routes.js` |
+
+After `npm install`, run `node scripts/check-express5-routes.js` and `npm test` before merging the upgrade branch.
 
 ## References
 

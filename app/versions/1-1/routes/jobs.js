@@ -118,7 +118,7 @@ function getHomepageLocationOptions() {
 module.exports = router => {
 
   router.all('/compare/live', liveProxy)
-  router.all('/compare/live/*', liveProxy)
+  router.all('/compare/live/*splat', liveProxy)
 
   router.get('/', (req, res) => {
     res.render('prototypes/index')

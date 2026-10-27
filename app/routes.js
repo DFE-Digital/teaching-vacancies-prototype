@@ -5,7 +5,7 @@ const router = express.Router()
 const flash = require('connect-flash')
 router.use(flash())
 
-router.all('*', (req, res, next) => {
+router.use((req, res, next) => {
   res.locals.referrer = req.query.referrer
   res.locals.query = req.query
   res.locals.user = req.session.user
