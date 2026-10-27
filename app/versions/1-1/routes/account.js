@@ -16,7 +16,8 @@ const {
   validateTrn,
   validateName,
   nameErrorSummaryList,
-  trnErrorSummaryList
+  trnErrorSummaryList,
+  applyDemoPersonalDetails
 } = require('../lib/personal-details')
 
 function isSameSitePath (value) {
@@ -137,9 +138,11 @@ module.exports = router => {
     if(req.body.emailAddress) {
       res.locals.user = req.session.user = users.find(user => user.emailAddress == req.body.emailAddress)
     } else {
-      res.locals.user = req.session.user = users[0]
+      res.locals.user = req.session.user = users.find(user => user.emailAddress === 'rachael@example.com') || users[0]
     }
     req.session.data.signedIn = true
+    if (!req.session.user.profile) req.session.user.profile = {}
+    applyDemoPersonalDetails(req.session.user.profile)
     ensureJobseekerAlerts(req.session)
 
     if (isSameSitePath(req.body.returnUrl)) {
@@ -180,9 +183,7 @@ module.exports = router => {
   })
 
   router.get('/account/personal-details/name', (req, res) => {
-    if (!req.session.user) {
-      return res.redirect('/account/sign-in?returnUrl=/account/personal-details/name')
-    }
+    ensureSignedInJobseeker(req, users)
     const profile = req.session.user.profile || {}
     res.render('account/personal-details/name', {
       user: req.session.user,
@@ -216,9 +217,7 @@ module.exports = router => {
   })
 
   router.get('/account/personal-details/trn', (req, res) => {
-    if (!req.session.user) {
-      return res.redirect('/account/sign-in?returnUrl=/account/personal-details/trn')
-    }
+    ensureSignedInJobseeker(req, users)
     res.render('account/personal-details/trn', {
       user: req.session.user,
       trnValue: getTrn(req.session.user.profile),

@@ -1,3 +1,5 @@
+const demoPersonalDetails = require('../data/demo-personal-details')
+
 function getTrn (profile) {
   if (!profile) return ''
   const value = profile.trn != null && profile.trn !== ''
@@ -57,6 +59,19 @@ function trnErrorSummaryList (trnError) {
   return trnError ? [{ text: trnError, href: '#trn' }] : []
 }
 
+function applyDemoPersonalDetails (profile) {
+  if (!profile) return
+  if (!(profile.firstName || '').trim()) {
+    profile.firstName = demoPersonalDetails.firstName
+  }
+  if (!(profile.lastName || '').trim()) {
+    profile.lastName = demoPersonalDetails.lastName
+  }
+  if (!getTrn(profile)) {
+    setTrn(profile, demoPersonalDetails.trn)
+  }
+}
+
 module.exports = {
   getTrn,
   setTrn,
@@ -64,5 +79,7 @@ module.exports = {
   validateTrn,
   validateName,
   nameErrorSummaryList,
-  trnErrorSummaryList
+  trnErrorSummaryList,
+  applyDemoPersonalDetails,
+  demoPersonalDetails
 }

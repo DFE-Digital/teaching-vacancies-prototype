@@ -1,4 +1,5 @@
 const defaultAlerts = require('../data/jobseeker-alerts')
+const { applyDemoPersonalDetails } = require('./personal-details')
 const { applyFormToAlert, parseSubscriptionForm, criteriaFromForm, formatLocation } = require('./job-alert-form')
 const { randomUUID } = require('crypto')
 
@@ -105,6 +106,8 @@ function ensureSignedInJobseeker (req, users) {
   if (!req.session.user) {
     req.session.user = users.find(u => u.emailAddress === 'rachael@example.com') || users[0]
   }
+  if (!req.session.user.profile) req.session.user.profile = {}
+  applyDemoPersonalDetails(req.session.user.profile)
   ensureJobseekerAlerts(req.session)
   return req.session.user
 }

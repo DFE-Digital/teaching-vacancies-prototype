@@ -5,6 +5,9 @@
     "accountType": "teacher",    
     "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
+      "firstName": "Joe",
+      "lastName": "Bloggs",
+      "trn": "1234567",
       "locations": {},
       "qualifications": {},
       "workHistory": {},
@@ -72,6 +75,7 @@
       "status": "Active",
       "firstName": "Joe",
       "lastName": "Bloggs",
+      "trn": "1234567",
       "providePhoneNumber": "Yes",
       "phoneNumber": "01928 376 453",
       "provideWork": "Yes",
