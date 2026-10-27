@@ -1,13 +1,16 @@
 # Upgrade to GOV.UK Prototype Kit v14
 
+**Status: complete on `main`.** Hybrid setup: Kit **14.0.2** dependencies, Frontend **6**, Express **5**, custom `server.js` and `/1-0` / `/1-1` / `/1-2` mounts retained. Dev: `npm run dev`.
+
 Baseline before this work: **Prototype Kit 12.0.4** (embedded kit with custom `server.js`, version mounts `1-0` / `1-1` / `1-2`).
 
 ## Git baseline
 
 | Item | Value |
 |------|--------|
-| Annotated tag | `prototype-kit-12.0.4` on commit before upgrade work |
-| Upgrade branch | `upgrade/prototype-kit-v14` |
+| Pre-upgrade tag | `prototype-kit-12.0.4` |
+| Post-upgrade tag | `prototype-kit-14.0.2` on `main` |
+| Upgrade branch | `upgrade/prototype-kit-v14` (merged; safe to delete locally/remotely) |
 | Target kit | [v14.0.2](https://prototype-kit.service.gov.uk/docs/update-to-latest-version) (Node **≥ 22**) |
 
 Restore the pre-upgrade tree anytime:
@@ -34,7 +37,7 @@ See `migrate.log` in the repo root for CLI output.
 3. **Express 5** — Done for current custom routes (see below). Root `express` bumped to **^5.2.1** to match kit v14.
 4. **Frontend** — **GOV.UK Frontend 6.x** installed; Sass uses `dist/` + `$govuk-prototype-kit-major-version: 14`; ES module scripts via `extensionConfig.scripts`. Visual smoke on all versions still required.
 5. **Dev workflow** — Done (hybrid): `npm run dev` → `lib/dev-server.js` (Kit-style nodemon + notices); `npm start` / `npm run serve` → `lib/prototype-serve.js`. Config from **`app/config.json`** via `lib/load-config.js`. Custom **`server.js`** + **`app/versions/mount.js`** unchanged. Legacy `start.js` delegates to dev-server. Full **`govuk-prototype-kit dev`** (stock server/plugins) not used — would drop version mounts.
-6. **Verify** — `npm test`, smoke-test `/`, `/1-0/home`, `/1-1/home`, `/1-2/home`, signed-in journeys.
+6. **Verify** — See [Phase 6 results](#phase-6-results) below.
 
 ### Express 5 audit (phase 3)
 
@@ -57,6 +60,18 @@ After `npm install`, run `node scripts/check-express5-routes.js` and `npm test` 
 | Patterns | Removed `$legacy` on `govuk-colour()`; dropped `govuk-if-ie8` in sub-navigation |
 | Scripts | `extensionConfig.scripts` is `{ src, type? }`; `type="module"` for kit JS |
 | Assets | `/dist/govuk/assets` served under `/extension-assets/govuk-frontend/...` |
+
+### Phase 6 results
+
+| Step | Result (Oct 2026) |
+|------|-------------------|
+| `gulp generate-assets` | Pass |
+| `jest` | **74** tests pass |
+| `npm run lint` (`standard`) | **Fail** — long-standing style issues across legacy routes, `app/assets/javascripts`, version copies, etc. (not introduced by Kit 14) |
+| Upgrade-related JS (`lib/dev-server.js`, `lib/load-config.js`, …) | Lint clean |
+| Manual smoke | `npm run dev` — port 3000; confirm `/`, `/1-0/home`, `/1-1/home`, `/1-2/home` in browser |
+
+**Practical gate after upgrade:** `gulp generate-assets && npm run rapidtest`. Treat full `npm test` as a separate lint cleanup epic unless CI requires it.
 
 ### Dev workflow (phase 5)
 
