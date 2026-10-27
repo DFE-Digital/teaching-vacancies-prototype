@@ -7,8 +7,9 @@
     "node": ">=22.x"
   },
   "scripts": {
-    "start": "node start.js",
-    "dev": "node start.js",
+    "start": "node lib/prototype-serve.js",
+    "dev": "node lib/dev-server.js",
+    "serve": "node lib/prototype-serve.js",
     "postinstall": "node scripts/patch-http-proxy.js && node scripts/ensure-documentation-images.js",
     "lint": "standard",
     "rapidtest": "jest --bail",

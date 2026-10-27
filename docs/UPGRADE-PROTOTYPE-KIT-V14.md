@@ -33,7 +33,7 @@ See `migrate.log` in the repo root for CLI output.
 2. **Config** — Introduce `app/config.json` (v13+ format); retire `app/config.js` when the app is served by the kit package.
 3. **Express 5** — Done for current custom routes (see below). Root `express` bumped to **^5.2.1** to match kit v14.
 4. **Frontend** — **GOV.UK Frontend 6.x** installed; Sass uses `dist/` + `$govuk-prototype-kit-major-version: 14`; ES module scripts via `extensionConfig.scripts`. Visual smoke on all versions still required.
-5. **Dev workflow** — Move from root `start.js` + Gulp to `npm run dev` via the kit CLI, preserving multi-version mounts and documentation routes.
+5. **Dev workflow** — Done (hybrid): `npm run dev` → `lib/dev-server.js` (Kit-style nodemon + notices); `npm start` / `npm run serve` → `lib/prototype-serve.js`. Config from **`app/config.json`** via `lib/load-config.js`. Custom **`server.js`** + **`app/versions/mount.js`** unchanged. Legacy `start.js` delegates to dev-server. Full **`govuk-prototype-kit dev`** (stock server/plugins) not used — would drop version mounts.
 6. **Verify** — `npm test`, smoke-test `/`, `/1-0/home`, `/1-1/home`, `/1-2/home`, signed-in journeys.
 
 ### Express 5 audit (phase 3)
@@ -57,6 +57,15 @@ After `npm install`, run `node scripts/check-express5-routes.js` and `npm test` 
 | Patterns | Removed `$legacy` on `govuk-colour()`; dropped `govuk-if-ie8` in sub-navigation |
 | Scripts | `extensionConfig.scripts` is `{ src, type? }`; `type="module"` for kit JS |
 | Assets | `/dist/govuk/assets` served under `/extension-assets/govuk-frontend/...` |
+
+### Dev workflow (phase 5)
+
+| Command | Entry |
+|---------|--------|
+| `npm run dev` | `lib/dev-server.js` — Gulp `generate-assets`, `watch-prototype`, nodemon → `listen-on-port.js` |
+| `npm start` / `npm run serve` | `lib/prototype-serve.js` — build assets, then `listen-on-port.js` (production default) |
+| Config | `app/config.json` + env; `app/config.js` re-exports `lib/load-config.js` |
+| Heroku | `Procfile` → `node lib/prototype-serve.js` |
 
 ## References
 
