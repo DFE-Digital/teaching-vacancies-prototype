@@ -51,7 +51,7 @@
     }
 
     .app-results-heading {
-      align-items: center;
+      align-items: flex-end;
       display: flex;
       gap: 15px;
       justify-content: space-between;
@@ -73,6 +73,16 @@
 
     .app-action-bar__filter .govuk-button {
       width: auto;
+    }
+
+    .app-jobs-sort-form {
+      float: right;
+      width: auto;
+    }
+
+    .app-jobs-sort-form .govuk-form-group {
+      margin-bottom: 0;
+      text-align: right;
     }
   </style>
 {% endblock %}
@@ -194,25 +204,9 @@
           {% if data['location'] %}
 
              <div class="govuk-grid-column-one-full">
-              <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">
-                  {% if currentSort == 'closing' %}
-                    Sorted by closing date
-                  {% elseif currentSort == 'distance' %}
-                    Sorted by distance
-                  {% else %}
-                    Sorted by newest job
-                  {% endif %}
-                </h2><br/>
-              </div>
-
-              <div style="display:inline-block; float:right">
                 {% set sortFormGroupClasses = 'govuk-!-margin-bottom-0' %}
-                {% set sortFormFloatRight = true %}
                 {% include "includes/jobs-search-sort.njk" %}
                 {% set sortFormGroupClasses = '' %}
-                {% set sortFormFloatRight = false %}
-              </div>
 
               <p class="govuk-!-margin-top-2" style="display:inline-block; width:100%;">
                 {% if data['borough'] %}
@@ -235,25 +229,9 @@
           {% else %}
 
             <div class="govuk-grid-row">
-
-              <div class="govuk-grid-column-one-half">
-                <h2 style="float:left;" class="govuk-heading-m govuk-!-margin-bottom-3 govuk-!-margin-top-1">
-                  {% if currentSort == 'closing' %}
-                    Sorted by closing date
-                  {% elseif currentSort == 'distance' %}
-                    Sorted by distance
-                  {% else %}
-                    Sorted by newest job
-                  {% endif %}
-                </h2>
-              </div>
-              
-              <div class="govuk-grid-column-one-half">
-                {% set sortFormFloatRight = true %}
+              <div class="govuk-grid-column-full">
                 {% include "includes/jobs-search-sort.njk" %}
-                {% set sortFormFloatRight = false %}
               </div>
-
             </div>
 
             <div class="govuk-grid-row">
@@ -375,7 +353,7 @@
         container: $('.app-action-bar__filter'),
         showText: 'Show filter',
         hideText: 'Hide filter',
-        classes: 'app-show-filter govuk-!-margin-bottom-3'
+        classes: 'app-show-filter'
       },
       closeButton: {
         container: $('.app-filter__header-action'),

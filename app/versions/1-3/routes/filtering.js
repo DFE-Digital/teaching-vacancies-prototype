@@ -431,6 +431,9 @@ module.exports = router => {
         if (req.query.keywords !== undefined) {
             req.session.data.keywords = req.query.keywords
         }
+        if (req.query.radius !== undefined) {
+            req.session.data.radius = req.query.radius
+        }
         annotateKeywordHits(visibleJobs, keywords)
 
         res.render('jobs/search/filter', {

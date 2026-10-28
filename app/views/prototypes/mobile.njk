@@ -192,6 +192,10 @@
       line-height: 1.25;
     }
 
+    .version-switch {
+      margin: 0 0 16px;
+    }
+
     .device-switch a {
       color: #1d70b8;
     }
@@ -224,9 +228,15 @@
 <body>
   <main class="demo-shell">
     <section class="stage" id="device-stage">
+      <p class="device-switch version-switch" id="version-switch">
+        <a href="?v=1.0" data-version="1.0">1.0</a>
+        <a href="?v=1.1" data-version="1.1">1.1</a>
+        <a href="?v=1.2" data-version="1.2">1.2</a>
+        <a href="?v=1.3" data-version="1.3">1.3</a>
+      </p>
       <div class="phone" id="device-frame">
         <div class="screen">
-          <iframe id="device-screen" src="/home" title="Teaching Vacancies jobs prototype on an iPhone screen"></iframe>
+          <iframe id="device-screen" src="/1-3/home" title="Teaching Vacancies jobs prototype on an iPhone screen" data-default-path="/home"></iframe>
           <span class="home-indicator" aria-hidden="true"></span>
         </div>
       </div>
@@ -248,7 +258,9 @@
     var stage = document.getElementById('device-stage')
     var frame = document.getElementById('device-frame')
     var screen = document.getElementById('device-screen')
-    var switchRow = document.querySelector('.device-switch')
+    var switchRows = document.querySelectorAll('.device-switch')
+    var versionLinks = document.querySelectorAll('#version-switch [data-version]')
+    var allowedVersions = ['1.0', '1.1', '1.2', '1.3']
     var phoneLink = document.getElementById('device-phone')
     var tabletLink = document.getElementById('device-tablet')
     var duoLink = document.getElementById('device-duo')
@@ -264,6 +276,64 @@
           link.removeAttribute('aria-current')
         }
       })
+    }
+
+    var versionFromPath = function () {
+      var match = window.location.pathname.match(/\/1-([0-3])(?:\/|$)/)
+      if (match) {
+        return '1.' + match[1]
+      }
+      return '1.3'
+    }
+
+    var normaliseVersion = function (value) {
+      if (allowedVersions.indexOf(value) !== -1) {
+        return value
+      }
+      return versionFromPath()
+    }
+
+    var versionSlug = function (version) {
+      return '1-' + version.replace('1.', '')
+    }
+
+    var readSearchParams = function () {
+      return new URLSearchParams(window.location.search)
+    }
+
+    var getVersion = function () {
+      return normaliseVersion(readSearchParams().get('v') || versionFromPath())
+    }
+
+    var getIframePagePath = function () {
+      var params = readSearchParams()
+      var page = params.get('page')
+      if (page) {
+        return page.replace(/^\//, '')
+      }
+      return (screen.getAttribute('data-default-path') || '/home').replace(/^\//, '')
+    }
+
+    var iframeSrcForVersion = function (version) {
+      return '/' + versionSlug(version) + '/' + getIframePagePath()
+    }
+
+    var writeVersionToUrl = function (version) {
+      var params = readSearchParams()
+      params.set('v', version)
+      var query = params.toString()
+      var nextUrl = window.location.pathname + (query ? '?' + query : '') + window.location.hash
+      history.replaceState(null, '', nextUrl)
+    }
+
+    var setVersion = function (version, updateUrl) {
+      var normalised = normaliseVersion(version)
+      var currentLink = document.querySelector('#version-switch [data-version="' + normalised + '"]')
+      markCurrent(versionLinks, currentLink)
+      screen.src = iframeSrcForVersion(normalised)
+      if (updateUrl) {
+        writeVersionToUrl(normalised)
+      }
     }
 
     var setOrientation = function (landscape) {
@@ -301,7 +371,10 @@
       frame.style.marginBottom = '0px'
       var width = frame.offsetWidth
       var height = frame.offsetHeight
-      var switchSpace = switchRow.offsetHeight + 40
+      var switchSpace = 40
+      switchRows.forEach(function (row) {
+        switchSpace += row.offsetHeight + 12
+      })
       var scale = Math.min(
         1,
         (window.innerWidth - 48) / width,
@@ -336,6 +409,18 @@
       event.preventDefault()
       setOrientation(false)
     })
+
+    versionLinks.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault()
+        setVersion(link.getAttribute('data-version'), true)
+      })
+    })
+
+    setVersion(getVersion(), false)
+    if (!readSearchParams().has('v')) {
+      writeVersionToUrl(getVersion())
+    }
 
     window.addEventListener('resize', fitFrame)
     fitFrame()

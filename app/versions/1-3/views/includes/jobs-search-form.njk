@@ -10,7 +10,7 @@
         text: "Keywords",
         classes: "govuk-label--s"
       },
-      value: data['keywords']
+      value: data['keywords'] or searchFormKeywordsFallback
     }) }}
 
     {{ govukInput({
@@ -20,7 +20,7 @@
         text: "City, county, or postcode (in England)",
         classes: "govuk-label--s"
       },
-      value: data['location']
+      value: data['location'] or searchFormLocationFallback
     }) }}
 
     {{ govukSelect({
@@ -30,6 +30,7 @@
         text: "Search radius",
         classes: "govuk-label--s"
       },
+      value: data['radius'] or searchFormRadiusFallback,
       items: [
         {
           value: "updated",

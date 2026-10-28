@@ -3,8 +3,9 @@
 // on a solid background.
 
 // GDS Tag — status only; not links, buttons, or other interactive elements.
-.govuk-tag,
-strong.govuk-tag {
+// Exclude phase banner tags (they use the Design System phase banner type scale).
+.govuk-tag:not(.govuk-phase-banner__content__tag),
+strong.govuk-tag:not(.govuk-phase-banner__content__tag) {
   color: #0f385c;
   background-color: #d2e2f1;
   max-width: 160px;
@@ -88,14 +89,19 @@ strong.govuk-tag.govuk-tag--green {
   background-color: #cecece;
 }
 
-.govuk-phase-banner__content__tag {
-  font-size: inherit;
-  line-height: inherit;
-}
+// Phase banner tag — GOV.UK Frontend defaults (see design-system phase banner)
+.govuk-tag.govuk-phase-banner__content__tag,
+strong.govuk-tag.govuk-phase-banner__content__tag {
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 400;
+  max-width: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 2px 8px 3px;
 
-@include govuk-media-query($until: tablet) {
-  strong.govuk-tag.govuk-phase-banner__content__tag {
-    font-size: 1rem;
-    line-height: 1.25;
+  @media print {
+    font-size: 14pt;
+    line-height: 1.2;
   }
 }

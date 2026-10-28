@@ -11,9 +11,9 @@
   {% if data['radius'] %}
     <input type="hidden" name="radius" value="{{ data['radius'] }}">
   {% endif %}
-  <div class="govuk-form-group {{ sortFormGroupClasses or 'govuk-!-margin-bottom-4' }}" {% if sortFormFloatRight %}style="float:right"{% endif %}>
+  <div class="govuk-form-group {{ sortFormGroupClasses or 'govuk-!-margin-bottom-4' }}{% if sortFormFloatRight %} app-jobs-sort-form__group--align-end{% endif %}">
     <label class="govuk-label" for="sort" style="display:inline-block;">
-      Sort by
+      Sorted by
     </label>
     <select class="govuk-select" id="sort" name="sort">
       <option value="newest" {% if currentSort == 'newest' %}selected{% endif %}>Newest job</option>

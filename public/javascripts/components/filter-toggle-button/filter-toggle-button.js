@@ -16,7 +16,12 @@ AppFrontend.FilterToggleButton.prototype.setupResponsiveChecks = function() {
 };
 
 AppFrontend.FilterToggleButton.prototype.createToggleButton = function() {
-  this.menuButton = $('<button class="govuk-button '+this.options.toggleButton.classes+'" type="button" aria-haspopup="true" aria-expanded="false">'+this.options.toggleButton.showText+'</button>');
+  var classes = this.options.toggleButton.classes || '';
+  if (this.options.toggleButton.useLink) {
+    this.menuButton = $('<a href="#" role="button" class="govuk-link govuk-link--no-visited-state ' + classes + '" aria-haspopup="true" aria-expanded="false">' + this.options.toggleButton.showText + '</a>');
+  } else {
+    this.menuButton = $('<button class="govuk-button ' + classes + '" type="button" aria-haspopup="true" aria-expanded="false">' + this.options.toggleButton.showText + '</button>');
+  }
   this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'));
   this.options.toggleButton.container.append(this.menuButton);
 };
@@ -71,7 +76,10 @@ AppFrontend.FilterToggleButton.prototype.showMenu = function() {
   this.menuButton.text(this.options.toggleButton.hideText);
 };
 
-AppFrontend.FilterToggleButton.prototype.onMenuButtonClick = function() {
+AppFrontend.FilterToggleButton.prototype.onMenuButtonClick = function(event) {
+  if (event && event.preventDefault) {
+    event.preventDefault();
+  }
   this.toggle();
 };
 

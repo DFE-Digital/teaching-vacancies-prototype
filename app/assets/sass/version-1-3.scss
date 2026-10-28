@@ -138,3 +138,294 @@ $govuk-prototype-kit-major-version: 14;
     }
   }
 }
+
+// v1.3 home — Civil Service–style hero (csr-page-title / csr-page-subtitle + search panel)
+.home_index--hero-v2 {
+  .home-hero__page-header {
+    margin-bottom: govuk-spacing(4);
+    padding-top: govuk-spacing(2);
+  }
+
+  // Match Civil Service Jobs (.csr-page-title h1, .csr-page-subtitle)
+  .home-hero__page-title .home-hero__title {
+    @include govuk-font(36, $weight: bold);
+    color: govuk-colour("black");
+    line-height: 40px;
+    margin: 0;
+  }
+
+  .home-hero__subtitle {
+    @include govuk-typography-common;
+    color: govuk-colour("black");
+    font-size: 24px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 0;
+    margin-top: govuk-spacing(3);
+  }
+
+  .search.home-hero {
+    background-color: transparent;
+    color: govuk-colour("black");
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: govuk-spacing(4);
+    padding-top: 0;
+  }
+
+  .search__inner.home-hero__panel-wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-hero__panel {
+    // Civil Service Jobs .csr-top-search-panel
+    background-color: #dee0e2;
+    border: 0;
+    color: govuk-colour("black");
+    padding: govuk-spacing(5) govuk-spacing(4);
+
+    @include govuk-media-query($from: tablet) {
+      padding: govuk-spacing(5) govuk-spacing(6);
+    }
+
+    .home-hero__search-label {
+      @include govuk-typography-common;
+      color: govuk-colour("black");
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 30px;
+      margin-bottom: 0;
+    }
+
+    .home-hero__search-hint {
+      @include govuk-typography-common;
+      color: govuk-colour("black");
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      margin-bottom: govuk-spacing(2);
+      margin-top: 0;
+    }
+
+    .home-hero__popular-heading {
+      color: govuk-colour("black");
+    }
+
+    .govuk-link {
+      color: $govuk-link-colour;
+    }
+
+    .search h2 {
+      color: govuk-colour("black");
+    }
+
+    .home-hero__panel-extra {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      gap: govuk-spacing(4);
+      justify-content: space-between;
+      margin-top: govuk-spacing(6); // 30px below search button
+    }
+
+    .home-hero__browse-all {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      margin-top: 0;
+      text-align: right;
+
+      .govuk-link {
+        color: $govuk-link-colour;
+      }
+
+      @include govuk-media-query($until: tablet) {
+        flex-basis: 100%;
+        text-align: left;
+      }
+    }
+
+    .home-hero__popular-details {
+      flex: 1 1 auto;
+      margin-bottom: 0;
+      margin-top: 0;
+      min-width: 0;
+
+      .search__popular {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px 15px;
+      }
+
+      .search__popular .govuk-link {
+        color: $govuk-link-colour;
+        margin-right: 0;
+      }
+    }
+
+    .search__form {
+      .govuk-form-group {
+        margin-bottom: 0;
+      }
+
+      .govuk-input {
+        box-sizing: border-box;
+        height: 40px;
+        line-height: 1;
+        margin-bottom: 0;
+        min-height: 40px;
+        padding-bottom: 0;
+        padding-top: 0;
+      }
+    }
+
+    .home-hero__search-submit {
+      margin-bottom: 0;
+      margin-top: govuk-spacing(4);
+
+      .govuk-button {
+        align-items: center;
+        box-sizing: border-box;
+        display: inline-flex;
+        height: 40px;
+        justify-content: center;
+        line-height: 1;
+        margin-bottom: 0;
+        min-height: 40px;
+        padding-bottom: 0;
+        padding-top: 0;
+        width: auto;
+      }
+    }
+  }
+
+  .home-hero__popular-heading {
+    margin-bottom: govuk-spacing(2);
+    margin-top: govuk-spacing(5);
+  }
+
+  // Landing links accordion — title left, chevron right (expand/collapse)
+  .landing-page-links {
+    margin-top: govuk-spacing(6);
+
+    .home-landing-accordion.govuk-accordion {
+      border-bottom: 1px solid govuk-colour("mid-grey");
+    }
+
+    .govuk-accordion__controls {
+      display: none;
+    }
+
+    .govuk-accordion__section {
+      border-top: 1px solid govuk-colour("mid-grey");
+    }
+
+    .govuk-accordion__section-header {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+
+    .govuk-accordion__section-button {
+      align-items: center;
+      border-bottom: 0;
+      border-top: 0;
+      display: flex;
+      justify-content: space-between;
+      min-height: 54px;
+      padding-bottom: govuk-spacing(3);
+      padding-top: govuk-spacing(3);
+      text-align: left;
+      width: 100%;
+
+      // Match promo cards (.govuk-heading-m), not global home accordion 1.2rem
+      @include govuk-font(24, $weight: bold);
+    }
+
+    .govuk-accordion__section-heading-text {
+      align-items: center;
+      display: flex;
+      flex: 1 1 auto;
+      margin-bottom: 0;
+      min-height: 0;
+      text-align: left;
+    }
+
+    .govuk-accordion__section-toggle {
+      align-items: center;
+      display: flex;
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      margin-left: govuk-spacing(3);
+    }
+
+    .govuk-accordion__section-toggle-text {
+      @include govuk-visually-hidden;
+    }
+
+    // Simple arrow chevron (not GDS filled circle)
+    .govuk-accordion-nav__chevron {
+      background: none;
+      border: 0;
+      border-radius: 0;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      height: 14px;
+      position: relative;
+      transform: none !important;
+      vertical-align: middle;
+      width: 14px;
+
+      &::after {
+        border: 0;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        bottom: auto;
+        box-sizing: border-box;
+        content: "";
+        display: block;
+        height: 8px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -65%) rotate(45deg);
+        width: 8px;
+      }
+    }
+
+    .govuk-accordion-nav__chevron--down::after {
+      transform: translate(-50%, -65%) rotate(45deg);
+    }
+
+    .govuk-accordion__section--expanded .govuk-accordion-nav__chevron::after {
+      transform: translate(-50%, -35%) rotate(-135deg);
+    }
+
+    .govuk-accordion__section-button:hover .govuk-accordion-nav__chevron,
+    .govuk-accordion__section-button:focus .govuk-accordion-nav__chevron {
+      background: none;
+      color: currentColor;
+
+      &::after {
+        color: currentColor;
+      }
+    }
+
+    .govuk-accordion__section-button:hover .govuk-accordion-nav__chevron::after,
+    .govuk-accordion__section-button:focus .govuk-accordion-nav__chevron::after {
+      border-right-color: currentColor;
+      border-bottom-color: currentColor;
+    }
+
+    .govuk-accordion__section-button:focus .govuk-accordion-nav__chevron::after {
+      border-right-color: govuk-colour("black");
+      border-bottom-color: govuk-colour("black");
+    }
+  }
+
+  .landing-page-links .govuk-accordion__section-content {
+    padding: 0;
+  }
+
+}

@@ -81,8 +81,13 @@
     }
 }
 
-.home_index.js-enabled .landing-page-links .govuk-accordion__section-content {
+.js-enabled .home_index .landing-page-links .govuk-accordion__section-content {
     padding: 0
+}
+
+// application.scss sets expanded accordion content to flex (job alerts); home grids need block layout
+.home_index .landing-page-links .govuk-accordion__section--expanded .govuk-accordion__section-content {
+    display: block !important;
 }
 
 .home_index .landing-page-links .govuk-accordion__section-button {

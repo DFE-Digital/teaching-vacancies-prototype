@@ -4,6 +4,9 @@
 }) %}
   {% set searchFormIdSuffix = '-details' %}
   {% set searchFormFieldIdPrefix = 'jobs-search-details-' %}
+  {% set searchFormKeywordsFallback = 'teacher' %}
+  {% set searchFormLocationFallback = 'London' %}
+  {% set searchFormRadiusFallback = '5' %}
   {% include "includes/jobs-search-form.njk" %}
   {% set searchFormIdSuffix = '' %}
   {% set searchFormFieldIdPrefix = '' %}

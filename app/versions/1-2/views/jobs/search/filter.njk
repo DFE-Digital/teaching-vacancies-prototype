@@ -50,29 +50,12 @@
       }
     }
 
-    .app-results-heading {
-      align-items: center;
-      display: flex;
-      gap: 15px;
-      justify-content: space-between;
-    }
-
     .app-results-heading .govuk-heading-l {
       margin-bottom: 0;
     }
 
-    .app-results-heading .app-action-bar__filter {
-      float: none;
+    .app-jobs-listing__filter-link {
       margin-bottom: 0;
-      width: auto;
-    }
-
-    .app-results-heading .app-show-filter {
-      margin-bottom: 0;
-    }
-
-    .app-action-bar__filter .govuk-button {
-      width: auto;
     }
   </style>
 {% endblock %}
@@ -82,9 +65,6 @@
     <h1 class="govuk-heading-l">
       <span id="job-count">240</span> jobs found
     </h1>
-    <div class="app-action-bar">
-      <div class="app-action-bar__filter"></div>
-    </div>
   </div>
 
   {% if data['sort'] %}
@@ -161,13 +141,14 @@
   <div class="app-jobs-listing">
   {# Descoped: job alert promo on search results #}
   {% include "includes/jobs-search-form-details.njk" %}
+  <div class="app-action-bar__filter app-jobs-listing__filter-link govuk-!-margin-bottom-4"></div>
   {% if data['keywords'] %}
     <p class="govuk-body">Results match your keywords. Role and education phase filters are only applied if you select them.</p>
   {% endif %}
 
   <div class="app-filter-layout">
 
-    <div class="app-filter-layout__filter">
+    <div class="app-filter-layout__filter app-js-hidden">
       
       {% if data['filtertype'] == '1' %}
 
@@ -194,19 +175,7 @@
           {% if data['location'] %}
 
              <div class="govuk-grid-column-one-full">
-              <div style="float:left;">
-                <h2 style="display:inline-block" class="govuk-heading-m govuk-!-margin-bottom-3  govuk-!-margin-top-1">
-                  {% if currentSort == 'closing' %}
-                    Sorted by closing date
-                  {% elseif currentSort == 'distance' %}
-                    Sorted by distance
-                  {% else %}
-                    Sorted by newest job
-                  {% endif %}
-                </h2><br/>
-              </div>
-
-              <div style="display:inline-block; float:right">
+              <div class="app-jobs-sort-form__wrap">
                 {% set sortFormGroupClasses = 'govuk-!-margin-bottom-0' %}
                 {% set sortFormFloatRight = true %}
                 {% include "includes/jobs-search-sort.njk" %}
@@ -235,25 +204,11 @@
           {% else %}
 
             <div class="govuk-grid-row">
-
-              <div class="govuk-grid-column-one-half">
-                <h2 style="float:left;" class="govuk-heading-m govuk-!-margin-bottom-3 govuk-!-margin-top-1">
-                  {% if currentSort == 'closing' %}
-                    Sorted by closing date
-                  {% elseif currentSort == 'distance' %}
-                    Sorted by distance
-                  {% else %}
-                    Sorted by newest job
-                  {% endif %}
-                </h2>
-              </div>
-              
-              <div class="govuk-grid-column-one-half">
+              <div class="govuk-grid-column-full">
                 {% set sortFormFloatRight = true %}
                 {% include "includes/jobs-search-sort.njk" %}
                 {% set sortFormFloatRight = false %}
               </div>
-
             </div>
 
             <div class="govuk-grid-row">
@@ -369,13 +324,14 @@
   <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
   <script>
     new AppFrontend.FilterToggleButton({
-      bigModeMediaQuery: '(min-width: 48.063em)',
+      bigModeMediaQuery: '(min-width: 48.0625em)',
       startHidden: false,
       toggleButton: {
-        container: $('.app-action-bar__filter'),
-        showText: 'Show filter',
+        container: $('.app-jobs-listing__filter-link'),
+        showText: 'Filter this list',
         hideText: 'Hide filter',
-        classes: 'app-show-filter govuk-!-margin-bottom-3'
+        useLink: true,
+        classes: 'app-show-filter'
       },
       closeButton: {
         container: $('.app-filter__header-action'),

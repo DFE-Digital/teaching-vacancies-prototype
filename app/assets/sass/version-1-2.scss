@@ -19,6 +19,32 @@ $govuk-prototype-kit-major-version: 14;
   }
 }
 
+// Sort control: right on tablet+, left-aligned on small screens
+.app-jobs-sort-form__wrap {
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    float: right;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+}
+
+.app-jobs-sort-form__group--align-end {
+  @include govuk-media-query($from: tablet) {
+    float: right;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    float: none;
+    text-align: left;
+    width: 100%;
+  }
+}
+
 .app-jobs-search-details {
   display: none;
 
