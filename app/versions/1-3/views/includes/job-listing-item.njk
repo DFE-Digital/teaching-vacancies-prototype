@@ -45,6 +45,14 @@
     {% endif %}
   </div>
 
+  <div class="app-jobs__item-save" data-job-id="{{ job.id }}">
+    {% if (job.id | string) in (data.savedJobs or []) %}
+      <a class="banner-button-component__button govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 icon icon--left icon--saved" data-unsave-job href="/jobs/{{ job.id }}/unsave">Remove from saved jobs</a>
+    {% else %}
+      <a class="banner-button-component__button govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 icon icon--left icon--save" data-save-job href="/jobs/{{ job.id }}/save">Save this job for later</a>
+    {% endif %}
+  </div>
+
   <p class="app-jobs__item__roles" style="display:none;">{{ job.role }}</p>
 
   {{ govukSummaryList({

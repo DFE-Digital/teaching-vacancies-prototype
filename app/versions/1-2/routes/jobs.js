@@ -824,6 +824,9 @@ module.exports = router => {
     const jobs = req.session.data.jobs || []
     const job = jobs.find(item => String(item.id) === String(req.params.id))
     if (!job) {
+      if (req.query.inline === '1') {
+        return res.status(404).json({ ok: false })
+      }
       return res.redirect('/jobs')
     }
     if (!Array.isArray(req.session.data.savedJobs)) req.session.data.savedJobs = []
@@ -831,8 +834,22 @@ module.exports = router => {
     if (!req.session.data.savedJobs.map(String).includes(jobId)) {
       req.session.data.savedJobs.push(jobId)
     }
+    if (req.query.inline === '1') {
+      return res.json({ ok: true, saved: true, jobId })
+    }
     req.flash('success', 'job-saved')
     res.redirect('/jobs/' + job.id)
+  })
+
+  router.get('/jobs/:id/unsave', (req, res) => {
+    if (!Array.isArray(req.session.data.savedJobs)) req.session.data.savedJobs = []
+    const jobId = String(req.params.id)
+    req.session.data.savedJobs = req.session.data.savedJobs.filter(savedId => String(savedId) !== jobId)
+    if (req.query.inline === '1') {
+      return res.json({ ok: true, saved: false, jobId })
+    }
+    const referer = req.get('Referer')
+    res.redirect(referer || '/search/applications')
   })
 
   router.get('/jobs/:id', (req, res) => {

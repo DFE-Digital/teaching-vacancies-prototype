@@ -100,6 +100,7 @@ function session (req, res, next) {
 function createEnv (version) {
   const viewPaths = extensions.getAppViews([
     path.join(versionDir(version), 'views'),
+    path.join(__dirname, '..', 'views'),
     path.join(__dirname, '../../lib/')
   ])
   const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(viewPaths, {

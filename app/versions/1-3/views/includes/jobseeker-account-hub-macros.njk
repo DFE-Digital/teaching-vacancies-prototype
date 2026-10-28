@@ -8,7 +8,8 @@
     "job-alerts": "notifications",
     "notifications": "chat",
     "personal-details": "person",
-    "get-help": "help"
+    "get-help": "help",
+    "sign-out": "logout"
   } %}
   <span class="app-account-featured__icon app-account-featured__icon--{{ icon }}" aria-hidden="true">
     <span class="material-symbols-outlined app-account-featured__icon-glyph">{{ glyphs[icon] }}</span>
@@ -34,4 +35,5 @@
   {{ accountHubFeaturedItem('/jobseekers/notifications', accountNavLabel('notifications'), 'Read updates from schools about your applications and other account activity.', 'notifications') }}
   {{ accountHubFeaturedItem('/account/personal-details', accountNavLabel('personal-details'), 'Update your name, teacher reference number (TRN) and contact email address.', 'personal-details') }}
   {{ accountHubFeaturedItem('/account/your-account', accountNavLabel('get-help'), 'Sign-in help, transferring account details, closing your account and email preferences.', 'get-help') }}
+  {{ accountHubFeaturedItem('/account/sign-out', 'Sign out', 'Sign out of your Teaching Vacancies account on this device.', 'sign-out') }}
 {% endmacro %}

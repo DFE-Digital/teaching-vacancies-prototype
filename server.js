@@ -308,8 +308,11 @@ app.get(/\.html?$/i, function (req, res) {
 
 // Auto render any view that exists
 
-// App folder routes get priority
+// App folder routes get priority (skip mounted version URLs — handled under /1-0, /1-1, etc.)
 app.get(/^([^.]+)$/, function (req, res, next) {
+  if (/^\/(1-0|1-1|1-2|1-3)(\/|$)/.test(req.path)) {
+    return next()
+  }
   utils.matchRoutes(req, res, next)
 })
 

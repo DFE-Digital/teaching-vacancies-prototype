@@ -58,13 +58,19 @@ $govuk-prototype-kit-major-version: 14;
   }
 }
 
+.app-jobs-listing .app-filter-layout .header-with-logo-title > .app-jobs__title {
+  justify-content: flex-start;
+  gap: 10px;
+  width: auto;
+}
+
 .app-jobs-listing .app-jobs__item {
   .header-with-logo {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: govuk-spacing(3);
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: 0;
   }
 
   .header-with-logo-title {
@@ -82,5 +88,53 @@ $govuk-prototype-kit-major-version: 14;
   .app-jobs__salary {
     display: block;
     max-width: 36em;
+  }
+
+  .app-jobs__item-save {
+    margin-bottom: govuk-spacing(3);
+    margin-top: 10px;
+    text-align: left;
+
+    .banner-button-component__button {
+      @include govuk-font(16, $weight: bold);
+      background-color: inherit;
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      border: 0;
+      box-shadow: none;
+      color: govuk-colour("blue");
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0;
+      margin-top: 0;
+      padding-bottom: 0;
+      padding-left: 22px;
+      text-align: left;
+      text-decoration: none;
+      width: auto;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        border-bottom: 0;
+        box-shadow: none;
+        color: govuk-colour("blue");
+        text-decoration: none;
+      }
+    }
+
+    .icon--save {
+      background-image: url(/public/images/heart.svg);
+    }
+
+    .icon--saved {
+      background-image: url(/public/images/heart-saved.svg);
+    }
+
+    span.icon--saved {
+      cursor: default;
+    }
   }
 }

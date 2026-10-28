@@ -5,6 +5,11 @@
   padding-top: 20px;
 }
 
+// Signed-in account tasks use full content width (not two-thirds).
+.app-account-main-wrapper .govuk-grid-row > .govuk-grid-column-two-thirds {
+  width: 100%;
+}
+
 .app-account-hub {
   margin-bottom: 35px;
 }
@@ -98,6 +103,11 @@
 .app-account-featured__icon--get-help {
   background: #f3f2f1;
   color: #0b0c0c;
+}
+
+.app-account-featured__icon--sign-out {
+  background: #f3f2f1;
+  color: #505a5f;
 }
 
 .app-account-featured-list__text {

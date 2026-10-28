@@ -466,13 +466,17 @@ hr {
     margin-bottom: 15px;
   }
 
-  .vacancies-show__header-action .govuk-button,
-  .vacancies-show__banner-apply .govuk-button {
+  .vacancies-show__header-action .govuk-button {
     margin-bottom: 0;
   }
 
   .vacancies-show__banner-apply .govuk-button {
+    margin-bottom: 20px;
     margin-top: 15px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
   }
 
   .vacancies-show__banner-apply .govuk-button--external-advert {

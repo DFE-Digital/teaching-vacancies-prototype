@@ -6,8 +6,7 @@
 {% set showSavedJobsToggle = true %}
 {% set activeNav = 'applications' %}
 {% set forceSignedIn = true %}
-{% set jobseekerSubNavigation = true %}
-{% set jobseekerSubNavSection = 'saved-jobs' %}
+{% set jobseekerAccountSubNavSection = 'saved-jobs' %}
 {% set accountAreaMain = true %}
 
 {% block head %}
@@ -78,9 +77,8 @@
 {% block content %}
   {% set savedJobCount = savedJobList.length if savedJobList else 0 %}
 
-  {{ jobseekerAccountBreadcrumbs("Saved jobs") }}
+  {{ jobseekerAccountBreadcrumbs("Saved jobs", "saved-jobs") }}
   {% include "includes/applications-page-header.njk" %}
-  {% include "includes/jobseeker-account-nav.njk" %}
 
   <h2 class="govuk-heading-m app-saved-jobs-heading govuk-!-margin-top-0">Saved jobs ({{ savedJobCount }})</h2>
 

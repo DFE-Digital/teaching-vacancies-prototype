@@ -65,7 +65,7 @@
     {% set primaryActionHref = applyHref %}
   {% else %}
     {% set applyHref = '#applying' %}
-    {% set primaryActionText = "View advert" %}
+    {% set primaryActionText = "Apply on the " + job.organisation.name + " website (opens in new tab)" %}
     {% set primaryActionHref = '/jobs/external-advert?job=' + job.id %}
   {% endif %}
 
@@ -142,14 +142,14 @@
               href: primaryActionHref
             }) }}
           {% else %}
-            <a class="govuk-button govuk-button--external-advert" href="{{ primaryActionHref }}">
-              {{ primaryActionText }}
-              <svg class="vacancies-show__new-tab-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3z"></path>
-                <path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"></path>
-              </svg>
-              <span class="govuk-visually-hidden"> (opens in new tab; leaves the DfE website)</span>
-            </a>
+            {{ govukButton({
+              text: primaryActionText,
+              href: primaryActionHref,
+              attributes: {
+                target: "_blank",
+                rel: "noreferrer noopener"
+              }
+            }) }}
           {% endif %}
         </div>
       {% endif %}
@@ -307,7 +307,7 @@
               <p class="govuk-body">{{ job.organisation.name }} asks you to apply on their website. The next step is their application form, not a form on this service.</p>
               <p class="govuk-body">CVs will not be accepted for this application.</p>
               {{ govukButton({
-                text: "Apply on the " + job.organisation.name + " website (opens in new tab)",
+                text: primaryActionText,
                 href: primaryActionHref,
                 attributes: {
                   target: "_blank",
