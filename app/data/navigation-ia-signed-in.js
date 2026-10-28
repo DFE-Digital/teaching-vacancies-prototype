@@ -18,26 +18,33 @@ module.exports = {
       routeSlug: 'navigation-ia-tree-1-3',
       pageTitle: 'Proposed IA',
       mermaid: `flowchart TB
-  subgraph chrome["Job Seeker"]
-    direction TB
+  subgraph level1["Level 1"]
+    direction LR
+    J[Jobs]
+    SC[Schools]
+    CO[Colleges]
     YA[Your account]
-    SO[Sign out]
-    SN_J[Jobs]
-    SN_SC[Schools]
-    SN_CO[Colleges]
   end
 
-  HUB[Your account hub]
+  subgraph level2["Level 2"]
+    direction TB
+    A[Applications]
+    S[Saved jobs]
+    JA[Job alerts]
+    N[Notifications]
+    P[Profile]
+    H[Help with your account]
+  end
 
-  A[Applications]
-  S[Saved jobs]
-  JA[Job alerts]
-  N[Notifications]
-  P[Profile]
-  H[Help with your account]
+  YA --> L2GAP[" "]
+  L2GAP --> A
+  A --> S
+  S --> JA
+  JA --> N
+  N --> P
+  P --> H
 
-  chrome --> HUB
-  HUB --> A --> S --> JA --> N --> P --> H`
+  style L2GAP fill:transparent,stroke:transparent,color:transparent`
     }
   },
 

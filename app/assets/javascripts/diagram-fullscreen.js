@@ -103,6 +103,62 @@ window.AppFrontend.diagramFullscreen = function () {
     })
   }
 
+  function alignIaTreeClusterWidths (diagrams) {
+    diagrams.forEach(function (diagram) {
+      if (!diagram.classList.contains('app-documentation-ia-tree__diagram')) {
+        return
+      }
+
+      const svg = diagram.querySelector('svg')
+      if (!svg) {
+        return
+      }
+
+      const minWidth = parseInt(diagram.getAttribute('data-cluster-min-width'), 10) || 0
+      const clusters = Array.from(svg.querySelectorAll('g.cluster')).filter(function (cluster) {
+        return !cluster.parentElement.closest('g.cluster')
+      })
+
+      if (!clusters.length) {
+        return
+      }
+
+      let minX = Infinity
+      let maxX = -Infinity
+
+      clusters.forEach(function (cluster) {
+        const rect = cluster.querySelector(':scope > rect')
+        if (!rect) {
+          return
+        }
+
+        const x = parseFloat(rect.getAttribute('x')) || 0
+        const width = parseFloat(rect.getAttribute('width')) || 0
+        minX = Math.min(minX, x)
+        maxX = Math.max(maxX, x + width)
+      })
+
+      if (!Number.isFinite(minX)) {
+        return
+      }
+
+      let targetWidth = maxX - minX
+      if (minWidth > targetWidth) {
+        targetWidth = minWidth
+      }
+
+      clusters.forEach(function (cluster) {
+        const rect = cluster.querySelector(':scope > rect')
+        if (!rect) {
+          return
+        }
+
+        rect.setAttribute('x', minX)
+        rect.setAttribute('width', targetWidth)
+      })
+    })
+  }
+
   function widenClippedLabels (diagrams) {
     const updates = []
 
@@ -160,6 +216,7 @@ window.AppFrontend.diagramFullscreen = function () {
 
   const diagrams = Array.from(document.querySelectorAll('pre.mermaid'))
   widenClusterRects(diagrams)
+  alignIaTreeClusterWidths(diagrams)
   widenClippedLabels(diagrams)
   addExpandButtons(diagrams)
 }
