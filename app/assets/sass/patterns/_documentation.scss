@@ -1,3 +1,20 @@
+.app-documentation-ia-tree .app-diagram {
+  max-width: 100%;
+  margin: 5px 0;
+  overflow: visible;
+}
+
+.app-documentation-ia-tree__diagram {
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+}
+
+.app-documentation-ia-tree svg g.cluster > rect {
+  rx: 0;
+  ry: 0;
+}
+
 .app-diagram {
   position: relative;
   margin-bottom: 30px;

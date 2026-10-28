@@ -22,6 +22,11 @@
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">{{ doc.guideTitle }}</h1>
   <p class="govuk-body-l">{{ doc.guideDescription }}</p>
   <p class="govuk-body">{{ doc.compareNote }}</p>
+  {% if doc.signedInIaTreeLink %}
+    <p class="govuk-body">
+      <a class="govuk-link" href="{{ doc.signedInIaTreeLink.href }}">{{ doc.signedInIaTreeLink.label }}</a>
+    </p>
+  {% endif %}
 
   {% for version in doc.versions %}
     <section class="govuk-!-margin-bottom-8" aria-labelledby="nav-ia-{{ version.id }}">

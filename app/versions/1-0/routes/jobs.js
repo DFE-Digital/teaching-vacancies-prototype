@@ -118,6 +118,14 @@ module.exports = router => {
     res.render('documentation/navigation-ia', { doc })
   })
 
+  router.get('/documentation/navigation-ia-tree-1-3', (req, res) => {
+    const doc = require('../../../data/navigation-ia-signed-in')
+    res.render('documentation/navigation-ia-tree', {
+      doc,
+      tree: doc.iaTrees['1-3']
+    })
+  })
+
   router.get('/mobile', (req, res) => {
     res.render('prototypes/mobile')
   })

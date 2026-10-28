@@ -8,6 +8,38 @@ module.exports = {
     'How signed-in jobseeker navigation is structured in each mounted prototype version (1.0 to 1.3): header, service navigation, account areas, and in-page sub navigation.',
   compareNote:
     'Paths below use version prefixes from the prototype hub. Open a version’s signed-in entry point, then follow the links described for that version.',
+  signedInIaTreeLink: {
+    href: '/documentation/navigation-ia-tree-1-3',
+    label: 'Version 1.3 signed-in user IA — full top-to-bottom tree (separate page)'
+  },
+
+  iaTrees: {
+    '1-3': {
+      routeSlug: 'navigation-ia-tree-1-3',
+      pageTitle: 'Proposed IA',
+      mermaid: `flowchart TB
+  subgraph chrome["Job Seeker"]
+    direction TB
+    YA[Your account]
+    SO[Sign out]
+    SN_J[Jobs]
+    SN_SC[Schools]
+    SN_CO[Colleges]
+  end
+
+  HUB[Your account hub]
+
+  A[Applications]
+  S[Saved jobs]
+  JA[Job alerts]
+  N[Notifications]
+  P[Profile]
+  H[Help with your account]
+
+  chrome --> HUB
+  HUB --> A --> S --> JA --> N --> P --> H`
+    }
+  },
 
   versions: [
     {

@@ -45,6 +45,14 @@ router.get('/documentation/navigation-ia', (req, res) => {
   res.render('documentation/navigation-ia', { doc })
 })
 
+router.get('/documentation/navigation-ia-tree-1-3', (req, res) => {
+  const doc = require('../../data/navigation-ia-signed-in')
+  res.render('documentation/navigation-ia-tree', {
+    doc,
+    tree: doc.iaTrees['1-3']
+  })
+})
+
 router.get('/documentation/fe-changes-1', (req, res) => {
   res.render('documentation/fe-changes-1.html')
 })

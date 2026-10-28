@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-documentation-ia-tree" %}
+
+{% block pageTitle %}
+  {{ tree.pageTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: doc.guideTitle, href: "/documentation/navigation-ia" },
+      { text: tree.pageTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <a class="govuk-back-link" href="/documentation/navigation-ia#nav-ia-1-3">Back</a>
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">{{ tree.pageTitle }}</h1>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-2">Signed-in user information architecture</h2>
+  <pre class="mermaid app-documentation-ia-tree__diagram" data-cluster-min-width="280">{{ tree.mermaid }}</pre>
+
+  <div class="app-diagram-fullscreen" data-module="app-diagram-fullscreen" hidden role="dialog" aria-modal="true" aria-label="Diagram full screen">
+    <div class="app-diagram-fullscreen__toolbar">
+      <button type="button" class="govuk-button govuk-button--secondary app-diagram-fullscreen__close">Close</button>
+    </div>
+    <div class="app-diagram-fullscreen__stage"></div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="/public/javascripts/diagram-fullscreen.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      flowchart: {
+        useMaxWidth: true,
+        padding: 16,
+        subGraphTitleMargin: { top: 12, bottom: 12 },
+        nodeSpacing: 24,
+        rankSpacing: 28
+      }
+    })
+    mermaid.run({ querySelector: 'pre.mermaid' }).then(AppFrontend.diagramFullscreen)
+  </script>
+{% endblock %}
