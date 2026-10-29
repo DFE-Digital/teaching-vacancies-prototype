@@ -1,0 +1,17 @@
+{% set listingAddress = job | jobListingAddress %}
+{% set listingSalary = job | jobListingSalary %}
+{% set listingSalaryFull = job | jobListingSalaryFull %}
+{% set listingCompactDetails = job | jobListingCompactDetails %}
+{% set listingSalaryText = listingSalary if listingSalary else "Not provided" %}
+
+<p class="govuk-body govuk-!-margin-bottom-1 app-jobs__listing-line">
+  <span class="govuk-visually-hidden">Location: </span>{{ listingAddress }}
+</p>
+{% if listingCompactDetails %}
+  <p class="govuk-body govuk-!-margin-bottom-1 app-jobs__listing-line">
+    <span class="govuk-visually-hidden">Job details: </span>{{ listingCompactDetails }}
+  </p>
+{% endif %}
+<p class="govuk-body govuk-!-margin-bottom-2 app-jobs__listing-line">
+  <span class="govuk-visually-hidden">Salary: </span>{% if listingSalaryFull != listingSalary and listingSalaryFull %}<span class="app-jobs__salary" title="{{ listingSalaryFull }}">{{ listingSalaryText }}</span>{% else %}<span class="app-jobs__salary">{{ listingSalaryText }}</span>{% endif %}
+</p>

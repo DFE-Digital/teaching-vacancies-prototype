@@ -59,12 +59,32 @@ $govuk-prototype-kit-major-version: 14;
 }
 
 .app-jobs-listing .app-filter-layout .header-with-logo-title > .app-jobs__title {
-  justify-content: flex-start;
-  gap: 10px;
+  display: block;
+  margin-top: 0;
   width: auto;
 }
 
+.app-jobs-listing .app-jobs__quick-apply-wrap {
+  margin-bottom: govuk-spacing(1);
+}
+
 .app-jobs-listing .app-jobs__item {
+  padding-right: govuk-spacing(7);
+  padding-top: govuk-spacing(2);
+  position: relative;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  > .app-jobs__item-save {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 1;
+  }
+
   .header-with-logo {
     display: flex;
     justify-content: space-between;
@@ -78,11 +98,19 @@ $govuk-prototype-kit-major-version: 14;
     min-width: 0;
   }
 
-  .header-with-logo-logo--search-result img {
-    max-height: 48px;
-    max-width: 120px;
-    width: auto;
-    height: auto;
+  .app-jobs__listing-with-logo {
+    align-items: flex-start;
+    display: flex;
+    gap: govuk-spacing(3);
+  }
+
+  .app-jobs__listing-logo {
+    @include govuk-visually-hidden;
+  }
+
+  .app-jobs__listing-lines {
+    flex: 1;
+    min-width: 0;
   }
 
   .app-jobs__salary {
@@ -90,29 +118,45 @@ $govuk-prototype-kit-major-version: 14;
     max-width: 36em;
   }
 
-  .app-jobs__item-save {
-    margin-bottom: govuk-spacing(3);
-    margin-top: 10px;
-    text-align: left;
+  .app-jobs__listing-line {
+    margin-bottom: govuk-spacing(1);
 
-    .banner-button-component__button {
-      @include govuk-font(16, $weight: bold);
+    &:last-of-type {
+      margin-bottom: govuk-spacing(2);
+    }
+  }
+
+  .app-jobs__item-save {
+    text-align: right;
+
+    .banner-button-component__button.app-jobs__item-save-control {
       background-color: inherit;
-      background-position: left center;
+      background-position: center center;
       background-repeat: no-repeat;
       background-size: 16px 16px;
       border: 0;
       box-shadow: none;
+      box-sizing: border-box;
       color: govuk-colour("blue");
       cursor: pointer;
-      display: inline-block;
-      margin-bottom: 0;
-      margin-top: 0;
-      padding-bottom: 0;
-      padding-left: 22px;
-      text-align: left;
+      display: block;
+      height: 44px;
+      margin: 0;
+      max-width: 44px;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0;
       text-decoration: none;
-      width: auto;
+      width: 44px;
+    }
+
+    .banner-button-component__button {
+      background-color: inherit;
+      border: 0;
+      box-shadow: none;
+      color: govuk-colour("blue");
+      cursor: pointer;
+      text-decoration: none;
 
       &:hover,
       &:focus,
@@ -304,6 +348,14 @@ $govuk-prototype-kit-major-version: 14;
   .home-hero__popular-heading {
     margin-bottom: govuk-spacing(2);
     margin-top: govuk-spacing(5);
+  }
+
+  .home_index__promos {
+    @include govuk-visually-hidden;
+  }
+
+  .home_index__browse-all {
+    margin-bottom: 0;
   }
 
   // Landing links accordion — title left, chevron right (expand/collapse)

@@ -1,7 +1,6 @@
-// v1.2 / v1.3 — inline save on search result cards (Job saved → Remove from saved jobs).
+// v1.2 / v1.3 — inline save on search result cards (Save → Saving… → Remove).
 (function () {
-  var SAVE_BTN_CLASS =
-    'banner-button-component__button govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 icon icon--left'
+  var SAVE_BTN_CLASS = 'banner-button-component__button icon'
 
   function inlineUrl (href) {
     var url = new URL(href, window.location.origin)
@@ -23,11 +22,9 @@
     })
   }
 
-  function setSavedLabel ($container) {
+  function setSavingLabel ($container) {
     $container.html(
-      '<span class="' +
-        SAVE_BTN_CLASS +
-        ' icon--saved" data-saved-label aria-live="polite">Job saved</span>'
+      '<p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0" data-saving-label aria-live="polite">Saving…</p>'
     )
   }
 
@@ -35,9 +32,9 @@
     $container.html(
       '<a class="' +
         SAVE_BTN_CLASS +
-        ' icon--saved" data-unsave-job href="' +
+        ' icon--saved app-jobs__item-save-control" data-unsave-job href="' +
         unsaveHref +
-        '">Remove from saved jobs</a>'
+        '" aria-label="Remove the job from saved jobs"></a>'
     )
   }
 
@@ -45,9 +42,9 @@
     $container.html(
       '<a class="' +
         SAVE_BTN_CLASS +
-        ' icon--save" data-save-job href="' +
+        ' icon--save app-jobs__item-save-control" data-save-job href="' +
         saveHref +
-        '">Save this job for later</a>'
+        '" aria-label="Save the job for later"></a>'
     )
   }
 
@@ -64,17 +61,14 @@
       var unsaveHref = unsaveHrefFromSave(saveHref)
       var $container = $link.closest('.app-jobs__item-save')
 
-      $link.attr('aria-disabled', 'true')
+      setSavingLabel($container)
 
       fetchInline(saveHref)
         .then(function () {
-          setSavedLabel($container)
-          window.setTimeout(function () {
-            setRemoveLink($container, unsaveHref)
-          }, 2000)
+          setRemoveLink($container, unsaveHref)
         })
         .catch(function () {
-          $link.attr('aria-disabled', 'false')
+          setSaveLink($container, saveHref)
         })
     })
 
