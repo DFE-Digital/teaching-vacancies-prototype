@@ -1,4 +1,4 @@
-// v1.2 / v1.3 — inline save on search result cards (Save → Saving… → Remove).
+// v1.2 / v1.3 — inline save on search result cards (Save → spinner → Remove).
 (function () {
   var SAVE_BTN_CLASS = 'banner-button-component__button icon'
 
@@ -22,9 +22,11 @@
     })
   }
 
-  function setSavingLabel ($container) {
+  function setSavingSpinner ($container) {
     $container.html(
-      '<p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0" data-saving-label aria-live="polite">Saving…</p>'
+      '<span class="app-jobs__save-spinner" data-saving-spinner role="status" aria-live="polite">' +
+        '<span class="govuk-visually-hidden">Saving the job for later</span>' +
+        '</span>'
     )
   }
 
@@ -61,7 +63,7 @@
       var unsaveHref = unsaveHrefFromSave(saveHref)
       var $container = $link.closest('.app-jobs__item-save')
 
-      setSavingLabel($container)
+      setSavingSpinner($container)
 
       fetchInline(saveHref)
         .then(function () {

@@ -66,6 +66,12 @@
       width: auto;
     }
 
+    @media (min-width: 630px) {
+      .app-jobs-listing .app-jobs-listing__filter-link {
+        display: none;
+      }
+    }
+
     .app-jobs-sort-form {
       float: right;
       width: auto;
@@ -336,7 +342,7 @@
   <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
   <script>
     new AppFrontend.FilterToggleButton({
-      bigModeMediaQuery: '(min-width: 48.063em)',
+      bigModeMediaQuery: '(min-width: 630px)',
       startHidden: false,
       toggleButton: {
         container: $('.app-jobs-listing__filter-link'),

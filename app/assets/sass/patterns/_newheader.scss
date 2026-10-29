@@ -360,6 +360,39 @@
   display: none;
 }
 
+// Narrow viewports (e.g. 382px mobile prototype) — full-width service nav, no horizontal bleed
+@media (max-width: 629.98px) {
+  .govuk-header__container.govuk-width-container,
+  .govuk-service-navigation .govuk-width-container,
+  main .govuk-width-container {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin-left: govuk-spacing(3);
+    margin-right: govuk-spacing(3);
+    width: auto;
+  }
+
+  .govuk-service-navigation {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .govuk-service-navigation__container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .govuk-service-navigation__service-name {
+    max-width: 100%;
+  }
+
+  .govuk-service-navigation__item--active {
+    margin-left: 0;
+    padding-left: govuk-spacing(2);
+  }
+}
+
 @media (min-width: 40.0625em) {
   .govuk-service-navigation__container {
     flex-direction: row;

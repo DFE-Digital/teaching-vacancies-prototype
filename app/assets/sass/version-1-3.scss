@@ -3,11 +3,18 @@
 // Do not @import lib/extensions/extensions here — it duplicated header rules and overrode the blue bar.
 $govuk-prototype-kit-major-version: 14;
 
+// Mobile prototype frame (e.g. 382px-wide preview)
+$app-prototype-min-viewport-width: 382px;
+
 @import "node_modules/govuk-frontend/dist/govuk/settings/index";
 @import "node_modules/govuk-frontend/dist/govuk/tools/index";
 @import "node_modules/govuk-frontend/dist/govuk/helpers/index";
 
 @import "patterns/jobseeker-account";
+
+body.govuk-template__body {
+  min-width: $app-prototype-min-viewport-width;
+}
 
 .app-jobs-listing--has-results {
   .app-jobs-search-details {
@@ -128,6 +135,18 @@ $govuk-prototype-kit-major-version: 14;
 
   .app-jobs__item-save {
     text-align: right;
+
+    .app-jobs__save-spinner {
+      animation: app-jobs-save-spinner 0.8s linear infinite;
+      border: 3px solid #b1b4b6;
+      border-radius: 50%;
+      border-top-color: govuk-colour("blue");
+      box-sizing: border-box;
+      display: block;
+      height: 44px;
+      margin: 0 0 0 auto;
+      width: 44px;
+    }
 
     .banner-button-component__button.app-jobs__item-save-control {
       background-color: inherit;
@@ -480,4 +499,10 @@ $govuk-prototype-kit-major-version: 14;
     padding: 0;
   }
 
+}
+
+@keyframes app-jobs-save-spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
