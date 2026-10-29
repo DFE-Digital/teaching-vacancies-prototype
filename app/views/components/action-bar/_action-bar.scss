@@ -7,6 +7,11 @@
   display: inline-block;
   position: relative;
 
+  .govuk-link {
+    @include govuk-font(19);
+    line-height: 1.25;
+  }
+
   @include govuk-media-query($until: desktop) {
     float: right;
     width:100%;

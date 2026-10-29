@@ -50,28 +50,19 @@
       }
     }
 
-    .app-results-heading {
-      align-items: flex-end;
-      display: flex;
-      gap: 15px;
-      justify-content: space-between;
-    }
-
     .app-results-heading .govuk-heading-l {
       margin-bottom: 0;
     }
 
-    .app-results-heading .app-action-bar__filter {
+    .app-jobs-listing__filter-link {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.25;
+    }
+
+    .app-jobs-listing .app-jobs-listing__filter-link.app-action-bar__filter {
       float: none;
       margin-bottom: 0;
-      width: auto;
-    }
-
-    .app-results-heading .app-show-filter {
-      margin-bottom: 0;
-    }
-
-    .app-action-bar__filter .govuk-button {
       width: auto;
     }
 
@@ -92,9 +83,6 @@
     <h1 class="govuk-heading-l">
       <span id="job-count">240</span> jobs found
     </h1>
-    <div class="app-action-bar">
-      <div class="app-action-bar__filter"></div>
-    </div>
   </div>
 
   {% if data['sort'] %}
@@ -171,6 +159,7 @@
   <div class="app-jobs-listing">
   {# Descoped: job alert promo on search results #}
   {% include "includes/jobs-search-form-details.njk" %}
+  <div class="app-jobs-listing__filter-link app-action-bar__filter govuk-!-margin-bottom-4"></div>
   {% if data['keywords'] %}
     <p class="govuk-body">Results match your keywords. Role and education phase filters are only applied if you select them.</p>
   {% endif %}
@@ -350,9 +339,10 @@
       bigModeMediaQuery: '(min-width: 48.063em)',
       startHidden: false,
       toggleButton: {
-        container: $('.app-action-bar__filter'),
+        container: $('.app-jobs-listing__filter-link'),
         showText: 'Show filter',
         hideText: 'Hide filter',
+        useLink: true,
         classes: 'app-show-filter'
       },
       closeButton: {
