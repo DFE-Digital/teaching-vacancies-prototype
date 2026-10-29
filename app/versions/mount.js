@@ -226,6 +226,9 @@ function mount (app) {
   app.get('/', (req, res) => {
     res.render('prototypes/index')
   })
+  app.get('/prototypes/references', (req, res) => {
+    res.render('prototypes/references')
+  })
   app.use(legacyRedirect)
 }
 

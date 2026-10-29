@@ -11,7 +11,7 @@
   {{ super() }}
   <header class="homepage-header">
     <div class="govuk-width-container">
-      <span class="moj-badge homepage-header__badge">Jobseeker prototype v1.1</span>
+      <span class="moj-badge homepage-header__badge">Jobseeker prototype v1.3</span>
       <h1 class="homepage-header__title govuk-!-margin-bottom-0">Teaching Vacancies Service</h1>
       <p class="homepage-header__link">
         <a class="govuk-link" href="https://manage-teaching-jobs-prototype.herokuapp.com/" rel="noopener noreferrer" target="_blank">
@@ -82,14 +82,14 @@
   </span>
 {% endmacro %}
 
-{% macro prototypeItem(href, title, meta, icon) %}
+{% macro prototypeItem(href, title, meta, icon, extra) %}
   <li class="app-prototype-list__item">
     {{ prototypeIcon(icon) }}
     <div class="app-prototype-list__text">
       <h3 class="app-prototype-list__title">
         <a class="govuk-link" href="{{ href }}">{{ title }}</a>
       </h3>
-      <p class="app-prototype-list__meta">{{ meta }}</p>
+      <p class="app-prototype-list__meta">{{ meta }}{% if extra %} {{ extra | safe }}{% endif %}</p>
     </div>
   </li>
 {% endmacro %}
@@ -100,14 +100,15 @@
       <div class="govuk-grid-column-full">
         <section class="app-prototype-index" aria-labelledby="current-version">
           <div class="app-prototype-index__heading-row">
-            <h2 class="govuk-heading-m app-prototype-index__heading" id="current-version">Current version v1.2</h2>
-            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-26">26 October 2026</time></p>
+            <h2 class="govuk-heading-m app-prototype-index__heading" id="current-version">Current version v1.3</h2>
+            <p class="app-prototype-index__updated">Last updated: <time datetime="2026-10-28">28 October 2026</time></p>
           </div>
           <ul class="app-prototype-list">
-            {{ prototypeItem("/home", "Find school and college jobs near you", "The current Teaching Vacancies homepage, search, and job listings.", "user") }}
-            {{ prototypeItem("/mobile", "View on mobile and tablet layouts", "Preview the pages on phone and tablet screens.", "devices") }}
-            {{ prototypeItem("/compare", "Compare versions", "Live or v1.0 beside v1.0, v1.1 and later versions, on phone and tablet screens.", "devices") }}
-            {{ prototypeItem("/signed-in", "View signed in", "Open the prototype signed in at your account landing page (/jobseekers/account).", "signed-in") }}
+            {{ prototypeItem("/home", "Find school and college jobs near you", "Account hub, service navigation, applications and saved jobs split, search results UX.", "user") }}
+            {{ prototypeItem("/mobile", "View on mobile and tablet layouts", "Preview the 1-3 pages on phone and tablet screens.", "devices", '<a class="govuk-link" href="/compare">Compare</a>') }}
+            {{ prototypeItem("/mobile-email", "View the job alert email on mobile and tablet", "Preview the job alert email on phone and tablet screens.", "devices") }}
+            {{ prototypeItem("/signed-in", "View signed in", "Open the 1-3 prototype at the Your account landing page.", "signed-in") }}
+            {{ prototypeItem("/jobseeker/job-alert-1", "Jobs alert by email", "Preview the job alert email with 69 new jobs.", "docs") }}
           </ul>
         </section>
 
