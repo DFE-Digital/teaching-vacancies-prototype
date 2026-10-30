@@ -71,6 +71,11 @@ router.get('/documentation/fe-content-changes-1', (req, res) => {
   res.render('documentation/fe-content-changes-1.html', { guide })
 })
 
+router.get('/documentation/fe-additional-allowances-3436', (req, res) => {
+  const guide = require('./data/fe-additional-allowances-3436')
+  res.render('documentation/fe-additional-allowances-3436.html', { guide })
+})
+
 router.get('/documentation/profile-changes', (req, res) => {
   const guide = require('./data/profile-changes')
   res.render('documentation/profile-changes.html', { guide })

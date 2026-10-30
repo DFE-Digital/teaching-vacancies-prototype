@@ -16,6 +16,7 @@
     "test": "gulp generate-assets && jest && npm run lint",
     "capture:quick-apply-docs": "node scripts/capture-quick-apply-docs.js",
     "capture:fe-content-changes-docs": "node scripts/capture-fe-content-changes-docs.js",
+    "capture:fe-additional-allowances-docs": "node scripts/capture-fe-additional-allowances-docs.js",
     "capture:profile-changes-docs": "node scripts/capture-profile-changes-docs.js",
     "capture:navigation-ia-docs": "node scripts/capture-navigation-ia-docs.js"
   },

@@ -15,7 +15,14 @@ const SECTIONS = [
 function isFurtherEducationJob (job) {
   if (!job) return false
   const phase = job.phase || (job.organisation && job.organisation.phase) || ''
-  return phase === 'Further education'
+  if (phase === 'Further education') return true
+  const orgType = job.organisation && job.organisation.type
+  return orgType === 'College'
+}
+
+function showAdditionalAllowancesOnJobListing (job) {
+  if (!job || isFurtherEducationJob(job)) return false
+  return job.hasAdditionalAllowances === 'Yes' && Boolean(job.additionalAllowances)
 }
 
 function displaySectionStatus (status) {
@@ -56,6 +63,7 @@ function canSubmitApplication (application) {
 module.exports = {
   SECTIONS,
   isFurtherEducationJob,
+  showAdditionalAllowancesOnJobListing,
   displaySectionStatus,
   validateApplicationForSubmit,
   canSubmitApplication

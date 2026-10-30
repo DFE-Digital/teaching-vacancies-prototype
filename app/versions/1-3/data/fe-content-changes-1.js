@@ -89,6 +89,11 @@ module.exports = {
       date: '9 October 2026, 4:15pm',
       html:
         'QA26 Religious information: ethos question already says school or college. Faith screens stay off the live journey.'
+    },
+    {
+      date: '30 October 2026',
+      html:
+        '#3436 / HS11 (FE parity): Additional allowances are hidden on further education and college job listings. Quick Apply task list has no additional allowances section (matches live application form).'
     }
   ],
   sections: [

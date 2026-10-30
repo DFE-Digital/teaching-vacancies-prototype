@@ -253,7 +253,11 @@
               {
                 key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Pay scale</h3>' },
                 value: { html: job.payScaleDetails }
-              } if job.payScaleDetails and not job.salaryDetails
+              } if job.payScaleDetails and not job.salaryDetails,
+              {
+                key: { html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Additional allowances</h3>' },
+                value: { text: job.additionalAllowances }
+              } if showAdditionalAllowances
             ]
           }) }}
 

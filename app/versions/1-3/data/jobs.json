@@ -615,7 +615,8 @@
             "Band 6"
         ],
         "actualSalaryDetails": "\u00a336,000 - \u00a338,000",
-        "hasAdditionalAllowances": "No",
+        "hasAdditionalAllowances": "Yes",
+        "additionalAllowances": "TLR 2a",
         "isUsingApplicationForm": "No",
         "offersSchoolVisits": "Yes",
         "hasContactPhoneNumber": "Yes",

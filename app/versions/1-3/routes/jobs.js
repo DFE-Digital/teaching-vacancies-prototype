@@ -4,6 +4,7 @@ const path = require('path')
 const _ = require('lodash')
 const users = require('../data/users.json')
 const { tagClassForStatus } = require('../lib/application-status-tags')
+const { showAdditionalAllowancesOnJobListing } = require('../lib/quick-apply-fe')
 const liveProxy = require('./live-proxy')
 
 function prototypeVersions () {
@@ -868,7 +869,8 @@ module.exports = router => {
     res.render('jobs/show', {
       job,
       similarJobs,
-      daysRemaining
+      daysRemaining,
+      showAdditionalAllowances: showAdditionalAllowancesOnJobListing(job)
     })
   })
 

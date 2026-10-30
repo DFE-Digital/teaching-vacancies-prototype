@@ -8,6 +8,10 @@ module.exports = {
 
   recentWork: [
     {
+      href: '/documentation/fe-additional-allowances-3436',
+      text: 'Remove additional allowances for colleges (#3436)'
+    },
+    {
       href: '/documentation/navigation-ia',
       text: 'Signed-in navigation and IA'
     },
@@ -30,6 +34,12 @@ module.exports = {
   ],
 
   topics: [
+    {
+      href: '/documentation/fe-additional-allowances-3436',
+      title: 'Remove additional allowances for colleges (#3436)',
+      description:
+        'FE parity ticket #3436 — hide Additional allowances on college and FE job listings; Quick Apply unchanged. Screenshots and implementation notes.'
+    },
     {
       href: '/documentation/navigation-ia',
       title: 'Signed-in navigation and IA',

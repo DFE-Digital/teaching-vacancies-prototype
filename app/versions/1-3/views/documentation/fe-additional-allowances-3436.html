@@ -1,0 +1,76 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper" %}
+
+{% block pageTitle %}
+  {{ guide.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: guide.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="app-guide app-guide--full-width">
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      <span class="govuk-caption-xl">FE parity · Ticket #3436 · v1.3 prototype</span>
+    </p>
+    <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
+    <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+
+    <div class="app-guide__main govuk-!-margin-top-6">
+      <h2 class="govuk-heading-l">User need</h2>
+      <p class="govuk-body">{{ guide.userNeed }}</p>
+
+      <h2 class="govuk-heading-l">Success criteria</h2>
+      <p class="govuk-body">{{ guide.successCriteria }}</p>
+
+      <h2 class="govuk-heading-l">Changes in v1.3 prototype</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for point in guide.implemented %}
+          <li>{{ point }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2 class="govuk-heading-l">Screenshots</h2>
+      {% for shot in guide.screenshots %}
+        <section class="app-guide__section govuk-!-margin-bottom-8" id="{{ shot.id }}" aria-labelledby="heading-{{ shot.id }}">
+          <h3 class="govuk-heading-m" id="heading-{{ shot.id }}">{{ shot.title }}</h3>
+          <p class="govuk-body app-guide__prototype-link">
+            <a class="govuk-link" href="{{ shot.prototypePath }}" target="_blank" rel="noopener noreferrer">
+              Open in prototype<span class="govuk-visually-hidden"> (opens in new tab)</span>
+            </a>
+          </p>
+          <figure class="app-guide__figure">
+            <img
+              src="{{ asset_path }}images/documentation/{{ guide.imageDir }}/{{ shot.file }}"
+              alt="Screenshot: {{ shot.title }}"
+              width="960"
+              loading="lazy"
+            >
+            <figcaption class="govuk-body-s app-guide__figure-caption">{{ shot.caption }}</figcaption>
+          </figure>
+        </section>
+      {% endfor %}
+
+      <aside class="app-related app-related--topic">
+        <h2 class="govuk-heading-s app-related__heading">Related content</h2>
+        <ul class="app-related__list">
+          <li class="app-related__item"><a class="govuk-link" href="/documentation">Documentation contents</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/documentation/fe-content-changes-1">FE Quick Apply content parity</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/documentation/fe-changes-1">FE service map (HS11)</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/jobs/{{ guide.feJob.id }}">Open FE job listing ({{ guide.feJob.id }})</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="{{ guide.hiringStaffDocUrl }}">Hiring staff prototype — same ticket (#3436)</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+{% endblock %}
