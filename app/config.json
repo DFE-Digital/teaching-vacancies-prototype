@@ -5,6 +5,6 @@
   "useAutoStoreData": true,
   "useCookieSessionStore": false,
   "useDocumentation": true,
-  "useHttps": true,
+  "useHttps": false,
   "useBrowserSync": true
 }

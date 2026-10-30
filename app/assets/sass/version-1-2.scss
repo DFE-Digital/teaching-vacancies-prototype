@@ -2,6 +2,7 @@
 // Full GOV.UK Frontend lives in application.css (with blue masthead via patterns/newheader).
 // Do not @import lib/extensions/extensions here — it duplicated header rules and overrode the blue bar.
 $govuk-prototype-kit-major-version: 14;
+$govuk-assets-path: "/extension-assets/govuk-frontend/dist/govuk/assets";
 
 @import "node_modules/govuk-frontend/dist/govuk/settings/index";
 @import "node_modules/govuk-frontend/dist/govuk/tools/index";

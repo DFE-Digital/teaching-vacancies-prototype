@@ -152,6 +152,11 @@ app.use(
 )
 app.use('/public', express.static(path.join(__dirname, '/public')))
 
+const govukFrontendAssets = path.join(__dirname, 'node_modules/govuk-frontend/dist/govuk/assets')
+app.use('/govuk/assets', express.static(govukFrontendAssets))
+// Legacy Sass output and older templates still reference /assets/fonts/*
+app.use('/assets', express.static(govukFrontendAssets))
+
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
 
@@ -240,6 +245,11 @@ if (useAutoStoreData === 'true') {
 
 // Load prototype admin routes
 app.use('/prototype-admin', prototypeAdminRoutes)
+
+// Kit v14 polls this endpoint (see govuk-prototype-kit/lib/assets/javascripts/kit.js)
+app.get('/manage-prototype/page-loaded', (req, res) => {
+  res.sendStatus(204)
+})
 
 // Redirect root to /docs when in promo mode.
 if (promoMode === 'true') {

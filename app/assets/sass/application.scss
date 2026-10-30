@@ -567,7 +567,7 @@ hr {
   }
 
   .icon--map-blue {
-    background-image: url(/../public/images/icon-map-blue.svg);
+    background-image: url(#{$app-images-path}map.png);
   }
 }
 

@@ -7,7 +7,22 @@ const utils = require('../../lib/utils')
 
 const VERSIONS = ['1-0', '1-1', '1-2', '1-3']
 
-const SHARED_ROOTS = ['/public', '/docs', '/prototype-admin', '/node_modules', '/govuk', '/extension-assets']
+const SHARED_ROOTS = [
+  '/public',
+  '/docs',
+  '/prototype-admin',
+  '/node_modules',
+  '/govuk',
+  '/extension-assets',
+  '/assets',
+  '/manage-prototype'
+]
+
+const HIRING_STAFF_PROTOTYPE_URL = process.env.HIRING_STAFF_PROTOTYPE_URL || 'http://localhost:3100'
+
+function isHiringStaffJobPath (pathname) {
+  return /^\/jobs\/(new|edit)(\/|$)/.test(pathname)
+}
 
 function versionDir (version) {
   return path.join(__dirname, version)
@@ -191,6 +206,15 @@ function createRouter (version) {
     next()
   })
   router.use(versionRoutes)
+
+  router.use((req, res, next) => {
+    if (isHiringStaffJobPath(req.path)) {
+      const query = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''
+      return res.redirect(302, `${HIRING_STAFF_PROTOTYPE_URL}${req.path}${query}`)
+    }
+    next()
+  })
+
   router.get(/^\/([^.]+)$/, (req, res, next) => {
     const view = req.params[0]
     if (!view || view.includes('..') || !viewExists(version, view)) return next()
@@ -211,6 +235,10 @@ function legacyRedirect (req, res, next) {
     isVersionPath(req.path) ||
     isSharedPath(req.path)
   ) return next()
+
+  if (isHiringStaffJobPath(req.path)) {
+    return res.redirect(302, `${HIRING_STAFF_PROTOTYPE_URL}${req.originalUrl}`)
+  }
 
   const target = `/1-0${req.originalUrl}`
   if (req.method === 'POST') return res.redirect(307, target)
