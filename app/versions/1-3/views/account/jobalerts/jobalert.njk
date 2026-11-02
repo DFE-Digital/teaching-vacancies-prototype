@@ -4,7 +4,6 @@
 {% set radius = form.radius | default('0') %}
 {% set title = 'Edit your job alert' if editingAlertId else 'Create your job alert' %}
 {% set activeNav = 'jobalerts' %}
-{% set forceSignedIn = true %}
 
 {% block header %}
   {{ super() }}

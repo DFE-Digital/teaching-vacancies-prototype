@@ -1,4 +1,4 @@
-{% from "includes/header-account-icons.njk" import headerUserAccountIcon, headerSignOutIcon, headerSignInIcon %}
+{% from "includes/header-account-icons.njk" import headerUserAccountIcon, headerSignOutIcon, headerSignInIcon, headerJobAlertsIcon %}
 
 {% if user %}
 
@@ -63,7 +63,7 @@
       {% if not contentPage and (data.signedIn or forceSignedIn or not homepage) %}
           <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Account">
             <ul id="navigation" class="govuk-header__navigation-list">
-              {% if data.signedIn or forceSignedIn %}
+              {% if data.signedIn %}
                 <li class="govuk-header__navigation-item">
                   <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--account{% if activeNav == 'account' or primaryNavId == 'account' %} govuk-header__link--active{% endif %}" href="/account"{% if activeNav == 'account' or primaryNavId == 'account' %} aria-current="page"{% endif %}>{{ headerUserAccountIcon() }}<span class="govuk-header__link-text">Your account</span></a>
                 </li>
@@ -71,6 +71,9 @@
                   <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--sign-out" href="/account/sign-out">{{ headerSignOutIcon() }}<span class="govuk-header__link-text">Sign out</span></a>
                 </li>
               {% else %}
+                <li class="govuk-header__navigation-item">
+                  <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--job-alerts" href="/jobalerts/jobalert">{{ headerJobAlertsIcon() }}<span class="govuk-header__link-text">Job alerts</span></a>
+                </li>
                 <li class="govuk-header__navigation-item">
                   <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--sign-in" href="/account/sign-in/">{{ headerSignInIcon() }}<span class="govuk-header__link-text">Sign in</span></a>
                 </li>
