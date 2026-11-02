@@ -1,6 +1,7 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 {% set govukRebrand = true %}
+{% set serviceUrl = serviceUrl | default('/') %}
 
 {% set protoFooter = false %}
 

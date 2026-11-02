@@ -188,7 +188,9 @@ const researched = [
   {
     title: 'Assistant Headteacher',
     organisation: 'Enhance Academy Trust',
-    town: 'More than one location',
+    multipleLocations: true,
+    additionalLocationCount: 2,
+    town: '',
     county: '',
     postcode: '',
     phase: 'Primary school',

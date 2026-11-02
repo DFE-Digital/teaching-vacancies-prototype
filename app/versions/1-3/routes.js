@@ -6,6 +6,7 @@ router.use(flash())
 router.use((req, res, next) => {
   res.locals.referrer = req.query.referrer
   res.locals.query = req.query
+  res.locals.homeSearchStack = Object.prototype.hasOwnProperty.call(req.query, 'v2')
   res.locals.user = req.session.user
   res.locals.flash = req.flash('success') // pass through 'success' messages only
 

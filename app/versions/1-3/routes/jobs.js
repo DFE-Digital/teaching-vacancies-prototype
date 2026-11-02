@@ -769,7 +769,8 @@ module.exports = router => {
     let jobs = req.session.data.jobs.filter(job => job.status == 'Active')
     res.render('jobs/home', {
       jobs,
-      locationOptions: getHomepageLocationOptions()
+      locationOptions: getHomepageLocationOptions(),
+      homeSearchStack: Object.prototype.hasOwnProperty.call(req.query, 'v2')
     })
   })
 

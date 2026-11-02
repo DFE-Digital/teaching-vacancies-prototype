@@ -27,12 +27,14 @@
 
 {% block content %}
 
+{% set homeSearchStack = homeSearchStack if homeSearchStack else (query and query.v2 is defined) %}
+
 {{ govukNotificationBanner({
     html: '<p class="govuk-notification-banner__heading">' + flash + '</p>',
     type: "success"
   }) if flash and flash.length }}
 
-<div class="home_index home_index--hero-v2">
+<div class="home_index home_index--hero-v2{% if homeSearchStack %} home_index--hero-v2-search-stack{% endif %}">
 
     <header class="home-hero__page-header search__inner">
       <div class="home-hero__page-title">
@@ -42,8 +44,8 @@
     </header>
 
     <section class="search home-hero" aria-labelledby="home-hero-title">
-      <div class="search__inner home-hero__panel-wrap">
-        <div class="home-hero__panel">
+      <div class="search__inner home-hero__panel-wrap{% if homeSearchStack %} home-hero__panel-wrap--dual{% endif %}">
+        <div class="home-hero__panel home-hero__panel--search">
           <form id="filter" class="home" method="get" action="/search/home" novalidate>
             <div class="search__form">
               <div class="search__field">
@@ -87,6 +89,24 @@
             </div>
           </form>
         </div>
+        {% if homeSearchStack %}
+        <aside class="home-hero__panel home-hero__panel--job-alert">
+          <h2 class="home-hero__search-label" id="home-job-alert-title">Create a job alert</h2>
+          <p class="govuk-body home-hero__panel-copy">Get emails about jobs you're interested in.</p>
+          {{ govukButton({
+            text: "Set up job alerts",
+            href: "/jobalerts/jobalert",
+            classes: "govuk-button--secondary home-hero__panel-cta-button",
+            preventDoubleClick: true
+          }) }}
+          <p class="govuk-body home-hero__panel-account govuk-!-margin-bottom-0">
+            <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in">Sign in</a>
+            or
+            <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/jobseeker">create a jobseeker account</a>
+            to save and apply for jobs.
+          </p>
+        </aside>
+        {% endif %}
       </div>
     </section>
 

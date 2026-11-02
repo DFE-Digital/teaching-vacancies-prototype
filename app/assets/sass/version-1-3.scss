@@ -262,6 +262,7 @@ body.govuk-template__body {
       font-weight: 700;
       line-height: 30px;
       margin-bottom: 0;
+      margin-top: 0;
     }
 
     .home-hero__search-hint {
@@ -362,6 +363,104 @@ body.govuk-template__body {
         padding-top: 0;
         width: auto;
       }
+    }
+  }
+
+  // Default hero search: What | Where side by side from tablet up (overrides _home.scss mobile-only stack)
+  &:not(.home_index--hero-v2-search-stack) .home-hero__panel .search__form {
+    @include govuk-media-query($from: tablet) {
+      align-items: flex-end;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+  }
+
+  // /home?v2 — What above Where (stacked), full width within the grey panel at all breakpoints
+  &.home_index--hero-v2-search-stack {
+    .search__inner.home-hero__panel-wrap.home-hero__panel-wrap--dual {
+      @include govuk-media-query($from: tablet) {
+        align-items: stretch;
+        box-sizing: border-box;
+        column-gap: govuk-spacing(2);
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        grid-template-rows: auto;
+        max-width: 960px;
+        width: 100%;
+      }
+    }
+
+    .home-hero__panel {
+      box-sizing: border-box;
+      max-width: none;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .home-hero__panel--search form.home {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .home-hero__panel--job-alert {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 100%;
+
+      @include govuk-media-query($until: tablet) {
+        height: auto;
+        margin-top: govuk-spacing(4);
+        max-width: none;
+        min-height: 0;
+        width: 100%;
+      }
+
+      .home-hero__panel-copy {
+        color: govuk-colour("black");
+        margin-bottom: govuk-spacing(2);
+        margin-top: govuk-spacing(2);
+      }
+
+      .home-hero__panel-cta-button {
+        align-items: center;
+        align-self: flex-start;
+        box-sizing: border-box;
+        display: inline-flex;
+        height: 40px;
+        justify-content: center;
+        line-height: 1;
+        margin-bottom: 0;
+        margin-top: 0;
+        min-height: 40px;
+        padding-bottom: 0;
+        padding-top: 0;
+        width: auto;
+      }
+
+      .home-hero__panel-account {
+        color: govuk-colour("black");
+        margin-top: auto;
+        padding-top: govuk-spacing(6);
+      }
+    }
+
+    .home-hero__panel--search {
+      height: 100%;
+      min-height: 100%;
+    }
+
+    .home-hero__panel .search__form {
+      align-items: stretch;
+      flex-direction: column !important;
+      flex-wrap: nowrap;
+      gap: govuk-spacing(4);
+    }
+
+    .home-hero__panel .search__field {
+      flex: none;
+      max-width: none;
+      width: 100%;
     }
   }
 

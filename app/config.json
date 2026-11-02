@@ -1,5 +1,6 @@
 {
   "serviceName": "Teaching Vacancies",
+  "serviceUrl": "/",
   "port": 3000,
   "useAuth": true,
   "useAutoStoreData": true,
