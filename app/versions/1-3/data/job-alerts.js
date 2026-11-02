@@ -46,6 +46,8 @@ const researched = [
   {
     title: 'Teacher – maternity cover',
     organisation: 'Jerry Clay Academy',
+    multipleLocations: true,
+    additionalLocationCount: 2,
     town: 'Wakefield',
     county: 'West Yorkshire',
     postcode: 'WF2 0NP',
@@ -302,6 +304,7 @@ function alertAsJob (alert, index) {
   const town = alert.town || ''
   const multipleLocations =
     alert.multipleLocations || /more than one location/i.test(town)
+  const additionalLocationCount = alert.additionalLocationCount
 
   const schoolTypeParts = []
   if (organisationType) {
@@ -321,7 +324,7 @@ function alertAsJob (alert, index) {
     organisation: {
       name: alert.organisation,
       address: {
-        town: multipleLocations ? '' : town,
+        town: multipleLocations && !additionalLocationCount ? '' : town,
         county: alert.county || '',
         postcode: alert.postcode || ''
       },
@@ -329,7 +332,12 @@ function alertAsJob (alert, index) {
       ageGroup: ageRange ? String(ageRange).replace(/^ages\s/i, '').replace(/\s+to\s+/gi, '-') : ''
     },
     multipleLocations,
-    locations: multipleLocations ? [{ address: {} }, { address: {} }] : undefined,
+    additionalLocationCount: additionalLocationCount || undefined,
+    locations: multipleLocations
+      ? Array.from({ length: 1 + (additionalLocationCount || 1) }, function () {
+        return { address: {} }
+      })
+      : undefined,
     schoolType: schoolTypeParts.length ? schoolTypeParts.join(', ') : undefined,
     phase: alert.phase,
     contractType: alert.contract,

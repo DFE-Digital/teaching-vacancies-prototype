@@ -171,12 +171,36 @@ function capitalizePattern (text) {
 
 const filters = {}
 
+function formatAdditionalLocationsSuffix (count) {
+  const n = parseInt(count, 10)
+  if (!n || n < 1) {
+    return ''
+  }
+  if (n === 1) {
+    return ' and one more location'
+  }
+  if (n === 2) {
+    return ' and two more locations'
+  }
+  return ' and ' + n + ' more locations'
+}
+
 filters.jobListingAddress = function (job) {
   if (!job) {
     return ''
   }
   if (hasMultipleLocations(job)) {
     const orgName = job.organisation && job.organisation.name
+    const extraCount = job.additionalLocationCount
+    if (orgName && extraCount) {
+      const addr = (job.organisation && job.organisation.address) || {}
+      let postcode = addr.postcode || ''
+      if (!postcode && job.locations && job.locations[0] && job.locations[0].address) {
+        postcode = job.locations[0].address.postcode || ''
+      }
+      const primary = postcode ? orgName + ', ' + postcode : orgName
+      return primary + formatAdditionalLocationsSuffix(extraCount)
+    }
     if (orgName) {
       return orgName + ', Multiple locations…'
     }

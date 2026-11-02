@@ -14,7 +14,11 @@ module.exports = {
 
   confirmedFine: [
     { label: 'Job title', detail: 'Hyperlink to the job page.' },
-    { label: 'Address line', detail: 'School or organisation name, town or area, county, postcode.' }
+    {
+      label: 'Address line',
+      detail:
+        'School or organisation name, town or area, county, postcode. Trust-wide roles with no lead site: organisation name and “Multiple locations…”. Academies with a lead site plus others: organisation name, lead postcode, and “and two more locations” (or one / numeric count).'
+    }
   ],
 
   designConstraints: [
@@ -245,6 +249,55 @@ module.exports = {
           }
         }
       ]
+    },
+    {
+      id: 'multi-location',
+      title: 'Multi-location addressing',
+      caption:
+        'Job alert and search listing address line when the employer has more than one site (v1.3).',
+      examples: [
+        {
+          job: {
+            id: 'doc-mat-trust-wide',
+            title: 'Trust-wide literacy lead',
+            isUsingApplicationForm: 'Yes',
+            multipleLocations: true,
+            organisation: {
+              name: 'Horizon Multi Academy Trust',
+              type: 'Multi-academy trust',
+              address: { town: '', county: '', postcode: '' },
+              ageGroup: 'Ages 4 to 11'
+            },
+            schoolType: 'Multi-academy trust, Primary school, ages 4 to 11',
+            workingPatterns: ['Term time'],
+            salaryLabel: 'Salary',
+            actualSalaryDetails: '£45,122 to £52,350',
+            closingDate: '2026-11-15T23:59:00.000Z',
+            closingTime: '11:59pm'
+          }
+        },
+        {
+          job: {
+            id: 'doc-academy-lead-site',
+            title: 'Teacher – maternity cover',
+            isUsingApplicationForm: 'Yes',
+            multipleLocations: true,
+            additionalLocationCount: 2,
+            organisation: {
+              name: 'Jerry Clay Academy',
+              type: 'Academy',
+              address: { town: 'Wakefield', county: 'West Yorkshire', postcode: 'WF2 0NP' },
+              ageGroup: 'Ages 4 to 11'
+            },
+            schoolType: 'Academy, Primary school, ages 4 to 11',
+            workingPatterns: ['Job share'],
+            salaryLabel: 'Full time equivalent salary',
+            actualSalaryDetails: '£15,825 to £21,804 pro rata per year',
+            closingDate: '2026-11-20T23:59:00.000Z',
+            closingTime: '11:59pm'
+          }
+        }
+      ]
     }
   ],
 
@@ -265,7 +318,7 @@ module.exports = {
   proposedAmends: [
     'Salary line on listing items is shortened to 160 characters with the full text in a tooltip when truncated (v1.2 search).',
     'Salary priority in the prototype: hourly or actual annual, then FTE, then pay scale; simple ranges append MPS/UPS or grade in brackets.',
-    'Document MAT / trust naming on the address line when only one address is allowed.',
+    'Multi-location address line in v1.3: trust-wide “Multiple locations…”, or lead postcode plus “and N more locations” when additionalLocationCount is set.',
     'Job alert email listing blocks still to align with search results (shared include is ready).',
     'School type on listings uses job.schoolType or organisation type, faith, and phase (v1.2 search).'
   ]

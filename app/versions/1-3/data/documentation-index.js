@@ -4,7 +4,7 @@
 
 module.exports = {
   lead:
-    'Design reviews and change plans for the jobseeker prototype (v1.2). Tech stack and project structure are listed under Topics.',
+    'Design reviews and change plans for the jobseeker prototype (v1.3). Tech stack and project structure are listed under Topics.',
 
   recentWork: [
     {
