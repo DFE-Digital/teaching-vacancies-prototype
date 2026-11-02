@@ -17,7 +17,7 @@ module.exports = {
     {
       label: 'Address line',
       detail:
-        'School or organisation name, town or area, county, postcode. Trust-wide roles with no lead site: organisation name and “Multiple locations…”. Academies with a lead site plus others: organisation name, lead postcode, and “and two more locations” (or one / numeric count).'
+        'School or organisation name, town or area, county, postcode. Multiple sites: organisation name, optional lead postcode, then “and 1 more location” or “and 2 more locations” (numeric count). Trust-wide with no postcode still uses the suffix, for example “Horizon Multi Academy Trust and 2 more locations”.'
     }
   ],
 
@@ -262,6 +262,7 @@ module.exports = {
             title: 'Trust-wide literacy lead',
             isUsingApplicationForm: 'Yes',
             multipleLocations: true,
+            additionalLocationCount: 2,
             organisation: {
               name: 'Horizon Multi Academy Trust',
               type: 'Multi-academy trust',
@@ -294,6 +295,27 @@ module.exports = {
             salaryLabel: 'Full time equivalent salary',
             actualSalaryDetails: '£15,825 to £21,804 pro rata per year',
             closingDate: '2026-11-20T23:59:00.000Z',
+            closingTime: '11:59pm'
+          }
+        },
+        {
+          job: {
+            id: 'doc-academy-two-sites',
+            title: 'Teacher of Geography',
+            isUsingApplicationForm: 'Yes',
+            multipleLocations: true,
+            additionalLocationCount: 1,
+            organisation: {
+              name: 'Oasis Academy Lister Park',
+              type: 'Academy',
+              address: { town: 'Bradford', county: 'West Yorkshire', postcode: 'BD7 3AQ' },
+              ageGroup: 'Ages 11 to 18'
+            },
+            schoolType: 'Academy, Secondary school, ages 11 to 18',
+            workingPatterns: ['Full time'],
+            salaryLabel: 'Salary',
+            actualSalaryDetails: '£32,140 to £49,084',
+            closingDate: '2026-11-18T23:59:00.000Z',
             closingTime: '11:59pm'
           }
         }

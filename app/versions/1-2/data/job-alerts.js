@@ -30,6 +30,7 @@ const researched = [
     title: 'Trust-wide literacy lead',
     organisation: 'Horizon Multi Academy Trust',
     multipleLocations: true,
+    additionalLocationCount: 2,
     town: '',
     county: '',
     postcode: '',
@@ -59,6 +60,24 @@ const researched = [
     fullTimeEquivalentSalaryDetails: '£31,650 to £43,607',
     actualSalaryDetails: '£15,825 to £21,804 pro rata per year',
     ect: true,
+    overseas: false,
+    driving: false
+  },
+  {
+    title: 'Teacher of Geography',
+    organisation: 'Oasis Academy Lister Park',
+    multipleLocations: true,
+    additionalLocationCount: 1,
+    town: 'Bradford',
+    county: 'West Yorkshire',
+    postcode: 'BD7 3AQ',
+    phase: 'Secondary school',
+    organisationType: 'Academy',
+    ageRange: 'Ages 11 to 18',
+    contract: 'Permanent',
+    workingPattern: 'Full time',
+    salary: '£32,140 to £49,084',
+    ect: false,
     overseas: false,
     driving: false
   },
@@ -359,6 +378,26 @@ function resolveJobForAlert (alert, index) {
     })
     if (fromData) {
       const copy = Object.assign({}, fromData)
+      if (alert.multipleLocations) {
+        copy.multipleLocations = true
+        if (alert.additionalLocationCount != null) {
+          copy.additionalLocationCount = alert.additionalLocationCount
+        }
+        if (alert.postcode || alert.town) {
+          copy.organisation = Object.assign({}, copy.organisation || {}, {
+            name: alert.organisation || (copy.organisation && copy.organisation.name),
+            address: Object.assign(
+              {},
+              (copy.organisation && copy.organisation.address) || {},
+              {
+                town: alert.town || '',
+                county: alert.county || '',
+                postcode: alert.postcode || ''
+              }
+            )
+          })
+        }
+      }
       if (alert.hours) {
         copy.listingHours = alert.hours
       }

@@ -177,10 +177,7 @@ function formatAdditionalLocationsSuffix (count) {
     return ''
   }
   if (n === 1) {
-    return ' and one more location'
-  }
-  if (n === 2) {
-    return ' and two more locations'
+    return ' and 1 more location'
   }
   return ' and ' + n + ' more locations'
 }
