@@ -50,6 +50,10 @@
     )
   }
 
+  function isUserSignedIn () {
+    return document.body.getAttribute('data-user-signed-in') === 'true'
+  }
+
   function initJobListingSave () {
     if (!window.jQuery) return
     var $ = window.jQuery
@@ -58,6 +62,13 @@
       event.preventDefault()
       var $link = $(this)
       if ($link.attr('aria-disabled') === 'true') return
+
+      if (!isUserSignedIn()) {
+        if (window.AppSaveJobSignInModal && typeof window.AppSaveJobSignInModal.open === 'function') {
+          window.AppSaveJobSignInModal.open(event)
+        }
+        return
+      }
 
       var saveHref = $link.attr('href')
       var unsaveHref = unsaveHrefFromSave(saveHref)

@@ -2,6 +2,7 @@
 {%- set assetPath = '/govuk/assets' -%}
 
 {% set protoFooter = false %}
+{% set bodyAttributes = { "data-user-signed-in": "true" if data.signedIn else "false" } %}
 
 {% extends "govuk/template.njk" %}
 
@@ -94,10 +95,20 @@
   {% endblock %}
 {% endif %}
 
+{% block bodyStart %}
+<div class="govuk-modal-dialogue-inert-container">
+{% endblock %}
+
 {% block bodyEnd %}
+</div>
+{% if not data.signedIn %}
+  {% include "includes/save-job-sign-in-modal.njk" %}
+{% endif %}
   {% block scripts %}
     {% include "includes/scripts.html" %}
     <script src="/public/javascripts/version-1-3.js"></script>
+    <script src="/public/javascripts/moj-modal-dialogue.js"></script>
+    <script src="/public/javascripts/save-job-sign-in-modal.js"></script>
     <script src="/public/javascripts/job-listing-save.js"></script>
     {% block pageScripts %}{% endblock %}
   {% endblock %}

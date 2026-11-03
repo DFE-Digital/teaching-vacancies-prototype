@@ -831,6 +831,12 @@ module.exports = router => {
       }
       return res.redirect('/jobs')
     }
+    if (!req.session.data.signedIn) {
+      if (req.query.inline === '1') {
+        return res.status(401).json({ ok: false, reason: 'sign-in-required' })
+      }
+      return res.redirect('/account/sign-in')
+    }
     if (!Array.isArray(req.session.data.savedJobs)) req.session.data.savedJobs = []
     const jobId = String(job.id)
     if (!req.session.data.savedJobs.map(String).includes(jobId)) {
