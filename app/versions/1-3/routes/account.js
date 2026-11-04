@@ -19,14 +19,12 @@ const {
   trnErrorSummaryList,
   applyDemoPersonalDetails
 } = require('../lib/personal-details')
-
-function isSameSitePath (value) {
-  return typeof value === 'string' &&
-    value.startsWith('/') &&
-    !value.startsWith('//') &&
-    !value.includes('\\') &&
-    !value.includes('://')
-}
+const {
+  captureSignInReturnUrl,
+  resolveSignInReturnUrl,
+  jobseekerSignInHref,
+  oneLoginStartHref
+} = require('../lib/return-url')
 
 module.exports = router => {
 
@@ -35,12 +33,15 @@ module.exports = router => {
   })
 
   router.get('/account/sign-in/jobseeker', (req, res) => {
+    const returnUrl = captureSignInReturnUrl(req)
     res.render('account/sign-in-jobseeker', {
-      returnUrl: req.query.returnUrl
+      returnUrl,
+      oneLoginStartHref: oneLoginStartHref(returnUrl)
     })
   })
 
   router.get('/account/sign-in', (req, res) => {
+    const returnUrl = captureSignInReturnUrl(req)
     var options = users.map(user => {
       return {
         text: user.emailAddress,
@@ -51,7 +52,8 @@ module.exports = router => {
       }
     })
     res.render('account/sign-in', {
-      returnUrl: req.query.returnUrl,
+      returnUrl,
+      jobseekerSignInHref: jobseekerSignInHref(returnUrl),
       options
     })
   })
@@ -145,15 +147,13 @@ module.exports = router => {
     applyDemoPersonalDetails(req.session.user.profile)
     ensureJobseekerAlerts(req.session)
 
-    if (isSameSitePath(req.body.returnUrl)) {
-      res.redirect(req.body.returnUrl)
+    const returnUrl = resolveSignInReturnUrl(req, req.body.returnUrl)
+    if (returnUrl) {
+      res.redirect(returnUrl)
+    } else if (req.session.user.profile.previousApplication == 'Yes') {
+      res.redirect('/account/new/confirmation')
     } else {
-
-      if(req.session.user.profile.previousApplication == 'Yes'){
-        res.redirect('/account/new/confirmation')
-      }else{
-        res.redirect('/jobseekers/account')
-      }
+      res.redirect('/jobseekers/account')
     }
   })
 

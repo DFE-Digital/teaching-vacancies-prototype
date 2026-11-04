@@ -58,7 +58,7 @@
     }
 
     this.$lastActiveElement = document.activeElement
-    this.$container.classList.add('govuk-!-scroll-disabled')
+    this.$container.classList.add('govuk-modal-dialogue-scroll-disabled')
     this.$module.classList.add('govuk-modal-dialogue--open')
 
     if (this.$inertContainer) {
@@ -91,7 +91,7 @@
 
     this.$dialogBox.removeAttribute('open')
     this.$module.classList.remove('govuk-modal-dialogue--open')
-    this.$container.classList.remove('govuk-!-scroll-disabled')
+    this.$container.classList.remove('govuk-modal-dialogue-scroll-disabled')
 
     if (this.$inertContainer) {
       this.$inertContainer.inert = false

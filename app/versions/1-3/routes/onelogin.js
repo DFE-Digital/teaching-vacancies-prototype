@@ -1,8 +1,14 @@
 const users = require('../data/users.json')
 const Validator = require('../helpers/validator')
 const { SAVED_JOBS_PATH } = require('../lib/saved-jobs-page')
+const { captureSignInReturnUrl } = require('../lib/return-url')
 
 module.exports = router => {
+
+  router.get('/onelogin/start', (req, res) => {
+    const returnUrl = captureSignInReturnUrl(req)
+    res.render('onelogin/start', { returnUrl })
+  })
 
   router.get('/onelogin/journey/match', (req, res) => {
     const params = new URLSearchParams(req.query)

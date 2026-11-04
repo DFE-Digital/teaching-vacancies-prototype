@@ -75,7 +75,7 @@
                   <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--job-alerts" href="/jobalerts/jobalert">{{ headerJobAlertsIcon() }}<span class="govuk-header__link-text">Job alerts</span></a>
                 </li>
                 <li class="govuk-header__navigation-item">
-                  <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--sign-in" href="/account/sign-in/">{{ headerSignInIcon() }}<span class="govuk-header__link-text">Sign in</span></a>
+                  <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--sign-in" href="{{ signInHref or '/account/sign-in/' }}">{{ headerSignInIcon() }}<span class="govuk-header__link-text">Sign in</span></a>
                 </li>
               {% endif %}
             </ul>

@@ -1,14 +1,32 @@
 const express = require('express')
 const router = express.Router()
 const flash = require('connect-flash')
+const {
+  isSignInFlowPath,
+  returnUrlFromRequest,
+  signInHref,
+  jobseekerSignInHref
+} = require('./lib/return-url')
 router.use(flash())
 
 router.use((req, res, next) => {
   res.locals.referrer = req.query.referrer
   res.locals.query = req.query
   res.locals.homeSearchStack = Object.prototype.hasOwnProperty.call(req.query, 'v2')
+  res.locals.homeHeroV1 = Object.prototype.hasOwnProperty.call(req.query, 'v1')
   res.locals.user = req.session.user
   res.locals.flash = req.flash('success') // pass through 'success' messages only
+
+  if (!isSignInFlowPath(req.path)) {
+    const returnUrl = returnUrlFromRequest(req)
+    res.locals.signInReturnUrl = returnUrl
+    res.locals.signInHref = signInHref(returnUrl)
+    res.locals.jobseekerSignInHref = jobseekerSignInHref(returnUrl)
+  } else {
+    res.locals.signInReturnUrl = null
+    res.locals.signInHref = '/account/sign-in'
+    res.locals.jobseekerSignInHref = '/account/sign-in/jobseeker'
+  }
 
   const requestPath = (req.baseUrl || '') + req.path
   if (requestPath.includes('/jobseekers/job_applications') || requestPath.includes('/jobseekers/saved_jobs')) {

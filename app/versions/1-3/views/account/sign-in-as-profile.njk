@@ -15,7 +15,7 @@
           <form method="post" action="/account/sign-in">
 
             {% if returnUrl %}
-              <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
+              <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
             {% endif %}
 
             <input type="hidden" name="emailAddress" value="{{user.emailAddress}}">

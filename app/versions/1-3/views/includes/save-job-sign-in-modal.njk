@@ -14,8 +14,8 @@
           </p>
         </div>
         <div class="govuk-button-group govuk-!-margin-top-5">
-          <a class="govuk-button" href="/account/sign-in" data-module="govuk-button">Sign in</a>
-          <a class="govuk-button govuk-button--secondary" href="/account/sign-in/jobseeker" data-module="govuk-button">Create an account</a>
+          <a class="govuk-button" href="{{ signInHref or '/account/sign-in' }}" data-module="govuk-button" data-save-job-sign-in-link="sign-in">Sign in</a>
+          <a class="govuk-button govuk-button--secondary" href="{{ jobseekerSignInHref or '/account/sign-in/jobseeker' }}" data-module="govuk-button" data-save-job-sign-in-link="jobseeker">Create an account</a>
         </div>
         <p class="govuk-body govuk-!-margin-bottom-0">
           <a class="govuk-link" href="#" data-element="govuk-modal-dialogue-close">Cancel</a>

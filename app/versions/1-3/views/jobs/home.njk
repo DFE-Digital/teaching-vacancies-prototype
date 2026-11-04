@@ -28,13 +28,14 @@
 {% block content %}
 
 {% set homeSearchStack = homeSearchStack if homeSearchStack else (query and query.v2 is defined) %}
+{% set homeHeroV1 = homeHeroV1 if homeHeroV1 is defined else (query and query.v1 is defined) %}
 
 {{ govukNotificationBanner({
     html: '<p class="govuk-notification-banner__heading">' + flash + '</p>',
     type: "success"
   }) if flash and flash.length }}
 
-<div class="home_index home_index--hero-v2{% if homeSearchStack %} home_index--hero-v2-search-stack{% endif %}">
+<div class="home_index home_index--hero-v2{% if homeSearchStack %} home_index--hero-v2-search-stack{% endif %}{% if homeHeroV1 %} home_index--hero-v1{% endif %}">
 
     <header class="home-hero__page-header search__inner">
       <div class="home-hero__page-title">

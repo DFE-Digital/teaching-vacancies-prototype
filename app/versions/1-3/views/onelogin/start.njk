@@ -13,7 +13,9 @@
       <p>You can now continue to use Teaching Vacancies.</p>
 
       <form method="post" action="/account/sign-in">
-        <input type="hidden" name="returnUrl" value="/account">
+        {% if returnUrl %}
+          <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
+        {% endif %}
 
         {{ govukButton({
           text: 'Continue'

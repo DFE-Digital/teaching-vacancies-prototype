@@ -770,7 +770,8 @@ module.exports = router => {
     res.render('jobs/home', {
       jobs,
       locationOptions: getHomepageLocationOptions(),
-      homeSearchStack: Object.prototype.hasOwnProperty.call(req.query, 'v2')
+      homeSearchStack: Object.prototype.hasOwnProperty.call(req.query, 'v2'),
+      homeHeroV1: Object.prototype.hasOwnProperty.call(req.query, 'v1')
     })
   })
 
@@ -835,7 +836,18 @@ module.exports = router => {
       if (req.query.inline === '1') {
         return res.status(401).json({ ok: false, reason: 'sign-in-required' })
       }
-      return res.redirect('/account/sign-in')
+      const { returnUrlFromRequest, signInHref } = require('../lib/return-url')
+      const refererPath = req.get('Referer')
+      let returnUrl = returnUrlFromRequest(req)
+      if (refererPath) {
+        try {
+          const referer = new URL(refererPath, `${req.protocol}://${req.get('host')}`)
+          returnUrl = referer.pathname.replace(/^\/1-[0-3](?=\/)/, '') + referer.search
+        } catch (e) {
+          // keep request-based return URL
+        }
+      }
+      return res.redirect(signInHref(returnUrl))
     }
     if (!Array.isArray(req.session.data.savedJobs)) req.session.data.savedJobs = []
     const jobId = String(job.id)

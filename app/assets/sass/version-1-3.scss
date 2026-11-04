@@ -153,7 +153,7 @@ body.govuk-template__body {
       background-color: inherit;
       background-position: center center;
       background-repeat: no-repeat;
-      background-size: 16px 16px;
+      background-size: 21px 21px;
       border: 0;
       box-shadow: none;
       box-sizing: border-box;
@@ -189,12 +189,29 @@ body.govuk-template__body {
       }
     }
 
-    .icon--save {
-      background-image: url(/public/images/heart.svg);
+    $app-jobs-save-heart-colour: #54319f;
+    $app-jobs-save-heart-size: 21px;
+
+    .banner-button-component__button.app-jobs__item-save-control.icon--save,
+    .banner-button-component__button.app-jobs__item-save-control.icon--saved {
+      background-color: $app-jobs-save-heart-colour;
+      background-image: none;
+      -webkit-mask-position: center center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: $app-jobs-save-heart-size $app-jobs-save-heart-size;
+      mask-position: center center;
+      mask-repeat: no-repeat;
+      mask-size: $app-jobs-save-heart-size $app-jobs-save-heart-size;
     }
 
-    .icon--saved {
-      background-image: url(/public/images/heart-saved.svg);
+    .banner-button-component__button.app-jobs__item-save-control.icon--save {
+      -webkit-mask-image: url(/public/images/heart.svg);
+      mask-image: url(/public/images/heart.svg);
+    }
+
+    .banner-button-component__button.app-jobs__item-save-control.icon--saved {
+      -webkit-mask-image: url(/public/images/heart-saved.svg);
+      mask-image: url(/public/images/heart-saved.svg);
     }
 
     span.icon--saved {
@@ -205,6 +222,12 @@ body.govuk-template__body {
 
 // v1.3 home — Civil Service–style hero (csr-page-title / csr-page-subtitle + search panel)
 .home_index--hero-v2 {
+  // /home?v1 — hero panels use GOV.UK cookie banner default surface background
+  &.home_index--hero-v1 .home-hero__panel--search,
+  &.home_index--hero-v1 .home-hero__panel--job-alert {
+    background-color: var(--govuk-surface-background-colour, #f4f8fb);
+  }
+
   .home-hero__page-header {
     margin-bottom: govuk-spacing(4);
     padding-top: govuk-spacing(2);

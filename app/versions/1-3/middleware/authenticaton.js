@@ -2,7 +2,8 @@ function isAuthenticated(req, res, next) {
   if (req.session.user) {
     next()
   } else {
-    res.redirect(`/account/sign-in?returnUrl=${req.path}`)
+    const query = req.url && req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''
+    res.redirect(`/account/sign-in?returnUrl=${encodeURIComponent(req.path + query)}`)
   }
 }
 
