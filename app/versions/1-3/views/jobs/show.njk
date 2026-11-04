@@ -65,7 +65,7 @@
     {% set primaryActionHref = applyHref %}
   {% else %}
     {% set applyHref = '#applying' %}
-    {% set primaryActionText = "Apply on the " + job.organisation.name + " website (opens in new tab)" %}
+    {% set primaryActionText = "Apply externally (opens in new tab)" %}
     {% set primaryActionHref = '/jobs/external-advert?job=' + job.id %}
   {% endif %}
 
