@@ -28,7 +28,7 @@
 
       <form method="post" action="/account/add-your-details" novalidate>
         {{ govukInput({
-          label: { text: "First name" },
+          label: { text: "First name", classes: "govuk-label--m" },
           id: "firstName",
           name: "firstName",
           value: firstName,
@@ -37,7 +37,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Last name" },
+          label: { text: "Last name", classes: "govuk-label--m" },
           id: "lastName",
           name: "lastName",
           value: lastName,
@@ -50,7 +50,8 @@
           namePrefix: "dateOfBirth",
           fieldset: {
             legend: {
-              text: "Date of birth"
+              text: "Date of birth",
+              classes: "govuk-fieldset__legend--m"
             },
             attributes: {
               id: "dateOfBirth"
@@ -83,7 +84,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "National Insurance number" },
+          label: { text: "National Insurance number", classes: "govuk-label--m" },
           id: "nationalInsuranceNumber",
           name: "nationalInsuranceNumber",
           value: nationalInsuranceNumber,
@@ -95,7 +96,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Town" },
+          label: { text: "Town", classes: "govuk-label--m" },
           id: "town",
           name: "town",
           value: town,
@@ -105,7 +106,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Postcode (optional)" },
+          label: { text: "Postcode (optional)", classes: "govuk-label--m" },
           id: "postcode",
           name: "postcode",
           value: postcode,
