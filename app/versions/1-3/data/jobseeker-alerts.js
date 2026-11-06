@@ -24,7 +24,7 @@ module.exports = [
       ectStatuses: ['ect_suitable'],
       international: ['visa'],
       subjects: ['Design and technology', 'ICT'],
-      email: 'rachael@example.com',
+      email: 'jbloggs@example.com',
       frequency: 'weekly'
     },
     frequency: 'weekly',
@@ -51,7 +51,7 @@ module.exports = [
       ectStatuses: [],
       international: [],
       subjects: ['Mathematics'],
-      email: 'rachael@example.com',
+      email: 'jbloggs@example.com',
       frequency: 'daily'
     },
     frequency: 'daily',

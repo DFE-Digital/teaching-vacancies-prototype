@@ -1,15 +1,37 @@
 {% extends "layout.njk" %}
-{% from "includes/jobseeker-account-breadcrumbs.njk" import jobseekerAccountBreadcrumbs %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "includes/version-path.njk" import versionPath %}
+{% from "includes/jobseeker-account-sub-nav.njk" import jobseekerAccountSubNav %}
 
 {% set primaryNavId = 'account' %}
 {% set accountSection = 'personal-details' %}
 {% set forceSignedIn = true %}
 {% set title = 'Profile' %}
 {% set accountAreaMain = true %}
-{% set jobseekerAccountSubNavSection = 'profile' %}
 
 {% block content %}
-  {{ jobseekerAccountBreadcrumbs("Profile", "profile") }}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile govuk-!-margin-bottom-4",
+    items: [
+      {
+        text: "Your account",
+        href: versionPath("/jobseekers/account")
+      },
+      {
+        text: "Profile"
+      }
+    ]
+  }) }}
+
+  {% if captureComplete %}
+    {{ govukNotificationBanner({
+      type: "success",
+      text: "Your details have been saved"
+    }) }}
+  {% endif %}
+
+  {{ jobseekerAccountSubNav('profile') }}
+
   {% include "includes/account-page-header.njk" %}
 
   <div class="govuk-grid-row">
@@ -19,6 +41,15 @@
       {% endif %}
       {% if trnUpdated %}
         {{ govukNotificationBanner({ type: "success", text: "Your TRN has been updated" }) }}
+      {% endif %}
+      {% if dateOfBirthUpdated %}
+        {{ govukNotificationBanner({ type: "success", text: "Your date of birth has been updated" }) }}
+      {% endif %}
+      {% if niUpdated %}
+        {{ govukNotificationBanner({ type: "success", text: "Your National Insurance number has been updated" }) }}
+      {% endif %}
+      {% if townOrPostcodeUpdated %}
+        {{ govukNotificationBanner({ type: "success", text: "Your town and postcode have been updated" }) }}
       {% endif %}
 
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
@@ -41,6 +72,76 @@
               {
                 key: { text: "Last name" },
                 value: { text: user.profile.lastName or '—' }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Date of birth</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details/date-of-birth">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "Date of birth" },
+                value: { text: dateOfBirthDisplay }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">National Insurance number</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details/national-insurance-number">Change<span class="govuk-visually-hidden"> National Insurance number</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "National Insurance number" },
+                value: { text: niDisplay }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Town and postcode</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details/town-or-postcode">Change<span class="govuk-visually-hidden"> town and postcode</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "Town" },
+                value: { text: townDisplay }
+              },
+              {
+                key: { text: "Postcode" },
+                value: { text: postcodeDisplay }
               }
             ]
           }) }}

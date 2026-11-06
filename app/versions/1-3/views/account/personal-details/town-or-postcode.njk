@@ -1,0 +1,49 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set accountSection = 'personal-details' %}
+{% set title = 'Change your town and postcode' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukBackLink({ text: "Back to profile", href: "/account/personal-details" }) }}
+
+      {% if errorList and errorList.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <p class="govuk-body">We use this to suggest jobs near where you live and to personalise job alerts.</p>
+
+      <form method="post" action="/account/personal-details/town-or-postcode" novalidate>
+        {{ govukInput({
+          label: { text: "Town" },
+          id: "town",
+          name: "town",
+          value: town,
+          classes: "govuk-input--width-20",
+          autocomplete: "address-level2",
+          errorMessage: { text: errors.town } if errors.town
+        }) }}
+
+        {{ govukInput({
+          label: { text: "Postcode (optional)" },
+          id: "postcode",
+          name: "postcode",
+          value: postcode,
+          classes: "govuk-input--width-10",
+          autocomplete: "postal-code",
+          hint: {
+            text: "For example, SW1A 1AA."
+          },
+          errorMessage: { text: errors.postcode } if errors.postcode
+        }) }}
+        {{ govukButton({ text: "Save changes" }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

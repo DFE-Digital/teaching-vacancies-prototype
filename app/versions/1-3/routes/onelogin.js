@@ -7,7 +7,11 @@ module.exports = router => {
 
   router.get('/onelogin/start', (req, res) => {
     const returnUrl = captureSignInReturnUrl(req)
-    res.render('onelogin/start', { returnUrl })
+    let continueHref = '/account/sign-in?new-user'
+    if (returnUrl) {
+      continueHref += `&returnUrl=${encodeURIComponent(returnUrl)}`
+    }
+    res.render('onelogin/start', { returnUrl, continueHref })
   })
 
   router.get('/onelogin/journey/match', (req, res) => {

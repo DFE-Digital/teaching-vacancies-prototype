@@ -1,0 +1,63 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set accountSection = 'personal-details' %}
+{% set title = 'Change your date of birth' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukBackLink({ text: "Back to profile", href: "/account/personal-details" }) }}
+
+      {% if errorList and errorList.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <p class="govuk-body">We use your date of birth to check you meet eligibility for some roles. It is stored securely on your account.</p>
+
+      <form method="post" action="/account/personal-details/date-of-birth" novalidate>
+        {{ govukDateInput({
+          id: "dateOfBirth",
+          namePrefix: "dateOfBirth",
+          fieldset: {
+            legend: {
+              text: "Date of birth"
+            },
+            attributes: {
+              id: "dateOfBirth"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 1987. You must be at least 17 and under 100 years old."
+          },
+          errorMessage: { text: errors.dateOfBirth } if errors.dateOfBirth,
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: dateOfBirthDay,
+              error: true if errors.dateOfBirthHighlightDay
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: dateOfBirthMonth,
+              error: true if errors.dateOfBirthHighlightMonth
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: dateOfBirthYear,
+              error: true if errors.dateOfBirthHighlightYear
+            }
+          ]
+        }) }}
+        {{ govukButton({ text: "Save changes" }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

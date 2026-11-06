@@ -104,7 +104,7 @@ function deleteAlert (session, id) {
 function ensureSignedInJobseeker (req, users) {
   req.session.data.signedIn = true
   if (!req.session.user) {
-    req.session.user = users.find(u => u.emailAddress === 'rachael@example.com') || users[0]
+    req.session.user = users.find(u => u.emailAddress === 'jbloggs@example.com') || users[0]
   }
   if (!req.session.user.profile) req.session.user.profile = {}
   applyDemoPersonalDetails(req.session.user.profile)

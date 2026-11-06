@@ -138,7 +138,7 @@ module.exports = {
     annotations: [
       'Shared layout: H1 “Your account” (govuk-heading-l), intro paragraph, MOJ sub navigation (Personal details | Account settings), then H2 (govuk-heading-m) for the current tab.',
       'Intro: use Personal details for name, TRN and email; Account settings for sign-in, email preferences and closing your account.',
-      'Personal details: summary cards for name, TRN, and email; change name and TRN in Teaching Vacancies (demo user Joe Bloggs in users.json).',
+      'Personal details: summary cards for name, TRN, and email; change name and TRN in Teaching Vacancies (demo user Racheal Smith in users.json).',
       'Email card: link to GOV.UK One Login settings with visible text “GOV.UK One Login (opens in a new tab)” (target="_blank", rel="noopener noreferrer").',
       'Account settings (/account/your-account): sign-in via One Login, import help, close account, opt out of marketing emails; section headings are H3 under the page H2.'
     ],

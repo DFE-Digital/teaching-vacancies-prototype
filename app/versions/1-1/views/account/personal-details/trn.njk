@@ -7,7 +7,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {{ govukBackLink({ text: "Back to personal details", href: "/account/personal-details" }) }}
+      {{ govukBackLink({ text: "Back to profile", href: "/account/personal-details" }) }}
 
       {% if errorList and errorList.length %}
         {{ govukErrorSummary({

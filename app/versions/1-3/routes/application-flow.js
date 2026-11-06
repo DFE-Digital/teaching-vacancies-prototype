@@ -33,8 +33,8 @@ function defaultApplication (user) {
       declarations: 'Incomplete'
     },
     personalDetails: {
-      firstName: 'Joe',
-      lastName: 'Bloggs',
+      firstName: 'Racheal',
+      lastName: 'Smith',
       previousNames: '',
       addressLine1: '1 High Street',
       addressLine2: '',

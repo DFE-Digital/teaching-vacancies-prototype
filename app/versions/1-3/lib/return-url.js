@@ -21,7 +21,8 @@ function isSignInFlowPath (path) {
   return path.startsWith('/account/sign-in') ||
     path.startsWith('/onelogin/') ||
     path.startsWith('/account/new') ||
-    path.startsWith('/account/sign-out')
+    path.startsWith('/account/sign-out') ||
+    path.startsWith('/account/add-your-details')
 }
 
 function returnUrlFromRequest (req) {

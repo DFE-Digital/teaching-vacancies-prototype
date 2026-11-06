@@ -1,0 +1,133 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Add your details' %}
+{% set primaryNavId = 'account' %}
+{% set forceSignedIn = true %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if errorList and errorList.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <p class="govuk-body">
+        We need a few details so we can personalise your account and show you jobs that match where you live.
+      </p>
+
+      <p class="govuk-body">
+        We use your name in emails and messages about your applications and job alerts.
+        Your town and postcode help us suggest vacancies in your area.
+      </p>
+
+      <form method="post" action="/account/add-your-details" novalidate>
+        {{ govukInput({
+          label: { text: "First name" },
+          id: "firstName",
+          name: "firstName",
+          value: firstName,
+          autocomplete: "off",
+          errorMessage: { text: errors.firstName } if errors.firstName
+        }) }}
+
+        {{ govukInput({
+          label: { text: "Last name" },
+          id: "lastName",
+          name: "lastName",
+          value: lastName,
+          autocomplete: "off",
+          errorMessage: { text: errors.lastName } if errors.lastName
+        }) }}
+
+        {{ govukDateInput({
+          id: "dateOfBirth",
+          namePrefix: "dateOfBirth",
+          fieldset: {
+            legend: {
+              text: "Date of birth"
+            },
+            attributes: {
+              id: "dateOfBirth"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 1987. You must be at least 17 and under 100 years old."
+          },
+          errorMessage: { text: errors.dateOfBirth } if errors.dateOfBirth,
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: dateOfBirthDay,
+              error: true if errors.dateOfBirthHighlightDay
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: dateOfBirthMonth,
+              error: true if errors.dateOfBirthHighlightMonth
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: dateOfBirthYear,
+              error: true if errors.dateOfBirthHighlightYear
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: { text: "National Insurance number" },
+          id: "nationalInsuranceNumber",
+          name: "nationalInsuranceNumber",
+          value: nationalInsuranceNumber,
+          classes: "govuk-input--width-10",
+          hint: {
+            text: "It is on your payslip, P60 or National Insurance card. For example, AB 12 34 56 C."
+          },
+          errorMessage: { text: errors.nationalInsuranceNumber } if errors.nationalInsuranceNumber
+        }) }}
+
+        {{ govukInput({
+          label: { text: "Town" },
+          id: "town",
+          name: "town",
+          value: town,
+          classes: "govuk-input--width-20",
+          autocomplete: "address-level2",
+          errorMessage: { text: errors.town } if errors.town
+        }) }}
+
+        {{ govukInput({
+          label: { text: "Postcode (optional)" },
+          id: "postcode",
+          name: "postcode",
+          value: postcode,
+          classes: "govuk-input--width-10",
+          autocomplete: "postal-code",
+          hint: {
+            text: "For example, SW1A 1AA."
+          },
+          errorMessage: { text: errors.postcode } if errors.postcode
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({ text: "Save and continue" }) }}
+          {{ govukButton({
+            text: "Skip and continue",
+            classes: "govuk-button--secondary",
+            name: "skip",
+            value: "true",
+            type: "submit"
+          }) }}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

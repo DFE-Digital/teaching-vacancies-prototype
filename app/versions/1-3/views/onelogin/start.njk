@@ -12,16 +12,10 @@
 
       <p>You can now continue to use Teaching Vacancies.</p>
 
-      <form method="post" action="/account/sign-in">
-        {% if returnUrl %}
-          <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
-        {% endif %}
-
-        {{ govukButton({
-          text: 'Continue'
-        }) }}
-
-      </form>
+      {{ govukButton({
+        text: 'Continue',
+        href: continueHref or '/account/sign-in?new-user'
+      }) }}
 
     </div>
 

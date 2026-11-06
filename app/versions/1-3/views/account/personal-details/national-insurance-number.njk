@@ -1,0 +1,38 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'account' %}
+{% set accountSection = 'personal-details' %}
+{% set title = 'Change your National Insurance number' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukBackLink({ text: "Back to profile", href: "/account/personal-details" }) }}
+
+      {% if errorList and errorList.length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <p class="govuk-body">Your National Insurance number is stored on your Teaching Vacancies account. Schools only see it if you apply for a role that needs it.</p>
+
+      <form method="post" action="/account/personal-details/national-insurance-number" novalidate>
+        {{ govukInput({
+          label: { text: "National Insurance number" },
+          id: "nationalInsuranceNumber",
+          name: "nationalInsuranceNumber",
+          value: nationalInsuranceNumber,
+          classes: "govuk-input--width-10",
+          hint: {
+            text: "It is on your payslip, P60 or National Insurance card. For example, AB 12 34 56 C."
+          },
+          errorMessage: { text: errors.nationalInsuranceNumber } if errors.nationalInsuranceNumber
+        }) }}
+        {{ govukButton({ text: "Save changes" }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -5,8 +5,8 @@
     "accountType": "teacher",    
     "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
-      "firstName": "Joe",
-      "lastName": "Bloggs",
+      "firstName": "Racheal",
+      "lastName": "Smith",
       "trn": "1234567",
       "locations": {},
       "qualifications": {},
@@ -16,14 +16,14 @@
     }
   },
   {
-    "emailAddress": "rachael@example.com",
+    "emailAddress": "jbloggs@example.com",
     "password": "tv",
     "accountType": "teacher",    
     "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "status": "Active",
-      "firstName": "Joe",
-      "lastName": "Bloggs",
+      "firstName": "Racheal",
+      "lastName": "Smith",
       "trn": "1234567",
       "providePhoneNumber": null,
       "provideWork": "Yes",
@@ -73,8 +73,8 @@
     "marketingPreferences": "Yes, open to receiving marketing messages",
     "profile": {
       "status": "Active",
-      "firstName": "Joe",
-      "lastName": "Bloggs",
+      "firstName": "Racheal",
+      "lastName": "Smith",
       "trn": "1234567",
       "providePhoneNumber": "Yes",
       "phoneNumber": "01928 376 453",
