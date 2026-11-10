@@ -47,12 +47,8 @@
 
   {% if job.jobtype == 'support' %}
     {% set alertHref = '/jobalerts/support' %}
-  {% elif data['optionPrototype'] == 'b' %}
-    {% set alertHref = '/jobs/fe/jobalert_fe?role-type=fe-role' %}
-  {% elif data['optionPrototype'] == 'a' %}
-    {% set alertHref = '/alert?role-type=fe-role' %}
   {% else %}
-    {% set alertHref = '/jobsfeonly_alert' %}
+    {% set alertHref = '/jobalerts/jobalert' %}
   {% endif %}
 
   {% if job.isUsingApplicationForm == 'Yes' %}
@@ -134,7 +130,7 @@
     </div>
 
     <div class="govuk-grid-row banner-buttons banner-buttons--v2">
-      {% if daysRemaining >= 0 or data.signedIn or user or forceSignedIn %}
+      {% if job.status == 'Active' %}
         <div class="govuk-grid-column-one-third vacancies-show__banner-apply">
           {% if job.isUsingApplicationForm == 'Yes' %}
             {{ govukButton({
@@ -160,7 +156,7 @@
         {% if (job.id | string) in (data.savedJobs or []) %}
           <span class="banner-button-component__button icon icon--left icon--saved">Job saved</span>
         {% else %}
-          <a class="banner-button-component__button icon icon--left icon--save" href="/jobs/{{ job.id }}/save">Save this job for later</a>
+          <a class="banner-button-component__button icon icon--left icon--save" data-save-job href="/jobs/{{ job.id }}/save">Save this job for later</a>
         {% endif %}
       </div>
     </div>

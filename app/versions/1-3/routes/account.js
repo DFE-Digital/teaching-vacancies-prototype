@@ -20,6 +20,7 @@ const {
   applyDemoPersonalDetails,
   normaliseNiNumber,
   validateJobseekerProfileCapture,
+  validateJobseekerProfileCaptureV2,
   validateDateOfBirth,
   validateNationalInsuranceNumber,
   validateTownAndPostcode,
@@ -29,6 +30,7 @@ const {
   niErrorSummaryList,
   locationErrorSummaryList,
   jobseekerProfileCaptureErrorSummaryList,
+  jobseekerProfileCaptureV2ErrorSummaryList,
   formatDateOfBirthForDisplay,
   formatNiForDisplay,
   formatTownForDisplay,
@@ -63,6 +65,88 @@ function renderAddYourDetails (req, res, options) {
     errorList: options.errorList || []
   })
 }
+
+function renderAddYourDetails2 (req, res, options) {
+  const profile = (req.session.user && req.session.user.profile) || {}
+  resolveLocationOnProfile(profile)
+  const dob = profile.dateOfBirth || {}
+  const reposted = options.reposted === true
+  res.render('account/add-your-details-2', {
+    firstName: reposted && options.firstName != null ? options.firstName : '',
+    lastName: reposted && options.lastName != null ? options.lastName : '',
+    dateOfBirthDay: options.dateOfBirthDay != null ? options.dateOfBirthDay : dob.day,
+    dateOfBirthMonth: options.dateOfBirthMonth != null ? options.dateOfBirthMonth : dob.month,
+    dateOfBirthYear: options.dateOfBirthYear != null ? options.dateOfBirthYear : dob.year,
+    trn: reposted && options.trn != null ? options.trn : '',
+    town: options.town != null ? options.town : profile.town,
+    postcode: options.postcode != null ? options.postcode : profile.postcode,
+    errors: options.errors || {},
+    errorList: options.errorList || []
+  })
+}
+
+function handleAddYourDetails2Post (req, res) {
+  if (req.body.skip === 'true') {
+    const profile = req.session.user.profile
+    applyDemoPersonalDetails(profile)
+    profile.profileCaptureComplete = true
+    req.session.data.personalDetailsCaptureComplete = true
+    return redirectAfterProfileCapture(req, res)
+  }
+
+  const fields = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    dateOfBirthDay: req.body['dateOfBirth-day'],
+    dateOfBirthMonth: req.body['dateOfBirth-month'],
+    dateOfBirthYear: req.body['dateOfBirth-year'],
+    trn: req.body.trn,
+    town: req.body.town,
+    postcode: req.body.postcode
+  }
+
+  const { errors, dateOfBirth } = validateJobseekerProfileCaptureV2(fields)
+  if (Object.keys(errors).length) {
+    return renderAddYourDetails2(req, res, {
+      ...fields,
+      reposted: true,
+      errors,
+      errorList: jobseekerProfileCaptureV2ErrorSummaryList(errors)
+    })
+  }
+
+  const profile = req.session.user.profile
+  profile.firstName = fields.firstName.trim()
+  profile.lastName = fields.lastName.trim()
+  profile.dateOfBirth = dateOfBirth
+  setTrn(profile, fields.trn)
+  const townValue = (fields.town || '').trim()
+  if (townValue) {
+    profile.town = townValue
+  } else {
+    delete profile.town
+  }
+  const postcodeValue = (fields.postcode || '').trim()
+  if (postcodeValue) {
+    profile.postcode = normalisePostcode(postcodeValue)
+  } else {
+    delete profile.postcode
+  }
+  delete profile.townOrPostcode
+  profile.profileCaptureComplete = true
+
+  req.session.data.personalDetailsCaptureComplete = true
+  return redirectAfterProfileCapture(req, res)
+}
+
+function redirectAfterProfileCapture (req, res) {
+  const afterCapture = normalizeReturnUrl(req.session.data.afterProfileCaptureReturnUrl)
+  if (afterCapture) {
+    delete req.session.data.afterProfileCaptureReturnUrl
+    return res.redirect(afterCapture)
+  }
+  return res.redirect('/account/personal-details')
+}
 const {
   captureSignInReturnUrl,
   normalizeReturnUrl,
@@ -95,7 +179,10 @@ module.exports = router => {
       if (returnUrl) {
         req.session.data.afterProfileCaptureReturnUrl = returnUrl
       }
-      return res.redirect('/account/add-your-details')
+      const capturePath = req.query.capture === '2'
+        ? '/account/add-your-details-2'
+        : '/account/add-your-details'
+      return res.redirect(capturePath)
     }
 
     const returnUrl = captureSignInReturnUrl(req)
@@ -246,17 +333,16 @@ module.exports = router => {
     }
     ensurePrototypeSignedIn(req)
 
+    if (req.body.captureVersion === '2') {
+      return handleAddYourDetails2Post(req, res)
+    }
+
     if (req.body.skip === 'true') {
       const profile = req.session.user.profile
       applyDemoPersonalDetails(profile)
       profile.profileCaptureComplete = true
       req.session.data.personalDetailsCaptureComplete = true
-      const afterCapture = normalizeReturnUrl(req.session.data.afterProfileCaptureReturnUrl)
-      if (afterCapture) {
-        delete req.session.data.afterProfileCaptureReturnUrl
-        return res.redirect(afterCapture)
-      }
-      return res.redirect('/account/personal-details')
+      return redirectAfterProfileCapture(req, res)
     }
 
     const fields = {
@@ -301,7 +387,28 @@ module.exports = router => {
     profile.profileCaptureComplete = true
 
     req.session.data.personalDetailsCaptureComplete = true
-    res.redirect('/account/personal-details')
+    return redirectAfterProfileCapture(req, res)
+  })
+
+  router.get('/account/add-your-details-2', (req, res) => {
+    if (!req.session.data.signedIn) {
+      return res.redirect('/account/sign-in/jobseeker')
+    }
+    ensurePrototypeSignedIn(req)
+    const profile = req.session.user.profile
+    if (profile && !profile.profileCaptureComplete) {
+      delete profile.firstName
+      delete profile.lastName
+    }
+    renderAddYourDetails2(req, res, {})
+  })
+
+  router.post('/account/add-your-details-2', (req, res) => {
+    if (!req.session.data.signedIn) {
+      return res.redirect('/account/sign-in/jobseeker')
+    }
+    ensurePrototypeSignedIn(req)
+    return handleAddYourDetails2Post(req, res)
   })
 
   router.get('/account', (req, res) => {

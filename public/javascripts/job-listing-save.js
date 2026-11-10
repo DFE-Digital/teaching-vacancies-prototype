@@ -85,6 +85,16 @@
         })
     })
 
+    $(document).on('click', '.vacancies-show .banner-buttons [data-save-job]', function (event) {
+      if (isUserSignedIn()) {
+        return
+      }
+      event.preventDefault()
+      if (window.AppSaveJobSignInModal && typeof window.AppSaveJobSignInModal.open === 'function') {
+        window.AppSaveJobSignInModal.open(event)
+      }
+    })
+
     $(document).on('click', '.app-jobs__item-save [data-unsave-job]', function (event) {
       event.preventDefault()
       var $link = $(this)

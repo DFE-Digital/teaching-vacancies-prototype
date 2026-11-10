@@ -21,7 +21,7 @@
 
       <form method="post" action="/account/personal-details/town-or-postcode" novalidate>
         {{ govukInput({
-          label: { text: "Town" },
+          label: { text: "Town", classes: "govuk-label--m" },
           id: "town",
           name: "town",
           value: town,
@@ -31,7 +31,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Postcode (optional)" },
+          label: { text: "Postcode (optional)", classes: "govuk-label--m" },
           id: "postcode",
           name: "postcode",
           value: postcode,

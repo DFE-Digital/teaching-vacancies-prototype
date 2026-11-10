@@ -21,7 +21,7 @@
 
       <form method="post" action="/account/personal-details/name" novalidate>
         {{ govukInput({
-          label: { text: "First name" },
+          label: { text: "First name", classes: "govuk-label--m" },
           id: "firstName",
           name: "firstName",
           value: firstName,
@@ -29,7 +29,7 @@
           errorMessage: { text: errors.firstName } if errors.firstName
         }) }}
         {{ govukInput({
-          label: { text: "Last name" },
+          label: { text: "Last name", classes: "govuk-label--m" },
           id: "lastName",
           name: "lastName",
           value: lastName,

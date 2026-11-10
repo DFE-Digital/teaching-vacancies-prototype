@@ -9,7 +9,7 @@ function getTrn (profile) {
 }
 
 function setTrn (profile, value) {
-  const trimmed = (value || '').trim()
+  const trimmed = normaliseTrnInput(value)
   if (trimmed) {
     profile.trn = trimmed
     profile.TRN = trimmed
@@ -24,10 +24,14 @@ function formatTrnForDisplay (profile) {
   return trn || 'Not provided'
 }
 
+function normaliseTrnInput (value) {
+  return String(value || '').replace(/\s/g, '')
+}
+
 function validateTrn (value) {
-  const trimmed = (value || '').trim()
-  if (!trimmed) return null
-  if (!/^\d{7}$/.test(trimmed)) {
+  const normalised = normaliseTrnInput(value)
+  if (!normalised) return null
+  if (!/^\d{7}$/.test(normalised)) {
     return 'Enter a valid teacher reference number (TRN) — it must be 7 digits'
   }
   return null
@@ -279,6 +283,27 @@ function validateJobseekerProfileCapture (fields) {
   return { errors, dateOfBirth: dobResult.dateOfBirth }
 }
 
+function validateJobseekerProfileCaptureV2 (fields) {
+  const errors = Object.assign(
+    {},
+    validateName(fields.firstName, fields.lastName)
+  )
+
+  Object.assign(errors, validateTownAndPostcode(fields.town, fields.postcode))
+
+  const trnError = validateTrn(fields.trn)
+  if (trnError) errors.trn = trnError
+
+  const dobResult = validateDateOfBirth(
+    fields.dateOfBirthDay,
+    fields.dateOfBirthMonth,
+    fields.dateOfBirthYear
+  )
+  Object.assign(errors, dobResult.errors)
+
+  return { errors, dateOfBirth: dobResult.dateOfBirth }
+}
+
 function dateOfBirthErrorSummaryList (errors) {
   if (!errors.dateOfBirth) return []
   return [{
@@ -311,6 +336,22 @@ function jobseekerProfileCaptureErrorSummaryList (errors) {
   if (errors.nationalInsuranceNumber) {
     list.push({ text: errors.nationalInsuranceNumber, href: '#nationalInsuranceNumber' })
   }
+  if (errors.town) list.push({ text: errors.town, href: '#town' })
+  if (errors.postcode) list.push({ text: errors.postcode, href: '#postcode' })
+  return list
+}
+
+function jobseekerProfileCaptureV2ErrorSummaryList (errors) {
+  const list = []
+  if (errors.firstName) list.push({ text: errors.firstName, href: '#firstName' })
+  if (errors.lastName) list.push({ text: errors.lastName, href: '#lastName' })
+  if (errors.dateOfBirth) {
+    list.push({
+      text: errors.dateOfBirth,
+      href: dateOfBirthErrorSummaryHref(errors)
+    })
+  }
+  if (errors.trn) list.push({ text: errors.trn, href: '#trn' })
   if (errors.town) list.push({ text: errors.town, href: '#town' })
   if (errors.postcode) list.push({ text: errors.postcode, href: '#postcode' })
   return list
@@ -386,6 +427,7 @@ module.exports = {
   nameErrorSummaryList,
   trnErrorSummaryList,
   normaliseNiNumber,
+  normaliseTrnInput,
   validateNationalInsuranceNumber,
   validateDateOfBirth,
   normalisePostcode,
@@ -394,10 +436,12 @@ module.exports = {
   validatePostcode,
   validateTownAndPostcode,
   validateJobseekerProfileCapture,
+  validateJobseekerProfileCaptureV2,
   dateOfBirthErrorSummaryList,
   niErrorSummaryList,
   locationErrorSummaryList,
   jobseekerProfileCaptureErrorSummaryList,
+  jobseekerProfileCaptureV2ErrorSummaryList,
   formatDateOfBirthForDisplay,
   formatNiForDisplay,
   formatTownForDisplay,

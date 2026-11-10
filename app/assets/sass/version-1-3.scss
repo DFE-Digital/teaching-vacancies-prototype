@@ -504,9 +504,20 @@ body.govuk-template__body {
     @include govuk-media-query($until: tablet) {
       .govuk-grid-column-one-third {
         margin-bottom: govuk-spacing(6);
+        text-align: left;
 
         &:last-child {
           margin-bottom: 0;
+        }
+
+        .govuk-button.govuk-button--secondary {
+          box-sizing: border-box;
+          display: inline-block;
+          max-width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          text-align: center;
+          width: auto;
         }
       }
     }
@@ -644,6 +655,10 @@ body.govuk-template__body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.app-profile-capture-form .govuk-button-group {
+  margin-top: 40px;
 }
 
 @import "patterns/moj-modal-dialogue";

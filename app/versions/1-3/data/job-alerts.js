@@ -429,7 +429,7 @@ function listing (alert, index) {
     hours: alert.hours || '',
     salary: alert.actualSalaryDetails || alert.fullTimeEquivalentSalaryDetails || alert.salary,
     flags: flags(alert),
-    alertHref: '/jobsfeonly_alert',
+    alertHref: '/jobalerts/jobalert',
     job: job
   }
 }

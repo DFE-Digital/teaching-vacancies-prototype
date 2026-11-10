@@ -31,6 +31,36 @@
   line-height: 1.07;
 }
 
+.homepage-header__title-group {
+  margin: 0;
+
+  .homepage-header__title {
+    margin-bottom: 0;
+  }
+
+  .homepage-header__description {
+    margin-top: 10px;
+  }
+}
+
+.homepage-header__description {
+  margin: 0;
+  max-width: 36em;
+  color: #fff;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.3157894737;
+}
+
+.homepage-header__title-group + .homepage-header__link,
+.homepage-header__title-group + .homepage-header__links {
+  margin-top: 15px;
+}
+
+.homepage-header__description + .homepage-header__link {
+  margin-top: 15px;
+}
+
 .homepage-header__links {
   display: flex;
   flex-wrap: wrap;
