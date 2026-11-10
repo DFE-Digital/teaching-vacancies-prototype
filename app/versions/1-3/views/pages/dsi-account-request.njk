@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Request a Teaching Vacancies account' %}
+{% set contentPage = true %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({ text: "Back", href: "/" }) }}
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Request a Teaching Vacancies account</h1>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">If you do not have a DfE Sign-in account</h2>
+      <p class="govuk-body">A DfE Sign-in account is required to list jobs for free on Teaching Vacancies.</p>
+      <p class="govuk-body">You can request an account if you work at (one of the following):</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a state-funded school or trust in England</li>
+        <li>a local authority and list job vacancies on behalf of schools</li>
+      </ul>
+      <p class="govuk-body">
+        <a class="govuk-link govuk-link--no-visited-state" href="https://teaching-vacancies.service.gov.uk/get-help-hiring/how-to-setup-your-account/check-your-eligibility-to-advertise-roles">Check you're eligible to advertise roles on Teaching Vacancies.</a>
+      </p>
+
+      {{ govukButton({
+        text: "Request a DfE Sign-in account",
+        href: "https://interactions.signin.education.gov.uk/register",
+        classes: "govuk-!-margin-top-4",
+        attributes: {
+          target: "_blank",
+          rel: "noopener noreferrer"
+        }
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">If you already have a DfE Sign-in account</h2>
+      <p class="govuk-body">
+        <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/hiring-staff">Sign in</a> to your account, then click ‘request access to a service’. Choose Teaching Vacancies from the list.
+      </p>
+      <p class="govuk-body">Your request will be sent to your organisation's nominated approver. You will be informed by email when approval has been given.</p>
+      <p class="govuk-body">If you are not yet part of an organisation, you can search by name or unique reference number (URN) and request to join.</p>
+      <p class="govuk-body govuk-!-margin-bottom-0">Details of approvers within your organisation are available within DfE Sign-in if you need to contact someone regarding your request.</p>
+
+      <h3 class="govuk-heading-s govuk-!-margin-top-6">Need help logging in?</h3>
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        <a class="govuk-link govuk-link--no-visited-state" href="https://teaching-vacancies.service.gov.uk/support_request/new">Request support</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

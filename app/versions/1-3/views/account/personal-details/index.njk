@@ -49,7 +49,7 @@
         {{ govukNotificationBanner({ type: "success", text: "Your National Insurance number has been updated" }) }}
       {% endif %}
       {% if townOrPostcodeUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your town and postcode have been updated" }) }}
+        {{ govukNotificationBanner({ type: "success", text: "Your location has been updated" }) }}
       {% endif %}
 
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
@@ -124,10 +124,10 @@
 
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Town and postcode</h2>
+          <h2 class="govuk-summary-card__title">Location</h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="/account/personal-details/town-or-postcode">Change<span class="govuk-visually-hidden"> town and postcode</span></a>
+              <a class="govuk-link" href="/account/personal-details/town-or-postcode">Change<span class="govuk-visually-hidden"> location</span></a>
             </li>
           </ul>
         </div>
@@ -184,7 +184,8 @@
               }
             ]
           }) }}
-          <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-4">You change your email address in GOV.UK One Login. Updates will apply when you next sign in to Teaching Vacancies.</p>
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+          <p class="govuk-body govuk-!-margin-bottom-0">You change your email address in GOV.UK One Login. Updates will apply when you next sign in to Teaching Vacancies.</p>
           <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-2">
             <a class="govuk-link" href="https://home.account.gov.uk/settings" rel="noopener noreferrer" target="_blank">
               GOV.UK One Login (opens in a new tab)

@@ -55,6 +55,10 @@ require('./routes/application-flow')(router)
 require('./routes/jobs')(router)
 require('./routes/schools')(router)
 
+router.get('/pages/dsi-account-request', (req, res) => {
+  res.render('pages/dsi-account-request')
+})
+
 router.get('/documentation/project-structure', (req, res) => {
   res.render('documentation/project-structure')
 })

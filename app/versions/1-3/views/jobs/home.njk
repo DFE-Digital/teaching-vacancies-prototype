@@ -112,20 +112,32 @@
     </section>
 
     <div class="home_index__promos govuk-!-margin-top-6">
-      <h2 class="govuk-heading-m">For jobseekers</h2>
-      <p class="govuk-body">Save and apply for jobs in schools and colleges.</p>
-      <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in">Sign in</a> or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/jobseeker">Create an account</a>.</p>
+      <div class="search__inner">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-m">Create a job alert</h2>
+            <p class="govuk-body">Get emails about jobs you're interested in.</p>
+            <a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/jobalerts/jobalert">Set up job alerts</a>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-m">For jobseekers</h2>
+            <p class="govuk-body">Save and apply for jobs in schools and colleges.</p>
+            <a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/account/sign-in/jobseeker">Jobseeker sign-in</a>
+            <p class="govuk-body govuk-!-margin-top-4">or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/jobseeker">create a jobseeker account</a>.</p>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-m">For hiring staff</h2>
+            <p class="govuk-body">Post your jobs and manage applications.</p>
+            <a class="govuk-button govuk-!-margin-bottom-2 govuk-button--secondary" data-module="govuk-button" href="/account/sign-in/hiring-staff">Hiring staff sign-in</a>
+            <p class="govuk-body govuk-!-margin-top-4">or <a class="govuk-link govuk-link--no-visited-state" href="/pages/dsi-account-request">create a hiring staff account</a>.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="landing-page-links">
       {% set landingAccordionExtraClass = 'home-landing-accordion' %}
       {% include "includes/home-landing-accordion.njk" %}
-    </div>
-
-    <div class="home_index__promos home_index__promos--hiring-staff govuk-!-margin-top-6">
-      <h2 class="govuk-heading-m">For hiring staff</h2>
-      <p class="govuk-body">Post your jobs and manage applications.</p>
-      <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/hiring-staff">Sign in</a> or <a class="govuk-link govuk-link--no-visited-state" href="/account/sign-in/hiring-staff">Create an account</a>.</p>
     </div>
 
     <p class="govuk-body home_index__browse-all govuk-!-margin-top-6 govuk-!-margin-bottom-0">

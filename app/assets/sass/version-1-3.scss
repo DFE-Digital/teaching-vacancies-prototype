@@ -493,7 +493,23 @@ body.govuk-template__body {
   }
 
   .home_index__promos {
-    @include govuk-visually-hidden;
+    padding-bottom: govuk-spacing(6);
+    padding-top: govuk-spacing(6);
+
+    .search__inner {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include govuk-media-query($until: tablet) {
+      .govuk-grid-column-one-third {
+        margin-bottom: govuk-spacing(6);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 
   .home_index__browse-all {
