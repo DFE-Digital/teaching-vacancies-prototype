@@ -1,4 +1,5 @@
 {% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationPageTitle with context %}
 {% set primaryNavId = 'jobs' %}
 {% set title = 'Application' %}
 
@@ -9,12 +10,11 @@
         <h1 class="govuk-heading-l">Application</h1>
         <p class="govuk-body"><a class="govuk-link" href="/jobs">Back to jobs</a></p>
       {% else %}
-        <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
         {% set educationPhase = job.phase or job.organisation.phase %}
+        {{ applicationPageTitle() }}
         {% if educationPhase %}
           <p class="govuk-body govuk-!-margin-bottom-2">Education phase: {{ educationPhase }}</p>
         {% endif %}
-        <h1 class="govuk-heading-l">Application</h1>
 
         {% if isFeJob %}
           {{ govukInsetText({
@@ -22,7 +22,7 @@
           }) }}
         {% endif %}
 
-        <h2 class="govuk-heading-m">Before you start</h2>
+        <h2 class="govuk-heading-l">Before you start</h2>
         <p class="govuk-body">Your details have been imported from your last job application. Review each section and mark it complete when the information is accurate.</p>
         <p class="govuk-body">You will need to provide:</p>
         <ul class="govuk-list govuk-list--bullet">
@@ -32,7 +32,7 @@
           <li>referee details (employer and, where required, someone who can comment on work with learners aged 16 to 18)</li>
         </ul>
 
-        <h2 class="govuk-heading-m">Saving your application details</h2>
+        <h2 class="govuk-heading-l">Saving your application details</h2>
         <p class="govuk-body">Quick Apply saves your details as you go. You can reuse them next time, so future applications are faster.</p>
         <p class="govuk-body">Review your saved details before you submit each application.</p>
         <p class="govuk-body">You should read the job description and application pack before beginning your application.</p>

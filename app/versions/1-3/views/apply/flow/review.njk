@@ -5,7 +5,7 @@
 
 {% macro sectionHeading(text, href) %}
   <div class="app-section-heading">
-    <h2 class="govuk-heading-m">{{ text }}</h2>
+    <h2 class="govuk-heading-l">{{ text }}</h2>
     <a class="govuk-link" href="{{ href }}">Change<span class="govuk-visually-hidden"> {{ text }}</span></a>
   </div>
 {% endmacro %}
@@ -13,8 +13,10 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
-      <h1 class="govuk-heading-l">Review your application</h1>
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+        Review your application
+      </h1>
       <p class="govuk-body">Check your answers before you submit your application.</p>
 
       {% if submitErrors and submitErrors.length %}

@@ -1,17 +1,24 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{% macro applicationPageTitle(headingText) %}
+  {% set pageHeading = headingText or "Application" %}
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
+    {{ pageHeading }}
+  </h1>
+{% endmacro %}
+
 {% macro applicationHeading(backHref) %}
   {{ govukBackLink({
     text: "Back",
     href: backHref or ("/jobs/" + job.id + "/apply/task-list")
   }) }}
-  <span class="govuk-caption-l">{{ job.title }} at {{ job.organisation.name }}</span>
   {% set educationPhase = job.phase or job.organisation.phase %}
+  {{ applicationPageTitle() }}
   {% if educationPhase %}
     <p class="govuk-body govuk-!-margin-bottom-2">Education phase: {{ educationPhase }}</p>
   {% endif %}
-  <h1 class="govuk-heading-l">Application</h1>
 {% endmacro %}
 
 {% macro completedSection(section, hint) %}

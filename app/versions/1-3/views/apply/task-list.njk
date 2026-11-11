@@ -1,4 +1,5 @@
 {% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationPageTitle with context %}
 {% set primaryNavId = 'jobs' %}
 {% set title = 'Application' %}
 
@@ -20,7 +21,7 @@
           html: '<p class="govuk-notification-banner__heading">Your details have been imported from your last job application. Sections marked <strong>Needs review</strong> should be checked and marked complete before you submit.</p>'
         }) }}
 
-        <h1 class="govuk-heading-l">{{ job.title }} at {{ job.organisation.name }}</h1>
+        {{ applicationPageTitle() }}
         <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-font-weight-bold">Closing date</p>
         <p class="govuk-body">{{ job.closingDate | date }} at {{ job.closingTime }}</p>
 
@@ -38,7 +39,7 @@
           <a class="govuk-link" href="/jobs/{{ job.id }}" target="_blank" rel="noreferrer noopener">View job listing (opens in new tab)</a>
         </div>
 
-        <h2 class="govuk-heading-m">Your application</h2>
+        <h2 class="govuk-heading-l">Your application</h2>
         <ul class="govuk-task-list">
           {% for section in sections %}
             <li class="govuk-task-list__item govuk-task-list__item--with-link">
@@ -62,7 +63,7 @@
           {% endfor %}
         </ul>
 
-        <h2 class="govuk-heading-m">Review and submit your application</h2>
+        <h2 class="govuk-heading-l">Review and submit your application</h2>
         {% if canSubmitApplication %}
           <p class="govuk-body">You can review your application before you submit it.</p>
           {{ govukButton({
