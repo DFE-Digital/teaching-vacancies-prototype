@@ -661,4 +661,17 @@ body.govuk-template__body {
   margin-top: 40px;
 }
 
+.app-profile-capture-form .app-town-autocomplete .autocomplete__wrapper {
+  max-width: 390px;
+}
+
+.app-profile-capture-form .app-town-autocomplete .autocomplete__input {
+  font-family: inherit;
+  margin-bottom: 0;
+}
+
+.app-profile-capture-form .govuk-form-group:has(#postcode) {
+  margin-top: 20px;
+}
+
 @import "patterns/moj-modal-dialogue";

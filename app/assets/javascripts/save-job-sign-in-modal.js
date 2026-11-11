@@ -14,10 +14,7 @@
   }
 
   function applyReturnUrlsToModalLinks (module) {
-    module.querySelectorAll('[data-save-job-sign-in-link="sign-in"]').forEach(function (link) {
-      link.setAttribute('href', hrefWithReturnUrl('/account/sign-in'))
-    })
-    module.querySelectorAll('[data-save-job-sign-in-link="jobseeker"]').forEach(function (link) {
+    module.querySelectorAll('[data-save-job-sign-in-link="continue"]').forEach(function (link) {
       link.setAttribute('href', hrefWithReturnUrl('/account/sign-in/jobseeker'))
     })
   }

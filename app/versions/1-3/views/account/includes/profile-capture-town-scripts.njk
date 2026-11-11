@@ -1,0 +1,15 @@
+<script type="application/json" id="app-england-towns-data">{{ englandTownsJson | safe }}</script>
+<script>
+  (function () {
+    var dataEl = document.getElementById('app-england-towns-data')
+  if (dataEl) {
+      try {
+        window.AppEnglandTowns = JSON.parse(dataEl.textContent)
+      } catch (err) {
+        window.AppEnglandTowns = []
+      }
+    }
+  })()
+</script>
+<script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
+<script src="/public/javascripts/profile-capture-town-autocomplete.js"></script>

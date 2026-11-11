@@ -1,0 +1,15 @@
+{% macro townAutocompleteField(params) %}
+  <div class="govuk-form-group location-finder__input govuk-!-margin-bottom-0{% if params.error %} govuk-form-group--error{% endif %}">
+    <label class="govuk-label govuk-label--m" for="town">
+      Town
+    </label>
+    {% if params.error %}
+      <p id="town-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> {{ params.error }}
+      </p>
+    {% endif %}
+    <div class="autocomplete app-town-autocomplete" data-town-autocomplete data-initial-value="{{ params.value | e }}">
+      <div id="town-autocomplete-mount"></div>
+    </div>
+  </div>
+{% endmacro %}

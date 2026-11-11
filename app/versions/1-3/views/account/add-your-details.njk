@@ -1,4 +1,5 @@
 {% extends "layout.njk" %}
+{% from "account/includes/town-autocomplete-field.njk" import townAutocompleteField %}
 
 {% set title = 'Add your details' %}
 {% set primaryNavId = 'account' %}
@@ -95,14 +96,9 @@
           errorMessage: { text: errors.nationalInsuranceNumber } if errors.nationalInsuranceNumber
         }) }}
 
-        {{ govukInput({
-          label: { text: "Town", classes: "govuk-label--m" },
-          id: "town",
-          name: "town",
+        {{ townAutocompleteField({
           value: town,
-          classes: "govuk-input--width-20",
-          autocomplete: "address-level2",
-          errorMessage: { text: errors.town } if errors.town
+          error: errors.town
         }) }}
 
         {{ govukInput({
@@ -131,4 +127,8 @@
       </form>
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+  {% include "account/includes/profile-capture-town-scripts.njk" %}
 {% endblock %}

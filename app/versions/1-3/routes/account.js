@@ -1,5 +1,7 @@
 const schools = require('../data/orgs.json')
 const users = require('../data/users.json')
+const englandTowns = require('../data/england-towns')
+const englandTownsJson = englandTowns.englandTownsJson
 const {
   ensureJobseekerAlerts,
   importGuestAlertOnRegister,
@@ -62,7 +64,8 @@ function renderAddYourDetails (req, res, options) {
     town: options.town != null ? options.town : profile.town,
     postcode: options.postcode != null ? options.postcode : profile.postcode,
     errors: options.errors || {},
-    errorList: options.errorList || []
+    errorList: options.errorList || [],
+    englandTownsJson
   })
 }
 
@@ -81,7 +84,8 @@ function renderAddYourDetails2 (req, res, options) {
     town: options.town != null ? options.town : profile.town,
     postcode: options.postcode != null ? options.postcode : profile.postcode,
     errors: options.errors || {},
-    errorList: options.errorList || []
+    errorList: options.errorList || [],
+    englandTownsJson
   })
 }
 
@@ -156,6 +160,11 @@ const {
 } = require('../lib/return-url')
 
 module.exports = router => {
+
+  router.use((req, res, next) => {
+    res.locals.englandTownsJson = englandTownsJson
+    next()
+  })
 
   router.get('/account/sign-in/hiring-staff', (req, res) => {
     res.render('account/sign-in-hiring-staff')
