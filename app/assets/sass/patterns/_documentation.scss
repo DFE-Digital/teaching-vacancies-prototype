@@ -108,3 +108,51 @@
 .app-documentation .app-related--topic {
   margin-top: 30px;
 }
+
+.app-quick-apply-journey-legend {
+  display: block;
+  max-width: 40em;
+}
+
+.app-quick-apply-journey-legend__swatch {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+  border: 2px solid #0b0c0c;
+}
+
+.app-quick-apply-journey-legend__swatch--all {
+  background: #fff7e6;
+  border-color: #f47738;
+}
+
+.app-quick-apply-journey-legend__swatch--start {
+  background: #005a5c;
+  border-color: #003078;
+}
+
+.app-quick-apply-journey-legend__swatch--kcsie {
+  background: #cce2f0;
+  border-color: #1d70b8;
+}
+
+.app-quick-apply-journey-legend__swatch--religious {
+  background: #f4c2c2;
+  border-color: #d13118;
+}
+
+.app-quick-apply-journey-legend__swatch--end {
+  background: #d4351c;
+  border-color: #942514;
+}
+
+.app-documentation-quick-apply-journey .govuk-table {
+  margin-bottom: 2rem;
+}
+
+.app-quick-apply-journey__step-cell {
+  white-space: nowrap;
+  vertical-align: top;
+}

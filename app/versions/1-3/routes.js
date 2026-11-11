@@ -89,6 +89,15 @@ router.get('/documentation/quick-apply-1', (req, res) => {
   res.render('documentation/quick-apply-1.html', { guide })
 })
 
+router.get('/documentation/quick-apply-journey-v13', (req, res) => {
+  const buildGuide = require('./data/quick-apply-journey-v13')
+  res.render('documentation/quick-apply-journey-v13', { guide: buildGuide() })
+})
+
+router.get('/prototypes/apply/religion-cofe-1', (req, res) => {
+  res.render('apply/religion_cofe_1')
+})
+
 router.get('/documentation/fe-content-changes-1', (req, res) => {
   const guide = require('./data/fe-content-changes-1')
   res.render('documentation/fe-content-changes-1.html', { guide })

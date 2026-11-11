@@ -8,6 +8,10 @@ module.exports = {
 
   recentWork: [
     {
+      href: '/documentation/quick-apply-journey-v13',
+      text: 'Quick Apply journey map (v1.3)'
+    },
+    {
       href: '/documentation/fe-additional-allowances-3436',
       text: 'Remove additional allowances for colleges (#3436)'
     },
@@ -57,6 +61,12 @@ module.exports = {
       title: 'Profile changes',
       description:
         'Four signed-in areas, shared H1/sub-nav/H2 layout for Applications and Your account, job alerts and notifications (RP01–RP07).'
+    },
+    {
+      href: '/documentation/quick-apply-journey-v13',
+      title: 'Quick Apply journey map (v1.3)',
+      description:
+        'Table of journey steps from job listing through Apply for this job to confirmation — mapped to prototype routes and JS1–JS24 labels.'
     },
     {
       href: '/documentation/quick-apply-1',

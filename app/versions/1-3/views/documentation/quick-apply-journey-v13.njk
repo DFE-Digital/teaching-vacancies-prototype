@@ -1,0 +1,108 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-documentation-quick-apply-journey" %}
+
+{% block pageTitle %}
+  {{ guide.pageTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Teaching Vacancies prototypes", href: "/" },
+      { text: "Documentation", href: "/documentation" },
+      { text: guide.pageTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <a class="govuk-back-link" href="/documentation">Back to documentation contents</a>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-2">{{ guide.pageTitle }}</h1>
+  <p class="govuk-body-l">{{ guide.lead }}</p>
+
+  <p class="govuk-body">
+    Try the flow from a job advert, for example
+    <a class="govuk-link" href="/1-3/jobs/{{ guide.exampleJobId }}">job {{ guide.exampleJobId }}</a>
+    then
+    <a class="govuk-link" href="/1-3/jobs/{{ guide.exampleJobId }}/apply">Apply for this job</a>
+    (<code class="govuk-body-s">{{ guide.entryExample }}</code>).
+  </p>
+
+  <h2 class="govuk-heading-l">Journey steps</h2>
+  <p class="govuk-body">Rows follow the service map order top to bottom. Optional add/edit screens are marked. Use <strong>Open</strong> to jump straight to that screen in v1.3 (apply steps use example job <a class="govuk-link" href="/1-3/jobs/{{ guide.exampleJobId }}">{{ guide.exampleJobId }}</a>). Routes are implemented in <code class="govuk-body-s">routes/application-flow.js</code>.</p>
+
+  <table class="govuk-table app-quick-apply-journey__table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Step <span class="govuk-visually-hidden">(colour matches legend)</span></th>
+        <th scope="col" class="govuk-table__header">Screen</th>
+        <th scope="col" class="govuk-table__header app-quick-apply-journey__route-col" hidden>Prototype route</th>
+        <th scope="col" class="govuk-table__header">Open</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for step in guide.steps %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell app-quick-apply-journey__step-cell">
+            <span class="app-quick-apply-journey-legend__swatch app-quick-apply-journey-legend__swatch--{{ step.type }}" aria-hidden="true"></span>
+            {{ step.id }}<span class="govuk-visually-hidden"> — {{ step.mapType }}</span>
+          </td>
+          <td class="govuk-table__cell">
+            {{ step.name }}{% if step.optional %} (optional){% endif %}{% if step.note %} — {{ step.note }}{% endif %}
+          </td>
+          <td class="govuk-table__cell govuk-!-font-size-16 app-quick-apply-journey__route-col" hidden>{{ step.route }}</td>
+          <td class="govuk-table__cell">
+            {% if step.openHref %}
+              <a class="govuk-link" href="{{ step.openHref }}" target="_blank" rel="noopener noreferrer">Open<span class="govuk-visually-hidden"> {{ step.id }} {{ step.name }}</span></a>
+              {% if step.extraLinks %}
+                {% for link in step.extraLinks %}
+                  <br><a class="govuk-link govuk-!-font-size-16" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+                {% endfor %}
+              {% endif %}
+            {% elif step.pathPattern %}
+              <a class="govuk-link" href="/1-3{{ step.pathPattern | replace(':id', guide.exampleJobId) }}" target="_blank" rel="noopener noreferrer">Open<span class="govuk-visually-hidden"> {{ step.id }} {{ step.name }}</span></a>
+            {% elif step.path %}
+              <a class="govuk-link" href="/1-3{{ step.path }}" target="_blank" rel="noopener noreferrer">Open<span class="govuk-visually-hidden"> {{ step.id }} {{ step.name }}</span></a>
+            {% else %}
+              Not linked
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="govuk-heading-l">Task list sections</h2>
+  <p class="govuk-body govuk-!-margin-bottom-2">The task list on JS4 links to these section IDs (see <code class="govuk-body-s">lib/quick-apply-fe.js</code>):</p>
+  <ol class="govuk-list govuk-list--number">
+    <li>Personal details</li>
+    <li>Professional status</li>
+    <li>Qualifications</li>
+    <li>Training and continuing professional development (CPD)</li>
+    <li>Professional body memberships</li>
+    <li>Work history</li>
+    <li>Personal statement</li>
+    <li>References</li>
+    <li>Equal opportunities and recruitment monitoring</li>
+    <li>Do you need support or adjustments for your interview?</li>
+    <li>Declarations</li>
+  </ol>
+
+  <div class="govuk-inset-text govuk-!-margin-top-6">
+    <p class="govuk-body govuk-!-margin-bottom-0">Service map note: JS7b (training) is listed between qualifications and memberships so the table matches the prototype task list. Visa-only journeys from the live map are out of scope for this page.</p>
+  </div>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-6">Legend</h2>
+  <ul class="govuk-list govuk-!-margin-bottom-6 app-quick-apply-journey-legend">
+    <li><span class="app-quick-apply-journey-legend__swatch app-quick-apply-journey-legend__swatch--all"></span> All journeys (JS1–JS2)</li>
+    <li><span class="app-quick-apply-journey-legend__swatch app-quick-apply-journey-legend__swatch--start"></span> Start journey (JS3)</li>
+    <li><span class="app-quick-apply-journey-legend__swatch app-quick-apply-journey-legend__swatch--kcsie"></span> KCSIE Quick Apply form (JS4–JS22, JS24)</li>
+    <li><span class="app-quick-apply-journey-legend__swatch app-quick-apply-journey-legend__swatch--religious"></span> Religious form branch (REL1–2) — design variants in <code class="govuk-body-s">views/apply/religion_*</code>, not on the main route chain</li>
+    <li><span class="app-quick-apply-journey-legend__swatch app-quick-apply-journey-legend__swatch--end"></span> End journey — review and submit (JS23)</li>
+  </ul>
+{% endblock %}
