@@ -117,6 +117,7 @@
 ] %}
 
 {% block pageScripts %}
+  <script src="/public/javascripts/job-alert-sign-in.js"></script>
   <script>
     var subjectSearch = document.getElementById('subject-search')
     if (subjectSearch) {
@@ -136,7 +137,7 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <form method="post" action="/jobalerts/jobalert">
+      <form method="post" action="/jobalerts/jobalert" data-job-alert-form>
         {% if editingAlertId %}
           <input type="hidden" name="alertId" value="{{ editingAlertId }}">
         {% endif %}

@@ -171,6 +171,14 @@ function findItem (list, id) {
 
 module.exports = function (router) {
   router.get('/jobs/:id/apply', (req, res) => {
+    if (!req.session.data.signedIn) {
+      const jobId = String(req.params.id)
+      const params = new URLSearchParams({
+        from: 'applyjob',
+        returnUrl: `/jobs/${jobId}/apply`
+      })
+      return res.redirect('/account/sign-in/jobseeker?' + params.toString())
+    }
     const job = getJob(req)
     res.render('apply/start', {
       job,

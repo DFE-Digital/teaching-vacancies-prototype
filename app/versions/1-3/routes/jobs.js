@@ -836,7 +836,7 @@ module.exports = router => {
       if (req.query.inline === '1') {
         return res.status(401).json({ ok: false, reason: 'sign-in-required' })
       }
-      const { returnUrlFromRequest, signInHref } = require('../lib/return-url')
+      const { returnUrlFromRequest } = require('../lib/return-url')
       const refererPath = req.get('Referer')
       let returnUrl = returnUrlFromRequest(req)
       if (refererPath) {
@@ -847,7 +847,11 @@ module.exports = router => {
           // keep request-based return URL
         }
       }
-      return res.redirect(signInHref(returnUrl))
+      const params = new URLSearchParams({ from: 'savejob' })
+      if (returnUrl) {
+        params.set('returnUrl', returnUrl)
+      }
+      return res.redirect('/account/sign-in/jobseeker?' + params.toString())
     }
     if (!Array.isArray(req.session.data.savedJobs)) req.session.data.savedJobs = []
     const jobId = String(job.id)

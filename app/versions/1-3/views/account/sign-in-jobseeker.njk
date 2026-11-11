@@ -1,29 +1,28 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Jobseeker sign in' %}
+{% set title = 'Jobseeker sign-in' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Jobseeker sign in</h1>
+      <h1 class="govuk-heading-l">Jobseeker sign-in</h1>
 
-      {{ govukNotificationBanner({
-        html: '<h3 class="govuk-notification-banner__heading">How you sign in has changed</h3><p class="govuk-body">Sign in to or create a GOV.UK One Login account to save and apply for jobs on Teaching Vacancies.</p>'
-      }) }}
+      {% set signInFrom = signInFrom or (query.from if query and query.from else '') %}
+      {% if signInFrom == 'savejob' %}
+        <p class="govuk-body">You need to sign in to save this job.</p>
+      {% elif signInFrom == 'applyjob' %}
+        <p class="govuk-body">You need to sign in to apply for this job.</p>
+      {% elif signInFrom == 'savealert' %}
+        <p class="govuk-body">You need to sign in to create a job alert.</p>
+      {% endif %}
 
-      <p class="govuk-body">Create your GOV.UK One Login account using the same email address as your Teaching Vacancies account to automatically save your account details.</p>
-
-      <p class="govuk-body">If you use a different email address, you'll be able to transfer your account details after signing in.</p>
+      <p class="govuk-body">
+        Use GOV.UK One Login to sign in to Teaching Vacancies. You can create an account if you do not already have one.
+      </p>
 
       {{ govukButton({
-        text: "Continue to GOV.UK One Login",
+        text: "Sign in",
         href: oneLoginStartHref or "/onelogin/start"
-      }) }}
-
-      {{ govukDetails({
-        summaryText: "How to find your registered email address",
-        html: '<p class="govuk-body">We sent a message to the email address associated with your Teaching Vacancies account informing you about this change.</p>',
-        open: true
       }) }}
     </div>
   </div>

@@ -55,7 +55,12 @@
     {% if user.profile.provideWork == 'No' %}
       {% set applyHref = '/apply/unhappy?job=' + job.id %}
     {% else %}
-      {% set applyHref = '/jobs/' + job.id + '/apply' %}
+      {% set applyReturnUrl = '/jobs/' + job.id + '/apply' %}
+      {% if data.signedIn %}
+        {% set applyHref = applyReturnUrl %}
+      {% else %}
+        {% set applyHref = '/account/sign-in/jobseeker?from=applyjob&returnUrl=' + (applyReturnUrl | urlencode) %}
+      {% endif %}
     {% endif %}
     {% set primaryActionText = "Apply for this job" %}
     {% set primaryActionHref = applyHref %}
@@ -155,8 +160,10 @@
       <div class="govuk-grid-column-one-third">
         {% if (job.id | string) in (data.savedJobs or []) %}
           <span class="banner-button-component__button icon icon--left icon--saved">Job saved</span>
-        {% else %}
+        {% elif data.signedIn %}
           <a class="banner-button-component__button icon icon--left icon--save" data-save-job href="/jobs/{{ job.id }}/save">Save this job for later</a>
+        {% else %}
+          <a class="banner-button-component__button icon icon--left icon--save" href="/account/sign-in/jobseeker?from=savejob">Save this job for later</a>
         {% endif %}
       </div>
     </div>

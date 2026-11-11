@@ -170,12 +170,22 @@ module.exports = router => {
     res.render('account/sign-in-hiring-staff')
   })
 
+  const jobseekerSignInContextByFrom = {
+    savejob: 'You need to sign in to save this job.',
+    applyjob: 'You need to sign in to apply for this job.',
+    savealert: 'You need to sign in to create a job alert.'
+  }
+
   router.get('/account/sign-in/jobseeker', (req, res) => {
     req.session.data.jobseekerProfileCaptureRequired = true
     const returnUrl = captureSignInReturnUrl(req)
+    const from = typeof req.query.from === 'string' ? req.query.from.trim() : ''
+    const signInContextMessage = jobseekerSignInContextByFrom[from] || null
     res.render('account/sign-in-jobseeker', {
       returnUrl,
-      oneLoginStartHref: oneLoginStartHref(returnUrl)
+      oneLoginStartHref: oneLoginStartHref(returnUrl),
+      signInFrom: from,
+      signInContextMessage
     })
   })
 
@@ -217,12 +227,28 @@ module.exports = router => {
     })
   })
 
+  function isJobseekerSignedIn (req) {
+    return !!(req.session.data && req.session.data.signedIn === true)
+  }
+
+  function jobAlertSignInHref (returnUrl) {
+    const params = new URLSearchParams({ from: 'savealert' })
+    if (returnUrl) {
+      params.set('returnUrl', returnUrl)
+    }
+    return '/account/sign-in/jobseeker?' + params.toString()
+  }
+
   router.get('/jobalerts/jobalert', (req, res) => {
-    const user = ensureSignedInJobseeker(req, users)
     let jobAlertForm = {}
     let editingAlertId = null
 
     if (req.query.alertId) {
+      if (!isJobseekerSignedIn(req)) {
+        const returnUrl = '/jobalerts/jobalert?alertId=' + encodeURIComponent(req.query.alertId)
+        return res.redirect(jobAlertSignInHref(returnUrl))
+      }
+      ensureSignedInJobseeker(req, users)
       const alert = findAlert(req.session, req.query.alertId)
       const editForm = getAlertEditForm(alert)
       if (alert && editForm) {
@@ -231,6 +257,7 @@ module.exports = router => {
       }
     }
 
+    const user = isJobseekerSignedIn(req) ? req.session.user : null
     if (!jobAlertForm.email && user && user.emailAddress) {
       jobAlertForm = { ...jobAlertForm, email: user.emailAddress }
     }
@@ -243,6 +270,9 @@ module.exports = router => {
   })
 
   router.post('/jobalerts/jobalert', (req, res) => {
+    if (!isJobseekerSignedIn(req)) {
+      return res.redirect(jobAlertSignInHref('/jobalerts/jobalert'))
+    }
     ensureSignedInJobseeker(req, users)
     const alertId = req.body.alertId
     if (alertId && updateAlertFromForm(req.session, alertId, req.body)) {

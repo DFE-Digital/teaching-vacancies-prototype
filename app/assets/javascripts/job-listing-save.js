@@ -54,21 +54,34 @@
     return document.body.getAttribute('data-user-signed-in') === 'true'
   }
 
+  function versionPrefixFromLocation () {
+    var match = window.location.pathname.match(/^(\/1-[0-3])(?=\/)/)
+    return match ? match[1] : ''
+  }
+
+  function signInHrefForSaveJob () {
+    return versionPrefixFromLocation() + '/account/sign-in/jobseeker?from=savejob'
+  }
+
   function initJobListingSave () {
     if (!window.jQuery) return
     var $ = window.jQuery
 
-    $(document).on('click', '.app-jobs__item-save [data-save-job]', function (event) {
-      event.preventDefault()
+    $(document).on('click', '[data-save-job]', function (event) {
       var $link = $(this)
       if ($link.attr('aria-disabled') === 'true') return
 
       if (!isUserSignedIn()) {
-        if (window.AppSaveJobSignInModal && typeof window.AppSaveJobSignInModal.open === 'function') {
-          window.AppSaveJobSignInModal.open(event)
-        }
+        event.preventDefault()
+        window.location.assign(signInHrefForSaveJob())
         return
       }
+
+      if (!$link.closest('.app-jobs__item-save').length) {
+        return
+      }
+
+      event.preventDefault()
 
       var saveHref = $link.attr('href')
       var unsaveHref = unsaveHrefFromSave(saveHref)
@@ -83,16 +96,6 @@
         .catch(function () {
           setSaveLink($container, saveHref)
         })
-    })
-
-    $(document).on('click', '.vacancies-show .banner-buttons [data-save-job]', function (event) {
-      if (isUserSignedIn()) {
-        return
-      }
-      event.preventDefault()
-      if (window.AppSaveJobSignInModal && typeof window.AppSaveJobSignInModal.open === 'function') {
-        window.AppSaveJobSignInModal.open(event)
-      }
     })
 
     $(document).on('click', '.app-jobs__item-save [data-unsave-job]', function (event) {
