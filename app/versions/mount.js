@@ -196,16 +196,33 @@ function viewExists (version, view) {
     ['index.njk', 'index.html'].some(name => fs.existsSync(path.join(file, name)))
 }
 
+function clearVersionJsRouteCache (version) {
+  const root = versionDir(version)
+  Object.keys(require.cache).forEach((cacheKey) => {
+    if (cacheKey.startsWith(root) && cacheKey.endsWith('.js')) {
+      delete require.cache[cacheKey]
+    }
+  })
+}
+
 function createRouter (version) {
   const router = express.Router()
   const env = createEnv(version)
-  const versionRoutes = require(path.join(versionDir(version), 'routes.js'))
+  const routesPath = path.join(versionDir(version), 'routes.js')
 
   router.use((req, res, next) => {
     bindVersionResponse(req, res, next, version, env)
     next()
   })
-  router.use(versionRoutes)
+
+  if (process.env.NODE_ENV === 'production') {
+    router.use(require(routesPath))
+  } else {
+    router.use((req, res, next) => {
+      clearVersionJsRouteCache(version)
+      require(routesPath)(req, res, next)
+    })
+  }
 
   router.use((req, res, next) => {
     if (isHiringStaffJobPath(req.path)) {

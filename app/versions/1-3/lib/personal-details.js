@@ -37,6 +37,17 @@ function validateTrn (value) {
   return null
 }
 
+function validateTrnRequired (value) {
+  const normalised = normaliseTrnInput(value)
+  if (!normalised) {
+    return 'Enter your teacher reference number (TRN)'
+  }
+  if (!/^\d{7}$/.test(normalised)) {
+    return 'Enter a valid teacher reference number (TRN) — it must be 7 digits'
+  }
+  return null
+}
+
 function validateName (firstName, lastName) {
   const errors = {}
   if (!(firstName || '').trim()) {
@@ -61,6 +72,10 @@ function nameErrorSummaryList (errors) {
 
 function trnErrorSummaryList (trnError) {
   return trnError ? [{ text: trnError, href: '#trn' }] : []
+}
+
+function phoneNumberErrorSummaryList (phoneError) {
+  return phoneError ? [{ text: phoneError, href: '#phoneNumber' }] : []
 }
 
 function normaliseNiNumber (value) {
@@ -244,6 +259,14 @@ function validatePostcode (value) {
   return null
 }
 
+function validatePostcodeRequired (value) {
+  const trimmed = (value || '').trim()
+  if (!trimmed) {
+    return 'Enter your postcode'
+  }
+  return validatePostcode(value)
+}
+
 function validateTownAndPostcode (town, postcode) {
   const errors = {}
   const townTrimmed = (town || '').trim()
@@ -260,6 +283,35 @@ function validateTownAndPostcode (town, postcode) {
   }
 
   return errors
+}
+
+function validatePhoneNumber (value) {
+  const trimmed = (value || '').trim()
+  if (!trimmed) {
+    return 'Enter your phone number'
+  }
+  if (!/^[\d\s()+-]+$/.test(trimmed)) {
+    return 'Enter a phone number in the correct format, for example 01632 960 001 or 07700 900 982'
+  }
+  let digits = trimmed.replace(/\D/g, '')
+  if (digits.startsWith('44')) {
+    digits = '0' + digits.slice(2)
+  }
+  if (digits.length < 10 || digits.length > 11 || !/^0/.test(digits)) {
+    return 'Enter a phone number in the correct format, for example 01632 960 001 or 07700 900 982'
+  }
+  return null
+}
+
+function validateEmailAddress (value) {
+  const trimmed = (value || '').trim()
+  if (!trimmed) {
+    return 'Enter your email address'
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+    return 'Enter an email address in the correct format, like name@example.com'
+  }
+  return null
 }
 
 function validateJobseekerProfileCapture (fields) {
@@ -302,6 +354,24 @@ function validateJobseekerProfileCaptureV2 (fields) {
   Object.assign(errors, dobResult.errors)
 
   return { errors, dateOfBirth: dobResult.dateOfBirth }
+}
+
+function validateJobseekerProfileCaptureTrnPostcode (fields) {
+  const errors = Object.assign(
+    {},
+    validateName(fields.firstName, fields.lastName)
+  )
+
+  const phoneError = validatePhoneNumber(fields.phoneNumber)
+  if (phoneError) errors.phoneNumber = phoneError
+
+  const trnError = validateTrnRequired(fields.trn)
+  if (trnError) errors.trn = trnError
+
+  const postcodeError = validatePostcodeRequired(fields.postcode)
+  if (postcodeError) errors.postcode = postcodeError
+
+  return { errors }
 }
 
 function dateOfBirthErrorSummaryList (errors) {
@@ -353,6 +423,16 @@ function jobseekerProfileCaptureV2ErrorSummaryList (errors) {
   }
   if (errors.trn) list.push({ text: errors.trn, href: '#trn' })
   if (errors.town) list.push({ text: errors.town, href: '#town' })
+  if (errors.postcode) list.push({ text: errors.postcode, href: '#postcode' })
+  return list
+}
+
+function jobseekerProfileCaptureTrnPostcodeErrorSummaryList (errors) {
+  const list = []
+  if (errors.firstName) list.push({ text: errors.firstName, href: '#firstName' })
+  if (errors.lastName) list.push({ text: errors.lastName, href: '#lastName' })
+  if (errors.phoneNumber) list.push({ text: errors.phoneNumber, href: '#phoneNumber' })
+  if (errors.trn) list.push({ text: errors.trn, href: '#trn' })
   if (errors.postcode) list.push({ text: errors.postcode, href: '#postcode' })
   return list
 }
@@ -426,6 +506,8 @@ module.exports = {
   validateName,
   nameErrorSummaryList,
   trnErrorSummaryList,
+  validatePhoneNumber,
+  phoneNumberErrorSummaryList,
   normaliseNiNumber,
   normaliseTrnInput,
   validateNationalInsuranceNumber,
@@ -434,14 +516,17 @@ module.exports = {
   resolveLocationOnProfile,
   validateTownWhenProvided,
   validatePostcode,
+  validatePostcodeRequired,
   validateTownAndPostcode,
   validateJobseekerProfileCapture,
   validateJobseekerProfileCaptureV2,
+  validateJobseekerProfileCaptureTrnPostcode,
   dateOfBirthErrorSummaryList,
   niErrorSummaryList,
   locationErrorSummaryList,
   jobseekerProfileCaptureErrorSummaryList,
   jobseekerProfileCaptureV2ErrorSummaryList,
+  jobseekerProfileCaptureTrnPostcodeErrorSummaryList,
   formatDateOfBirthForDisplay,
   formatNiForDisplay,
   formatTownForDisplay,

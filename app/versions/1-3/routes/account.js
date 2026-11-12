@@ -19,13 +19,17 @@ const {
   validateName,
   nameErrorSummaryList,
   trnErrorSummaryList,
+  validatePhoneNumber,
+  phoneNumberErrorSummaryList,
   applyDemoPersonalDetails,
   normaliseNiNumber,
   validateJobseekerProfileCapture,
   validateJobseekerProfileCaptureV2,
+  validateJobseekerProfileCaptureTrnPostcode,
   validateDateOfBirth,
   validateNationalInsuranceNumber,
   validateTownAndPostcode,
+  validatePostcodeRequired,
   normalisePostcode,
   resolveLocationOnProfile,
   dateOfBirthErrorSummaryList,
@@ -33,6 +37,7 @@ const {
   locationErrorSummaryList,
   jobseekerProfileCaptureErrorSummaryList,
   jobseekerProfileCaptureV2ErrorSummaryList,
+  jobseekerProfileCaptureTrnPostcodeErrorSummaryList,
   formatDateOfBirthForDisplay,
   formatNiForDisplay,
   formatTownForDisplay,
@@ -50,23 +55,62 @@ function ensurePrototypeSignedIn (req) {
 function renderAddYourDetails (req, res, options) {
   const profile = (req.session.user && req.session.user.profile) || {}
   resolveLocationOnProfile(profile)
-  const dob = profile.dateOfBirth || {}
   const reposted = options.reposted === true
   res.render('account/add-your-details', {
     firstName: reposted && options.firstName != null ? options.firstName : '',
     lastName: reposted && options.lastName != null ? options.lastName : '',
-    dateOfBirthDay: options.dateOfBirthDay != null ? options.dateOfBirthDay : dob.day,
-    dateOfBirthMonth: options.dateOfBirthMonth != null ? options.dateOfBirthMonth : dob.month,
-    dateOfBirthYear: options.dateOfBirthYear != null ? options.dateOfBirthYear : dob.year,
-    nationalInsuranceNumber: options.nationalInsuranceNumber != null
-      ? options.nationalInsuranceNumber
-      : profile.nationalInsuranceNumber,
-    town: options.town != null ? options.town : profile.town,
-    postcode: options.postcode != null ? options.postcode : profile.postcode,
+    phoneNumber: reposted && options.phoneNumber != null ? options.phoneNumber : '',
+    trn: reposted && options.trn != null ? options.trn : '',
+    postcode: reposted && options.postcode != null ? options.postcode : '',
     errors: options.errors || {},
     errorList: options.errorList || [],
     englandTownsJson
   })
+}
+
+function handleAddYourDetailsWithoutDobPost (req, res) {
+  if (req.body.skip === 'true') {
+    const profile = req.session.user.profile
+    applyDemoPersonalDetails(profile)
+    profile.profileCaptureComplete = true
+    req.session.data.personalDetailsCaptureComplete = true
+    return redirectAfterProfileCapture(req, res)
+  }
+
+  const fields = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    phoneNumber: req.body.phoneNumber,
+    trn: req.body.trn,
+    postcode: req.body.postcode
+  }
+
+  const { errors } = validateJobseekerProfileCaptureTrnPostcode(fields)
+  if (Object.keys(errors).length) {
+    return renderAddYourDetails(req, res, {
+      ...fields,
+      reposted: true,
+      errors,
+      errorList: jobseekerProfileCaptureTrnPostcodeErrorSummaryList(errors)
+    })
+  }
+
+  const profile = req.session.user.profile
+  profile.firstName = fields.firstName.trim()
+  profile.lastName = fields.lastName.trim()
+  profile.phoneNumber = fields.phoneNumber.trim()
+  setTrn(profile, fields.trn)
+  const postcodeValue = (fields.postcode || '').trim()
+  if (postcodeValue) {
+    profile.postcode = normalisePostcode(postcodeValue)
+  } else {
+    delete profile.postcode
+  }
+  delete profile.townOrPostcode
+  profile.profileCaptureComplete = true
+
+  req.session.data.personalDetailsCaptureComplete = true
+  return redirectAfterProfileCapture(req, res)
 }
 
 function renderAddYourDetails2 (req, res, options) {
@@ -89,7 +133,27 @@ function renderAddYourDetails2 (req, res, options) {
   })
 }
 
-function handleAddYourDetails2Post (req, res) {
+function renderAddYourDetails3 (req, res, options) {
+  const profile = (req.session.user && req.session.user.profile) || {}
+  resolveLocationOnProfile(profile)
+  const dob = profile.dateOfBirth || {}
+  const reposted = options.reposted === true
+  res.render('account/add-your-details-3', {
+    firstName: reposted && options.firstName != null ? options.firstName : '',
+    lastName: reposted && options.lastName != null ? options.lastName : '',
+    dateOfBirthDay: options.dateOfBirthDay != null ? options.dateOfBirthDay : dob.day,
+    dateOfBirthMonth: options.dateOfBirthMonth != null ? options.dateOfBirthMonth : dob.month,
+    dateOfBirthYear: options.dateOfBirthYear != null ? options.dateOfBirthYear : dob.year,
+    trn: reposted && options.trn != null ? options.trn : '',
+    town: options.town != null ? options.town : profile.town,
+    postcode: options.postcode != null ? options.postcode : profile.postcode,
+    errors: options.errors || {},
+    errorList: options.errorList || [],
+    englandTownsJson
+  })
+}
+
+function handleAddYourDetailsTrnPost (req, res, renderPage) {
   if (req.body.skip === 'true') {
     const profile = req.session.user.profile
     applyDemoPersonalDetails(profile)
@@ -111,7 +175,7 @@ function handleAddYourDetails2Post (req, res) {
 
   const { errors, dateOfBirth } = validateJobseekerProfileCaptureV2(fields)
   if (Object.keys(errors).length) {
-    return renderAddYourDetails2(req, res, {
+    return renderPage(req, res, {
       ...fields,
       reposted: true,
       errors,
@@ -141,6 +205,14 @@ function handleAddYourDetails2Post (req, res) {
 
   req.session.data.personalDetailsCaptureComplete = true
   return redirectAfterProfileCapture(req, res)
+}
+
+function handleAddYourDetails2Post (req, res) {
+  return handleAddYourDetailsTrnPost(req, res, renderAddYourDetails2)
+}
+
+function handleAddYourDetails3Post (req, res) {
+  return handleAddYourDetailsTrnPost(req, res, renderAddYourDetails3)
 }
 
 function redirectAfterProfileCapture (req, res) {
@@ -198,9 +270,12 @@ module.exports = router => {
       if (returnUrl) {
         req.session.data.afterProfileCaptureReturnUrl = returnUrl
       }
-      const capturePath = req.query.capture === '2'
-        ? '/account/add-your-details-2'
-        : '/account/add-your-details'
+      let capturePath = '/account/add-your-details'
+      if (req.query.capture === '2') {
+        capturePath = '/account/add-your-details-2'
+      } else if (req.query.capture === '3') {
+        capturePath = '/account/add-your-details-3'
+      }
       return res.redirect(capturePath)
     }
 
@@ -372,61 +447,7 @@ module.exports = router => {
     }
     ensurePrototypeSignedIn(req)
 
-    if (req.body.captureVersion === '2') {
-      return handleAddYourDetails2Post(req, res)
-    }
-
-    if (req.body.skip === 'true') {
-      const profile = req.session.user.profile
-      applyDemoPersonalDetails(profile)
-      profile.profileCaptureComplete = true
-      req.session.data.personalDetailsCaptureComplete = true
-      return redirectAfterProfileCapture(req, res)
-    }
-
-    const fields = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      dateOfBirthDay: req.body['dateOfBirth-day'],
-      dateOfBirthMonth: req.body['dateOfBirth-month'],
-      dateOfBirthYear: req.body['dateOfBirth-year'],
-      nationalInsuranceNumber: req.body.nationalInsuranceNumber,
-      town: req.body.town,
-      postcode: req.body.postcode
-    }
-
-    const { errors, dateOfBirth } = validateJobseekerProfileCapture(fields)
-    if (Object.keys(errors).length) {
-      return renderAddYourDetails(req, res, {
-        ...fields,
-        reposted: true,
-        errors,
-        errorList: jobseekerProfileCaptureErrorSummaryList(errors)
-      })
-    }
-
-    const profile = req.session.user.profile
-    profile.firstName = fields.firstName.trim()
-    profile.lastName = fields.lastName.trim()
-    profile.dateOfBirth = dateOfBirth
-    profile.nationalInsuranceNumber = normaliseNiNumber(fields.nationalInsuranceNumber)
-    const townValue = (fields.town || '').trim()
-    if (townValue) {
-      profile.town = townValue
-    } else {
-      delete profile.town
-    }
-    const postcodeValue = (fields.postcode || '').trim()
-    if (postcodeValue) {
-      profile.postcode = normalisePostcode(postcodeValue)
-    } else {
-      delete profile.postcode
-    }
-    delete profile.townOrPostcode
-    profile.profileCaptureComplete = true
-
-    req.session.data.personalDetailsCaptureComplete = true
-    return redirectAfterProfileCapture(req, res)
+    return handleAddYourDetailsWithoutDobPost(req, res)
   })
 
   router.get('/account/add-your-details-2', (req, res) => {
@@ -450,6 +471,27 @@ module.exports = router => {
     return handleAddYourDetails2Post(req, res)
   })
 
+  router.get('/account/add-your-details-3', (req, res) => {
+    if (!req.session.data.signedIn) {
+      return res.redirect('/account/sign-in/jobseeker')
+    }
+    ensurePrototypeSignedIn(req)
+    const profile = req.session.user.profile
+    if (profile && !profile.profileCaptureComplete) {
+      delete profile.firstName
+      delete profile.lastName
+    }
+    renderAddYourDetails3(req, res, {})
+  })
+
+  router.post('/account/add-your-details-3', (req, res) => {
+    if (!req.session.data.signedIn) {
+      return res.redirect('/account/sign-in/jobseeker')
+    }
+    ensurePrototypeSignedIn(req)
+    return handleAddYourDetails3Post(req, res)
+  })
+
   router.get('/account', (req, res) => {
     res.redirect('/jobseekers/account')
   })
@@ -468,12 +510,14 @@ module.exports = router => {
     const dateOfBirthUpdated = req.session.data.personalDetailsDateOfBirthUpdated === true
     const niUpdated = req.session.data.personalDetailsNiUpdated === true
     const townOrPostcodeUpdated = req.session.data.personalDetailsTownOrPostcodeUpdated === true
+    const phoneUpdated = req.session.data.personalDetailsPhoneUpdated === true
     const captureComplete = req.session.data.personalDetailsCaptureComplete === true
     delete req.session.data.personalDetailsNameUpdated
     delete req.session.data.personalDetailsTrnUpdated
     delete req.session.data.personalDetailsDateOfBirthUpdated
     delete req.session.data.personalDetailsNiUpdated
     delete req.session.data.personalDetailsTownOrPostcodeUpdated
+    delete req.session.data.personalDetailsPhoneUpdated
     delete req.session.data.personalDetailsCaptureComplete
     const profile = req.session.user && req.session.user.profile
     if (profile) resolveLocationOnProfile(profile)
@@ -484,6 +528,7 @@ module.exports = router => {
       dateOfBirthUpdated,
       niUpdated,
       townOrPostcodeUpdated,
+      phoneUpdated,
       captureComplete,
       trnDisplay: formatTrnForDisplay(profile),
       dateOfBirthDisplay: formatDateOfBirthForDisplay(profile),
@@ -554,6 +599,35 @@ module.exports = router => {
     if (!req.session.user.profile) req.session.user.profile = {}
     setTrn(req.session.user.profile, trnValue)
     req.session.data.personalDetailsTrnUpdated = true
+    res.redirect('/account/personal-details')
+  })
+
+  router.get('/account/personal-details/phone-number', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    const profile = req.session.user.profile || {}
+    res.render('account/personal-details/phone-number', {
+      user: req.session.user,
+      phoneNumber: profile.phoneNumber || '',
+      errors: {},
+      errorList: []
+    })
+  })
+
+  router.post('/account/personal-details/phone-number', (req, res) => {
+    ensureSignedInJobseeker(req, users)
+    const phoneNumber = (req.body.phoneNumber || '').trim()
+    const phoneError = validatePhoneNumber(phoneNumber)
+    if (phoneError) {
+      return res.render('account/personal-details/phone-number', {
+        user: req.session.user,
+        phoneNumber: req.body.phoneNumber,
+        errors: { phoneNumber: phoneError },
+        errorList: phoneNumberErrorSummaryList(phoneError)
+      })
+    }
+    if (!req.session.user.profile) req.session.user.profile = {}
+    req.session.user.profile.phoneNumber = phoneNumber
+    req.session.data.personalDetailsPhoneUpdated = true
     res.redirect('/account/personal-details')
   })
 
@@ -631,7 +705,6 @@ module.exports = router => {
     resolveLocationOnProfile(profile)
     res.render('account/personal-details/town-or-postcode', {
       user: req.session.user,
-      town: profile.town,
       postcode: profile.postcode,
       errors: {},
       errorList: []
@@ -639,26 +712,18 @@ module.exports = router => {
   })
 
   router.post('/account/personal-details/town-or-postcode', (req, res) => {
-    if (!req.session.user) {
-      return res.redirect('/account/sign-in')
-    }
-    const locationErrors = validateTownAndPostcode(req.body.town, req.body.postcode)
-    if (Object.keys(locationErrors).length) {
+    ensureSignedInJobseeker(req, users)
+    const postcodeError = validatePostcodeRequired(req.body.postcode)
+    if (postcodeError) {
       return res.render('account/personal-details/town-or-postcode', {
         user: req.session.user,
-        town: req.body.town,
         postcode: req.body.postcode,
-        errors: locationErrors,
-        errorList: locationErrorSummaryList(locationErrors)
+        errors: { postcode: postcodeError },
+        errorList: [{ text: postcodeError, href: '#postcode' }]
       })
     }
     if (!req.session.user.profile) req.session.user.profile = {}
-    const townValue = (req.body.town || '').trim()
-    if (townValue) {
-      req.session.user.profile.town = townValue
-    } else {
-      delete req.session.user.profile.town
-    }
+    delete req.session.user.profile.town
     const postcodeValue = (req.body.postcode || '').trim()
     if (postcodeValue) {
       req.session.user.profile.postcode = normalisePostcode(postcodeValue)

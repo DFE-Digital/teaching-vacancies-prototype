@@ -8,6 +8,8 @@
 {% set forceSignedIn = true %}
 {% set title = 'Profile' %}
 {% set accountAreaMain = true %}
+{% set showDateOfBirthCard = false %}
+{% set showNationalInsuranceCard = false %}
 
 {% block content %}
   {{ govukBreadcrumbs({
@@ -42,22 +44,25 @@
       {% if trnUpdated %}
         {{ govukNotificationBanner({ type: "success", text: "Your TRN has been updated" }) }}
       {% endif %}
-      {% if dateOfBirthUpdated %}
+      {% if showDateOfBirthCard and dateOfBirthUpdated %}
         {{ govukNotificationBanner({ type: "success", text: "Your date of birth has been updated" }) }}
       {% endif %}
-      {% if niUpdated %}
+      {% if showNationalInsuranceCard and niUpdated %}
         {{ govukNotificationBanner({ type: "success", text: "Your National Insurance number has been updated" }) }}
       {% endif %}
       {% if townOrPostcodeUpdated %}
         {{ govukNotificationBanner({ type: "success", text: "Your location has been updated" }) }}
       {% endif %}
+      {% if phoneUpdated %}
+        {{ govukNotificationBanner({ type: "success", text: "Your phone number has been updated" }) }}
+      {% endif %}
 
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Name</h2>
+          <h2 class="govuk-summary-card__title">Your full name</h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="/account/personal-details/name">Change<span class="govuk-visually-hidden"> name</span></a>
+              <a class="govuk-link" href="/account/personal-details/name">Change<span class="govuk-visually-hidden"> your full name</span></a>
             </li>
           </ul>
         </div>
@@ -78,6 +83,7 @@
         </div>
       </div>
 
+      {% if showDateOfBirthCard %}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Date of birth</h2>
@@ -99,7 +105,9 @@
           }) }}
         </div>
       </div>
+      {% endif %}
 
+      {% if showNationalInsuranceCard %}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">National Insurance number</h2>
@@ -121,13 +129,14 @@
           }) }}
         </div>
       </div>
+      {% endif %}
 
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Location</h2>
+          <h2 class="govuk-summary-card__title">Your location for vacancy suggestions</h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="/account/personal-details/town-or-postcode">Change<span class="govuk-visually-hidden"> location</span></a>
+              <a class="govuk-link" href="/account/personal-details/town-or-postcode">Change<span class="govuk-visually-hidden"> your location for vacancy suggestions</span></a>
             </li>
           </ul>
         </div>
@@ -135,10 +144,6 @@
           {{ govukSummaryList({
             classes: "govuk-!-margin-bottom-0",
             rows: [
-              {
-                key: { text: "Town" },
-                value: { text: townDisplay }
-              },
               {
                 key: { text: "Postcode" },
                 value: { text: postcodeDisplay }
@@ -150,34 +155,25 @@
 
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Teacher reference number (TRN)</h2>
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="/account/personal-details/trn">Change<span class="govuk-visually-hidden"> teacher reference number (TRN)</span></a>
-            </li>
-          </ul>
+          <h2 class="govuk-summary-card__title">Your contact details</h2>
         </div>
         <div class="govuk-summary-card__content">
           {{ govukSummaryList({
             classes: "govuk-!-margin-bottom-0",
             rows: [
               {
-                key: { text: "TRN" },
-                value: { text: trnDisplay }
-              }
-            ]
-          }) }}
-        </div>
-      </div>
-
-      <div class="govuk-summary-card govuk-!-margin-bottom-6">
-        <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Email address</h2>
-        </div>
-        <div class="govuk-summary-card__content">
-          {{ govukSummaryList({
-            classes: "govuk-!-margin-bottom-0",
-            rows: [
+                key: { text: "Phone number" },
+                value: { text: user.profile.phoneNumber or 'Not provided' },
+                actions: {
+                  items: [
+                    {
+                      href: "/account/personal-details/phone-number",
+                      text: "Change",
+                      visuallyHiddenText: "phone number"
+                    }
+                  ]
+                }
+              },
               {
                 key: { text: "Email address" },
                 value: { text: user.emailAddress or '—' }
@@ -191,6 +187,28 @@
               GOV.UK One Login (opens in a new tab)
             </a>
           </p>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Your teacher reference number</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details/trn">Change<span class="govuk-visually-hidden"> your teacher reference number</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "TRN" },
+                value: { text: trnDisplay }
+              }
+            ]
+          }) }}
         </div>
       </div>
     </div>

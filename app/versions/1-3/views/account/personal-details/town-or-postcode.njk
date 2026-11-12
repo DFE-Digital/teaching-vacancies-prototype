@@ -2,7 +2,8 @@
 
 {% set primaryNavId = 'account' %}
 {% set accountSection = 'personal-details' %}
-{% set title = 'Change your town and postcode' %}
+{% set title = 'Change postcode' %}
+{% set errors = errors or {} %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -21,24 +22,14 @@
 
       <form method="post" action="/account/personal-details/town-or-postcode" novalidate>
         {{ govukInput({
-          label: { text: "Town", classes: "govuk-label--m" },
-          id: "town",
-          name: "town",
-          value: town,
-          classes: "govuk-input--width-20",
-          autocomplete: "address-level2",
-          errorMessage: { text: errors.town } if errors.town
-        }) }}
-
-        {{ govukInput({
-          label: { text: "Postcode (optional)", classes: "govuk-label--m" },
+          label: { text: "Postcode", classes: "govuk-label--m" },
           id: "postcode",
           name: "postcode",
           value: postcode,
           classes: "govuk-input--width-10",
           autocomplete: "postal-code",
           hint: {
-            text: "For example, SW1A 1AA."
+            text: "Your postcode helps us suggest vacancies in your area, for example SW1A 1AA"
           },
           errorMessage: { text: errors.postcode } if errors.postcode
         }) }}

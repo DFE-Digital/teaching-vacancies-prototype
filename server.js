@@ -344,7 +344,10 @@ if (useV6) {
 }
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
-app.post(/^\/([^.]+)$/, function (req, res) {
+app.post(/^\/([^.]+)$/, function (req, res, next) {
+  if (/^\/(1-0|1-1|1-2|1-3)(\/|$)/.test(req.path)) {
+    return next()
+  }
   res.redirect(url.format({
     pathname: '/' + req.params[0],
     query: req.query
