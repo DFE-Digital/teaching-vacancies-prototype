@@ -42,11 +42,18 @@
 
       {{ sectionHeading("Professional status", "/jobs/" + job.id + "/apply/professional-status") }}
       {% if isFeJob or status.fe %}
+        {% set feAnswerLabels = {
+          "yes": "Yes",
+          "no": "No",
+          "working-towards": "I am working towards one",
+          "not-applicable": "Not applicable to this role"
+        } %}
         {{ govukSummaryList({
           rows: [
             { key: { text: "Relevant teaching or training qualification" }, value: { text: status.relevantQualification or "Not answered" } },
             { key: { text: "Qualification details" }, value: { text: status.qualificationDetails or "Not provided" } },
-            { key: { text: "Maths and English requirements" }, value: { text: status.mathsEnglish or "Not answered" } }
+            { key: { text: "Maths (GCSE grade 4 or above)" }, value: { text: feAnswerLabels[status.mathsQualification] or status.mathsEnglish or "Not answered" } },
+            { key: { text: "English (GCSE grade 4 or above)" }, value: { text: feAnswerLabels[status.englishQualification] or "Not answered" } }
           ]
         }) }}
       {% else %}

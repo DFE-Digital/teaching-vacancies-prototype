@@ -238,22 +238,52 @@ module.exports = function (router) {
     const application = getApplication(req, String(req.params.id))
     const job = getJob(req)
     if (isFurtherEducationJob(job)) {
+      const existing = application.professionalStatus || {}
       application.professionalStatus = {
         fe: true,
         relevantQualification: req.body.relevantQualification || '',
         qualificationDetails: req.body.qualificationDetails || '',
-        mathsEnglish: req.body.mathsEnglish || ''
+        mathsQualification: existing.mathsQualification || '',
+        englishQualification: existing.englishQualification || ''
       }
-    } else {
-      application.professionalStatus = {
-        fe: false,
-        qts: req.body.qts || '',
-        qtsYear: req.body.qtsYear || '',
-        ageRange: req.body.ageRange || '',
-        trn: req.body.trn || '',
-        induction: req.body.induction || ''
+      // FE: maths/English is a follow-on step (OLU screen)
+      if (application.statuses['professional-status'] === 'Completed') {
+        application.statuses['professional-status'] = 'Incomplete'
       }
+      return res.redirect('/jobs/' + req.params.id + '/apply/maths-and-english')
     }
+    application.professionalStatus = {
+      fe: false,
+      qts: req.body.qts || '',
+      qtsYear: req.body.qtsYear || '',
+      ageRange: req.body.ageRange || '',
+      trn: req.body.trn || '',
+      induction: req.body.induction || ''
+    }
+    setStatus(application, 'professional-status', req.body.completed)
+    res.redirect(taskListPath(req.params.id))
+  })
+
+  router.get('/jobs/:id/apply/maths-and-english', (req, res) => {
+    const job = getJob(req)
+    if (!isFurtherEducationJob(job)) {
+      return res.redirect('/jobs/' + req.params.id + '/apply/professional-status')
+    }
+    renderApply(req, res, 'apply/flow/maths-and-english')
+  })
+
+  router.post('/jobs/:id/apply/maths-and-english', (req, res) => {
+    const job = getJob(req)
+    if (!isFurtherEducationJob(job)) {
+      return res.redirect('/jobs/' + req.params.id + '/apply/professional-status')
+    }
+    const application = getApplication(req, String(req.params.id))
+    const existing = application.professionalStatus || {}
+    application.professionalStatus = Object.assign({}, existing, {
+      fe: true,
+      mathsQualification: req.body.mathsQualification || '',
+      englishQualification: req.body.englishQualification || ''
+    })
     setStatus(application, 'professional-status', req.body.completed)
     res.redirect(taskListPath(req.params.id))
   })

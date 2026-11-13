@@ -12,6 +12,7 @@
       {% if isFeJob %}
         <p class="govuk-body">For further education roles we ask about qualifications that are relevant to the job. You do not need qualified teacher status (QTS) or a teacher reference number (TRN) unless the role requires it.</p>
         <p class="govuk-body">If you are applying for a support role with no teaching or training experience, you can answer ‘No’ to the qualification question.</p>
+        <p class="govuk-body">Next you will be asked about maths and English qualifications separately.</p>
 
         <form method="post">
           {{ govukRadios({
@@ -37,22 +38,11 @@
             value: ps.qualificationDetails
           }) }}
 
-          {{ govukRadios({
-            name: "mathsEnglish",
-            fieldset: {
-              legend: {
-                text: "If this is a teaching or training role, do you meet maths and English requirements for the role?",
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            items: [
-              { value: "Yes", text: "Yes", checked: ps.mathsEnglish == "Yes" },
-              { value: "No", text: "No", checked: ps.mathsEnglish == "No" },
-              { value: "Not applicable", text: "Not applicable to this role", checked: ps.mathsEnglish == "Not applicable" }
-            ]
-          }) }}
-
-          {{ completedSection("professional-status") }}
+          <div class="govuk-button-group">
+            {{ govukButton({ text: "Save and continue" }) }}
+            <a class="govuk-link" href="/jobs/{{ job.id }}/apply/task-list">Cancel and return to your account</a>
+          </div>
+          <p class="govuk-body">If you select ‘Cancel and return to your account’, you will lose any unsaved information from this step. Information from previous steps will be saved in your draft application.</p>
         </form>
       {% else %}
         <p class="govuk-body">If you’re applying for a support role and do not have teaching, or lecturing experience, answer ‘No’ to these questions.</p>

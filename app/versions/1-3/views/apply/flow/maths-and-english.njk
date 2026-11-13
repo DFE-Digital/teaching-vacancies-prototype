@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+{% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
+{% set title = "Maths and English qualifications" %}
+{% set ps = application.professionalStatus %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ applicationHeading("/jobs/" + job.id + "/apply/professional-status") }}
+      <h2 class="govuk-heading-l">{{ title }}</h2>
+
+      <p class="govuk-body">Academic further education teaching roles usually need a teaching qualification before you start. For vocational teaching roles, a teaching qualification is often helpful and can sometimes be gained after you start.</p>
+      <p class="govuk-body">Answer for maths and English separately.</p>
+
+      <form method="post">
+        {{ govukRadios({
+          name: "mathsQualification",
+          fieldset: {
+            legend: {
+              text: "Do you have a GCSE grade 4 (formerly grade C) or above in maths?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: { text: "Or an equivalent level 2 maths qualification." },
+          items: [
+            { value: "yes", text: "Yes", checked: ps.mathsQualification == "yes" },
+            { value: "no", text: "No", checked: ps.mathsQualification == "no" },
+            { value: "working-towards", text: "I am working towards one", checked: ps.mathsQualification == "working-towards" },
+            { value: "not-applicable", text: "Not applicable to this role", checked: ps.mathsQualification == "not-applicable" }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "englishQualification",
+          fieldset: {
+            legend: {
+              text: "Do you have a GCSE grade 4 (formerly grade C) or above in English?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: { text: "Or an equivalent level 2 English qualification." },
+          items: [
+            { value: "yes", text: "Yes", checked: ps.englishQualification == "yes" },
+            { value: "no", text: "No", checked: ps.englishQualification == "no" },
+            { value: "working-towards", text: "I am working towards one", checked: ps.englishQualification == "working-towards" },
+            { value: "not-applicable", text: "Not applicable to this role", checked: ps.englishQualification == "not-applicable" }
+          ]
+        }) }}
+
+        {{ completedSection("professional-status") }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

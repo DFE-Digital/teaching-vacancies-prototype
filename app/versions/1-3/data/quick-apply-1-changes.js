@@ -75,19 +75,39 @@ module.exports = {
       id: 'tv6-professional-status',
       title: 'Professional status',
       mapId: 'TV6',
-      summary: 'Further education jobs ask about relevant qualifications and maths/English — not QTS/TRN by default.',
+      summary: 'Further education jobs ask about relevant qualifications, then a separate maths/English screen — not QTS/TRN by default.',
       analysis: [
         'College roles often need vocational or training qualifications rather than school QTS framing.',
-        'Support roles may have no teaching qualification.'
+        'Support roles may have no teaching qualification.',
+        'OLU designed a dedicated maths and English qualifications screen for FE; that belongs in the live Quick Apply path.'
       ],
       implemented: [
-        'FE branch in apply/flow/professional-status.njk: relevant qualification, details, maths/English question.',
-        'POST handler stores fe: true and FE fields (routes/application-flow.js).',
-        'Review page shows FE summary rows when isFeJob or status.fe.'
+        'FE branch in apply/flow/professional-status.njk: relevant qualification and details, then Save and continue.',
+        'Follow-on FE step apply/flow/maths-and-english.njk: separate GCSE grade 4 (or equivalent) questions for maths and English.',
+        'Routes: POST /jobs/:id/apply/professional-status → /maths-and-english for FE; POST maths-and-english completes the Professional status section.',
+        'Review page shows separate Maths and English rows when isFeJob or status.fe.'
       ],
       screenshot: 'tv6-professional-status.png',
       screenshotCaption: 'Professional status on an FE vacancy — college qualification questions.',
       prototypePath: '/apply/professional-status'
+    },
+    {
+      id: 'tv6b-maths-english',
+      title: 'Maths and English qualifications',
+      mapId: 'TV6 / OLU',
+      summary: 'FE applicants answer maths and English GCSE (or equivalent) questions separately after professional status.',
+      analysis: [
+        'A single combined “meet maths and English requirements” radio hid subject-level gaps.',
+        'Vocational and support roles need a Not applicable option per subject.'
+      ],
+      implemented: [
+        'Wired OLU-style screen into /jobs/:id/apply/maths-and-english (FE only).',
+        'School Quick Apply unchanged — still QTS/TRN/induction on one professional status page.',
+        'Orphan stub /apply/maths-and-english outside the job apply router remains for older experiments only.'
+      ],
+      screenshot: null,
+      screenshotCaption: null,
+      prototypePath: '/apply/maths-and-english'
     },
     {
       id: 'tv13-work-history',

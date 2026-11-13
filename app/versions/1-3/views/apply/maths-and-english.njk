@@ -1,33 +1,51 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Add a qualification' %}
+{% set title = 'Maths and English qualifications' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukBackLink({ href: '/apply/professional-status', text: 'Back' }) }}
       <span class="govuk-caption-l">Education and qualifications</span>
-      <h1 class="govuk-heading-xl">{{ title }}</h1>
-      <p class="govuk-hint">Academic FE teaching roles require a teaching qualification before teaching. For vocational FE teaching roles, a teaching qualification is helpful but can often be gained after employment.</p>
-      <p class="govuk-hint">Answer for each subject separately.</p>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <p class="govuk-body">This page is an older experiment stub. For college Quick Apply, use the FE job journey (for example job 67663) — Professional status continues to Maths and English.</p>
+      <p class="govuk-body">
+        <a class="govuk-link" href="/jobs/67663/apply/maths-and-english">Open FE Maths and English (job 67663)</a>
+      </p>
+
+      <p class="govuk-body">Academic FE teaching roles usually need a teaching qualification before you start. For vocational FE teaching roles, a teaching qualification is often helpful and can sometimes be gained after you start.</p>
+      <p class="govuk-body">Answer for each subject separately.</p>
 
       <form method="post">
-        <h2 class="govuk-heading-m">Maths</h2>
-        <p class="govuk-body">Do you have a GCSE grade 4 (formerly grade C) or above in maths?</p>
         {{ govukRadios({
           name: 'mathsQualification',
-
-
-          items: [ { value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }, { value: 'working-towards', text: 'I am working towards one' } ]
+          fieldset: {
+            legend: {
+              text: 'Do you have a GCSE grade 4 (formerly grade C) or above in maths?',
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          items: [
+            { value: 'yes', text: 'Yes', checked: data.mathsQualification == 'yes' },
+            { value: 'no', text: 'No', checked: data.mathsQualification == 'no' },
+            { value: 'working-towards', text: 'I am working towards one', checked: data.mathsQualification == 'working-towards' }
+          ]
         }) }}
-        <h2 class="govuk-heading-m">English</h2>
-        <p class="govuk-body">Do you have a GCSE grade 4 (formerly grade C) or above in English?</p>
         {{ govukRadios({
           name: 'englishQualification',
-        
-          items: [ { value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }, { value: 'working-towards', text: 'I am working towards one' } ]
+          fieldset: {
+            legend: {
+              text: 'Do you have a GCSE grade 4 (formerly grade C) or above in English?',
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          items: [
+            { value: 'yes', text: 'Yes', checked: data.englishQualification == 'yes' },
+            { value: 'no', text: 'No', checked: data.englishQualification == 'no' },
+            { value: 'working-towards', text: 'I am working towards one', checked: data.englishQualification == 'working-towards' }
+          ]
         }) }}
-        {{ govukButton({ text: 'Create a Teaching Vacancies account now' }) }}
+        {{ govukButton({ text: 'Continue' }) }}
       </form>
     </div>
   </div>
