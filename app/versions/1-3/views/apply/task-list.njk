@@ -5,7 +5,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
       {% if not job %}
         <h1 class="govuk-heading-l">Application</h1>
         <p class="govuk-body"><a class="govuk-link" href="/jobs">Back to jobs</a></p>
@@ -18,7 +18,8 @@
         }) }}
 
         {{ govukNotificationBanner({
-          html: '<p class="govuk-notification-banner__heading">Your details have been imported from your last job application. Sections marked <strong>Needs review</strong> should be checked and marked complete before you submit.</p>'
+          classes: "govuk-visually-hidden",
+          html: '<p class="govuk-notification-banner__heading">Check sections marked <strong>Needs review</strong> before you submit.</p>'
         }) }}
 
         {{ applicationPageTitle() }}
@@ -74,9 +75,6 @@
           {{ govukInsetText({
             text: "Complete every section and answer both declaration questions before you can review and submit."
           }) }}
-          <p class="govuk-body">
-            <a class="govuk-link" href="/jobs/{{ job.id }}/apply/review">Preview review page</a> (submit will stay blocked until all sections are complete)
-          </p>
         {% endif %}
       {% endif %}
     </div>

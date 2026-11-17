@@ -7,7 +7,10 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {{ govukBackLink({ text: "Back to profile", href: "/account/personal-details" }) }}
+      {{ govukBackLink({
+        text: "Back to application" if returnTo else "Back to profile",
+        href: returnTo or "/account/personal-details"
+      }) }}
 
       {% if errorList and errorList.length %}
         {{ govukErrorSummary({
@@ -20,6 +23,9 @@
       <p class="govuk-body">Your teacher reference number (TRN) is stored in Teaching Vacancies. Schools can only see it if you apply for a role.</p>
 
       <form method="post" action="/account/personal-details/trn" novalidate>
+        {% if returnTo %}
+          <input type="hidden" name="returnTo" value="{{ returnTo }}">
+        {% endif %}
         {{ govukInput({
           label: { text: "Teacher reference number (TRN)", classes: "govuk-label--m" },
           hint: {

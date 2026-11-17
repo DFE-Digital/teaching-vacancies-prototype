@@ -4,6 +4,12 @@ const {
   validateApplicationForSubmit,
   canSubmitApplication
 } = require('../lib/quick-apply-fe')
+const {
+  getTrn,
+  formatTrnForDisplay,
+  formatPostcodeForDisplay,
+  resolveLocationOnProfile
+} = require('../lib/personal-details')
 
 function asArray (value) {
   if (!value) return []
@@ -14,9 +20,31 @@ function nextId (prefix) {
   return prefix + '-' + Date.now().toString(36)
 }
 
-function defaultApplication (user) {
-  const email = (user && user.emailAddress) || 'anne.smith@example.com'
+function personalDetailsFromProfile (user) {
+  const profile = (user && user.profile) || {}
+  resolveLocationOnProfile(profile)
+  return {
+    firstName: (profile.firstName || '').trim(),
+    lastName: (profile.lastName || '').trim(),
+    phone: (profile.phoneNumber || '').trim(),
+    email: (user && user.emailAddress) || '',
+    trn: getTrn(profile),
+    profilePostcode: (profile.postcode || '').trim()
+  }
+}
 
+function syncPersonalDetailsFromProfile (application, user) {
+  // Profile-owned fields only — do not overwrite application address / visa / NI / patterns
+  application.personalDetails = Object.assign(
+    {},
+    application.personalDetails || {},
+    personalDetailsFromProfile(user)
+  )
+}
+
+function defaultApplication (user) {
+  const profile = (user && user.profile) || {}
+  resolveLocationOnProfile(profile)
   return {
     submitted: false,
     statuses: {
@@ -32,29 +60,24 @@ function defaultApplication (user) {
       support: 'Needs review',
       declarations: 'Incomplete'
     },
-    personalDetails: {
-      firstName: 'Racheal',
-      lastName: 'Smith',
+    personalDetails: Object.assign({}, personalDetailsFromProfile(user), {
       previousNames: '',
       addressLine1: '1 High Street',
       addressLine2: '',
       town: 'Enfield',
       county: 'Greater London',
-      postcode: 'EN1 1AA',
+      postcode: (profile.postcode || '').trim() || 'EN1 1AA',
       country: 'United Kingdom',
-      phone: '01234567890',
-      email: email,
       skilledWorker: 'No',
       nationalInsurance: 'No',
       niNumber: '',
       workingPatterns: ['Part time'],
       extraDetails: ''
-    },
+    }),
     professionalStatus: {
       qts: 'Yes',
       qtsYear: '1990',
       ageRange: 'Secondary, mathematics',
-      trn: '1234567',
       induction: 'Yes'
     },
     qualifications: [
@@ -203,14 +226,24 @@ module.exports = function (router) {
   })
 
   router.get('/jobs/:id/apply/personal-details', (req, res) => {
-    renderApply(req, res, 'apply/flow/personal-details')
+    const application = getApplication(req, String(req.params.id))
+    syncPersonalDetailsFromProfile(application, req.session.user)
+    const profile = (req.session.user && req.session.user.profile) || {}
+    const details = application.personalDetails || {}
+    const fullName = [details.firstName, details.lastName].filter(Boolean).join(' ').trim()
+    renderApply(req, res, 'apply/flow/personal-details', {
+      fullName: fullName || '—',
+      trnDisplay: formatTrnForDisplay(profile),
+      postcodeDisplay: formatPostcodeForDisplay(profile),
+      phoneDisplay: details.phone || 'Not provided',
+      emailDisplay: details.email || '—'
+    })
   })
 
   router.post('/jobs/:id/apply/personal-details', (req, res) => {
     const application = getApplication(req, String(req.params.id))
-    application.personalDetails = {
-      firstName: req.body.firstName || '',
-      lastName: req.body.lastName || '',
+    syncPersonalDetailsFromProfile(application, req.session.user)
+    application.personalDetails = Object.assign({}, application.personalDetails, {
       previousNames: req.body.previousNames || '',
       addressLine1: req.body.addressLine1 || '',
       addressLine2: req.body.addressLine2 || '',
@@ -218,14 +251,14 @@ module.exports = function (router) {
       county: req.body.county || '',
       postcode: req.body.postcode || '',
       country: req.body.country || '',
-      phone: req.body.phone || '',
-      email: req.body.email || '',
       skilledWorker: req.body.skilledWorker || '',
       nationalInsurance: req.body.nationalInsurance || '',
       niNumber: req.body.niNumber || '',
       workingPatterns: asArray(req.body.workingPatterns),
       extraDetails: req.body.extraDetails || ''
-    }
+    })
+    // Re-apply Profile fields so form POST cannot overwrite them
+    syncPersonalDetailsFromProfile(application, req.session.user)
     setStatus(application, 'personal-details', req.body.completed)
     res.redirect(taskListPath(req.params.id))
   })
@@ -257,7 +290,6 @@ module.exports = function (router) {
       qts: req.body.qts || '',
       qtsYear: req.body.qtsYear || '',
       ageRange: req.body.ageRange || '',
-      trn: req.body.trn || '',
       induction: req.body.induction || ''
     }
     setStatus(application, 'professional-status', req.body.completed)
@@ -688,6 +720,7 @@ module.exports = function (router) {
   router.get('/jobs/:id/apply/review', (req, res) => {
     const jobId = String(req.params.id)
     const application = getApplication(req, jobId)
+    syncPersonalDetailsFromProfile(application, req.session.user)
     const submitErrors = validateApplicationForSubmit(application, jobId)
     renderApply(req, res, 'apply/flow/review', { submitErrors })
   })
@@ -695,6 +728,7 @@ module.exports = function (router) {
   router.post('/jobs/:id/apply/review', (req, res) => {
     const jobId = String(req.params.id)
     const application = getApplication(req, jobId)
+    syncPersonalDetailsFromProfile(application, req.session.user)
     const submitErrors = validateApplicationForSubmit(application, jobId)
     if (submitErrors.length) {
       return renderApply(req, res, 'apply/flow/review', { submitErrors })

@@ -226,6 +226,11 @@
             <li class="govuk-footer__inline-list-item">
 							<a class="govuk-footer__link" href="/prototype-admin/clear-data">Prototype option: {{data['optionPrototype']}}</a>
 						</li>
+            {% if job and job.id %}
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="/jobs/{{ job.id }}/apply/review">Preview review page</a>
+              </li>
+            {% endif %}
           </ul>
 					</div>
 				<div class="govuk-footer__meta-item">

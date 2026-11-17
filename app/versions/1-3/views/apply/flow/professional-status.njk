@@ -57,7 +57,7 @@
                 classes: "govuk-fieldset__legend--m"
               }
             },
-            hint: { text: "You are unlikely to get a teaching job in England unless you have qualified teacher status (QTS). If you answer ‘Yes’, we’ll ask for your teacher reference number (TRN)." },
+            hint: { text: "You are unlikely to get a teaching job in England unless you have qualified teacher status (QTS). Your teacher reference number (TRN) is managed in your Profile under Personal details." },
             items: [
               {
                 value: "Yes",
@@ -79,14 +79,6 @@
               { value: "No", text: "No", checked: ps.qts == "No" },
               { value: "On track", text: "I’m on track to get QTS", checked: ps.qts == "On track" }
             ]
-          }) }}
-
-          {{ govukInput({
-            label: { text: "What is your teacher reference number?" },
-            hint: { html: "Your teacher reference number (TRN) is 7 digits long. You can <a class=\"govuk-link\" href=\"https://www.gov.uk/guidance/teacher-reference-number-trn\" target=\"_blank\" rel=\"noreferrer noopener\">find your TRN</a> if you do not know it or have forgotten it." },
-            classes: "govuk-input--width-10",
-            name: "trn",
-            value: ps.trn
           }) }}
 
           {{ govukRadios({

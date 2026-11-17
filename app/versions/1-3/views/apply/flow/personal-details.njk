@@ -1,32 +1,68 @@
 {% extends "layout.njk" %}
 {% from "apply/flow/includes/heading.njk" import applicationHeading, completedSection with context %}
 {% set title = "Personal details" %}
+{% set details = application.personalDetails %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
       {{ applicationHeading() }}
       <h2 class="govuk-heading-l">Personal details</h2>
-      <p class="govuk-body">Provide some basic details about yourself. We will use this to contact you about the application.</p>
+      <p class="govuk-body">We have used your profile for this application. Check the details are correct. Select Manage if you need to update them.</p>
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">From your profile</h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/account/personal-details" target="_blank" rel="noopener noreferrer">
+                Manage<span class="govuk-visually-hidden"> your profile details (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-0",
+            rows: [
+              {
+                key: { text: "Name" },
+                value: { text: fullName }
+              },
+              {
+                key: { text: "Phone number" },
+                value: { text: phoneDisplay }
+              },
+              {
+                key: { text: "TRN" },
+                value: { text: trnDisplay }
+              },
+              {
+                key: { text: "Postcode" },
+                value: { text: postcodeDisplay }
+              },
+              {
+                key: { text: "Email address" },
+                value: { text: emailDisplay }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h3 class="govuk-heading-m">Additional details for this application</h3>
+      <p class="govuk-body">Answer the questions below. These details are only used for this application.</p>
 
       <form method="post">
         {{ govukInput({
-          label: { text: "First name" },
-          name: "firstName",
-          value: application.personalDetails.firstName,
-          autocomplete: "given-name"
-        }) }}
-        {{ govukInput({
-          label: { text: "Last name" },
-          name: "lastName",
-          value: application.personalDetails.lastName,
-          autocomplete: "family-name"
-        }) }}
-        {{ govukInput({
-          label: { text: "Previous names (optional)" },
+          label: { text: "Previous names (optional)", classes: "govuk-label--s" },
           hint: { text: "For example, a maiden name or name at birth. If this is different from the name you use now." },
           name: "previousNames",
-          value: application.personalDetails.previousNames
+          value: details.previousNames
         }) }}
 
         {% call govukFieldset({
@@ -35,56 +71,40 @@
           {{ govukInput({
             label: { text: "Building and street" },
             name: "addressLine1",
-            value: application.personalDetails.addressLine1,
+            value: details.addressLine1,
             autocomplete: "address-line1"
           }) }}
           {{ govukInput({
             label: { text: "Address line 2 (optional)" },
             name: "addressLine2",
-            value: application.personalDetails.addressLine2
+            value: details.addressLine2
           }) }}
           {{ govukInput({
             label: { text: "Town or city" },
             classes: "govuk-!-width-two-thirds",
             name: "town",
-            value: application.personalDetails.town
+            value: details.town
           }) }}
           {{ govukInput({
             label: { text: "County (optional)" },
             classes: "govuk-!-width-two-thirds",
             name: "county",
-            value: application.personalDetails.county
+            value: details.county
           }) }}
           {{ govukInput({
             label: { text: "Postcode" },
             classes: "govuk-input--width-10",
             name: "postcode",
-            value: application.personalDetails.postcode,
+            value: details.postcode,
             autocomplete: "postal-code"
           }) }}
           {{ govukInput({
             label: { text: "Country" },
             classes: "govuk-!-width-two-thirds",
             name: "country",
-            value: application.personalDetails.country
+            value: details.country
           }) }}
         {% endcall %}
-
-        {{ govukInput({
-          label: { text: "Phone number" },
-          hint: { text: "For international numbers include the country code. For example +44 1234 567890." },
-          classes: "govuk-input--width-20",
-          name: "phone",
-          value: application.personalDetails.phone,
-          autocomplete: "tel"
-        }) }}
-        {{ govukInput({
-          label: { text: "Email address" },
-          name: "email",
-          value: application.personalDetails.email,
-          autocomplete: "email",
-          type: "email"
-        }) }}
 
         {% set offersVisaSponsorship = job.sponsorship == "Skilled Worker visas can be sponsored" or job.sponsorship == "Skilled worker visa can be sponsored" %}
         {% set visaHint %}
@@ -107,10 +127,10 @@
             {
               value: "Yes",
               text: "Yes, I need Skilled Worker visa sponsorship",
-              checked: application.personalDetails.skilledWorker == "Yes",
+              checked: details.skilledWorker == "Yes",
               conditional: { html: visaWarning } if not offersVisaSponsorship
             },
-            { value: "No", text: "No, I already have the right to work in the UK", checked: application.personalDetails.skilledWorker == "No" }
+            { value: "No", text: "No, I already have the right to work in the UK", checked: details.skilledWorker == "No" }
           ]
         }) }}
 
@@ -127,17 +147,17 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: application.personalDetails.nationalInsurance == "Yes",
+              checked: details.nationalInsurance == "Yes",
               conditional: {
                 html: govukInput({
                   label: { text: "National Insurance number" },
                   classes: "govuk-input--width-20",
                   name: "niNumber",
-                  value: application.personalDetails.niNumber
+                  value: details.niNumber
                 })
               }
             },
-            { value: "No", text: "No, I do not have one or I do not know it", checked: application.personalDetails.nationalInsurance == "No" }
+            { value: "No", text: "No, I do not have one or I do not know it", checked: details.nationalInsurance == "No" }
           ]
         }) }}
 
@@ -151,9 +171,9 @@
           },
           hint: { text: "Some schools or colleges may consider part-time applicants, even if a role is advertised as full time. Select all that apply." },
           items: [
-            { value: "Full time", text: "Full time", checked: "Full time" in application.personalDetails.workingPatterns },
-            { value: "Part time", text: "Part time", checked: "Part time" in application.personalDetails.workingPatterns },
-            { value: "Job share", text: "Job share", checked: "Job share" in application.personalDetails.workingPatterns }
+            { value: "Full time", text: "Full time", checked: "Full time" in (details.workingPatterns or []) },
+            { value: "Part time", text: "Part time", checked: "Part time" in (details.workingPatterns or []) },
+            { value: "Job share", text: "Job share", checked: "Job share" in (details.workingPatterns or []) }
           ]
         }) }}
 
@@ -161,7 +181,7 @@
           name: "extraDetails",
           label: { text: "Provide more details about your working pattern or references (optional)" },
           hint: { text: "For example, 3 days a week or a job share. Maximum 100 words." },
-          value: application.personalDetails.extraDetails
+          value: details.extraDetails
         }) }}
 
         {{ completedSection("personal-details") }}

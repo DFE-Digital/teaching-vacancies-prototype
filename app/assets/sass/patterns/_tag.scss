@@ -52,39 +52,48 @@ strong.govuk-tag.govuk-tag--green {
   text-transform: none;
 }
 
-.govuk-tag--purple {
+.govuk-tag.govuk-tag--purple,
+strong.govuk-tag.govuk-tag--purple {
   color: #2a1950;
   background-color: #ddd6ec;
 }
 
-.govuk-tag--red {
+.govuk-tag.govuk-tag--red,
+strong.govuk-tag.govuk-tag--red {
   color: #651b1b;
   background-color: #f4d7d7;
 }
 
-.govuk-tag--orange {
+.govuk-tag.govuk-tag--orange,
+strong.govuk-tag.govuk-tag--orange {
   color: #7a3c1c;
   background-color: #fde4d7;
 }
 
-.govuk-tag--teal,
-.govuk-tag--turquoise {
+.govuk-tag.govuk-tag--teal,
+.govuk-tag.govuk-tag--turquoise,
+strong.govuk-tag.govuk-tag--teal,
+strong.govuk-tag.govuk-tag--turquoise {
   color: #0b4144;
   background-color: #d0e6e7;
 }
 
-.govuk-tag--magenta,
-.govuk-tag--pink {
+.govuk-tag.govuk-tag--magenta,
+.govuk-tag.govuk-tag--pink,
+strong.govuk-tag.govuk-tag--magenta,
+strong.govuk-tag.govuk-tag--pink {
   color: #651b3e;
   background-color: #f4d7e5;
 }
 
-.govuk-tag--yellow {
+.govuk-tag.govuk-tag--yellow,
+strong.govuk-tag.govuk-tag--yellow {
   color: #7a3c1c;
   background-color: #ffee80;
 }
 
-.govuk-tag--grey {
+.govuk-tag.govuk-tag--grey,
+strong.govuk-tag.govuk-tag--grey {
   color: #0b0c0c;
   background-color: #cecece;
 }

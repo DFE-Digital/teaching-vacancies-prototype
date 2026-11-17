@@ -8,7 +8,10 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {{ govukBackLink({ text: "Back to profile", href: "/account/personal-details" }) }}
+      {{ govukBackLink({
+        text: "Back to application" if returnTo else "Back to profile",
+        href: returnTo or "/account/personal-details"
+      }) }}
 
       {% if errorList and errorList.length %}
         {{ govukErrorSummary({
@@ -21,6 +24,9 @@
       <p class="govuk-body">We use this to suggest jobs near where you live and to personalise job alerts.</p>
 
       <form method="post" action="/account/personal-details/town-or-postcode" novalidate>
+        {% if returnTo %}
+          <input type="hidden" name="returnTo" value="{{ returnTo }}">
+        {% endif %}
         {{ govukInput({
           label: { text: "Postcode", classes: "govuk-label--m" },
           id: "postcode",

@@ -26,17 +26,20 @@
         }) }}
       {% endif %}
 
+      {% set reviewFullName %}{{ details.firstName }} {{ details.lastName }}{% endset %}
       {{ sectionHeading("Personal details", "/jobs/" + job.id + "/apply/personal-details") }}
       {{ govukSummaryList({
         rows: [
-          { key: { text: "Name" }, value: { text: details.firstName + " " + details.lastName } },
+          { key: { text: "Name" }, value: { text: reviewFullName | trim or "—" } },
+          { key: { text: "Phone number" }, value: { text: details.phone or "Not provided" } },
+          { key: { text: "TRN" }, value: { text: details.trn or "Not provided" } },
+          { key: { text: "Profile postcode" }, value: { text: details.profilePostcode or "Not provided" } },
+          { key: { text: "Email address" }, value: { text: details.email or "—" } },
           { key: { text: "Previous names" }, value: { text: details.previousNames or "Not provided" } },
-          { key: { text: "Address" }, value: { html: details.addressLine1 + "<br>" + (details.addressLine2 + "<br>" if details.addressLine2 else "") + details.town + "<br>" + details.county + "<br>" + details.postcode + "<br>" + details.country } },
-          { key: { text: "Phone number" }, value: { text: details.phone } },
-          { key: { text: "Email address" }, value: { text: details.email } },
-          { key: { text: "Skilled Worker visa sponsorship" }, value: { text: details.skilledWorker } },
+          { key: { text: "Address" }, value: { html: (details.addressLine1 or "") + "<br>" + (details.addressLine2 + "<br>" if details.addressLine2 else "") + (details.town or "") + "<br>" + (details.county + "<br>" if details.county else "") + (details.postcode or "") + "<br>" + (details.country or "") } },
+          { key: { text: "Skilled Worker visa sponsorship" }, value: { text: details.skilledWorker or "Not answered" } },
           { key: { text: "National Insurance number" }, value: { text: details.niNumber if details.nationalInsurance == "Yes" else "Not provided" } },
-          { key: { text: "Working patterns" }, value: { text: details.workingPatterns | join(", ") } }
+          { key: { text: "Working patterns" }, value: { text: (details.workingPatterns or []) | join(", ") or "Not provided" } }
         ]
       }) }}
 
@@ -62,7 +65,6 @@
             { key: { text: "Qualified teacher status" }, value: { text: status.qts } },
             { key: { text: "Year QTS was gained" }, value: { text: status.qtsYear or "Not provided" } },
             { key: { text: "Age range and subject" }, value: { text: status.ageRange or "Not provided" } },
-            { key: { text: "Teacher reference number" }, value: { text: status.trn or "Not provided" } },
             { key: { text: "Induction period" }, value: { text: status.induction } }
           ]
         }) }}

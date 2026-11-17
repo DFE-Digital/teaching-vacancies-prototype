@@ -44,6 +44,22 @@ const {
   formatPostcodeForDisplay
 } = require('../lib/personal-details')
 
+function safeReturnTo (value) {
+  if (!value || typeof value !== 'string') return null
+  const path = value.split('?')[0]
+  if (path === '/account/personal-details') return path
+  if (/^\/jobs\/[^/]+\/apply\/personal-details$/.test(path)) return path
+  return null
+}
+
+function redirectAfterPersonalDetailsSave (req, res) {
+  const returnTo = safeReturnTo(req.body.returnTo || req.query.returnTo)
+  if (returnTo) {
+    return res.redirect(returnTo)
+  }
+  return res.redirect('/account/personal-details')
+}
+
 function ensurePrototypeSignedIn (req) {
   if (!req.session.user) {
     req.session.user = users.find(user => user.emailAddress === 'jbloggs@example.com') || users[0]
@@ -541,10 +557,12 @@ module.exports = router => {
   router.get('/account/personal-details/name', (req, res) => {
     ensureSignedInJobseeker(req, users)
     const profile = req.session.user.profile || {}
+    const returnTo = safeReturnTo(req.query.returnTo)
     res.render('account/personal-details/name', {
       user: req.session.user,
       firstName: profile.firstName,
       lastName: profile.lastName,
+      returnTo,
       errors: {}
     })
   })
@@ -553,6 +571,7 @@ module.exports = router => {
     if (!req.session.user) {
       return res.redirect('/account/sign-in')
     }
+    const returnTo = safeReturnTo(req.body.returnTo)
     const firstName = (req.body.firstName || '').trim()
     const lastName = (req.body.lastName || '').trim()
     const errors = validateName(firstName, lastName)
@@ -561,6 +580,7 @@ module.exports = router => {
         user: req.session.user,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        returnTo,
         errors,
         errorList: nameErrorSummaryList(errors)
       })
@@ -569,14 +589,16 @@ module.exports = router => {
     req.session.user.profile.firstName = firstName
     req.session.user.profile.lastName = lastName
     req.session.data.personalDetailsNameUpdated = true
-    res.redirect('/account/personal-details')
+    return redirectAfterPersonalDetailsSave(req, res)
   })
 
   router.get('/account/personal-details/trn', (req, res) => {
     ensureSignedInJobseeker(req, users)
+    const returnTo = safeReturnTo(req.query.returnTo)
     res.render('account/personal-details/trn', {
       user: req.session.user,
       trnValue: getTrn(req.session.user.profile),
+      returnTo,
       errors: {},
       errorList: []
     })
@@ -586,12 +608,14 @@ module.exports = router => {
     if (!req.session.user) {
       return res.redirect('/account/sign-in')
     }
+    const returnTo = safeReturnTo(req.body.returnTo)
     const trnValue = (req.body.trn || '').trim()
     const trnError = validateTrn(trnValue)
     if (trnError) {
       return res.render('account/personal-details/trn', {
         user: req.session.user,
         trnValue: req.body.trn,
+        returnTo,
         errors: { trn: trnError },
         errorList: trnErrorSummaryList(trnError)
       })
@@ -599,15 +623,17 @@ module.exports = router => {
     if (!req.session.user.profile) req.session.user.profile = {}
     setTrn(req.session.user.profile, trnValue)
     req.session.data.personalDetailsTrnUpdated = true
-    res.redirect('/account/personal-details')
+    return redirectAfterPersonalDetailsSave(req, res)
   })
 
   router.get('/account/personal-details/phone-number', (req, res) => {
     ensureSignedInJobseeker(req, users)
     const profile = req.session.user.profile || {}
+    const returnTo = safeReturnTo(req.query.returnTo)
     res.render('account/personal-details/phone-number', {
       user: req.session.user,
       phoneNumber: profile.phoneNumber || '',
+      returnTo,
       errors: {},
       errorList: []
     })
@@ -615,12 +641,14 @@ module.exports = router => {
 
   router.post('/account/personal-details/phone-number', (req, res) => {
     ensureSignedInJobseeker(req, users)
+    const returnTo = safeReturnTo(req.body.returnTo)
     const phoneNumber = (req.body.phoneNumber || '').trim()
     const phoneError = validatePhoneNumber(phoneNumber)
     if (phoneError) {
       return res.render('account/personal-details/phone-number', {
         user: req.session.user,
         phoneNumber: req.body.phoneNumber,
+        returnTo,
         errors: { phoneNumber: phoneError },
         errorList: phoneNumberErrorSummaryList(phoneError)
       })
@@ -628,7 +656,7 @@ module.exports = router => {
     if (!req.session.user.profile) req.session.user.profile = {}
     req.session.user.profile.phoneNumber = phoneNumber
     req.session.data.personalDetailsPhoneUpdated = true
-    res.redirect('/account/personal-details')
+    return redirectAfterPersonalDetailsSave(req, res)
   })
 
   router.get('/account/personal-details/date-of-birth', (req, res) => {
@@ -703,9 +731,11 @@ module.exports = router => {
     ensureSignedInJobseeker(req, users)
     const profile = req.session.user.profile || {}
     resolveLocationOnProfile(profile)
+    const returnTo = safeReturnTo(req.query.returnTo)
     res.render('account/personal-details/town-or-postcode', {
       user: req.session.user,
       postcode: profile.postcode,
+      returnTo,
       errors: {},
       errorList: []
     })
@@ -713,11 +743,13 @@ module.exports = router => {
 
   router.post('/account/personal-details/town-or-postcode', (req, res) => {
     ensureSignedInJobseeker(req, users)
+    const returnTo = safeReturnTo(req.body.returnTo)
     const postcodeError = validatePostcodeRequired(req.body.postcode)
     if (postcodeError) {
       return res.render('account/personal-details/town-or-postcode', {
         user: req.session.user,
         postcode: req.body.postcode,
+        returnTo,
         errors: { postcode: postcodeError },
         errorList: [{ text: postcodeError, href: '#postcode' }]
       })
@@ -732,7 +764,7 @@ module.exports = router => {
     }
     delete req.session.user.profile.townOrPostcode
     req.session.data.personalDetailsTownOrPostcodeUpdated = true
-    res.redirect('/account/personal-details')
+    return redirectAfterPersonalDetailsSave(req, res)
   })
 
   router.get('/account/sign-out', (req, res) => {
