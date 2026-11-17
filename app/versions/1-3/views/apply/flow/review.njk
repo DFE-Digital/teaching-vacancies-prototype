@@ -33,7 +33,6 @@
           { key: { text: "Name" }, value: { text: reviewFullName | trim or "—" } },
           { key: { text: "Phone number" }, value: { text: details.phone or "Not provided" } },
           { key: { text: "TRN" }, value: { text: details.trn or "Not provided" } },
-          { key: { text: "Profile postcode" }, value: { text: details.profilePostcode or "Not provided" } },
           { key: { text: "Email address" }, value: { text: details.email or "—" } },
           { key: { text: "Previous names" }, value: { text: details.previousNames or "Not provided" } },
           { key: { text: "Address" }, value: { html: (details.addressLine1 or "") + "<br>" + (details.addressLine2 + "<br>" if details.addressLine2 else "") + (details.town or "") + "<br>" + (details.county + "<br>" if details.county else "") + (details.postcode or "") + "<br>" + (details.country or "") } },

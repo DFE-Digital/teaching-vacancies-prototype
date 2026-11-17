@@ -7,7 +7,6 @@ const {
 const {
   getTrn,
   formatTrnForDisplay,
-  formatPostcodeForDisplay,
   resolveLocationOnProfile
 } = require('../lib/personal-details')
 
@@ -28,8 +27,7 @@ function personalDetailsFromProfile (user) {
     lastName: (profile.lastName || '').trim(),
     phone: (profile.phoneNumber || '').trim(),
     email: (user && user.emailAddress) || '',
-    trn: getTrn(profile),
-    profilePostcode: (profile.postcode || '').trim()
+    trn: getTrn(profile)
   }
 }
 
@@ -234,7 +232,6 @@ module.exports = function (router) {
     renderApply(req, res, 'apply/flow/personal-details', {
       fullName: fullName || '—',
       trnDisplay: formatTrnForDisplay(profile),
-      postcodeDisplay: formatPostcodeForDisplay(profile),
       phoneDisplay: details.phone || 'Not provided',
       emailDisplay: details.email || '—'
     })
