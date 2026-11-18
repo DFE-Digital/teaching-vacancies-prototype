@@ -7,7 +7,6 @@
     "profile": {
       "firstName": "Racheal",
       "lastName": "Smith",
-      "trn": "1234567",
       "locations": {},
       "qualifications": {},
       "workHistory": {},
@@ -24,7 +23,6 @@
       "status": "Active",
       "firstName": "Racheal",
       "lastName": "Smith",
-      "trn": "1234567",
       "providePhoneNumber": null,
       "provideWork": "Yes",
       "roles": [
@@ -75,7 +73,6 @@
       "status": "Active",
       "firstName": "Racheal",
       "lastName": "Smith",
-      "trn": "1234567",
       "providePhoneNumber": "Yes",
       "phoneNumber": "01928 376 453",
       "provideWork": "Yes",

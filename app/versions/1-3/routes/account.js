@@ -114,13 +114,21 @@ function handleAddYourDetailsWithoutDobPost (req, res) {
   const profile = req.session.user.profile
   profile.firstName = fields.firstName.trim()
   profile.lastName = fields.lastName.trim()
-  profile.phoneNumber = fields.phoneNumber.trim()
+  const phoneValue = (fields.phoneNumber || '').trim()
+  if (phoneValue) {
+    profile.phoneNumber = phoneValue
+  } else {
+    delete profile.phoneNumber
+  }
   setTrn(profile, fields.trn)
+  profile.trnProvided = !!getTrn(profile)
   const postcodeValue = (fields.postcode || '').trim()
   if (postcodeValue) {
     profile.postcode = normalisePostcode(postcodeValue)
+    profile.postcodeProvided = true
   } else {
     delete profile.postcode
+    profile.postcodeProvided = false
   }
   delete profile.townOrPostcode
   profile.profileCaptureComplete = true
@@ -204,6 +212,7 @@ function handleAddYourDetailsTrnPost (req, res, renderPage) {
   profile.lastName = fields.lastName.trim()
   profile.dateOfBirth = dateOfBirth
   setTrn(profile, fields.trn)
+  profile.trnProvided = !!getTrn(profile)
   const townValue = (fields.town || '').trim()
   if (townValue) {
     profile.town = townValue
@@ -213,8 +222,10 @@ function handleAddYourDetailsTrnPost (req, res, renderPage) {
   const postcodeValue = (fields.postcode || '').trim()
   if (postcodeValue) {
     profile.postcode = normalisePostcode(postcodeValue)
+    profile.postcodeProvided = true
   } else {
     delete profile.postcode
+    profile.postcodeProvided = false
   }
   delete profile.townOrPostcode
   profile.profileCaptureComplete = true
@@ -453,6 +464,11 @@ module.exports = router => {
     if (profile && !profile.profileCaptureComplete) {
       delete profile.firstName
       delete profile.lastName
+      delete profile.phoneNumber
+      delete profile.trn
+      delete profile.TRN
+      delete profile.postcode
+      delete profile.townOrPostcode
     }
     renderAddYourDetails(req, res, {})
   })
@@ -536,7 +552,17 @@ module.exports = router => {
     delete req.session.data.personalDetailsPhoneUpdated
     delete req.session.data.personalDetailsCaptureComplete
     const profile = req.session.user && req.session.user.profile
-    if (profile) resolveLocationOnProfile(profile)
+    if (profile) {
+      resolveLocationOnProfile(profile)
+      // Optional fields default to Not provided until the user sets them
+      if (!profile.trnProvided) {
+        delete profile.trn
+        delete profile.TRN
+      }
+      if (!profile.postcodeProvided) {
+        delete profile.postcode
+      }
+    }
     res.render('account/personal-details/index', {
       user: req.session.user,
       nameUpdated,
@@ -622,6 +648,7 @@ module.exports = router => {
     }
     if (!req.session.user.profile) req.session.user.profile = {}
     setTrn(req.session.user.profile, trnValue)
+    req.session.user.profile.trnProvided = !!getTrn(req.session.user.profile)
     req.session.data.personalDetailsTrnUpdated = true
     return redirectAfterPersonalDetailsSave(req, res)
   })
@@ -759,8 +786,10 @@ module.exports = router => {
     const postcodeValue = (req.body.postcode || '').trim()
     if (postcodeValue) {
       req.session.user.profile.postcode = normalisePostcode(postcodeValue)
+      req.session.user.profile.postcodeProvided = true
     } else {
       delete req.session.user.profile.postcode
+      req.session.user.profile.postcodeProvided = false
     }
     delete req.session.user.profile.townOrPostcode
     req.session.data.personalDetailsTownOrPostcodeUpdated = true

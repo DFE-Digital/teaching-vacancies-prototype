@@ -60,16 +60,16 @@ function defaultApplication (user) {
     },
     personalDetails: Object.assign({}, personalDetailsFromProfile(user), {
       previousNames: '',
-      addressLine1: '1 High Street',
+      addressLine1: '',
       addressLine2: '',
-      town: 'Enfield',
-      county: 'Greater London',
-      postcode: (profile.postcode || '').trim() || 'EN1 1AA',
-      country: 'United Kingdom',
-      skilledWorker: 'No',
-      nationalInsurance: 'No',
+      town: '',
+      county: '',
+      postcode: '',
+      country: '',
+      skilledWorker: '',
+      nationalInsurance: '',
       niNumber: '',
-      workingPatterns: ['Part time'],
+      workingPatterns: [],
       extraDetails: ''
     }),
     professionalStatus: {
@@ -155,6 +155,27 @@ function getApplication (req, jobId) {
       application.statuses[key] = 'Needs review'
     }
   })
+  // Clear legacy prototype seed values so fields stay empty until the user fills them
+  const details = application.personalDetails
+  if (details) {
+    if (details.addressLine1 === '1 High Street') {
+      details.addressLine1 = ''
+      details.addressLine2 = ''
+      details.town = ''
+      details.county = ''
+      details.postcode = ''
+      details.country = ''
+    }
+    if (!details.applicationOnlyDetailsProvided) {
+      if (details.skilledWorker === 'No') details.skilledWorker = ''
+      if (details.nationalInsurance === 'No') details.nationalInsurance = ''
+      if (Array.isArray(details.workingPatterns) &&
+          details.workingPatterns.length === 1 &&
+          details.workingPatterns[0] === 'Part time') {
+        details.workingPatterns = []
+      }
+    }
+  }
   return application
 }
 
@@ -252,7 +273,8 @@ module.exports = function (router) {
       nationalInsurance: req.body.nationalInsurance || '',
       niNumber: req.body.niNumber || '',
       workingPatterns: asArray(req.body.workingPatterns),
-      extraDetails: req.body.extraDetails || ''
+      extraDetails: req.body.extraDetails || '',
+      applicationOnlyDetailsProvided: true
     })
     // Re-apply Profile fields so form POST cannot overwrite them
     syncPersonalDetailsFromProfile(application, req.session.user)

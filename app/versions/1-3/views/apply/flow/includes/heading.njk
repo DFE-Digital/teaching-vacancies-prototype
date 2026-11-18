@@ -17,7 +17,7 @@
   {% set educationPhase = job.phase or job.organisation.phase %}
   {{ applicationPageTitle() }}
   {% if educationPhase %}
-    <p class="govuk-body govuk-!-margin-bottom-2">Education phase: {{ educationPhase }}</p>
+    <p class="govuk-body govuk-!-margin-bottom-2 govuk-visually-hidden">Education phase: {{ educationPhase }}</p>
   {% endif %}
 {% endmacro %}
 

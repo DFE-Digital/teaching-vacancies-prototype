@@ -288,7 +288,7 @@ function validateTownAndPostcode (town, postcode) {
 function validatePhoneNumber (value) {
   const trimmed = (value || '').trim()
   if (!trimmed) {
-    return 'Enter your phone number'
+    return null
   }
   if (!/^[\d\s()+-]+$/.test(trimmed)) {
     return 'Enter a phone number in the correct format, for example 01632 960 001 or 07700 900 982'
@@ -365,10 +365,10 @@ function validateJobseekerProfileCaptureTrnPostcode (fields) {
   const phoneError = validatePhoneNumber(fields.phoneNumber)
   if (phoneError) errors.phoneNumber = phoneError
 
-  const trnError = validateTrnRequired(fields.trn)
+  const trnError = validateTrn(fields.trn)
   if (trnError) errors.trn = trnError
 
-  const postcodeError = validatePostcodeRequired(fields.postcode)
+  const postcodeError = validatePostcode(fields.postcode)
   if (postcodeError) errors.postcode = postcodeError
 
   return { errors }
@@ -478,18 +478,19 @@ function applyDemoPersonalDetails (profile) {
   if (!(profile.lastName || '').trim()) {
     profile.lastName = demoPersonalDetails.lastName
   }
-  if (!getTrn(profile)) {
-    setTrn(profile, demoPersonalDetails.trn)
+
+  // After profile capture, keep optional fields as the user left them
+  // (including blank → Not provided on the summary)
+  if (profile.profileCaptureComplete) {
+    return
   }
+
   if (!normaliseNiNumber(profile.nationalInsuranceNumber) && demoPersonalDetails.nationalInsuranceNumber) {
     profile.nationalInsuranceNumber = demoPersonalDetails.nationalInsuranceNumber
   }
   resolveLocationOnProfile(profile)
   if (!(profile.town || '').trim() && demoPersonalDetails.town) {
     profile.town = demoPersonalDetails.town
-  }
-  if (!(profile.postcode || '').trim() && demoPersonalDetails.postcode) {
-    profile.postcode = demoPersonalDetails.postcode
   }
   const dob = profile.dateOfBirth
   const hasDob = dob && dob.day && dob.month && dob.year

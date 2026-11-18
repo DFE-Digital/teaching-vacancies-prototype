@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Add your details' %}
+{% set title = 'Add your account details' %}
 {% set primaryNavId = 'account' %}
 {% set forceSignedIn = true %}
 {% set errors = errors or {} %}
@@ -19,7 +19,7 @@
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <p class="govuk-body">
-        We need a few details so we can personalise your account and show you jobs that match where you live.
+        We need a few details so we can personalise your account, show you jobs that match where you live, and use them when you apply for jobs.
       </p>
 
       <p class="govuk-body">
@@ -47,7 +47,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Phone number", classes: "govuk-label--m" },
+          label: { text: "Phone number (optional)", classes: "govuk-label--m" },
           id: "phoneNumber",
           name: "phoneNumber",
           value: phoneNumber,
@@ -61,9 +61,9 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Teacher reference number (TRN)", classes: "govuk-label--m" },
+          label: { text: "Teacher reference number (TRN) (optional)", classes: "govuk-label--m" },
           hint: {
-            html: 'Your TRN is 7 digits long.<br>You can <a class="govuk-link" href="https://find-a-lost-trn.education.gov.uk/start" target="_blank" rel="noreferrer noopener">find your TRN (opens in a new tab)</a> if you do not know it or have forgotten it.'
+            html: 'Your TRN is 7 digits long. You can <a class="govuk-link" href="https://find-a-lost-trn.education.gov.uk/start" target="_blank" rel="noreferrer noopener">find your TRN (opens in a new tab)</a> if you do not know it or have forgotten it.'
           },
           id: "trn",
           name: "trn",
@@ -75,7 +75,7 @@
         }) }}
 
         {{ govukInput({
-          label: { text: "Postcode", classes: "govuk-label--m" },
+          label: { text: "Postcode (optional)", classes: "govuk-label--m" },
           id: "postcode",
           name: "postcode",
           value: postcode,
@@ -87,16 +87,10 @@
           errorMessage: { text: errors.postcode } if errors.postcode
         }) }}
 
-        <div class="govuk-button-group">
-          {{ govukButton({ text: "Save and continue" }) }}
-          {{ govukButton({
-            text: "Skip and continue",
-            classes: "govuk-button--secondary",
-            name: "skip",
-            value: "true",
-            type: "submit"
-          }) }}
-        </div>
+        {{ govukButton({
+          text: "Save and continue",
+          classes: "govuk-!-margin-top-4"
+        }) }}
       </form>
     </div>
   </div>
