@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Add personal details' %}
+{% set title = 'Add your details' %}
 {% set primaryNavId = 'account' %}
 {% set forceSignedIn = true %}
 {% set errors = errors or {} %}
@@ -19,12 +19,7 @@
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <p class="govuk-body">
-        We need a few details so we can personalise your account, show you jobs that match where you live, and use them when you apply for jobs.
-      </p>
-
-      <p class="govuk-body">
-        We use your name in emails and messages about your applications and job alerts.
-        Your postcode helps us suggest vacancies in your area.
+        We use your name in job applications and in emails about your applications and job alerts. We use your postcode to suggest jobs near you.
       </p>
 
       <form method="post" action="/account/add-your-details" class="app-profile-capture-form" novalidate>
@@ -54,24 +49,7 @@
           classes: "govuk-input--width-20",
           type: "tel",
           autocomplete: "tel",
-          hint: {
-            text: "Enter a phone number we can use to contact you, for example 01632 960 001, 07700 900 982 or +44 0808 157 0192"
-          },
           errorMessage: { text: errors.phoneNumber } if errors.phoneNumber
-        }) }}
-
-        {{ govukInput({
-          label: { text: "Teacher reference number (TRN) (optional)", classes: "govuk-label--m" },
-          hint: {
-            html: 'Your TRN is 7 digits long. You can <a class="govuk-link" href="https://find-a-lost-trn.education.gov.uk/start" target="_blank" rel="noreferrer noopener">find your TRN (opens in a new tab)</a> if you do not know it or have forgotten it.'
-          },
-          id: "trn",
-          name: "trn",
-          value: trn,
-          classes: "govuk-input--width-10",
-          autocomplete: "off",
-          errorMessage: { text: errors.trn } if errors.trn,
-          attributes: { inputmode: "numeric", pattern: "[0-9]{7}", maxlength: "7" }
         }) }}
 
         {{ govukInput({
@@ -81,10 +59,21 @@
           value: postcode,
           classes: "govuk-input--width-10",
           autocomplete: "postal-code",
-          hint: {
-            text: "Your postcode helps us suggest vacancies in your area, for example SW1A 1AA"
-          },
           errorMessage: { text: errors.postcode } if errors.postcode
+        }) }}
+
+        {{ govukInput({
+          label: { text: "Teacher reference number (TRN) (optional)", classes: "govuk-label--m" },
+          hint: {
+            html: 'Your TRN is 7 digits long. <a class="govuk-link" href="https://find-a-lost-trn.education.gov.uk/start" target="_blank" rel="noreferrer noopener">Look up your TRN (opens in a new tab)</a> if you do not know it.'
+          },
+          id: "trn",
+          name: "trn",
+          value: trn,
+          classes: "govuk-input--width-10",
+          autocomplete: "off",
+          errorMessage: { text: errors.trn } if errors.trn,
+          attributes: { inputmode: "numeric", pattern: "[0-9]{7}", maxlength: "7" }
         }) }}
 
         {{ govukButton({
