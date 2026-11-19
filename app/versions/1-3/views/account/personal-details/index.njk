@@ -25,38 +25,37 @@
     ]
   }) }}
 
+  {{ jobseekerAccountSubNav('profile') }}
+
   {% if captureComplete %}
     {{ govukNotificationBanner({
       type: "success",
       text: "Your details have been saved"
     }) }}
   {% endif %}
-
-  {{ jobseekerAccountSubNav('profile') }}
+  {% if nameUpdated %}
+    {{ govukNotificationBanner({ type: "success", text: "Your name has been updated" }) }}
+  {% endif %}
+  {% if trnUpdated %}
+    {{ govukNotificationBanner({ type: "success", text: "Your TRN has been updated" }) }}
+  {% endif %}
+  {% if showDateOfBirthCard and dateOfBirthUpdated %}
+    {{ govukNotificationBanner({ type: "success", text: "Your date of birth has been updated" }) }}
+  {% endif %}
+  {% if showNationalInsuranceCard and niUpdated %}
+    {{ govukNotificationBanner({ type: "success", text: "Your National Insurance number has been updated" }) }}
+  {% endif %}
+  {% if townOrPostcodeUpdated %}
+    {{ govukNotificationBanner({ type: "success", text: "Your location has been updated" }) }}
+  {% endif %}
+  {% if phoneUpdated %}
+    {{ govukNotificationBanner({ type: "success", text: "Your phone number has been updated" }) }}
+  {% endif %}
 
   {% include "includes/account-page-header.njk" %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {% if nameUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your name has been updated" }) }}
-      {% endif %}
-      {% if trnUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your TRN has been updated" }) }}
-      {% endif %}
-      {% if showDateOfBirthCard and dateOfBirthUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your date of birth has been updated" }) }}
-      {% endif %}
-      {% if showNationalInsuranceCard and niUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your National Insurance number has been updated" }) }}
-      {% endif %}
-      {% if townOrPostcodeUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your location has been updated" }) }}
-      {% endif %}
-      {% if phoneUpdated %}
-        {{ govukNotificationBanner({ type: "success", text: "Your phone number has been updated" }) }}
-      {% endif %}
-
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Summary</h2>
@@ -72,7 +71,7 @@
                 actions: {
                   items: [{
                     href: "/account/personal-details/name",
-                    text: "Change",
+                    text: "Edit",
                     visuallyHiddenText: "name"
                   }]
                 }
@@ -83,7 +82,7 @@
                 actions: {
                   items: [{
                     href: "/account/personal-details/phone-number",
-                    text: "Change",
+                    text: "Edit",
                     visuallyHiddenText: "phone number"
                   }]
                 }
@@ -94,7 +93,7 @@
                 actions: {
                   items: [{
                     href: "/account/personal-details/trn",
-                    text: "Change",
+                    text: "Edit",
                     visuallyHiddenText: "teacher reference number"
                   }]
                 }
@@ -105,7 +104,7 @@
                 actions: {
                   items: [{
                     href: "/account/personal-details/town-or-postcode",
-                    text: "Change",
+                    text: "Edit",
                     visuallyHiddenText: "postcode"
                   }]
                 }
@@ -117,11 +116,10 @@
             ]
           }) }}
           <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m govuk-!-margin-top-4 govuk-!-margin-bottom-4">
-          <p class="govuk-body govuk-!-margin-bottom-0">You change your email address in GOV.UK One Login. Updates will apply when you next sign in to Teaching Vacancies.</p>
-          <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-2">
-            <a class="govuk-link" href="https://home.account.gov.uk/settings" rel="noopener noreferrer" target="_blank">
-              GOV.UK One Login (opens in a new tab)
-            </a>
+          <p class="govuk-body govuk-!-margin-bottom-0">
+            You change your email address in
+            <a class="govuk-link" href="https://home.account.gov.uk/settings" rel="noopener noreferrer" target="_blank">GOV.UK One Login (opens in a new tab)</a>.
+            Updates will apply when you next sign in to Teaching Vacancies.
           </p>
         </div>
       </div>
