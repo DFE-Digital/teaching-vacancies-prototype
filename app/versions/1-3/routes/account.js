@@ -68,10 +68,25 @@ function ensurePrototypeSignedIn (req) {
   if (!req.session.user.profile) req.session.user.profile = {}
 }
 
+function getExternalAdvertReturnUrl (req) {
+  const candidates = [
+    req.session.data && req.session.data.afterProfileCaptureReturnUrl,
+    req.session.data && req.session.data.signInReturnUrl
+  ]
+  for (const value of candidates) {
+    const normalized = normalizeReturnUrl(value)
+    if (normalized && normalized.indexOf('/jobs/external-advert') === 0) {
+      return normalized
+    }
+  }
+  return null
+}
+
 function renderAddYourDetails (req, res, options) {
   const profile = (req.session.user && req.session.user.profile) || {}
   resolveLocationOnProfile(profile)
   const reposted = options.reposted === true
+  const externalAdvertHref = getExternalAdvertReturnUrl(req)
   res.render('account/add-your-details', {
     firstName: reposted && options.firstName != null ? options.firstName : '',
     lastName: reposted && options.lastName != null ? options.lastName : '',
@@ -80,6 +95,8 @@ function renderAddYourDetails (req, res, options) {
     postcode: reposted && options.postcode != null ? options.postcode : '',
     errors: options.errors || {},
     errorList: options.errorList || [],
+    showExternalWebsiteButton: !!externalAdvertHref,
+    externalAdvertHref: externalAdvertHref || '',
     englandTownsJson
   })
 }
@@ -134,6 +151,11 @@ function handleAddYourDetailsWithoutDobPost (req, res) {
   profile.profileCaptureComplete = true
 
   req.session.data.personalDetailsCaptureComplete = true
+
+  // External advert capture: Save stays in account; Save and go opens the advert
+  if (req.body.action === 'save' && getExternalAdvertReturnUrl(req)) {
+    return res.redirect('/account/personal-details')
+  }
   return redirectAfterProfileCapture(req, res)
 }
 
