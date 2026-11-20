@@ -57,7 +57,12 @@
     {% else %}
       {% set applyReturnUrl = '/jobs/' + job.id + '/apply' %}
       {% if data.signedIn %}
-        {% set applyHref = applyReturnUrl %}
+        {% set hasProfileName = user.profile.firstName and user.profile.lastName %}
+        {% if hasProfileName %}
+          {% set applyHref = applyReturnUrl %}
+        {% else %}
+          {% set applyHref = '/account/add-your-details?returnUrl=' + (applyReturnUrl | urlencode) %}
+        {% endif %}
       {% else %}
         {% set applyHref = '/account/sign-in/jobseeker?from=applyjob&returnUrl=' + (applyReturnUrl | urlencode) %}
       {% endif %}
@@ -67,13 +72,14 @@
   {% else %}
     {% set applyHref = '#applying' %}
     {% set externalAdvertUrl = '/jobs/external-advert?job=' + job.id %}
+    {% set jobDetailsUrl = '/jobs/' + job.id %}
     {% if data.signedIn %}
       {% set primaryActionText = "Apply on external website (opens in new tab)" %}
       {% set primaryActionHref = externalAdvertUrl %}
       {% set primaryActionOpensInNewTab = true %}
     {% else %}
       {% set primaryActionText = "Apply" %}
-      {% set primaryActionHref = '/account/sign-in/jobseeker?from=applyjob&returnUrl=' + (externalAdvertUrl | urlencode) %}
+      {% set primaryActionHref = '/account/sign-in/jobseeker?from=applyjob&returnUrl=' + (jobDetailsUrl | urlencode) %}
       {% set primaryActionOpensInNewTab = false %}
     {% endif %}
   {% endif %}

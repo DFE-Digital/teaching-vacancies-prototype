@@ -76,17 +76,10 @@
           attributes: { inputmode: "numeric", pattern: "[0-9]{7}", maxlength: "7" }
         }) }}
 
-        <div class="govuk-button-group govuk-!-margin-top-4">
-          {% if showExternalWebsiteButton and externalAdvertHref %}
-            {{ govukButton({
-              text: "Apply externally (opens in new tab)",
-              name: "action",
-              value: "save-and-go"
-            }) }}
-          {% else %}
-            {{ govukButton({ text: "Save and continue" }) }}
-          {% endif %}
-        </div>
+        {{ govukButton({
+          text: "Save and continue",
+          classes: "govuk-!-margin-top-4"
+        }) }}
       </form>
     </div>
   </div>

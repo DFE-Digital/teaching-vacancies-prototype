@@ -68,25 +68,10 @@ function ensurePrototypeSignedIn (req) {
   if (!req.session.user.profile) req.session.user.profile = {}
 }
 
-function getExternalAdvertReturnUrl (req) {
-  const candidates = [
-    req.session.data && req.session.data.afterProfileCaptureReturnUrl,
-    req.session.data && req.session.data.signInReturnUrl
-  ]
-  for (const value of candidates) {
-    const normalized = normalizeReturnUrl(value)
-    if (normalized && normalized.indexOf('/jobs/external-advert') === 0) {
-      return normalized
-    }
-  }
-  return null
-}
-
 function renderAddYourDetails (req, res, options) {
   const profile = (req.session.user && req.session.user.profile) || {}
   resolveLocationOnProfile(profile)
   const reposted = options.reposted === true
-  const externalAdvertHref = getExternalAdvertReturnUrl(req)
   res.render('account/add-your-details', {
     firstName: reposted && options.firstName != null ? options.firstName : '',
     lastName: reposted && options.lastName != null ? options.lastName : '',
@@ -95,8 +80,6 @@ function renderAddYourDetails (req, res, options) {
     postcode: reposted && options.postcode != null ? options.postcode : '',
     errors: options.errors || {},
     errorList: options.errorList || [],
-    showExternalWebsiteButton: !!externalAdvertHref,
-    externalAdvertHref: externalAdvertHref || '',
     englandTownsJson
   })
 }
@@ -151,6 +134,16 @@ function handleAddYourDetailsWithoutDobPost (req, res) {
   profile.profileCaptureComplete = true
 
   req.session.data.personalDetailsCaptureComplete = true
+
+  // If return URL was the external advert placeholder, send users back to the job details page
+  const afterCapture = normalizeReturnUrl(req.session.data.afterProfileCaptureReturnUrl)
+  if (afterCapture && afterCapture.indexOf('/jobs/external-advert') === 0) {
+    const jobIdMatch = afterCapture.match(/[?&]job=([^&]+)/)
+    if (jobIdMatch && jobIdMatch[1]) {
+      req.session.data.afterProfileCaptureReturnUrl = '/jobs/' + decodeURIComponent(jobIdMatch[1])
+    }
+  }
+
   return redirectAfterProfileCapture(req, res)
 }
 
@@ -477,7 +470,17 @@ module.exports = router => {
       return res.redirect('/account/sign-in/jobseeker')
     }
     ensurePrototypeSignedIn(req)
+    const returnUrl = normalizeReturnUrl(req.query.returnUrl)
+    if (returnUrl) {
+      req.session.data.afterProfileCaptureReturnUrl = returnUrl
+    }
     const profile = req.session.user.profile
+    if (profile) {
+      const missingName = !(profile.firstName || '').trim() || !(profile.lastName || '').trim()
+      if (missingName) {
+        profile.profileCaptureComplete = false
+      }
+    }
     if (profile && !profile.profileCaptureComplete) {
       delete profile.firstName
       delete profile.lastName

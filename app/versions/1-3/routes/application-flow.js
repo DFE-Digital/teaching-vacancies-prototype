@@ -213,14 +213,25 @@ function findItem (list, id) {
 
 module.exports = function (router) {
   router.get('/jobs/:id/apply', (req, res) => {
+    const jobId = String(req.params.id)
     if (!req.session.data.signedIn) {
-      const jobId = String(req.params.id)
       const params = new URLSearchParams({
         from: 'applyjob',
         returnUrl: `/jobs/${jobId}/apply`
       })
       return res.redirect('/account/sign-in/jobseeker?' + params.toString())
     }
+
+    const profile = (req.session.user && req.session.user.profile) || {}
+    const hasFirstName = !!(profile.firstName || '').trim()
+    const hasLastName = !!(profile.lastName || '').trim()
+    if (!hasFirstName || !hasLastName) {
+      if (!req.session.user.profile) req.session.user.profile = {}
+      req.session.user.profile.profileCaptureComplete = false
+      req.session.data.afterProfileCaptureReturnUrl = `/jobs/${jobId}/apply`
+      return res.redirect('/account/add-your-details')
+    }
+
     const job = getJob(req)
     res.render('apply/start', {
       job,
