@@ -67,11 +67,12 @@
   {% else %}
     {% set applyHref = '#applying' %}
     {% set externalAdvertUrl = '/jobs/external-advert?job=' + job.id %}
-    {% set primaryActionText = "Apply" %}
     {% if data.signedIn %}
+      {% set primaryActionText = "Apply on external website (opens in new tab)" %}
       {% set primaryActionHref = externalAdvertUrl %}
       {% set primaryActionOpensInNewTab = true %}
     {% else %}
+      {% set primaryActionText = "Apply" %}
       {% set primaryActionHref = '/account/sign-in/jobseeker?from=applyjob&returnUrl=' + (externalAdvertUrl | urlencode) %}
       {% set primaryActionOpensInNewTab = false %}
     {% endif %}

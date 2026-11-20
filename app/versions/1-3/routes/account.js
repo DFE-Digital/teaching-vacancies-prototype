@@ -151,11 +151,6 @@ function handleAddYourDetailsWithoutDobPost (req, res) {
   profile.profileCaptureComplete = true
 
   req.session.data.personalDetailsCaptureComplete = true
-
-  // External advert capture: Save stays in account; Save and go opens the advert
-  if (req.body.action === 'save' && getExternalAdvertReturnUrl(req)) {
-    return res.redirect('/account/personal-details')
-  }
   return redirectAfterProfileCapture(req, res)
 }
 
