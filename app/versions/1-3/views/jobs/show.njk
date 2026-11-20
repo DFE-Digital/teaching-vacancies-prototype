@@ -66,8 +66,15 @@
     {% set primaryActionHref = applyHref %}
   {% else %}
     {% set applyHref = '#applying' %}
-    {% set primaryActionText = "Apply externally (opens in new tab)" %}
-    {% set primaryActionHref = '/jobs/external-advert?job=' + job.id %}
+    {% set externalAdvertUrl = '/jobs/external-advert?job=' + job.id %}
+    {% set primaryActionText = "Apply" %}
+    {% if data.signedIn %}
+      {% set primaryActionHref = externalAdvertUrl %}
+      {% set primaryActionOpensInNewTab = true %}
+    {% else %}
+      {% set primaryActionHref = '/account/sign-in/jobseeker?from=applyjob&returnUrl=' + (externalAdvertUrl | urlencode) %}
+      {% set primaryActionOpensInNewTab = false %}
+    {% endif %}
   {% endif %}
 
   {% set roleText = job.role | join(', ') if job.role and job.role.join else job.role %}
@@ -149,7 +156,7 @@
               attributes: {
                 target: "_blank",
                 rel: "noreferrer noopener"
-              }
+              } if primaryActionOpensInNewTab else {}
             }) }}
           {% endif %}
         </div>
@@ -319,7 +326,7 @@
                 attributes: {
                   target: "_blank",
                   rel: "noreferrer noopener"
-                }
+                } if primaryActionOpensInNewTab else {}
               }) }}
             {% endif %}
           {% else %}

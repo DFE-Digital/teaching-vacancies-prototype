@@ -22,20 +22,24 @@
           </ul>
         </div>
         <div class="govuk-summary-card__content">
+          {% set enterDetailsHtml %}<a class="govuk-link" href="/account/personal-details">Enter your details</a>{% endset %}
+          {% set nameMissing = not fullName or fullName == '—' %}
+          {% set phoneMissing = not phoneDisplay or phoneDisplay == 'Not provided' %}
+          {% set trnMissing = not trnDisplay or trnDisplay == 'Not provided' %}
           {{ govukSummaryList({
             classes: "govuk-!-margin-bottom-0",
             rows: [
               {
                 key: { text: "Name" },
-                value: { text: fullName }
+                value: { html: enterDetailsHtml } if nameMissing else { text: fullName }
               },
               {
                 key: { text: "Phone number" },
-                value: { text: phoneDisplay }
+                value: { html: enterDetailsHtml } if phoneMissing else { text: phoneDisplay }
               },
               {
                 key: { text: "TRN" },
-                value: { text: trnDisplay }
+                value: { html: enterDetailsHtml } if trnMissing else { text: trnDisplay }
               },
               {
                 key: { text: "Email address" },
