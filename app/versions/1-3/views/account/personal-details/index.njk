@@ -6,7 +6,7 @@
 {% set primaryNavId = 'account' %}
 {% set accountSection = 'personal-details' %}
 {% set forceSignedIn = true %}
-{% set title = 'Personal details' %}
+{% set title = 'Your details' %}
 {% set accountAreaMain = true %}
 {% set showDateOfBirthCard = false %}
 {% set showNationalInsuranceCard = false %}
@@ -20,7 +20,7 @@
         href: versionPath("/jobseekers/account")
       },
       {
-        text: "Personal details"
+        text: "Your details"
       }
     ]
   }) }}
@@ -88,17 +88,6 @@
                 }
               },
               {
-                key: { text: "TRN" },
-                value: { text: trnDisplay },
-                actions: {
-                  items: [{
-                    href: "/account/personal-details/trn",
-                    text: "Edit",
-                    visuallyHiddenText: "teacher reference number"
-                  }]
-                }
-              },
-              {
                 key: { text: "Postcode" },
                 value: { text: postcodeDisplay },
                 actions: {
@@ -106,6 +95,17 @@
                     href: "/account/personal-details/town-or-postcode",
                     text: "Edit",
                     visuallyHiddenText: "postcode"
+                  }]
+                }
+              },
+              {
+                key: { text: "TRN" },
+                value: { text: trnDisplay },
+                actions: {
+                  items: [{
+                    href: "/account/personal-details/trn",
+                    text: "Edit",
+                    visuallyHiddenText: "teacher reference number"
                   }]
                 }
               },
