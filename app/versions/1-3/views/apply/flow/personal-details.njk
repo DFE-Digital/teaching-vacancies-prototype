@@ -8,21 +8,23 @@
     <div class="govuk-grid-column-full">
       {{ applicationHeading() }}
       <h2 class="govuk-heading-l">Personal details</h2>
-      <p class="govuk-body">We have used your profile for this application. Check the details are correct. Select Manage if you need to update them.</p>
+      <p class="govuk-body">We have used your profile for this application. Check the details are correct. Select Edit if you need to update them.</p>
 
+      {% set changeDetailsReturnTo = "/jobs/" + job.id + "/apply/personal-details" %}
+      {% set changeDetailsHref = "/account/change-your-details?returnTo=" + (changeDetailsReturnTo | urlencode) %}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
           <h3 class="govuk-summary-card__title">From your sign-in</h3>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="/account/personal-details">
-                Manage<span class="govuk-visually-hidden"> your profile details</span>
+              <a class="govuk-link" href="{{ changeDetailsHref }}">
+                Edit<span class="govuk-visually-hidden"> your details</span>
               </a>
             </li>
           </ul>
         </div>
         <div class="govuk-summary-card__content">
-          {% set enterDetailsHtml %}<a class="govuk-link" href="/account/personal-details">Enter your details</a>{% endset %}
+          {% set enterDetailsHtml %}<a class="govuk-link" href="{{ changeDetailsHref }}">Enter your details</a>{% endset %}
           {% set nameMissing = not fullName or fullName == '—' %}
           {% set phoneMissing = not phoneDisplay or phoneDisplay == 'Not provided' %}
           {% set trnMissing = not trnDisplay or trnDisplay == 'Not provided' %}

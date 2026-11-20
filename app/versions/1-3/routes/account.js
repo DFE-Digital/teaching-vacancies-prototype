@@ -84,6 +84,73 @@ function renderAddYourDetails (req, res, options) {
   })
 }
 
+function renderChangeYourDetails (req, res, options) {
+  const profile = (req.session.user && req.session.user.profile) || {}
+  resolveLocationOnProfile(profile)
+  const reposted = options.reposted === true
+  const returnTo = safeReturnTo(options.returnTo || req.query.returnTo || req.body.returnTo)
+  res.render('account/change-your-details', {
+    firstName: reposted && options.firstName != null ? options.firstName : (profile.firstName || ''),
+    lastName: reposted && options.lastName != null ? options.lastName : (profile.lastName || ''),
+    phoneNumber: reposted && options.phoneNumber != null ? options.phoneNumber : (profile.phoneNumber || ''),
+    trn: reposted && options.trn != null ? options.trn : getTrn(profile),
+    postcode: reposted && options.postcode != null ? options.postcode : (profile.postcode || ''),
+    returnTo,
+    errors: options.errors || {},
+    errorList: options.errorList || [],
+    englandTownsJson
+  })
+}
+
+function handleChangeYourDetailsPost (req, res) {
+  const returnTo = safeReturnTo(req.body.returnTo)
+  const fields = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    phoneNumber: req.body.phoneNumber,
+    trn: req.body.trn,
+    postcode: req.body.postcode
+  }
+
+  const { errors } = validateJobseekerProfileCaptureTrnPostcode(fields)
+  if (Object.keys(errors).length) {
+    return renderChangeYourDetails(req, res, {
+      ...fields,
+      returnTo,
+      reposted: true,
+      errors,
+      errorList: jobseekerProfileCaptureTrnPostcodeErrorSummaryList(errors)
+    })
+  }
+
+  const profile = req.session.user.profile
+  profile.firstName = fields.firstName.trim()
+  profile.lastName = fields.lastName.trim()
+  const phoneValue = (fields.phoneNumber || '').trim()
+  if (phoneValue) {
+    profile.phoneNumber = phoneValue
+  } else {
+    delete profile.phoneNumber
+  }
+  setTrn(profile, fields.trn)
+  profile.trnProvided = !!getTrn(profile)
+  const postcodeValue = (fields.postcode || '').trim()
+  if (postcodeValue) {
+    profile.postcode = normalisePostcode(postcodeValue)
+    profile.postcodeProvided = true
+  } else {
+    delete profile.postcode
+    profile.postcodeProvided = false
+  }
+  delete profile.townOrPostcode
+  profile.profileCaptureComplete = true
+
+  if (returnTo) {
+    return res.redirect(returnTo)
+  }
+  return res.redirect('/account/personal-details')
+}
+
 function handleAddYourDetailsWithoutDobPost (req, res) {
   if (req.body.skip === 'true') {
     const profile = req.session.user.profile
@@ -500,6 +567,24 @@ module.exports = router => {
     ensurePrototypeSignedIn(req)
 
     return handleAddYourDetailsWithoutDobPost(req, res)
+  })
+
+  router.get('/account/change-your-details', (req, res) => {
+    if (!req.session.data.signedIn) {
+      return res.redirect('/account/sign-in/jobseeker')
+    }
+    ensurePrototypeSignedIn(req)
+    renderChangeYourDetails(req, res, {
+      returnTo: req.query.returnTo
+    })
+  })
+
+  router.post('/account/change-your-details', (req, res) => {
+    if (!req.session.data.signedIn) {
+      return res.redirect('/account/sign-in/jobseeker')
+    }
+    ensurePrototypeSignedIn(req)
+    return handleChangeYourDetailsPost(req, res)
   })
 
   router.get('/account/add-your-details-2', (req, res) => {
