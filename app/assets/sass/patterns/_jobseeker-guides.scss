@@ -1,0 +1,106 @@
+// Jobseeker guides (hub cards + article typography), matching the live service.
+
+.app-guides {
+  // Hub cards
+  .dfe-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: govuk-spacing(6);
+  }
+
+  .dfe-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $govuk-border-colour;
+    background: govuk-colour("white");
+
+    img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    &:hover,
+    &:focus-within {
+      background-color: #003a69;
+
+      .govuk-link,
+      .govuk-link:visited,
+      .govuk-heading-m {
+        color: govuk-colour("white");
+      }
+    }
+  }
+
+  .dfe-card-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 20px;
+
+    .govuk-heading-m {
+      margin-bottom: 0;
+    }
+  }
+
+  // Article typography
+  .post {
+    a {
+      @include govuk-link-common;
+      @include govuk-link-style-default;
+    }
+
+    h1 {
+      @include govuk-font($size: 48, $weight: bold);
+      @include govuk-responsive-margin(8, "bottom");
+      color: $govuk-text-colour;
+    }
+
+    h2 {
+      @include govuk-font($size: 36, $weight: bold);
+      @include govuk-responsive-margin(6, "bottom");
+      @include govuk-responsive-margin(8, "top");
+      color: $govuk-text-colour;
+    }
+
+    h3 {
+      @include govuk-font($size: 24, $weight: bold);
+      @include govuk-responsive-margin(4, "bottom");
+      @include govuk-responsive-margin(6, "top");
+      color: $govuk-text-colour;
+    }
+
+    p {
+      @include govuk-font($size: 19);
+      @include govuk-responsive-margin(4, "bottom");
+      color: $govuk-text-colour;
+    }
+
+    ul,
+    ol {
+      @include govuk-font($size: 19);
+      @include govuk-responsive-margin(4, "bottom");
+      padding-left: 20px;
+      color: $govuk-text-colour;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    li {
+      margin-bottom: govuk-spacing(1);
+    }
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

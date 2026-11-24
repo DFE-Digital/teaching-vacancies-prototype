@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+
+{% set title = "Refresh your subject and teaching knowledge" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Return to teaching in England", href: "/jobseeker-guides/return-to-teaching-in-england" },
+      { text: "Refresh your subject and teaching knowledge" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row post"><div class="govuk-grid-column-two-thirds"><h1>Refresh your subject and teaching knowledge</h1><p><img src="/public/images/jobseeker-guides/return-to-teaching-in-england/update-your-subject-and-teaching-knowledge.png" alt="A student working at a computer while a teacher helps." /></p>
+
+<p>If you’re returning to teaching, refreshing your subject and teaching knowledge will improve your confidence and prepare you for your return to the classroom.</p>
+
+<p>Consider what is important to update yourself on and how you can bring yourself up to date at a pace that suits you.</p>
+
+<p>You might find it helpful to:</p>
+
+<ul>
+  <li>complete a subject knowledge audit to identify any weak spots in your knowledge</li>
+  <li>read <a href="https://www.gov.uk/government/publications/behaviour-in-schools--2">current behaviour management guidelines</a></li>
+  <li>read the <a href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">Keeping children safe in education</a> statutory safeguarding guidance for schools</li>
+  <li>find out what improvements have been made to <a href="https://www.gov.uk/guidance/national-professional-qualification-npq-courses">national professional qualifications (NPQs)</a>  – you may also be eligible for scholarship funding</li>
+  <li>update your knowledge by engaging with subject organisations</li>
+</ul>
+
+<h2 id="prepare-to-return-to-primary-teaching">Prepare to return to primary teaching</h2>
+<p>If you are thinking about returning to primary teaching, you should:</p>
+
+<ul>
+  <li>read the key stage (KS) 1 and 2 <a href="https://www.gov.uk/government/publications/national-curriculum-in-england-primary-curriculum">national curriculum</a>.</li>
+  <li>research the current teaching methods and practices for KS1 and KS2</li>
+  <li>consider taking a refresher course</li>
+</ul>
+
+<h2 id="prepare-to-return-to-secondary-teaching">Prepare to return to secondary teaching</h2>
+<p>If you are thinking about returning to secondary teaching, you should:</p>
+
+<ul>
+  <li>read the KS3 and KS4 <a href="https://www.gov.uk/government/publications/national-curriculum-in-england-secondary-curriculum">national curriculum</a></li>
+  <li>research the current teaching methods and practices for your subject</li>
+  <li>consider taking a refresher course</li>
+</ul>
+<span class="govuk-body-s">Updated on<time datetime="2025-08-28"> 28 August 2025</time></span><br /><span class="govuk-body-s">Published on<time datetime="2025-02-17"> 17 February 2025</time></span></div></div>
+</div>
+{% endraw %}
+{% endblock %}

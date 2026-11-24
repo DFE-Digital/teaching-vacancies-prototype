@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% set title = "Jobseeker guides" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row"><div class="govuk-grid-column-full"><h1 class="govuk-heading-xl">Jobseeker guides</h1><p class="govuk-body">Find expert advice on securing your teaching job.</p></div></div><div class="dfe-grid-container"><div class="dfe-card"><img alt="" class="hf-card-image" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role">Get help applying for your teaching role</a></div></div></div></div><div class="dfe-card"><img alt="" class="hf-card-image" src="/public/images/jobseeker-guides/return-to-teaching-in-england.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england">Return to teaching in England</a></div></div></div></div></div>
+</div>
+{% endraw %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.njk" %}
+
+{% set title = "Arranging your references" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Return to teaching in England", href: "/jobseeker-guides/return-to-teaching-in-england" },
+      { text: "Arranging your references" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row post"><div class="govuk-grid-column-two-thirds"><h1>Arranging your references</h1><p><img src="/public/images/jobseeker-guides/return-to-teaching-in-england/arrange-your-referees.png" alt="A teacher helping a student with work." /></p>
+
+<p>References allow employers to obtain factual information to support appointment decisions. Schools and colleges should obtain references before the interview stage, where possible. This allows any concerns raised to be explored further with the referee and taken up with the candidate during the interview.</p>
+
+<p>Further guidance can be found in <a href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">Part three (safer recruitment) of the statutory safeguarding guidance for schools, Keeping children safe in education (KCSiE)</a>.</p>
+
+<p>KCSiE is not specific about how many references are required. Schools are best placed to make this decision based on their individual needs and circumstances.</p>
+
+<p>If you are a returning teacher, <a href="/jobseeker-guides/return-to-teaching-in-england/find-classroom-experience">getting more teaching experience</a> can help you get new referees.</p>
+
+<h2 id="how-to-select-your-referees">How to select your referees</h2>
+
+<p>You will need a reference from your current employer, if you have one.</p>
+
+<p>If you no longer work with children but have done in the past, you will need a reference from the last time you did.</p>
+
+<p>If you can, choose experienced teachers who have seen you teach recently. They should be able to speak about your teaching skills, goal-setting and communication abilities.</p>
+
+<p>Make sure you confirm with your referees that they are willing to provide a reference before including their names in your application.</p>
+
+<p>Supply teaching agencies often only provide brief factual references, so try to find an alternative referee if possible.</p>
+
+<p><a href="https://www.gov.uk/work-reference">Learn more about your rights regarding work references</a>.</p>
+<span class="govuk-body-s">Updated on<time datetime="2026-05-11"> 11 May 2026</time></span><br /><span class="govuk-body-s">Published on<time datetime="2025-02-17"> 17 February 2025</time></span></div></div>
+</div>
+{% endraw %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layout.njk" %}
+
+{% set title = "Get help applying for your teaching role" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Get help applying for your teaching role" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row"><div class="govuk-grid-column-full"><h1 class="govuk-heading-xl">Get help applying for your teaching role</h1><p class="govuk-body">Get advice from experienced teachers and school leaders on applying for your teaching role.</p></div></div><div class="dfe-grid-container"><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role/find-your-teaching-role-at-the-right-school.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role/find-a-teaching-role-at-the-right-school">Find a teaching role at the right school or college</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role/how-to-write-your-teacher-training-personal-statement.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role/how-to-write-teacher-personal-statement">How to write a teacher personal statement</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role/write-a-great-teaching-job-application-in-5-steps.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role/write-a-great-teaching-job-application-in-five-steps">Write a great teaching job application in 5 steps</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role/how-to-approach-your-teaching-job-interview.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role/how-to-approach-a-teaching-job-interview">How to approach a teaching job interview</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role/prepare-for-your-teaching-interview-lesson.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role/prepare-for-a-teaching-job-interview-lesson">Prepare for a teaching interview lesson</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/get-help-applying-for-your-teaching-role/3-quick-ways-to-find-the-right-teaching-job">3 quick ways to find the right teaching job for you</a></div></div></div></div>
+</div>
+{% endraw %}
+{% endblock %}

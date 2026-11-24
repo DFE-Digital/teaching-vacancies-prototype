@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% set title = "Returning to teaching - teacher stories" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Return to teaching in England", href: "/jobseeker-guides/return-to-teaching-in-england" },
+      { text: "Returning to teaching - teacher stories" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row post"><div class="govuk-grid-column-two-thirds"><h1>Returning to teaching - teacher stories</h1><p><img src="/public/images/jobseeker-guides/return-to-teaching-in-england/case-studies.jpg" alt="A teacher talking to a pupil at a desk." /></p>
+
+<p>Are you thinking about a return to teaching?</p>
+
+<p>Read Dena and Will’s stories to find out more about what it’s like to return to teaching after a break, and what support is available to help you get back into teaching.</p>
+
+<p>Find out how <a href="/jobseeker-guides/return-to-teaching-in-england/denas-story">Dena returned to teaching after 8 years away from the classroom</a>.</p>
+
+<p>Read about <a href="/jobseeker-guides/return-to-teaching-in-england/wills-story">Will’s return to teaching after travelling abroad and working as an energy engineer</a>.</p>
+
+<p>You can also read the <a href="/jobseeker-guides/return-to-teaching-in-england/return-to-teaching-step-by-step">Return to teaching: step by step guide</a> to check what you need to do to return to teach in a state-funded school in England.</p>
+<span class="govuk-body-s">Updated on<time datetime="2025-07-08">  8 July 2025</time></span><br /><span class="govuk-body-s">Published on<time datetime="2025-06-09">  9 June 2025</time></span></div></div>
+</div>
+{% endraw %}
+{% endblock %}

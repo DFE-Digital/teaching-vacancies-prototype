@@ -1,0 +1,20 @@
+{% extends "layout.njk" %}
+
+{% set title = "Return to teaching in England" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Return to teaching in England" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row"><div class="govuk-grid-column-full"><h1 class="govuk-heading-xl">Return to teaching in England</h1><p class="govuk-body">Find out how to get support returning to teaching in England.</p></div></div><div class="dfe-grid-container"><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/return-to-teaching.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/return-to-teaching">Returning to teaching</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/return-to-teaching-a-step-by-step-guide.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/return-to-teaching-step-by-step">Return to teaching: step by step</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/update-your-subject-and-teaching-knowledge.png" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/update-your-subject-and-teaching-knowledge">Refresh your subject and teaching knowledge</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/find-classroom-experience.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/find-classroom-experience">Finding classroom experience for returning teachers</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/how-to-apply-for-classroom-experience.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/how-to-apply-for-classroom-experience">How to apply for classroom experience as a returning teacher</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/arrange-your-referees.png" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/arrange-your-referees">Arranging your references</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/show-how-you-meet-the-teachers-standards.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/show-how-you-meet-the-teachers-standards">Show how you meet the teachers&#39; standards as a returning teacher</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/return-to-england-after-teaching-overseas.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/return-to-england-after-teaching-overseas">Return to England after teaching overseas</a></div></div></div><div class="dfe-card"><img alt="" src="/public/images/jobseeker-guides/return-to-teaching-in-england/case-studies.jpg" /><div class="dfe-card-container"><div class="govuk-heading-m"><a class="govuk-link" href="/jobseeker-guides/return-to-teaching-in-england/case-studies">Returning to teaching - teacher stories</a></div></div></div></div>
+</div>
+{% endraw %}
+{% endblock %}

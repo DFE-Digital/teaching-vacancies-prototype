@@ -1,0 +1,52 @@
+{% extends "layout.njk" %}
+
+{% set title = "3 quick ways to find the right teaching job for you" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Get help applying for your teaching role", href: "/jobseeker-guides/get-help-applying-for-your-teaching-role" },
+      { text: "3 quick ways to find the right teaching job for you" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row post"><div class="govuk-grid-column-two-thirds"><h1>3 quick ways to find the right teaching job for you</h1><p><img src="/public/images/jobseeker-guides/get-help-applying-for-your-teaching-role/3-quick-ways-to-find-the-right-teaching-job-for-you.jpg" alt="Three teachers talking in a school playground." /></p>
+
+<p>Teaching Vacancies is the official government service to help you find your perfect teaching role.</p>
+
+<p>Nearly 90% of schools advertise roles on Teaching Vacancies with new jobs added almost daily.</p>
+
+<h2 id="get-jobs-sent-to-you">Get jobs sent to you</h2>
+
+<p>Let the right job find you by signing up for daily or weekly job alerts and get an email when a new role is available.</p>
+
+<p>Easily focus your search by distance, subject and what kind of job you’re looking for, such as your first teaching role, or a part-time job.</p>
+
+<h2 id="set-up-a-profile">Set up a profile</h2>
+
+<p>You can share your information with local schools or colleges you’re interested in teaching at.</p>
+
+<p>Schools and colleges can then reach out to you if they think you’re a good fit for their role.</p>
+
+<h2 id="apply-quickly-for-roles">Apply quickly for roles</h2>
+
+<p>Use our online application form to quickly apply for jobs.</p>
+
+<p>We’ll save your details so you won’t have to spend time filling in new applications every time, where quick apply is available.</p>
+
+<p>If you’re invited to interview, read <a href="/jobseeker-guides/get-help-applying-for-your-teaching-role/how-to-approach-a-teaching-job-interview">how to approach a teaching job interview</a> to help you prepare.</p>
+
+<form class="button_to" method="get" action="/jobseekers/sign-in">
+    <button class="govuk-button" data-module="govuk-button" type="submit">
+        Create a Teaching Vacancies account now
+    </button>
+</form>
+<span class="govuk-body-s">Updated on<time datetime="2026-05-11"> 11 May 2026</time></span><br /><span class="govuk-body-s">Published on<time datetime="2024-05-07">  7 May 2024</time></span></div></div>
+</div>
+{% endraw %}
+{% endblock %}

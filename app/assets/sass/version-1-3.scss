@@ -12,6 +12,7 @@ $app-prototype-min-viewport-width: 382px;
 @import "node_modules/govuk-frontend/dist/govuk/helpers/index";
 
 @import "patterns/jobseeker-account";
+@import "patterns/jobseeker-guides";
 
 // Unsigned header: hide Job alerts (create alert remains on home hero).
 .govuk-header__navigation-item:has(.govuk-header__link--job-alerts) {

@@ -1,0 +1,66 @@
+{% extends "layout.njk" %}
+
+{% set title = "Return to England after teaching overseas" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Jobseeker guides", href: "/jobseeker-guides" },
+      { text: "Return to teaching in England", href: "/jobseeker-guides/return-to-teaching-in-england" },
+      { text: "Return to England after teaching overseas" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+<div class="app-guides">
+<div class="govuk-grid-row post"><div class="govuk-grid-column-two-thirds"><h1>Return to England after teaching overseas</h1><p><img src="/public/images/jobseeker-guides/return-to-england-after-teaching-overseas-800x300.jpg" alt="A teacher talking at the front of a classroom full of students during a lesson." /></p>
+
+<p>Get support if you’re a UK citizen thinking about returning from overseas to teach in England. 
+The skills, experience and perspective you’ve gained outside the UK are highly valued by schools and headteachers.</p>
+
+<p>If you’re a non-UK citizen, read our <a href="https://getintoteaching.education.gov.uk/non-uk-teachers">guidance for international trainees and teachers</a>.</p>
+
+<h2 id="check-your-qualifications">Check your qualifications</h2>
+<p>Before you start looking for teaching jobs, check which qualifications you need to teach in England.</p>
+
+<p><a href="https://www.gov.uk/guidance/qualified-teacher-status-qts">Qualified teacher status (QTS)</a> is a legal requirement to teach in many English schools. 
+Even where QTS is not a legal requirement, many schools use it to assess the quality of candidates.</p>
+
+<h3 id="if-you-trained-in-the-uk">If you trained in the UK</h3>
+<p>If you completed your teacher training in England, you should already have QTS. 
+You can check this with the <a href="https://www.gov.uk/guidance/access-your-teaching-qualifications">Teaching Regulation Agency</a>.</p>
+
+<h3 id="if-you-do-not-have-qts">If you do not have QTS</h3>
+<p>If you trained as a teacher or have gained teaching experience outside the UK, you can <a href="https://www.gov.uk/government/publications/apply-for-qualified-teacher-status-qts-if-you-teach-outside-the-uk/routes-to-qualified-teacher-status-qts-for-teachers-and-those-with-teaching-experience-outside-the-uk">learn more about the best route to QTS for your circumstances</a>.</p>
+
+<h2 id="get-help-and-support">Get help and support</h2>
+<p>Find out:</p>
+
+<ul>
+  <li>what the Department for Education is doing to <a href="https://www.gov.uk/guidance/school-workload-reduction-toolkit">reduce teachers’ workload</a>, <a href="https://www.gov.uk/government/collections/improving-behaviour-in-schools">manage pupil behaviour</a> and <a href="https://www.gov.uk/guidance/education-staff-wellbeing-charter">support wellbeing</a></li>
+  <li>how teaching fosters diversity and inclusion with networks including <a href="https://womened.com/">WomenEd</a>, <a href="https://www.bameednetwork.com/">BAMEed</a>, <a href="https://lgbted.uk/">LGBTed</a> and <a href="https://twitter.com/disability_ed">DisabilityEd</a></li>
+</ul>
+
+<h2 id="before-you-apply-for-teaching-jobs-in-england">Before you apply for teaching jobs in England</h2>
+<p>Get ready to apply by:</p>
+
+<ul>
+  <li>collecting evidence of your performance and experience overseas (this can include video recorded lessons and testimonials from your headteacher)</li>
+  <li>obtaining a police clearance certificate or letter of good conduct</li>
+  <li>arranging your references</li>
+  <li><a href="https://get-information-schools.service.gov.uk/">getting information about schools</a></li>
+  <li><a href="https://www.gov.uk/uk-family-visa">researching family visas for non-UK spouses and children</a></li>
+</ul>
+
+<form class="button_to" method="get" action="/jobs">
+    <button class="govuk-button" data-module="govuk-button" type="submit">
+        Search for roles
+    </button>
+</form>
+
+<span class="govuk-body-s">Updated on<time datetime="2025-02-18"> 18 February 2025</time></span><br /><span class="govuk-body-s">Published on<time datetime="2023-12-06">  6 December 2023</time></span></div></div>
+</div>
+{% endraw %}
+{% endblock %}

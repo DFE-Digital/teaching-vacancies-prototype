@@ -53,6 +53,7 @@ require('./routes/profile-errors')(router)
 
 require('./routes/application-flow')(router)
 require('./routes/jobs')(router)
+require('./routes/jobseeker-guides')(router)
 require('./routes/schools')(router)
 
 router.get('/pages/dsi-account-request', (req, res) => {
