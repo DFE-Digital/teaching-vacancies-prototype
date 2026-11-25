@@ -2,17 +2,8 @@
 {% from "includes/jobseeker-account-section-labels.njk" import accountNavLabel %}
 
 {% macro accountHubIcon(icon) %}
-  {% set glyphs = {
-    "applications": "work",
-    "saved-jobs": "bookmark",
-    "job-alerts": "notifications",
-    "notifications": "chat",
-    "personal-details": "person",
-    "get-help": "help",
-    "sign-out": "logout"
-  } %}
   <span class="app-account-featured__icon app-account-featured__icon--{{ icon }}" aria-hidden="true">
-    <span class="material-symbols-outlined app-account-featured__icon-glyph">{{ glyphs[icon] }}</span>
+    {% include "includes/account-hub-icons/" + icon + ".njk" %}
   </span>
 {% endmacro %}
 

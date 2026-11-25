@@ -1,0 +1,205 @@
+{% extends "layout.njk" %}
+{% from "includes/version-path.njk" import versionPath %}
+{% from "includes/jobseeker-account-hub-macros.njk" import accountHubIcon %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper app-documentation-your-account" %}
+
+{% block pageTitle %}
+  {{ guide.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/home" },
+      { text: "Documentation", href: "/documentation" },
+      { text: guide.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="app-guide app-guide--full-width">
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      <span class="govuk-caption-xl">Design spec · v1.3 prototype</span>
+    </p>
+    <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
+    <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+    <p class="govuk-body">
+      <a class="govuk-link" href="{{ versionPath(guide.prototypePath) }}">Open the live prototype page</a>
+      (<code class="govuk-body-s">{{ guide.prototypePath }}</code>)
+    </p>
+
+    {% if guide.referenceScreenshot %}
+      <figure class="app-guide__figure govuk-!-margin-top-6 govuk-!-margin-bottom-8">
+        <img
+          src="{{ asset_path }}images/documentation/{{ guide.referenceScreenshot }}"
+          alt="Your account hub in the v1.3 prototype"
+          width="960"
+          loading="eager"
+          decoding="async"
+        >
+        <figcaption class="govuk-body-s app-guide__figure-caption">Reference: account hub (signed in).</figcaption>
+      </figure>
+    {% endif %}
+
+    <div class="app-guide__main">
+      <h2 class="govuk-heading-l" id="page-header">Page header</h2>
+      <table class="govuk-table govuk-!-margin-bottom-8">
+        <caption class="govuk-table__caption govuk-table__caption--m">“Your account” title block</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Element</th>
+            <th scope="col" class="govuk-table__header">Specification</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Wrapper</td>
+            <td class="govuk-table__cell"><code>{{ guide.pageHeader.wrapperClasses }}</code></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Heading</td>
+            <td class="govuk-table__cell">
+              <code>{{ guide.pageHeader.heading.element }}</code>
+              id <code>{{ guide.pageHeader.heading.id }}</code>,
+              classes <code>{{ guide.pageHeader.heading.classes }}</code>,
+              text “{{ guide.pageHeader.heading.text }}”
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Intro</td>
+            <td class="govuk-table__cell">
+              <code>p#{{ guide.intro.id }}.{{ guide.intro.classes }}</code> — {{ guide.intro.text }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-l" id="featured-list">Featured task list</h2>
+      <p class="govuk-body">
+        Section <code>{{ guide.featuredSection.sectionClasses }}</code> inside
+        <code>{{ guide.featuredSection.wrapperClasses }}</code>.
+        List <code>{{ guide.featuredSection.listClasses }}</code> — top/bottom borders <code>#b1b4b6</code>.
+      </p>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-6" id="links">Links and destinations</h3>
+      <table class="govuk-table govuk-!-margin-bottom-8">
+        <caption class="govuk-table__caption govuk-table__caption--m">Where each row goes (v1.3 paths)</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Task</th>
+            <th scope="col" class="govuk-table__header">Prototype path</th>
+            <th scope="col" class="govuk-table__header">Description</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for item in guide.items %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="{{ versionPath(item.href) }}">{{ item.title }}</a>
+              </td>
+              <td class="govuk-table__cell"><code>{{ item.href }}</code></td>
+              <td class="govuk-table__cell">{{ item.description }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-6" id="icon-tiles">Icon tiles and colours</h3>
+      <p class="govuk-body">
+        Icons are inline SVG using
+        <a class="govuk-link" href="https://github.com/google/material-design-icons/tree/master/symbols/web" rel="noopener noreferrer" target="_blank">Material Symbols Outlined</a>
+        paths (<code>fill="currentColor"</code>).
+        Tile default size {{ guide.iconTile.mobile.size }} ({{ guide.iconTile.tabletUp.size }} from tablet);
+        glyph {{ guide.iconTile.mobile.glyphSize }} ({{ guide.iconTile.tabletUp.glyphSize }} from tablet).
+        Previews use the same SVG markup as the account hub.
+        Download SVGs below (from
+        <a class="govuk-link" href="https://github.com/google/material-design-icons/tree/master/symbols/web" rel="noopener noreferrer" target="_blank">Material Symbols Outlined 24px</a>,
+        <code>fill="currentColor"</code>).
+      </p>
+
+      <table class="govuk-table govuk-!-margin-bottom-6">
+        <caption class="govuk-table__caption govuk-table__caption--m">Icon modifier classes and colours</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Preview</th>
+            <th scope="col" class="govuk-table__header">Task</th>
+            <th scope="col" class="govuk-table__header">CSS modifier</th>
+            <th scope="col" class="govuk-table__header">Glyph</th>
+            <th scope="col" class="govuk-table__header">Background</th>
+            <th scope="col" class="govuk-table__header">Icon colour</th>
+            <th scope="col" class="govuk-table__header">SVG</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for item in guide.items %}
+            {% set colors = guide.iconColors[item.key] %}
+            {% set iconUrl = asset_path + "images/documentation/your-account/icons/" + item.svgFile %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="app-documentation-your-account__swatch-wrap">
+                  {{ accountHubIcon(item.key) }}
+                </div>
+              </td>
+              <td class="govuk-table__cell">{{ item.title }}</td>
+              <td class="govuk-table__cell"><code>{{ item.modifierClass }}</code></td>
+              <td class="govuk-table__cell"><code>{{ item.materialGlyph }}</code></td>
+              <td class="govuk-table__cell"><code>{{ colors.background }}</code></td>
+              <td class="govuk-table__cell"><code>{{ colors.foreground }}</code></td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="{{ iconUrl }}" download="{{ item.svgFile }}">Download {{ item.svgFile }}</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-6" id="typography">Link typography</h3>
+      <table class="govuk-table govuk-!-margin-bottom-8">
+        <caption class="govuk-table__caption govuk-table__caption--m">Featured list text styles</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Part</th>
+            <th scope="col" class="govuk-table__header">Class</th>
+            <th scope="col" class="govuk-table__header">Spec</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Title</td>
+            <td class="govuk-table__cell"><code>.app-account-featured-list__title</code></td>
+            <td class="govuk-table__cell">
+              {{ guide.linkTitle.fontSize }}, link colour <code>{{ guide.linkTitle.color }}</code>,
+              hover <code>{{ guide.linkTitle.hoverColor }}</code>, underline thickness {{ guide.linkTitle.underlineThickness }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Description</td>
+            <td class="govuk-table__cell"><code>.app-account-featured-list__description</code></td>
+            <td class="govuk-table__cell">{{ guide.description.fontSize }}, text <code>{{ guide.description.color }}</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-l" id="implementation">Implementation</h2>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+        <li>View: <code>{{ guide.implementation.view }}</code></li>
+        <li>Macros: <code>{{ guide.implementation.macros }}</code></li>
+        <li>Styles: <code>{{ guide.implementation.styles }}</code></li>
+        <li>Material font import: Google Fonts URL in <code>_jobseeker-account.scss</code></li>
+      </ul>
+
+      <aside class="app-related govuk-!-margin-top-8">
+        <h2 class="govuk-heading-m app-related__heading">Related</h2>
+        <ul class="app-related__list">
+          <li class="app-related__item"><a class="govuk-link" href="/documentation">Documentation contents</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="/documentation/navigation-ia">Signed-in navigation and IA</a></li>
+          <li class="app-related__item"><a class="govuk-link" href="{{ versionPath(guide.prototypePath) }}">Your account (prototype)</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

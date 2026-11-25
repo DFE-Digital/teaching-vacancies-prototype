@@ -8,6 +8,10 @@ module.exports = {
 
   recentWork: [
     {
+      href: '/documentation/your-account',
+      text: 'Your account hub'
+    },
+    {
       href: '/documentation/quick-apply-journey-v13',
       text: 'Quick Apply journey map (v1.3)'
     },
@@ -43,6 +47,12 @@ module.exports = {
       title: 'Remove additional allowances for colleges (#3436)',
       description:
         'FE parity ticket #3436 — hide Additional allowances on college and FE job listings; Quick Apply unchanged. Screenshots and implementation notes.'
+    },
+    {
+      href: '/documentation/your-account',
+      title: 'Your account hub',
+      description:
+        'Design spec for the signed-in account landing page — header, featured task links, icon tile colours, SVG downloads, and prototype destinations.'
     },
     {
       href: '/documentation/navigation-ia',

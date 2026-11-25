@@ -148,6 +148,14 @@
   border-color: #942514;
 }
 
+.app-documentation-your-account__swatch-wrap {
+  display: inline-block;
+
+  .app-account-featured__icon {
+    margin: 0;
+  }
+}
+
 .app-documentation-quick-apply-journey .govuk-table {
   margin-bottom: 2rem;
 }

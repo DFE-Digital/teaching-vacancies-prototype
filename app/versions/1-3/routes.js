@@ -116,6 +116,11 @@ router.get('/documentation/profile-changes', (req, res) => {
   res.render('documentation/profile-changes.html', { guide })
 })
 
+router.get('/documentation/your-account', (req, res) => {
+  const guide = require('./data/your-account')
+  res.render('documentation/your-account', { guide })
+})
+
 router.get('/documentation/job-advert-listing-styles', (req, res) => {
   const guide = require('./data/job-advert-listing-styles')
   const jobs = require('./data/jobs.json')
