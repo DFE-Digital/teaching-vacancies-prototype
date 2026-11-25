@@ -1,0 +1,7 @@
+{% if sessionExpired %}
+  {{ govukNotificationBanner({
+    titleText: "Warning",
+    role: "alert",
+    html: '<p class="govuk-notification-banner__heading">Your session expired. Please sign in again to continue.</p>'
+  }) }}
+{% endif %}

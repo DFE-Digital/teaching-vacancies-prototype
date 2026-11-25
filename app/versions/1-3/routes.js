@@ -36,6 +36,8 @@ router.use((req, res, next) => {
   next()
 })
 
+require('./lib/session-timeout')(router)
+
 require('./routes/account')(router)
 require('./routes/onelogin')(router)
 

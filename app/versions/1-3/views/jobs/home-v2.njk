@@ -10,6 +10,8 @@
 
 {% block content %}
 
+{% include "includes/session-expired-banner.njk" %}
+
 {{ govukNotificationBanner({
     html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
     type: "success",

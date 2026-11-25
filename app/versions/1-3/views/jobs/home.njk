@@ -27,6 +27,8 @@
 
 {% block content %}
 
+{% include "includes/session-expired-banner.njk" %}
+
 {% set homeSearchStack = homeSearchStack if homeSearchStack else (query and query.v2 is defined) %}
 {% set homeHeroV1 = homeHeroV1 if homeHeroV1 is defined else (query and query.v1 is defined) %}
 
